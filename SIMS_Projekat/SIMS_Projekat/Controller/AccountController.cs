@@ -7,17 +7,17 @@ namespace SIMS_Projekat.Controller
 {
     public class AccountController
    {
-      public Account CreatePatientAccount(Model.Patient patient, string username, string password)
+      public Account CreatePatientAccount(Patient patient, string username, string password)
       {
          throw new NotImplementedException();
       }
       
-      public Account DeletePatientAccount(Model.Patient patient)
+      public Account DeletePatientAccount(Patient patient)
       {
          throw new NotImplementedException();
       }
       
-      public Account EditPatientAccount(Model.Patient patient)
+      public Account EditPatientAccount(Patient patient)
       {
          throw new NotImplementedException();
       }
@@ -32,17 +32,17 @@ namespace SIMS_Projekat.Controller
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+      public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
       {
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+      public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
       {
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+      public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
       {
          throw new NotImplementedException();
       }

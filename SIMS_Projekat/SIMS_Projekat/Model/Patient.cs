@@ -1,6 +1,6 @@
 namespace SIMS_Projekat.Model
 {
-    public class Patient : Person
+    public class Patient : Account
     {
         public string PatientID { get; set; }
         public string HealthInsuranceID { get; set; }

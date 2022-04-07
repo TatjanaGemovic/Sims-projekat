@@ -4,21 +4,18 @@ namespace SIMS_Projekat.Model
 {
     public class Account : Serialization.Serializable
     {
-        public string username { get; set; }
-        public string password { get; set; }
-        public string id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string Jmbg { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string ID { get; set; }
 
-        public string FromCSV(string[] values)
-        {
-            throw new NotImplementedException();
-        }
 
         public void fromCSV(string[] values)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ToCSV()
         {
             throw new NotImplementedException();
         }
