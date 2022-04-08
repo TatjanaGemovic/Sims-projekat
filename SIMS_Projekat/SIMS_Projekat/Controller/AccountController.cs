@@ -7,9 +7,11 @@ namespace SIMS_Projekat.Controller
 {
     public class AccountController
    {
-      public Account CreatePatientAccount(Patient patient, string username, string password)
+      public AccountService AccountService { get; set; }
+
+      public Account CreatePatientAccount(Patient patient)
       {
-         throw new NotImplementedException();
+            return AccountService.CreatePatientAccount(patient);
       }
       
       public Account DeletePatientAccount(Patient patient)
@@ -52,7 +54,6 @@ namespace SIMS_Projekat.Controller
          throw new NotImplementedException();
       }
       
-      public AccountService accountService;
    
    }
 }

@@ -1,19 +1,59 @@
+using System;
+using System.Collections.Generic;
+
 namespace SIMS_Projekat.Model
 {
     public class Patient : Account
     {
-        public string PatientID { get; set; }
         public string HealthInsuranceID { get; set; }
         public BloodType BloodType { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
 
-        public System.Collections.Generic.List<Allergen> Allergen
+        public override string[] toCSV()
+        {
+            string[] values =
+            {
+                base.FirstName,
+                base.LastName,
+                base.DateOfBirth.ToString(),
+                base.Jmbg,
+                base.PhoneNumber,
+                base.Email,
+                base.Username,
+                base.Password,
+                base.ID,
+                HealthInsuranceID,
+                ((int)BloodType).ToString(),
+                Height.ToString(),
+                Weight.ToString()
+            };
+            return values;
+        }
+
+        public override void fromCSV(string[] values)
+        {
+            base.FirstName = values[0];
+            base.LastName = values[1];
+            base.DateOfBirth = DateTime.Parse(values[2]);
+            base.Jmbg = values[3];
+            base.PhoneNumber = values[4];
+            base.Email = values[5];
+            base.Username = values[6];
+            base.Password = values[7];
+            base.ID = values[8];
+            HealthInsuranceID = values[9];
+            BloodType = (BloodType)int.Parse(values[10]);
+            Height = double.Parse(values[11]);
+            Weight = double.Parse(values[12]);
+        }
+
+        public List<Allergen> Allergen
         {
             get
             {
                 if (Allergen == null)
-                    Allergen = new System.Collections.Generic.List<Allergen>();
+                    Allergen = new List<Allergen>();
                 return Allergen;
             }
             set

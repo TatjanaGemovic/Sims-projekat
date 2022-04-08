@@ -1,3 +1,4 @@
+using ConsoleApp.serialization;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -6,42 +7,84 @@ namespace SIMS_Projekat.Repository
 {
     public class AccountRepository
     {
-        public Account CreatePatientAccount(Model.Patient patient, string username, string password)
+        public List<Account> Accounts { get; set; }
+        public List<Patient> Patients { get; set; }
+        public List<UrgentPatient> UrgentPatients { get; set; }
+
+        private Serializer<Patient> serializer;
+        private string file;
+
+        public AccountRepository(string fileName)
         {
-            throw new NotImplementedException();
+            Accounts = new List<Account>();
+            Patients = new List<Patient>();
+            serializer = new Serializer<Patient>();
+            file = fileName;
         }
 
-        public Account DeletePatientAccount(Model.Patient patient)
+        public void Serialize()
         {
-            throw new NotImplementedException();
+            serializer.toCSV(file, Patients);
         }
 
-        public Account EditPatientAccount(Model.Patient patient)
+        public void Deserialize()
         {
-            throw new NotImplementedException();
+            Patients = serializer.fromCSV(file);
         }
 
-        public List<Account> GetAllPatientAccounts()
+        public Account CreatePatientAccount(Patient patient)
         {
-            throw new NotImplementedException();
+            Patients.Add(patient);
+            return patient;
+        }
+
+        public Account DeletePatientAccount(Patient patient)
+        {
+            if (Accounts.Remove(patient))
+                return patient;
+            return null;
+        }
+
+        public Account EditPatientAccount(Patient patient)
+        {
+            foreach (Patient oldPatient in Patients)
+            {
+                if (oldPatient.ID.Equals(patient.ID))
+                {
+                    Patients.Remove(oldPatient);
+                    Patients.Add(patient);
+                    return patient;
+                }
+            }
+            return null;
+        }
+
+        public List<Patient> GetAllPatientAccounts()
+        {
+            return Patients;
         }
 
         public Account GetPatientAccountByID(string patientID)
         {
-            throw new NotImplementedException();
+            foreach(Patient patient in Patients)
+            {
+                if (patient.ID.Equals(patientID))
+                    return patient;
+            }
+            return null;
         }
 
-        public Model.UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
         {
             throw new NotImplementedException();
         }
 
-        public Model.UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
         {
             throw new NotImplementedException();
         }
 
-        public Model.UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
         {
             throw new NotImplementedException();
         }
@@ -51,106 +94,8 @@ namespace SIMS_Projekat.Repository
             throw new NotImplementedException();
         }
 
-        public System.Collections.Generic.List<Account> account;
 
 
-
-        public System.Collections.Generic.List<Account> Account
-        {
-            get
-            {
-                if (account == null)
-                    account = new System.Collections.Generic.List<Account>();
-                return account;
-            }
-            set
-            {
-                RemoveAllAccount();
-                if (value != null)
-                {
-                    foreach (Account oAccount in value)
-                        AddAccount(oAccount);
-                }
-            }
-        }
-
-
-        public void AddAccount(Account newAccount)
-        {
-            if (newAccount == null)
-                return;
-            if (this.account == null)
-                this.account = new System.Collections.Generic.List<Account>();
-            if (!this.account.Contains(newAccount))
-                this.account.Add(newAccount);
-        }
-
-
-        public void RemoveAccount(Account oldAccount)
-        {
-            if (oldAccount == null)
-                return;
-            if (this.account != null)
-                if (this.account.Contains(oldAccount))
-                    this.account.Remove(oldAccount);
-        }
-
-
-        public void RemoveAllAccount()
-        {
-            if (account != null)
-                account.Clear();
-        }
-        public System.Collections.Generic.List<UrgentPatient> urgentPatient;
-
-
-
-        public System.Collections.Generic.List<UrgentPatient> UrgentPatient
-        {
-            get
-            {
-                if (urgentPatient == null)
-                    urgentPatient = new System.Collections.Generic.List<UrgentPatient>();
-                return urgentPatient;
-            }
-            set
-            {
-                RemoveAllUrgentPatient();
-                if (value != null)
-                {
-                    foreach (Model.UrgentPatient oUrgentPatient in value)
-                        AddUrgentPatient(oUrgentPatient);
-                }
-            }
-        }
-
-
-        public void AddUrgentPatient(Model.UrgentPatient newUrgentPatient)
-        {
-            if (newUrgentPatient == null)
-                return;
-            if (this.urgentPatient == null)
-                this.urgentPatient = new System.Collections.Generic.List<UrgentPatient>();
-            if (!this.urgentPatient.Contains(newUrgentPatient))
-                this.urgentPatient.Add(newUrgentPatient);
-        }
-
-
-        public void RemoveUrgentPatient(Model.UrgentPatient oldUrgentPatient)
-        {
-            if (oldUrgentPatient == null)
-                return;
-            if (this.urgentPatient != null)
-                if (this.urgentPatient.Contains(oldUrgentPatient))
-                    this.urgentPatient.Remove(oldUrgentPatient);
-        }
-
-
-        public void RemoveAllUrgentPatient()
-        {
-            if (urgentPatient != null)
-                urgentPatient.Clear();
-        }
 
     }
 }

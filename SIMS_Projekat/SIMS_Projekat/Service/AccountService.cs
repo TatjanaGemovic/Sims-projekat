@@ -7,17 +7,19 @@ namespace SIMS_Projekat.Service
 {
     public class AccountService
    {
-      public Account CreatePatientAccount(Model.Patient patient, string username, string password)
+      public AccountRepository AccountRepository { get; set; }
+
+      public Account CreatePatientAccount(Patient patient)
+      {
+            return AccountRepository.CreatePatientAccount(patient);
+      }
+      
+      public Account DeletePatientAccount(Patient patient)
       {
          throw new NotImplementedException();
       }
       
-      public Account DeletePatientAccount(Model.Patient patient)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Account EditPatientAccount(Model.Patient patient)
+      public Account EditPatientAccount(Patient patient)
       {
          throw new NotImplementedException();
       }
@@ -32,17 +34,17 @@ namespace SIMS_Projekat.Service
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+      public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
       {
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+      public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
       {
          throw new NotImplementedException();
       }
       
-      public Model.UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+      public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
       {
          throw new NotImplementedException();
       }
@@ -52,7 +54,6 @@ namespace SIMS_Projekat.Service
          throw new NotImplementedException();
       }
       
-      public AccountRepository accountRepository;
    
    }
 }
