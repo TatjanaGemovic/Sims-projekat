@@ -9,7 +9,7 @@
         Title="DoctorHome" Height="750" Width="430"
         Closing="DataWindow_Closing">
     <Grid>
-        <DataGrid x:Name="OperationsList" ItemsSource="{Binding Operations}" Margin="19,32,26,105" AutoGenerateColumns="False" SelectionMode="Single" HorizontalAlignment="Center" VerticalAlignment="top" Height="600"  Width="390">
+        <DataGrid x:Name="OperationsList" ItemsSource="{Binding Operations}" Margin="19,32,26,105" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="top" Height="600"  Width="390">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Start" Binding ="{Binding Start}" Width="100"/>
                 <DataGridTextColumn Header="End" Binding ="{Binding End}" Width="100" />

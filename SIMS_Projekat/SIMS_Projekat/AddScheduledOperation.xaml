@@ -12,15 +12,17 @@
         <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15"/>
         <Label Content="Vreme zavrsetka" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="161" FontSize="15"/>
         <Label Content="Tip operacije" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-        <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="38,251,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-        <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="38,297,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-        <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,343,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="ID operacije" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="40,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="40,348,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,394,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
         <TextBox x:Name="Vreme_pocetka" HorizontalAlignment="Left" Margin="227,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
         <TextBox x:Name="Vreme_zavrsetka" HorizontalAlignment="Left" Margin="227,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
         <TextBox x:Name="Tip_operacije" HorizontalAlignment="Left" Margin="227,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
-        <TextBox x:Name="Ime_pacijenta" HorizontalAlignment="Left" Margin="227,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
-        <TextBox x:Name="Ime_lekara" HorizontalAlignment="Left" Margin="227,297,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
-        <TextBox x:Name="Broj_sobe" HorizontalAlignment="Left" Margin="227,343,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="ID_operacije" HorizontalAlignment="Left" Margin="229,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Ime_pacijenta" HorizontalAlignment="Left" Margin="229,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Ime_lekara" HorizontalAlignment="Left" Margin="229,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Broj_sobe" HorizontalAlignment="Left" Margin="227,394,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
         <Button Content="Nazad" HorizontalAlignment="Left" Margin="40,27,0,0" VerticalAlignment="Top"  Background="#FF40BFEA" Height="31" Width="80" Click="Button_Click"/>
     </Grid>
 </Window>

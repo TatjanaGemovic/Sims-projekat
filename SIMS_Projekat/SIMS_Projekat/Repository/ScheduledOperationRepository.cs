@@ -17,7 +17,7 @@ namespace SIMS_Projekat.Repository
         {
             file = sOperations_CSV;
             serializer = new Serializer<ScheduledOperation>();
-            id = 0;
+            //id = 0;
         }
         public Model.ScheduledOperation CancelScheduledOperation(Model.ScheduledOperation scheduledOperation)
         {
@@ -78,16 +78,16 @@ namespace SIMS_Projekat.Repository
 
         public void Serialize()
         {
-            int max_id = 0;
+            //int max_id = 0;
             serializer.toCSV(file, scheduledOperation);
-            foreach(Model.ScheduledOperation oScheduledOperation in scheduledOperation)
+            /*foreach(Model.ScheduledOperation oScheduledOperation in scheduledOperation)
             {
                 if(oScheduledOperation.OperationID > max_id)
                 {
                     max_id = oScheduledOperation.OperationID;
                 }
             }
-            id = ++max_id;
+            id = ++max_id;*/
         }
         public void Deserialize()
         {
@@ -102,7 +102,7 @@ namespace SIMS_Projekat.Repository
                 this.scheduledOperation = new ObservableCollection<ScheduledOperation>();
             if (!this.scheduledOperation.Contains(newScheduledOperation))
             {
-                newScheduledOperation.OperationID = id++;
+                //newScheduledOperation.OperationID = id++;
                 this.scheduledOperation.Add(newScheduledOperation);
             }
                 

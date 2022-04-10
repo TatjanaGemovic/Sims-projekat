@@ -12,7 +12,7 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class App : Application
     {
-        private static string sOperations_CSV = "sOperations.txt";
+        private static string sOperations_CSV = @".\..\..\..\Resources\sOperations.txt";
         public static ScheduledOperationRepository scheduledOperationRepository;
         public static ScheduledOperationController ScheduledOperationController;
         public App()

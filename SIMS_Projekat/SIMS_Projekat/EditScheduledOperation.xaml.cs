@@ -40,7 +40,7 @@ namespace SIMS_Projekat
             s.Start = DateTime.Parse(Vreme_pocetka.Text);
             s.End = DateTime.Parse(Vreme_zavrsetka.Text);
             s.OperationType = Tip_operacije.Text;
-            //s.OperationID = int.Parse(ID_operacije.Text);
+            s.OperationID = int.Parse(ID_operacije.Text);
             App.ScheduledOperationController.Edit(s);
             this.Close();
         }
