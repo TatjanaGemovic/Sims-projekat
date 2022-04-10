@@ -5,44 +5,44 @@ using System.Collections.Generic;
 
 namespace SIMS_Projekat.Service
 {
-   public class AppointmentService
-   {
-      public Model.Appointment SetAppointment(Model.Appointment appointment)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Appointment DeleteAppointment(Model.Appointment appointment)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Appointment AddAppointment(Model.Appointment appointment)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Appointment GetAppointmentByID(int appointmentID)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Appointment> GetAppointmentByPatientID(string patientID)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Appointment> GetAppointmentByDoctorLicenceNumber(string licenceNumber)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Appointment> GetAllAppointments()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public AppointmentRepository appointmentRepository;
-   
-   }
+    public class AppointmentService
+    {
+        public AppointmentRepository appointmentRepository;
+        public Appointment SetAppointment(Appointment appointment)
+        {
+            return appointmentRepository.SetAppointment(appointment);
+
+        }
+
+        public Model.Appointment DeleteAppointment(Model.Appointment appointment)
+        {
+            return appointmentRepository.DeleteAppointment(appointment);
+        }
+
+        public Model.Appointment AddAppointment(Model.Appointment appointment)
+        {
+            return appointmentRepository.AddAppointment(appointment);
+        }
+
+        public Model.Appointment GetAppointmentByID(int appointmentID)
+        {
+            return appointmentRepository.GetAppointmentByID(appointmentID);
+        }
+
+        public List<Appointment> GetAppointmentByPatientID(string patientID)
+        {
+            return appointmentRepository.GetAppointmentByPatientID(patientID);
+        }
+
+        public List<Appointment> GetAppointmentByDoctorLicenceNumber(string licenceNumber)
+        {
+            return appointmentRepository.GetAppointmentByDoctorLicenceNumber(licenceNumber);
+        }
+
+        public List<Appointment> GetAllAppointments()
+        {
+            return appointmentRepository.GetAllAppointments();
+        }        
+
+    }
 }

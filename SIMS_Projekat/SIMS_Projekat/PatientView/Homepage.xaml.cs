@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS_Projekat
+namespace SIMS_Projekat.PatientView
 {
     /// <summary>
-    /// Interaction logic for PatientHome.xaml
+    /// Interaction logic for Homepage.xaml
     /// </summary>
-    public partial class PatientHome : Window
+    public partial class Homepage : Page
     {
-        public PatientHome()
+        public Homepage()
         {
             InitializeComponent();
         }

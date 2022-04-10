@@ -1,0 +1,37 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.Appointments"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+      Title="Appointments">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Termini" Grid.Row="0" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" Width="228" HorizontalAlignment="Center" />
+        <Button x:Name="zakazi_termin" Content="Zakazi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="zakazi_termin_Click" Grid.Row="1" Margin="0,0,20,0" />
+        <Button x:Name="izmeni_termin" Content="Izmeni Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="izmeni_termin_Click"  Grid.Row="1" Margin="0,0,190,0" 
+                Command="{Binding izmeni_termin}" CommandParameter="{Binding ElementName=apppointments, Path=SelectedItem}"/>
+        <Button x:Name="obrisi_termin" Content="Obrisi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="obrisi_termin_Click" Grid.Row="1" Margin="0,0,360,0"  />
+
+        <DataGrid  Grid.Row="2" x:Name="AppointmentsTable" IsReadOnly="True" ItemsSource="{Binding apppointments}" Margin="0,0,10,0" AutoGenerateColumns="False" SelectionMode="Single" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="500">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding ="{Binding date}" Width="100"/>
+                <DataGridTextColumn Header="Time" Binding ="{Binding time}" Width="100" />
+                <DataGridTextColumn Header="Room Number" Binding ="{Binding roomNumber}" Width="100"/>
+                <DataGridTextColumn Header="Patient" Binding ="{Binding patientName}" Width="100"/>
+                <DataGridTextColumn Header="Doctor" Binding ="{Binding doctorName}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Page>

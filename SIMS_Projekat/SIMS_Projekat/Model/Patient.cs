@@ -8,24 +8,26 @@ namespace SIMS_Projekat.Model
         public double Height { get; set; }
         public double Weight { get; set; }
 
-        public System.Collections.Generic.List<Allergen> Allergen
-        {
-            get
-            {
-                if (Allergen == null)
-                    Allergen = new System.Collections.Generic.List<Allergen>();
-                return Allergen;
-            }
-            set
-            {
-                RemoveAllAllergen();
-                if (value != null)
-                {
-                    foreach (Allergen oAllergen in value)
-                        AddAllergen(oAllergen);
-                }
-            }
-        }
+        public System.Collections.Generic.List<Allergen> Allergen {get; set;}
+
+        //public System.Collections.Generic.List<Allergen> Allergen
+        //{
+        //    get
+        //    {
+        //        if (Allergen == null)
+        //            Allergen = new System.Collections.Generic.List<Allergen>();
+        //        return Allergen;
+        //    }
+        //    set
+        //    {
+        //        RemoveAllAllergen();
+        //        if (value != null)
+        //        {
+        //            foreach (Allergen oAllergen in value)
+        //                AddAllergen(oAllergen);
+        //        }
+        //    }
+        //}
 
 
         public void AddAllergen(Allergen newAllergen)
@@ -137,7 +139,7 @@ namespace SIMS_Projekat.Model
             if (!this.appointment.Contains(newAppointment))
             {
                 this.appointment.Add(newAppointment);
-                newAppointment.Patient = this;
+                newAppointment.patient = this;
             }
         }
 
@@ -150,7 +152,7 @@ namespace SIMS_Projekat.Model
                 if (this.appointment.Contains(oldAppointment))
                 {
                     this.appointment.Remove(oldAppointment);
-                    oldAppointment.Patient = null;
+                    oldAppointment.patient = null;
                 }
         }
 
@@ -164,7 +166,7 @@ namespace SIMS_Projekat.Model
                     tmpAppointment.Add(oldAppointment);
                 appointment.Clear();
                 foreach (Appointment oldAppointment in tmpAppointment)
-                    oldAppointment.Patient = null;
+                    oldAppointment.patient = null;
                 tmpAppointment.Clear();
             }
         }
