@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using SIMS_Projekat.Serialization;
@@ -9,7 +10,7 @@ namespace ConsoleApp.serialization
     class Serializer<T> where T: Serializable, new()
     {
         private static char DELIMITER = '|';
-        public void toCSV(string fileName, List<T> objects)
+        public void toCSV(string fileName, ObservableCollection<T> objects) 
         {
             using StreamWriter streamWriter = new StreamWriter(fileName);
 
@@ -20,9 +21,9 @@ namespace ConsoleApp.serialization
             }
         }
 
-        public List<T> fromCSV(string fileName)
+        public ObservableCollection<T> fromCSV(string fileName)
         {
-            List<T> objects = new List<T>();
+            ObservableCollection<T> objects = new ObservableCollection<T>();
 
             foreach(string line in File.ReadLines(fileName))
             {

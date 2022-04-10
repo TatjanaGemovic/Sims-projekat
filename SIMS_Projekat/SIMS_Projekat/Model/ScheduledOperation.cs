@@ -1,3 +1,4 @@
+using SIMS_Projekat.Service;
 using System;
 
 namespace SIMS_Projekat.Model
@@ -12,7 +13,31 @@ namespace SIMS_Projekat.Model
         public Doctor Doctor { get; set; }
         public Room Room { get; set; }
 
-        public Patient Patient
+        public Patient Patient { get; set; }
+
+       
+
+        public string[] toCSV()
+        {
+            string[] values =
+            {
+                Start.ToString(),
+                End.ToString(),
+                OperationType,
+                OperationID.ToString(),
+            };
+            return values;
+        }
+
+        public void fromCSV(string[] values)
+        {
+            Start = DateTime.Parse(values[0]);
+            End = DateTime.Parse(values[1]);
+            OperationType = values[2];
+            OperationID = int.Parse(values[3]);
+
+        }
+        /*public Patient Patient
         {
             get
             {
@@ -35,16 +60,6 @@ namespace SIMS_Projekat.Model
                     }
                 }
             }
-        }
-
-        public string[] toCSV()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void fromCSV(string[] values)
-        {
-            throw new NotImplementedException();
-        }
+        }*/
     }
 }

@@ -2,47 +2,56 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SIMS_Projekat.Controller
 {
    public class ScheduledOperationController
-   {
-      public Model.ScheduledOperation ScheduleOperation(Model.ScheduledOperation scheduledOperation)
+   { 
+        
+      public ScheduledOperationService scheduledOperationService;
+
+        public ScheduledOperationController(ScheduledOperationService scheduledOperationService)
+        {
+            this.scheduledOperationService = scheduledOperationService;
+        }
+
+        public Model.ScheduledOperation ScheduleOperation(Model.ScheduledOperation scheduledOperation)
       {
-         throw new NotImplementedException();
+            scheduledOperationService.ScheduleOperation(scheduledOperation);
+            return scheduledOperation;
       }
       
       public Model.ScheduledOperation CancelOperation(Model.ScheduledOperation scheduledOperation)
       {
-         throw new NotImplementedException();
-      }
+            scheduledOperationService.CancelOperation(scheduledOperation);
+            return scheduledOperation;
+        }
       
       public Model.ScheduledOperation GetByID(string id)
       {
-         throw new NotImplementedException();
+            return scheduledOperationService.GetByID(id);
+      }
+
+        public ObservableCollection<ScheduledOperation> GetAll()
+      {
+            return scheduledOperationService.GetAll();
       }
       
-      public List<ScheduledOperation> GetAll()
+      public ObservableCollection<ScheduledOperation> GetAllByDoctor(Model.Doctor doctor)
       {
-         throw new NotImplementedException();
+            return scheduledOperationService.GetAllByDoctor(doctor);
       }
       
-      public List<ScheduledOperation> GetAllByDoctor(Model.Doctor doctor)
+      public ObservableCollection<ScheduledOperation> GetAllByPatient(Model.Patient patient)
       {
-         throw new NotImplementedException();
-      }
-      
-      public List<ScheduledOperation> GetAllByPatient(Model.Patient patient)
-      {
-         throw new NotImplementedException();
+            return scheduledOperationService.GetAllByPatient(patient);
       }
       
       public Model.ScheduledOperation Edit(Model.ScheduledOperation scheduledOperation)
       {
-         throw new NotImplementedException();
+            return scheduledOperationService.Edit(scheduledOperation);
       }
-      
-      public ScheduledOperationService scheduledOperationService;
-   
+
    }
 }
