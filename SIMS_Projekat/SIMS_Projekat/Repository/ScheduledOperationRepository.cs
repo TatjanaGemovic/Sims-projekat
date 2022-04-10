@@ -1,5 +1,5 @@
-using ConsoleApp.serialization;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -91,7 +91,7 @@ namespace SIMS_Projekat.Repository
         }
         public void Deserialize()
         {
-            scheduledOperation = serializer.fromCSV(file);
+            scheduledOperation = serializer.fromCSVObservableCollection(file);
         }
 
         public void AddScheduledOperation(Model.ScheduledOperation newScheduledOperation)
