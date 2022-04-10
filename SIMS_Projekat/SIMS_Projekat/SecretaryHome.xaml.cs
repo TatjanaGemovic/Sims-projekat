@@ -2,6 +2,7 @@
 using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
+using SIMS_Projekat.SecretaryView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -94,6 +95,12 @@ namespace SIMS_Projekat
             Patient patient = (Patient)dataGridPatients.SelectedItem;
             ViewPatient viewPatient = new ViewPatient(patient);
             viewPatient.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            UrgentPatientView urgentPatientView = new(AccountRepository, AccountController);
+            urgentPatientView.Show();
         }
     }
 }

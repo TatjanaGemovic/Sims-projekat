@@ -36,12 +36,6 @@ namespace SIMS_Projekat.PatientView
             Weight.Text = patient.Weight.ToString();
             Username.Text = patient.Username;
             BloodType.Text = patient.BloodType.ToString();
-            /*
-            switch (BloodType)
-            {
-                case BloodType.O_Positive:
-
-            }*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

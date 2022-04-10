@@ -25,14 +25,15 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string ACCOUNTS_CSV = "accounts.txt";
+        private static string PATIENTS_CSV = "accounts.txt";
+        private static string URGENT_PATIENTS_CSV = "urgentPatients.txt";
         private AccountRepository accountRepository;
         private AccountService accountService;
         private AccountController accountController;
         public MainWindow()
         {
             InitializeComponent();
-            accountRepository = new AccountRepository(ACCOUNTS_CSV);
+            accountRepository = new AccountRepository(PATIENTS_CSV, URGENT_PATIENTS_CSV);
             accountService = new AccountService()
             {
                 AccountRepository = accountRepository

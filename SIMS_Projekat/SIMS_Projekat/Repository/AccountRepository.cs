@@ -12,35 +12,56 @@ namespace SIMS_Projekat.Repository
         public List<UrgentPatient> UrgentPatients { get; set; }
 
         private Serializer<Patient> serializer;
-        private string file;
-        private int ID;
+        private Serializer<UrgentPatient> urgentPatientSerializer;
+        private string patientsFile;
+        private string urgentPatientsFile;
 
-        public AccountRepository(string fileName)
+        private int ID;
+        private int urgentPatientID;
+
+        public AccountRepository(string patientsFileName, string urgentPatientsFileName)
         {
             Accounts = new List<Account>();
             Patients = new List<Patient>();
+            UrgentPatients = new List<UrgentPatient>();
             serializer = new Serializer<Patient>();
-            file = fileName;
+            urgentPatientSerializer = new Serializer<UrgentPatient>();
+            patientsFile = patientsFileName;
+            urgentPatientsFile = urgentPatientsFileName;
             ID = 100;
+            urgentPatientID = 100;
         }
 
         public void Serialize()
         {
-            serializer.toCSV(file, Patients);
+            serializer.toCSV(patientsFile, Patients);
+            urgentPatientSerializer.toCSV(urgentPatientsFile, UrgentPatients);
         }
 
         public void Deserialize()
         {
-            Patients = serializer.fromCSV(file);
+            Patients = serializer.fromCSV(patientsFile);
+            UrgentPatients = urgentPatientSerializer.fromCSV(urgentPatientsFile);
 
-            int maxID = 0;
+
+            int maxID = 100;
             foreach(Patient patient in Patients)
             {
                 if (int.Parse(patient.ID) > maxID)
                     maxID = int.Parse(patient.ID);
             }
             ID = ++maxID;
+
+            maxID = 100;
+            foreach (UrgentPatient patient in UrgentPatients)
+            {
+                if (int.Parse(patient.ID) > maxID)
+                    maxID = int.Parse(patient.ID);
+            }
+            urgentPatientID = ++maxID;
         }
+
+        
 
         public Patient CreatePatientAccount(Patient patient)
         {
@@ -94,14 +115,35 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
         {
-            throw new NotImplementedException();
+            urgentPatient.ID = urgentPatientID.ToString();
+            UrgentPatients.Add(urgentPatient);
+            return urgentPatient;
         }
 
-        public UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient EditUrgentPatientAccount(UrgentPatient editedUrgentPatient, string patientID)
         {
-            throw new NotImplementedException();
+            foreach (UrgentPatient oldPatient in UrgentPatients)
+            {
+                if (oldPatient.ID.Equals(patientID))
+                {
+                    oldPatient.FirstName = editedUrgentPatient.FirstName;
+                    oldPatient.LastName = editedUrgentPatient.LastName;
+                    oldPatient.Height = editedUrgentPatient.Height;
+                    oldPatient.Weight = editedUrgentPatient.Weight;
+                    oldPatient.BloodType = editedUrgentPatient.BloodType;
+                    oldPatient.Informations = editedUrgentPatient.Informations;
+                }
+            }
+            return null;
+        }
+
+        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        {
+            if (UrgentPatients.Remove(urgentPatient))
+                return urgentPatient;
+            return null;
         }
 
         public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
@@ -111,7 +153,7 @@ namespace SIMS_Projekat.Repository
 
         public List<UrgentPatient> GetAllUrgentPatients()
         {
-            throw new NotImplementedException();
+            return UrgentPatients;
         }
 
 
