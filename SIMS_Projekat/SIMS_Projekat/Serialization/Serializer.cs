@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SIMS_Projekat.Serialization;
 
-namespace ConsoleApp.serialization
+namespace SIMS_Projekat.Serialization
 {
     class Serializer<T> where T: Serializable, new()
     {

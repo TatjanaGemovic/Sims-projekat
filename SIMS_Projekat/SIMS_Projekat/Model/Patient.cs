@@ -48,24 +48,7 @@ namespace SIMS_Projekat.Model
             Weight = double.Parse(values[12]);
         }
 
-        public List<Allergen> Allergen
-        {
-            get
-            {
-                if (Allergen == null)
-                    Allergen = new List<Allergen>();
-                return Allergen;
-            }
-            set
-            {
-                RemoveAllAllergen();
-                if (value != null)
-                {
-                    foreach (Allergen oAllergen in value)
-                        AddAllergen(oAllergen);
-                }
-            }
-        }
+        public List<Allergen> Allergen { get; set; }
 
 
         public void AddAllergen(Allergen newAllergen)

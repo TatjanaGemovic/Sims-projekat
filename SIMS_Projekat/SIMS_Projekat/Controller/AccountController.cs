@@ -9,19 +9,19 @@ namespace SIMS_Projekat.Controller
    {
       public AccountService AccountService { get; set; }
 
-      public Account CreatePatientAccount(Patient patient)
+      public Patient CreatePatientAccount(Patient patient)
       {
             return AccountService.CreatePatientAccount(patient);
       }
       
       public Account DeletePatientAccount(Patient patient)
       {
-         throw new NotImplementedException();
+            return AccountService.DeletePatientAccount(patient);
       }
       
-      public Account EditPatientAccount(Patient patient)
+      public Account EditPatientAccount(Patient patient, string patientID)
       {
-         throw new NotImplementedException();
+            return AccountService.EditPatientAccount(patient, patientID);
       }
       
       public List<Account> GetAllPatientAccounts()
