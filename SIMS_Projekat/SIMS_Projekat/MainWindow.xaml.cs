@@ -25,8 +25,8 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string PATIENTS_CSV = "accounts.txt";
-        private static string URGENT_PATIENTS_CSV = "urgentPatients.txt";
+        private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
+        private static string URGENT_PATIENTS_CSV = @".\..\..\..\Resources\urgentPatients.txt";
         private AccountRepository accountRepository;
         private AccountService accountService;
         private AccountController accountController;
