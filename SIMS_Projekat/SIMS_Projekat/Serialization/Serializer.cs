@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
-using SIMS_Projekat.Serialization;
 
 namespace SIMS_Projekat.Serialization
 {

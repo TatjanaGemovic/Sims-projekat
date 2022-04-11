@@ -1,6 +1,11 @@
 ﻿using SIMS_Projekat.PatientView;
+﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.Model;
+using SIMS_Projekat.Repository;
+using SIMS_Projekat.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +26,24 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
+        private static string URGENT_PATIENTS_CSV = @".\..\..\..\Resources\urgentPatients.txt";
+        private AccountRepository accountRepository;
+        private AccountService accountService;
+        private AccountController accountController;
         public MainWindow()
         {
             InitializeComponent();
+            accountRepository = new AccountRepository(PATIENTS_CSV, URGENT_PATIENTS_CSV);
+            accountService = new AccountService()
+            {
+                AccountRepository = accountRepository
+            };
+            accountController = new AccountController()
+            {
+                AccountService = accountService
+            };
+            accountRepository.Deserialize();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,9 +69,10 @@ namespace SIMS_Projekat
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SecretaryHome secretaryHomePage = new SecretaryHome();
+            SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController);
             this.Close();
             secretaryHomePage.Show();
         }
+
     }
 }

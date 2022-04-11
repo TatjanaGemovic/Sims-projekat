@@ -6,53 +6,59 @@ using System.Collections.Generic;
 namespace SIMS_Projekat.Service
 {
     public class AccountService
-   {
-      public Account CreatePatientAccount(Model.Patient patient, string username, string password)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Account DeletePatientAccount(Model.Patient patient)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Account EditPatientAccount(Model.Patient patient)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<Account> GetAllPatientAccounts()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Account GetPatientAccountByID(string patientID)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public List<UrgentPatient> GetAllUrgentPatients()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public AccountRepository accountRepository;
-   
-   }
+    {
+        public AccountRepository AccountRepository { get; set; }
+
+        public Patient CreatePatientAccount(Patient patient)
+        {
+            return AccountRepository.CreatePatientAccount(patient);
+        }
+
+        public Account DeletePatientAccount(Patient patient)
+        {
+            return AccountRepository.DeletePatientAccount(patient);
+        }
+
+        public Account EditPatientAccount(Patient patient, string patientID)
+        {
+            return AccountRepository.EditPatientAccount(patient, patientID);
+        }
+
+        public List<Account> GetAllPatientAccounts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Account GetPatientAccountByID(string patientID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
+        {
+            return AccountRepository.CreateUrgentPatientAccount(urgentPatient);
+        }
+
+        public UrgentPatient EditUrgentPatientAccount(UrgentPatient urgentPatient, string ID)
+        {
+            return AccountRepository.EditUrgentPatientAccount(urgentPatient, ID);
+        }
+
+        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        {
+            return AccountRepository.DeleteUrgentPatientAccount(urgentPatient);
+        }
+
+        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UrgentPatient> GetAllUrgentPatients()
+        {
+            return AccountRepository.GetAllUrgentPatients();
+        }
+
+
+    }
 }

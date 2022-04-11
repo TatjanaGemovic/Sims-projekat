@@ -1,3 +1,4 @@
+using SIMS_Projekat.Serialization;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -6,151 +7,157 @@ namespace SIMS_Projekat.Repository
 {
     public class AccountRepository
     {
-        public Account CreatePatientAccount(Model.Patient patient, string username, string password)
+        public List<Account> Accounts { get; set; }
+        public static List<Patient> Patients { get; set; }
+        public List<UrgentPatient> UrgentPatients { get; set; }
+
+        private Serializer<Patient> serializer;
+        private Serializer<UrgentPatient> urgentPatientSerializer;
+        private string patientsFile;
+        private string urgentPatientsFile;
+
+        private int ID;
+        private int urgentPatientID;
+
+        public AccountRepository(string patientsFileName, string urgentPatientsFileName)
         {
-            throw new NotImplementedException();
+            Accounts = new List<Account>();
+            Patients = new List<Patient>();
+            UrgentPatients = new List<UrgentPatient>();
+            serializer = new Serializer<Patient>();
+            urgentPatientSerializer = new Serializer<UrgentPatient>();
+            patientsFile = patientsFileName;
+            urgentPatientsFile = urgentPatientsFileName;
+            ID = 100;
+            urgentPatientID = 100;
         }
 
-        public Account DeletePatientAccount(Model.Patient patient)
+        public void Serialize()
         {
-            throw new NotImplementedException();
+            serializer.toCSV(patientsFile, Patients);
+            urgentPatientSerializer.toCSV(urgentPatientsFile, UrgentPatients);
         }
 
-        public Account EditPatientAccount(Model.Patient patient)
+        public void Deserialize()
         {
-            throw new NotImplementedException();
+            Patients = serializer.fromCSV(patientsFile);
+            UrgentPatients = urgentPatientSerializer.fromCSV(urgentPatientsFile);
+
+
+            int maxID = 100;
+            foreach(Patient patient in Patients)
+            {
+                if (int.Parse(patient.ID) > maxID)
+                    maxID = int.Parse(patient.ID);
+            }
+            ID = ++maxID;
+
+            maxID = 100;
+            foreach (UrgentPatient patient in UrgentPatients)
+            {
+                if (int.Parse(patient.ID) > maxID)
+                    maxID = int.Parse(patient.ID);
+            }
+            urgentPatientID = ++maxID;
         }
 
-        public List<Account> GetAllPatientAccounts()
+        
+
+        public Patient CreatePatientAccount(Patient patient)
         {
-            throw new NotImplementedException();
+            patient.ID = ID++.ToString();
+            Patients.Add(patient);
+            return patient;
+        }
+
+        public Account DeletePatientAccount(Patient patient)
+        {
+            if (Patients.Remove(patient))
+                return patient;
+            return null;
+        }
+
+        public Account EditPatientAccount(Patient patient, string patientID)
+        {
+            foreach (Patient oldPatient in Patients)
+            {
+                if (oldPatient.ID.Equals(patientID))
+                {
+                    oldPatient.FirstName = patient.FirstName;
+                    oldPatient.LastName = patient.LastName;
+                    oldPatient.Jmbg = patient.Jmbg;
+                    oldPatient.HealthInsuranceID = patient.HealthInsuranceID;
+                    oldPatient.Height = patient.Height;
+                    oldPatient.Password = patient.Password;
+                    oldPatient.PhoneNumber = patient.PhoneNumber;
+                    oldPatient.Username = patient.Username;
+                    oldPatient.Weight = patient.Weight;
+                    oldPatient.BloodType = patient.BloodType;
+                    oldPatient.DateOfBirth = patient.DateOfBirth;
+                    oldPatient.Email = patient.Email;
+                }
+            }
+            return null;
+        }
+
+        public List<Patient> GetAllPatientAccounts()
+        {
+            return Patients;
         }
 
         public Account GetPatientAccountByID(string patientID)
         {
-            throw new NotImplementedException();
+            foreach(Patient patient in Patients)
+            {
+                if (patient.ID.Equals(patientID))
+                    return patient;
+            }
+            return null;
         }
 
-        public Model.UrgentPatient CreateUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
         {
-            throw new NotImplementedException();
+            urgentPatient.ID = urgentPatientID.ToString();
+            UrgentPatients.Add(urgentPatient);
+            return urgentPatient;
         }
 
-        public Model.UrgentPatient DeleteUrgentPatientAccount(Model.UrgentPatient urgentPatient)
+        public UrgentPatient EditUrgentPatientAccount(UrgentPatient editedUrgentPatient, string patientID)
         {
-            throw new NotImplementedException();
+            foreach (UrgentPatient oldPatient in UrgentPatients)
+            {
+                if (oldPatient.ID.Equals(patientID))
+                {
+                    oldPatient.FirstName = editedUrgentPatient.FirstName;
+                    oldPatient.LastName = editedUrgentPatient.LastName;
+                    oldPatient.Height = editedUrgentPatient.Height;
+                    oldPatient.Weight = editedUrgentPatient.Weight;
+                    oldPatient.BloodType = editedUrgentPatient.BloodType;
+                    oldPatient.Informations = editedUrgentPatient.Informations;
+                }
+            }
+            return null;
         }
 
-        public Model.UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        {
+            if (UrgentPatients.Remove(urgentPatient))
+                return urgentPatient;
+            return null;
+        }
+
+        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
         {
             throw new NotImplementedException();
         }
 
         public List<UrgentPatient> GetAllUrgentPatients()
         {
-            throw new NotImplementedException();
-        }
-
-        public System.Collections.Generic.List<Account> account;
-
-
-
-        public System.Collections.Generic.List<Account> Account
-        {
-            get
-            {
-                if (account == null)
-                    account = new System.Collections.Generic.List<Account>();
-                return account;
-            }
-            set
-            {
-                RemoveAllAccount();
-                if (value != null)
-                {
-                    foreach (Account oAccount in value)
-                        AddAccount(oAccount);
-                }
-            }
+            return UrgentPatients;
         }
 
 
-        public void AddAccount(Account newAccount)
-        {
-            if (newAccount == null)
-                return;
-            if (this.account == null)
-                this.account = new System.Collections.Generic.List<Account>();
-            if (!this.account.Contains(newAccount))
-                this.account.Add(newAccount);
-        }
 
-
-        public void RemoveAccount(Account oldAccount)
-        {
-            if (oldAccount == null)
-                return;
-            if (this.account != null)
-                if (this.account.Contains(oldAccount))
-                    this.account.Remove(oldAccount);
-        }
-
-
-        public void RemoveAllAccount()
-        {
-            if (account != null)
-                account.Clear();
-        }
-        public System.Collections.Generic.List<UrgentPatient> urgentPatient;
-
-
-
-        public System.Collections.Generic.List<UrgentPatient> UrgentPatient
-        {
-            get
-            {
-                if (urgentPatient == null)
-                    urgentPatient = new System.Collections.Generic.List<UrgentPatient>();
-                return urgentPatient;
-            }
-            set
-            {
-                RemoveAllUrgentPatient();
-                if (value != null)
-                {
-                    foreach (Model.UrgentPatient oUrgentPatient in value)
-                        AddUrgentPatient(oUrgentPatient);
-                }
-            }
-        }
-
-
-        public void AddUrgentPatient(Model.UrgentPatient newUrgentPatient)
-        {
-            if (newUrgentPatient == null)
-                return;
-            if (this.urgentPatient == null)
-                this.urgentPatient = new System.Collections.Generic.List<UrgentPatient>();
-            if (!this.urgentPatient.Contains(newUrgentPatient))
-                this.urgentPatient.Add(newUrgentPatient);
-        }
-
-
-        public void RemoveUrgentPatient(Model.UrgentPatient oldUrgentPatient)
-        {
-            if (oldUrgentPatient == null)
-                return;
-            if (this.urgentPatient != null)
-                if (this.urgentPatient.Contains(oldUrgentPatient))
-                    this.urgentPatient.Remove(oldUrgentPatient);
-        }
-
-
-        public void RemoveAllUrgentPatient()
-        {
-            if (urgentPatient != null)
-                urgentPatient.Clear();
-        }
 
     }
 }

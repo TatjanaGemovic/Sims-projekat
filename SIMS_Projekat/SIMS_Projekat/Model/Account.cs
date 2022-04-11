@@ -15,12 +15,12 @@ namespace SIMS_Projekat.Model
         public string ID { get; set; }
 
 
-        public void fromCSV(string[] values)
+        public virtual void fromCSV(string[] values)
         {
             throw new NotImplementedException();
         }
 
-        public string[] toCSV()
+        public virtual string[] toCSV()
         {
             throw new NotImplementedException();
         }
