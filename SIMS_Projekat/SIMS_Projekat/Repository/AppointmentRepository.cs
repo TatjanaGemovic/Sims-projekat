@@ -162,7 +162,7 @@ namespace SIMS_Projekat.Repository
                
                 appointment.patient = new Patient()
                 {
-                    PatientID = appointment.patientID,
+                    ID = appointment.patientID,
                     FirstName = "Ivana",
                     LastName = "Ivanovic",
                     Email = "ivana@gmail.com",
@@ -171,10 +171,9 @@ namespace SIMS_Projekat.Repository
                     Password = "icka123",
                     PhoneNumber = "0645554442",
                     DateOfBirth = new DateTime(2000, 10, 15),
-                    BloodType = BloodType.aPositive,
+                    BloodType = BloodType.A_Positive,
                     Height = 178.0,
                     Weight = 80.0,
-                    ID = "340",
                     HealthInsuranceID = "005426",
                     
 

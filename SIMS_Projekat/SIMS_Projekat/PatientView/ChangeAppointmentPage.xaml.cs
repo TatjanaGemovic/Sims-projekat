@@ -160,7 +160,7 @@ namespace SIMS_Projekat.PatientView
             };
             Patient patient1 = new Patient()
             {
-                PatientID = "210",
+                ID = "210",
                 FirstName = "Ana",
                 LastName = "Anic",
                 Email = "ana@gmail.com",
@@ -169,10 +169,9 @@ namespace SIMS_Projekat.PatientView
                 Password = "ana123",
                 PhoneNumber = "0645554442",
                 DateOfBirth = new DateTime(2000, 10, 15),
-                BloodType = BloodType.aPositive,
+                BloodType = BloodType.A_Positive,
                 Height = 178.0,
                 Weight = 80.0,
-                ID = "50",
                 HealthInsuranceID = "0426"
             };
 

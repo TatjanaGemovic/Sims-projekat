@@ -70,7 +70,7 @@ namespace SIMS_Projekat
                     Password = "12345",
                     ID = "001",
                     HealthInsuranceID = "1524159823",
-                    BloodType = BloodType.oPositive,
+                    BloodType = BloodType.O_Positive,
                     Height = 180,
                     Weight = 80
                 },
@@ -92,7 +92,7 @@ namespace SIMS_Projekat
             };
             Patient patient1 = new Patient()
             {
-                PatientID = "500",
+                ID = "500",
                 FirstName = "Jovan",
                 LastName = "Jovanovic",
                 Email = "jovan@gmail.com",
@@ -101,16 +101,15 @@ namespace SIMS_Projekat
                 Password = "joca123",
                 PhoneNumber = "0645554442",
                 DateOfBirth = new DateTime(2000, 10, 15),
-                BloodType = BloodType.aPositive,
+                BloodType = BloodType.A_Positive,
                 Height = 178.0,
                 Weight = 80.0,
-                ID = "540",
                 HealthInsuranceID = "005426"
             };
             Patient patient2 = new Patient()
             {
 
-                PatientID = "300",
+                ID = "300",
                 FirstName = "Ivana",
                 LastName = "Ivanovic",
                 Email = "ivana@gmail.com",
@@ -119,10 +118,9 @@ namespace SIMS_Projekat
                 Password = "icka123",
                 PhoneNumber = "0645554442",
                 DateOfBirth = new DateTime(2000, 10, 15),
-                BloodType = BloodType.aPositive,
+                BloodType = BloodType.A_Positive,
                 Height = 178.0,
                 Weight = 80.0,
-                ID = "340",
                 HealthInsuranceID = "005426"
             };
 

@@ -55,7 +55,7 @@ namespace SIMS_Projekat.Model
             {
                 date.ToString(),
                 appointmentID.ToString(),
-                patient.PatientID,
+                patient.ID,
                 doctor.LicenceNumber,
                 room.RoomID,
             };
