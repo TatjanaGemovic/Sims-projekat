@@ -1,81 +1,124 @@
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SIMS_Projekat.Repository
 {
    public class RoomRepository
    {
-      public List<Room> GetRooms()
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Room GetRoomByID(string roomID)
-      {
-         throw new NotImplementedException();
-      }
+        private ObservableCollection<Room> rooms { get; set; }
+        private Serializer<Room> serializer;
+        private string file;
 
-      public Model.Room DeleteRoomByID(string roomID)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
-      {
-         throw new NotImplementedException();
-      }
-      
-      public System.Collections.Generic.List<Room> room;
-      
-      
-      
-      public System.Collections.Generic.List<Room> Room
-      {
-         get
-         {
-            if (room == null)
-               room = new System.Collections.Generic.List<Room>();
-            return room;
-         }
-         set
-         {
-            RemoveAllRoom();
-            if (value != null)
+
+        public ObservableCollection<Room> GetRooms()
+        {
+            return this.rooms;
+        }
+
+        public Model.Room GetRoomByID(string roomID)
+        {
+            foreach (Room room in this.rooms)
             {
-               foreach (Model.Room oRoom in value)
-                  AddRoom(oRoom);
+
+                if (room.RoomID.Equals(roomID))
+                {
+                    return room;
+                }
+
             }
-         }
-      }
-      
-      
-      public void AddRoom(Model.Room newRoom)
-      {
-         if (newRoom == null)
-            return;
-         if (this.room == null)
-            this.room = new System.Collections.Generic.List<Room>();
-         if (!this.room.Contains(newRoom))
-            this.room.Add(newRoom);
-      }
-      
-      
-      public void RemoveRoom(Model.Room oldRoom)
-      {
-         if (oldRoom == null)
-            return;
-         if (this.room != null)
-            if (this.room.Contains(oldRoom))
-               this.room.Remove(oldRoom);
-      }
-      
-      
-      public void RemoveAllRoom()
-      {
-         if (room != null)
-            room.Clear();
-      }
-   
-   }
+
+            return null;
+        }
+
+        public Model.Room DeleteRoomByID(string roomID)
+        {
+            var room = this.GetRoomByID(roomID);
+            if (room != null)
+            {
+                rooms.Remove(room);
+            }
+            else
+            {
+                return null;
+            }
+
+
+            return room;
+        }
+
+        public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
+        {
+            var oldRoom = this.GetRoomByID(oldRoomID);
+            if (oldRoom != null)
+            {
+                oldRoom.RoomID = newRoom.RoomID;
+                oldRoom.RoomNumber = newRoom.RoomNumber;
+                oldRoom.Available = newRoom.Available;
+                oldRoom.Floor = newRoom.Floor;
+                oldRoom.Type = newRoom.Type;
+            }
+            else
+                return null;
+
+            return newRoom;
+        }
+
+        public Model.Room AddRoom(Model.Room NewRoom)
+        {
+            if (GetRoomByID(NewRoom.RoomID) == null)
+                rooms.Add(NewRoom);
+            else
+                return null;
+            return NewRoom;
+        }
+
+
+
+        public ObservableCollection<Room> Room
+        {
+            get
+            {
+                if (rooms == null)
+                    rooms = new ObservableCollection<Room>();
+                return rooms;
+            }
+            set
+            {
+                RemoveAllRoom();
+                if (value != null)
+                {
+                    foreach (Model.Room oRoom in value)
+                        AddRoom(oRoom);
+                }
+            }
+        }
+
+        public void RemoveAllRoom()
+        {
+            if (rooms != null)
+                rooms.Clear();
+        }
+
+        public RoomRepository(string fileName)
+        {
+            rooms = new ObservableCollection<Room>();
+            serializer = new Serializer<Room>();
+            file = fileName;
+            Deserialize();
+        }
+
+        public void Serialize()
+        {
+            serializer.toCSV(file, rooms);
+        }
+
+        public void Deserialize()
+        {
+            rooms = serializer.fromCSVObservableCollection(file);
+        }
+
+    }
 }

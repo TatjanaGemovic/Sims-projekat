@@ -12,12 +12,24 @@ namespace SIMS_Projekat.Model
 
         public void fromCSV(string[] values)
         {
-            throw new NotImplementedException();
+            RoomID = values[0];
+            RoomNumber = int.Parse(values[1]);
+            Floor = int.Parse(values[2]);
+            Type = (RoomType)int.Parse(values[3]);
+            if (values[4].Equals("true")) { Available = true; } else { Available = false; }
         }
 
         public string[] toCSV()
         {
-            throw new NotImplementedException();
+            string[] values = {
+                RoomID,
+                RoomNumber.ToString(),
+                Floor.ToString(),
+                ((int)Type).ToString(),
+                Available.ToString()
+            };
+
+            return values;
         }
     }
 }
