@@ -33,32 +33,5 @@ namespace SIMS_Projekat.Controller
         {
             throw new NotImplementedException();
         }
-
-        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
-        {
-            return AccountService.CreateUrgentPatientAccount(urgentPatient);
-        }
-
-        public UrgentPatient EditUrgentPatientAccount(UrgentPatient urgentPatient, string ID)
-        {
-            return AccountService.EditUrgentPatientAccount(urgentPatient, ID);
-        }
-
-        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
-        {
-            return AccountService.DeleteUrgentPatientAccount(urgentPatient);
-        }
-
-        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UrgentPatient> GetAllUrgentPatients()
-        {
-            return AccountService.GetAllUrgentPatients();
-        }
-
-
     }
 }

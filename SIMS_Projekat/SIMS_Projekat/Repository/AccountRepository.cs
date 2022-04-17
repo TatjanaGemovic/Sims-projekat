@@ -95,6 +95,7 @@ namespace SIMS_Projekat.Repository
                     oldPatient.BloodType = patient.BloodType;
                     oldPatient.DateOfBirth = patient.DateOfBirth;
                     oldPatient.Email = patient.Email;
+                    oldPatient.IsUrgent = String.IsNullOrEmpty(patient.Username) || String.IsNullOrEmpty(patient.Password);
                 }
             }
             return null;
@@ -107,57 +108,12 @@ namespace SIMS_Projekat.Repository
 
         public Account GetPatientAccountByID(string patientID)
         {
-            foreach(Patient patient in Patients)
+            foreach (Patient patient in Patients)
             {
                 if (patient.ID.Equals(patientID))
                     return patient;
             }
             return null;
         }
-
-        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
-        {
-            urgentPatient.ID = urgentPatientID.ToString();
-            UrgentPatients.Add(urgentPatient);
-            return urgentPatient;
-        }
-
-        public UrgentPatient EditUrgentPatientAccount(UrgentPatient editedUrgentPatient, string patientID)
-        {
-            foreach (UrgentPatient oldPatient in UrgentPatients)
-            {
-                if (oldPatient.ID.Equals(patientID))
-                {
-                    oldPatient.FirstName = editedUrgentPatient.FirstName;
-                    oldPatient.LastName = editedUrgentPatient.LastName;
-                    oldPatient.Height = editedUrgentPatient.Height;
-                    oldPatient.Weight = editedUrgentPatient.Weight;
-                    oldPatient.BloodType = editedUrgentPatient.BloodType;
-                    oldPatient.Informations = editedUrgentPatient.Informations;
-                }
-            }
-            return null;
-        }
-
-        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
-        {
-            if (UrgentPatients.Remove(urgentPatient))
-                return urgentPatient;
-            return null;
-        }
-
-        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UrgentPatient> GetAllUrgentPatients()
-        {
-            return UrgentPatients;
-        }
-
-
-
-
     }
 }

@@ -24,6 +24,7 @@ namespace SIMS_Projekat.PatientView
         public AccountController AccountController { get; set; }
         private string ID;
         private Patient patient;
+
         public EditPatient(AccountController accountController, Patient oldPatient)
         {
             InitializeComponent();
@@ -42,7 +43,6 @@ namespace SIMS_Projekat.PatientView
             Weight.Text = patient.Weight.ToString();
             Username.Text = patient.Username;
             Password.Password = patient.Password;
-
             ID = patient.ID;
         }
 
@@ -61,7 +61,7 @@ namespace SIMS_Projekat.PatientView
                 Height = Double.Parse(Height.Text),
                 Weight = Double.Parse(Weight.Text),
                 Username = Username.Text,
-                Password = Password.Password
+                Password = Password.Password      
             };
             AccountController.EditPatientAccount(newPatient, ID);
 

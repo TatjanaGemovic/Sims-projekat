@@ -9,6 +9,8 @@ namespace SIMS_Projekat.Model
         public BloodType BloodType { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
+        public string Symptoms { get; set; }
+        public bool IsUrgent { get; set; }
 
         public override string[] toCSV()
         {
@@ -26,7 +28,9 @@ namespace SIMS_Projekat.Model
                 HealthInsuranceID,
                 ((int)BloodType).ToString(),
                 Height.ToString(),
-                Weight.ToString()
+                Weight.ToString(),
+                Symptoms.ToString(),
+                IsUrgent.ToString()
             };
             return values;
         }
@@ -46,6 +50,8 @@ namespace SIMS_Projekat.Model
             BloodType = (BloodType)int.Parse(values[10]);
             Height = double.Parse(values[11]);
             Weight = double.Parse(values[12]);
+            Symptoms = values[13];
+            IsUrgent = bool.Parse(values[14]);
         }
 
         public List<Allergen> Allergen { get; set; }
