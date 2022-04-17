@@ -43,7 +43,9 @@ namespace SIMS_Projekat.PatientView
                 Height = Double.Parse(Height.Text),
                 Weight = Double.Parse(Weight.Text),
                 Username = Username.Text,
-                Password = Password.Password
+                Password = Password.Password,
+                Symptoms = "N/A",
+                IsUrgent = false
             };
             AccountController.CreatePatientAccount(newPatient);
             SecretaryHome.AddPatient(newPatient);

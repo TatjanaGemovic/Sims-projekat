@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="SecretaryView\ViewUrgentPatient.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SecretaryView\EditUrgentPatient.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="SecretaryView\ViewPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,14 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SecretaryView\ViewUrgentPatient.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SecretaryView\EditUrgentPatient.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="SecretaryView\ViewPatient.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

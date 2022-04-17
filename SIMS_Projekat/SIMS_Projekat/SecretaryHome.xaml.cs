@@ -65,17 +65,32 @@ namespace SIMS_Projekat
             dataGrid.Items.Refresh();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddPatient(object sender, RoutedEventArgs e)
         {
             AddPatient addPatient = new AddPatient(AccountController);
             addPatient.Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void DeletePatient(object sender, RoutedEventArgs e)
         {
             Patient patient = (Patient)dataGridPatients.SelectedItem;
             DeletePatient(patient);
             AccountController.DeletePatientAccount(patient);
+        }
+
+
+        private void EditPatient(object sender, RoutedEventArgs e)
+        {
+            Patient patient = (Patient)dataGridPatients.SelectedItem;
+            EditPatient editPatient = new EditPatient(AccountController, patient);
+            editPatient.Show();
+        }
+
+        private void ShowPatient(object sender, RoutedEventArgs e)
+        {
+            Patient patient = (Patient)dataGridPatients.SelectedItem;
+            ViewPatient viewPatient = new ViewPatient(patient);
+            viewPatient.Show();
         }
 
         private void DataWindow_Closing(object sender, EventArgs e)
@@ -83,24 +98,10 @@ namespace SIMS_Projekat
             AccountRepository.Serialize();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            EditPatient editPatient = new EditPatient(AccountController, patient);
-            editPatient.Show();
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            ViewPatient viewPatient = new ViewPatient(patient);
-            viewPatient.Show();
-        }
-
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            UrgentPatientView urgentPatientView = new(AccountRepository, AccountController);
-            urgentPatientView.Show();
+            AddUrgentPatient addUrgentPatient = new(AccountController);
+            addUrgentPatient.Show();
         }
     }
 }
