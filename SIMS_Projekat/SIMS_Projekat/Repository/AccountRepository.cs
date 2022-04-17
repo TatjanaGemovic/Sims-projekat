@@ -9,34 +9,40 @@ namespace SIMS_Projekat.Repository
     {
         public List<Account> Accounts { get; set; }
         public static List<Patient> Patients { get; set; }
-        public List<UrgentPatient> UrgentPatients { get; set; }
+        public List<Doctor> Doctors{ get; set; }
 
-        private Serializer<Patient> serializer;
+        private Serializer<Patient> patientSerializer;
+        private Serializer<Doctor> doctorSerializer;
+
+
         private string patientsFile;
+        private string doctorFile;
+
 
         private int ID;
-        private int urgentPatientID;
 
-        public AccountRepository(string patientsFileName, string urgentPatientsFileName)
+        public AccountRepository(string patientsFileName, string doctorFileName)
         {
             Accounts = new List<Account>();
             Patients = new List<Patient>();
-            UrgentPatients = new List<UrgentPatient>();
-            serializer = new Serializer<Patient>();
+            Doctors = new List<Doctor>();
+            patientSerializer = new Serializer<Patient>();
+            doctorSerializer = new Serializer<Doctor>();
             patientsFile = patientsFileName;
+            doctorFile = doctorFileName;
             ID = 100;
-            urgentPatientID = 100;
         }
 
         public void Serialize()
         {
-            serializer.toCSV(patientsFile, Patients);
+            patientSerializer.toCSV(patientsFile, Patients);
+            doctorSerializer.toCSV(doctorFile, Doctors);
         }
 
         public void Deserialize()
         {
-            Patients = serializer.fromCSV(patientsFile);
-
+            Patients = patientSerializer.fromCSV(patientsFile);
+            Doctors = doctorSerializer.fromCSV(doctorFile);
 
             int maxID = 100;
             foreach(Patient patient in Patients)
@@ -44,15 +50,12 @@ namespace SIMS_Projekat.Repository
                 if (int.Parse(patient.ID) > maxID)
                     maxID = int.Parse(patient.ID);
             }
-            ID = ++maxID;
-
-            maxID = 100;
-            foreach (UrgentPatient patient in UrgentPatients)
+            foreach (Doctor doctor in Doctors)
             {
-                if (int.Parse(patient.ID) > maxID)
-                    maxID = int.Parse(patient.ID);
+                if (int.Parse(doctor.ID) > maxID)
+                    maxID = int.Parse(doctor.ID);
             }
-            urgentPatientID = ++maxID;
+            ID = ++maxID;
         }
 
         
@@ -66,9 +69,7 @@ namespace SIMS_Projekat.Repository
 
         public Account DeletePatientAccount(Patient patient)
         {
-            if (Patients.Remove(patient))
-                return patient;
-            return null;
+            return Patients.Remove(patient) ? patient : null;
         }
 
         public Account EditPatientAccount(Patient patient, string patientID)
@@ -109,5 +110,55 @@ namespace SIMS_Projekat.Repository
             }
             return null;
         }
+
+        public Doctor CreateDoctorAccount(Doctor doctor)
+        {
+            doctor.ID = ID++.ToString();
+            Doctors.Add(doctor);
+            return doctor;
+        }
+
+        public Account DeleteDoctorAccount(Doctor doctor)
+        {
+            return Doctors.Remove(doctor) ? doctor : null;
+        }
+
+        public Account EditDoctorAccount(Doctor doctor, string doctorID)
+        {
+            foreach (Doctor oldDoctor in Doctors)
+            {
+                if (oldDoctor.ID.Equals(doctorID))
+                {
+                    oldDoctor.FirstName = doctor.FirstName;
+                    oldDoctor.LastName = doctor.LastName;
+                    oldDoctor.Jmbg = doctor.Jmbg;
+                    oldDoctor.Password = doctor.Password;
+                    oldDoctor.PhoneNumber = doctor.PhoneNumber;
+                    oldDoctor.Username = doctor.Username;
+                    oldDoctor.DateOfBirth = doctor.DateOfBirth;
+                    oldDoctor.Email = doctor.Email;
+                    oldDoctor.LicenceNumber = doctor.LicenceNumber;
+
+                    return oldDoctor;
+                }
+            }
+            return null;
+        }
+
+        public List<Doctor> GetAllDoctorAccounts()
+        {
+            return Doctors;
+        }
+
+        public Account GetDoctorAccountByID(string doctorID)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.ID.Equals(doctorID))
+                    return doctor;
+            }
+            return null;
+        }
+
     }
 }

@@ -1,11 +1,11 @@
-﻿<Window x:Class="SIMS_Projekat.PatientView.AddPatient"
+﻿<Window x:Class="SIMS_Projekat.PatientView.AddDoctor"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
         mc:Ignorable="d"
-        Title="Add Patient" Height="520" Width="350">
+        Title="Add Doctor" Height="520" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -19,12 +19,6 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-
-
-
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -37,12 +31,9 @@
         <TextBlock Grid.Column="0" Grid.Row="3" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">JMBG:</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="4" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Broj telefona:</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="5" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Email:</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="6" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Broj zdravstvene kartice:</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="7" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Krvna grupa:</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="8" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Visina</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="9" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Težina</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="10" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Korisničko ime</TextBlock>
-        <TextBlock Grid.Column="0" Grid.Row="11" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Lozinka</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="6" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Broj licence:</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="7" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Korisničko ime</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="8" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Lozinka</TextBlock>
 
 
 
@@ -53,22 +44,10 @@
         <TextBox Grid.Column="1" Grid.Row="3" x:Name="Jmbg" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="4" x:Name="PhoneNumber" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="5" x:Name="Email" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="6" x:Name="HealthInsuranceID" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
-        <ComboBox Grid.Column="1" Grid.Row="7" x:Name="BloodType" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14">
-            <ComboBoxItem>O+</ComboBoxItem>
-            <ComboBoxItem>O-</ComboBoxItem>
-            <ComboBoxItem>A+</ComboBoxItem>
-            <ComboBoxItem>A-</ComboBoxItem>
-            <ComboBoxItem>B+</ComboBoxItem>
-            <ComboBoxItem>B-</ComboBoxItem>
-            <ComboBoxItem>AB+</ComboBoxItem>
-            <ComboBoxItem>AB-</ComboBoxItem>
-        </ComboBox>
-        <TextBox Grid.Column="1" Grid.Row="8" x:Name="Height" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="9" x:Name="Weight" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
-        <TextBox Grid.Column="1" Grid.Row="10" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
-        <PasswordBox Grid.Column="1" Grid.Row="11" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></PasswordBox>
-        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="12" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="LicenceNumber" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
+        <TextBox Grid.Column="1" Grid.Row="7" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
+        <PasswordBox Grid.Column="1" Grid.Row="8" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></PasswordBox>
+        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="9" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

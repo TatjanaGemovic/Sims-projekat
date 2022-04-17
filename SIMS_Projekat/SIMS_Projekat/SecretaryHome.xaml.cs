@@ -29,11 +29,8 @@ namespace SIMS_Projekat
         public AccountController AccountController { get; set; }
 
         private static DataGrid dataGrid;
-        public static ObservableCollection<Account> Patients
-        {
-            get;
-            set;
-        }
+        public static ObservableCollection<Account> Patients { get; set; }
+        public static ObservableCollection<Account> Doctors { get; set; }
 
         public SecretaryHome(AccountRepository accountRepository, AccountController accountController)
         {
@@ -43,11 +40,18 @@ namespace SIMS_Projekat
             AccountController = accountController;
             dataGrid = dataGridPatients;
             Patients = new ObservableCollection<Account>();
+            Doctors = new ObservableCollection<Account>();
+
+            // izmeniti na servis umesto repozitorijuma
             foreach(Patient patient in AccountRepository.Patients)
             {
                 Patients.Add(patient);
             }
-            
+            foreach (Doctor doctor in AccountRepository.Doctors)
+            {
+                Doctors.Add(doctor);
+            }
+
         }
 
         public static void AddPatient(Patient newPatient)
@@ -55,23 +59,34 @@ namespace SIMS_Projekat
             Patients.Add(newPatient);
         }
 
+        public static void AddDoctor(Doctor newDoctor)
+        {
+            Doctors.Add(newDoctor);
+        }
+
         public static void DeletePatient(Patient patient)
         {
             Patients.Remove(patient);
         }
 
+        public static void DeleteDoctor(Doctor doctor)
+        {
+            Doctors.Remove(doctor);
+        }
+
         public static void Refresh()
         {
+            // dodati za doktore
             dataGrid.Items.Refresh();
         }
 
-        private void AddPatient(object sender, RoutedEventArgs e)
+        private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
             AddPatient addPatient = new AddPatient(AccountController);
             addPatient.Show();
         }
 
-        private void DeletePatient(object sender, RoutedEventArgs e)
+        private void DeletePatient_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = (Patient)dataGridPatients.SelectedItem;
             DeletePatient(patient);
@@ -79,14 +94,14 @@ namespace SIMS_Projekat
         }
 
 
-        private void EditPatient(object sender, RoutedEventArgs e)
+        private void EditPatient_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = (Patient)dataGridPatients.SelectedItem;
             EditPatient editPatient = new EditPatient(AccountController, patient);
             editPatient.Show();
         }
 
-        private void ShowPatient(object sender, RoutedEventArgs e)
+        private void ShowPatient_Click(object sender, RoutedEventArgs e)
         {
             Patient patient = (Patient)dataGridPatients.SelectedItem;
             ViewPatient viewPatient = new ViewPatient(patient);
@@ -102,6 +117,27 @@ namespace SIMS_Projekat
         {
             AddUrgentPatient addUrgentPatient = new(AccountController);
             addUrgentPatient.Show();
+        }
+
+        private void AddDoctor_Click(object sender, RoutedEventArgs e)
+        {
+            AddDoctor addDoctor = new AddDoctor(AccountController);
+            addDoctor.Show();
+        }
+
+        private void EditDoctor_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowDoctor_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteDoctor_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

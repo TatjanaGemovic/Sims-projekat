@@ -33,5 +33,30 @@ namespace SIMS_Projekat.Controller
         {
             throw new NotImplementedException();
         }
+
+        public Doctor CreateDoctorAccount(Doctor doctor)
+        {
+            return AccountService.CreateDoctorAccount(doctor);
+        }
+
+        public Account DeleteDoctorAccount(Doctor doctor)
+        {
+            return AccountService.DeleteDoctorAccount(doctor);
+        }
+
+        public Account EditDoctorAccount(Doctor doctor, string doctorID)
+        {
+            return AccountService.EditDoctorAccount(doctor, doctorID);
+        }
+
+        public List<Account> GetAllDoctorAccounts()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Account GetDoctorAccountByID(string doctorID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

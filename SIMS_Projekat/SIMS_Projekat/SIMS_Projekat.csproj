@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="SecretaryView\AddDoctor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="SecretaryView\ViewPatient.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
