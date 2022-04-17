@@ -32,7 +32,7 @@ namespace SIMS_Projekat.PatientView
             id = appointmentID;
             Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
 
-            string dateTime = appointment.date.ToString("MM/dd/yyyy HH:mm");
+            string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
             String[] datePart = dateTime.Split(" ");
             string date = datePart[0];
             pickedTime = datePart[1];
@@ -101,7 +101,7 @@ namespace SIMS_Projekat.PatientView
             foreach (Appointment appointment in App.appointmentController.GetAllAppointments())
             {
                 bool neededDate = false;
-                string dateTime = appointment.date.ToString("MM/dd/yyyy HH:mm");
+                string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
                 String[] datePart = dateTime.Split(" ");
                 string time = datePart[1];
                 if(time.CompareTo(pickedTime) == 0)
@@ -187,7 +187,8 @@ namespace SIMS_Projekat.PatientView
             Appointment appointment = new Appointment()
             {
                 appointmentID = id,
-                date = new DateTime(godina, mesec, dan, sat, minut, 0),
+                beginningDate = new DateTime(godina, mesec, dan, sat, minut, 0),
+                endDate = new DateTime(godina, mesec, dan, sat, minut, 0),
                 room = room,
                 doctor = doctor,
                 patient = patient1

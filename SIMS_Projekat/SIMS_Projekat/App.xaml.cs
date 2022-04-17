@@ -133,9 +133,10 @@ namespace SIMS_Projekat
                 Available = false,
             };
 
-            Appointment newAppointment1 = new Appointment()
+            /*Appointment newAppointment1 = new Appointment()
             {
-                date = new DateTime(2022, 04, 30, 9, 0, 00),
+                beginningDate = new DateTime(2022, 04, 30, 9, 0, 00),
+                endDate = new DateTime(2022, 04, 30, 9, 0, 00),
                 doctor = doctor,
                 patient = patient1,
                 room = room
@@ -148,6 +149,7 @@ namespace SIMS_Projekat
                 patient = patient2,
                 room = room
             };
+            */
 
             appointmentRepo.Deserialize();
             scheduledOperationRepository.Deserialize();

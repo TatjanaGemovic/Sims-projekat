@@ -20,28 +20,83 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class EditScheduledOperation : Window
     {
-        public EditScheduledOperation(Model.ScheduledOperation s)
+        public EditScheduledOperation(Appointment app)
         {
             InitializeComponent();
-            Vreme_pocetka.Text = s.Start.ToString();
-            Vreme_zavrsetka.Text = s.End.ToString();
-            Tip_operacije.Text = s.OperationType;
-            ID_operacije.Text = s.OperationID.ToString();
+            Vreme_pocetka.Text = app.beginningDate.ToString();
+            Vreme_zavrsetka.Text = app.endDate.ToString();
+            Tip_operacije.Text = app.operation.ToString();
+            ID_operacije.Text = app.appointmentID.ToString();
             
         }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
-            App.scheduledOperationRepository.Serialize();
+            App.appointmentRepo.Serialize();
         }
 
         private void Promeni_Click(object sender, RoutedEventArgs e)
         {
-            ScheduledOperation s = new ScheduledOperation();
-            s.Start = DateTime.Parse(Vreme_pocetka.Text);
-            s.End = DateTime.Parse(Vreme_zavrsetka.Text);
-            s.OperationType = Tip_operacije.Text;
-            s.OperationID = int.Parse(ID_operacije.Text);
-            App.ScheduledOperationController.Edit(s);
+            Doctor doctor = new Doctor()
+            {
+                FirstName = "Joka",
+                LastName = "Jokic",
+                Email = "jok@gmail.com",
+                Jmbg = "111122440",
+                Username = "pera",
+                Password = "pera123",
+                PhoneNumber = "0641111111",
+                DateOfBirth = new DateTime(1994, 5, 15),
+                ID = "11",
+                LicenceNumber = "1542014"
+            };
+            Patient patient1 = new Patient()
+            {
+                ID = "210",
+                FirstName = "Ana",
+                LastName = "Anic",
+                Email = "ana@gmail.com",
+                Jmbg = "515120",
+                Username = "ana",
+                Password = "ana123",
+                PhoneNumber = "0645554442",
+                DateOfBirth = new DateTime(2000, 10, 15),
+                BloodType = BloodType.A_Positive,
+                Height = 178.0,
+                Weight = 80.0,
+                HealthInsuranceID = "0426"
+            };
+
+            Room room = new Room()
+            {
+                RoomID = "13",
+                Floor = 4,
+                Type = RoomType.examRoom,
+                RoomNumber = 13,
+                Available = false,
+            };
+            bool op;
+            if (Tip_operacije.Text.Equals("False"))
+            {
+                op = false;
+            }
+            else
+            {
+                op = true;
+            }
+
+            Appointment appointment = new Appointment()
+            {
+                appointmentID = Int32.Parse(ID_operacije.Text),
+                beginningDate = DateTime.Parse(Vreme_pocetka.Text),
+                endDate = DateTime.Parse(Vreme_zavrsetka.Text),
+                operation = op,
+                room = room,
+                doctor = doctor,
+                patient = patient1
+            };
+
+            
+            App.appointmentController.SetAppointment(appointment);
             this.Close();
         }
 

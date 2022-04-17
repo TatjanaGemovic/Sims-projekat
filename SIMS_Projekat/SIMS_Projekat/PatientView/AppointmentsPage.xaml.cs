@@ -109,16 +109,19 @@ namespace SIMS_Projekat.PatientView
         {
             foreach (Model.Appointment appointment in App.appointmentController.GetAllAppointments())
             {
-                DateTime dt = appointment.date;
-                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
+                if (!appointment.operation)
+                {
+                    DateTime dt = appointment.beginningDate;
+                    string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
 
-                String[] deloviDatuma = dateTime.Split(" ");
-                string datum = deloviDatuma[0];
+                    String[] deloviDatuma = dateTime.Split(" ");
+                    string datum = deloviDatuma[0];
 
-                string vreme = deloviDatuma[1];
+                    string vreme = deloviDatuma[1];
 
-                appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                              appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber ));
+                    appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
+                                                  appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber));
+                }
             }
         }
     }

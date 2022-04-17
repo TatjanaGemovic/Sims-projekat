@@ -9,12 +9,12 @@
         Title="DoctorHome" Height="750" Width="430"
         Closing="DataWindow_Closing">
     <Grid>
-        <DataGrid x:Name="OperationsList" ItemsSource="{Binding Operations}" Margin="19,32,26,105" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="top" Height="600"  Width="390">
+        <DataGrid x:Name="OperationsList" ItemsSource="{Binding appointmentInformations}" Margin="19,32,26,105" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="top" Height="600"  Width="390">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Start" Binding ="{Binding Start}" Width="100"/>
-                <DataGridTextColumn Header="End" Binding ="{Binding End}" Width="100" />
-                <DataGridTextColumn Header="OperationType" Binding ="{Binding OperationID}"/>
-                <DataGridTextColumn Header="OperationID" Binding ="{Binding OperationType}"  Width="*"/>
+                <DataGridTextColumn Header="Start" Binding ="{Binding beginningTime}" Width="100"/>
+                <DataGridTextColumn Header="End" Binding ="{Binding endTime}" Width="100" />
+                <DataGridTextColumn Header="OperationType" Binding ="{Binding appointmentId}"/>
+                <DataGridTextColumn Header="OperationID" Binding ="{Binding appointmentType}"  Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Zakazite_Termin" Content="Zakazite termin" HorizontalAlignment="Left" Margin="19,650,0,0" VerticalAlignment="Top" Background="#FF40BFEA" Height="49" Width="109" Click="Zakazite_Termin_Click"/>

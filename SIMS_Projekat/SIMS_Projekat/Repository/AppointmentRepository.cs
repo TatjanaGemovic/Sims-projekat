@@ -50,7 +50,8 @@ namespace SIMS_Projekat.Repository
                 if (appointment1 != null)
                 {
                     appointment1.patient = appointment.patient;
-                    appointment1.date = appointment.date;
+                    appointment1.beginningDate = appointment.beginningDate;
+                    appointment1.endDate = appointment.endDate;
                     appointment1.doctor = appointment.doctor;
                     appointment1.room = appointment.room;
                     return appointment1;
