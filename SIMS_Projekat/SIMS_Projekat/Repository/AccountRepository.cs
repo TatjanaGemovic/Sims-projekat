@@ -12,9 +12,7 @@ namespace SIMS_Projekat.Repository
         public List<UrgentPatient> UrgentPatients { get; set; }
 
         private Serializer<Patient> serializer;
-        private Serializer<UrgentPatient> urgentPatientSerializer;
         private string patientsFile;
-        private string urgentPatientsFile;
 
         private int ID;
         private int urgentPatientID;
@@ -25,9 +23,7 @@ namespace SIMS_Projekat.Repository
             Patients = new List<Patient>();
             UrgentPatients = new List<UrgentPatient>();
             serializer = new Serializer<Patient>();
-            urgentPatientSerializer = new Serializer<UrgentPatient>();
             patientsFile = patientsFileName;
-            urgentPatientsFile = urgentPatientsFileName;
             ID = 100;
             urgentPatientID = 100;
         }
@@ -35,13 +31,11 @@ namespace SIMS_Projekat.Repository
         public void Serialize()
         {
             serializer.toCSV(patientsFile, Patients);
-            urgentPatientSerializer.toCSV(urgentPatientsFile, UrgentPatients);
         }
 
         public void Deserialize()
         {
             Patients = serializer.fromCSV(patientsFile);
-            UrgentPatients = urgentPatientSerializer.fromCSV(urgentPatientsFile);
 
 
             int maxID = 100;
