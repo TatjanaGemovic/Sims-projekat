@@ -69,6 +69,7 @@ namespace SIMS_Projekat
             newRoom.RoomNumber = int.Parse(roomNumber.Text);
             newRoom.Floor = int.Parse(roomFloor.Text);
             newRoom.Type = (RoomType)roomType.SelectedIndex;
+            newRoom.Available = true;
             return newRoom;
         }
 

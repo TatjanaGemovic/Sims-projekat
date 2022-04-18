@@ -23,9 +23,11 @@ namespace SIMS_Projekat
     public partial class DoctorHome : Window
     {
         public List<ScheduledOperation> operations;
+        private Doctor doctor;
+
         //public static ObservableCollection<ScheduledOperation> Operations { get; set; }
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public DoctorHome()
+        public DoctorHome(Doctor doctor)
         {
             InitializeComponent();
             appointmentInformations = new BindingList<AppointmentInformation>();
@@ -35,6 +37,7 @@ namespace SIMS_Projekat
             this.DataContext = this;
             //Operations = App.scheduledOperationRepository.GetScheduledOperations();
         }
+
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();

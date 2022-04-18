@@ -24,7 +24,7 @@ namespace SIMS_Projekat.Model
         public string licenceNumber { get; set; }
         public string patientID { get; set; }
 
-        public bool operation { get; set; }
+        public bool operation { get; set; } //true jeste operacija
 
         public Patient patient { get; set; }
 

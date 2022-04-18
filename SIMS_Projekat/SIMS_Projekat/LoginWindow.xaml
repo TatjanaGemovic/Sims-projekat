@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS_Projekat"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
+        Title="LoginWindow" Height="450" Width="800"
+        Background="YellowGreen">
     <Grid Margin="0,-1,0,1">
-        <Label Content="Zdravo" HorizontalAlignment="Center" Margin="0,49,0,0" VerticalAlignment="Top" FontSize="60" FontFamily="Aileron Black"/>
-        <Button Content="Prijavi se" HorizontalAlignment="Left" Width="80" Margin="351,307,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox x:Name="Username" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,206,0,0"/>
-        <TextBox x:Name="Password" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Korisnicko ime" HorizontalAlignment="Left" Margin="248,201,0,0" VerticalAlignment="Top"/>
-        <Label Content="Lozinka" HorizontalAlignment="Left" Margin="267,243,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="WrongDataLabel" Content="" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,274,0,0"/>
+        <Label Content="Zdravo" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Poppins Black" FontWeight="Bold"/>
+        <Button Background="AntiqueWhite" Content="Prijavi se" HorizontalAlignment="Center" Width="131" Margin="0,317,0,0" VerticalAlignment="Top" Click="Button_Click" Height="32" FontSize="18"/>
+        <TextBox Background="AntiqueWhite" x:Name="Username" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Margin="391,199,0,0" Height="21" FontSize="16"/>
+        <Label Content="Korisnicko ime" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" Height="30" Width="118" FontSize="16"/>
+        <Label Content="Lozinka" HorizontalAlignment="Left" Margin="315,242,0,0" VerticalAlignment="Top" Height="31" Width="69" FontSize="16" RenderTransformOrigin="0.585,0.485"/>
+        <Label x:Name="WrongDataLabel" Content="" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,275,0,0" Height="30" Width="101"/>
+        <PasswordBox Background="AntiqueWhite" x:Name="Password"  HorizontalAlignment="Left" Margin="391,247,0,0" VerticalAlignment="Top" Width="149" Height="21"/>
+        <Button Background="AntiqueWhite" Content="Nazad" HorizontalAlignment="Left" Margin="27,34,0,0" VerticalAlignment="Top" Height="24" Width="55" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

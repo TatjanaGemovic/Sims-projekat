@@ -16,7 +16,7 @@ namespace SIMS_Projekat.Model
             RoomNumber = int.Parse(values[1]);
             Floor = int.Parse(values[2]);
             Type = (RoomType)int.Parse(values[3]);
-            if (values[4].Equals("true")) { Available = true; } else { Available = false; }
+            if (values[4].Equals("True")) { Available = true; } else { Available = false; }
         }
 
         public string[] toCSV()

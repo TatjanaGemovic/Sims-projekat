@@ -31,6 +31,7 @@ namespace SIMS_Projekat
         private AccountRepository accountRepository;
         private AccountService accountService;
         private AccountController accountController;
+        public int prozor;
         public MainWindow()
         {
             InitializeComponent();
@@ -48,34 +49,38 @@ namespace SIMS_Projekat
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            DoctorHome doctorHomePage = new DoctorHome();
-            this.Close();
-            LoginWindow loginWindow = new LoginWindow(doctorHomePage, accountController);
+            //DoctorHome doctorHomePage = new DoctorHome();
+            prozor = 1;
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
+            this.Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            ManagerHome managerHomePage = new ManagerHome();
-            this.Close();
-            LoginWindow loginWindow = new LoginWindow(managerHomePage, accountController);
+            //ManagerHome managerHomePage = new ManagerHome();
+            prozor = 2;
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
+            this.Close();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            PatientHome patientHomePage = new PatientHome();
-            this.Close();
-            LoginWindow loginWindow = new LoginWindow(patientHomePage, accountController);
+            //PatientHome patientHomePage = new PatientHome();
+            prozor = 3;
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
+            this.Close();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController);
-            this.Close();
-            LoginWindow loginWindow = new LoginWindow(secretaryHomePage, accountController);
+            //SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController);
+            prozor = 4;
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
+            this.Close();
         }
 
     }

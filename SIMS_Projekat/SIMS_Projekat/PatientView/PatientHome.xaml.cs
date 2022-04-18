@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Repository;
+﻿using SIMS_Projekat.Model;
+using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,7 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class PatientHome : Window
     {
-        
-        public PatientHome()
+        public PatientHome(Patient patient)
         {
             InitializeComponent();
             MainFrame.Content = new Homepage();
