@@ -13,6 +13,7 @@
         <TextBox x:Name="Password" HorizontalAlignment="Center" Margin="0,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Korisnicko ime" HorizontalAlignment="Left" Margin="248,201,0,0" VerticalAlignment="Top"/>
         <Label Content="Lozinka" HorizontalAlignment="Left" Margin="267,243,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WrongDataLabel" Content="" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,274,0,0"/>
 
     </Grid>
 </Window>
