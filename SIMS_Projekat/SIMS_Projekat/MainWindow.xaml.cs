@@ -50,28 +50,32 @@ namespace SIMS_Projekat
         {
             DoctorHome doctorHomePage = new DoctorHome();
             this.Close();
-            doctorHomePage.Show();
+            LoginWindow loginWindow = new LoginWindow(doctorHomePage, accountController);
+            loginWindow.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ManagerHome managerHomePage = new ManagerHome();
             this.Close();
-            managerHomePage.Show();
+            LoginWindow loginWindow = new LoginWindow(managerHomePage, accountController);
+            loginWindow.Show();
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             PatientHome patientHomePage = new PatientHome();
             this.Close();
-            patientHomePage.Show();
+            LoginWindow loginWindow = new LoginWindow(patientHomePage, accountController);
+            loginWindow.Show();
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController);
             this.Close();
-            secretaryHomePage.Show();
+            LoginWindow loginWindow = new LoginWindow(secretaryHomePage, accountController);
+            loginWindow.Show();
         }
 
     }

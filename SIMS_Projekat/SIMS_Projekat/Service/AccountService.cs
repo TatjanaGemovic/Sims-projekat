@@ -24,9 +24,9 @@ namespace SIMS_Projekat.Service
             return AccountRepository.EditPatientAccount(patient, patientID);
         }
 
-        public List<Account> GetAllPatientAccounts()
+        public List<Patient> GetAllPatientAccounts()
         {
-            throw new NotImplementedException();
+            return AccountRepository.GetAllPatientAccounts();
         }
 
         public Account GetPatientAccountByID(string patientID)
@@ -49,9 +49,9 @@ namespace SIMS_Projekat.Service
             return AccountRepository.EditDoctorAccount(doctor, doctorID);
         }
 
-        public List<Account> GetAllDoctorAccounts()
+        public List<Doctor> GetAllDoctorAccounts()
         {
-            throw new NotImplementedException();
+            return AccountRepository.GetAllDoctorAccounts();
         }
 
         public Account GetDoctorAccountByID(string doctorID)
