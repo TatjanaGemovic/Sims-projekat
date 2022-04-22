@@ -26,30 +26,19 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
-        private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
         private AccountRepository accountRepository;
-        private AccountService accountService;
         private AccountController accountController;
         public int prozor;
+
         public MainWindow()
         {
             InitializeComponent();
-            accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
-            accountService = new AccountService()
-            {
-                AccountRepository = accountRepository
-            };
-            accountController = new AccountController()
-            {
-                AccountService = accountService
-            };
-            accountRepository.Deserialize();
+            accountRepository = App.accountRepository;
+            accountController = App.accountController;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //DoctorHome doctorHomePage = new DoctorHome();
             prozor = 1;
             LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
@@ -58,7 +47,6 @@ namespace SIMS_Projekat
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //ManagerHome managerHomePage = new ManagerHome();
             prozor = 2;
             LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
@@ -67,7 +55,6 @@ namespace SIMS_Projekat
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            //PatientHome patientHomePage = new PatientHome();
             prozor = 3;
             LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();
@@ -76,7 +63,6 @@ namespace SIMS_Projekat
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            //SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController);
             prozor = 4;
             LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
             loginWindow.Show();

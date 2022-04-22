@@ -32,11 +32,11 @@ namespace SIMS_Projekat
         public static AppointmentRepository appointmentRepo;
         //private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
 
-        //private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
-        //private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
-        //public static AccountRepository accountRepository;
-        //public static AccountService accountService;
-        //public static AccountController accountController;
+        private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
+        private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
+        public static AccountRepository accountRepository;
+        public static AccountService accountService;
+        public static AccountController accountController;
 
         //public static RoomRepository roomRepository;
         //public static RoomService roomService;
@@ -71,15 +71,15 @@ namespace SIMS_Projekat
                 appointmentService = appointmentService
             };
 
-            //accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
-            //accountService = new AccountService()
-            //{
-            //    AccountRepository = accountRepository
-            //};
-            //accountController = new AccountController()
-            //{
-            //    AccountService = accountService
-            //};
+            accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
+            accountService = new AccountService()
+            {
+                AccountRepository = accountRepository
+            };
+            accountController = new AccountController()
+            {
+                AccountService = accountService
+            };
 
            
 
@@ -183,7 +183,7 @@ namespace SIMS_Projekat
                 room = room
             };
             */
-            //accountRepository.Deserialize();
+            accountRepository.Deserialize();
             //roomRepository.Deserialize();
             appointmentRepo.Deserialize();
             scheduledOperationRepository.Deserialize();
