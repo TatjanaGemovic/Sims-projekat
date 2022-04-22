@@ -24,10 +24,12 @@ namespace SIMS_Projekat.PatientView
     public partial class ScheduleAppointmentPage : Page
     {
         //private ComboBox izbor_vremena;
-        Frame Frame;
-        public ScheduleAppointmentPage(Frame MainFrame)
+        Frame frame;
+        Patient patient;
+        public ScheduleAppointmentPage(Frame mainFrame, Patient p)
         {
-            Frame = MainFrame;
+            frame = mainFrame;
+            patient = p;
             InitializeListOfAppointments();
             InitializeComponent();
            
@@ -111,17 +113,17 @@ namespace SIMS_Projekat.PatientView
         {
 
             //combovreme.DataContext = listOfAppointmentTime;
-            combovreme.ItemsSource = listOfAppointmentTime;
+            comboTime.ItemsSource = listOfAppointmentTime;
         }
 
         private void scheduleClick(object sender, RoutedEventArgs e)
         {
-            string datum = this.datum.ToString();
+            string datum = this.date.ToString();
             //12/07/2022 12:00:00 AM
             String[] deloviDatuma = datum.Split(" ");
             String[] deoDatuma = deloviDatuma[0].Split("/");
 
-            string vreme = this.combovreme.SelectionBoxItem.ToString();
+            string vreme = this.comboTime.SelectionBoxItem.ToString();
             String[] deloviVremena = vreme.Split(":");
 
 
@@ -183,14 +185,14 @@ namespace SIMS_Projekat.PatientView
 
             App.appointmentController.AddAppointment(appointment);
 
-            Appointments Appointments = new Appointments(Frame);
-            Frame.Content = Appointments;
+            Appointments Appointments = new Appointments(frame, patient);
+            frame.Content = Appointments;
         }
 
         private void cancelClick(object sender, RoutedEventArgs e)
         {
-            Appointments Appointments = new Appointments(Frame);
-            Frame.Content = Appointments;
+            Appointments Appointments = new Appointments(frame, patient);
+            frame.Content = Appointments;
         }
     }
     

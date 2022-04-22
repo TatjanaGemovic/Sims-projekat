@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class Homepage : Page
     {
-        public Homepage()
+        private Patient patient;
+        public Homepage(Patient p)
         {
             InitializeComponent();
+            patient = p;
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SIMS_Projekat.Repository
     public class AccountRepository
     {
         public List<Account> Accounts { get; set; }
-        public static List<Patient> Patients { get; set; }
+        public List<Patient> Patients { get; set; }
         public List<Doctor> Doctors{ get; set; }
 
         private Serializer<Patient> patientSerializer;
@@ -155,6 +155,15 @@ namespace SIMS_Projekat.Repository
             foreach (Doctor doctor in Doctors)
             {
                 if (doctor.ID.Equals(doctorID))
+                    return doctor;
+            }
+            return null;
+        }
+        public Account GetDoctorAccountByLicenceNumber(string licence)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.LicenceNumber.Equals(licence))
                     return doctor;
             }
             return null;

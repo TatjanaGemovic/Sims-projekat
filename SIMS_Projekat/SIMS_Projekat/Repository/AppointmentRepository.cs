@@ -2,6 +2,7 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.Serialization;
 using System;
 using System.Collections.Generic;
+using SIMS_Projekat;
 
 namespace SIMS_Projekat.Repository
 {
@@ -77,16 +78,17 @@ namespace SIMS_Projekat.Repository
 
         public List<Appointment> GetAppointmentByPatientID(string patientID)
         {
-            //foreach (Appointment appointment in appointmentList)
-            //{
-            //    Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
+            List<Appointment> appointmentListForPatient = new List<Appointment>();
+            foreach (Appointment appointment in appointmentList)
+            {
+                //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
 
-            //    if (appointment1 != null)
-            //    {
-            //        return appointment1;
-            //    }
-            //}
-            return null;
+                if (appointment.patientID.Equals(patientID))
+                {
+                    appointmentListForPatient.Add(appointment);
+                }
+            }
+            return appointmentListForPatient;
         }
 
         public List<Appointment> GetAppointmentByDoctorLicenceNumber(string licenceNumber)
@@ -160,7 +162,13 @@ namespace SIMS_Projekat.Repository
 
             foreach (Appointment appointment in appointmentList)
             {
-               
+
+                //appointment.patient = AccountRepository.GetPatientAccountByID(appointment.patientID) as Patient;
+                //appointment.doctor = AccountRepository.GetDoctorAccountByLicenceNumber(appointment.licenceNumber) as Doctor;
+
+                //appointment.room = roomRepository
+
+           
                 appointment.patient = new Patient()
                 {
                     ID = appointment.patientID,
@@ -176,7 +184,7 @@ namespace SIMS_Projekat.Repository
                     Height = 178.0,
                     Weight = 80.0,
                     HealthInsuranceID = "005426",
-                    
+
 
                 };
                 appointment.room = new Room()
