@@ -25,20 +25,22 @@ namespace SIMS_Projekat.PatientView
         Frame frame;
         string pickedTime;
         int id;
-        public ChangeAppointmentPage(Frame Mainframe, int appointmentID)
+        Patient patient;
+        public ChangeAppointmentPage(Frame mainframe, int appointmentID, Patient p)
         {
             InitializeComponent();
-            frame = Mainframe;
+            frame = mainframe;
             id = appointmentID;
+            patient = p;
             Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
 
             string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
             String[] datePart = dateTime.Split(" ");
-            string date = datePart[0];
+            string dateP = datePart[0];
             pickedTime = datePart[1];
 
-            datum.Text = date;
-            brojSobe.Text = appointment.room.RoomID;
+            date.Text = dateP;
+            roomNumber.Text = appointment.room.RoomID;
 
             InitializeListOfAppointments();
             InitializeComboBox();
@@ -123,18 +125,18 @@ namespace SIMS_Projekat.PatientView
         }
         private void InitializeComboBox()
         {
-            combovreme.ItemsSource = listOfAppointmentTime;
-            combovreme.SelectedItem = pickedTime;
+            combotime.ItemsSource = listOfAppointmentTime;
+            combotime.SelectedItem = pickedTime;
             
         }
         private void changeClick(object sender, RoutedEventArgs e)
         {
-            string datum = this.datum.ToString();
+            string datum = this.date.ToString();
             //12/07/2022 12:00:00 AM
             String[] deloviDatuma = datum.Split(" ");
             String[] deoDatuma = deloviDatuma[0].Split("/");
 
-            string vreme = this.combovreme.SelectionBoxItem.ToString();
+            string vreme = this.combotime.SelectionBoxItem.ToString();
             String[] deloviVremena = vreme.Split(":");
 
 
@@ -196,14 +198,14 @@ namespace SIMS_Projekat.PatientView
 
             App.appointmentController.SetAppointment(appointment);
 
-            Appointments Appointments = new Appointments(frame);
+            Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
 
         }
 
         private void cancelClick(object sender, RoutedEventArgs e)
         {
-            Appointments Appointments = new Appointments(frame);
+            Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }
 

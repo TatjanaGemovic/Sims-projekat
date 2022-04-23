@@ -22,13 +22,15 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class Appointments : Page
     {
-        Frame Frame;
+        Frame frame;
+        Patient patient;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public Appointments(Frame MainFrame)
+        public Appointments(Frame mainFrame, Patient p)
         {
            
             InitializeComponent();
-            Frame = MainFrame;
+            frame = mainFrame;
+            patient = p;
             
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
@@ -37,12 +39,12 @@ namespace SIMS_Projekat.PatientView
             this.DataContext = this;
         }
 
-        private void zakazi_termin_Click(object sender, RoutedEventArgs e)
+        private void make_appointment_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleAppointmentPage ScheduleAppointmentPage = new ScheduleAppointmentPage(Frame);
-            Frame.Content = ScheduleAppointmentPage;
+            ScheduleAppointmentPage ScheduleAppointmentPage = new ScheduleAppointmentPage(frame, patient);
+            frame.Content = ScheduleAppointmentPage;
         }
-        private void izmeni_termin_Click(object sender, RoutedEventArgs e)
+        private void change_appointment_Click(object sender, RoutedEventArgs e)
         {
             if (AppointmentsTable.SelectedItem != null)
             {
@@ -50,8 +52,8 @@ namespace SIMS_Projekat.PatientView
 
                 int appointmentID = appointmentInformation.appointmentId;
 
-                ChangeAppointmentPage changeAppointmentPage = new ChangeAppointmentPage(Frame, appointmentID);
-                Frame.Content = changeAppointmentPage;
+                ChangeAppointmentPage changeAppointmentPage = new ChangeAppointmentPage(frame, appointmentID, patient);
+                frame.Content = changeAppointmentPage;
             }
             else
             {
@@ -59,7 +61,7 @@ namespace SIMS_Projekat.PatientView
             }
 
         }
-        private void obrisi_termin_Click(object sender, RoutedEventArgs e)
+        private void delete_appointment_Click(object sender, RoutedEventArgs e)
         {
             if (AppointmentsTable.SelectedItem != null)
             {

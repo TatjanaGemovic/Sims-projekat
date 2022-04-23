@@ -30,6 +30,17 @@ namespace SIMS_Projekat
         public static ScheduledOperationController ScheduledOperationController;
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
         public static AppointmentRepository appointmentRepo;
+        //private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
+
+        private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
+        private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
+        public static AccountRepository accountRepository;
+        public static AccountService accountService;
+        public static AccountController accountController;
+
+        //public static RoomRepository roomRepository;
+        //public static RoomService roomService;
+        //public static RoomController roomController;
 
         public static AppointmentController appointmentController;
         public App()
@@ -40,6 +51,16 @@ namespace SIMS_Projekat
 
             ScheduledOperationController = new ScheduledOperationController(ScheduledOperationService);
 
+            //roomRepository = new RoomRepository(ROOM_CSV);
+            //roomService = new RoomService()
+            //{
+            //    roomRepository = roomRepository
+            //};
+            //roomController = new RoomController()
+            //{
+            //    roomService = roomService
+            //};
+
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             AppointmentService appointmentService = new AppointmentService()
             {
@@ -49,6 +70,18 @@ namespace SIMS_Projekat
             {
                 appointmentService = appointmentService
             };
+
+            accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
+            accountService = new AccountService()
+            {
+                AccountRepository = accountRepository
+            };
+            accountController = new AccountController()
+            {
+                AccountService = accountService
+            };
+
+           
 
             ScheduledOperation so1 = new ScheduledOperation()
             {
@@ -150,10 +183,33 @@ namespace SIMS_Projekat
                 room = room
             };
             */
-
+            accountRepository.Deserialize();
+            //roomRepository.Deserialize();
             appointmentRepo.Deserialize();
             scheduledOperationRepository.Deserialize();
-           
+
+
+            //foreach (Appointment appointment in appointmentRepo.GetAllAppointments())
+            //{
+
+            //    appointment.patient = accountRepository.GetPatientAccountByID(appointment.patientID) as Patient;
+            //    appointment.doctor = accountRepository.GetDoctorAccountByLicenceNumber(appointment.licenceNumber) as Doctor;
+
+            //    appointment.room = roomRepository.GetRoomByID(appointment.roomID);
+
+            //    //appointment.room = new Room
+            //    //{
+            //    //    Available = false,
+            //    //    Floor = 2,
+            //    //    RoomNumber = 2,
+            //    //    Type = RoomType.examRoom,
+            //    //    RoomID = "555"
+            //    //};
+
+            //    //id = appointment.appointmentID;
+            //}
+
+
         }
     }
 }

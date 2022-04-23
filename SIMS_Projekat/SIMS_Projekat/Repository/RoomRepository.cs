@@ -15,7 +15,7 @@ namespace SIMS_Projekat.Repository
 
         public ObservableCollection<Room> GetRooms()
         {
-            return this.rooms;
+            return rooms;
         }
 
         public Model.Room GetRoomByID(string roomID)
@@ -35,7 +35,7 @@ namespace SIMS_Projekat.Repository
 
         public Model.Room DeleteRoomByID(string roomID)
         {
-            var room = this.GetRoomByID(roomID);
+            var room = GetRoomByID(roomID);
             if (room != null)
             {
                 rooms.Remove(room);
@@ -51,7 +51,7 @@ namespace SIMS_Projekat.Repository
 
         public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
         {
-            var oldRoom = this.GetRoomByID(oldRoomID);
+            var oldRoom =GetRoomByID(oldRoomID);
             if (oldRoom != null)
             {
                 oldRoom.RoomID = newRoom.RoomID;
