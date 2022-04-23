@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Model;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,9 +12,11 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame Frame;
         public String SelectedDate;
-        public AppointmentCalendar(Frame MainFrame)
+        Doctor doctor;
+        public AppointmentCalendar(Frame MainFrame, Doctor d)
         {
             InitializeComponent();
+            doctor = d;
             Frame = MainFrame;
         }
 
@@ -25,7 +28,7 @@ namespace SIMS_Projekat.DoctorView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SelectedDate = Kalendar1.SelectedDate.ToString();
-            Frame.Content = new Scheduling(Frame, SelectedDate);
+            Frame.Content = new Scheduling(Frame, SelectedDate, doctor);
         }
     }
 }

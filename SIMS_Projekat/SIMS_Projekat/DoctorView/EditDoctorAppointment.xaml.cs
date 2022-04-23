@@ -26,10 +26,12 @@ namespace SIMS_Projekat.DoctorView
         int id;
         String selectedDate1;
         BindingList<String> appointmentType;
-        public EditDoctorAppointment(Frame frame, Appointment app, String selectedDate)
+        Doctor doctor;
+        public EditDoctorAppointment(Frame frame, Appointment app, String selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
+            doctor = d;
             selectedDate1 = selectedDate;
             Vreme_pocetka.Text = app.beginningDate.ToString();
             Vreme_zavrsetka.Text = app.endDate.ToString();
@@ -59,19 +61,7 @@ namespace SIMS_Projekat.DoctorView
         }
         private void Promeni_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = new Doctor()
-            {
-                FirstName = "Joka",
-                LastName = "Jokic",
-                Email = "jok@gmail.com",
-                Jmbg = "111122440",
-                Username = "pera",
-                Password = "pera123",
-                PhoneNumber = "0641111111",
-                DateOfBirth = new DateTime(1994, 5, 15),
-                ID = "11",
-                LicenceNumber = "1542014"
-            };
+            
             Patient patient1 = new Patient()
             {
                 ID = "210",
@@ -121,7 +111,7 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.SetAppointment(appointment);
 
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1);
+            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
             Frame.Content = scheduling;
         }
     }

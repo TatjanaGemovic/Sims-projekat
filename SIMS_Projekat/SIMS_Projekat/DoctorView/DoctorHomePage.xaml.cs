@@ -20,10 +20,12 @@ namespace SIMS_Projekat.DoctorView
     /// </summary>
     public partial class DoctorHomePage : Window
     {
-        public DoctorHomePage(Doctor doctor)
+        Doctor doctor;
+        public DoctorHomePage(Doctor d)
         {
             InitializeComponent();
-            MainFrame.Content = new DoctorAppointments(MainFrame);
+            doctor = d;
+            MainFrame.Content = new DoctorAppointments(MainFrame, doctor);
         }
 
         private void DataWindow_Closing(object sender, EventArgs e)

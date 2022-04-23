@@ -18,7 +18,7 @@
                 <DataGridTextColumn Header="ID" Binding ="{Binding appointmentId}" Width="30"/>
                 <DataGridTextColumn Header="Vreme" Binding ="{Binding beginningTime}" Width="100"/>
                 <DataGridTextColumn Header="Tip" Binding ="{Binding appointmentType}"  Width="100"/>
-                <DataGridTextColumn Header="Pacijent" Binding ="{Binding }" Width="*"/>
+                <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Zakazite_Termin" Content="Zakazite termin" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="124" Height="60"/>

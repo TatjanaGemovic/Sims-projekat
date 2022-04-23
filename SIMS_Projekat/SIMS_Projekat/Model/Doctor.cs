@@ -6,7 +6,6 @@ namespace SIMS_Projekat.Model
     {
         public string LicenceNumber { get; set; }
         public Appointment[] Appointment { get; set; }
-        public ScheduledOperation[] ScheduledOperation { get; set; }
 
         public override string[] toCSV()
         {

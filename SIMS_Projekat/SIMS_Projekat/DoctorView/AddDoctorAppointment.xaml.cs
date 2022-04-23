@@ -25,11 +25,13 @@ namespace SIMS_Projekat.DoctorView
         Frame Frame;
         private String selectedDate1;
         BindingList<String> appointmentType;
+        Doctor doctor;
 
-        public AddDoctorAppointment(Frame frame, String selectedDate)
+        public AddDoctorAppointment(Frame frame, String selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
+            doctor = d;
             selectedDate1 = selectedDate;
             InitializeComboBox();
         }
@@ -49,19 +51,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = new Doctor()
-            {
-                FirstName = "Joka",
-                LastName = "Jokic",
-                Email = "jok@gmail.com",
-                Jmbg = "111122440",
-                Username = "pera",
-                Password = "pera123",
-                PhoneNumber = "0641111111",
-                DateOfBirth = new DateTime(1994, 5, 15),
-                ID = "11",
-                LicenceNumber = "1542014"
-            };
+           
             Patient patient1 = new Patient()
             {
                 ID = "210",
@@ -118,7 +108,7 @@ namespace SIMS_Projekat.DoctorView
             App.ScheduledOperationController.ScheduleOperation(s);*/
             App.appointmentController.AddAppointment(appointment);
 
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1);
+            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
             Frame.Content = scheduling;
         }
     }

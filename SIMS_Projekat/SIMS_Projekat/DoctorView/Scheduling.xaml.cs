@@ -13,14 +13,14 @@ namespace SIMS_Projekat.DoctorView
     public partial class Scheduling : Page
     {
         Frame Frame;
-        public List<ScheduledOperation> operations;
         private Doctor doctor;
         String selectedDate1;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public Scheduling(Frame frame, String selectedDate)
+        public Scheduling(Frame frame, String selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
+            doctor = d;
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
 
@@ -65,7 +65,7 @@ namespace SIMS_Projekat.DoctorView
                     AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
                     int appointmentID = appointmentInformation.appointmentId;
                     Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-                    Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1);
+                    Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1, doctor);
             }
             else
             {
@@ -75,7 +75,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Zakazite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new AddDoctorAppointment(Frame, selectedDate1);
+            Frame.Content = new AddDoctorAppointment(Frame, selectedDate1, doctor);
         }
 
         public class AppointmentInformation
@@ -98,7 +98,7 @@ namespace SIMS_Projekat.DoctorView
         }
         public void createList()
         {
-            foreach (Model.Appointment appointment in App.appointmentController.GetAllAppointments())
+            foreach (Model.Appointment appointment in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
                 DateTime dt = appointment.beginningDate;
                 string dateTime = dt.ToString("MM/dd/yyyy HH:mm");

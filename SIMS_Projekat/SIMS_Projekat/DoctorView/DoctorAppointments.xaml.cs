@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,15 +22,17 @@ namespace SIMS_Projekat.DoctorView
     public partial class DoctorAppointments : Page
     {
         Frame MainFrame;
-        public DoctorAppointments(Frame main)
+        Doctor doctor;
+        public DoctorAppointments(Frame main, Doctor d)
         {
             InitializeComponent();
+            doctor = d;
             MainFrame = main;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new AppointmentCalendar(MainFrame);
+            MainFrame.Content = new AppointmentCalendar(MainFrame, doctor);
         }
     }
 }

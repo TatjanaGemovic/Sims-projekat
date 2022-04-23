@@ -56,7 +56,10 @@ namespace SIMS_Projekat.Controller
         {
             roomService.Serialize();
         }
-
+        public void Deserialize()
+        {
+            roomService.Deserialize();
+        }
         public RoomService roomService;
 
     }
