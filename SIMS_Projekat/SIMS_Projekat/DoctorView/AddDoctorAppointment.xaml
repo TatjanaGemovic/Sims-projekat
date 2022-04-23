@@ -1,0 +1,27 @@
+﻿<Page x:Class="SIMS_Projekat.DoctorView.AddDoctorAppointment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="430"
+      Title="AddDoctorAppointment">
+
+    <Grid>
+        <DockPanel Margin="16,34,16,178" Background="#FFA7AFAF"/>
+        <Button x:Name="Dodaj_operaciju" Content="Dodaj operaciju" HorizontalAlignment="Right" Margin="0,522,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Dodaj_operaciju_Click"/>
+        <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15"/>
+        <Label Content="Vreme zavrsetka" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="161" FontSize="15"/>
+        <Label Content="Tip operacije" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="40,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,348,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <TextBox x:Name="Vreme_pocetka" HorizontalAlignment="Left" Margin="227,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Vreme_zavrsetka" HorizontalAlignment="Left" Margin="227,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <ComboBox x:Name="Tip_operacije" AllowDrop="True" Margin="227,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
+        <TextBox x:Name="Ime_pacijenta" HorizontalAlignment="Left" Margin="227,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Ime_lekara" HorizontalAlignment="Left" Margin="227,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <TextBox x:Name="Broj_sobe" HorizontalAlignment="Left" Margin="227,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+    </Grid>
+</Page>

@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.DoctorView;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
@@ -66,7 +67,7 @@ namespace SIMS_Projekat
                 {
                     if (doctor.Username.Equals(username) && doctor.Password.Equals(password))
                     {
-                        DoctorHome doctorHomePage = new DoctorHome(doctor);
+                        DoctorHomePage doctorHomePage = new DoctorHomePage(doctor);
                         this.Close();
                         doctorHomePage.Show();
                         return;

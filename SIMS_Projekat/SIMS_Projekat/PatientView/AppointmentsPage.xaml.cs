@@ -109,10 +109,8 @@ namespace SIMS_Projekat.PatientView
         }
         public void createList()
         {
-            foreach (Model.Appointment appointment in App.appointmentController.GetAllAppointments())
+            foreach (Model.Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
             {
-                if (!appointment.operation)
-                {
                     DateTime dt = appointment.beginningDate;
                     string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
 
@@ -123,7 +121,7 @@ namespace SIMS_Projekat.PatientView
 
                     appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
                                                   appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber));
-                }
+                
             }
         }
     }

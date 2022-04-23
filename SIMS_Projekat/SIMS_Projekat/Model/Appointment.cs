@@ -85,6 +85,9 @@ namespace SIMS_Projekat.Model
             {
                 operation = true;
             }
+            patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
+            doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
+            room = App.roomController.GetRoomByID(roomID);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,44 +12,46 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS_Projekat
+namespace SIMS_Projekat.DoctorView
 {
     /// <summary>
-    /// Interaction logic for EditScheduledOperation.xaml
+    /// Interaction logic for AddDoctorAppointment.xaml
     /// </summary>
-    public partial class EditScheduledOperation : Window
+    public partial class AddDoctorAppointment : Page
     {
-        public EditScheduledOperation(Appointment app)
+        Frame Frame;
+        private String selectedDate1;
+        BindingList<String> appointmentType;
+        Doctor doctor;
+
+        public AddDoctorAppointment(Frame frame, String selectedDate, Doctor d)
         {
             InitializeComponent();
-            Vreme_pocetka.Text = app.beginningDate.ToString();
-            Vreme_zavrsetka.Text = app.endDate.ToString();
-            Tip_operacije.Text = app.operation.ToString();
-            ID_operacije.Text = app.appointmentID.ToString();
-            
+            Frame = frame;
+            doctor = d;
+            selectedDate1 = selectedDate;
+            InitializeComboBox();
         }
+
+        private void InitializeComboBox()
+        {
+            appointmentType = new BindingList<String>();
+            appointmentType.Add("Pregled");
+            appointmentType.Add("Operacija");
+            Tip_operacije.ItemsSource = appointmentType;
+        }
+
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
         }
 
-        private void Promeni_Click(object sender, RoutedEventArgs e)
+        private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
         {
-            Doctor doctor = new Doctor()
-            {
-                FirstName = "Joka",
-                LastName = "Jokic",
-                Email = "jok@gmail.com",
-                Jmbg = "111122440",
-                Username = "pera",
-                Password = "pera123",
-                PhoneNumber = "0641111111",
-                DateOfBirth = new DateTime(1994, 5, 15),
-                ID = "11",
-                LicenceNumber = "1542014"
-            };
+           
             Patient patient1 = new Patient()
             {
                 ID = "210",
@@ -75,7 +78,8 @@ namespace SIMS_Projekat
                 Available = false,
             };
             bool op;
-            if (Tip_operacije.Text.Equals("False"))
+            String tip = Tip_operacije.SelectionBoxItem.ToString();
+            if (tip.Equals("Pregled"))
             {
                 op = false;
             }
@@ -86,7 +90,7 @@ namespace SIMS_Projekat
 
             Appointment appointment = new Appointment()
             {
-                appointmentID = Int32.Parse(ID_operacije.Text),
+                //appointmentID = Int32.Parse(ID_operacije.Text),
                 beginningDate = DateTime.Parse(Vreme_pocetka.Text),
                 endDate = DateTime.Parse(Vreme_zavrsetka.Text),
                 operation = op,
@@ -95,14 +99,17 @@ namespace SIMS_Projekat
                 patient = patient1
             };
 
-            
-            App.appointmentController.SetAppointment(appointment);
-            this.Close();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            /*ScheduledOperation s = new ScheduledOperation();
+            s.Start = DateTime.Parse(Vreme_pocetka.Text);
+            s.End = DateTime.Parse(Vreme_zavrsetka.Text);
+            s.OperationType = Tip_operacije.Text;
+            s.OperationID = int.Parse(ID_operacije.Text);
+            App.ScheduledOperationController.ScheduleOperation(s);*/
+            App.appointmentController.AddAppointment(appointment);
+
+            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Frame.Content = scheduling;
         }
     }
 }

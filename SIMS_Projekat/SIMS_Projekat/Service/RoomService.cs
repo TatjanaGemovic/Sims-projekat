@@ -13,7 +13,10 @@ namespace SIMS_Projekat.Service
         {
             roomRepository = new RoomRepository(ROOM_CSV);
         }
-
+        public void Deserialize()
+        {
+            roomRepository.Deserialize();
+        }
         public ObservableCollection<Room> GetRooms()
         {
             return this.roomRepository.GetRooms();

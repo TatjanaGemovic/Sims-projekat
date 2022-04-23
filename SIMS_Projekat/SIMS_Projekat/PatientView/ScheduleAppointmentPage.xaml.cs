@@ -95,7 +95,7 @@ namespace SIMS_Projekat.PatientView
             // listOfAppointmentTime = new BindingList<Appointments>((IList<Appointments>)App.appointmentController.GetAllAppointments());
             // listOfAppointments = App.appointmentController.GetAllAppointments();
 
-            foreach (Appointment appointment in App.appointmentController.GetAllAppointments())
+            foreach (Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
             {
                 string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
                 String[] datePart = dateTime.Split(" ");
@@ -147,22 +147,6 @@ namespace SIMS_Projekat.PatientView
                 ID = "11",
                 LicenceNumber = "1542014"
             };
-            Patient patient1 = new Patient()
-            {
-                ID = "210",
-                FirstName = "Ana",
-                LastName = "Anic",
-                Email = "ana@gmail.com",
-                Jmbg = "515120",
-                Username = "ana",
-                Password = "ana123",
-                PhoneNumber = "0645554442",
-                DateOfBirth = new DateTime(2000, 10, 15),
-                BloodType = BloodType.A_Positive,
-                Height = 178.0,
-                Weight = 80.0,
-                HealthInsuranceID = "0426"
-            };
 
             Room room = new Room()
             {
@@ -179,7 +163,7 @@ namespace SIMS_Projekat.PatientView
                 endDate = new DateTime(godina, mesec, dan, sat, minut, 0),
                 room = room,
                 doctor = doctor,
-                patient = patient1,
+                patient = patient,
                 operation = false
             };
 
