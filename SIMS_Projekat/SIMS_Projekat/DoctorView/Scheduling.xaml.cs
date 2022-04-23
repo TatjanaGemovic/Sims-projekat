@@ -1,46 +1,33 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace SIMS_Projekat
+namespace SIMS_Projekat.DoctorView
 {
     /// <summary>
-    /// Interaction logic for DoctorHome.xaml
+    /// Interaction logic for Scheduling.xaml
     /// </summary>
-    public partial class DoctorHome : Window
+    public partial class Scheduling : Page
     {
+        Frame Frame;
         public List<ScheduledOperation> operations;
         private Doctor doctor;
-
-        //public static ObservableCollection<ScheduledOperation> Operations { get; set; }
+        String selectedDate1;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public DoctorHome(Doctor doctor)
+        public Scheduling(Frame frame, String selectedDate)
         {
             InitializeComponent();
+            Frame = frame;
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
 
+            Datum.Text = selectedDate.ToString();
+            selectedDate1 = selectedDate.ToString();
             OperationsList.ItemsSource = appointmentInformations;
             this.DataContext = this;
-            //Operations = App.scheduledOperationRepository.GetScheduledOperations();
-        }
-
-        private void DataWindow_Closing(object sender, EventArgs e)
-        {
-            App.appointmentRepo.Serialize();
         }
 
         private void Otkazite_Termin_Click(object sender, RoutedEventArgs e)
@@ -73,19 +60,22 @@ namespace SIMS_Projekat
 
         private void Izmenite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
-            int appointmentID = appointmentInformation.appointmentId;
-            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-            EditScheduledOperation editScheduledOperation = new EditScheduledOperation(appointment);
-           // this.Close();
-            editScheduledOperation.Show();
+            if (OperationsList.SelectedItem != null)
+            {
+                    AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+                    int appointmentID = appointmentInformation.appointmentId;
+                    Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
+                    Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1);
+            }
+            else
+            {
+                MessageBox.Show("Niste izabrali termin za otkazivanje!", "Greska");
+            }
         }
 
         private void Zakazite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            AddScheduledOperation addScheduledOperation = new AddScheduledOperation();
-            //this.Close();
-            addScheduledOperation.Show();
+            Frame.Content = new AddDoctorAppointment(Frame, selectedDate1);
         }
 
         public class AppointmentInformation
@@ -94,7 +84,7 @@ namespace SIMS_Projekat
             public string patientName { get; set; }
             public string beginningTime { get; set; }
             public string endTime { get; set; }
-            public string appointmentType { get; set;}
+            public string appointmentType { get; set; }
 
             public AppointmentInformation(int apid, string patient, string d, string d2, string type)
             {
@@ -116,8 +106,18 @@ namespace SIMS_Projekat
                 DateTime dt2 = appointment.endDate;
                 string dateTime2 = dt2.ToString("MM/dd/yyyy HH:mm");
 
+                String type;
+                if(appointment.operation == false)
+                {
+                    type = "Pregled";
+                }
+                else
+                {
+                    type = "Operacija";
+                }
+
                 appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                              dateTime, dateTime2, appointment.operation.ToString()));
+                                              dateTime, dateTime2, type));
             }
         }
     }

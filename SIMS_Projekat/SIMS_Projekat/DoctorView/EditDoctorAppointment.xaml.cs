@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +12,52 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS_Projekat
+namespace SIMS_Projekat.DoctorView
 {
     /// <summary>
-    /// Interaction logic for AddScheduledOperation.xaml
+    /// Interaction logic for EditDoctorAppointment.xaml
     /// </summary>
-    public partial class AddScheduledOperation : Window
+    public partial class EditDoctorAppointment : Page
     {
-        public AddScheduledOperation()
+        Frame Frame;
+        int id;
+        String selectedDate1;
+        BindingList<String> appointmentType;
+        public EditDoctorAppointment(Frame frame, Appointment app, String selectedDate)
         {
             InitializeComponent();
+            Frame = frame;
+            selectedDate1 = selectedDate;
+            Vreme_pocetka.Text = app.beginningDate.ToString();
+            Vreme_zavrsetka.Text = app.endDate.ToString();
+            //Tip_operacije.Text = app.operation.ToString();
+            id = app.appointmentID;
+            InitializeComboBox();
+
+            if (app.operation.ToString().Equals("False")){
+                Tip_operacije.SelectedItem = appointmentType[0];
+            }
+            else
+            {
+                Tip_operacije.SelectedItem = appointmentType[1];
+            }
+        }
+
+        private void InitializeComboBox()
+        {
+            appointmentType = new BindingList<String>();
+            appointmentType.Add("Pregled");
+            appointmentType.Add("Operacija");
+            Tip_operacije.ItemsSource = appointmentType;
         }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
         }
-
-        private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
+        private void Promeni_Click(object sender, RoutedEventArgs e)
         {
             Doctor doctor = new Doctor()
             {
@@ -70,7 +98,8 @@ namespace SIMS_Projekat
                 Available = false,
             };
             bool op;
-            if (Tip_operacije.Text.Equals("False"))
+            String tip = Tip_operacije.SelectionBoxItem.ToString();
+            if (tip.Equals("Pregled"))
             {
                 op = false;
             }
@@ -81,7 +110,7 @@ namespace SIMS_Projekat
 
             Appointment appointment = new Appointment()
             {
-                appointmentID = Int32.Parse(ID_operacije.Text),
+                appointmentID = id,
                 beginningDate = DateTime.Parse(Vreme_pocetka.Text),
                 endDate = DateTime.Parse(Vreme_zavrsetka.Text),
                 operation = op,
@@ -90,21 +119,10 @@ namespace SIMS_Projekat
                 patient = patient1
             };
 
+            App.appointmentController.SetAppointment(appointment);
 
-            /*ScheduledOperation s = new ScheduledOperation();
-            s.Start = DateTime.Parse(Vreme_pocetka.Text);
-            s.End = DateTime.Parse(Vreme_zavrsetka.Text);
-            s.OperationType = Tip_operacije.Text;
-            s.OperationID = int.Parse(ID_operacije.Text);
-            App.ScheduledOperationController.ScheduleOperation(s);*/
-            App.appointmentController.AddAppointment(appointment);
-            this.Close();
-           
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            Scheduling scheduling = new Scheduling(Frame, selectedDate1);
+            Frame.Content = scheduling;
         }
     }
 }

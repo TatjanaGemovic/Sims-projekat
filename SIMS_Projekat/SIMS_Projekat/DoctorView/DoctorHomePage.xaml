@@ -1,0 +1,17 @@
+﻿<Window x:Class="SIMS_Projekat.DoctorView.DoctorHomePage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+        mc:Ignorable="d"
+        Title="DoctorHomePage" Height="750" Width="430" WindowState="Normal"
+        Closing="DataWindow_Closing"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DockPanel x:Name="ActionBar" Grid.Row="0" Margin="0,0,0,650" Background="#FF1DBAEF" Height="85"/>
+        <DockPanel Margin="0,85,0,0">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+        </DockPanel>
+    </Grid>
+</Window>

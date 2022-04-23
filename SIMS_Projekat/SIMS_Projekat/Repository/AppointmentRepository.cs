@@ -54,6 +54,7 @@ namespace SIMS_Projekat.Repository
                     appointment1.endDate = appointment.endDate;
                     appointment1.doctor = appointment.doctor;
                     appointment1.room = appointment.room;
+                    appointment1.operation = appointment.operation;
                     return appointment1;
                 }
 
