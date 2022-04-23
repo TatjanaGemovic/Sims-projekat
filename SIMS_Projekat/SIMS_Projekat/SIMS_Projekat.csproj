@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\icons\accounts.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="SecretaryView\ViewPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +31,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\accounts.png" />
   </ItemGroup>
 
 </Project>

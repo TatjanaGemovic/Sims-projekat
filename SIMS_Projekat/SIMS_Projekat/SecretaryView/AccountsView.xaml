@@ -37,7 +37,7 @@
                     </DataGrid>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 40, 20, 20">
-                        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="50" Width="110" Click="AddPatient_Click"/>
+                        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="50" Width="110" Click="AddPatient_Click"/>
                         <Button Content="Izmeni" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="50" Width="110" Click="EditPatient_Click"/>
                         <Button Content="Prikazi" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="50" Width="110" Click="ShowPatient_Click"/>
                         <Button Content="Obrisi" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top" Height="50" Width="110" Click="DeletePatient_Click"/>
