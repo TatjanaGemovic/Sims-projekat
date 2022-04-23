@@ -35,6 +35,7 @@ namespace SIMS_Projekat
             accountsView = new AccountsView(accountRepository, accountController);
             appointmentsView = new AppointmentsView();
             ContentControl.Content = accountsView;
+            Accounts_RadioButton.IsChecked = true;
 
         }
 
