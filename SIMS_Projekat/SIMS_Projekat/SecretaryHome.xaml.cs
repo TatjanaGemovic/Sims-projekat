@@ -25,119 +25,28 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class SecretaryHome : Window
     {
-        public AccountRepository AccountRepository { get; set; }
-        public AccountController AccountController { get; set; }
-
-        private static DataGrid dataGrid;
-        public static ObservableCollection<Account> Patients { get; set; }
-        public static ObservableCollection<Account> Doctors { get; set; }
+        public object CurrentView { get; set; }
 
         public SecretaryHome(AccountRepository accountRepository, AccountController accountController)
         {
             InitializeComponent();
-            this.DataContext = this;
-            AccountRepository = accountRepository;
-            AccountController = accountController;
-            dataGrid = dataGridPatients;
-            Patients = new ObservableCollection<Account>();
-            Doctors = new ObservableCollection<Account>();
-
-            // izmeniti na servis umesto repozitorijuma
-            foreach(Patient patient in AccountRepository.Patients)
-            {
-                Patients.Add(patient);
-            }
-            foreach (Doctor doctor in AccountRepository.Doctors)
-            {
-                Doctors.Add(doctor);
-            }
+            AccountsView accountsView = new AccountsView(accountRepository, accountController);
+            CurrentView = accountsView;
+            Content.Content = accountsView;
 
         }
 
-        public static void AddPatient(Patient newPatient)
+        
+
+        private void LogOut_Click(object sender, MouseButtonEventArgs e)
         {
-            Patients.Add(newPatient);
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
-
-        public static void AddDoctor(Doctor newDoctor)
-        {
-            Doctors.Add(newDoctor);
-        }
-
-        public static void DeletePatient(Patient patient)
-        {
-            Patients.Remove(patient);
-        }
-
-        public static void DeleteDoctor(Doctor doctor)
-        {
-            Doctors.Remove(doctor);
-        }
-
-        public static void Refresh()
-        {
-            // dodati za doktore
-            dataGrid.Items.Refresh();
-        }
-
-        private void AddPatient_Click(object sender, RoutedEventArgs e)
-        {
-            AddPatient addPatient = new AddPatient(AccountController);
-            addPatient.Show();
-        }
-
-        private void DeletePatient_Click(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            DeletePatient(patient);
-            AccountController.DeletePatientAccount(patient);
-        }
-
-
-        private void EditPatient_Click(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            EditPatient editPatient = new EditPatient(AccountController, patient);
-            editPatient.Show();
-        }
-
-        private void ShowPatient_Click(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            ViewPatient viewPatient = new ViewPatient(patient);
-            viewPatient.Show();
-        }
-
         private void DataWindow_Closing(object sender, EventArgs e)
         {
-            AccountRepository.Serialize();
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            AddUrgentPatient addUrgentPatient = new(AccountController);
-            addUrgentPatient.Show();
-        }
-
-        private void AddDoctor_Click(object sender, RoutedEventArgs e)
-        {
-            AddDoctor addDoctor = new AddDoctor(AccountController);
-            addDoctor.Show();
-        }
-
-        private void EditDoctor_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ShowDoctor_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeleteDoctor_Click(object sender, RoutedEventArgs e)
-        {
-
+            //AccountRepository.Serialize();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +49,7 @@ namespace SIMS_Projekat.PatientView
                 IsUrgent = false
             };
             AccountController.CreatePatientAccount(newPatient);
-            SecretaryHome.AddPatient(newPatient);
+            AccountsView.AddPatient(newPatient);
             Close();
         }
     }
