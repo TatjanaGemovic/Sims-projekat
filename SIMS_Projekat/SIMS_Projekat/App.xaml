@@ -36,7 +36,7 @@
         <Style TargetType="Button" x:Key="DoctorHomePageButton">
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="26"/>
                 </Style>
             </Style.Resources>
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
@@ -51,7 +51,7 @@
         <Style TargetType="Button" x:Key="DoctorHomePageSmallButton">
             <Style.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="20"/>
+                    <Setter Property="CornerRadius" Value="26"/>
                 </Style>
             </Style.Resources>
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
@@ -71,7 +71,7 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FFA2E1F1"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Width" Value="75"/>

@@ -5,13 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
       mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="430"
+      d:DesignHeight="750" d:DesignWidth="430"
       Title="AppointmentCalendar">
 
     <Grid>
-        <Button Content="Izaberi" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Button_Click" FontSize="20" Margin="0,522,27,0"/>
-        <Button x:Name="Nazad" Content="Nazad" HorizontalAlignment="Left" Margin="27,522,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Nazad_Click"/>
-        <Viewbox Margin="0,0,0,172">
+        <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
+            <Button Content="Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click_1"/>
+            <Label Content="Kalendar" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
+        </DockPanel>
+        <Button Content="Izaberi" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Button_Click" FontSize="20" Margin="0,620,27,0"/>
+        <Viewbox Margin="0,112,0,112">
             <Calendar x:Name="Kalendar1"></Calendar>
         </Viewbox>
     </Grid>

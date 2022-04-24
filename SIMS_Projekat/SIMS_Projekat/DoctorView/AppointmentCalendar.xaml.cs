@@ -31,7 +31,7 @@ namespace SIMS_Projekat.DoctorView
             Frame.Content = new Scheduling(Frame, SelectedDate, doctor);
         }
 
-        private void Nazad_Click(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             DoctorAppointments appointments = new DoctorAppointments(Frame, doctor);
             Frame.Content = appointments;

@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,16 +24,48 @@ namespace SIMS_Projekat.DoctorView
     {
         private Doctor doctor;
         Frame Frame;
+        public BindingList<Patients> patientList{ get; set; }
         public PatientList(Frame mainFrame, Doctor doctor1)
         {
             InitializeComponent();
             Frame = mainFrame;
             doctor = doctor1;
+            patientList = new BindingList<Patients>();
+            createList();
+            PatientLists.ItemsSource = patientList;
+            this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = new DoctorAppointments(Frame, doctor);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public class Patients
+        {
+            public string ID { get; set; }
+            public string fullName { get; set; }
+            public Patients(String ID1, String fullName1)
+            {
+                ID = ID1;
+                fullName = fullName1;
+            }
+        }
+
+        public void createList()
+        {
+            foreach(Model.Patient patient in App.accountRepository.GetAllPatientAccounts())
+            {
+                string id = patient.ID;
+                string name = patient.FirstName + " " + patient.LastName;
+
+                patientList.Add(new Patients(id, name));
+            }
         }
     }
 }
