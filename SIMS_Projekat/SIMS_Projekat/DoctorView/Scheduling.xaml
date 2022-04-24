@@ -13,7 +13,7 @@
             <ColumnDefinition Width="215*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="OperationsList" ItemsSource="{Binding appointmentInformations}" Margin="13,63,13,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="450"  Width="390">
+        <DataGrid x:Name="OperationsList" ItemsSource="{Binding appointmentInformations}" Margin="0,50,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="463"  Width="390">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding ="{Binding appointmentId}" Width="30"/>
                 <DataGridTextColumn Header="Vreme" Binding ="{Binding beginningTime}" Width="100"/>
@@ -24,6 +24,7 @@
         <Button x:Name="Zakazite_Termin" Content="Zakazite termin" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="124" Height="60"/>
         <Button x:Name="Otkazite_Termin" Content="Otkazite termin" HorizontalAlignment="Center" Margin="0,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="124" Height="60"/>
         <Button x:Name="Izmenite_Termin" Content="Izmenite termin" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="124" Height="60"/>
-        <TextBox x:Name="Datum" IsEnabled="False"  HorizontalAlignment="Left" Margin="281,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="35" FontSize="20" BorderBrush="#FF3E3D3D" Background="White"/>
+        <Button x:Name="Nazad" Content="Nazad" HorizontalAlignment="Left" Margin="13,0,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="119" Height="35" Click="Nazad_Click"/>
+        <TextBox x:Name="Datum" IsEnabled="False"  HorizontalAlignment="Right" Margin="0,0,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122" Height="35" FontSize="20" BorderBrush="#FF3E3D3D" Background="White"/>
     </Grid>
 </Page>

@@ -120,5 +120,11 @@ namespace SIMS_Projekat.DoctorView
                                               dateTime, dateTime2, type));
             }
         }
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
+            AppointmentCalendar appointmentCalendar = new AppointmentCalendar(Frame, doctor);
+            Frame.Content = appointmentCalendar;
+        }
     }
 }

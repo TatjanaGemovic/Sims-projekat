@@ -11,17 +11,16 @@
     <Grid>
         <DockPanel Margin="16,34,16,178" Background="#FFA7AFAF"/>
         <Button x:Name="Izmeni_operaciju" Content="Sacuvaj" HorizontalAlignment="Right" Margin="0,522,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Promeni_Click"/>
+        <Button x:Name="Nazad" Content="Nazad" HorizontalAlignment="Left" Margin="15,522,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Nazad_Click"/>
         <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15"/>
         <Label Content="Vreme zavrsetka" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="161" FontSize="15"/>
-        <Label Content="Tip operacije" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Tip pregleda" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
         <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="40,256,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-        <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="40,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-        <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,348,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+        <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
         <TextBox x:Name="Vreme_pocetka" HorizontalAlignment="Left" Margin="227,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
         <TextBox x:Name="Vreme_zavrsetka" HorizontalAlignment="Left" Margin="227,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
         <ComboBox x:Name="Tip_operacije" AllowDrop="True" Margin="227,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
-        <TextBox x:Name="Ime_pacijenta" HorizontalAlignment="Left" Margin="227,256,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
-        <TextBox x:Name="Ime_lekara" HorizontalAlignment="Left" Margin="227,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
-        <TextBox x:Name="Broj_sobe" HorizontalAlignment="Left" Margin="227,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+        <ComboBox x:Name="Ime_pacijenta" AllowDrop="True" Margin="227,256,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
+        <ComboBox x:Name="Ime_sobe" AllowDrop="True" Margin="227,302,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
     </Grid>
 </Page>
