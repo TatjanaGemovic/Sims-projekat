@@ -12,7 +12,7 @@
         <DockPanel Margin="0,0,0,0">
             <Button Content="Kalendar" DockPanel.Dock="Top" Style="{StaticResource DoctorHomePageButton}" Margin="0,10,0,10"/>
             <Button Content="Zakazivanje" DockPanel.Dock="Top" Style="{StaticResource DoctorHomePageButton}" Margin="0,10,0,10" Click="Button_Click"/>
-            <Button Content="Pregled" DockPanel.Dock="Top" Style="{StaticResource DoctorHomePageButton}" Margin="0,10,0,10" FontSize="36" />
+            <Button Content="Pregled" DockPanel.Dock="Top" Style="{StaticResource DoctorHomePageButton}" Margin="0,10,0,10" FontSize="36" Click="Button_Click_1" />
             <Button Content="Notifikacije" Style="{StaticResource DoctorHomePageSmallButton}" Margin="26,-20,20,0" />
             <Button Content="Slobodni dani" Style="{StaticResource DoctorHomePageSmallButton}" Margin="0,-20,22,0"/>
         </DockPanel>

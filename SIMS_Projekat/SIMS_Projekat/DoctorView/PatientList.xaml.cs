@@ -17,27 +17,22 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.DoctorView
 {
     /// <summary>
-    /// Interaction logic for DoctorAppointments.xaml
+    /// Interaction logic for PatientList.xaml
     /// </summary>
-    public partial class DoctorAppointments : Page
+    public partial class PatientList : Page
     {
-        Frame MainFrame;
-        Doctor doctor;
-        public DoctorAppointments(Frame main, Doctor d)
+        private Doctor doctor;
+        Frame Frame;
+        public PatientList(Frame mainFrame, Doctor doctor1)
         {
             InitializeComponent();
-            doctor = d;
-            MainFrame = main;
+            Frame = mainFrame;
+            doctor = doctor1;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new AppointmentCalendar(MainFrame, doctor);
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Content = new PatientList(MainFrame, doctor);
+            Frame.Content = new DoctorAppointments(Frame, doctor);
         }
     }
 }

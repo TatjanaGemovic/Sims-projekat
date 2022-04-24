@@ -62,8 +62,27 @@
             <Setter Property="Height" Value="110"/>
             <Setter Property="Width" Value="170"/>
         </Style>
+        <Style TargetType="Button" x:Key="BackButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="#FFA2E1F1"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="75"/>
+        </Style>
         <Style TargetType="DockPanel" x:Key="DockPanel">
             <Setter Property="Background" Value="#FFA7AFAF"/>
+        </Style>
+        <Style TargetType="Label" x:Key="ActionBarLabel">
+            <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
         </Style>
     </Application.Resources>
 </Application>
