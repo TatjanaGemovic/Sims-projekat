@@ -121,7 +121,7 @@ namespace SIMS_Projekat.DoctorView
             }
         }
 
-        private void Nazad_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             AppointmentCalendar appointmentCalendar = new AppointmentCalendar(Frame, doctor);
             Frame.Content = appointmentCalendar;

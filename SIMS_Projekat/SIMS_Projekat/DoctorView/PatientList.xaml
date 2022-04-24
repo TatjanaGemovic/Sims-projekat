@@ -10,7 +10,7 @@
 
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
-            <Button Content="Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
             <Label Content="Pacijenti" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">

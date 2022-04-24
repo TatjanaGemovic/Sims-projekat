@@ -10,7 +10,7 @@
 
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
-            <Button Content="Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click_1"/>
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click_1"/>
             <Label Content="Kalendar" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <Button Content="Izaberi" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Button_Click" FontSize="20" Margin="0,620,27,0"/>
