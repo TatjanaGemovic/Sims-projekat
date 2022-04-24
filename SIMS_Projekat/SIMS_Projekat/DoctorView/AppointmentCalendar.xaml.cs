@@ -30,5 +30,11 @@ namespace SIMS_Projekat.DoctorView
             SelectedDate = Kalendar1.SelectedDate.ToString();
             Frame.Content = new Scheduling(Frame, SelectedDate, doctor);
         }
+
+        private void Nazad_Click(object sender, RoutedEventArgs e)
+        {
+            DoctorAppointments appointments = new DoctorAppointments(Frame, doctor);
+            Frame.Content = appointments;
+        }
     }
 }

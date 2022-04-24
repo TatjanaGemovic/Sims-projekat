@@ -9,7 +9,8 @@
       Title="AppointmentCalendar">
 
     <Grid>
-        <Button Content="Izaberi" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Button_Click" FontSize="20"/>
+        <Button Content="Izaberi" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Button_Click" FontSize="20" Margin="0,522,27,0"/>
+        <Button x:Name="Nazad" Content="Nazad" HorizontalAlignment="Left" Margin="27,522,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Nazad_Click"/>
         <Viewbox Margin="0,0,0,172">
             <Calendar x:Name="Kalendar1"></Calendar>
         </Viewbox>
