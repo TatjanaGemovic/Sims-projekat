@@ -13,7 +13,7 @@ namespace SIMS_Projekat.Model
         public bool IsUrgent { get; set; }
         public System.Collections.Generic.List<Appointment> appointment;
 
-        public MedicalRecord medicalRecord { get; set; }
+        public MedicalRecord MedicalRecord { get; set; }
 
         public override string[] toCSV()
         {

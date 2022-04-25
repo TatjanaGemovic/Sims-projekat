@@ -45,7 +45,8 @@ namespace SIMS_Projekat.PatientView
                 Username = Username.Text,
                 Password = Password.Password,
                 Symptoms = "N/A",
-                IsUrgent = false
+                IsUrgent = false,
+                MedicalRecord = new MedicalRecord()
             };
             AccountController.CreatePatientAccount(newPatient);
             SecretaryHome.AddPatient(newPatient);
