@@ -43,10 +43,13 @@ namespace SIMS_Projekat.PatientView
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
+            App.accountRepository.Serialize();
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
+            App.appointmentRepo.Serialize();
+            App.accountRepository.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
@@ -55,6 +58,11 @@ namespace SIMS_Projekat.PatientView
         private void homepage_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Homepage(patient);
+        }
+
+        private void choose_doctor_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new ChooseDoctorPage(patient);
         }
     }
 }

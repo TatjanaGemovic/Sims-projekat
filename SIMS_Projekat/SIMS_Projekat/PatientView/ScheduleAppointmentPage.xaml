@@ -25,23 +25,36 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Novi termin" HorizontalAlignment="Left" Height="102" Margin="10,10,0,0" VerticalAlignment="Top" Width="335" FontSize="48" FontWeight="Bold"/>
-        <Label Content="Datum :" HorizontalAlignment="Left" Height="42" Grid.Row="1" VerticalAlignment="Top" Width="146" FontSize="24" Margin="50,50,0,0"/>
-        <Label Content="Vreme :" HorizontalAlignment="Center" Height="35" Grid.Row="2" VerticalAlignment="Top" Width="170" FontSize="24" Margin="0,50,0,0"/>
-        <Label Content="Izabrani lekar :" HorizontalAlignment="Center" Height="42" Grid.Row="3" VerticalAlignment="Top" Width="170" FontSize="24" Margin="0,50,0,0"/>
-        <ComboBox Grid.Row="4" AllowDrop="True" x:Name="choose_doctor" Margin="58,50,26,0">
-            <ComboBoxItem IsSelected="True" Height="50" >
-                <TextBlock Text="Promeni lekara" FontSize="22" />
-            </ComboBoxItem>
-        </ComboBox>
-        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Height="38" Grid.Row="5" VerticalAlignment="Top" Width="219" Margin="50,39,0,0" FontSize="22"/>
+        <Label Content="Novi termin" HorizontalAlignment="Left" Height="102"  Grid.Row="0" Grid.ColumnSpan="2"
+               Margin="10,10,0,0" VerticalAlignment="Top" Width="335" FontSize="48" FontWeight="Bold"/>
+        <Label Content="Datum :" HorizontalAlignment="Left" Height="42" Grid.Row="1" 
+               Margin="50,50,0,0" VerticalAlignment="Top" Width="146" FontSize="24" />
+        <Label Content="Vreme :" HorizontalAlignment="Center" Height="35" Grid.Row="2" 
+               Margin="0,50,0,0" VerticalAlignment="Top" Width="170" FontSize="24" />
+        <Label Content="Izabrani lekar :" HorizontalAlignment="Center" Height="42" Grid.Row="3" 
+               Margin="0,50,0,0" VerticalAlignment="Top" Width="170" FontSize="24" />
+        
+        <ComboBox Grid.Row="4" AllowDrop="True" x:Name="choose_doctor" Margin="50,25,34,25"/>
+        
+        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Height="38" Grid.Row="5" 
+                  VerticalAlignment="Top" Width="219" Margin="50,39,0,0" FontSize="22"/>
+        
         <TextBlock Grid.Row="3" Grid.Column="1" Background="White" Margin="0,45,0,1" FontSize="24" />
-        <DatePicker x:Name="date" Grid.Column="1" HorizontalAlignment="Center" Height="30" Grid.Row="1" VerticalAlignment="Top" Width="175" Margin="0,62,0,0" FontSize="20" />
-        <ComboBox Grid.Column="1" Grid.Row="2" AllowDrop="True" x:Name="comboTime" Margin="58,50,26,0" BorderBrush="White" ItemsSource="{Binding listOfAppointmentTime}" >
+        
+        <DatePicker x:Name="date" Grid.Column="1" Text="Izaberite datum" HorizontalAlignment="Center" 
+                    Height="30" Grid.Row="1" VerticalAlignment="Top" Width="175" Margin="0,62,0,0" FontSize="20" FirstDayOfWeek="Monday"
+                    SelectedDateChanged="date_SelectedDateChanged"/>
 
-        </ComboBox>
-        <Button  Grid.Column="2" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Left" Height="65" Margin="258,99,0,0" Grid.Row="7" VerticalAlignment="Top" Width="219" FontSize="24" Click="scheduleClick"/>
-        <Button Grid.Column="2" Content="Odustani" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Left" Height="65" Margin="620,99,0,0" Grid.Row="7" VerticalAlignment="Top" Width="219" FontSize="24" Click="cancelClick"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" IsEditable="False" IsHitTestVisible="False" Focusable="False"
+                  AllowDrop="True" x:Name="comboTime" Margin="58,50,26,0" BorderBrush="White" 
+                  ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" SourceUpdated="comboTime_SourceUpdated" />
+
+        <Button  Grid.Column="2" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" 
+                 HorizontalAlignment="Left" Height="65" Margin="258,99,0,0" Grid.Row="7" VerticalAlignment="Top"
+                 Width="219" FontSize="24" Click="scheduleClick"/>
+        <Button Grid.Column="2" Content="Odustani" Foreground="Black" Background="#FFB6DAD6" 
+                HorizontalAlignment="Left" Height="65" Margin="620,99,0,0" Grid.Row="7" VerticalAlignment="Top" 
+                Width="219" FontSize="24" Click="cancelClick"/>
 
 
     </Grid>

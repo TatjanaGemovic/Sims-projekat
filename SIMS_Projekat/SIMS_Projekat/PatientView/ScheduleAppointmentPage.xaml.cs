@@ -26,23 +26,45 @@ namespace SIMS_Projekat.PatientView
         //private ComboBox izbor_vremena;
         Frame frame;
         Patient patient;
+        DateTime pickedDate;
+        BindingList<String> listOfTakenAppointmentTime;
+        BindingList<String> listOfAppointmentTime;
         public ScheduleAppointmentPage(Frame mainFrame, Patient p)
         {
             frame = mainFrame;
             patient = p;
-            InitializeListOfAppointments();
+           // InitializeListOfAppointments();
             InitializeComponent();
            
-            InitializeComboBox();
+            //InitializeComboBox();
         }
 
-        BindingList<String> listOfTakenAppointmentTime;
-        BindingList<String> listOfAppointmentTime;
+        private void InitializeComboBox()
+        {
+
+            //combovreme.DataContext = listOfAppointmentTime;
+            comboTime.ItemsSource = listOfAppointmentTime;
+        }
+
+        
+
+        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            comboTime.IsHitTestVisible = true;
+            comboTime.IsEnabled = true;
+            string date = this.date.ToString();
+            pickedDate = DateTime.Parse(date);
+            InitializeListOfAppointments();
+
+        }
+
         private void InitializeListOfAppointments()
         {
+            List<string> list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate);
+
             // Create the new BindingList of Part type.
             listOfAppointmentTime = new BindingList<String>();
-            listOfTakenAppointmentTime = new BindingList<String>();
+            listOfTakenAppointmentTime = new BindingList<String>(list);
 
             // Allow new parts to be added, but not removed once committed.        
             listOfAppointmentTime.AllowNew = true;
@@ -89,33 +111,19 @@ namespace SIMS_Projekat.PatientView
             listOfAppointmentTime.Add("16:15");
             listOfAppointmentTime.Add("16:30");
             listOfAppointmentTime.Add("16:45");
-           
 
-
-            // listOfAppointmentTime = new BindingList<Appointments>((IList<Appointments>)App.appointmentController.GetAllAppointments());
-            // listOfAppointments = App.appointmentController.GetAllAppointments();
-
-            foreach (Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
-            {
-                string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
-                String[] datePart = dateTime.Split(" ");
-                string time = datePart[1];
-                listOfTakenAppointmentTime.Add(time);
-
-            }
             foreach (string time in listOfTakenAppointmentTime)
             {
                 listOfAppointmentTime.Remove(time);
             }
 
         }
-        private void InitializeComboBox()
+
+        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
         {
-
-            //combovreme.DataContext = listOfAppointmentTime;
             comboTime.ItemsSource = listOfAppointmentTime;
+            //comboTime.SelectedIndex = 0;
         }
-
         private void scheduleClick(object sender, RoutedEventArgs e)
         {
             string datum = this.date.ToString();
@@ -178,6 +186,7 @@ namespace SIMS_Projekat.PatientView
             Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }
+
     }
     
 }
