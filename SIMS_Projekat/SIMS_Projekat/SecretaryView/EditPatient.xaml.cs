@@ -1,5 +1,6 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace SIMS_Projekat.PatientView
             };
             AccountController.EditPatientAccount(newPatient, ID);
 
-            SecretaryHome.Refresh();
+            AccountsView.Refresh();
             Close();
         }
     }

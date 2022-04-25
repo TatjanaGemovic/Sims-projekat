@@ -49,7 +49,7 @@ namespace SIMS_Projekat.SecretaryView
             };
 
             AccountController.CreatePatientAccount(newUrgentPatient);
-            SecretaryHome.AddPatient(newUrgentPatient);
+            AccountsView.AddPatient(newUrgentPatient);
             Close();
         }
     }
