@@ -23,6 +23,15 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame MainFrame;
         Doctor doctor;
+        private DoctorHomePage doctorHomePage;
+
+        public DoctorAppointments(Frame main, Doctor d, DoctorHomePage doctorHomePage1)
+        {
+            InitializeComponent();
+            doctor = d;
+            MainFrame = main;
+            doctorHomePage = doctorHomePage1;
+        }
         public DoctorAppointments(Frame main, Doctor d)
         {
             InitializeComponent();
@@ -38,6 +47,11 @@ namespace SIMS_Projekat.DoctorView
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PatientList(MainFrame, doctor);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content= new Menu(MainFrame, doctor, doctorHomePage);
         }
     }
 }

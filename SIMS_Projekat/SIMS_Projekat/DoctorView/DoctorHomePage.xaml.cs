@@ -25,7 +25,7 @@ namespace SIMS_Projekat.DoctorView
         {
             InitializeComponent();
             doctor = d;
-            MainFrame.Content = new DoctorAppointments(MainFrame, doctor);
+            MainFrame.Content = new DoctorAppointments(MainFrame, doctor, this);
         }
 
         private void DataWindow_Closing(object sender, EventArgs e)

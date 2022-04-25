@@ -43,7 +43,22 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            /*AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+            int appointmentID = appointmentInformation.appointmentId;
+            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);*/
 
+            Patients patient = (Patients)PatientLists.SelectedItem;
+            string id = patient.ID;
+            Patient patient1 = new Patient();
+            foreach(Patient p in App.accountController.GetAllPatientAccounts())
+            {
+                if(p.ID == id)
+                {
+                    patient1 = p;
+                    break;
+                }
+            }
+            Frame.Content = new PatientCard(Frame, doctor, patient1);
         }
 
         public class Patients
