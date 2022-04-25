@@ -11,6 +11,9 @@ namespace SIMS_Projekat.Model
         public double Weight { get; set; }
         public string Symptoms { get; set; }
         public bool IsUrgent { get; set; }
+        public System.Collections.Generic.List<Appointment> appointment;
+
+        public MedicalRecord medicalRecord { get; set; }
 
         public override string[] toCSV()
         {
@@ -83,59 +86,6 @@ namespace SIMS_Projekat.Model
             if (Allergen != null)
                 Allergen.Clear();
         }
-        public System.Collections.Generic.List<MedicalRecord> medicalRecord;
-
-
-
-        public System.Collections.Generic.List<MedicalRecord> MedicalRecord
-        {
-            get
-            {
-                if (medicalRecord == null)
-                    medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
-                return medicalRecord;
-            }
-            set
-            {
-                RemoveAllMedicalRecord();
-                if (value != null)
-                {
-                    foreach (MedicalRecord oMedicalRecord in value)
-                        AddMedicalRecord(oMedicalRecord);
-                }
-            }
-        }
-
-
-        public void AddMedicalRecord(MedicalRecord newMedicalRecord)
-        {
-            if (newMedicalRecord == null)
-                return;
-            if (this.medicalRecord == null)
-                this.medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
-            if (!this.medicalRecord.Contains(newMedicalRecord))
-                this.medicalRecord.Add(newMedicalRecord);
-        }
-
-
-        public void RemoveMedicalRecord(MedicalRecord oldMedicalRecord)
-        {
-            if (oldMedicalRecord == null)
-                return;
-            if (this.medicalRecord != null)
-                if (this.medicalRecord.Contains(oldMedicalRecord))
-                    this.medicalRecord.Remove(oldMedicalRecord);
-        }
-
-
-        public void RemoveAllMedicalRecord()
-        {
-            if (medicalRecord != null)
-                medicalRecord.Clear();
-        }
-        public System.Collections.Generic.List<Appointment> appointment;
-
-
 
         public System.Collections.Generic.List<Appointment> Appointment
         {

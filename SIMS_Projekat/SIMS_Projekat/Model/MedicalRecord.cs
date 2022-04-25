@@ -4,8 +4,8 @@ namespace SIMS_Projekat.Model
 {
     public class MedicalRecord : Serialization.Serializable
     {
-        //public Examination Examination { get; set; }
-        public Patient patient { get; set; }
+        //sadrzi istoriju pregleda
+        public System.Collections.Generic.List<Examination> examination;
 
         public void fromCSV(string[] values)
         {
