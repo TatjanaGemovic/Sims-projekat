@@ -25,7 +25,9 @@ namespace SIMS_Projekat
 
         private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
         private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
+        public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static AccountRepository accountRepository;
+        public static MedicalRecordRepository medRecordRepository;
         public static AccountService accountService;
         public static AccountController accountController;
 
@@ -35,6 +37,7 @@ namespace SIMS_Projekat
         {
            
             roomController = new RoomController();
+            medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             AppointmentService appointmentService = new AppointmentService()
             {
@@ -54,12 +57,11 @@ namespace SIMS_Projekat
             {
                 AccountService = accountService
             };
-
+           
+            medRecordRepository.Deserialize();
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
-           
-
         }
     }
 }

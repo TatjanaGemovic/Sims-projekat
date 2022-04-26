@@ -5,8 +5,9 @@ namespace SIMS_Projekat.Model
 {
     public class MedicalRecord : Serialization.Serializable
     {
+        public string ID { get; set; }
         //sadrzi istoriju pregleda
-        public List<Examination> Examinations { get; set; }
+        //public List<Examination> Examinations { get; set; }
         public string CurrentTherapy { get; set; }
         public string Note { get; set; }
         public List<string> PreviousDiseases { get; set; }
@@ -15,16 +16,28 @@ namespace SIMS_Projekat.Model
         public string Diagnosis { get; set; }
         public string Treatment { get; set; }
 
-
-
         public void fromCSV(string[] values)
         {
-            throw new NotImplementedException();
+            ID = values[0];
+            CurrentTherapy = values[1];
+            Note = values[2];
+            BeenHospitalized = bool.Parse(values[3]);
+            Diagnosis = values[4];
+            Treatment = values[5];
         }
 
         public string[] toCSV()
         {
-            throw new NotImplementedException();
+            string[] values =
+            {
+                ID,
+                CurrentTherapy,
+                Note,
+                BeenHospitalized.ToString(),
+                Diagnosis,
+                Treatment
+            };
+            return values;
         }
     }
 }

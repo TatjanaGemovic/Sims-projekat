@@ -17,15 +17,15 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.DoctorView
 {
     /// <summary>
-    /// Interaction logic for PatientCard.xaml
+    /// Interaction logic for PatientInfo.xaml
     /// </summary>
-    public partial class PatientCard : Page
+    public partial class PatientInfo : Page
     {
         private Frame Frame;
         private Doctor doctor;
         private Patient patient;
 
-        public PatientCard(Frame frame, Doctor doctor1, Patient patient1)
+        public PatientInfo(Frame frame, Doctor doctor1, Patient patient1)
         {
             InitializeComponent();
             Frame = frame;
@@ -36,7 +36,12 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new PatientInfo(Frame, doctor, patient);
+            Frame.Content = new PatientList(Frame, doctor);
+        }
+
+        private void MedicalCarton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new PatientCard(Frame, doctor, patient);
         }
     }
 }

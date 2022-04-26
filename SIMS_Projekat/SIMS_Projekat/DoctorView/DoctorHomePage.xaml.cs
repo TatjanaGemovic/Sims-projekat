@@ -31,6 +31,7 @@ namespace SIMS_Projekat.DoctorView
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
+            App.medRecordRepository.Serialize();
         }
     }
 }

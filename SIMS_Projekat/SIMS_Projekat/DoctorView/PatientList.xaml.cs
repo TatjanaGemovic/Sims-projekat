@@ -58,7 +58,7 @@ namespace SIMS_Projekat.DoctorView
                     break;
                 }
             }
-            Frame.Content = new PatientCard(Frame, doctor, patient1);
+            Frame.Content = new PatientInfo(Frame, doctor, patient1);
         }
 
         public class Patients

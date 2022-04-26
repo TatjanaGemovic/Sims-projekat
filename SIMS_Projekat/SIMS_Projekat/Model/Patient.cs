@@ -11,8 +11,10 @@ namespace SIMS_Projekat.Model
         public double Weight { get; set; }
         public string Symptoms { get; set; }
         public bool IsUrgent { get; set; }
-        public System.Collections.Generic.List<Appointment> appointment;
+        public List<Appointment> appointment;
+        public List<Allergen> Allergen { get; set; }
 
+        public string MedicalRecordID;
         public MedicalRecord MedicalRecord { get; set; }
 
         public override string[] toCSV()
@@ -33,7 +35,8 @@ namespace SIMS_Projekat.Model
                 Height.ToString(),
                 Weight.ToString(),
                 Symptoms.ToString(),
-                IsUrgent.ToString()
+                IsUrgent.ToString(),
+                MedicalRecord.ID.ToString(),
             };
             return values;
         }
@@ -55,9 +58,12 @@ namespace SIMS_Projekat.Model
             Weight = double.Parse(values[12]);
             Symptoms = values[13];
             IsUrgent = bool.Parse(values[14]);
+            MedicalRecordID = values[15];
+
+            MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
         }
 
-        public List<Allergen> Allergen { get; set; }
+        
 
 
         public void AddAllergen(Allergen newAllergen)
@@ -87,12 +93,12 @@ namespace SIMS_Projekat.Model
                 Allergen.Clear();
         }
 
-        public System.Collections.Generic.List<Appointment> Appointment
+        public List<Appointment> Appointment
         {
             get
             {
                 if (appointment == null)
-                    appointment = new System.Collections.Generic.List<Appointment>();
+                    appointment = new List<Appointment>();
                 return appointment;
             }
             set
@@ -112,7 +118,7 @@ namespace SIMS_Projekat.Model
             if (newAppointment == null)
                 return;
             if (this.appointment == null)
-                this.appointment = new System.Collections.Generic.List<Appointment>();
+                this.appointment = new List<Appointment>();
             if (!this.appointment.Contains(newAppointment))
             {
                 this.appointment.Add(newAppointment);

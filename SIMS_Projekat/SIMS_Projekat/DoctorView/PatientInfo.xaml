@@ -1,0 +1,31 @@
+﻿<Page x:Class="SIMS_Projekat.DoctorView.PatientInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="430"
+      Title="PatientInfo">
+
+    <Grid>
+        <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
+            <Label Content="Pacijent info" Width="228" Height="48" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+        </DockPanel>
+        <DockPanel Margin="0,100,0,0">
+            <Grid>
+                <Button x:Name="MedicalCarton" Content="Karton" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="MedicalCarton_Click"/>
+                <Button x:Name="Examination" Content="Pregled" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}"/>
+                <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="24" BorderBrush="#FF6F6F6F" FontWeight="Bold" BorderThickness="0,0,0,3"/>
+                <DockPanel LastChildFill="False" Margin="16,58,16,150" Background="#FFA7AFAF"/>
+                <Label Content="Ime" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold"/>
+                <Label Content="Prezime" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold"/>
+                <Label Content="JMBG" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold"/>
+                <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="38,256,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
+                <Label Content="Pol" HorizontalAlignment="Left" Margin="38,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold"/>
+                <Label Content="Status zaposlenja" HorizontalAlignment="Left" Margin="38,348,0,0" VerticalAlignment="Top" Width="158" FontSize="15" FontWeight="Bold"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>
