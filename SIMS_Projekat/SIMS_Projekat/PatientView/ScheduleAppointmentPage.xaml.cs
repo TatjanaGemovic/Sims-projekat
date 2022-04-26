@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -29,38 +30,83 @@ namespace SIMS_Projekat.PatientView
         DateTime pickedDate;
         BindingList<String> listOfTakenAppointmentTime;
         BindingList<String> listOfAppointmentTime;
+        public ObservableCollection<DoctorInfo> doctorInfoList = new ObservableCollection<DoctorInfo>();
+        DoctorInfo drInfo;
         public ScheduleAppointmentPage(Frame mainFrame, Patient p)
         {
             frame = mainFrame;
             patient = p;
+
            // InitializeListOfAppointments();
             InitializeComponent();
            
-            //InitializeComboBox();
+
+            if (patient.doctorLicenceNumber != "")
+            {
+                Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber)as Doctor;
+                existing_doctor.Text = doctor.FirstName + " " + doctor.LastName;
+                
+            }
+
+            InitializeDoctorComboBox();
         }
 
-        private void InitializeComboBox()
+        public class DoctorInfo
         {
+            public string doctorName { get; set; }
+            public string licenceNumber { get; set; }
 
-            //combovreme.DataContext = listOfAppointmentTime;
-            comboTime.ItemsSource = listOfAppointmentTime;
+            public DoctorInfo(string doctor, string licence)
+            {
+
+                doctorName = doctor;
+                licenceNumber = licence;
+            }
+        }
+        public void InitializeDoctorComboBox()
+        {
+            foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            {
+                doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
+
+            }
+            choose_doctor.ItemsSource = doctorInfoList;
         }
 
-        
+
 
         private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboTime.IsHitTestVisible = true;
-            comboTime.IsEnabled = true;
-            string date = this.date.ToString();
-            pickedDate = DateTime.Parse(date);
-            InitializeListOfAppointments();
+            if(patient.doctorLicenceNumber != "" || choose_doctor.SelectedItem != null)
+            {
+                comboTime.IsHitTestVisible = true;
+                comboTime.IsEnabled = true;
+                string date = this.date.ToString();
+                pickedDate = DateTime.Parse(date);
+                InitializeListOfAppointments();
+            }
+            else
+            {
+                warning.Visibility = Visibility.Visible;
+                string date = this.date.ToString();
+                pickedDate = DateTime.Parse(date);
+            }
+            
 
         }
 
         private void InitializeListOfAppointments()
         {
-            List<string> list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate);
+            List<string> list;
+            if (choose_doctor.SelectedItem != null)
+            {
+               list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
+            }
+            else
+            {
+               list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, patient.doctorLicenceNumber);
+            }
+            
 
             // Create the new BindingList of Part type.
             listOfAppointmentTime = new BindingList<String>();
@@ -75,6 +121,84 @@ namespace SIMS_Projekat.PatientView
 
             // Do not allow parts to be edited.
             listOfAppointmentTime.AllowEdit = false;
+            CreateList();
+
+            foreach (string time in listOfTakenAppointmentTime)
+            {
+                listOfAppointmentTime.Remove(time);
+            }
+            comboTime.ItemsSource = listOfAppointmentTime;
+        }
+       
+        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            comboTime.ItemsSource = listOfAppointmentTime;
+            //comboTime.SelectedIndex = 0;
+        }
+       
+
+        private void choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            drInfo = choose_doctor.SelectedItem as DoctorInfo;
+            //patient.doctorLicenceNumber = drInfo.licenceNumber;
+
+            
+            if (date.SelectedDate != null)
+            {
+                comboTime.IsHitTestVisible = true;
+                comboTime.IsEnabled = true;
+                InitializeListOfAppointments();
+            }
+        }
+        private void scheduleClick(object sender, RoutedEventArgs e)
+        {
+            string dateFromPage = this.date.ToString();
+            DateTime start = DateTime.Parse(dateFromPage);
+            DateTime startDate = start.Date;
+
+            string timeFromPage = this.comboTime.SelectionBoxItem.ToString();
+            TimeSpan timeStart = TimeSpan.Parse(timeFromPage);
+            startDate = startDate.Add(timeStart);
+           
+            Doctor doctor;
+            if (choose_doctor.SelectedItem != null)
+            {
+                doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
+            }
+            else
+            {
+                doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber) as Doctor;
+            }
+
+            Room room = App.appointmentController.GetAvailableRoom(startDate);
+
+
+            Appointment appointment = new Appointment()
+            {
+                beginningDate = startDate,
+                endDate = startDate.AddMinutes(15),
+                room = room,
+                doctor = doctor,
+                patient = patient,
+                operation = false,
+                //licenceNumber = doctor.LicenceNumber,
+                //patientID = patient.ID,
+                //roomID = room.RoomID
+            };
+
+            App.appointmentController.AddAppointment(appointment);
+
+            Appointments Appointments = new Appointments(frame, patient);
+            frame.Content = Appointments;
+        }
+
+        private void cancelClick(object sender, RoutedEventArgs e)
+        {
+            Appointments Appointments = new Appointments(frame, patient);
+            frame.Content = Appointments;
+        }
+        private void CreateList()
+        {
             listOfAppointmentTime.Add("08:00");
             listOfAppointmentTime.Add("08:15");
             listOfAppointmentTime.Add("08:30");
@@ -111,82 +235,7 @@ namespace SIMS_Projekat.PatientView
             listOfAppointmentTime.Add("16:15");
             listOfAppointmentTime.Add("16:30");
             listOfAppointmentTime.Add("16:45");
-
-            foreach (string time in listOfTakenAppointmentTime)
-            {
-                listOfAppointmentTime.Remove(time);
-            }
-
         }
-
-        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
-        {
-            comboTime.ItemsSource = listOfAppointmentTime;
-            //comboTime.SelectedIndex = 0;
-        }
-        private void scheduleClick(object sender, RoutedEventArgs e)
-        {
-            string datum = this.date.ToString();
-            //12/07/2022 12:00:00 AM
-            String[] deloviDatuma = datum.Split(" ");
-            String[] deoDatuma = deloviDatuma[0].Split("/");
-
-            string vreme = this.comboTime.SelectionBoxItem.ToString();
-            String[] deloviVremena = vreme.Split(":");
-
-
-            int mesec = int.Parse(deoDatuma[0]);
-            int dan = int.Parse(deoDatuma[1]);
-            int godina = int.Parse(deoDatuma[2]);
-
-            int sat = int.Parse(deloviVremena[0]);
-            int minut = int.Parse(deloviVremena[1]);
-
-            Doctor doctor = new Doctor()
-            {
-                FirstName = "Joka",
-                LastName = "Jokic",
-                Email = "jok@gmail.com",
-                Jmbg = "111122440",
-                Username = "pera",
-                Password = "pera123",
-                PhoneNumber = "0641111111",
-                DateOfBirth = new DateTime(1994, 5, 15),
-                ID = "11",
-                LicenceNumber = "1542014"
-            };
-
-            Room room = new Room()
-            {
-                RoomID = "13",
-                Floor = 4,
-                Type = RoomType.examRoom,
-                RoomNumber = 13,
-                Available = false,
-            };
-
-            Appointment appointment = new Appointment()
-            {
-                beginningDate = new DateTime(godina, mesec, dan, sat, minut, 0),
-                endDate = new DateTime(godina, mesec, dan, sat, minut, 0),
-                room = room,
-                doctor = doctor,
-                patient = patient,
-                operation = false
-            };
-
-            App.appointmentController.AddAppointment(appointment);
-
-            Appointments Appointments = new Appointments(frame, patient);
-            frame.Content = Appointments;
-        }
-
-        private void cancelClick(object sender, RoutedEventArgs e)
-        {
-            Appointments Appointments = new Appointments(frame, patient);
-            frame.Content = Appointments;
-        }
-
     }
     
 }

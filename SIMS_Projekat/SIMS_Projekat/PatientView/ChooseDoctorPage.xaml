@@ -49,8 +49,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        
-        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfo}" 
+
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfoList}" 
                   DisplayMemberPath="doctorName" FontSize="36" SelectionChanged="doctorComboBox_SelectionChanged"/>
         
         <TextBlock Grid.Row="4" Grid.Column="1" Text="Izaberite doktora" IsHitTestVisible="False" FontSize="36" 

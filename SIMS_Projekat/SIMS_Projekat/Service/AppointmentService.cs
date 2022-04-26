@@ -45,7 +45,7 @@ namespace SIMS_Projekat.Service
             return appointmentRepository.GetAllAppointments();
         }
 
-        public List<string> GetAvailableAppointmentsForPatient(Patient p, DateTime dt)
+        public List<string> GetAvailableAppointmentsForPatient(Patient p, DateTime dt, String licence)
         {
             List<string> listOfTakenAppointmentTime = new List<string>();
             foreach (Appointment appointment in GetAllAppointments())
@@ -56,9 +56,27 @@ namespace SIMS_Projekat.Service
                     {
                         if (CheckRoomOccupancy(appointment.beginningDate)) 
                         {
-                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString("HH:mm"));
+                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                         }
-                        //ovde sad ide else ako ima soba, proverava se da li dr slobodan tada a mozda i ne, 
+                        else
+                        {
+                           
+                            Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(licence) as Doctor;
+                            if (!CheckIfDoctorIsAvailable(doctor, appointment.beginningDate))
+                            {
+                                listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
+                            }
+                            else
+                            {
+                                //ako pacijent bas taj ima termin kod drugog dr, a ne svog, ne moze u to vreme opet da zakaze
+                                if (!CheckIfPatientIsAvailable(p, appointment.beginningDate))
+                                {
+                                    listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
+                                }
+                            }
+                            
+                           
+                        }
                     }
                 }
 
@@ -98,21 +116,55 @@ namespace SIMS_Projekat.Service
         public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime dt)
         {
             
-            foreach (Appointment appointment in GetAllAppointments())
+            foreach (Appointment appointment in GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
-                if (!appointment.operation)
+         
+                if (dt == appointment.beginningDate)
                 {
-                    if (dt == appointment.beginningDate)
-                    {
-                        if (appointment.doctor.Equals(doctor))
-                        {
-                            return false;           //doktor je zauzet, znaci termin se dodaje u listu zauzetih termina
-                        }
-                    }
+                    
+                    return false;           //doktor je zauzet, znaci termin se dodaje u listu zauzetih termina
+                    
                 }
+                
             }
             return true;       
 
         }
+        public bool CheckIfPatientIsAvailable(Patient patient, DateTime dt)
+        {
+
+            foreach (Appointment appointment in GetAppointmentByPatientID(patient.ID))
+            {
+                
+                if (dt == appointment.beginningDate)
+                {
+                   
+                   return false;           //doktor je zauzet, znaci termin se dodaje u listu zauzetih termina
+                    
+                }
+                
+            }
+            return true;
+
+        }
+
+        public Room GetAvailableRoom(DateTime start)
+        {
+            ObservableCollection<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
+
+            foreach (Appointment appointment in GetAllAppointments())
+            {
+                if (!appointment.operation)
+                {
+                    if (start == appointment.beginningDate)
+                    {
+                        rooms.Remove(appointment.room);
+                    }
+                }
+            }
+            return rooms[0];
+        }
+
+        
     }
 }
