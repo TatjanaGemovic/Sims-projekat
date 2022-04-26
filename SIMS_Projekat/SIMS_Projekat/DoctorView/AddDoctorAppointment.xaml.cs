@@ -29,6 +29,8 @@ namespace SIMS_Projekat.DoctorView
         BindingList<String> appointmentType;
         BindingList<String> patients;
         BindingList<String> rooms;
+        BindingList<String> listofTakenAppointmentTime;
+        BindingList<String> listofAppointmentTime;
         private List<Patient> patients2;
         Doctor doctor;
 
@@ -41,6 +43,7 @@ namespace SIMS_Projekat.DoctorView
             InitializeComboBox1();
             InitializeComboBox2();
             InitializeComboBox3();
+            InitializeListOfAppointments();
         }
 
         private void InitializeComboBox1()
@@ -71,6 +74,28 @@ namespace SIMS_Projekat.DoctorView
                 rooms.Add(r.RoomNumber.ToString());
             }
             Ime_sobe.ItemsSource = rooms;
+        }
+
+        private void InitializeListOfAppointments()
+        {
+            List<String> list = null;
+            //ovde ide logika za slobodne termine
+            listofAppointmentTime = new BindingList<String>();
+            listofTakenAppointmentTime = new BindingList<String>();
+
+            listofAppointmentTime.AllowNew = true;
+            listofAppointmentTime.AllowRemove = true;
+
+            //listofAppointmentTime.RaiseListChangedEvents = true;
+
+            listofAppointmentTime.AllowEdit = false;
+            CreateList();
+
+            foreach(string time in listofTakenAppointmentTime)
+            {
+                listofAppointmentTime.Remove(time);
+            }
+            Vreme_pocetka.ItemsSource = listofAppointmentTime;
         }
 
         private void DataWindow_Closing(object sender, EventArgs e)
@@ -111,7 +136,6 @@ namespace SIMS_Projekat.DoctorView
 
             Appointment appointment = new Appointment()
             {
-                //appointmentID = Int32.Parse(ID_operacije.Text),
                 beginningDate = DateTime.Parse(Vreme_pocetka.Text),
                 endDate = DateTime.Parse(Vreme_zavrsetka.Text),
                 operation = op,
@@ -120,20 +144,53 @@ namespace SIMS_Projekat.DoctorView
                 patient = patient1
             };
 
-
-            /*ScheduledOperation s = new ScheduledOperation();
-            s.Start = DateTime.Parse(Vreme_pocetka.Text);
-            s.End = DateTime.Parse(Vreme_zavrsetka.Text);
-            s.OperationType = Tip_operacije.Text;
-            s.OperationID = int.Parse(ID_operacije.Text);
-            App.ScheduledOperationController.ScheduleOperation(s);*/
             App.appointmentController.AddAppointment(appointment);
 
             Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
             Frame.Content = scheduling;
         }
 
-        private void Nazad_Click(object sender, RoutedEventArgs e)
+        private void CreateList()
+        {
+            listofAppointmentTime.Add("08:00");
+            listofAppointmentTime.Add("08:15");
+            listofAppointmentTime.Add("08:30");
+            listofAppointmentTime.Add("08:45");
+            listofAppointmentTime.Add("09:00");
+            listofAppointmentTime.Add("09:15");
+            listofAppointmentTime.Add("09:30");
+            listofAppointmentTime.Add("09:45");
+            listofAppointmentTime.Add("10:00");
+            listofAppointmentTime.Add("10:15");
+            listofAppointmentTime.Add("10:30");
+            listofAppointmentTime.Add("10:45");
+            listofAppointmentTime.Add("11:00");
+            listofAppointmentTime.Add("11:15");
+            listofAppointmentTime.Add("11:30");
+            listofAppointmentTime.Add("11:45");
+            listofAppointmentTime.Add("12:00");
+            listofAppointmentTime.Add("12:15");
+            listofAppointmentTime.Add("12:30");
+            listofAppointmentTime.Add("12:45");
+            listofAppointmentTime.Add("13:00");
+            listofAppointmentTime.Add("13:15");
+            listofAppointmentTime.Add("13:30");
+            listofAppointmentTime.Add("13:45");
+            listofAppointmentTime.Add("14:00");
+            listofAppointmentTime.Add("14:15");
+            listofAppointmentTime.Add("14:30");
+            listofAppointmentTime.Add("14:45");
+            listofAppointmentTime.Add("15:00");
+            listofAppointmentTime.Add("15:15");
+            listofAppointmentTime.Add("15:30");
+            listofAppointmentTime.Add("15:45");
+            listofAppointmentTime.Add("16:00");
+            listofAppointmentTime.Add("16:15");
+            listofAppointmentTime.Add("16:30");
+            listofAppointmentTime.Add("16:45");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
             Frame.Content = scheduling;

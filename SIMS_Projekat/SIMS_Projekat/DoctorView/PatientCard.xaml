@@ -21,25 +21,39 @@
                             <Label Content="Krvna grupa:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="122" Height="40"/>
                             <Label Content="Alergije:" Style="{StaticResource ClassicLabel}" Margin="30,75,0,0" Width="122" Height="40"/>
                             <Label Content="Trenutna terapija:" Style="{StaticResource ClassicLabel}" Margin="30,160,0,0" Width="151" Height="40"/>
-                            <Label Content="Prethodni pregled:" Style="{StaticResource ClassicLabel}" Margin="30,280,0,0" Width="151" Height="40"/>
-                            <Label Content="Dodatno:" Style="{StaticResource ClassicLabel}" Margin="30,320,0,0" Width="151" Height="40"/>
+                            <Label Content="Prethodni pregled:" Style="{StaticResource ClassicLabel}" Margin="30,260,0,0" Width="151" Height="40"/>
+                            <Label Content="Dodatno:" Style="{StaticResource ClassicLabel}" Margin="30,300,0,0" Width="151" Height="40"/>
+                            <TextBox HorizontalAlignment="Right" Margin="0,42,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" BorderBrush="White"/>
+                            <TextBox x:Name="TrenTerapija" HorizontalAlignment="Right" Margin="0,167,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="210,260,0,0" VerticalAlignment="Top" Width="156"/>
+                            <TextBox x:Name="Dodatno" HorizontalAlignment="Right" Margin="0,310,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
+
                         </Grid>
                     </TabItem>
                     <TabItem Header="Istorija bolesti" FontSize="18" FontWeight="Bold">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="231*"/>
+                                <ColumnDefinition Width="166*"/>
+                            </Grid.ColumnDefinitions>
                             <Label Content="Prethodne bolesti:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="151" Height="40"/>
                             <Label Content="Hospitalizacija:" Style="{StaticResource ClassicLabel}" Margin="30,200,0,0" Width="122" Height="40"/>
                             <Label Content="Prethodna terapija terapija:" Style="{StaticResource ClassicLabel}" Margin="30,240,0,0" Width="151" Height="40"/>
+                            <TextBox HorizontalAlignment="Right" Margin="0,35,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
+                            <TextBox HorizontalAlignment="Right" Margin="0,240,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="Hospitalizacija" HorizontalAlignment="Left" Margin="210,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2"/>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Dijagnoza" FontSize="18" FontWeight="Bold">
                         <Grid>
                             <Label Content="Dijagnoza:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="122" Height="40"/>
                             <Label Content="Trenutna terapija:" Style="{StaticResource ClassicLabel}" Margin="30,200,0,0" Width="151" Height="40"/>
+                            <TextBox x:Name="Dijagnoza" HorizontalAlignment="Right" Margin="0,55,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
+                            <TextBox x:Name="Terapija" HorizontalAlignment="Right" Margin="0,220,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
                         </Grid>
                     </TabItem>
                 </TabControl>
-                <Button x:Name="Save" Content="Save" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="124" Height="60"/>
+                <Button x:Name="Save" Content="Save" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="124" Height="60" Click="Save_Click"/>
                 <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="24" BorderBrush="#FF6F6F6F" FontWeight="Bold" BorderThickness="0,0,0,3"/>
             </Grid>
         </DockPanel>

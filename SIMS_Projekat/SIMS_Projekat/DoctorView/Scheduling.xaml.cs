@@ -133,9 +133,6 @@ namespace SIMS_Projekat.DoctorView
                                               time, dateTime3, type));
                 }
 
-                     
-
-                
             }
         }
 

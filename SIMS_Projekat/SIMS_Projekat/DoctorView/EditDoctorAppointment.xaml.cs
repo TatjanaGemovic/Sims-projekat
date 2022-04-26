@@ -28,6 +28,8 @@ namespace SIMS_Projekat.DoctorView
         BindingList<String> appointmentType;
         BindingList<String> patients;
         BindingList<String> rooms;
+        BindingList<String> listofTakenAppointmentTime;
+        BindingList<String> listofAppointmentTime;
         private List<Patient> patients2;
         Doctor doctor;
         public EditDoctorAppointment(Frame frame, Appointment app, String selectedDate, Doctor d)
@@ -43,6 +45,7 @@ namespace SIMS_Projekat.DoctorView
             InitializeComboBox1();
             InitializeComboBox2();
             InitializeComboBox3();
+            InitializeListOfAppointments();
 
             if (app.operation.ToString().Equals("False")){
                 Tip_operacije.SelectedItem = appointmentType[0];
@@ -95,6 +98,28 @@ namespace SIMS_Projekat.DoctorView
                 rooms.Add(r.RoomNumber.ToString());
             }
             Ime_sobe.ItemsSource = rooms;
+        }
+
+        private void InitializeListOfAppointments()
+        {
+            List<String> list = null;
+            //ovde ide logika za slobodne termine
+            listofAppointmentTime = new BindingList<String>();
+            listofTakenAppointmentTime = new BindingList<String>();
+
+            listofAppointmentTime.AllowNew = true;
+            listofAppointmentTime.AllowRemove = true;
+
+            //listofAppointmentTime.RaiseListChangedEvents = true;
+
+            listofAppointmentTime.AllowEdit = false;
+            CreateList();
+
+            foreach (string time in listofTakenAppointmentTime)
+            {
+                listofAppointmentTime.Remove(time);
+            }
+            Vreme_pocetka.ItemsSource = listofAppointmentTime;
         }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
@@ -149,10 +174,50 @@ namespace SIMS_Projekat.DoctorView
             Frame.Content = scheduling;
         }
 
-        private void Nazad_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
             Frame.Content = scheduling;
+        }
+
+        private void CreateList()
+        {
+            listofAppointmentTime.Add("08:00");
+            listofAppointmentTime.Add("08:15");
+            listofAppointmentTime.Add("08:30");
+            listofAppointmentTime.Add("08:45");
+            listofAppointmentTime.Add("09:00");
+            listofAppointmentTime.Add("09:15");
+            listofAppointmentTime.Add("09:30");
+            listofAppointmentTime.Add("09:45");
+            listofAppointmentTime.Add("10:00");
+            listofAppointmentTime.Add("10:15");
+            listofAppointmentTime.Add("10:30");
+            listofAppointmentTime.Add("10:45");
+            listofAppointmentTime.Add("11:00");
+            listofAppointmentTime.Add("11:15");
+            listofAppointmentTime.Add("11:30");
+            listofAppointmentTime.Add("11:45");
+            listofAppointmentTime.Add("12:00");
+            listofAppointmentTime.Add("12:15");
+            listofAppointmentTime.Add("12:30");
+            listofAppointmentTime.Add("12:45");
+            listofAppointmentTime.Add("13:00");
+            listofAppointmentTime.Add("13:15");
+            listofAppointmentTime.Add("13:30");
+            listofAppointmentTime.Add("13:45");
+            listofAppointmentTime.Add("14:00");
+            listofAppointmentTime.Add("14:15");
+            listofAppointmentTime.Add("14:30");
+            listofAppointmentTime.Add("14:45");
+            listofAppointmentTime.Add("15:00");
+            listofAppointmentTime.Add("15:15");
+            listofAppointmentTime.Add("15:30");
+            listofAppointmentTime.Add("15:45");
+            listofAppointmentTime.Add("16:00");
+            listofAppointmentTime.Add("16:15");
+            listofAppointmentTime.Add("16:30");
+            listofAppointmentTime.Add("16:45");
         }
     }
 }

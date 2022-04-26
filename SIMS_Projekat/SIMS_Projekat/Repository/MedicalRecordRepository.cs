@@ -59,5 +59,25 @@ namespace SIMS_Projekat.Repository
             }
             return null;
         }
+
+        public MedicalRecord SetMedicalRecord(MedicalRecord record)
+        {
+            int index;
+            foreach(MedicalRecord r in Records)
+            {
+                MedicalRecord med = Records.Find(r => r.ID.Equals(record.ID));
+                index = Records.IndexOf(med);
+                if (med != null)
+                {
+                    med.Note = record.Note;
+                    med.Treatment = record.Treatment;
+                    med.CurrentTherapy  = record.CurrentTherapy;
+                    med.Diagnosis = record.Diagnosis;
+                    med.PreviousDiseases = record.PreviousDiseases;
+                    return med;
+                }
+            }
+            return null;
+        }
     }
 }
