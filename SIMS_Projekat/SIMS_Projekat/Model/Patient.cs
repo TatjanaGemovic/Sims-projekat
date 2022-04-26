@@ -11,7 +11,10 @@ namespace SIMS_Projekat.Model
         public double Weight { get; set; }
         public string Symptoms { get; set; }
         public bool IsUrgent { get; set; }
+
         public System.Collections.Generic.List<Appointment> appointment;
+        
+        public string doctorLicenceNumber { get; set; } 
 
         public MedicalRecord medicalRecord { get; set; }
 
@@ -33,6 +36,7 @@ namespace SIMS_Projekat.Model
                 Height.ToString(),
                 Weight.ToString(),
                 Symptoms.ToString(),
+                doctorLicenceNumber,
                 IsUrgent.ToString()
             };
             return values;
@@ -54,7 +58,8 @@ namespace SIMS_Projekat.Model
             Height = double.Parse(values[11]);
             Weight = double.Parse(values[12]);
             Symptoms = values[13];
-            IsUrgent = bool.Parse(values[14]);
+            doctorLicenceNumber = values[14];
+            IsUrgent = bool.Parse(values[15]);
         }
 
         public List<Allergen> Allergen { get; set; }

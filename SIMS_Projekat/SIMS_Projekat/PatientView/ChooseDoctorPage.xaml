@@ -9,6 +9,62 @@
       Title="ChooseDoctorPage">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Izaberite lekara" HorizontalAlignment="Center" Height="102" 
+               Margin="10,10,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
         
+        <Label Grid.Row="2" Grid.Column="1" Content="Izabran lekar:" HorizontalAlignment="left" FontSize="36" 
+               VerticalAlignment="Center"/>
+        
+        <Label Grid.Row="2" Grid.Column="1" x:Name="chosen_doctor" FontSize="36" Width="300" 
+                   HorizontalAlignment="Right" VerticalAlignment="Stretch"
+                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+               Content="{Binding SelectedItem.doctorName, ElementName=doctorComboBox }" />
+
+        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="existing_doctor" FontSize="36" Width="300" 
+                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Right" >
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=doctorComboBox,Path=SelectedItem}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfo}" 
+                  DisplayMemberPath="doctorName" FontSize="36" SelectionChanged="doctorComboBox_SelectionChanged"/>
+        
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Izaberite doktora" IsHitTestVisible="False" FontSize="36" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=doctorComboBox,Path=SelectedItem}" Value="{x:Null}">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
     </Grid>
 </Page>

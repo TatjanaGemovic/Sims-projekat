@@ -90,7 +90,8 @@ namespace SIMS_Projekat.PatientView
                 MessageBox.Show("Niste izabrali termin za otkazivanje!","Greska");
             }
         }
-        public class AppointmentInformation{
+        public class AppointmentInformation
+        {
             public int appointmentId { get; set; }
             public string patientName { get; set; }
             public string doctorName { get; set; }

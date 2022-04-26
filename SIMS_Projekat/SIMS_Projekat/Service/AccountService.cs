@@ -58,5 +58,10 @@ namespace SIMS_Projekat.Service
         {
             throw new NotImplementedException();
         }
+
+        public Account GetDoctorAccountByLicenceNumber(string licenceNumber)
+        {
+            return AccountRepository.GetDoctorAccountByLicenceNumber(licenceNumber);
+        }
     }
 }

@@ -8,7 +8,7 @@
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Homepage">
 
-    <Grid Margin="0,10,0,0">
+    <Grid >
         <Label Content="Dobrodosli u Zdravo!" HorizontalAlignment="Stretch" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" />
         
     </Grid>

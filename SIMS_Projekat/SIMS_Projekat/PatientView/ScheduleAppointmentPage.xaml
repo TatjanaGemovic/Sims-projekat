@@ -47,7 +47,8 @@
 
         <ComboBox Grid.Column="1" Grid.Row="2" IsEditable="False" IsHitTestVisible="False" Focusable="False"
                   AllowDrop="True" x:Name="comboTime" Margin="58,50,26,0" BorderBrush="White" 
-                  ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" SourceUpdated="comboTime_SourceUpdated" />
+                  ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" 
+                  SourceUpdated="comboTime_SourceUpdated" />
 
         <Button  Grid.Column="2" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" 
                  HorizontalAlignment="Left" Height="65" Margin="258,99,0,0" Grid.Row="7" VerticalAlignment="Top"
