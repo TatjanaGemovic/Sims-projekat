@@ -50,13 +50,13 @@ namespace SIMS_Projekat.Service
             List<string> listOfTakenAppointmentTime = new List<string>();
             foreach (Appointment appointment in GetAllAppointments())
             {
-                if (dt.Date == appointment.beginningDate.Date) 
+                if (dt.Date == appointment.beginningDate.Date) //za dan
                 {
-                    if (!appointment.operation)
+                    if (!appointment.operation)     // samo ako nije operacija
                     {
-                        if (CheckRoomOccupancy(appointment.beginningDate)) 
+                        if (CheckRoomOccupancy(appointment.beginningDate)) //1.5. 2022. 15:30
                         {
-                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
+                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));            // 15:30
                         }
                         else
                         {
@@ -139,7 +139,7 @@ namespace SIMS_Projekat.Service
                 if (dt == appointment.beginningDate)
                 {
                    
-                   return false;           //doktor je zauzet, znaci termin se dodaje u listu zauzetih termina
+                   return false;           //pacijent je zauzet, znaci termin se dodaje u listu zauzetih termina
                     
                 }
                 

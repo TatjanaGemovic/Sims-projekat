@@ -84,7 +84,7 @@ namespace SIMS_Projekat.Repository
             {
                 //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
 
-                if (appointment.patientID.Equals(patientID))
+                if (appointment.patient.ID.Equals(patientID))
                 {
                     appointmentListForPatient.Add(appointment);
                 }
