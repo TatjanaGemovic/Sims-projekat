@@ -16,6 +16,7 @@ namespace SIMS_Projekat.Service
 
         public Account DeletePatientAccount(Patient patient)
         {
+            App.medRecordRepository.RemoveMedicalRecord(patient.MedicalRecord);
             return AccountRepository.DeletePatientAccount(patient);
         }
 
@@ -62,6 +63,7 @@ namespace SIMS_Projekat.Service
         public void Serialize()
         {
             AccountRepository.Serialize();
+            App.medRecordRepository.Serialize();
         }
     }
 }

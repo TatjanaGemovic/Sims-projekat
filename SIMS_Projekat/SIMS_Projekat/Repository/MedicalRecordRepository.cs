@@ -59,5 +59,10 @@ namespace SIMS_Projekat.Repository
             }
             return null;
         }
+
+        public void RemoveMedicalRecord(MedicalRecord medicalRecord)
+        {
+            Records.Remove(medicalRecord);
+        }
     }
 }
