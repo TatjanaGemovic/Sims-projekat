@@ -26,7 +26,7 @@ namespace SIMS_Projekat.SecretaryView
     public partial class AccountsView : UserControl
     {
         public AccountRepository AccountRepository { get; set; }
-        public AccountController AccountController { get; set; }
+        public static AccountController AccountController { get; set; }
 
         private static DataGrid dataGrid;
         public static ObservableCollection<Account> Patients { get; set; }
@@ -77,6 +77,11 @@ namespace SIMS_Projekat.SecretaryView
         {
             // dodati za doktore
             dataGrid.Items.Refresh();
+        }
+
+        public static void Serialize()
+        {
+            AccountController.Serialize();
         }
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)

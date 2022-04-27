@@ -58,5 +58,10 @@ namespace SIMS_Projekat.Service
         {
             throw new NotImplementedException();
         }
+
+        public void Serialize()
+        {
+            AccountRepository.Serialize();
+        }
     }
 }

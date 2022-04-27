@@ -36,10 +36,7 @@ namespace SIMS_Projekat
             appointmentsView = new AppointmentsView();
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
-
         }
-
-        
 
         private void LogOut_Click(object sender, MouseButtonEventArgs e)
         {
@@ -49,7 +46,7 @@ namespace SIMS_Projekat
         }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
-            //AccountRepository.Serialize();
+            AccountsView.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
