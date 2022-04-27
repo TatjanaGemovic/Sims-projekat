@@ -1,2 +1,0 @@
-Milos|Milosevic|100|3|180|86|Bolestan
-Pera|Peric|101|2|187|90|Tesko bolestan
