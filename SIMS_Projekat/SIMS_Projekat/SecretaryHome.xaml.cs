@@ -28,10 +28,14 @@ namespace SIMS_Projekat
         public object CurrentView { get; set; }
         private readonly AccountsView accountsView;
         private readonly AppointmentsView appointmentsView;
+        private readonly AccountController accountController;
+        private readonly AccountRepository accountRepository;
 
-        public SecretaryHome(AccountRepository accountRepository, AccountController accountController)
+        public SecretaryHome(AccountRepository repository, AccountController controller)
         {
             InitializeComponent();
+            accountController = controller;
+            accountRepository = repository;
             accountsView = new AccountsView(accountRepository, accountController);
             appointmentsView = new AppointmentsView();
             ContentControl.Content = accountsView;
@@ -46,7 +50,7 @@ namespace SIMS_Projekat
         }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
-            AccountsView.Serialize();
+            accountController.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
