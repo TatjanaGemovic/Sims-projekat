@@ -78,12 +78,6 @@ namespace SIMS_Projekat.SecretaryView
             // dodati za doktore
             dataGrid.Items.Refresh();
         }
-
-        public static void Serialize()
-        {
-            AccountController.Serialize();
-        }
-
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
             AddPatient addPatient = new AddPatient(AccountController);
