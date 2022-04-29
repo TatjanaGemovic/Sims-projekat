@@ -181,9 +181,6 @@ namespace SIMS_Projekat.PatientView
                 doctor = doctor,
                 patient = patient,
                 operation = false,
-                //licenceNumber = doctor.LicenceNumber,
-                //patientID = patient.ID,
-                //roomID = room.RoomID
             };
 
             App.appointmentController.AddAppointment(appointment);

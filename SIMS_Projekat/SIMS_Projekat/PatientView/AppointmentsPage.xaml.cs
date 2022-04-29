@@ -44,7 +44,7 @@ namespace SIMS_Projekat.PatientView
             ScheduleAppointmentPage ScheduleAppointmentPage = new ScheduleAppointmentPage(frame, patient);
             frame.Content = ScheduleAppointmentPage;
         }
-        private void change_appointment_Click(object sender, RoutedEventArgs e)
+        private void show_appointment_Click(object sender, RoutedEventArgs e)
         {
             if (AppointmentsTable.SelectedItem != null)
             {
@@ -52,43 +52,14 @@ namespace SIMS_Projekat.PatientView
 
                 int appointmentID = appointmentInformation.appointmentId;
 
-                ChangeAppointmentPage changeAppointmentPage = new ChangeAppointmentPage(frame, appointmentID, patient);
-                frame.Content = changeAppointmentPage;
+                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(frame, appointmentID, patient);
+                frame.Content = viewAppointmentPage;
             }
             else
             {
-                MessageBox.Show("Niste izabrali termin za izmenu!", "Greska");
+                MessageBox.Show("Niste izabrali termin za prikaz!", "Greska");
             }
 
-        }
-        private void delete_appointment_Click(object sender, RoutedEventArgs e)
-        {
-            if (AppointmentsTable.SelectedItem != null)
-            {
-                if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
-                "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    AppointmentInformation appointmentInformation = (AppointmentInformation)AppointmentsTable.SelectedItem;
-
-                    int appointmentID = appointmentInformation.appointmentId;
-
-                    Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-
-
-                    if(appointment != null)
-                    {
-                        App.appointmentController.DeleteAppointment(appointment);
-
-                        appointmentInformations.Clear();
-                        createList();
-                    }
-                    
-                }
-            }
-            else
-            {
-                MessageBox.Show("Niste izabrali termin za otkazivanje!","Greska");
-            }
         }
         public class AppointmentInformation
         {

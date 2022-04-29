@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -22,36 +23,87 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class ChangeAppointmentPage : Page
     {
-        Frame frame;
-        string pickedTime;
-        int id;
+        Frame mainFrame;
+        public Appointment appointment;
         Patient patient;
-        public ChangeAppointmentPage(Frame mainframe, int appointmentID, Patient p)
-        {
-            InitializeComponent();
-            frame = mainframe;
-            id = appointmentID;
-            patient = p;
-            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-
-            string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
-            String[] datePart = dateTime.Split(" ");
-            string dateP = datePart[0];
-            pickedTime = datePart[1];
-
-            date.Text = dateP;
-            roomNumber.Text = appointment.room.RoomID;
-
-            InitializeListOfAppointments();
-            InitializeComboBox();
-        }
         BindingList<String> listOfTakenAppointmentTime;
         BindingList<String> listOfAppointmentTime;
+        public ObservableCollection<DoctorInfo> doctorInfoList = new ObservableCollection<DoctorInfo>();
+        DoctorInfo drInfo;
+        DateTime pickedDate;
+
+        public ChangeAppointmentPage(Frame frame, int appointmentID, Patient p)
+        {
+            InitializeComponent();
+            mainFrame = frame;
+            patient = p;
+            appointment = App.appointmentController.GetAppointmentByID(appointmentID);
+
+            InitializeDoctorComboBox();
+            Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(appointment.doctor.LicenceNumber) as Doctor;
+            chosen_doctor.Content = d.FirstName + " " + d.LastName;
+            drInfo = new DoctorInfo(d.FirstName + " " + d.LastName, d.LicenceNumber);
+
+            string appointmentDate = appointment.beginningDate.Date.ToString("MM/dd/yyyy");
+            date.Text = appointmentDate;
+
+            string appointmentTime = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
+            comboTime.Text = appointmentTime;
+         
+        }
+
+        public class DoctorInfo
+        {
+            public string doctorName { get; set; }
+            public string licenceNumber { get; set; }
+
+            public DoctorInfo(string doctor, string licence)
+            {
+
+                doctorName = doctor;
+                licenceNumber = licence;
+            }
+        }
+        public void InitializeDoctorComboBox()
+        {
+            foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            {
+                doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
+
+            }
+            choose_doctor.ItemsSource = doctorInfoList;
+        }
+
+        private void choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            drInfo = choose_doctor.SelectedItem as DoctorInfo;
+            chosen_doctor.Content = drInfo.doctorName;
+
+            InitializeListOfAppointments();
+            
+        }
+
+        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string date = this.date.ToString();
+            pickedDate = DateTime.Parse(date);
+            InitializeListOfAppointments();
+           
+        }
+
+        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            comboTime.ItemsSource = listOfAppointmentTime;
+        }
         private void InitializeListOfAppointments()
         {
+            List<string> list;
+            list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
+            
+           
             // Create the new BindingList of Part type.
             listOfAppointmentTime = new BindingList<String>();
-            listOfTakenAppointmentTime = new BindingList<String>();
+            listOfTakenAppointmentTime = new BindingList<String>(list);
 
             // Allow new parts to be added, but not removed once committed.        
             listOfAppointmentTime.AllowNew = true;
@@ -62,6 +114,102 @@ namespace SIMS_Projekat.PatientView
 
             // Do not allow parts to be edited.
             listOfAppointmentTime.AllowEdit = false;
+            CreateList();
+
+            foreach (string time in listOfTakenAppointmentTime)
+            {
+                if (time.Equals(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm")))
+                {
+                    if (drInfo.licenceNumber.Equals(appointment.doctor.LicenceNumber))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
+                        bool isAvailable  = App.appointmentController.CheckIfDoctorIsAvailable(d, appointment.beginningDate);
+                        if (isAvailable)
+                        {
+                            continue;       // dr slobodan
+                        }
+                        else
+                        {
+                            listOfAppointmentTime.Remove(time);
+                        }
+                    }
+                }
+                else 
+                {
+                    listOfAppointmentTime.Remove(time);
+                }             
+            }
+            comboTime.ItemsSource = listOfAppointmentTime;
+
+        }
+      
+        private void changeClick(object sender, RoutedEventArgs e)
+        {
+            string dateFromPage = this.date.ToString();
+            DateTime start = DateTime.Parse(dateFromPage);
+            DateTime startDate = start.Date;
+
+            string timeFromPage = this.comboTime.SelectionBoxItem.ToString();
+            TimeSpan timeStart = TimeSpan.Parse(timeFromPage);
+            startDate = startDate.Add(timeStart);
+
+            Doctor doctor;
+            if (choose_doctor.SelectedItem != null)
+            {
+                doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
+            }
+            else
+            {
+                doctor = this.appointment.doctor;
+            }
+            
+            if(startDate.Equals(this.appointment.beginningDate) && doctor.LicenceNumber.Equals(this.appointment.doctor.LicenceNumber))
+            {
+                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, this.appointment.appointmentID, patient);
+                mainFrame.Content = viewAppointmentPage;
+            }
+            else
+            {
+                Room room;
+                if (!startDate.Equals(this.appointment.beginningDate))
+                {
+                   room = App.appointmentController.GetAvailableRoom(startDate);
+                }
+                else
+                {
+                    room = this.appointment.room;
+                }
+                
+                Appointment newAppointment = new Appointment()
+                {
+                    appointmentID = this.appointment.appointmentID,
+                    beginningDate = startDate,
+                    endDate = startDate.AddMinutes(15),
+                    room = room,
+                    doctor = doctor,
+                    patient = patient,
+                    operation = false,      
+                };
+                App.appointmentController.SetAppointment(newAppointment);
+
+                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, appointment.appointmentID, patient);
+                mainFrame.Content = viewAppointmentPage;
+            }
+
+        }
+
+        private void cancelClick(object sender, RoutedEventArgs e)
+        {
+            ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, appointment.appointmentID, patient);
+            mainFrame.Content = viewAppointmentPage;
+        }
+
+        private void CreateList()
+        {
             listOfAppointmentTime.Add("08:00");
             listOfAppointmentTime.Add("08:15");
             listOfAppointmentTime.Add("08:30");
@@ -98,117 +246,6 @@ namespace SIMS_Projekat.PatientView
             listOfAppointmentTime.Add("16:15");
             listOfAppointmentTime.Add("16:30");
             listOfAppointmentTime.Add("16:45");
-
-
-            foreach (Appointment appointment in App.appointmentController.GetAllAppointments())
-            {
-                bool neededDate = false;
-                string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
-                String[] datePart = dateTime.Split(" ");
-                string time = datePart[1];
-                if(time.CompareTo(pickedTime) == 0)
-                {
-                    neededDate = true;
-                }
-                if (!neededDate)
-                {
-                    listOfTakenAppointmentTime.Add(time);
-                }
-                    
-
-            }
-            foreach (string time in listOfTakenAppointmentTime)
-            {
-                listOfAppointmentTime.Remove(time);
-            }
-
         }
-        private void InitializeComboBox()
-        {
-            combotime.ItemsSource = listOfAppointmentTime;
-            combotime.SelectedItem = pickedTime;
-            
-        }
-        private void changeClick(object sender, RoutedEventArgs e)
-        {
-            string datum = this.date.ToString();
-            //12/07/2022 12:00:00 AM
-            String[] deloviDatuma = datum.Split(" ");
-            String[] deoDatuma = deloviDatuma[0].Split("/");
-
-            string vreme = this.combotime.SelectionBoxItem.ToString();
-            String[] deloviVremena = vreme.Split(":");
-
-
-            int mesec = int.Parse(deoDatuma[0]);
-            int dan = int.Parse(deoDatuma[1]);
-            int godina = int.Parse(deoDatuma[2]);
-
-            int sat = int.Parse(deloviVremena[0]);
-            int minut = int.Parse(deloviVremena[1]);
-
-            Doctor doctor = new Doctor()
-            {
-                FirstName = "Joka",
-                LastName = "Jokic",
-                Email = "jok@gmail.com",
-                Jmbg = "111122440",
-                Username = "pera",
-                Password = "pera123",
-                PhoneNumber = "0641111111",
-                DateOfBirth = new DateTime(1994, 5, 15),
-                ID = "11",
-                LicenceNumber = "1542014"
-            };
-            Patient patient1 = new Patient()
-            {
-                ID = "210",
-                FirstName = "Ana",
-                LastName = "Anic",
-                Email = "ana@gmail.com",
-                Jmbg = "515120",
-                Username = "ana",
-                Password = "ana123",
-                PhoneNumber = "0645554442",
-                DateOfBirth = new DateTime(2000, 10, 15),
-                BloodType = BloodType.A_Positive,
-                Height = 178.0,
-                Weight = 80.0,
-                HealthInsuranceID = "0426"
-            };
-
-            Room room = new Room()
-            {
-                RoomID = "13",
-                Floor = 4,
-                Type = RoomType.examRoom,
-                RoomNumber = 13,
-                Available = false,
-            };
-
-            Appointment appointment = new Appointment()
-            {
-                appointmentID = id,
-                beginningDate = new DateTime(godina, mesec, dan, sat, minut, 0),
-                endDate = new DateTime(godina, mesec, dan, sat, minut, 0),
-                room = room,
-                doctor = doctor,
-                patient = patient1
-            };
-
-            App.appointmentController.SetAppointment(appointment);
-
-            Appointments Appointments = new Appointments(frame, patient);
-            frame.Content = Appointments;
-
-        }
-
-        private void cancelClick(object sender, RoutedEventArgs e)
-        {
-            Appointments Appointments = new Appointments(frame, patient);
-            frame.Content = Appointments;
-        }
-
-        
     }
 }

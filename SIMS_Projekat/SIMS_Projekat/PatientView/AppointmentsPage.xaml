@@ -17,12 +17,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Termini" Grid.Row="0" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" Width="228" HorizontalAlignment="Center" />
-        <Button x:Name="make_appointment" Content="Zakazi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" />
-        <Button x:Name="change_appointment" Content="Izmeni Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="change_appointment_Click"  Grid.Row="1" Margin="0,0,190,0" 
-                Command="{Binding change_appointment}" CommandParameter="{Binding ElementName=apppointments, Path=SelectedItem}"/>
-        <Button x:Name="delete_appointment" Content="Obrisi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Click="delete_appointment_Click" Grid.Row="1" Margin="0,0,360,0"  />
+        <Label Content="Termini" Grid.Row="0" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" 
+               Width="228" HorizontalAlignment="Center" />
+        
+        <Button x:Name="make_appointment" Content="Zakazi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" 
+                Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" 
+                HorizontalContentAlignment="Center" Click="make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" />
 
+        <Button x:Name="show_appointment" Content="Prikazi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" 
+                Foreground="Black" Background="#FFB6DAD6" Width="150" HorizontalAlignment="Right" 
+                HorizontalContentAlignment="Center" Click="show_appointment_Click"  Grid.Row="1" Margin="0,0,190,0" 
+                Command="{Binding show_appointment}" CommandParameter="{Binding ElementName=apppointments, Path=SelectedItem}"/>
+        
         <DataGrid  Grid.Row="2" x:Name="AppointmentsTable" IsReadOnly="True" ItemsSource="{Binding appointmentInformations}" Margin="0,0,10,0" AutoGenerateColumns="False" SelectionMode="Single" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="500">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding ="{Binding date}" Width="100"/>
