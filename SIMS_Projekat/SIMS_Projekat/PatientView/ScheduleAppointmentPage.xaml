@@ -89,21 +89,32 @@
 
         <DatePicker x:Name="date" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday"
-                    SelectedDateChanged="date_SelectedDateChanged"/>
+                    SelectedDateChanged="date_SelectedDateChanged">
+            <DatePicker.Resources>
+                <Style TargetType="DatePickerTextBox">
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
 
         <ComboBox Grid.Column="2" Grid.Row="5" IsEditable="False" IsHitTestVisible="False" Focusable="False"
                   AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                   ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" 
-                  SourceUpdated="comboTime_SourceUpdated" Margin="10,29,10,29" />
+                  SourceUpdated="comboTime_SourceUpdated" Margin="10,29,10,29" SelectionChanged="comboTime_SelectionChanged"/>
 
-        <Button  Grid.Row="9" Grid.Column="5" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" 
+        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="5" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" 
                  HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                FontSize="24" Click="scheduleClick"/>
+                FontSize="24" Click="scheduleClick" IsEnabled="False" />
+        
         <Button Grid.Row="9" Grid.Column="7" Content="Odustani" Foreground="Black" Background="#FFB6DAD6" 
                 HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                 FontSize="24" Click="cancelClick"/>
 
-
+        <Border BorderBrush="#FFB6DAD6" BorderThickness="2" Grid.Row="1" Grid.Column="5" Grid.RowSpan="5" Grid.ColumnSpan="3">
+            <DockPanel  Grid.Row="1" Grid.Column="5" Grid.RowSpan="5" Grid.ColumnSpan="3">
+                <Frame x:Name="RandomAppointmentFrame" NavigationUIVisibility="Hidden"/>
+            </DockPanel>
+        </Border>
     </Grid>
 </Page>

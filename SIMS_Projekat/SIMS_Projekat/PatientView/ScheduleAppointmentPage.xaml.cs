@@ -37,9 +37,10 @@ namespace SIMS_Projekat.PatientView
             frame = mainFrame;
             patient = p;
 
-           // InitializeListOfAppointments();
             InitializeComponent();
-           
+            RandomAppointmentFrame.Content = new RandomAppontmentFirstPage(patient, frame);
+            //date.DisplayDateStart = DateTime.Now;
+            //date.BlackoutDates = DateTime.Now;
 
             if (patient.doctorLicenceNumber != "")
             {
@@ -109,7 +110,7 @@ namespace SIMS_Projekat.PatientView
             
 
             // Create the new BindingList of Part type.
-            listOfAppointmentTime = new BindingList<String>();
+            listOfAppointmentTime = new BindingList<String>(App.appointmentController.createAppointmentTime());
             listOfTakenAppointmentTime = new BindingList<String>(list);
 
             // Allow new parts to be added, but not removed once committed.        
@@ -121,7 +122,6 @@ namespace SIMS_Projekat.PatientView
 
             // Do not allow parts to be edited.
             listOfAppointmentTime.AllowEdit = false;
-            CreateList();
 
             foreach (string time in listOfTakenAppointmentTime)
             {
@@ -152,6 +152,7 @@ namespace SIMS_Projekat.PatientView
         }
         private void scheduleClick(object sender, RoutedEventArgs e)
         {
+           
             string dateFromPage = this.date.ToString();
             DateTime start = DateTime.Parse(dateFromPage);
             DateTime startDate = start.Date;
@@ -194,44 +195,10 @@ namespace SIMS_Projekat.PatientView
             Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }
-        private void CreateList()
+        
+        private void comboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            listOfAppointmentTime.Add("08:00");
-            listOfAppointmentTime.Add("08:15");
-            listOfAppointmentTime.Add("08:30");
-            listOfAppointmentTime.Add("08:45");
-            listOfAppointmentTime.Add("09:00");
-            listOfAppointmentTime.Add("09:15");
-            listOfAppointmentTime.Add("09:30");
-            listOfAppointmentTime.Add("09:45");
-            listOfAppointmentTime.Add("10:00");
-            listOfAppointmentTime.Add("10:15");
-            listOfAppointmentTime.Add("10:30");
-            listOfAppointmentTime.Add("10:45");
-            listOfAppointmentTime.Add("11:00");
-            listOfAppointmentTime.Add("11:15");
-            listOfAppointmentTime.Add("11:30");
-            listOfAppointmentTime.Add("11:45");
-            listOfAppointmentTime.Add("12:00");
-            listOfAppointmentTime.Add("12:15");
-            listOfAppointmentTime.Add("12:30");
-            listOfAppointmentTime.Add("12:45");
-            listOfAppointmentTime.Add("13:00");
-            listOfAppointmentTime.Add("13:15");
-            listOfAppointmentTime.Add("13:30");
-            listOfAppointmentTime.Add("13:45");
-            listOfAppointmentTime.Add("14:00");
-            listOfAppointmentTime.Add("14:15");
-            listOfAppointmentTime.Add("14:30");
-            listOfAppointmentTime.Add("14:45");
-            listOfAppointmentTime.Add("15:00");
-            listOfAppointmentTime.Add("15:15");
-            listOfAppointmentTime.Add("15:30");
-            listOfAppointmentTime.Add("15:45");
-            listOfAppointmentTime.Add("16:00");
-            listOfAppointmentTime.Add("16:15");
-            listOfAppointmentTime.Add("16:30");
-            listOfAppointmentTime.Add("16:45");
+            scheduleClickButton.IsEnabled = true;
         }
     }
     
