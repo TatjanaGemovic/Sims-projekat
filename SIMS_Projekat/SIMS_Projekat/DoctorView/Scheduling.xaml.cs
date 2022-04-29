@@ -14,18 +14,25 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame Frame;
         private Doctor doctor;
-        public String selectedDate1;
+        DateTime selectedDate1;
+        string selectedDate2;
+        string dateTime;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
         public Scheduling(Frame frame, String selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
-            selectedDate1 = selectedDate;
+            selectedDate2 = selectedDate;
+            selectedDate1 = DateTime.Parse(selectedDate);
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
 
-            Datum.Text = selectedDate.ToString();
+            dateTime = selectedDate1.ToString("MM/dd/yyyy HH:mm");
+            selectedDate1 = DateTime.Parse(dateTime);
+            String[] datePart = dateTime.Split(" ");
+            string date = datePart[0]; //datum
+            Datum.Text = date;
             OperationsList.ItemsSource = appointmentInformations;
             this.DataContext = this;
         }
@@ -109,7 +116,7 @@ namespace SIMS_Projekat.DoctorView
                 int dan = int.Parse(deoDatuma[1]);
                 string time = datePart[1]; //vreme
 
-                String[] datePart2 = selectedDate1.Split(" ");
+                String[] datePart2 = selectedDate2.Split(" ");
                 String date2 = datePart2[0];
                 String[] deoDatuma2 = date2.Split("/");
                 int mesec2 = int.Parse(deoDatuma2[0]);

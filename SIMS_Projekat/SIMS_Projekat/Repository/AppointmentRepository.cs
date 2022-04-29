@@ -77,14 +77,14 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public List<Appointment> GetAppointmentByPatientID(string patientID)
+        public List<Appointment> GetAppointmentByPatientID(string patientID1)
         {
             List<Appointment> appointmentListForPatient = new List<Appointment>();
             foreach (Appointment appointment in appointmentList)
             {
                 //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
 
-                if (appointment.patientID.Equals(patientID))
+                if (appointment.patient.ID.Equals(patientID1))
                 {
                     appointmentListForPatient.Add(appointment);
                 }
@@ -164,54 +164,6 @@ namespace SIMS_Projekat.Repository
 
             foreach (Appointment appointment in appointmentList)
             {
-
-                //appointment.patient = App.accountRepository.GetPatientAccountByID(appointment.patientID) as Patient;
-                //appointment.doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(appointment.licenceNumber) as Doctor;
-                //appointment.room = App.accountController
-
-                //appointment.room = roomRepository
-
-           
-                //appointment.patient = new Patient()
-                //{
-                //    ID = appointment.patientID,
-                //    FirstName = "Ivana",
-                //    LastName = "Ivanovic",
-                //    Email = "ivana@gmail.com",
-                //    Jmbg = "512155120",
-                //    Username = "icka",
-                //    Password = "icka123",
-                //    PhoneNumber = "0645554442",
-                //    DateOfBirth = new DateTime(2000, 10, 15),
-                //    BloodType = BloodType.A_Positive,
-                //    Height = 178.0,
-                //    Weight = 80.0,
-                //    HealthInsuranceID = "005426",
-
-
-                //};
-                //appointment.room = new Room()
-                //{
-                //    RoomID = appointment.roomID,
-                //    Floor = 1,
-                //    Type = RoomType.examRoom,
-                //    RoomNumber = 4,
-                //    Available = false
-                //};
-                //appointment.doctor = new Doctor()
-                //{
-                //    LicenceNumber = appointment.licenceNumber,
-                //    FirstName = "Pera",
-                //    LastName = "Peric",
-                //    Email = "pera@gmail.com",
-                //    Jmbg = "111122440",
-                //    Username = "pera",
-                //    Password = "pera123",
-                //    PhoneNumber = "0641111111",
-                //    DateOfBirth = new DateTime(1994, 5, 15),
-                //    ID = "10"
-                //};
-
                 id = appointment.appointmentID;
             }
         }

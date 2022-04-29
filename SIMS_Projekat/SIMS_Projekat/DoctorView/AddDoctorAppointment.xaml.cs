@@ -25,7 +25,8 @@ namespace SIMS_Projekat.DoctorView
     public partial class AddDoctorAppointment : Page
     {
         Frame Frame;
-        private String selectedDate1;
+        public String selectedDate1;
+        //DateTime pickedDate;
         BindingList<String> appointmentType;
         BindingList<String> patients;
         BindingList<String> rooms;
@@ -33,17 +34,24 @@ namespace SIMS_Projekat.DoctorView
         BindingList<String> listofAppointmentTime;
         private List<Patient> patients2;
         Doctor doctor;
+        Room selectedRoom;
+        bool op;
+        Patient selectedPatient;
 
-        public AddDoctorAppointment(Frame frame, String selectedDate, Doctor d)
+        public AddDoctorAppointment(Frame frame, DateTime selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
-            selectedDate1 = selectedDate;
+            selectedDate1 = selectedDate.ToString("MM/dd/yyyy HH:mm");
+            String[] datePart = selectedDate1.Split(" ");
+            selectedDate1 = datePart[0];
+            DateTime pickedDate = selectedDate.Date;
+            //pickedDate = selectedDate;
             InitializeComboBox1();
             InitializeComboBox2();
-            InitializeComboBox3();
-            InitializeListOfAppointments();
+            //InitializeComboBox3();
+            //InitializeListOfAppointments();
         }
 
         private void InitializeComboBox1()
@@ -61,7 +69,7 @@ namespace SIMS_Projekat.DoctorView
 
             foreach(Patient p in patients2)
             {
-                patients.Add(p.FirstName + " " + p.Username);
+                patients.Add(p.FirstName + " " + p.LastName);
             }
             Ime_pacijenta.ItemsSource = patients;
         }
@@ -71,22 +79,41 @@ namespace SIMS_Projekat.DoctorView
             rooms = new BindingList<String>();
             foreach(Room r in App.roomController.GetRooms())
             {
-                rooms.Add(r.RoomNumber.ToString());
+                if(r.Type == RoomType.examRoom)
+                {
+                    rooms.Add(r.RoomNumber.ToString());
+                }
+                
+            }
+            Ime_sobe.ItemsSource = rooms;
+        }
+        private void InitializeComboBox4()
+        {
+            rooms = new BindingList<String>();
+            foreach (Room r in App.roomController.GetRooms())
+            {
+                if (r.Type == RoomType.operatingRoom)
+                {
+                    rooms.Add(r.RoomNumber.ToString());
+                }
+
             }
             Ime_sobe.ItemsSource = rooms;
         }
 
         private void InitializeListOfAppointments()
         {
-            List<String> list = null;
-            //ovde ide logika za slobodne termine
+            List<String> list = new List<string>();
+
+            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, op, selectedRoom);
+
             listofAppointmentTime = new BindingList<String>();
-            listofTakenAppointmentTime = new BindingList<String>();
+            listofTakenAppointmentTime = new BindingList<String>(list);
 
             listofAppointmentTime.AllowNew = true;
             listofAppointmentTime.AllowRemove = true;
 
-            //listofAppointmentTime.RaiseListChangedEvents = true;
+            listofAppointmentTime.RaiseListChangedEvents = true;
 
             listofAppointmentTime.AllowEdit = false;
             CreateList();
@@ -98,6 +125,60 @@ namespace SIMS_Projekat.DoctorView
             Vreme_pocetka.ItemsSource = listofAppointmentTime;
         }
 
+        private void Vreme_pocetka_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            Vreme_pocetka.ItemsSource = listofAppointmentTime;
+        }
+
+        private void Ime_Pacijent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //selectedPatient = new Patient();
+            String patient = Ime_pacijenta.SelectedItem.ToString();
+            foreach (Patient p in App.accountController.GetAllPatientAccounts())
+            {
+                string str = p.FirstName + " " + p.LastName;
+                if (str.Equals(patient))
+                {
+                    selectedPatient = p;
+                }
+            }
+        }
+
+        private void Tip_operacije_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String tip = Tip_operacije.SelectedItem.ToString();
+            if (tip.Equals("Pregled"))
+            {
+                op = false;
+                InitializeComboBox3();
+            }
+            else
+            {
+                op = true;
+                InitializeComboBox4();
+            }
+            Ime_sobe.IsHitTestVisible = true;
+            Ime_sobe.IsEnabled = true;
+        }
+
+        private void Ime_Sobe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            String id = Ime_sobe.SelectedItem.ToString();
+            foreach (Room r in App.roomController.GetRooms())
+            {
+                if (r.RoomNumber == int.Parse(id))
+                {
+                    selectedRoom = r;
+                }
+            }
+            if (Ime_pacijenta.SelectedItem != null && Tip_operacije.SelectedItem != null)
+            {
+                Vreme_pocetka.IsHitTestVisible = true;
+                Vreme_pocetka.IsEnabled = true;
+                InitializeListOfAppointments();
+            }
+        }
+
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
@@ -105,43 +186,22 @@ namespace SIMS_Projekat.DoctorView
 
         private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
         {
-            bool op;
-            String tip = Tip_operacije.SelectionBoxItem.ToString();
-            if (tip.Equals("Pregled"))
-            {
-                op = false;
-            }
-            else
-            {
-                op = true;
-            }
-            Patient patient1 = new Patient();
-            String patient = Ime_pacijenta.SelectionBoxItem.ToString();
-            foreach(Patient p in App.accountController.GetAllPatientAccounts())
-            {
-                string str = p.FirstName + " " + p.Username;
-                if (str.Equals(patient)){
-                    patient1 = p;
-                }
-            }
-            Room room1 = new Room();
-            String id = Ime_sobe.SelectionBoxItem.ToString();
-            foreach(Room r in App.roomController.GetRooms())
-            {
-                if(r.RoomNumber == int.Parse(id))
-                {
-                    room1 = r;
-                }
-            }
+            string dateFromPage =selectedDate1.ToString();
+            DateTime start = DateTime.Parse(dateFromPage);
+            DateTime startDate = start.Date;
+
+            string timeFromPage = this.Vreme_pocetka.SelectionBoxItem.ToString();
+            TimeSpan timeStart = TimeSpan.Parse(timeFromPage);
+            startDate = startDate.Add(timeStart);
 
             Appointment appointment = new Appointment()
             {
-                beginningDate = DateTime.Parse(Vreme_pocetka.Text),
-                endDate = DateTime.Parse(Vreme_zavrsetka.Text),
+                beginningDate = startDate,
+                endDate = startDate.AddMinutes(15),
                 operation = op,
-                room = room1,
+                room = selectedRoom,
                 doctor = doctor,
-                patient = patient1
+                patient = selectedPatient
             };
 
             App.appointmentController.AddAppointment(appointment);

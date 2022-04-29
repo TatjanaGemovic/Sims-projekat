@@ -17,16 +17,14 @@
             <Grid>
                 <DockPanel Margin="16,34,16,178" Background="#FFA7AFAF"/>
                 <Button x:Name="Dodaj_operaciju" Content="Dodaj pregled" HorizontalAlignment="Right" Margin="0,520,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Dodaj_operaciju_Click"/>
-                <Label Content="Tip pregleda" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
-                <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+                <Label Content="Tip pregleda" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
+                <Label Content="Ime pacijenta" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
                 <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15"/>
                 <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="38,256,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15"/>
-                <Label Content="Vreme zavrsetka" HorizontalAlignment="Left" Margin="38,302,0,0" VerticalAlignment="Top" Width="161" FontSize="15"/>
-                <ComboBox x:Name="Tip_operacije" AllowDrop="True" Margin="227,118,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
-                <ComboBox x:Name="Ime_pacijenta" AllowDrop="True" Margin="227,164,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
-                <ComboBox x:Name="Ime_sobe" AllowDrop="True" Margin="227,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151"/>
-                <ComboBox x:Name="Vreme_pocetka" HorizontalAlignment="Left" Margin="227,256,0,0" VerticalAlignment="Top" Width="151" Height="24" AllowDrop="True" ItemsSource="{Binding listofAppointmentTime}" />
-                <TextBox x:Name="Vreme_zavrsetka" HorizontalAlignment="Left" Margin="227,302,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="151" Height="24"/>
+                <ComboBox x:Name="Tip_operacije" AllowDrop="True" Margin="227,164,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" SelectionChanged="Tip_operacije_SelectionChanged"/>
+                <ComboBox x:Name="Ime_pacijenta" AllowDrop="True" Margin="227,118,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" SelectionChanged="Ime_Pacijent_SelectionChanged"/>
+                <ComboBox x:Name="Ime_sobe" IsEditable="False" IsHitTestVisible="False" IsEnabled="False" AllowDrop="True" Margin="227,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" SelectionChanged="Ime_Sobe_SelectionChanged"/>
+                <ComboBox x:Name="Vreme_pocetka" IsEditable="False" IsHitTestVisible="False" IsEnabled="False" HorizontalAlignment="Left" Margin="227,256,0,0" VerticalAlignment="Top" Width="151" Height="24" AllowDrop="True" ItemsSource="{Binding listofAppointmentTime, NotifyOnSourceUpdated=True}" SourceUpdated="Vreme_pocetka_SourceUpdated"/>
             </Grid>
         </DockPanel>
     </Grid>
