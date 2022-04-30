@@ -52,7 +52,7 @@ namespace SIMS_Projekat.SecretaryView
 
         private void DeleteAllergen_Click(object sender, RoutedEventArgs e)
         {
-            Allergen allergen = (Allergen)ListBox.SelectedItem;
+            Allergen allergen = (Allergen)dataGridAllergens.SelectedItem;
             RemoveAllergen(allergen);
             AllergenController.DeleteAllergen(allergen);
         }

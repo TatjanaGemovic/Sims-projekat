@@ -17,15 +17,12 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Content="Alergeni" Margin="20" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
-        <ListBox Grid.Row="1" x:Name="ListBox" ItemsSource="{Binding Allergens}" Width="300" Margin="0,40,0,40">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Name}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <DataGrid x:Name="dataGridAllergens" Grid.Row="1" ItemsSource="{Binding Path = Allergens}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,40" Width="330" FontSize="14" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naziv alergena" Binding="{Binding Name}" Width ="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,60">
             <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Click="AddAllergen_Click" >
                 <StackPanel Orientation="Horizontal">
