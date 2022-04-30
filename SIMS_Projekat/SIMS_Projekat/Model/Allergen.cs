@@ -4,16 +4,20 @@ namespace SIMS_Projekat.Model
 {
     public class Allergen : Serialization.Serializable
     {
-        public Patient[] patient { get; set; }
+        public string Name { get; set; }
 
         public void fromCSV(string[] values)
         {
-            throw new NotImplementedException();
+            Name = values[0];
         }
 
         public string[] toCSV()
         {
-            throw new NotImplementedException();
+            string[] values =
+            {
+                Name
+            };
+            return values;
         }
     }
 }

@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SIMS_Projekat.PatientView
+namespace SIMS_Projekat.SecretaryView
 {
     /// <summary>
     /// Interaction logic for AddPatient.xaml

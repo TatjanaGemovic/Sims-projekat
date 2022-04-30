@@ -28,6 +28,7 @@ namespace SIMS_Projekat
     {
         private AccountRepository accountRepository;
         private AccountController accountController;
+        private AllergenController allergenController;
         public int prozor;
 
         public MainWindow()
@@ -35,12 +36,13 @@ namespace SIMS_Projekat
             InitializeComponent();
             accountRepository = App.accountRepository;
             accountController = App.accountController;
+            allergenController = App.AllergenController;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             prozor = 1;
-            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository, allergenController);
             loginWindow.Show();
             this.Close();
         }
@@ -48,7 +50,7 @@ namespace SIMS_Projekat
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             prozor = 2;
-            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository, allergenController);
             loginWindow.Show();
             this.Close();
         }
@@ -56,7 +58,7 @@ namespace SIMS_Projekat
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             prozor = 3;
-            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository, allergenController);
             loginWindow.Show();
             this.Close();
         }
@@ -64,7 +66,7 @@ namespace SIMS_Projekat
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             prozor = 4;
-            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository);
+            LoginWindow loginWindow = new LoginWindow(prozor, accountController, accountRepository, allergenController);
             loginWindow.Show();
             this.Close();
         }

@@ -104,7 +104,7 @@
                         <Button Style="{StaticResource SecretaryViewButton}" Margin="0,0,0,0" Height="50" Width="110" Click="AddDoctor_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/add_account.png" Width="20" Margin="0,0,5,0"/>
-                                <TextBlock FontSize="15">Prikaži</TextBlock>
+                                <TextBlock FontSize="15">Dodaj</TextBlock>
                             </StackPanel>
                         </Button>
                         <Button Style="{StaticResource SecretaryViewButton}" Margin="40,0,0,0" Height="50" Width="110" Click="EditDoctor_Click">
