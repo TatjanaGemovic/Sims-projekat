@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
       mc:Ignorable="d" 
-      d:DesignHeight="750" d:DesignWidth="430"
+      d:DesignHeight="750" d:DesignWidth="400"
       Title="PatientInfo">
 
     <Grid>
@@ -15,16 +15,23 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="MedicalCarton" Content="Karton" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="MedicalCarton_Click"/>
-                <Button x:Name="Examination" Content="Pregled" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}"/>
-                <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="24" BorderBrush="#FF6F6F6F" FontWeight="Bold" BorderThickness="0,0,0,3"/>
-                <DockPanel LastChildFill="False" Margin="16,58,16,150" Background="#FFA7AFAF"/>
-                <Label Content="Ime" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold"/>
-                <Label Content="Prezime" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold"/>
-                <Label Content="JMBG" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold"/>
-                <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="38,256,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold"/>
-                <Label Content="Pol" HorizontalAlignment="Left" Margin="38,302,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold"/>
-                <Label Content="Status zaposlenja" HorizontalAlignment="Left" Margin="38,348,0,0" VerticalAlignment="Top" Width="158" FontSize="15" FontWeight="Bold"/>
+                <Button x:Name="MedicalCarton" Content="Karton" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="MedicalCarton_Click"/>
+                <Button x:Name="Examination" Content="Pregled" HorizontalAlignment="Left" Margin="16,530,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}"/>
+                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="419" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Label Content="Ime" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Prezime" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="JMBG" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Datum rodjenja" HorizontalAlignment="Left" Margin="38,248,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Telefon" HorizontalAlignment="Left" Margin="38,294,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Email" HorizontalAlignment="Left" Margin="38,340,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <TextBox x:Name="Ime" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Prezime" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="JMBG" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,202,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Datum_rodjenja" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,248,125,0" VerticalAlignment="Top" Height="31" Width="75"/>
+                <TextBox x:Name="Telefon" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,294,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Email" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,340,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>
+                <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="40" Foreground="#FF676FA3" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
             </Grid>
         </DockPanel>
     </Grid>

@@ -32,6 +32,12 @@ namespace SIMS_Projekat.DoctorView
             doctor = doctor1;
             patient = patient1;
             Ime_pacijenta.Text = patient1.FirstName + " " + patient1.LastName;
+            Ime.Text = patient.FirstName;
+            Prezime.Text = patient.LastName;
+            JMBG.Text = patient.Jmbg;
+            Datum_rodjenja.Text = patient.DateOfBirth.ToString();
+            Email.Text = patient.Email;
+            Telefon.Text = patient.PhoneNumber;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

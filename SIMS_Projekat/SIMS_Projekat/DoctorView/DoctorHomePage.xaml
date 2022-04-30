@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
         mc:Ignorable="d"
-        Title="DoctorHomePage" Height="750" Width="430" WindowState="Normal"
+        Title="DoctorHomePage" Height="750" Width="400" WindowState="Normal"
         Closing="DataWindow_Closing"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <DockPanel x:Name="ActionBar" Grid.Row="0" Margin="0,0,0,650" Background="#FF1DBAEF" Height="85"/>
-        <DockPanel Margin="0,85,0,0">
+        <DockPanel x:Name="ActionBar" Grid.Row="0" Margin="0,0,0,630" Background="#FF5959"/>
+        <DockPanel Margin="0,80,0,0" Background="#EEF2FF">
         </DockPanel>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

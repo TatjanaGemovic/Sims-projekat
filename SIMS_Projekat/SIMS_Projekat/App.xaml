@@ -13,7 +13,7 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FF40BFEA"/>
+            <Setter Property="Background" Value="#FF5959"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="110"/>
@@ -27,7 +27,7 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FF40BFEA"/>
+            <Setter Property="Background" Value="#FF5959"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Height" Value="65"/>
             <Setter Property="Width" Value="140"/>
@@ -42,11 +42,12 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="36"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FFA2E1F1"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Height" Value="135"/>
+            <Setter Property="Background" Value="#CDDEFF"/>
+            <Setter Property="BorderBrush" Value="#676FA3"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="Height" Value="140"/>
             <Setter Property="Width" Value="360"/>
-            <Setter Property="Margin" Value="0,20,20,0"/>
+            <Setter Property="Margin" Value="0,10,10,0"/>
         </Style>
         <Style TargetType="Button" x:Key="DoctorHomePageSmallButton">
             <Style.Resources>
@@ -57,10 +58,11 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FFA2E1F1"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#CDDEFF"/>
+            <Setter Property="BorderBrush" Value="#676FA3"/>
+            <Setter Property="BorderThickness" Value="3"/>
             <Setter Property="Height" Value="110"/>
-            <Setter Property="Width" Value="170"/>
+            <Setter Property="Width" Value="160"/>
         </Style>
         <Style TargetType="Button" x:Key="BackButton">
             <Style.Resources>
@@ -71,8 +73,9 @@
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="#FFFFFF"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#FF5959"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="#EEF2FF"/>
             <Setter Property="Height" Value="35"/>
             <Setter Property="Width" Value="75"/>
         </Style>
