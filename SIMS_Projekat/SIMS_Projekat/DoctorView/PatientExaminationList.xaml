@@ -18,7 +18,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding ="{Binding id}" Width="30"/>
                     <DataGridTextColumn Header="Vreme pregleda" Binding ="{Binding beginningDate}"  Width="140"/>
-                    <DataGridTextColumn Header="Doktor" Binding ="{Binding doctorName}"  Width="*"/>
+                    <DataGridTextColumn Header="Postavljena dijagnoza" Binding ="{Binding}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

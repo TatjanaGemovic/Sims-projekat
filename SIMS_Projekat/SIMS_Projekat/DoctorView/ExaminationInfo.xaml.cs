@@ -45,5 +45,11 @@ namespace SIMS_Projekat.DoctorView
         {
             Frame.Content = new Anamnesis(Frame, appointment, doctor);
         }
+
+        private void Zavrsi_Pregled_Click(object sender, RoutedEventArgs e)
+        {
+            App.appointmentController.DeleteAppointment(appointment);
+            Frame.Content = new Examinations(Frame, doctor);
+        }
     }
 }
