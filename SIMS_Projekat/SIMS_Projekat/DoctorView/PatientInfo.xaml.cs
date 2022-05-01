@@ -49,5 +49,10 @@ namespace SIMS_Projekat.DoctorView
         {
             Frame.Content = new PatientCard(Frame, doctor, patient);
         }
+
+        private void Examination_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new PatientExaminationList(Frame, doctor, patient);
+        }
     }
 }

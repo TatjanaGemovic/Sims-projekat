@@ -53,5 +53,10 @@ namespace SIMS_Projekat.DoctorView
         {
             MainFrame.Content= new Menu(MainFrame, doctor, doctorHomePage);
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Examinations(MainFrame, doctor);
+        }
     }
 }
