@@ -21,7 +21,9 @@ namespace SIMS_Projekat
     {
 
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
+        private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
         public static AppointmentRepository appointmentRepo;
+        public static FinishedAppointmentRepository finishedappointmentRepo;
 
         private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
         private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
@@ -39,6 +41,7 @@ namespace SIMS_Projekat
             roomController = new RoomController();
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
+            finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
             AppointmentService appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
@@ -62,6 +65,7 @@ namespace SIMS_Projekat
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
+            finishedappointmentRepo.Deserialize();
         }
     }
 }

@@ -10,15 +10,7 @@
 
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
-            <Button Content="|||" Width="38" Height="38" Background="#FF40BFEA" FontWeight="Bold" FontSize="20" Margin="20,20,0,0" RenderTransformOrigin="0.797,0.256" HorizontalContentAlignment="Center" BorderBrush="#FF40BFEA" Click="Button_Click_2">
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="90"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
+            <Button Content="|||" Width="40" Height="40" Background="#FF5959" FontWeight="Bold" FontSize="20" Margin="20,0,0,0" HorizontalContentAlignment="Center" BorderThickness="3" BorderBrush="#EEF2FF" Click="Button_Click_2">
             </Button>
             <Label Content="Pocetna" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="-30,0,0,0"/>
         </DockPanel>

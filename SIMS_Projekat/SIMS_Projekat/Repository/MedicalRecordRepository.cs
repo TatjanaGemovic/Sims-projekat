@@ -50,7 +50,7 @@ namespace SIMS_Projekat.Repository
 
         public MedicalRecord GetMedicalRecordByID(string id)
         {
-            foreach(MedicalRecord r in Records)
+            foreach (MedicalRecord r in Records)
             {
                 if (r.ID.Equals(id))
                 {
@@ -63,6 +63,26 @@ namespace SIMS_Projekat.Repository
         public void RemoveMedicalRecord(MedicalRecord medicalRecord)
         {
             Records.Remove(medicalRecord);
+        }
+
+        public MedicalRecord SetMedicalRecord(MedicalRecord record)
+        {
+            int index;
+            foreach (MedicalRecord r in Records)
+            {
+                MedicalRecord med = Records.Find(r => r.ID.Equals(record.ID));
+                index = Records.IndexOf(med);
+                if (med != null)
+                {
+                    med.Note = record.Note;
+                    med.Treatment = record.Treatment;
+                    med.CurrentTherapy = record.CurrentTherapy;
+                    med.Diagnosis = record.Diagnosis;
+                    med.PreviousDiseases = record.PreviousDiseases;
+                    return med;
+                }
+            }
+            return null;
         }
     }
 }

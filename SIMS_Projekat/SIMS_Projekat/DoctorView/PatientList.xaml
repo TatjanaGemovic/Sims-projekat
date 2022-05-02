@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
       mc:Ignorable="d" 
-      d:DesignHeight="750" d:DesignWidth="430"
+      d:DesignHeight="750" d:DesignWidth="400"
       Title="PatientList">
 
     <Grid>
@@ -14,13 +14,13 @@
             <Label Content="Pacijenti" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="PatientLists" ItemsSource="{Binding patientList}" Margin="0,10,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="463"  Width="390">
+            <DataGrid x:Name="PatientLists" ItemsSource="{Binding patientList}" Margin="0,25,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="463"  Width="370">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding ="{Binding ID}" Width="30"/>
                     <DataGridTextColumn Header="Prezime i ime pacijenta" Binding ="{Binding fullName}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
-        <Button Content="Prikazi" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,560,13,0" Click="Button_Click_1"/>
+        <Button Content="Prikazi" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,580,13,0" Click="Button_Click_1"/>
     </Grid>
 </Page>

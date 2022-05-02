@@ -14,18 +14,25 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame Frame;
         private Doctor doctor;
-        String selectedDate1;
+        DateTime selectedDate1;
+        string selectedDate2;
+        string dateTime;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
         public Scheduling(Frame frame, String selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
+            selectedDate2 = selectedDate;
+            selectedDate1 = DateTime.Parse(selectedDate);
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
 
-            Datum.Text = selectedDate.ToString();
-            selectedDate1 = selectedDate.ToString();
+            dateTime = selectedDate1.ToString("MM/dd/yyyy HH:mm");
+            selectedDate1 = DateTime.Parse(dateTime);
+            String[] datePart = dateTime.Split(" ");
+            string date = datePart[0]; //datum
+            Datum.Text = date;
             OperationsList.ItemsSource = appointmentInformations;
             this.DataContext = this;
         }
@@ -102,9 +109,21 @@ namespace SIMS_Projekat.DoctorView
             {
                 DateTime dt = appointment.beginningDate;
                 string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
+                String[] datePart = dateTime.Split(" ");
+                string date = datePart[0]; //datum
+                String[] deoDatuma = date.Split("/");
+                int mesec = int.Parse(deoDatuma[0]);
+                int dan = int.Parse(deoDatuma[1]);
+                string time = datePart[1]; //vreme
+
+                String[] datePart2 = selectedDate2.Split(" ");
+                String date2 = datePart2[0];
+                String[] deoDatuma2 = date2.Split("/");
+                int mesec2 = int.Parse(deoDatuma2[0]);
+                int dan2 = int.Parse(deoDatuma2[1]);
 
                 DateTime dt2 = appointment.endDate;
-                string dateTime2 = dt2.ToString("MM/dd/yyyy HH:mm");
+                String dateTime3 = dt2.ToString("MM/dd/yyyy HH:mm");
 
                 String type;
                 if(appointment.operation == false)
@@ -115,9 +134,12 @@ namespace SIMS_Projekat.DoctorView
                 {
                     type = "Operacija";
                 }
+                if (dan == dan2)
+                {
+                    appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
+                                              time, dateTime3, type));
+                }
 
-                appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                              dateTime, dateTime2, type));
             }
         }
 
