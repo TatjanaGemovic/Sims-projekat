@@ -8,7 +8,6 @@ namespace SIMS_Projekat.Model
 
         public DateTime endDate { get; set; }
         public int appointmentID { get; set;}
-        public string Record { get; set; }
         public Doctor doctor { get; set; }
         public Room room { get; set; }
 

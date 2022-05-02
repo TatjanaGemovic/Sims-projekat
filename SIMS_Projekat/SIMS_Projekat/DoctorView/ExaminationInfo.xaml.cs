@@ -51,5 +51,10 @@ namespace SIMS_Projekat.DoctorView
             App.appointmentController.DeleteAppointment(appointment);
             Frame.Content = new Examinations(Frame, doctor);
         }
+
+        private void Receipt_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new ReceiptPage(Frame, doctor, appointment.patient, appointment);
+        }
     }
 }
