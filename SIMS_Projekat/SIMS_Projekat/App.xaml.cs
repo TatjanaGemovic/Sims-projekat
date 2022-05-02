@@ -74,11 +74,11 @@ namespace SIMS_Projekat
                 AllergenService = AllergenService
             };
            
+            AllergenController.Deserialize();
             medRecordRepository.Deserialize();
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
-            AllergenController.Deserialize();
         }
     }
 }

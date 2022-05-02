@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using SIMS_Projekat.Serialization;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SIMS_Projekat.Repository
 {
@@ -37,6 +38,15 @@ namespace SIMS_Projekat.Repository
         public Allergen DeleteAllergen(Allergen allergen)
         {
             return Allergens.Remove(allergen) ? allergen: null;
+        }
+
+        public Allergen GetAllergenByName(string name)
+        {
+            foreach(Allergen allergen in Allergens)
+            {
+                if (allergen.Name.Equals(name)) { return allergen; }
+            }
+            return null;
         }
 
     }

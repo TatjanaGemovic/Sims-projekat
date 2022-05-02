@@ -27,17 +27,19 @@ namespace SIMS_Projekat.SecretaryView
     {
         public AccountRepository AccountRepository { get; set; }
         public static AccountController AccountController { get; set; }
+        public AllergenController AllergenController { get; set; }
 
         private static DataGrid dataGrid;
         public static ObservableCollection<Account> Patients { get; set; }
         public static ObservableCollection<Account> Doctors { get; set; }
 
-        public AccountsView(AccountRepository accountRepository, AccountController accountController)
+        public AccountsView(AccountRepository accountRepository, AccountController accountController, AllergenController allergenController)
         {
             InitializeComponent();
             this.DataContext = this;
             AccountRepository = accountRepository;
             AccountController = accountController;
+            AllergenController = allergenController;
             dataGrid = dataGridPatients;
             Patients = new ObservableCollection<Account>();
             Doctors = new ObservableCollection<Account>();
@@ -80,7 +82,7 @@ namespace SIMS_Projekat.SecretaryView
         }
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            AddPatient addPatient = new AddPatient(AccountController);
+            AddPatient addPatient = new AddPatient(AccountController, AllergenController);
             addPatient.Show();
         }
 

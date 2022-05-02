@@ -20,6 +20,7 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition  Height="Auto" />
             <RowDefinition />
             <RowDefinition />
 
@@ -43,6 +44,8 @@
         <TextBlock Grid.Column="0" Grid.Row="9" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Težina</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="10" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Korisničko ime</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="11" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Lozinka</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="12" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Alergeni</TextBlock>
+
 
 
 
@@ -68,16 +71,17 @@
         <TextBox Grid.Column="1" Grid.Row="9" x:Name="Weight" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="10" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <PasswordBox Grid.Column="1" Grid.Row="11" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></PasswordBox>
-        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="12" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
+
+        <ListBox x:Name="AllergensListBox" Grid.Row="12" Grid.Column="1" Margin="10,0,20,0" Height="80" ItemsSource="{Binding Allergens}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding IsSelected}" Content="{Binding Allergen.Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="13" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click"/>
+
 
 
 

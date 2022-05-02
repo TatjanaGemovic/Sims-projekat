@@ -1,3 +1,6 @@
-Novi alergen1
-Novi alergen 2
-Novi 3
+Aminophyllin
+Amoxicillin
+Ampicillin
+Benzodiazepin
+Bupivacaine
+Clinadmycin
