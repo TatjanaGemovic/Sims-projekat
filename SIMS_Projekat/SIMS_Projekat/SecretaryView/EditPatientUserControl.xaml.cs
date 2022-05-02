@@ -95,9 +95,6 @@ namespace SIMS_Projekat.SecretaryView
                 Weight = Double.Parse(Weight.Text),
                 Username = Username.Text,
                 Password = Password.Password,
-                Symptoms = "N/A",
-                IsUrgent = false,
-                MedicalRecord = App.medRecordRepository.CreateMedicalRecord(new MedicalRecord()),
                 Allergens = selectedAllergens
 
             };

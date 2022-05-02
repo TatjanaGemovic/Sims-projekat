@@ -117,9 +117,10 @@ namespace SIMS_Projekat.SecretaryView
 
         private void ShowPatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            ViewPatient viewPatient = new ViewPatient(patient);
-            viewPatient.Show();
+            Patient selectedPatient = (Patient)dataGridPatients.SelectedItem;
+
+            ViewPatientUserControl viewPatientUserControl = new ViewPatientUserControl(contentControl, this, selectedPatient);
+            contentControl.Content = viewPatientUserControl;
         }
 
 

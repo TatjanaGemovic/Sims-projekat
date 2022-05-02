@@ -26,13 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="SecretaryView\ViewPatientUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SecretaryView\EditPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SecretaryView\ViewPatient.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SecretaryView\EditPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -45,15 +45,15 @@
     <Page Update="SecretaryView\AddDoctor.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+    <Page Update="SecretaryView\ViewPatientUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SecretaryView\EditPatientUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryView\ViewPatient.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SecretaryView\EditPatient.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
