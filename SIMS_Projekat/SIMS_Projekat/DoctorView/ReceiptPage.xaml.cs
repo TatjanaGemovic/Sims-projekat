@@ -68,7 +68,8 @@ namespace SIMS_Projekat.DoctorView
                 endDate = to,
                 Record = treatment,
                 patient = patient,
-                DailyMed = broj
+                DailyMed = broj,
+                appointmentID = appointment.appointmentID
             };
 
             App.receiptRepository.AddReceipt(receipt);

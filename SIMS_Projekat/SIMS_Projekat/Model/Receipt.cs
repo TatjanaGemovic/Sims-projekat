@@ -9,6 +9,7 @@ namespace SIMS_Projekat.Model
     public class Receipt : Serialization.Serializable
     {
         public int receiptID { get; set; }
+        public int appointmentID { get; set; }
         public string Record { get; set; }
         public DateTime beginningDate { get; set; }
         public DateTime endDate { get; set; }
@@ -24,6 +25,7 @@ namespace SIMS_Projekat.Model
             patientID = values[3];
             Record = values[4];
             DailyMed = int.Parse(values[5]);
+            appointmentID = Convert.ToInt32(values[6]);
             
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
@@ -37,7 +39,8 @@ namespace SIMS_Projekat.Model
                 endDate.ToString(),
                 patient.ID,
                 Record,
-                DailyMed.ToString()
+                DailyMed.ToString(),
+                appointmentID.ToString()
             };
             return values;
         }
