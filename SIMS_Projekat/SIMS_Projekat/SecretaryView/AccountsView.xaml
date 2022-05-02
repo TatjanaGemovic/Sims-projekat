@@ -19,13 +19,13 @@
     </UserControl.Resources>
     
     <Grid>
-        <TabControl Grid.Column="1">
+        <TabControl Grid.Column="1" BorderThickness="0,1,0,0" BorderBrush="#2C5364">
             <TabControl.Resources>
                 <Style TargetType="{x:Type TabPanel}">
                     <Setter Property="HorizontalAlignment" Value="Center" />
                 </Style>
             </TabControl.Resources>
-            <TabItem Header="Pacijenti" FontSize="14">
+            <TabItem Header="Pacijenti" FontSize="20" Foreground="#0F2027" FontWeight="SemiBold">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -39,9 +39,9 @@
                     </Grid.ColumnDefinitions>
 
                     <DataGrid x:Name="dataGridPatients" Grid.Row="0" ItemsSource="{Binding Path = Patients}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0" >
+                    SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0" Style="{DynamicResource SecretaryDataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Hitan slucaj" Binding="{Binding IsUrgent}" Width ="*"></DataGridTextColumn>
@@ -79,7 +79,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Lekari" FontSize="14">
+            <TabItem Header="Lekari" FontWeight="SemiBold" FontSize="20" Foreground="#0F2027">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -91,9 +91,9 @@
                     </Grid.ColumnDefinitions>
 
                     <DataGrid x:Name="dataGridDoctors" Grid.Row="0" ItemsSource="{Binding Path = Doctors}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0">
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0" Style="{DynamicResource SecretaryDataGridStyle}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Broj licence" Binding="{Binding LicenceNumber}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Specijalizacija" Width ="*"></DataGridTextColumn>
