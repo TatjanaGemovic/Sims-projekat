@@ -19,6 +19,7 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition />
 
@@ -39,12 +40,13 @@
         <TextBlock Grid.Column="0" Grid.Row="8" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Visina</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="9" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Težina</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="10" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Korisničko ime</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="11" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Alergeni</TextBlock>
+
 
 
 
         <TextBlock Grid.Column="1" Grid.Row="0" x:Name="FirstName" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="1" x:Name="LastName" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
-        <!--"<TextBox Grid.Column="1" Grid.Row="2" x:Name="DateOfBirth" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>-->
         <TextBlock x:Name="Date" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14" />
         <TextBlock Grid.Column="1" Grid.Row="3" x:Name="Jmbg" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="4" x:Name="PhoneNumber" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
@@ -54,6 +56,13 @@
         <TextBlock Grid.Column="1" Grid.Row="8" x:Name="Height" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="9" x:Name="Weight" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
         <TextBlock Grid.Column="1" Grid.Row="10" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBlock>
-        <Button Content="Nazad" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="11" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">        </Button>
+        <ListBox Grid.Column="1" Grid.Row="11" Margin="10,0,20,0" ItemsSource="{Binding Patient.Allergens}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Nazad" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="12" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">        </Button>
     </Grid>
 </Window>

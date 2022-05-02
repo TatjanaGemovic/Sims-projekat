@@ -1,5 +1,7 @@
+using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SIMS_Projekat.Model
 {
@@ -12,13 +14,20 @@ namespace SIMS_Projekat.Model
         public string Symptoms { get; set; }
         public bool IsUrgent { get; set; }
         public List<Appointment> appointment;
-        public List<Allergen> Allergen { get; set; }
+        public List<Allergen> Allergens { get; set; }
 
         public string MedicalRecordID;
         public MedicalRecord MedicalRecord { get; set; }
 
         public override string[] toCSV()
         {
+            List<string> allergens = new List<string>();
+            if (Allergens != null)
+            {
+                allergens = (from allergen in Allergens
+                            select allergen.Name).ToList();
+            }
+     
             string[] values =
             {
                 base.FirstName,
@@ -37,6 +46,7 @@ namespace SIMS_Projekat.Model
                 Symptoms.ToString(),
                 IsUrgent.ToString(),
                 MedicalRecord.ID.ToString(),
+                String.Join(",", allergens)
             };
             return values;
         }
@@ -59,8 +69,16 @@ namespace SIMS_Projekat.Model
             Symptoms = values[13];
             IsUrgent = bool.Parse(values[14]);
             MedicalRecordID = values[15];
-
             MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
+            Allergens = new List<Allergen>();
+            string[] allergensArray = values[16].Split(",");
+            foreach(string arrPart in allergensArray)
+            {
+                Allergen newAllergen = App.AllergenRepository.GetAllergenByName(arrPart);
+                if(newAllergen != null)
+                    Allergens.Add(newAllergen);
+            }
+
         }
 
         
@@ -70,10 +88,10 @@ namespace SIMS_Projekat.Model
         {
             if (newAllergen == null)
                 return;
-            if (this.Allergen == null)
-                this.Allergen = new System.Collections.Generic.List<Allergen>();
-            if (!this.Allergen.Contains(newAllergen))
-                this.Allergen.Add(newAllergen);
+            if (this.Allergens == null)
+                this.Allergens = new List<Allergen>();
+            if (!this.Allergens.Contains(newAllergen))
+                this.Allergens.Add(newAllergen);
         }
 
 
@@ -81,16 +99,16 @@ namespace SIMS_Projekat.Model
         {
             if (oldAllergen == null)
                 return;
-            if (this.Allergen != null)
-                if (this.Allergen.Contains(oldAllergen))
-                    this.Allergen.Remove(oldAllergen);
+            if (this.Allergens != null)
+                if (this.Allergens.Contains(oldAllergen))
+                    this.Allergens.Remove(oldAllergen);
         }
 
 
         public void RemoveAllAllergen()
         {
-            if (Allergen != null)
-                Allergen.Clear();
+            if (Allergens != null)
+                Allergens.Clear();
         }
 
         public List<Appointment> Appointment

@@ -21,10 +21,15 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class ViewPatient : Window
     {
+        public Patient Patient { get; set; }
+
         public ViewPatient(Patient patient)
         {
             InitializeComponent();
 
+            this.DataContext = this;
+            Patient = patient;
+            
             FirstName.Text = patient.FirstName;
             LastName.Text = patient.LastName;
             Date.Text = patient.DateOfBirth.ToString();

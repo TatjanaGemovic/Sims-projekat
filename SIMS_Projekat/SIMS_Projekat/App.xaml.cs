@@ -28,10 +28,16 @@ namespace SIMS_Projekat
         private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
         private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
+        public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
+
         public static AccountRepository accountRepository;
         public static MedicalRecordRepository medRecordRepository;
         public static AccountService accountService;
         public static AccountController accountController;
+
+        public static AllergenRepository AllergenRepository;
+        public static AllergenService AllergenService;
+        public static AllergenController AllergenController;
 
         public static RoomController roomController;
         public static AppointmentController appointmentController;
@@ -60,7 +66,18 @@ namespace SIMS_Projekat
             {
                 AccountService = accountService
             };
+
+            AllergenRepository = new AllergenRepository(ALLERGENS_CSV);
+            AllergenService = new AllergenService()
+            {
+                AllergenRepository = AllergenRepository
+            };
+            AllergenController = new AllergenController()
+            {
+                AllergenService = AllergenService
+            };
            
+            AllergenController.Deserialize();
             medRecordRepository.Deserialize();
             accountRepository.Deserialize();
             roomController.Deserialize();

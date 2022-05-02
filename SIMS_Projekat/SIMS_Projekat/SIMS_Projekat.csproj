@@ -9,9 +9,14 @@
   <ItemGroup>
     <None Remove="Resources\icons\accounts.png" />
     <None Remove="Resources\icons\add_account.png" />
+    <None Remove="Resources\icons\allergen.png" />
     <None Remove="Resources\icons\delete.png" />
     <None Remove="Resources\icons\edit.png" />
     <None Remove="Resources\icons\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\allergen.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +29,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="SecretaryView\AddAllergen.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SecretaryView\AddDoctor.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
