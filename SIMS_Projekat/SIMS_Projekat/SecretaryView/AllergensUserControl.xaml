@@ -18,9 +18,9 @@
 
         <Label Grid.Row="0" Content="Alergeni" Margin="20" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
         <DataGrid x:Name="dataGridAllergens" Grid.Row="1" ItemsSource="{Binding Path = Allergens}" IsReadOnly="True" 
-                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,40" Width="330" FontSize="14" >
+                  SelectionMode="Single" AutoGenerateColumns="False" Margin="40,10,40,40" Width="330" Style="{DynamicResource SecretaryDataGridStyle}" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naziv alergena" Binding="{Binding Name}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header=" Naziv alergena" Binding="{Binding Name}" Width ="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,60">
