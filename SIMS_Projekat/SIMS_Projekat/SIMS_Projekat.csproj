@@ -9,29 +9,51 @@
   <ItemGroup>
     <None Remove="Resources\icons\accounts.png" />
     <None Remove="Resources\icons\add_account.png" />
+    <None Remove="Resources\icons\allergen.png" />
+    <None Remove="Resources\icons\cancel.png" />
+    <None Remove="Resources\icons\close.png" />
     <None Remove="Resources\icons\delete.png" />
     <None Remove="Resources\icons\edit.png" />
+    <None Remove="Resources\icons\save.png" />
     <None Remove="Resources\icons\view.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="SecretaryView\ViewPatient.xaml.cs">
+    <Resource Include="Resources\icons\allergen.png" />
+    <Resource Include="Resources\icons\cancel.png" />
+    <Resource Include="Resources\icons\close.png" />
+    <Resource Include="Resources\icons\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SecretaryView\ViewPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SecretaryView\EditPatient.xaml.cs">
+    <Compile Update="SecretaryView\EditPatientUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SecretaryView\ViewPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SecretaryView\AddDoctor.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="SecretaryView\ViewPatient.xaml">
+    <Page Update="SecretaryView\AddAllergen.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SecretaryView\EditPatient.xaml">
+    <Page Update="SecretaryView\AddDoctor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="SecretaryView\ViewPatientUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\EditPatientUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\ViewPatient.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

@@ -26,18 +26,25 @@ namespace SIMS_Projekat
     public partial class SecretaryHome : Window
     {
         public object CurrentView { get; set; }
+
         private readonly AccountsView accountsView;
         private readonly AppointmentsView appointmentsView;
+        private readonly AllergensUserControl allergensUserControl;
+
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
 
-        public SecretaryHome(AccountRepository repository, AccountController controller)
+        private readonly AllergenController allergenController;
+
+        public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController)
         {
             InitializeComponent();
             accountController = controller;
             accountRepository = repository;
-            accountsView = new AccountsView(accountRepository, accountController);
+            allergenController = newAllergenController;
+            accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
             appointmentsView = new AppointmentsView();
+            allergensUserControl = new AllergensUserControl(allergenController);
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
         }
@@ -51,6 +58,7 @@ namespace SIMS_Projekat
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             accountController.Serialize();
+            allergenController.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -60,6 +68,11 @@ namespace SIMS_Projekat
         private void Appointments_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             ContentControl.Content = appointmentsView;
+        }
+
+        private void Allergens_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentControl.Content = allergensUserControl;
         }
     }
 }

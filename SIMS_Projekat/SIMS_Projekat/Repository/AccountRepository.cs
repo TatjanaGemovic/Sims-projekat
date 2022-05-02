@@ -91,6 +91,7 @@ namespace SIMS_Projekat.Repository
                     oldPatient.DateOfBirth = patient.DateOfBirth;
                     oldPatient.Email = patient.Email;
                     oldPatient.IsUrgent = String.IsNullOrEmpty(patient.Username) || String.IsNullOrEmpty(patient.Password);
+                    oldPatient.Allergens = patient.Allergens;
                 }
             }
             return null;

@@ -27,17 +27,22 @@ namespace SIMS_Projekat.SecretaryView
     {
         public AccountRepository AccountRepository { get; set; }
         public static AccountController AccountController { get; set; }
+        public AllergenController AllergenController { get; set; }
 
         private static DataGrid dataGrid;
         public static ObservableCollection<Account> Patients { get; set; }
         public static ObservableCollection<Account> Doctors { get; set; }
 
-        public AccountsView(AccountRepository accountRepository, AccountController accountController)
+        private ContentControl contentControl;
+
+        public AccountsView(AccountRepository accountRepository, AccountController accountController, AllergenController allergenController, ContentControl contentControl)
         {
             InitializeComponent();
             this.DataContext = this;
             AccountRepository = accountRepository;
             AccountController = accountController;
+            AllergenController = allergenController;
+            this.contentControl = contentControl;
             dataGrid = dataGridPatients;
             Patients = new ObservableCollection<Account>();
             Doctors = new ObservableCollection<Account>();
@@ -80,30 +85,42 @@ namespace SIMS_Projekat.SecretaryView
         }
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            AddPatient addPatient = new AddPatient(AccountController);
-            addPatient.Show();
+            AddPatientUserControl addPatientUserControl = new AddPatientUserControl(AccountController, AllergenController, contentControl, this);
+            contentControl.Content = addPatientUserControl;
         }
 
         private void DeletePatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            DeletePatient(patient);
-            AccountController.DeletePatientAccount(patient);
+            Patient selectedPatient = (Patient)dataGridPatients.SelectedItem;
+            if (selectedPatient == null)
+            {
+                MessageBox.Show("Morate izabrati pacijenta iz tabele");
+                return;
+            }
+            DeletePatient(selectedPatient);
+            AccountController.DeletePatientAccount(selectedPatient);
         }
 
 
         private void EditPatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            EditPatient editPatient = new EditPatient(AccountController, patient);
-            editPatient.Show();
+
+            Patient selectedPatient = (Patient)dataGridPatients.SelectedItem;
+            if(selectedPatient == null)
+            {
+                MessageBox.Show("Morate izabrati pacijenta iz tabele");
+                return;
+            }
+            EditPatientUserControl editPatientUserControl = new EditPatientUserControl(AccountController, AllergenController, contentControl, this, selectedPatient);
+            contentControl.Content = editPatientUserControl;
         }
 
         private void ShowPatient_Click(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            ViewPatient viewPatient = new ViewPatient(patient);
-            viewPatient.Show();
+            Patient selectedPatient = (Patient)dataGridPatients.SelectedItem;
+
+            ViewPatientUserControl viewPatientUserControl = new ViewPatientUserControl(contentControl, this, selectedPatient);
+            contentControl.Content = viewPatientUserControl;
         }
 
 
