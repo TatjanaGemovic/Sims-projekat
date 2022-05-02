@@ -16,7 +16,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Content="Alergeni" Margin="20" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
+        <Label Grid.Row="0" Content="Alergeni" Margin="70,10,10,10" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
         <DataGrid x:Name="dataGridAllergens" Grid.Row="1" ItemsSource="{Binding Path = Allergens}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" Margin="40,10,40,40" Width="330" Style="{DynamicResource SecretaryDataGridStyle}" >
             <DataGrid.Columns>

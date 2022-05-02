@@ -1,6 +1,5 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
-using SIMS_Projekat.SecretaryView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,37 +13,68 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SIMS_Projekat.SecretaryView
 {
     /// <summary>
-    /// Interaction logic for AddPatient.xaml
+    /// Interaction logic for AddPatientUserControl.xaml
     /// </summary>
-    public partial class AddPatient : Window
+    public partial class EditPatientUserControl : UserControl
     {
         public AccountController AccountController { get; set; }
         public AllergenController AllergenController { get; set; }
-        public ObservableCollection<AllergenSelection> Allergens{ get; set; }
+        public ObservableCollection<AllergenSelection> Allergens { get; set; }
 
-        public AddPatient(AccountController accountController, AllergenController allergenController)
+        private ContentControl contentControl;
+        private UserControl accountsView;
+
+        private string ID;
+        private Patient patient;
+
+        public EditPatientUserControl(AccountController accountController, AllergenController allergenController, ContentControl contentControl, UserControl accountsView, Patient oldPatient)
         {
             InitializeComponent();
             this.DataContext = this;
+            this.contentControl = contentControl;
+            this.accountsView = accountsView;
             AllergenController = allergenController;
             AccountController = accountController;
+
+            patient = oldPatient;
             Allergens = new ObservableCollection<AllergenSelection>();
             foreach (Allergen allergen in AllergenController.GetAllAlergens())
             {
-                Allergens.Add(new AllergenSelection { Allergen = allergen });
+                Allergens.Add(new AllergenSelection 
+                { 
+                    Allergen = allergen, 
+                    IsSelected = patient.Allergens.Contains(allergen) 
+                });
             }
+
+            FirstName.Text = patient.FirstName;
+            LastName.Text = patient.LastName;
+            Date.Text = patient.DateOfBirth.ToString();
+            Jmbg.Text = patient.Jmbg;
+            Email.Text = patient.Email;
+            BloodType.SelectedIndex = (int)patient.BloodType;
+            PhoneNumber.Text = patient.PhoneNumber;
+            HealthInsuranceID.Text = patient.PhoneNumber;
+            Height.Text = patient.Height.ToString();
+            Weight.Text = patient.Weight.ToString();
+            Username.Text = patient.Username;
+            Password.Password = patient.Password;
+            ID = patient.ID;
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
 
             List<Allergen> selectedAllergens = new List<Allergen>();
-            foreach(AllergenSelection allergenSelection in Allergens)
+            foreach (AllergenSelection allergenSelection in Allergens)
             {
                 if (allergenSelection.IsSelected)
                 {
@@ -69,11 +99,15 @@ namespace SIMS_Projekat.SecretaryView
                 IsUrgent = false,
                 MedicalRecord = App.medRecordRepository.CreateMedicalRecord(new MedicalRecord()),
                 Allergens = selectedAllergens
-                
+
             };
-            AccountController.CreatePatientAccount(newPatient);
-            AccountsView.AddPatient(newPatient);
-            Close();
+            AccountController.EditPatientAccount(newPatient, ID);
+            AccountsView.Refresh();
+            contentControl.Content = accountsView;
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = accountsView;
         }
 
         public class AllergenSelection
@@ -86,5 +120,6 @@ namespace SIMS_Projekat.SecretaryView
                 IsSelected = false;
             }
         }
+
     }
 }

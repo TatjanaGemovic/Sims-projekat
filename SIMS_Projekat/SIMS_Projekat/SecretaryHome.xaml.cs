@@ -42,7 +42,7 @@ namespace SIMS_Projekat
             accountController = controller;
             accountRepository = repository;
             allergenController = newAllergenController;
-            accountsView = new AccountsView(accountRepository, accountController, allergenController);
+            accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
             appointmentsView = new AppointmentsView();
             allergensUserControl = new AllergensUserControl(allergenController);
             ContentControl.Content = accountsView;
