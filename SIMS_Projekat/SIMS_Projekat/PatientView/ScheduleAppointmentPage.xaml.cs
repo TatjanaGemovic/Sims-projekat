@@ -39,8 +39,7 @@ namespace SIMS_Projekat.PatientView
 
             InitializeComponent();
             RandomAppointmentFrame.Content = new RandomAppontmentFirstPage(patient, frame);
-            //date.DisplayDateStart = DateTime.Now;
-            //date.BlackoutDates = DateTime.Now;
+            SetBlackOutDates();
 
             if (patient.doctorLicenceNumber != "")
             {
@@ -50,6 +49,16 @@ namespace SIMS_Projekat.PatientView
             }
 
             InitializeDoctorComboBox();
+        }
+
+        private void SetBlackOutDates()
+        {
+            DateTime startDate = DateTime.Today;
+            date.BlackoutDates.Add(new CalendarDateRange(
+               startDate,
+               startDate
+            ));
+            date.DisplayDateEnd = startDate.AddMonths(6);
         }
 
         public class DoctorInfo

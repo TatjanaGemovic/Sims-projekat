@@ -39,6 +39,7 @@ namespace SIMS_Projekat.PatientView
             patient = p;
             appointment = App.appointmentController.GetAppointmentByID(appointmentID);
 
+            SetBlackOutDates();
             InitializeDoctorComboBox();
             Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(appointment.doctor.LicenceNumber) as Doctor;
             chosen_doctor.Content = d.FirstName + " " + d.LastName;
@@ -51,7 +52,39 @@ namespace SIMS_Projekat.PatientView
             comboTime.Text = appointmentTime;
          
         }
+        private void SetBlackOutDates()
+        {
+            DateTime today = DateTime.Today;
+            DateTime lastDate = DateTime.Today.AddMonths(6);
+            DateTime dayOfAppointment = appointment.beginningDate;
 
+            date.DisplayDateStart = today;
+            date.DisplayDateEnd = lastDate;
+
+            if (today.Date == dayOfAppointment.Date)
+            {   
+                date.BlackoutDates.Add(new CalendarDateRange(
+                   today,
+                   today
+                ));
+                date.BlackoutDates.Add(new CalendarDateRange(
+                   today.AddDays(4),
+                   lastDate
+                ));
+
+            }
+            else{
+                TimeSpan diff1 = dayOfAppointment.Subtract(today);
+                date.BlackoutDates.Add(new CalendarDateRange(
+                    today,
+                    dayOfAppointment.AddDays(-2)
+                ));
+                date.BlackoutDates.Add(new CalendarDateRange(
+                    dayOfAppointment.AddDays(3),
+                    lastDate
+                ));              
+            }            
+        }
         public class DoctorInfo
         {
             public string doctorName { get; set; }
