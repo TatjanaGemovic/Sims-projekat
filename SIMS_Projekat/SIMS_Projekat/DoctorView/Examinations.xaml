@@ -14,10 +14,35 @@
             <Label Content="Pregledi" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="PatientExaminatinLists" ItemsSource="{Binding patientFinishedAppointmentList}" Margin="0,25,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="463"  Width="370">
+            <DataGrid x:Name="PatientExaminatinLists" SelectionUnit="FullRow" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding patientFinishedAppointmentList}" Margin="0,25,0,0" Height="463">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CDDEFF"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#676FA3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CDDEFF"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#676FA3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding ="{Binding id}" Width="30"/>
-                    <DataGridTextColumn Header="Vreme pregleda" Binding ="{Binding beginningDate}"  Width="140"/>
+                    <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="80"/>
+                    <DataGridTextColumn Header="Datum" Binding ="{Binding beginningDate}"  Width="80"/>
                     <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>

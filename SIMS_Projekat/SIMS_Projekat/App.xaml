@@ -79,9 +79,7 @@
             <Setter Property="Height" Value="35"/>
             <Setter Property="Width" Value="75"/>
         </Style>
-        <Style TargetType="DockPanel" x:Key="DockPanel">
-            <Setter Property="Background" Value="#FFA7AFAF"/>
-        </Style>
+
         <Style TargetType="Label" x:Key="ActionBarLabel">
             <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
             <Setter Property="FontSize" Value="30"/>
@@ -93,6 +91,32 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+
+        <Style x:Key="DoctorDataGridStyle" TargetType="{x:Type DataGrid}">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DoctorColumnHeaderStyle}"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#676FA3"/>
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Width" Value="370"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+
+        <Style x:Key="DoctorColumnHeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="#676FA3"/>
+            <Setter Property="Foreground" Value="#EEF2FF"/>
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontWeight" Value="SemiBold" />
         </Style>
 
         

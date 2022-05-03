@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Model;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,13 +35,15 @@ namespace SIMS_Projekat.DoctorView
         {
             public int id { get; set; }
             public string beginningDate { get; set; }
+            public string time { get; set; }
             public string patientName { get; set; }
 
-            public Appointment2(int id, string beginningDate, string patientName)
+            public Appointment2(int id, string beginningDate, string patientName, string time)
             {
                 this.id = id;
                 this.beginningDate = beginningDate;
                 this.patientName = patientName;
+                this.time = time;
             }
 
         }
@@ -53,10 +56,13 @@ namespace SIMS_Projekat.DoctorView
                     if (app.doctor.Equals(doctor))
                     {
                         int id = app.appointmentID;
-                        string time = app.beginningDate.Date.ToString();
+                        string date = app.beginningDate.ToString();
+                        String[] datePart = date.Split(" ");
+                        date = datePart[0];
+                        string time = datePart[1];
                         string name = app.patient.FirstName + " " + app.patient.LastName;
 
-                        AppointmentList.Add(new Appointment2(id, time, name));
+                        AppointmentList.Add(new Appointment2(id, date, name, time));
                     }
                 }
             }

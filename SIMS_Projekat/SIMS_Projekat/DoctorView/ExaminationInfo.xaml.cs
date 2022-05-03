@@ -31,7 +31,10 @@ namespace SIMS_Projekat.DoctorView
             doctor = doctor1;
             appointment = app;
             Ime_pacijenta.Text = app.patient.FirstName + " " + app.patient.LastName;
-            Datum.Text = app.beginningDate.ToString();
+
+            string time = app.beginningDate.ToString();
+            String[] datePart = time.Split(" ");
+            Datum.Text =  datePart[0];
             Vreme.Text = app.beginningDate.TimeOfDay.ToString();
             Soba.Text = app.room.RoomNumber.ToString();
         }
