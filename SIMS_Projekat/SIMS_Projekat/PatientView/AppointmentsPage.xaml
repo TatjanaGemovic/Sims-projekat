@@ -17,7 +17,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Termini" Grid.Row="0" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" 
+        <Label Content="Termini" Grid.Row="0" FontSize="48" FontWeight="Bold" HorizontalContentAlignment="Center" 
                Width="228" HorizontalAlignment="Center" />
         
         <Button x:Name="make_appointment" Content="Zakazi Termin" FontSize="22" FontFamily="Segoe UI" FontWeight="Normal" 

@@ -18,17 +18,42 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <DockPanel  x:Name= "menubar" Grid.Row="0" Grid.ColumnSpan="2">
-            <Button x:Name="logout" Content="Odjavite se" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" Width="110" HorizontalAlignment="Right" Height="40" Margin="0,0,20,0" DockPanel.Dock="Right" Click="logout_Click"></Button>
-            <Label x:Name="name_surname" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Width="350"  Height="40" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" HorizontalContentAlignment="Right" />        
+            <Button x:Name="logout" Content="Odjavite se" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" 
+                    Foreground="Black" Background="#FFB6DAD6" Width="130" HorizontalAlignment="Right" Height="40" 
+                    Margin="0,0,20,0" DockPanel.Dock="Right" Click="logout_Click"></Button>
+            
+            <Label x:Name="name_surname" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" 
+                   Width="350"  Height="40" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
+                   HorizontalContentAlignment="Right" />        
         </DockPanel>
         <DockPanel x:Name= "Button_Selection" Grid.Row="1" Grid.Column="0">
-            <Button x:Name="make_appointment" Content="Termini" DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="make_appointment_Click" Margin="20,10,20,10" Height="40" />
-            <Button x:Name="choose_doctor" Content="Izaberite lekara" DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="choose_doctor_Click"/>
-            <Button x:Name="reports" Content="Izvestaji"               DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            <Button x:Name="therapy" Content="Terapija"                 DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            <Button x:Name="notes" Content="Beleske"                  DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            <Button x:Name="reminders" Content="Podsetnici"            DockPanel.Dock="Top" FontSize="18" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            <Button x:Name="homepage" Content="Pocetna strana"           DockPanel.Dock="Bottom" FontSize="18"  FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="homepage_Click" />
+            <Button x:Name="make_appointment" Content="Termini" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Click="make_appointment_Click" Margin="20,10,20,10" Height="40" />
+            
+            <Button x:Name="choose_doctor" Content="Izaberite lekara" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="choose_doctor_Click"/>
+            
+            <Button x:Name="reports" Content="Izvestaji" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
+            
+            <Button x:Name="therapy" Content="Terapija" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
+            
+            <Button x:Name="notes" Content="Beleske" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
+            
+            <Button x:Name="reminders" Content="Podsetnici"  DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
+            
+            <Button x:Name="homepage" Content="Pocetna strana" DockPanel.Dock="Bottom" FontSize="24"  FontFamily="Segoe UI" 
+                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
+                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="homepage_Click" />
         </DockPanel>
 
 

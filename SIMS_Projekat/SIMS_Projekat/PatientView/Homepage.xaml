@@ -9,7 +9,39 @@
       Title="Homepage">
 
     <Grid >
-        <Label Content="Dobrodosli u Zdravo!" HorizontalAlignment="Stretch" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" />
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Dobrodošli u Zdravo!" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
+               HorizontalAlignment="Stretch" FontSize="48" FontWeight="Bold" HorizontalContentAlignment="Center" />
+
+        <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" Foreground="Black"
+                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+
+        <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!" Foreground="Black" 
+                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+
+        <Rectangle Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFB6DAD6" StrokeThickness="4" 
+                   RadiusX="10.5" RadiusY="10.5"/>
+
+        <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
+               VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
+
     </Grid>
 </Page>
