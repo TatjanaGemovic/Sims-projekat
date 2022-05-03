@@ -77,14 +77,14 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public List<Appointment> GetAppointmentByPatientID(string patientID1)
+        public List<Appointment> GetAppointmentByPatientID(string patientID)
         {
             List<Appointment> appointmentListForPatient = new List<Appointment>();
             foreach (Appointment appointment in appointmentList)
             {
                 //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
 
-                if (appointment.patient.ID.Equals(patientID1))
+                if (appointment.patient.ID.Equals(patientID))
                 {
                     appointmentListForPatient.Add(appointment);
                 }

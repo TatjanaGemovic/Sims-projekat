@@ -95,8 +95,7 @@
             <Setter Property="VerticalAlignment" Value="Top"/>
         </Style>
 
-        
-    <!--SecretaryView Styles-->
+        <!--SecretaryView Styles-->
         
         <Style TargetType="RadioButton" x:Key="SecretaryViewRadioButton">
             <Style.Setters>
@@ -221,7 +220,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
 
     </Application.Resources>
 </Application>

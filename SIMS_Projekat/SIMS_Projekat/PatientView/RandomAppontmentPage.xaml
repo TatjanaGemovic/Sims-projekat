@@ -1,0 +1,51 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.RandomAppontmentFirstPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="515"
+      Title="RandomAppontmentFirstPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="showAppointmentButton" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                Content="Biraj nasumičan termin" FontSize="24" HorizontalAlignment="Right"
+                Foreground="Black" Background="#FFB6DAD6" Click="showAppointmentButton_Click" />
+
+        <Label x:Name="doctorLabel" Content="Lekar:" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"
+               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
+        <Label x:Name="dateLabel" Content="Datum:" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="1"
+               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
+        <Label x:Name="timeLabel" Content="Vreme:" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1"
+               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
+
+        <Label x:Name="doctorContentLabel" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2"
+               VerticalAlignment="Stretch" FontSize="24" />
+        <Label x:Name="dateContentLabel" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="2"
+               VerticalAlignment="Stretch" FontSize="24" />
+        <Label x:Name="timeContentLabel" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="2"
+               VerticalAlignment="Stretch" FontSize="24"  />
+
+        <Button x:Name="scheduleAppointment" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                Content="Zakaži" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Foreground="Black" Background="#FFB6DAD6" Click="scheduleAppointment_Click" Width="142" Visibility="Hidden"/>
+
+    </Grid>
+</Page>

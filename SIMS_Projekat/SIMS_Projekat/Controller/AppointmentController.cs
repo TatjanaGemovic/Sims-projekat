@@ -48,5 +48,29 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.GetAvailableAppointmentsForDoctor(doctor, pickedDate, selectedPatient, op, selectedRoom);
         }
+
+        public List<string> GetAvailableAppointmentsForPatient(Patient p, DateTime dt, string licence) 
+        {
+            return appointmentService.GetAvailableAppointmentsForPatient(p, dt, licence);
+        } 
+
+        public Room GetAvailableRoom(DateTime start)
+        {
+            return appointmentService.GetAvailableRoom(start);
+        }
+
+        public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime dt)
+        {
+            return appointmentService.CheckIfDoctorIsAvailable(doctor, dt);
+        }
+        public Appointment CreateRandomAppointment(Patient p)
+        {
+            return appointmentService.CreateRandomAppointment(p);
+        }
+
+        public List<string> createAppointmentTime()
+        {
+            return appointmentService.createAppointmentTime();
+        }
     }
 }

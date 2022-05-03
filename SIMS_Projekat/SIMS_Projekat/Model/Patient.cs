@@ -13,8 +13,11 @@ namespace SIMS_Projekat.Model
         public double Weight { get; set; }
         public string Symptoms { get; set; }
         public bool IsUrgent { get; set; }
+
         public List<Appointment> appointment;
         public List<Allergen> Allergens { get; set; }
+        
+        public string doctorLicenceNumber { get; set; } 
 
         public string MedicalRecordID;
         public MedicalRecord MedicalRecord { get; set; }
@@ -39,6 +42,7 @@ namespace SIMS_Projekat.Model
                 base.Username,
                 base.Password,
                 base.ID,
+                doctorLicenceNumber,
                 HealthInsuranceID,
                 ((int)BloodType).ToString(),
                 Height.ToString(),
@@ -46,7 +50,8 @@ namespace SIMS_Projekat.Model
                 Symptoms.ToString(),
                 IsUrgent.ToString(),
                 MedicalRecord.ID.ToString(),
-                String.Join(",", allergens)
+                String.Join(",", allergens)       
+                
             };
             return values;
         }
@@ -62,26 +67,27 @@ namespace SIMS_Projekat.Model
             base.Username = values[6];
             base.Password = values[7];
             base.ID = values[8];
-            HealthInsuranceID = values[9];
-            BloodType = (BloodType)int.Parse(values[10]);
-            Height = double.Parse(values[11]);
-            Weight = double.Parse(values[12]);
-            Symptoms = values[13];
-            IsUrgent = bool.Parse(values[14]);
-            MedicalRecordID = values[15];
+            doctorLicenceNumber = values[9];
+            HealthInsuranceID = values[10];
+            BloodType = (BloodType)int.Parse(values[11]);
+            Height = double.Parse(values[12]);
+            Weight = double.Parse(values[13]);
+            Symptoms = values[14];
+            IsUrgent = bool.Parse(values[15]);
+            MedicalRecordID = values[16];
             MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
             Allergens = new List<Allergen>();
-            string[] allergensArray = values[16].Split(",");
+            string[] allergensArray = values[17].Split(",");
             foreach(string arrPart in allergensArray)
             {
                 Allergen newAllergen = App.AllergenRepository.GetAllergenByName(arrPart);
                 if(newAllergen != null)
                     Allergens.Add(newAllergen);
-            }
-
+            }  
+            
         }
 
-        
+
 
 
         public void AddAllergen(Allergen newAllergen)

@@ -65,5 +65,11 @@ namespace SIMS_Projekat.Service
             AccountRepository.Serialize();
             App.medRecordRepository.Serialize();
         }
+
+        public Account GetDoctorAccountByLicenceNumber(string licenceNumber)
+        {
+            return AccountRepository.GetDoctorAccountByLicenceNumber(licenceNumber);
+
+        }
     }
 }

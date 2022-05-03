@@ -58,10 +58,13 @@ namespace SIMS_Projekat.Controller
         {
             throw new NotImplementedException();
         }
-
         public void Serialize()
         {
             AccountService.Serialize();
+        }
+        public Account GetDoctorAccountByLicenceNumber(string licenceNumber)
+        {
+            return AccountService.GetDoctorAccountByLicenceNumber(licenceNumber);
         }
     }
 }
