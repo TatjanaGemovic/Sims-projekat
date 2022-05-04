@@ -27,7 +27,7 @@
                 <Label Content="Datum" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Vreme" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Soba" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="108" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <TextBox x:Name="Datum" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,110,0" VerticalAlignment="Top" Height="31" Width="90"/>
+                <TextBox x:Name="Datum" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Vreme" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Soba" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,202,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>

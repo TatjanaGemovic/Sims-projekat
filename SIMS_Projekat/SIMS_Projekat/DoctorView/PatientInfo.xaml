@@ -27,7 +27,7 @@
                 <TextBox x:Name="Ime" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Prezime" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="JMBG" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,202,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Datum_rodjenja" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,248,125,0" VerticalAlignment="Top" Height="31" Width="75"/>
+                <TextBox x:Name="Datum_rodjenja" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,248,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Telefon" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,294,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Email" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,340,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>

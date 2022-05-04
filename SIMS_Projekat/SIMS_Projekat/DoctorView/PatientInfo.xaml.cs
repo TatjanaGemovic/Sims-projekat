@@ -35,7 +35,10 @@ namespace SIMS_Projekat.DoctorView
             Ime.Text = patient.FirstName;
             Prezime.Text = patient.LastName;
             JMBG.Text = patient.Jmbg;
-            Datum_rodjenja.Text = patient.DateOfBirth.ToString();
+
+            string time = patient.DateOfBirth.ToString();
+            String[] datePart = time.Split(" ");
+            Datum_rodjenja.Text = datePart[0];
             Email.Text = patient.Email;
             Telefon.Text = patient.PhoneNumber;
         }

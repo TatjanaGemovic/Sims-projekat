@@ -14,7 +14,31 @@
             <Label Content="Pacijenti" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="PatientLists" ItemsSource="{Binding patientList}" Margin="0,25,0,0" AutoGenerateColumns="False" SelectionMode="Single" IsReadOnly="True" HorizontalAlignment="Center" VerticalAlignment="Top" Height="463"  Width="370">
+            <DataGrid x:Name="PatientLists" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding patientList}" Margin="0,25,0,0" Height="463">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CDDEFF"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#676FA3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#CDDEFF"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#676FA3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding ="{Binding ID}" Width="30"/>
                     <DataGridTextColumn Header="Prezime i ime pacijenta" Binding ="{Binding fullName}"  Width="*"/>
