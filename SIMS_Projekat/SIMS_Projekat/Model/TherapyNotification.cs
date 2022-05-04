@@ -22,7 +22,9 @@ namespace SIMS_Projekat.Model
             receiptID = Convert.ToInt32(values[1]);
             patientID = values[2];
             date = DateTime.Parse(values[3]);
-            
+
+            receipt = App.receiptRepository.GetReceiptByID(receiptID);
+            patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
 
         public string[] toCSV()

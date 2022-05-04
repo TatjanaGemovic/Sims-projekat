@@ -40,5 +40,10 @@ namespace SIMS_Projekat.Controller
         {
             return therapyNotificationService.DeleteNotification(oldNotification);
         }
+
+        public TherapyNotification CreateNotification(Receipt receipt)
+        {
+            return therapyNotificationService.CreateNotification(receipt);
+        }
     }
 }

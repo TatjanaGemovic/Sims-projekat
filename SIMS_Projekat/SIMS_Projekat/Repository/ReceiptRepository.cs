@@ -21,7 +21,20 @@ namespace SIMS_Projekat.Repository
             serializer = new Serializer<Receipt>();
             id = 0;
         }
+        public Receipt GetReceiptByID(int receiptID)
+        {
+            foreach (Receipt receipt in receiptList)
+            {
+                Receipt receipt1 = receiptList.Find(receipt => receipt.receiptID == receiptID);
 
+                if (receipt1 != null)
+                {
+                    return receipt1;
+                }
+            }
+            return null;
+
+        }
         public List<Receipt> GetReceiptByPatientID(string patientID1)
         {
             List<Receipt> receiptListForPatient = new List<Receipt>();
