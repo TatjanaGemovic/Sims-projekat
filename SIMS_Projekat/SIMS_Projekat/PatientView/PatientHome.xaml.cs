@@ -44,6 +44,7 @@ namespace SIMS_Projekat.PatientView
         {
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
+            App.therapyNotificationRepository.Serialize();
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
