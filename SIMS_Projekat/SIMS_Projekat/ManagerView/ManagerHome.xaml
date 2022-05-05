@@ -24,7 +24,7 @@
                 <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Height="40" Width="132" KeyUp="notifikacije_KeyUp" KeyDown="notifikacije_KeyDown" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
                 <ListViewItem x:Name="prostorijeView" Content="Prostorije" Height="40" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
                 <ListViewItem x:Name="lekoviView" Content="Lekovi" Height="40"></ListViewItem>
-                <ListViewItem x:Name="opremaView" Content="Oprema" Height="40" />
+                <ListViewItem x:Name="opremaView" Content="Oprema" Height="40" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
                 <ListViewItem x:Name="anketeView" Content="Ankete" Height="40"></ListViewItem>
                 <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Height="40"></ListViewItem>
                 <ListViewItem x:Name="pomocView" Content="Pomoc" Height="40"></ListViewItem>

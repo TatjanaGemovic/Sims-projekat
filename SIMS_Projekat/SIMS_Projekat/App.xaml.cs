@@ -50,17 +50,21 @@ namespace SIMS_Projekat
         public static AppointmentController appointmentController;
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
+        private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
         public static RoomRepository roomRepository;
         public static RoomService roomService;
         public static RoomController roomController;
-
-
-
+        public static EquipmentRepository equipmentRepository;
+        public static EquipmentService equipmentService;
+        public static EquipmentController equipmentController;
         public App()
         {
             roomRepository = new RoomRepository(ROOM_CSV);
             roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
+            equipmentRepository = new EquipmentRepository(EQUIPMENT_CSV);
+            equipmentService = new EquipmentService(equipmentRepository);
+            equipmentController = new EquipmentController(equipmentService);
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);

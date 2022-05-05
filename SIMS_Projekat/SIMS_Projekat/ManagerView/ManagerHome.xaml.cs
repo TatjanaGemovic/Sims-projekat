@@ -69,6 +69,14 @@ namespace SIMS_Projekat
             MainFrame.Content = new RoomView();
         }
 
-        
+        private void oprema_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Content = new EquipmentView();
+        }
+
+        private void oprema_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Content = new EquipmentView();
+        }
     }
 }
