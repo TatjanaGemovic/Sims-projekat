@@ -65,12 +65,25 @@
                     
                 </DataTemplate>
             </ListView.ItemTemplate>
+
+            <ListView.Style>
+                <Style TargetType="ListView">
+                    <Style.Triggers>
+                        <Trigger Property="HasItems"
+                         Value="False">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListView">
+                                        <TextBlock Text="Trenutno nemate obaveštenja!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.Style>
         </ListView>
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
                VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
-        <Label x:Name="noNotifications" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Trenutno nemate obavestenja!" 
-               Visibility="Visible"
-               FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-
     </Grid>
 </Page>

@@ -35,7 +35,7 @@
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="choose_doctor_Click"/>
             
-            <Button x:Name="reports" Content="Izvestaji" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+            <Button x:Name="reports" Content="Izveštaji" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
             
@@ -43,7 +43,7 @@
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
             
-            <Button x:Name="notes" Content="Beleske" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
+            <Button x:Name="notes" Content="Beleške" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
             
@@ -51,7 +51,7 @@
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
             
-            <Button x:Name="homepage" Content="Pocetna strana" DockPanel.Dock="Bottom" FontSize="24"  FontFamily="Segoe UI" 
+            <Button x:Name="homepage" Content="Početna strana" DockPanel.Dock="Bottom" FontSize="24"  FontFamily="Segoe UI" 
                     FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
                     VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="homepage_Click" />
         </DockPanel>
