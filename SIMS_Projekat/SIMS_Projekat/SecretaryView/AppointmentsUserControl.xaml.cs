@@ -46,7 +46,7 @@ namespace SIMS_Projekat.SecretaryView
             Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableNotMeetingRooms().OrderBy(room => room.RoomNumber));
             Appointments = new ObservableCollection<Appointment>();
 
-            sortDataGrid();
+            SortDataGrid();
            
         }
 
@@ -92,10 +92,10 @@ namespace SIMS_Projekat.SecretaryView
         public static void AddAppointment(Appointment appointment)
         {
             Appointments.Add(appointment);
-            sortDataGrid();
+            SortDataGrid();
         }
 
-        private static void sortDataGrid()
+        public static void SortDataGrid()
         {
             dataGrid.Items.SortDescriptions.Clear();
             dataGrid.Items.SortDescriptions.Add(new SortDescription("beginningDate", ListSortDirection.Ascending));
@@ -112,7 +112,9 @@ namespace SIMS_Projekat.SecretaryView
 
         private void EditAppointment_Click(object sender, RoutedEventArgs e)
         {
-
+            Appointment selectedAppointment = (Appointment)dataGridAppointments.SelectedItem;
+            EditAppointmentUserControl editAppointmentUserControl = new EditAppointmentUserControl(roomController, appointmentController, accountController, contentControl, this, selectedAppointment);
+            contentControl.Content = editAppointmentUserControl;
         }
 
         private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
