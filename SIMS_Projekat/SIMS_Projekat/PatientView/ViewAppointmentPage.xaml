@@ -43,6 +43,8 @@
                VerticalAlignment="Center" FontSize="24"  />
         <Label Content="Soba:" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1"
                VerticalAlignment="Center" FontSize="24" />
+        <Label Content="Tip pregleda:" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24" />
 
         <Label x:Name="chosenDoctor" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="24" 
                HorizontalContentAlignment="Left"
@@ -60,13 +62,17 @@
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Left"/>
         
-        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" 
+        <Label Grid.Row="6" Grid.Column="2" x:Name="isOperationField" FontSize="24"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Left"/>
+        
+        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" 
                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" IsEnabled="False"/>
 
         <Button Grid.Row="9" Grid.Column="4" Content="Izmeni" Foreground="Black" Background="#FFB6DAD6" 
                 HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                FontSize="24" Click="changeClick"/>
-        <Button Grid.Row="9" Grid.Column="6" Content="Otkazi" Foreground="Black" Background="#FFB6DAD6" 
+                FontSize="24" Click="changeClick" x:Name="changeButton"/>
+        <Button Grid.Row="9" Grid.Column="6" Content="Otkaži" Foreground="Black" Background="#FFB6DAD6" 
                 HorizontalAlignment="Stretch" VerticalAlignment="Center"
                 FontSize="24" Click="deleteClick"/>
         <Button Grid.Row="9" Grid.Column="8" Content="Nazad" Foreground="Black" Background="#FFB6DAD6" 

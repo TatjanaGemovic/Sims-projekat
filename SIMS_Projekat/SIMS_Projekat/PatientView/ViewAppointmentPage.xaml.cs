@@ -43,6 +43,15 @@ namespace SIMS_Projekat.PatientView
             Room r = App.roomController.GetRoomByID(appointment.room.RoomID);
             roomField.Content = "Sprat " + r.Floor + ", broj " + r.RoomNumber;
 
+            if (appointment.operation)
+            {
+                isOperationField.Content = "Operacija";
+                changeButton.IsEnabled = false;
+            }
+            else
+            {
+                isOperationField.Content = "Pregled";
+            }
         }
 
         private void deleteClick(object sender, RoutedEventArgs e)
