@@ -107,7 +107,7 @@
                   ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" 
                   SourceUpdated="comboTime_SourceUpdated" Margin="10,29,10,29" SelectionChanged="comboTime_SelectionChanged"/>
 
-        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="5" Content="Zakazi" Foreground="Black" Background="#FFB6DAD6" 
+        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="5" Content="Zakaži" Foreground="Black" Background="#FFB6DAD6" 
                  HorizontalAlignment="Stretch" VerticalAlignment="Center"
                 FontSize="24" Click="scheduleClick" IsEnabled="False" />
         

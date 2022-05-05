@@ -70,13 +70,22 @@ namespace SIMS_Projekat.PatientView
             public string time { get; set; }
             public int roomNumber { get; set; }
 
-            public AppointmentInformation(int apid, string patient, string doctor, string d,string t, int room) { 
+            public string isOperation { get; set; }
+            public AppointmentInformation(int apid, string patient, string doctor, string d,string t, int room, bool op) { 
                 appointmentId = apid;
                 patientName = patient;
                 doctorName = doctor;
                 date = d;
                 time = t;
                 roomNumber = room;
+                if (op)
+                {
+                    isOperation = "Operacija";
+                }
+                else
+                {
+                    isOperation = "Pregled";
+                }
             }
         }
         public void createList()
@@ -92,7 +101,7 @@ namespace SIMS_Projekat.PatientView
                     string vreme = deloviDatuma[1];
 
                     appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                                  appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber));
+                                                  appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber, appointment.operation));
                 
             }
         }
