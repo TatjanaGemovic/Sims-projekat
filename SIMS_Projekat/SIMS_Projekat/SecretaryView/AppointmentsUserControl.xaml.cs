@@ -33,18 +33,20 @@ namespace SIMS_Projekat.SecretaryView
         private static DataGrid dataGrid;
 
         private ContentControl contentControl;
-        public AppointmentsUserControl(RoomController roomController, AccountController accountController, ContentControl contentControl)
+        public AppointmentsUserControl(RoomController roomController, AccountController accountController, AppointmentController appointmentController, ContentControl contentControl)
         {
             InitializeComponent();
             this.DataContext = this;
             this.roomController = roomController;
             this.accountController = accountController;
-            appointmentController = App.appointmentController;
+            this.appointmentController = appointmentController;
             this.contentControl = contentControl;
             dataGrid = dataGridAppointments;
 
             Rooms = new ObservableCollection<Room>(this.roomController.GetRooms().OrderBy(room => room.RoomNumber));
             Appointments = new ObservableCollection<Appointment>();
+
+            sortDataGrid();
            
         }
 
@@ -90,6 +92,11 @@ namespace SIMS_Projekat.SecretaryView
         public static void AddAppointment(Appointment appointment)
         {
             Appointments.Add(appointment);
+            sortDataGrid();
+        }
+
+        private static void sortDataGrid()
+        {
             dataGrid.Items.SortDescriptions.Clear();
             dataGrid.Items.SortDescriptions.Add(new SortDescription("beginningDate", ListSortDirection.Ascending));
             dataGrid.Items.Refresh();
