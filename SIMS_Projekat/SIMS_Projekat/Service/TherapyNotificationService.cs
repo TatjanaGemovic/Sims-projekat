@@ -12,33 +12,11 @@ using System.ComponentModel;
 
 namespace SIMS_Projekat.Service
 {
-    public class TherapyNotificationService//: INotifyPropertyChanged
+    public class TherapyNotificationService
     {
         public TherapyNotificationRepository therapyNotificationRepository;
 
         private static ObservableCollection<TherapyNotification> TherapyNotificationsForPatient;
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //private void OnPropertyChanged(string propertyName)
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
-        //public ObservableCollection<TherapyNotification> TherapyNotificationsForPatient
-        //{
-        //    get { return therapyNotificationsForPatient; }
-        //    set
-        //    {
-        //        if (value != therapyNotificationsForPatient)
-        //        {
-        //            therapyNotificationsForPatient = value;
-        //            OnPropertyChanged("TherapyNotificationsForPatient");
-        //        }
-        //    }
-        //}
 
         public TherapyNotificationService()
         {
@@ -70,6 +48,7 @@ namespace SIMS_Projekat.Service
         }
         public TherapyNotification DeleteNotification(TherapyNotification oldNotification)
         {
+            TherapyNotificationsForPatient.Remove(oldNotification);
             return therapyNotificationRepository.DeleteNotification(oldNotification);
         }
         public TherapyNotification CreateNotification(Receipt receipt)
@@ -187,6 +166,7 @@ namespace SIMS_Projekat.Service
                     firstDate = day.Date;
                     timeStart = TimeSpan.Parse("18:00");
                     firstDate = firstDate.Add(timeStart);
+                    
                     notification = new TherapyNotification()
                     {
                         date = firstDate,

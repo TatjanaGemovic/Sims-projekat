@@ -61,5 +61,10 @@ namespace SIMS_Projekat.Controller
         {
            therapyNotificationService.DeleteActiveNotifications();
         }
+
+        //public TherapyNotification DeleteNotification(TherapyNotification tn)
+        //{
+        //    return therapyNotificationService.DeleteNotification(tn);
+        //}
     }
 }

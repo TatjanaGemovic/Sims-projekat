@@ -7,9 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Homepage">
-    <!--<Page.DataContext>
-        <local1:TherapyNotificationService/>
-    </Page.DataContext>-->
+    
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -42,22 +40,37 @@
                    RadiusX="10.5" RadiusY="10.5"/>
 
         <ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
-                  Margin="0,20,0,0" Background="Transparent" BorderBrush="Transparent">
+                  Margin="0,20,0,0" Background="Transparent" BorderBrush="Transparent" x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  SelectionMode="Single" >
             <ListView.ItemTemplate>
+                
                 <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="{Binding receipt.Record}" FontWeight="Bold" />
-                        <TextBlock Text=", " />
-                        <TextBlock Text="{Binding receiptID}" />
-                        <!--<TextBlock Text=" (" />
-                        <TextBlock Text="{Binding patientID}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                        <TextBlock Text=")" />-->
-                    </WrapPanel>
+                    <DockPanel>
+                        <WrapPanel Grid.Column="0" DockPanel.Dock="Left">
+                            <TextBlock Text="Uzmite terapiju: " FontSize="24" />
+                            <TextBlock Text="{Binding receipt.Record}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text=", u vreme  " FontSize="24" />
+                            <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="Bold" FontSize="24"/>
+                            <TextBlock Text=", dana " FontSize="24" />
+                            <TextBlock Text="{Binding date.Day}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="{Binding date.Month}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="                           " FontWeight="Bold" FontSize="24" />
+                        </WrapPanel>
+
+                        <RadioButton x:Name="notificationRead" Content="Pročitano" FontSize="24" DockPanel.Dock="Right" Checked="notificationRead_Checked"
+                                    IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" ></RadioButton>
+                    </DockPanel>
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
                VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
+        <Label x:Name="noNotifications" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Trenutno nemate obavestenja!" 
+               Visibility="{Binding Source=ListView, Path=HasItems}"
+               FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
     </Grid>
 </Page>

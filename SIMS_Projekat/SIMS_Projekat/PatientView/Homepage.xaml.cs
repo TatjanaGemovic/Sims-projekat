@@ -53,7 +53,24 @@ namespace SIMS_Projekat.PatientView
             InitializeComponent();
             patient = p;
             this.DataContext = this;
-            NotificationCollection = App.therapyNotificationService.GetActiveNotifications();
+            //if(!ListView.HasItems){
+            //    noNotifications.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    noNotifications.Visibility = Visibility.Hidden;
+            //}
+            NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
+        }
+
+        private void notificationRead_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ListView.SelectedItem != null)
+            {
+                TherapyNotification tn = ListView.SelectedItem as TherapyNotification;
+                App.therapyNotificationController.DeleteNotification(tn);
+            }
+
         }
 
        
