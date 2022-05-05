@@ -36,6 +36,9 @@ namespace SIMS_Projekat
 
         private readonly AllergenController allergenController;
 
+        private readonly AppointmentController appointmentController;
+        private readonly AppointmentRepository appointmentRepository;
+
         private readonly RoomController roomController;
 
         public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController, RoomController newRoomController)
@@ -45,8 +48,10 @@ namespace SIMS_Projekat
             accountRepository = repository;
             allergenController = newAllergenController;
             roomController = newRoomController;
+            appointmentController = App.appointmentController;
+            appointmentRepository = App.appointmentRepo;
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
-            appointmentsUserControl = new AppointmentsUserControl(roomController);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, appointmentController, ContentControl);
             allergensUserControl = new AllergensUserControl(allergenController);
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
@@ -62,6 +67,7 @@ namespace SIMS_Projekat
         {
             accountController.Serialize();
             allergenController.Serialize();
+            appointmentRepository.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)

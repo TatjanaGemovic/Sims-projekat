@@ -22,7 +22,17 @@
         <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Upravljanje terminima" Margin="10,10,10,30" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
         <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
             <TextBlock  Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Soba broj:</TextBlock>
-            <ComboBox Margin="20,0,0,0"  Height="30" Width="200" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" DisplayMemberPath="RoomNumber" SelectionChanged="RoomComboBox_SelectionChanged" ></ComboBox>
+            <ComboBox Margin="20,0,0,0"  Height="30" Width="200" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" SelectionChanged="RoomComboBox_SelectionChanged" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding RoomNumber}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding pRoomType}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
         <Viewbox Grid.Column="1" Grid.Row="1" Width="250" Height="250">
             <Calendar Grid.Column="0" Grid.Row="2" x:Name="Calenadar" SelectedDatesChanged="Calenadar_SelectedDatesChanged"/>

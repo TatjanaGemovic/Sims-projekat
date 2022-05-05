@@ -68,6 +68,11 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.CheckIfDoctorIsAvailable(doctor, dt);
         }
+
+        public bool CheckIfPatientIsAvailable(Patient patient, DateTime dt)
+        {
+            return appointmentService.CheckIfPatientIsAvailable(patient, dt);
+        }
         public Appointment CreateRandomAppointment(Patient p)
         {
             return appointmentService.CreateRandomAppointment(p);
