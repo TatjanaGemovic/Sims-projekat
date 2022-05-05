@@ -26,6 +26,7 @@ namespace SIMS_Projekat
     {
         public static Frame mainFrame { get; set; }
         public Thread th1;
+        public Thread th2;
 
         public ManagerHome()
         {
@@ -36,6 +37,10 @@ namespace SIMS_Projekat
             th1 = new Thread(new ThreadStart(App.exchangeEquipmentRequestController.ThreadFunction));
             th1.IsBackground = true;
             th1.Start();
+
+            th2 = new Thread(new ThreadStart(App.renovationRequestController.ThreadFunction));
+            th2.IsBackground = true;
+            th2.Start();
 
         }
 

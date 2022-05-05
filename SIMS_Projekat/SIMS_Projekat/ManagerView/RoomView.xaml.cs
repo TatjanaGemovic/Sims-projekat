@@ -80,7 +80,8 @@ namespace SIMS_Projekat.ManagerView
 
         private void RenoviranjeProstorijeBtn_Click(object sender, RoutedEventArgs e)
         {
-           
+            var selectedRooms = (Room)datagGridRooms.SelectedItem;
+            ManagerHome.mainFrame.Content = new RenoviranjeView(selectedRooms);
         }
     }
 }

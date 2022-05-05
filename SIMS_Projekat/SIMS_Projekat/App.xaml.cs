@@ -53,6 +53,7 @@ namespace SIMS_Projekat
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
         private static string ROOM_EQUIPMENT_CSV = @".\..\..\..\Resources\roomEquipmentDTO.txt";
         private static string EXCHANGE_EQ_CSV = @".\..\..\..\Resources\exchangeEquipmentRequest.txt";
+        private static string RENOVATION_CSV = @".\..\..\..\Resources\renovation.txt";
         public static RoomRepository roomRepository;
         public static RoomService roomService;
         public static RoomController roomController;
@@ -64,6 +65,9 @@ namespace SIMS_Projekat
         public static ExchangeEquipmentRequestController exchangeEquipmentRequestController;
         public static RoomEquipmentDTORepository roomEquipmentDTORepository;
         public static RoomEquipmentDTOService roomEquipmentDTOService;
+        public static RenovationRequestRepository renovationRequestRepository;
+        public static RenovationRequestService renovationRequestService;
+        public static RenovationRequestController renovationRequestController;
         public App()
         {
             roomRepository = new RoomRepository(ROOM_CSV);
@@ -81,7 +85,9 @@ namespace SIMS_Projekat
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
             receiptRepository = new ReceiptRepository(RECEIPT_FILE);
-
+            renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
+            renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
+            renovationRequestController = new RenovationRequestController(renovationRequestService);
             AppointmentService appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
@@ -132,6 +138,7 @@ namespace SIMS_Projekat
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
+            renovationRequestController.Deserialize();
         }
     }
 }
