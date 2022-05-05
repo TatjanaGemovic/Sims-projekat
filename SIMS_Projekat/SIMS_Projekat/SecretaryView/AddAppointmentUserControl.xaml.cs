@@ -50,7 +50,7 @@ namespace SIMS_Projekat.SecretaryView
             this.roomController = roomController;
             this.appointmentController = appointmentController;
 
-            Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableRooms());
+            Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableNotMeetingRooms());
             AvailableTimes = new ObservableCollection<string>(this.appointmentController.createAppointmentTime());
             AvailableDoctors = new ObservableCollection<Doctor>(accountController.GetAllDoctorAccounts());
             AvailablePatients = new ObservableCollection<Patient>(accountController.GetAllPatientAccounts());

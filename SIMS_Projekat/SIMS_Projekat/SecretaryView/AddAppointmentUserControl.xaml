@@ -40,7 +40,17 @@
 
 
         <DatePicker Grid.Column="1" Grid.Row="1" x:Name="AppointmentDatePicker" VerticalAlignment="Center" Margin="10,0,20,0" FontSize="16" />
-        <ComboBox Grid.Column="1" Grid.Row="2" Margin="10,0,20,0"  Height="25" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" DisplayMemberPath="RoomNumber" SelectionChanged="RoomComboBox_SelectionChanged" ></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="2" Margin="10,0,20,0"  Height="25" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" SelectionChanged="RoomComboBox_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding RoomNumber}"></TextBlock>
+                        <TextBlock Text=" "></TextBlock>
+                        <TextBlock Text="{Binding pRoomType}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <ComboBox Grid.Column="1" Grid.Row="3" Margin="10,0,20,0"  Height="25" x:Name="AvailableTimesComboBox" FontSize="16" ItemsSource="{Binding AvailableTimes}" SelectionChanged="AvailableTimesComboBox_SelectionChanged"></ComboBox>
 
 
