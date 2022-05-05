@@ -9,9 +9,9 @@
     <Grid Margin="60,0,60,60">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
             <RowDefinition Height="Auto"/>
-            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,23 +19,44 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Upravljanje terminima" Margin="10" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Upravljanje terminima" Margin="10,10,10,30" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
             <TextBlock  Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Soba broj:</TextBlock>
-            <ComboBox Margin="20,0,0,0"  Height="30" Width="200" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" DisplayMemberPath="RoomNumber" ></ComboBox>
+            <ComboBox Margin="20,0,0,0"  Height="30" Width="200" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" DisplayMemberPath="RoomNumber" SelectionChanged="RoomComboBox_SelectionChanged" ></ComboBox>
         </StackPanel>
-        <Viewbox Grid.Column="0" Grid.Row="2" Width="320" Height="320">
-            <Calendar Grid.Column="0" Grid.Row="2" x:Name="Calenadar"/>
+        <Viewbox Grid.Column="1" Grid.Row="1" Width="250" Height="250">
+            <Calendar Grid.Column="0" Grid.Row="2" x:Name="Calenadar" SelectedDatesChanged="Calenadar_SelectedDatesChanged"/>
         </Viewbox>
 
-        <DataGrid x:Name="dataGridPatients" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}" IsReadOnly="True" 
+        <DataGrid x:Name="dataGridAppointments" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Height="200" ItemsSource="{Binding Path = Appointments}" IsReadOnly="True" 
                     SelectionMode="Single" AutoGenerateColumns="False" Margin="20,20,20,20" Style="{DynamicResource SecretaryDataGridStyle}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header=" Vreme" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Pacijent" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Lekar" Binding="{Binding ID}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header=" Vreme" Binding="{Binding beginningDate, StringFormat=\{0:HH:mm:ss\}}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding patient.FirstName}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Lekar" Binding="{Binding doctor.FirstName}" Width ="*"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 30, 20, 0">
+            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Click="NewAppointment_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/calendar.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Zakaži</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110" Click="EditAppointment_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Izmeni</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SecretaryViewDeleteButton}" Margin="80,0,0,0" Height="50" Width="110" Click="DeleteAppointment_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Obriši</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
 
     </Grid>
 </UserControl>

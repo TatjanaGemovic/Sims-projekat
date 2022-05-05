@@ -10,6 +10,7 @@
     <None Remove="Resources\icons\accounts.png" />
     <None Remove="Resources\icons\add_account.png" />
     <None Remove="Resources\icons\allergen.png" />
+    <None Remove="Resources\icons\calendar.png" />
     <None Remove="Resources\icons\cancel.png" />
     <None Remove="Resources\icons\close.png" />
     <None Remove="Resources\icons\delete.png" />
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <Resource Include="Resources\icons\allergen.png" />
+    <Resource Include="Resources\icons\calendar.png" />
     <Resource Include="Resources\icons\cancel.png" />
     <Resource Include="Resources\icons\close.png" />
     <Resource Include="Resources\icons\save.png" />

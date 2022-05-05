@@ -24,13 +24,62 @@ namespace SIMS_Projekat.SecretaryView
     public partial class AppointmentsUserControl : UserControl
     {
         private RoomController roomController;
+        private AppointmentController appointmentController;
         public ObservableCollection<Room> Rooms { get; set; }
-        public AppointmentsUserControl(RoomController roomController)
+        public ObservableCollection<Appointment> Appointments { get; set; }
+        public AppointmentsUserControl(RoomController newRoomController)
         {
             InitializeComponent();
             this.DataContext = this;
-            this.roomController = roomController;
+            roomController = newRoomController;
+            appointmentController = App.appointmentController;
+
             Rooms = new ObservableCollection<Room>(roomController.GetRooms().OrderBy(room => room.RoomNumber));
+            Appointments = new ObservableCollection<Appointment>();
+           
+        }
+
+        private void RoomComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
+        private void Calenadar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateDataGrid();
+        }
+
+
+        private void UpdateDataGrid()
+        {
+            Room selectedRoom = (Room)RoomComboBox.SelectedItem;
+
+            if(Calenadar.SelectedDate == null)
+                Calenadar.SelectedDate = DateTime.Today;
+            DateTime selectedDate = (DateTime)Calenadar.SelectedDate;
+
+            List<Appointment> selectedAppointments = appointmentController.GetAppointmentsByRoomIdAndDate(selectedRoom.RoomID, selectedDate);
+
+            Appointments.Clear();
+            foreach (Appointment appointment in selectedAppointments)
+            {
+                Appointments.Add(appointment);
+            }
+        }
+
+        private void NewAppointment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditAppointment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

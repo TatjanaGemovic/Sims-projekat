@@ -59,6 +59,11 @@ namespace SIMS_Projekat.Controller
             return appointmentService.GetAvailableRoom(start);
         }
 
+        public List<Appointment> GetAppointmentsByRoomIdAndDate(string roomID, DateTime date)
+        {
+            return appointmentService.GetAppointmentsByRoomIdAndDate(roomID, date);
+        }
+
         public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime dt)
         {
             return appointmentService.CheckIfDoctorIsAvailable(doctor, dt);

@@ -3,6 +3,7 @@ using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace SIMS_Projekat.Service
 {
@@ -221,9 +222,19 @@ namespace SIMS_Projekat.Service
             return listOfTakenAppointmentTime;
         }
 
-       
+        public List<Appointment> GetAppointmentsByRoomIdAndDate(string roomID, DateTime date)
+        {
+            List<Appointment> appointmentList = appointmentRepository.GetAllAppointments().Where(
+                appointment => appointment.roomID == roomID 
+                && appointment.beginningDate.DayOfYear == date.DayOfYear).ToList();
 
-        
+            return appointmentList;
+        }
+
+
+
+
+
 
         public Room GetAvailableRoom(DateTime start)
         {
