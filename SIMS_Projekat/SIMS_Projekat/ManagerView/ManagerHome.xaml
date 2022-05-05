@@ -1,0 +1,60 @@
+﻿<Window x:Class="SIMS_Projekat.ManagerHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_Projekat"
+        mc:Ignorable="d"
+        Title="ManagerHome" Height="450" Width="800">
+
+
+    <Grid x:Name="main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel x:Name="sideMenuDock" Grid.Row="0" Grid.Column="0" >
+            <ListView BorderBrush="Transparent" Background="Transparent" >
+
+                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Height="40" Width="132" KeyUp="notifikacije_KeyUp" KeyDown="notifikacije_KeyDown" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
+                <ListViewItem x:Name="prostorijeView" Content="Prostorije" Height="40" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
+                <ListViewItem x:Name="lekoviView" Content="Lekovi" Height="40"></ListViewItem>
+                <ListViewItem x:Name="opremaView" Content="Oprema" Height="40" />
+                <ListViewItem x:Name="anketeView" Content="Ankete" Height="40"></ListViewItem>
+                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Height="40"></ListViewItem>
+                <ListViewItem x:Name="pomocView" Content="Pomoc" Height="40"></ListViewItem>
+
+            </ListView>
+
+        </DockPanel>
+
+        <DockPanel x:Name="sideLogOutDock" Grid.Row="1" Grid.Column="0" >
+            <Button Content="Odjavi se" Width="112"  Height="41" />
+
+        </DockPanel>
+
+        <DockPanel x:Name="pagesDock" Grid.Column="1" Grid.RowSpan="2" >
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="10,10,10,10" >
+
+
+            </Frame>
+
+        </DockPanel>
+
+
+
+
+
+
+
+    </Grid>
+
+
+
+
+</Window>

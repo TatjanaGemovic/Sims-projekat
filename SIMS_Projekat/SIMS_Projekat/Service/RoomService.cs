@@ -8,32 +8,32 @@ namespace SIMS_Projekat.Service
 {
    public class RoomService
    {
-        private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
-        public RoomService()
+        private readonly RoomRepository _roomRepository;
+        public RoomService(RoomRepository roomRepository)
         {
-            roomRepository = new RoomRepository(ROOM_CSV);
+            _roomRepository = roomRepository;
         }
         public void Deserialize()
         {
-            roomRepository.Deserialize();
+            _roomRepository.Deserialize();
         }
-        public ObservableCollection<Room> GetRooms()
+        public List<Room> GetRooms()
         {
-            return this.roomRepository.GetRooms();
+            return this._roomRepository.GetRooms();
         }
 
         public Model.Room GetRoomByID(string roomID)
         {
-            return this.roomRepository.GetRoomByID(roomID);
+            return this._roomRepository.GetRoomByID(roomID);
         }
 
-        public ObservableCollection<Room> GetRoomsByType(Model.RoomType type)
+        public List<Room> GetRoomsByType(Model.RoomType type)
         {
-            var allRooms = this.roomRepository.GetRooms();
-            var filterRooms = new ObservableCollection<Room>();
+            var allRooms = this._roomRepository.GetRooms();
+            var filterRooms = new List<Room>();
             foreach (Room r in allRooms)
             {
-                if (r.Type == type)
+                if (r.pRoomType == type)
                 {
                     filterRooms.Add(r);
                 }
@@ -45,23 +45,24 @@ namespace SIMS_Projekat.Service
 
         public Model.Room AddRoom(Model.Room newRoom)
         {
-            return this.roomRepository.AddRoom(newRoom);
+            return this._roomRepository.AddRoom(newRoom);
         }
 
         public Model.Room DeleteRoomByID(string roomID)
         {
-            return this.roomRepository.DeleteRoomByID(roomID);
+            return this._roomRepository.DeleteRoomByID(roomID);
+
         }
 
         public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
         {
-            return this.roomRepository.EditRoom(oldRoomID, newRoom);
+            return this._roomRepository.EditRoom(oldRoomID, newRoom);
         }
 
-        public ObservableCollection<Room> GetRoomsByFloor(int floorNumber)
+        public List<Room> GetRoomsByFloor(int floorNumber)
         {
-            var allRooms = this.roomRepository.GetRooms();
-            var filterRooms = new ObservableCollection<Room>();
+            var allRooms = this._roomRepository.GetRooms();
+            var filterRooms = new List<Room>();
             foreach (Room room in allRooms)
             {
                 if (room.Floor == floorNumber)
@@ -73,10 +74,10 @@ namespace SIMS_Projekat.Service
             return filterRooms;
         }
 
-        public ObservableCollection<Room> GetAvailableRooms()
+        public List<Room> GetAvailableRooms()
         {
-            var allRooms = this.roomRepository.GetRooms();
-            var filterRooms = new ObservableCollection<Room>();
+            var allRooms = this._roomRepository.GetRooms();
+            var filterRooms = new List<Room>();
             foreach (Room room in allRooms)
             {
                 if (room.Available == true)
@@ -88,12 +89,40 @@ namespace SIMS_Projekat.Service
             return filterRooms;
         }
 
-        public void Serialize()
+        public List<Room> GetAvailableNotMeetingRooms()
         {
-            roomRepository.Serialize();
+            var allRooms = this._roomRepository.GetRooms();
+            var filterRooms = new List<Room>();
+            foreach (Room room in allRooms)
+            {
+                if (room.Available == true && room.pRoomType != RoomType.meetingRoom)
+                {
+                    filterRooms.Add(room);
+                }
+            }
+
+            return filterRooms;
         }
 
-        public RoomRepository roomRepository;
+        public List<Room> GetAvailableNotMeetingRoomsExcept(string exceptRoomID)
+        {
+            var allRooms = this._roomRepository.GetRooms();
+            var filterRooms = new List<Room>();
+            foreach (Room room in allRooms)
+            {
+                if (room.Available == true && room.pRoomType != RoomType.meetingRoom && exceptRoomID!=room.RoomID)
+                {
+                    filterRooms.Add(room);
+                }
+            }
+
+            return filterRooms;
+        }
+
+        public void Serialize()
+        {
+            _roomRepository.Serialize();
+        }
 
     }
 }

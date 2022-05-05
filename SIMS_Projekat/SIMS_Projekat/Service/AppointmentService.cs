@@ -122,7 +122,7 @@ namespace SIMS_Projekat.Service
 
         public bool CheckRoomOccupancy(DateTime dt)
         {
-            ObservableCollection<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
+            List<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
 
             foreach (Appointment app in GetAllAppointments())
             {
@@ -233,7 +233,7 @@ namespace SIMS_Projekat.Service
 
         public Room GetAvailableRoom(DateTime start)
         {
-            ObservableCollection<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
+            List<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
 
             foreach (Appointment appointment in GetAllAppointments())
             {

@@ -79,7 +79,7 @@ namespace SIMS_Projekat.DoctorView
             rooms = new BindingList<String>();
             foreach(Room r in App.roomController.GetRooms())
             {
-                if(r.Type == RoomType.examRoom)
+                if(r.pRoomType == RoomType.examRoom)
                 {
                     rooms.Add(r.RoomNumber.ToString());
                 }
@@ -92,7 +92,7 @@ namespace SIMS_Projekat.DoctorView
             rooms = new BindingList<String>();
             foreach (Room r in App.roomController.GetRooms())
             {
-                if (r.Type == RoomType.operatingRoom)
+                if (r.pRoomType == RoomType.operatingRoom)
                 {
                     rooms.Add(r.RoomNumber.ToString());
                 }

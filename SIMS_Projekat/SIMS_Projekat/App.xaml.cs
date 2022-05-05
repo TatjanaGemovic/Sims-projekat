@@ -47,12 +47,20 @@ namespace SIMS_Projekat
         public static AllergenService AllergenService;
         public static AllergenController AllergenController;
 
-        public static RoomController roomController;
         public static AppointmentController appointmentController;
+
+        private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
+        public static RoomRepository roomRepository;
+        public static RoomService roomService;
+        public static RoomController roomController;
+
+
+
         public App()
         {
-           
-            roomController = new RoomController();
+            roomRepository = new RoomRepository(ROOM_CSV);
+            roomService = new RoomService(roomRepository);
+            roomController = new RoomController(roomService);
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
