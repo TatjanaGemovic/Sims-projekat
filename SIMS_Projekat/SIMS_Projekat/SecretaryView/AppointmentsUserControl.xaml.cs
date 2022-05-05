@@ -3,6 +3,7 @@ using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,16 +26,24 @@ namespace SIMS_Projekat.SecretaryView
     {
         private RoomController roomController;
         private AppointmentController appointmentController;
+        private AccountController accountController;
         public ObservableCollection<Room> Rooms { get; set; }
-        public ObservableCollection<Appointment> Appointments { get; set; }
-        public AppointmentsUserControl(RoomController newRoomController)
+        public static ObservableCollection<Appointment> Appointments { get; set; }
+
+        private static DataGrid dataGrid;
+
+        private ContentControl contentControl;
+        public AppointmentsUserControl(RoomController roomController, AccountController accountController, ContentControl contentControl)
         {
             InitializeComponent();
             this.DataContext = this;
-            roomController = newRoomController;
+            this.roomController = roomController;
+            this.accountController = accountController;
             appointmentController = App.appointmentController;
+            this.contentControl = contentControl;
+            dataGrid = dataGridAppointments;
 
-            Rooms = new ObservableCollection<Room>(roomController.GetRooms().OrderBy(room => room.RoomNumber));
+            Rooms = new ObservableCollection<Room>(this.roomController.GetRooms().OrderBy(room => room.RoomNumber));
             Appointments = new ObservableCollection<Appointment>();
            
         }
@@ -52,11 +61,8 @@ namespace SIMS_Projekat.SecretaryView
 
         private void UpdateDataGrid()
         {
-            Room selectedRoom = (Room)RoomComboBox.SelectedItem;
-
-            if(Calenadar.SelectedDate == null)
-                Calenadar.SelectedDate = DateTime.Today;
-            DateTime selectedDate = (DateTime)Calenadar.SelectedDate;
+            Room selectedRoom = GetSelectedRoom();
+            DateTime selectedDate = GetSelectedDate();
 
             List<Appointment> selectedAppointments = appointmentController.GetAppointmentsByRoomIdAndDate(selectedRoom.RoomID, selectedDate);
 
@@ -67,9 +73,34 @@ namespace SIMS_Projekat.SecretaryView
             }
         }
 
+        private DateTime GetSelectedDate()
+        {
+            if (Calenadar.SelectedDate == null)
+                return DateTime.Today;
+            return (DateTime)Calenadar.SelectedDate;
+        }
+
+        private Room GetSelectedRoom()
+        {
+            if (RoomComboBox.SelectedItem == null)
+                return Rooms.First();
+            return (Room)RoomComboBox.SelectedItem;
+        }
+
+        public static void AddAppointment(Appointment appointment)
+        {
+            Appointments.Add(appointment);
+            dataGrid.Items.SortDescriptions.Clear();
+            dataGrid.Items.SortDescriptions.Add(new SortDescription("beginningDate", ListSortDirection.Ascending));
+            dataGrid.Items.Refresh();
+        }
+
         private void NewAppointment_Click(object sender, RoutedEventArgs e)
         {
-
+            DateTime selectedDate = GetSelectedDate();
+            Room selectedRoom = GetSelectedRoom();
+            AddAppointmentUserControl addAppointmentUserControl = new AddAppointmentUserControl(roomController, appointmentController, accountController, contentControl ,this, selectedDate, selectedRoom);
+            contentControl.Content = addAppointmentUserControl;
         }
 
         private void EditAppointment_Click(object sender, RoutedEventArgs e)

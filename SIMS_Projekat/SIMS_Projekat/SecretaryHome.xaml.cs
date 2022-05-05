@@ -46,7 +46,7 @@ namespace SIMS_Projekat
             allergenController = newAllergenController;
             roomController = newRoomController;
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
-            appointmentsUserControl = new AppointmentsUserControl(roomController);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, ContentControl);
             allergensUserControl = new AllergensUserControl(allergenController);
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
