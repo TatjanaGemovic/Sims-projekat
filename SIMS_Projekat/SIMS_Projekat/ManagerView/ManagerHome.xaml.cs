@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,13 +25,17 @@ namespace SIMS_Projekat
     public partial class ManagerHome : Window
     {
         public static Frame mainFrame { get; set; }
-        
+        public Thread th1;
 
         public ManagerHome()
         {
             InitializeComponent();
             this.DataContext = this;
             mainFrame = MainFrame;
+
+            th1 = new Thread(new ThreadStart(App.exchangeEquipmentRequestController.ThreadFunction));
+            th1.IsBackground = true;
+            th1.Start();
 
         }
 

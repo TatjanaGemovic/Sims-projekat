@@ -74,13 +74,15 @@ namespace SIMS_Projekat.ManagerView
 
         private void OpremaPremestanjeBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
+            ManagerHome.mainFrame.Content = new ExchangeRoomFromMagacin(selectedEquipment, null, 0);
         }
 
 
         private void PregledPoProstorijamaBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+            Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
+            ManagerHome.mainFrame.Content = new ProbaPregled(selectedEquipment);
         }
 
         public void OnPropertyChanged(String propertyName)

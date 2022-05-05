@@ -16,12 +16,12 @@ namespace SIMS_Projekat.Model
         private int quantity;
         private EquipmentType equipmentType;
 
-        private ObservableCollection<Room> rooms;
+        private List<Room> rooms;
         private List<int> equipmentQuantityInRooms;
 
         public Equipment()
         {
-            rooms = new ObservableCollection<Room>();
+            rooms = new List<Room>();
             equipmentQuantityInRooms = new List<int>();
         }
 
@@ -67,7 +67,7 @@ namespace SIMS_Projekat.Model
             }
         }
 
-        public ObservableCollection<Room> Rooms
+        public List<Room> Rooms
         {
 
             get { return rooms; }

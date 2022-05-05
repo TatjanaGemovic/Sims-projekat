@@ -74,7 +74,8 @@ namespace SIMS_Projekat.ManagerView
 
         private void InventarProstorijeBtn1_Click(object sender, RoutedEventArgs e)
         {
-            
+            Room selectedRoom = (Room)datagGridRooms.SelectedItem;
+            ManagerHome.mainFrame.Content = new ProbaInventar(selectedRoom);
         }
 
         private void RenoviranjeProstorijeBtn_Click(object sender, RoutedEventArgs e)

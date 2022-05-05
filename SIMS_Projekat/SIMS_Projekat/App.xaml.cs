@@ -51,12 +51,19 @@ namespace SIMS_Projekat
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
+        private static string ROOM_EQUIPMENT_CSV = @".\..\..\..\Resources\roomEquipmentDTO.txt";
+        private static string EXCHANGE_EQ_CSV = @".\..\..\..\Resources\exchangeEquipmentRequest.txt";
         public static RoomRepository roomRepository;
         public static RoomService roomService;
         public static RoomController roomController;
         public static EquipmentRepository equipmentRepository;
         public static EquipmentService equipmentService;
         public static EquipmentController equipmentController;
+        public static ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository;
+        public static ExchangeEquipmentRequestService exchangeEquipmentRequestService;
+        public static ExchangeEquipmentRequestController exchangeEquipmentRequestController;
+        public static RoomEquipmentDTORepository roomEquipmentDTORepository;
+        public static RoomEquipmentDTOService roomEquipmentDTOService;
         public App()
         {
             roomRepository = new RoomRepository(ROOM_CSV);
@@ -65,6 +72,11 @@ namespace SIMS_Projekat
             equipmentRepository = new EquipmentRepository(EQUIPMENT_CSV);
             equipmentService = new EquipmentService(equipmentRepository);
             equipmentController = new EquipmentController(equipmentService);
+            roomEquipmentDTORepository = new RoomEquipmentDTORepository(ROOM_EQUIPMENT_CSV);
+            exchangeEquipmentRequestRepository = new ExchangeEquipmentRequestRepository(EXCHANGE_EQ_CSV);
+            roomEquipmentDTOService = new RoomEquipmentDTOService(roomEquipmentDTORepository);
+            exchangeEquipmentRequestService = new ExchangeEquipmentRequestService(exchangeEquipmentRequestRepository, roomEquipmentDTORepository, equipmentRepository);
+            exchangeEquipmentRequestController = new ExchangeEquipmentRequestController(equipmentService, exchangeEquipmentRequestService);
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
@@ -117,6 +129,9 @@ namespace SIMS_Projekat
             finishedappointmentRepo.Deserialize();
             receiptRepository.Deserialize();
             therapyNotificationRepository.Deserialize();
+            equipmentController.Deserialize();
+            roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
+            exchangeEquipmentRequestController.Deserialize();
         }
     }
 }
