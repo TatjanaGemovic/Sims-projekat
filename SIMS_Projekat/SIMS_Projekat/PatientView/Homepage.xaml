@@ -3,11 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView" xmlns:local1="clr-namespace:SIMS_Projekat.Service"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Homepage">
-
+    <!--<Page.DataContext>
+        <local1:TherapyNotificationService/>
+    </Page.DataContext>-->
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -39,7 +41,21 @@
         <Rectangle Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFB6DAD6" StrokeThickness="4" 
                    RadiusX="10.5" RadiusY="10.5"/>
 
-        <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  Margin="0,20,0,0" Background="Transparent" BorderBrush="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding receipt.Record}" FontWeight="Bold" />
+                        <TextBlock Text=", " />
+                        <TextBlock Text="{Binding receiptID}" />
+                        <!--<TextBlock Text=" (" />
+                        <TextBlock Text="{Binding patientID}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                        <TextBlock Text=")" />-->
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
                VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
 

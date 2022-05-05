@@ -2,6 +2,7 @@
 using SIMS_Projekat.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace SIMS_Projekat.Controller
 
         public List<TherapyNotification> GetNotificationByPatientID(string patientID)
         {
-            return therapyNotificationService.GetNotificationByPatientID(patientID);
+            return TherapyNotificationService.GetNotificationByPatientID(patientID);
         }
 
         public List<TherapyNotification> GetAllNotifications()
@@ -44,6 +45,21 @@ namespace SIMS_Projekat.Controller
         public TherapyNotification CreateNotification(Receipt receipt)
         {
             return therapyNotificationService.CreateNotification(receipt);
+        }
+
+        public static void TickTimer(object state)
+        {
+            TherapyNotificationService.TickTimer(state);
+        }
+
+        public ObservableCollection<TherapyNotification> GetActiveNotifications()
+        {
+            return therapyNotificationService.GetActiveNotifications();
+        }
+
+        public void DeleteActiveNotifications()
+        {
+           therapyNotificationService.DeleteActiveNotifications();
         }
     }
 }

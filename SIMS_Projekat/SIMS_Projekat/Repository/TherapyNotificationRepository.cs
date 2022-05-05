@@ -12,7 +12,7 @@ namespace SIMS_Projekat.Repository
     {
         private string path { get; set; }
         private Serializer<TherapyNotification> serializer;
-        private List<TherapyNotification> notificationList;
+        private static List<TherapyNotification> notificationList;
         private int id;
 
         public List<TherapyNotification> NotificationList
@@ -76,7 +76,7 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public List<TherapyNotification> GetNotificationByPatientID(string patientID)
+        public static List<TherapyNotification> GetNotificationByPatientID(string patientID)
         {
             List<TherapyNotification> notificationListForPatient = new List<TherapyNotification>();
             foreach (TherapyNotification notification in notificationList)
@@ -99,12 +99,12 @@ namespace SIMS_Projekat.Repository
             id++;
             if (newNotification == null)
                 return null;
-            if (this.notificationList == null)
-                this.notificationList = new List<TherapyNotification>();
-            if (!this.notificationList.Contains(newNotification))
+            if (notificationList == null)
+                notificationList = new List<TherapyNotification>();
+            if (!notificationList.Contains(newNotification))
             {
                 newNotification.ID = id;
-                this.notificationList.Add(newNotification);
+                notificationList.Add(newNotification);
             }
 
             return newNotification;
@@ -113,9 +113,9 @@ namespace SIMS_Projekat.Repository
         {
             if (oldNotification == null)
                 return null;
-            if (this.notificationList != null)
-                if (this.notificationList.Contains(oldNotification))
-                    this.notificationList.Remove(oldNotification);
+            if (notificationList != null)
+                if (notificationList.Contains(oldNotification))
+                    notificationList.Remove(oldNotification);
             return oldNotification;
         }
 

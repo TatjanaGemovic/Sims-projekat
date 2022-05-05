@@ -1,9 +1,11 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.Model;
 using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,23 +23,25 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class PatientHome : Window
     {
-        private Patient patient;
+        public static Patient patient;
         private string nameSurname;
+        static Timer timer;
+        Page Homepage;
         public PatientHome(Patient p)
         {
+            timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
+            
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
-            MainFrame.Content = new Homepage(patient);
+            Homepage = new Homepage(patient);
+            MainFrame.Content = Homepage;
         }
 
         private void make_appointment_Click(object sender, RoutedEventArgs e)
         {
-            //Homepage homepage = new Homepage();
-            //homepage.ShowsNavigationUI = true;
-            MainFrame.Content = new Appointments(MainFrame, patient);
-            
+            MainFrame.Content = new Appointments(MainFrame, patient);   
         }
 
         private void DataWindow_Closing(object sender, EventArgs e)
@@ -49,8 +53,10 @@ namespace SIMS_Projekat.PatientView
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
+            App.therapyNotificationController.DeleteActiveNotifications();
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
+            App.therapyNotificationRepository.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
@@ -65,5 +71,7 @@ namespace SIMS_Projekat.PatientView
         {
             MainFrame.Content = new ChooseDoctorPage(patient);
         }
+
+
     }
 }

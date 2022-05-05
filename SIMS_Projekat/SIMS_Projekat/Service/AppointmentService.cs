@@ -220,10 +220,7 @@ namespace SIMS_Projekat.Service
             }
             return listOfTakenAppointmentTime;
         }
-
-       
-
-        
+   
 
         public Room GetAvailableRoom(DateTime start)
         {

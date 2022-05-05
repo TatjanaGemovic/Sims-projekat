@@ -5,13 +5,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using SIMS_Projekat.PatientView;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace SIMS_Projekat.Service
 {
-    public class TherapyNotificationService
+    public class TherapyNotificationService//: INotifyPropertyChanged
     {
         public TherapyNotificationRepository therapyNotificationRepository;
 
+        private static ObservableCollection<TherapyNotification> TherapyNotificationsForPatient;
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //private void OnPropertyChanged(string propertyName)
+        //{
+        //    if (PropertyChanged != null)
+        //    {
+        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
+        //public ObservableCollection<TherapyNotification> TherapyNotificationsForPatient
+        //{
+        //    get { return therapyNotificationsForPatient; }
+        //    set
+        //    {
+        //        if (value != therapyNotificationsForPatient)
+        //        {
+        //            therapyNotificationsForPatient = value;
+        //            OnPropertyChanged("TherapyNotificationsForPatient");
+        //        }
+        //    }
+        //}
+
+        public TherapyNotificationService()
+        {
+            TherapyNotificationsForPatient = new ObservableCollection<TherapyNotification>();
+        }
         public TherapyNotification SetNotification(TherapyNotification notification)
         {
             return therapyNotificationRepository.SetNotification(notification);
@@ -22,9 +54,9 @@ namespace SIMS_Projekat.Service
             return therapyNotificationRepository.GetNotificationByID(notificationtID);
         }
 
-        public List<TherapyNotification> GetNotificationByPatientID(string patientID)
+        public static List<TherapyNotification> GetNotificationByPatientID(string patientID)
         {
-            return therapyNotificationRepository.GetNotificationByPatientID(patientID);
+            return TherapyNotificationRepository.GetNotificationByPatientID(patientID);
         }
 
         public List<TherapyNotification> GetAllNotifications()
@@ -165,8 +197,6 @@ namespace SIMS_Projekat.Service
 
                 }
             }
-
-
             return null;
         }
 
@@ -175,5 +205,43 @@ namespace SIMS_Projekat.Service
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
                 yield return day;
         }
+        public static void TickTimer(object state)
+        {
+            foreach(TherapyNotification notification in GetNotificationByPatientID(PatientHome.patient.ID))
+            {
+                if(DateTime.Now >= notification.date)
+                {
+                    if(TherapyNotificationsForPatient != null)
+                    {
+                        if (!TherapyNotificationsForPatient.Contains(notification))
+                        {
+                            App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                            {
+                                TherapyNotificationsForPatient.Add(notification);
+                            });
+                            
+                        }
+                    }
+                    else
+                    {
+                        App.Current.Dispatcher.Invoke((Action)delegate // <--- HERE
+                        {
+                            TherapyNotificationsForPatient.Add(notification);
+                        });
+                    }
+                   
+                }
+            }
+        }
+        public ObservableCollection<TherapyNotification> GetActiveNotifications()
+        {
+            return TherapyNotificationsForPatient;
+        }
+
+        public void DeleteActiveNotifications()
+        {
+            TherapyNotificationsForPatient.Clear();
+        }
+
     }
 }
