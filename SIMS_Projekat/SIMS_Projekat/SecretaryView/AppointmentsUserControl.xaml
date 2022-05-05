@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="SIMS_Projekat.SecretaryView.AppointmentsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+             mc:Ignorable="d" 
+             d:DesignHeight="748" d:DesignWidth="784" Background="White">
+    <Grid Margin="60,0,60,60">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Upravljanje terminima" Margin="10" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock  Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Soba broj:</TextBlock>
+            <ComboBox Margin="20,0,0,0"  Height="30" Width="200" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" DisplayMemberPath="RoomNumber" ></ComboBox>
+        </StackPanel>
+        <Viewbox Grid.Column="0" Grid.Row="2" Width="320" Height="320">
+            <Calendar Grid.Column="0" Grid.Row="2" x:Name="Calenadar"/>
+        </Viewbox>
+
+        <DataGrid x:Name="dataGridPatients" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}" IsReadOnly="True" 
+                    SelectionMode="Single" AutoGenerateColumns="False" Margin="20,20,20,20" Style="{DynamicResource SecretaryDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" Vreme" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pacijent" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Lekar" Binding="{Binding ID}" Width ="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>

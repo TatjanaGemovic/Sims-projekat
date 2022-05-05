@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,11 +21,16 @@ namespace SIMS_Projekat.SecretaryView
     /// <summary>
     /// Interaction logic for AppointmentsView.xaml
     /// </summary>
-    public partial class AppointmentsView : UserControl
+    public partial class AppointmentsUserControl : UserControl
     {
-        public AppointmentsView()
+        private RoomController roomController;
+        public ObservableCollection<Room> Rooms { get; set; }
+        public AppointmentsUserControl(RoomController roomController)
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.roomController = roomController;
+            Rooms = new ObservableCollection<Room>(roomController.GetRooms().OrderBy(room => room.RoomNumber));
         }
     }
 }

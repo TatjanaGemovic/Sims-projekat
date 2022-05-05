@@ -24,13 +24,13 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private Window window;
         private AccountController accountController;
         private AccountRepository accountRepository;
         private AllergenController allergenController;
+        private RoomController roomController;
         private int prozor;
 
-        public LoginWindow(int prozor1, AccountController accountController, AccountRepository accountRepository, AllergenController allergenController)
+        public LoginWindow(int prozor1, AccountController accountController, AccountRepository accountRepository, AllergenController allergenController, RoomController roomController)
         {
             InitializeComponent();
             //window = newWindow;
@@ -38,6 +38,7 @@ namespace SIMS_Projekat
             this.accountController = accountController;
             this.accountRepository = accountRepository;
             this.allergenController = allergenController;
+            this.roomController = roomController;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -96,7 +97,7 @@ namespace SIMS_Projekat
             {
                 if (username.Equals("sekretar") && password.Equals("123"))
                 {
-                    SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController, allergenController);
+                    SecretaryHome secretaryHomePage = new SecretaryHome(accountRepository, accountController, allergenController, roomController);
                     this.Close();
                     secretaryHomePage.Show();
                     return;

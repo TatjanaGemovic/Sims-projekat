@@ -28,7 +28,7 @@ namespace SIMS_Projekat
         public object CurrentView { get; set; }
 
         private readonly AccountsView accountsView;
-        private readonly AppointmentsView appointmentsView;
+        private readonly AppointmentsUserControl appointmentsUserControl;
         private readonly AllergensUserControl allergensUserControl;
 
         private readonly AccountController accountController;
@@ -36,14 +36,17 @@ namespace SIMS_Projekat
 
         private readonly AllergenController allergenController;
 
-        public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController)
+        private readonly RoomController roomController;
+
+        public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController, RoomController newRoomController)
         {
             InitializeComponent();
             accountController = controller;
             accountRepository = repository;
             allergenController = newAllergenController;
+            roomController = newRoomController;
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
-            appointmentsView = new AppointmentsView();
+            appointmentsUserControl = new AppointmentsUserControl(roomController);
             allergensUserControl = new AllergensUserControl(allergenController);
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
@@ -67,7 +70,7 @@ namespace SIMS_Projekat
         }
         private void Appointments_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            ContentControl.Content = appointmentsView;
+            ContentControl.Content = appointmentsUserControl;
         }
 
         private void Allergens_RadioButton_Checked(object sender, RoutedEventArgs e)
