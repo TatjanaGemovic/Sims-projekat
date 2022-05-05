@@ -110,7 +110,15 @@ namespace SIMS_Projekat.SecretaryView
 
         private void DeleteAppointment_Click(object sender, RoutedEventArgs e)
         {
+            if(dataGridAppointments.SelectedItem == null)
+            {
+                MessageBox.Show("Morate izabrati termin");
+                return;
+            }
 
+            Appointment appointment = (Appointment)dataGridAppointments.SelectedItem;
+            Appointments.Remove(appointment);
+            appointmentController.DeleteAppointment(appointment);
         }
     }
 }
