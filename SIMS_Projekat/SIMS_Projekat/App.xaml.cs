@@ -33,6 +33,11 @@ namespace SIMS_Projekat
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
 
+        public static string THERAPY_NOTIFICATION_CSV = @".\..\..\..\Resources\therapy_notifications.txt";
+        public static TherapyNotificationRepository therapyNotificationRepository;
+        public static TherapyNotificationService therapyNotificationService;
+        public static TherapyNotificationController therapyNotificationController;
+
         public static AccountRepository accountRepository;
         public static MedicalRecordRepository medRecordRepository;
         public static AccountService accountService;
@@ -81,7 +86,17 @@ namespace SIMS_Projekat
             {
                 AllergenService = AllergenService
             };
-           
+
+            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
+            therapyNotificationService = new TherapyNotificationService()
+            {
+                therapyNotificationRepository = therapyNotificationRepository
+            };
+            therapyNotificationController = new TherapyNotificationController()
+            {
+                therapyNotificationService = therapyNotificationService
+            };
+
             AllergenController.Deserialize();
             medRecordRepository.Deserialize();
             accountRepository.Deserialize();
@@ -89,6 +104,7 @@ namespace SIMS_Projekat
             appointmentRepo.Deserialize();
             finishedappointmentRepo.Deserialize();
             receiptRepository.Deserialize();
+            therapyNotificationRepository.Deserialize();
         }
     }
 }

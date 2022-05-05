@@ -231,11 +231,6 @@ namespace SIMS_Projekat.Service
             return appointmentList;
         }
 
-
-
-
-
-
         public Room GetAvailableRoom(DateTime start)
         {
             ObservableCollection<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);

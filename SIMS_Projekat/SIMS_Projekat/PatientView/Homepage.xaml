@@ -3,13 +3,74 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView" xmlns:local1="clr-namespace:SIMS_Projekat.Service"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Homepage">
-
+    
     <Grid >
-        <Label Content="Dobrodosli u Zdravo!" HorizontalAlignment="Stretch" FontSize="36" FontWeight="Bold" HorizontalContentAlignment="Center" />
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Dobrodošli u Zdravo!" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
+               HorizontalAlignment="Stretch" FontSize="48" FontWeight="Bold" HorizontalContentAlignment="Center" />
+
+        <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" Foreground="Black"
+                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+
+        <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!" Foreground="Black" 
+                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+
+        <Rectangle Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFB6DAD6" StrokeThickness="4" 
+                   RadiusX="10.5" RadiusY="10.5"/>
+
+        <ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  Margin="0,20,0,0" Background="Transparent" BorderBrush="Transparent" x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  SelectionMode="Single" >
+            <ListView.ItemTemplate>
+                
+                <DataTemplate>
+                    <DockPanel>
+                        <WrapPanel Grid.Column="0" DockPanel.Dock="Left">
+                            <TextBlock Text="Uzmite terapiju: " FontSize="24" />
+                            <TextBlock Text="{Binding receipt.Record}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text=", u vreme  " FontSize="24" />
+                            <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="Bold" FontSize="24"/>
+                            <TextBlock Text=", dana " FontSize="24" />
+                            <TextBlock Text="{Binding date.Day}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="{Binding date.Month}" FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
+                            <TextBlock Text="                           " FontWeight="Bold" FontSize="24" />
+                        </WrapPanel>
+
+                        <RadioButton x:Name="notificationRead" Content="Pročitano" FontSize="24" DockPanel.Dock="Right" Checked="notificationRead_Checked"
+                                    IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" ></RadioButton>
+                    </DockPanel>
+                    
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
+               VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
+        <Label x:Name="noNotifications" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Trenutno nemate obavestenja!" 
+               Visibility="{Binding Source=ListView, Path=HasItems}"
+               FontSize="24" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
     </Grid>
 </Page>

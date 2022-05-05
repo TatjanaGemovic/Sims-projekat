@@ -72,8 +72,9 @@ namespace SIMS_Projekat.DoctorView
                 appointmentID = appointment.appointmentID
             };
 
-            App.receiptRepository.AddReceipt(receipt);
+            Receipt receiptWithID = App.receiptRepository.AddReceipt(receipt);
             App.receiptRepository.Serialize();
+            App.therapyNotificationController.CreateNotification(receiptWithID);
 
             Frame.Content = new ExaminationInfo(Frame, appointment, doctor);
         }
