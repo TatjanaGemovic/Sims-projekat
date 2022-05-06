@@ -25,82 +25,63 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class SecretaryHome : Window
     {
-        public AccountRepository AccountRepository { get; set; }
-        public AccountController AccountController { get; set; }
+        public object CurrentView { get; set; }
 
-        private static DataGrid dataGrid;
-        public static ObservableCollection<Account> Patients
-        {
-            get;
-            set;
-        }
+        private readonly AccountsView accountsView;
+        private readonly AppointmentsUserControl appointmentsUserControl;
+        private readonly AllergensUserControl allergensUserControl;
 
-        public SecretaryHome(AccountRepository accountRepository, AccountController accountController)
+        private readonly AccountController accountController;
+        private readonly AccountRepository accountRepository;
+
+        private readonly AllergenController allergenController;
+
+        private readonly AppointmentController appointmentController;
+        private readonly AppointmentRepository appointmentRepository;
+
+        private readonly RoomController roomController;
+
+        public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController, RoomController newRoomController)
         {
             InitializeComponent();
-            this.DataContext = this;
-            AccountRepository = accountRepository;
-            AccountController = accountController;
-            dataGrid = dataGridPatients;
-            Patients = new ObservableCollection<Account>();
-            foreach(Patient patient in AccountRepository.Patients)
-            {
-                Patients.Add(patient);
-            }
-            
+            accountController = controller;
+            accountRepository = repository;
+            allergenController = newAllergenController;
+            roomController = newRoomController;
+            appointmentController = App.appointmentController;
+            appointmentRepository = App.appointmentRepo;
+            accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, appointmentController, ContentControl);
+            allergensUserControl = new AllergensUserControl(allergenController);
+            ContentControl.Content = accountsView;
+            Accounts_RadioButton.IsChecked = true;
         }
 
-        public static void AddPatient(Patient newPatient)
+        private void LogOut_Click(object sender, MouseButtonEventArgs e)
         {
-            Patients.Add(newPatient);
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
         }
-
-        public static void DeletePatient(Patient patient)
-        {
-            Patients.Remove(patient);
-        }
-
-        public static void Refresh()
-        {
-            dataGrid.Items.Refresh();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            AddPatient addPatient = new AddPatient(AccountController);
-            addPatient.Show();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            DeletePatient(patient);
-            AccountController.DeletePatientAccount(patient);
-        }
-
         private void DataWindow_Closing(object sender, EventArgs e)
         {
-            AccountRepository.Serialize();
+            accountController.Serialize();
+            allergenController.Serialize();
+            appointmentRepository.Serialize();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            EditPatient editPatient = new EditPatient(AccountController, patient);
-            editPatient.Show();
+            ContentControl.Content = accountsView;
+        }
+        private void Appointments_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ContentControl.Content = appointmentsUserControl;
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void Allergens_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            Patient patient = (Patient)dataGridPatients.SelectedItem;
-            ViewPatient viewPatient = new ViewPatient(patient);
-            viewPatient.Show();
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            UrgentPatientView urgentPatientView = new(AccountRepository, AccountController);
-            urgentPatientView.Show();
+            ContentControl.Content = allergensUserControl;
         }
     }
 }

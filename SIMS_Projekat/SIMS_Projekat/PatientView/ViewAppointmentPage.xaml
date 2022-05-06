@@ -1,0 +1,83 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.ViewAppointmentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1400"
+      Title="ViewAppointmentPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Zakazani termin" HorizontalAlignment="Center"  Grid.Row="0" Grid.ColumnSpan="3"
+                VerticalAlignment="Center" FontSize="48" FontWeight="Bold"/>
+        <Label Content="Izabrani lekar:" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24" />
+        <Label Content="Datum:" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24" />
+        <Label Content="Vreme:" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24"  />
+        <Label Content="Soba:" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24" />
+        <Label Content="Tip pregleda:" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1"
+               VerticalAlignment="Center" FontSize="24" />
+
+        <Label x:Name="chosenDoctor" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" FontSize="24" 
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center" />
+        
+        <Label Grid.Row="3" Grid.Column="1" x:Name="dateField" FontSize="24"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Left" Grid.ColumnSpan="2" Height="84" Margin="165,0,0,84" Grid.RowSpan="2" VerticalAlignment="Bottom"/>
+
+        <Label Grid.Row="4" Grid.Column="2" x:Name="timeField" FontSize="24"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Left"/>
+
+        <Label Grid.Row="5" Grid.Column="2" x:Name="roomField" FontSize="24"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Left"/>
+        
+        <Label Grid.Row="6" Grid.Column="2" x:Name="isOperationField" FontSize="24"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Left"/>
+        
+        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Grid.Row="7" Grid.Column="1" 
+                  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" IsEnabled="False"/>
+
+        <Button Grid.Row="9" Grid.Column="4" Content="Izmeni" Foreground="Black" Background="#FFB6DAD6" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                FontSize="24" Click="changeClick" x:Name="changeButton"/>
+        <Button Grid.Row="9" Grid.Column="6" Content="Otkaži" Foreground="Black" Background="#FFB6DAD6" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                FontSize="24" Click="deleteClick"/>
+        <Button Grid.Row="9" Grid.Column="8" Content="Nazad" Foreground="Black" Background="#FFB6DAD6" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                FontSize="24" Click="cancelClick"/>
+
+    </Grid>
+</Page>

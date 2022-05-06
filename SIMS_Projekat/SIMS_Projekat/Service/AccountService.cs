@@ -16,6 +16,7 @@ namespace SIMS_Projekat.Service
 
         public Account DeletePatientAccount(Patient patient)
         {
+            App.medRecordRepository.RemoveMedicalRecord(patient.MedicalRecord);
             return AccountRepository.DeletePatientAccount(patient);
         }
 
@@ -24,9 +25,9 @@ namespace SIMS_Projekat.Service
             return AccountRepository.EditPatientAccount(patient, patientID);
         }
 
-        public List<Account> GetAllPatientAccounts()
+        public List<Patient> GetAllPatientAccounts()
         {
-            throw new NotImplementedException();
+            return AccountRepository.GetAllPatientAccounts();
         }
 
         public Account GetPatientAccountByID(string patientID)
@@ -34,31 +35,41 @@ namespace SIMS_Projekat.Service
             throw new NotImplementedException();
         }
 
-        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
+        public Doctor CreateDoctorAccount(Doctor doctor)
         {
-            return AccountRepository.CreateUrgentPatientAccount(urgentPatient);
+            return AccountRepository.CreateDoctorAccount(doctor);
         }
 
-        public UrgentPatient EditUrgentPatientAccount(UrgentPatient urgentPatient, string ID)
+        public Account DeleteDoctorAccount(Doctor doctor)
         {
-            return AccountRepository.EditUrgentPatientAccount(urgentPatient, ID);
+            return AccountRepository.DeleteDoctorAccount(doctor);
         }
 
-        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        public Account EditDoctorAccount(Doctor doctor, string doctorID)
         {
-            return AccountRepository.DeleteUrgentPatientAccount(urgentPatient);
+            return AccountRepository.EditDoctorAccount(doctor, doctorID);
         }
 
-        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        public List<Doctor> GetAllDoctorAccounts()
+        {
+            return AccountRepository.GetAllDoctorAccounts();
+        }
+
+        public Account GetDoctorAccountByID(string doctorID)
         {
             throw new NotImplementedException();
         }
 
-        public List<UrgentPatient> GetAllUrgentPatients()
+        public void Serialize()
         {
-            return AccountRepository.GetAllUrgentPatients();
+            AccountRepository.Serialize();
+            App.medRecordRepository.Serialize();
         }
 
+        public Account GetDoctorAccountByLicenceNumber(string licenceNumber)
+        {
+            return AccountRepository.GetDoctorAccountByLicenceNumber(licenceNumber);
 
+        }
     }
 }

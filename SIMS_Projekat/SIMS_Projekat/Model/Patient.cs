@@ -1,5 +1,7 @@
+using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SIMS_Projekat.Model
 {
@@ -9,9 +11,26 @@ namespace SIMS_Projekat.Model
         public BloodType BloodType { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
+        public string Symptoms { get; set; }
+        public bool IsUrgent { get; set; }
+
+        public List<Appointment> appointment;
+        public List<Allergen> Allergens { get; set; }
+        
+        public string doctorLicenceNumber { get; set; } 
+
+        public string MedicalRecordID;
+        public MedicalRecord MedicalRecord { get; set; }
 
         public override string[] toCSV()
         {
+            List<string> allergens = new List<string>();
+            if (Allergens != null)
+            {
+                allergens = (from allergen in Allergens
+                            select allergen.Name).ToList();
+            }
+     
             string[] values =
             {
                 base.FirstName,
@@ -23,10 +42,16 @@ namespace SIMS_Projekat.Model
                 base.Username,
                 base.Password,
                 base.ID,
+                doctorLicenceNumber,
                 HealthInsuranceID,
                 ((int)BloodType).ToString(),
                 Height.ToString(),
-                Weight.ToString()
+                Weight.ToString(),
+                Symptoms.ToString(),
+                IsUrgent.ToString(),
+                MedicalRecord.ID.ToString(),
+                String.Join(",", allergens)       
+                
             };
             return values;
         }
@@ -42,23 +67,37 @@ namespace SIMS_Projekat.Model
             base.Username = values[6];
             base.Password = values[7];
             base.ID = values[8];
-            HealthInsuranceID = values[9];
-            BloodType = (BloodType)int.Parse(values[10]);
-            Height = double.Parse(values[11]);
-            Weight = double.Parse(values[12]);
+            doctorLicenceNumber = values[9];
+            HealthInsuranceID = values[10];
+            BloodType = (BloodType)int.Parse(values[11]);
+            Height = double.Parse(values[12]);
+            Weight = double.Parse(values[13]);
+            Symptoms = values[14];
+            IsUrgent = bool.Parse(values[15]);
+            MedicalRecordID = values[16];
+            MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
+            Allergens = new List<Allergen>();
+            string[] allergensArray = values[17].Split(",");
+            foreach(string arrPart in allergensArray)
+            {
+                Allergen newAllergen = App.AllergenRepository.GetAllergenByName(arrPart);
+                if(newAllergen != null)
+                    Allergens.Add(newAllergen);
+            }  
+            
         }
 
-        public List<Allergen> Allergen { get; set; }
+
 
 
         public void AddAllergen(Allergen newAllergen)
         {
             if (newAllergen == null)
                 return;
-            if (this.Allergen == null)
-                this.Allergen = new System.Collections.Generic.List<Allergen>();
-            if (!this.Allergen.Contains(newAllergen))
-                this.Allergen.Add(newAllergen);
+            if (this.Allergens == null)
+                this.Allergens = new List<Allergen>();
+            if (!this.Allergens.Contains(newAllergen))
+                this.Allergens.Add(newAllergen);
         }
 
 
@@ -66,77 +105,24 @@ namespace SIMS_Projekat.Model
         {
             if (oldAllergen == null)
                 return;
-            if (this.Allergen != null)
-                if (this.Allergen.Contains(oldAllergen))
-                    this.Allergen.Remove(oldAllergen);
+            if (this.Allergens != null)
+                if (this.Allergens.Contains(oldAllergen))
+                    this.Allergens.Remove(oldAllergen);
         }
 
 
         public void RemoveAllAllergen()
         {
-            if (Allergen != null)
-                Allergen.Clear();
-        }
-        public System.Collections.Generic.List<MedicalRecord> medicalRecord;
-
-
-
-        public System.Collections.Generic.List<MedicalRecord> MedicalRecord
-        {
-            get
-            {
-                if (medicalRecord == null)
-                    medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
-                return medicalRecord;
-            }
-            set
-            {
-                RemoveAllMedicalRecord();
-                if (value != null)
-                {
-                    foreach (MedicalRecord oMedicalRecord in value)
-                        AddMedicalRecord(oMedicalRecord);
-                }
-            }
+            if (Allergens != null)
+                Allergens.Clear();
         }
 
-
-        public void AddMedicalRecord(MedicalRecord newMedicalRecord)
-        {
-            if (newMedicalRecord == null)
-                return;
-            if (this.medicalRecord == null)
-                this.medicalRecord = new System.Collections.Generic.List<MedicalRecord>();
-            if (!this.medicalRecord.Contains(newMedicalRecord))
-                this.medicalRecord.Add(newMedicalRecord);
-        }
-
-
-        public void RemoveMedicalRecord(MedicalRecord oldMedicalRecord)
-        {
-            if (oldMedicalRecord == null)
-                return;
-            if (this.medicalRecord != null)
-                if (this.medicalRecord.Contains(oldMedicalRecord))
-                    this.medicalRecord.Remove(oldMedicalRecord);
-        }
-
-
-        public void RemoveAllMedicalRecord()
-        {
-            if (medicalRecord != null)
-                medicalRecord.Clear();
-        }
-        public System.Collections.Generic.List<Appointment> appointment;
-
-
-
-        public System.Collections.Generic.List<Appointment> Appointment
+        public List<Appointment> Appointment
         {
             get
             {
                 if (appointment == null)
-                    appointment = new System.Collections.Generic.List<Appointment>();
+                    appointment = new List<Appointment>();
                 return appointment;
             }
             set
@@ -156,7 +142,7 @@ namespace SIMS_Projekat.Model
             if (newAppointment == null)
                 return;
             if (this.appointment == null)
-                this.appointment = new System.Collections.Generic.List<Appointment>();
+                this.appointment = new List<Appointment>();
             if (!this.appointment.Contains(newAppointment))
             {
                 this.appointment.Add(newAppointment);
@@ -191,70 +177,6 @@ namespace SIMS_Projekat.Model
                 tmpAppointment.Clear();
             }
         }
-        public System.Collections.Generic.List<ScheduledOperation> scheduledOperation;
-
-
-
-        public System.Collections.Generic.List<ScheduledOperation> ScheduledOperation
-        {
-            get
-            {
-                if (scheduledOperation == null)
-                    scheduledOperation = new System.Collections.Generic.List<ScheduledOperation>();
-                return scheduledOperation;
-            }
-            set
-            {
-                RemoveAllScheduledOperation();
-                if (value != null)
-                {
-                    foreach (ScheduledOperation oScheduledOperation in value)
-                        AddScheduledOperation(oScheduledOperation);
-                }
-            }
-        }
-
-
-        public void AddScheduledOperation(ScheduledOperation newScheduledOperation)
-        {
-            if (newScheduledOperation == null)
-                return;
-            if (this.scheduledOperation == null)
-                this.scheduledOperation = new System.Collections.Generic.List<ScheduledOperation>();
-            if (!this.scheduledOperation.Contains(newScheduledOperation))
-            {
-                this.scheduledOperation.Add(newScheduledOperation);
-                newScheduledOperation.Patient = this;
-            }
-        }
-
-
-        public void RemoveScheduledOperation(ScheduledOperation oldScheduledOperation)
-        {
-            if (oldScheduledOperation == null)
-                return;
-            if (this.scheduledOperation != null)
-                if (this.scheduledOperation.Contains(oldScheduledOperation))
-                {
-                    this.scheduledOperation.Remove(oldScheduledOperation);
-                    oldScheduledOperation.Patient = null;
-                }
-        }
-
-
-        public void RemoveAllScheduledOperation()
-        {
-            if (scheduledOperation != null)
-            {
-                System.Collections.ArrayList tmpScheduledOperation = new System.Collections.ArrayList();
-                foreach (ScheduledOperation oldScheduledOperation in scheduledOperation)
-                    tmpScheduledOperation.Add(oldScheduledOperation);
-                scheduledOperation.Clear();
-                foreach (ScheduledOperation oldScheduledOperation in tmpScheduledOperation)
-                    oldScheduledOperation.Patient = null;
-                tmpScheduledOperation.Clear();
-            }
-        }
-
+        
     }
 }

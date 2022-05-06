@@ -7,26 +7,58 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="SecretaryView\ViewUrgentPatient.xaml.cs">
+    <None Remove="Resources\icons\accounts.png" />
+    <None Remove="Resources\icons\add_account.png" />
+    <None Remove="Resources\icons\allergen.png" />
+    <None Remove="Resources\icons\calendar.png" />
+    <None Remove="Resources\icons\cancel.png" />
+    <None Remove="Resources\icons\close.png" />
+    <None Remove="Resources\icons\delete.png" />
+    <None Remove="Resources\icons\edit.png" />
+    <None Remove="Resources\icons\save.png" />
+    <None Remove="Resources\icons\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\allergen.png" />
+    <Resource Include="Resources\icons\calendar.png" />
+    <Resource Include="Resources\icons\cancel.png" />
+    <Resource Include="Resources\icons\close.png" />
+    <Resource Include="Resources\icons\save.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SecretaryView\ViewPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SecretaryView\EditUrgentPatient.xaml.cs">
+    <Compile Update="SecretaryView\EditPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SecretaryView\ViewPatient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SecretaryView\EditPatient.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SecretaryView\ViewUrgentPatient.xaml">
+    <Page Update="SecretaryView\AddAllergen.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SecretaryView\EditUrgentPatient.xaml">
+    <Page Update="SecretaryView\AddAppointmentUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\AddDoctor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="SecretaryView\EditAppointmentUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="SecretaryView\ViewPatientUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\EditPatientUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
@@ -34,10 +66,14 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SecretaryView\EditPatient.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\accounts.png" />
+    <Resource Include="Resources\icons\add_account.png" />
+    <Resource Include="Resources\icons\delete.png" />
+    <Resource Include="Resources\icons\edit.png" />
+    <Resource Include="Resources\icons\view.png" />
   </ItemGroup>
 
 </Project>

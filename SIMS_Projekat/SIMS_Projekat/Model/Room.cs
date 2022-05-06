@@ -1,35 +1,133 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace SIMS_Projekat.Model
 {
-    public class Room : Serialization.Serializable
+    public class Room : Serialization.Serializable, INotifyPropertyChanged
     {
-        public string RoomID { get; set; }
-        public int Floor { get; set; }
-        public int RoomNumber { get; set; }
-        public RoomType Type { get; set; }
-        public Boolean Available { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        private string roomID;
+        private int floor;
+        private int roomNumber;
+        private RoomType roomType;
+        private Boolean available;
+
+        private List<Equipment> equipment;
+        private List<int> equipmentQuantity;
+
+        public Room() 
+        {
+            equipment = new List<Equipment>();
+            equipmentQuantity = new List<int>();
+        }
+
+        public string RoomID
+        {
+
+            get { return roomID; }
+            set
+            {
+                roomID = value;
+                OnPropertyChanged(nameof(RoomID));
+            }
+        }
+
+        public int Floor
+        {
+
+            get { return floor; }
+            set
+            {
+                floor = value;
+                OnPropertyChanged(nameof(Floor));
+            }
+        }
+
+        public int RoomNumber
+        {
+
+            get { return roomNumber; }
+            set
+            {
+                roomNumber = value;
+                OnPropertyChanged(nameof(RoomNumber));
+            }
+        }
+
+        public Boolean Available
+        {
+
+            get { return available; }
+            set
+            {
+                available = value;
+                OnPropertyChanged(nameof(Available));
+            }
+        }
+
+        public RoomType pRoomType
+        {
+
+            get { return roomType; }
+            set
+            {
+                roomType = value;
+                OnPropertyChanged(nameof(pRoomType));
+            }
+        }
+
+        public List<Equipment> pEquipment
+        {
+
+            get { return equipment; }
+            set
+            {
+                equipment = value;
+                OnPropertyChanged(nameof(pEquipment));
+            }
+        }
+
+        public List<int> pEquipmentQuantity
+        {
+
+            get { return equipmentQuantity; }
+            set
+            {
+                equipmentQuantity = value;
+                OnPropertyChanged(nameof(pEquipmentQuantity));
+            }
+        }
 
         public void fromCSV(string[] values)
         {
-            RoomID = values[0];
+            roomID = values[0];
             RoomNumber = int.Parse(values[1]);
             Floor = int.Parse(values[2]);
-            Type = (RoomType)int.Parse(values[3]);
-            if (values[4].Equals("true")) { Available = true; } else { Available = false; }
+            roomType = (RoomType)int.Parse(values[3]);
+            if (values[4].Equals("True")) { Available = true; } else { Available = false; }
+
         }
 
         public string[] toCSV()
         {
             string[] values = {
-                RoomID,
+                roomID,
                 RoomNumber.ToString(),
                 Floor.ToString(),
-                ((int)Type).ToString(),
+                ((int)roomType).ToString(),
                 Available.ToString()
             };
 
             return values;
+        }
+
+        public void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }

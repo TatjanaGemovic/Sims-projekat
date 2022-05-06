@@ -8,41 +8,41 @@ namespace SIMS_Projekat.Repository
     public class AccountRepository
     {
         public List<Account> Accounts { get; set; }
-        public static List<Patient> Patients { get; set; }
-        public List<UrgentPatient> UrgentPatients { get; set; }
+        public List<Patient> Patients { get; set; }
+        public List<Doctor> Doctors{ get; set; }
 
-        private Serializer<Patient> serializer;
-        private Serializer<UrgentPatient> urgentPatientSerializer;
+        private Serializer<Patient> patientSerializer;
+        private Serializer<Doctor> doctorSerializer;
+
+
         private string patientsFile;
-        private string urgentPatientsFile;
+        private string doctorFile;
+
 
         private int ID;
-        private int urgentPatientID;
 
-        public AccountRepository(string patientsFileName, string urgentPatientsFileName)
+        public AccountRepository(string patientsFileName, string doctorFileName)
         {
             Accounts = new List<Account>();
             Patients = new List<Patient>();
-            UrgentPatients = new List<UrgentPatient>();
-            serializer = new Serializer<Patient>();
-            urgentPatientSerializer = new Serializer<UrgentPatient>();
+            Doctors = new List<Doctor>();
+            patientSerializer = new Serializer<Patient>();
+            doctorSerializer = new Serializer<Doctor>();
             patientsFile = patientsFileName;
-            urgentPatientsFile = urgentPatientsFileName;
+            doctorFile = doctorFileName;
             ID = 100;
-            urgentPatientID = 100;
         }
 
         public void Serialize()
         {
-            serializer.toCSV(patientsFile, Patients);
-            urgentPatientSerializer.toCSV(urgentPatientsFile, UrgentPatients);
+            patientSerializer.toCSV(patientsFile, Patients);
+            doctorSerializer.toCSV(doctorFile, Doctors);
         }
 
         public void Deserialize()
         {
-            Patients = serializer.fromCSV(patientsFile);
-            UrgentPatients = urgentPatientSerializer.fromCSV(urgentPatientsFile);
-
+            Patients = patientSerializer.fromCSV(patientsFile);
+            Doctors = doctorSerializer.fromCSV(doctorFile);
 
             int maxID = 100;
             foreach(Patient patient in Patients)
@@ -50,15 +50,12 @@ namespace SIMS_Projekat.Repository
                 if (int.Parse(patient.ID) > maxID)
                     maxID = int.Parse(patient.ID);
             }
-            ID = ++maxID;
-
-            maxID = 100;
-            foreach (UrgentPatient patient in UrgentPatients)
+            foreach (Doctor doctor in Doctors)
             {
-                if (int.Parse(patient.ID) > maxID)
-                    maxID = int.Parse(patient.ID);
+                if (int.Parse(doctor.ID) > maxID)
+                    maxID = int.Parse(doctor.ID);
             }
-            urgentPatientID = ++maxID;
+            ID = ++maxID;
         }
 
         
@@ -72,9 +69,7 @@ namespace SIMS_Projekat.Repository
 
         public Account DeletePatientAccount(Patient patient)
         {
-            if (Patients.Remove(patient))
-                return patient;
-            return null;
+            return Patients.Remove(patient) ? patient : null;
         }
 
         public Account EditPatientAccount(Patient patient, string patientID)
@@ -95,6 +90,8 @@ namespace SIMS_Projekat.Repository
                     oldPatient.BloodType = patient.BloodType;
                     oldPatient.DateOfBirth = patient.DateOfBirth;
                     oldPatient.Email = patient.Email;
+                    oldPatient.IsUrgent = String.IsNullOrEmpty(patient.Username) || String.IsNullOrEmpty(patient.Password);
+                    oldPatient.Allergens = patient.Allergens;
                 }
             }
             return null;
@@ -107,7 +104,7 @@ namespace SIMS_Projekat.Repository
 
         public Account GetPatientAccountByID(string patientID)
         {
-            foreach(Patient patient in Patients)
+            foreach (Patient patient in Patients)
             {
                 if (patient.ID.Equals(patientID))
                     return patient;
@@ -115,49 +112,63 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
+        public Doctor CreateDoctorAccount(Doctor doctor)
         {
-            urgentPatient.ID = urgentPatientID.ToString();
-            UrgentPatients.Add(urgentPatient);
-            return urgentPatient;
+            doctor.ID = ID++.ToString();
+            Doctors.Add(doctor);
+            return doctor;
         }
 
-        public UrgentPatient EditUrgentPatientAccount(UrgentPatient editedUrgentPatient, string patientID)
+        public Account DeleteDoctorAccount(Doctor doctor)
         {
-            foreach (UrgentPatient oldPatient in UrgentPatients)
+            return Doctors.Remove(doctor) ? doctor : null;
+        }
+
+        public Account EditDoctorAccount(Doctor doctor, string doctorID)
+        {
+            foreach (Doctor oldDoctor in Doctors)
             {
-                if (oldPatient.ID.Equals(patientID))
+                if (oldDoctor.ID.Equals(doctorID))
                 {
-                    oldPatient.FirstName = editedUrgentPatient.FirstName;
-                    oldPatient.LastName = editedUrgentPatient.LastName;
-                    oldPatient.Height = editedUrgentPatient.Height;
-                    oldPatient.Weight = editedUrgentPatient.Weight;
-                    oldPatient.BloodType = editedUrgentPatient.BloodType;
-                    oldPatient.Informations = editedUrgentPatient.Informations;
+                    oldDoctor.FirstName = doctor.FirstName;
+                    oldDoctor.LastName = doctor.LastName;
+                    oldDoctor.Jmbg = doctor.Jmbg;
+                    oldDoctor.Password = doctor.Password;
+                    oldDoctor.PhoneNumber = doctor.PhoneNumber;
+                    oldDoctor.Username = doctor.Username;
+                    oldDoctor.DateOfBirth = doctor.DateOfBirth;
+                    oldDoctor.Email = doctor.Email;
+                    oldDoctor.LicenceNumber = doctor.LicenceNumber;
+
+                    return oldDoctor;
                 }
             }
             return null;
         }
 
-        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        public List<Doctor> GetAllDoctorAccounts()
         {
-            if (UrgentPatients.Remove(urgentPatient))
-                return urgentPatient;
+            return Doctors;
+        }
+
+        public Account GetDoctorAccountByID(string doctorID)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.ID.Equals(doctorID))
+                    return doctor;
+            }
             return null;
         }
-
-        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        public Account GetDoctorAccountByLicenceNumber(string licence)
         {
-            throw new NotImplementedException();
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.LicenceNumber.Equals(licence))
+                    return doctor;
+            }
+            return null;
         }
-
-        public List<UrgentPatient> GetAllUrgentPatients()
-        {
-            return UrgentPatients;
-        }
-
-
-
 
     }
 }

@@ -1,0 +1,8 @@
+0|||False||
+1|Nema terapiju|Nema beleski|False|Nema dijagnozu|Nema terapiju
+2|||False||
+3|||False||
+4|||False||
+5|||False||
+6|||False||
+9|||False||

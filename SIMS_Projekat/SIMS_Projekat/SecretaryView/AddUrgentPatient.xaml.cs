@@ -30,17 +30,26 @@ namespace SIMS_Projekat.SecretaryView
 
         private void Save_Button(object sender, RoutedEventArgs e)
         {
-            var newUrgentPatient = new UrgentPatient()
+            var newUrgentPatient = new Patient()
             {
                 FirstName = FirstName.Text,
                 LastName = LastName.Text,
                 BloodType = (BloodType)BloodType.SelectedIndex,
+                DateOfBirth = new DateTime(1900, 1, 1),
                 Height = Double.Parse(Height.Text),
                 Weight = Double.Parse(Weight.Text),
-                Informations = Informations.Text
+                Jmbg = "",
+                Email = "",
+                PhoneNumber = "",
+                HealthInsuranceID = "",
+                Username = "",
+                Password = "",
+                Symptoms = Symptoms.Text,
+                IsUrgent = true
             };
-            AccountController.CreateUrgentPatientAccount(newUrgentPatient);
-            UrgentPatientView.AddUrgentPatient(newUrgentPatient);
+
+            AccountController.CreatePatientAccount(newUrgentPatient);
+            AccountsView.AddPatient(newUrgentPatient);
             Close();
         }
     }

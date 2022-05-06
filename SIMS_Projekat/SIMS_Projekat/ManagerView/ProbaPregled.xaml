@@ -1,0 +1,32 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.ProbaPregled"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+            d:DataContext="{d:DesignInstance local:ProbaPregled }"
+      d:DesignHeight="450" d:DesignWidth="544"
+      Title="ProbaPregled">
+
+    <Grid>
+        <Label Content="Oprema po prostorijama" HorizontalAlignment="Left" Margin="116,71,0,0" VerticalAlignment="Top"/>
+
+        <DataGrid x:Name="datagGridRooms" ItemsSource="{Binding rrRooms}"  Margin="56,131,262,131" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="columnType" Binding ="{Binding pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Odustani" HorizontalAlignment="Left" Height="44" Margin="411,198,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click"/>
+        <ListView  x:Name="lista" ItemsSource="{Binding ppEquipmentQ}" HorizontalAlignment="Left" Height="188" Margin="326,0,0,0" VerticalAlignment="Center" Width="69" >
+            <ListView.View>
+                <GridView >
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Page>

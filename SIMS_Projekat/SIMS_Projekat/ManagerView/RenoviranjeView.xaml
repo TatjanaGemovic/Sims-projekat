@@ -1,0 +1,29 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.RenoviranjeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="544"
+      Title="RenoviranjeView">
+
+    <Grid>
+        <Label Content="Renoviranje prostorije u periodu" HorizontalAlignment="Left" Margin="22,43,0,0" VerticalAlignment="Top"/>
+        <Label Content="od" HorizontalAlignment="Left" Margin="22,95,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DateStart" HorizontalAlignment="Left" Height="26" Margin="62,95,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="do" HorizontalAlignment="Left" Height="26" Margin="158,95,0,0" VerticalAlignment="Top" Width="34"/>
+        <DatePicker x:Name="DateEnd" HorizontalAlignment="Center" Height="26" Margin="0,95,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="Razlog renoviranja" HorizontalAlignment="Left" Height="24" Margin="37,155,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBox x:Name="ReasnonBox" HorizontalAlignment="Left" Height="92" Margin="49,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="255"/>
+        <Label Content="tip renoviranja" HorizontalAlignment="Left" Height="33" Margin="49,315,0,0" VerticalAlignment="Top" Width="115"/>
+        <ComboBox x:Name="comboTip"  HorizontalAlignment="Left" Height="33" Margin="196,315,0,0" VerticalAlignment="Top" Width="108">
+            <ComboBoxItem Content="Classic"/>
+            <ComboBoxItem Content="Merge"/>
+            <ComboBoxItem Content="Split"/>
+        </ComboBox>
+        <Button Content="Zavrsi" HorizontalAlignment="Left" Height="35" Margin="364,197,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click"/>
+        <Button Content="Otkazi" HorizontalAlignment="Left" Height="36" Margin="364,253,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_1"/>
+
+    </Grid>
+</Page>

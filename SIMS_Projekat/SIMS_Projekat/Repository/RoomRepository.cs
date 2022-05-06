@@ -8,19 +8,21 @@ namespace SIMS_Projekat.Repository
 {
    public class RoomRepository
    {
-        private ObservableCollection<Room> rooms { get; set; }
+        public static List<Room> rooms { get; set; }
         private Serializer<Room> serializer;
         private string file;
 
 
-        public ObservableCollection<Room> GetRooms()
+        public List<Room> GetRooms()
         {
-            return this.rooms;
+            DeserializeInApp();
+            return rooms;
         }
+
 
         public Model.Room GetRoomByID(string roomID)
         {
-            foreach (Room room in this.rooms)
+            foreach (Room room in rooms)
             {
 
                 if (room.RoomID.Equals(roomID))
@@ -35,7 +37,7 @@ namespace SIMS_Projekat.Repository
 
         public Model.Room DeleteRoomByID(string roomID)
         {
-            var room = this.GetRoomByID(roomID);
+            var room = GetRoomByID(roomID);
             if (room != null)
             {
                 rooms.Remove(room);
@@ -45,20 +47,21 @@ namespace SIMS_Projekat.Repository
                 return null;
             }
 
-
+            Serialize();
             return room;
         }
 
         public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
         {
-            var oldRoom = this.GetRoomByID(oldRoomID);
+            var oldRoom = GetRoomByID(oldRoomID);
             if (oldRoom != null)
             {
                 oldRoom.RoomID = newRoom.RoomID;
                 oldRoom.RoomNumber = newRoom.RoomNumber;
                 oldRoom.Available = newRoom.Available;
                 oldRoom.Floor = newRoom.Floor;
-                oldRoom.Type = newRoom.Type;
+                oldRoom.pRoomType = newRoom.pRoomType;
+                Serialize();
             }
             else
                 return null;
@@ -72,17 +75,19 @@ namespace SIMS_Projekat.Repository
                 rooms.Add(NewRoom);
             else
                 return null;
+
+            Serialize();
             return NewRoom;
         }
 
 
 
-        public ObservableCollection<Room> Room
+        public List<Room> Room
         {
             get
             {
                 if (rooms == null)
-                    rooms = new ObservableCollection<Room>();
+                    rooms = new List<Room>();
                 return rooms;
             }
             set
@@ -104,10 +109,9 @@ namespace SIMS_Projekat.Repository
 
         public RoomRepository(string fileName)
         {
-            rooms = new ObservableCollection<Room>();
+            rooms = new List<Room>();
             serializer = new Serializer<Room>();
             file = fileName;
-            Deserialize();
         }
 
         public void Serialize()
@@ -115,9 +119,15 @@ namespace SIMS_Projekat.Repository
             serializer.toCSV(file, rooms);
         }
 
+        public void DeserializeInApp()
+        {
+            rooms = serializer.fromCSV(file);
+            App.roomEquipmentDTORepository.Deserialize(rooms, App.equipmentRepository.GetEquipment());
+        }
         public void Deserialize()
         {
-            rooms = serializer.fromCSVObservableCollection(file);
+            rooms = serializer.fromCSV(file);
+
         }
 
     }

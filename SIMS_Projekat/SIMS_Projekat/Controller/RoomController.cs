@@ -8,56 +8,69 @@ namespace SIMS_Projekat.Controller
 {
    public class RoomController
    {
-        public RoomController()
+        public RoomController(RoomService roomService)
         {
-            roomService = new RoomService();
+            _roomService = roomService;
         }
-        public ObservableCollection<Room> GetRooms()
+        public List<Room> GetRooms()
         {
-            return this.roomService.GetRooms();
+            return this._roomService.GetRooms();
         }
 
         public Model.Room GetRoomByID(string roomID)
         {
-            return this.roomService.GetRoomByID(roomID);
+            return this._roomService.GetRoomByID(roomID);
         }
 
-        public ObservableCollection<Room> GetRoomsByType(Model.RoomType type)
+        public List<Room> GetRoomsByType(Model.RoomType type)
         {
-            return this.roomService.GetRoomsByType(type);
+            return this._roomService.GetRoomsByType(type);
         }
 
         public Model.Room AddRoom(Model.Room newRoom)
         {
-            return this.roomService.AddRoom(newRoom);
+            return this._roomService.AddRoom(newRoom);
         }
 
         public Model.Room DeleteRoomByID(string roomID)
         {
-            return this.roomService.DeleteRoomByID(roomID);
+            return this._roomService.DeleteRoomByID(roomID);
         }
 
         public Model.Room EditRoom(string oldRoomID, Model.Room newRoom)
         {
-            return this.roomService.EditRoom(oldRoomID, newRoom);
+            return this._roomService.EditRoom(oldRoomID, newRoom);
         }
 
-        public ObservableCollection<Room> GetRoomsByFloor(int floorNumber)
+        public List<Room> GetRoomsByFloor(int floorNumber)
         {
-            return this.roomService.GetRoomsByFloor(floorNumber);
+            return this._roomService.GetRoomsByFloor(floorNumber);
         }
 
-        public ObservableCollection<Room> GetAvailableRooms()
+        public List<Room> GetAvailableRooms()
         {
-            return this.roomService.GetAvailableRooms();
+            return this._roomService.GetAvailableRooms();
+        }
+
+        public List<Room> GetAvailableNotMeetingRooms()
+        {
+            return this._roomService.GetAvailableNotMeetingRooms();
+        }
+
+        public List<Room> GetAvailableNotMeetingRoomsExcept(string exceptRoomID)
+        {
+            return this._roomService.GetAvailableNotMeetingRoomsExcept(exceptRoomID);
         }
 
         public void Serialize()
         {
-            roomService.Serialize();
+            _roomService.Serialize();
         }
-
-        public RoomService roomService;
+        public void Deserialize()
+        {
+            _roomService.Deserialize();
+        }
+        private readonly RoomService _roomService;
 
     }
 }

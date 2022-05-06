@@ -24,9 +24,9 @@ namespace SIMS_Projekat.Controller
             return AccountService.EditPatientAccount(patient, patientID);
         }
 
-        public List<Account> GetAllPatientAccounts()
+        public List<Patient> GetAllPatientAccounts()
         {
-            throw new NotImplementedException();
+            return AccountService.GetAllPatientAccounts();
         }
 
         public Account GetPatientAccountByID(string patientID)
@@ -34,31 +34,37 @@ namespace SIMS_Projekat.Controller
             throw new NotImplementedException();
         }
 
-        public UrgentPatient CreateUrgentPatientAccount(UrgentPatient urgentPatient)
+        public Doctor CreateDoctorAccount(Doctor doctor)
         {
-            return AccountService.CreateUrgentPatientAccount(urgentPatient);
+            return AccountService.CreateDoctorAccount(doctor);
         }
 
-        public UrgentPatient EditUrgentPatientAccount(UrgentPatient urgentPatient, string ID)
+        public Account DeleteDoctorAccount(Doctor doctor)
         {
-            return AccountService.EditUrgentPatientAccount(urgentPatient, ID);
+            return AccountService.DeleteDoctorAccount(doctor);
         }
 
-        public UrgentPatient DeleteUrgentPatientAccount(UrgentPatient urgentPatient)
+        public Account EditDoctorAccount(Doctor doctor, string doctorID)
         {
-            return AccountService.DeleteUrgentPatientAccount(urgentPatient);
+            return AccountService.EditDoctorAccount(doctor, doctorID);
         }
 
-        public UrgentPatient GetUrgentPatientAccountByID(string urgentPatientID)
+        public List<Doctor> GetAllDoctorAccounts()
+        {
+            return AccountService.GetAllDoctorAccounts();
+        }
+
+        public Account GetDoctorAccountByID(string doctorID)
         {
             throw new NotImplementedException();
         }
-
-        public List<UrgentPatient> GetAllUrgentPatients()
+        public void Serialize()
         {
-            return AccountService.GetAllUrgentPatients();
+            AccountService.Serialize();
         }
-
-
+        public Account GetDoctorAccountByLicenceNumber(string licenceNumber)
+        {
+            return AccountService.GetDoctorAccountByLicenceNumber(licenceNumber);
+        }
     }
 }

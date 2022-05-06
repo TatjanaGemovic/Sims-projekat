@@ -1,0 +1,38 @@
+﻿<Page x:Class="SIMS_Projekat.DoctorView.ExaminationInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="400"
+      Title="ExaminationInfo">
+
+    <Grid>
+        <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
+            <Label Content="Pregled" Width="142" Height="52" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+        </DockPanel>
+        <DockPanel Margin="0,100,0,0">
+            <Grid>
+                <Button x:Name="Anamnesis" Content="Izvestaj" HorizontalAlignment="Right" Margin="0,445,11,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Anamnesis_Click" Width="175"/>
+                <Button x:Name="Receipt" HorizontalAlignment="Left" Margin="11,445,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="175" Click="Receipt_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15">Recept</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Zavrsi_Pregled" Content="Zavrsi pregled" HorizontalAlignment="Center" Margin="0,527,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="365" Click="Zavrsi_Pregled_Click"/>
+                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="354" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Label Content="Datum" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Vreme" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Soba" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="108" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <TextBox x:Name="Datum" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Vreme" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Soba" BorderThickness="0" FontSize="18" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,202,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>
+                <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="40" Foreground="#FF676FA3" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>
