@@ -34,7 +34,7 @@
         </DockPanel>
 
         <DockPanel x:Name="sideLogOutDock" Grid.Row="1" Grid.Column="0" >
-            <Button Content="Odjavi se" Width="112"  Height="41" />
+            <Button Content="Odjavi se" Width="112"  Height="41" Click="Button_Click" />
 
         </DockPanel>
 
