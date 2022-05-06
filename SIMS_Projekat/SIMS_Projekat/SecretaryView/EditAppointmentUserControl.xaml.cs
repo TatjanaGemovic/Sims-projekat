@@ -87,7 +87,7 @@ namespace SIMS_Projekat.SecretaryView
                 selectedDoctor = (Doctor)AvailableDoctorsListBox.SelectedItem;
             }
             Patient selectedPatient;
-            if (AvailableDoctorsListBox.SelectedItem == null)
+            if (AvailablePatientsListBox.SelectedItem == null)
             {
                 selectedPatient = selectedAppointment.patient;
             }
