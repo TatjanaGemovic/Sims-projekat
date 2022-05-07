@@ -58,5 +58,10 @@ namespace SIMS_Projekat.DoctorView
         {
             MainFrame.Content = new Examinations(MainFrame, doctor);
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Medicines(MainFrame, doctor);
+        }
     }
 }

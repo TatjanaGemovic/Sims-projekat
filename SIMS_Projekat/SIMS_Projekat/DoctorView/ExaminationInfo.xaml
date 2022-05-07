@@ -15,14 +15,24 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Anamnesis" Content="Izvestaj" HorizontalAlignment="Right" Margin="0,445,11,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Anamnesis_Click" Width="175"/>
+                <Button x:Name="Anamnesis" HorizontalAlignment="Right" Margin="0,445,11,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Anamnesis_Click" Width="175">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/medical-history.png" Width="25" Margin="0,0,10,0"/>
+                        <TextBlock FontSize="15">Izvestaj</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button x:Name="Receipt" HorizontalAlignment="Left" Margin="11,445,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="175" Click="Receipt_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/write.png" Width="25" Margin="0,0,10,0"/>
                         <TextBlock FontSize="15">Recept</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Zavrsi_Pregled" Content="Zavrsi pregled" HorizontalAlignment="Center" Margin="0,527,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="365" Click="Zavrsi_Pregled_Click"/>
+                <Button x:Name="Zavrsi_Pregled" HorizontalAlignment="Center" Margin="0,527,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="365" Click="Zavrsi_Pregled_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons/tick-inside-circle.png" Width="30" Margin="0,0,15,0"/>
+                        <TextBlock FontSize="17">Zavrsi pregled</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="354" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Datum" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Vreme" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>

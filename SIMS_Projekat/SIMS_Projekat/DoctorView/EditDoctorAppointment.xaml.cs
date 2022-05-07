@@ -221,6 +221,14 @@ namespace SIMS_Projekat.DoctorView
                 InitializeListOfAppointments();
             }
         }
+
+        private void Vreme_pocetka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Ime_pacijenta.SelectedItem != null && Tip_operacije.SelectedItem != null && Ime_sobe.SelectedItem != null)
+            {
+                Izmeni.IsEnabled = true;
+            }
+        }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();

@@ -16,6 +16,29 @@
     <None Remove="Resources\icons\edit.png" />
     <None Remove="Resources\icons\save.png" />
     <None Remove="Resources\icons\view.png" />
+    <None Remove="Resources\icons_doctor\cardiogram.png" />
+    <None Remove="Resources\icons_doctor\create-new-pencil-button.png" />
+    <None Remove="Resources\icons_doctor\exit-to-app-button.png" />
+    <None Remove="Resources\icons_doctor\medical-history.png" />
+    <None Remove="Resources\icons_doctor\medicines %281%29.png" />
+    <None Remove="Resources\icons_doctor\medicines.png" />
+    <None Remove="Resources\icons_doctor\menu-button.png" />
+    <None Remove="Resources\icons_doctor\patient.png" />
+    <None Remove="Resources\icons_doctor\plus.png" />
+    <None Remove="Resources\icons_doctor\save.png" />
+    <None Remove="Resources\icons_doctor\tick-inside-circle.png" />
+    <None Remove="Resources\icons_doctor\trash.png" />
+    <None Remove="Resources\icons_doctor\write.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons_doctor\cardiogram.png" />
+    <Resource Include="Resources\icons_doctor\medicines.png" />
+    <Resource Include="Resources\icons_doctor\patient.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons_doctor\medicines (1).png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +46,15 @@
     <Resource Include="Resources\icons\cancel.png" />
     <Resource Include="Resources\icons\close.png" />
     <Resource Include="Resources\icons\save.png" />
+    <Resource Include="Resources\icons_doctor\create-new-pencil-button.png" />
+    <Resource Include="Resources\icons_doctor\exit-to-app-button.png" />
+    <Resource Include="Resources\icons_doctor\medical-history.png" />
+    <Resource Include="Resources\icons\tick-inside-circle.png" />
+    <Resource Include="Resources\icons_doctor\menu-button.png" />
+    <Resource Include="Resources\icons_doctor\plus.png" />
+    <Resource Include="Resources\icons_doctor\save.png" />
+    <Resource Include="Resources\icons_doctor\trash.png" />
+    <Resource Include="Resources\icons_doctor\write.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -179,6 +179,14 @@ namespace SIMS_Projekat.DoctorView
             }
         }
 
+        private void Vreme_pocetka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Ime_pacijenta.SelectedItem != null && Tip_operacije.SelectedItem != null && Ime_sobe.SelectedItem != null)
+            {
+                Dodaj_operaciju.IsEnabled = true;
+            }
+        }
+
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();

@@ -59,7 +59,12 @@
                         </Grid>
                     </TabItem>
                 </TabControl>
-                <Button x:Name="Save" Content="Save" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="124" Height="60" Click="Save_Click"/>
+                <Button x:Name="Save" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Save_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/save.png" Width="20" Margin="0,0,10,0"/>
+                        <TextBlock FontSize="17">Sacuvaj</TextBlock>
+                    </StackPanel>
+                </Button>
                 <TextBox x:Name="Ime_pacijenta" Background="#EEF2FF" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="24" BorderBrush="#FF6F6F6F" FontWeight="Bold" BorderThickness="0,0,0,3"/>
             </Grid>
         </DockPanel>

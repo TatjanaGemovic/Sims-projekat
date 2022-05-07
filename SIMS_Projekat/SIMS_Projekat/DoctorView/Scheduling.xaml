@@ -51,9 +51,24 @@
                         <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button x:Name="Zakazite_Termin" Content="Zakazite" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="110" Height="60"/>
-                <Button x:Name="Otkazite_Termin" Content="Otkazite" HorizontalAlignment="Center" Margin="0,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="110" Height="60"/>
-                <Button x:Name="Izmenite_Termin" Content="Izmenite" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60"/>
+                <Button x:Name="Zakazite_Termin" HorizontalAlignment="Left" Margin="13,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="110" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15">Zakazite</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Otkazite_Termin" HorizontalAlignment="Center" Margin="0,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="110" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/trash.png" Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15">Otkazite</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Izmenite_Termin" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15">Izmenite</TextBlock>
+                    </StackPanel>
+                </Button>
                 <TextBox x:Name="Datum" IsReadOnly="True"  HorizontalAlignment="Right" Margin="0,10,13,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" Height="35" FontSize="20" BorderThickness="3" BorderBrush="#676FA3" Background="#EEF2FF"/>
             </Grid>
         </DockPanel>

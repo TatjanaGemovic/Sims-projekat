@@ -15,7 +15,12 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Save" Content="Sacuvaj" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Save_Click"/>
+                <Button x:Name="Save" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Save_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/save.png" Width="20" Margin="0,0,10,0"/>
+                        <TextBlock FontSize="17">Sacuvaj</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="480" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Dijagnoza" HorizontalAlignment="Left" Margin="38,70,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Tretman" HorizontalAlignment="Left" Margin="38,295,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
