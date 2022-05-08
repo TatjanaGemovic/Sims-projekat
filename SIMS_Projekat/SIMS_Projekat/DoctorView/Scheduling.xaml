@@ -19,7 +19,7 @@
                     <ColumnDefinition Width="215*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="OperationsList" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding appointmentInformations}" Margin="0,60,0,0" Height="444">
+                <DataGrid x:Name="OperationsList" SelectionChanged="OperationsList_SelectionChanged" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding appointmentInformations}" Margin="0,60,0,0" Height="444">
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
                             <Style.Triggers>
@@ -57,13 +57,13 @@
                         <TextBlock FontSize="15">Zakazite</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Otkazite_Termin" HorizontalAlignment="Center" Margin="0,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="110" Height="60">
+                <Button x:Name="Otkazite_Termin" IsEnabled="False" HorizontalAlignment="Center" Margin="0,535,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/trash.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Otkazite</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Izmenite_Termin" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60">
+                <Button x:Name="Izmenite_Termin" IsEnabled="False" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Izmenite</TextBlock>

@@ -1,18 +1,6 @@
 ﻿using SIMS_Projekat.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS_Projekat.DoctorView
 {
@@ -37,16 +25,17 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (MedicinesLists.SelectedItem != null)
-            {
                 //AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
                 //int appointmentID = appointmentInformation.appointmentId;
                 //Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
                 Frame.Content = new MedicineInfo(Frame, doctor);
-            }
-            else
+        }
+
+        private void MedicinesLists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (MedicinesLists.SelectedItem != null)
             {
-                MessageBox.Show("Niste izabrali lek za prikaz!", "Greska");
+                Show.IsEnabled = true;
             }
         }
     }

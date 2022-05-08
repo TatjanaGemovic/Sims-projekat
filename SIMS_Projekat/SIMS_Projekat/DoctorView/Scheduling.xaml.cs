@@ -1,6 +1,5 @@
 ﻿using SIMS_Projekat.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,45 +38,32 @@ namespace SIMS_Projekat.DoctorView
 
         private void Otkazite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            if (OperationsList.SelectedItem != null)
+            if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
+            "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
-                "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+
+                int appointmentID = appointmentInformation.appointmentId;
+
+                Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
+
+                if (appointment != null)
                 {
-                    AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+                    App.appointmentController.DeleteAppointment(appointment);
 
-                    int appointmentID = appointmentInformation.appointmentId;
-
-                    Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-
-                    if (appointment != null)
-                    {
-                        App.appointmentController.DeleteAppointment(appointment);
-
-                        appointmentInformations.Clear();
-                        createList();
-                    }
+                    appointmentInformations.Clear();
+                    createList();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Niste izabrali termin za otkazivanje!", "Greska");
             }
         }
 
         private void Izmenite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            if (OperationsList.SelectedItem != null)
-            {
-                    AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
-                    int appointmentID = appointmentInformation.appointmentId;
-                    Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-                    Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1, doctor);
-            }
-            else
-            {
-                MessageBox.Show("Niste izabrali termin za otkazivanje!", "Greska");
-            }
+
+            AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+            int appointmentID = appointmentInformation.appointmentId;
+            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
+            Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1, doctor);
         }
 
         private void Zakazite_Termin_Click(object sender, RoutedEventArgs e)
@@ -126,7 +112,7 @@ namespace SIMS_Projekat.DoctorView
                 String dateTime3 = dt2.ToString("MM/dd/yyyy HH:mm");
 
                 String type;
-                if(appointment.operation == false)
+                if (appointment.operation == false)
                 {
                     type = "Pregled";
                 }
@@ -147,6 +133,15 @@ namespace SIMS_Projekat.DoctorView
         {
             AppointmentCalendar appointmentCalendar = new AppointmentCalendar(Frame, doctor);
             Frame.Content = appointmentCalendar;
+        }
+
+        private void OperationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (OperationsList.SelectedItem != null)
+            {
+                Izmenite_Termin.IsEnabled = true;
+                Otkazite_Termin.IsEnabled = true;
+            }
         }
     }
 }

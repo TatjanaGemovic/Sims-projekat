@@ -14,7 +14,7 @@
             <Label Content="Pregledi" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="PatientExaminatinLists" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding patientFinishedAppointmentList}" Margin="0,25,0,0" Height="463">
+            <DataGrid x:Name="PatientExaminatinLists" SelectionChanged="PatientExaminatinLists_SelectionChanged" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding patientFinishedAppointmentList}" Margin="0,25,0,0" Height="463">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Style.Triggers>
@@ -46,6 +46,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
-        <Button Content="Detaljnije" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,580,13,0" Click="Button_Click_1"/>
+        <Button x:Name="Details" Content="Detaljnije" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,580,13,0" Click="Button_Click_1"/>
     </Grid>
 </Page>

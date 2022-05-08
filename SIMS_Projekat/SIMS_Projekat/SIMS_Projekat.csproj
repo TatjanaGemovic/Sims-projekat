@@ -28,6 +28,7 @@
     <None Remove="Resources\icons_doctor\save.png" />
     <None Remove="Resources\icons_doctor\tick-inside-circle.png" />
     <None Remove="Resources\icons_doctor\trash.png" />
+    <None Remove="Resources\icons_doctor\underline-button.png" />
     <None Remove="Resources\icons_doctor\write.png" />
   </ItemGroup>
 
@@ -54,6 +55,7 @@
     <Resource Include="Resources\icons_doctor\plus.png" />
     <Resource Include="Resources\icons_doctor\save.png" />
     <Resource Include="Resources\icons_doctor\trash.png" />
+    <Resource Include="Resources\icons_doctor\underline-button.png" />
     <Resource Include="Resources\icons_doctor\write.png" />
   </ItemGroup>
 
