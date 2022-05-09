@@ -82,8 +82,6 @@ namespace SIMS_Projekat.Repository
             List<Appointment> appointmentListForPatient = new List<Appointment>();
             foreach (Appointment appointment in appointmentList)
             {
-                //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
-
                 if (appointment.patient.ID.Equals(patientID))
                 {
                     appointmentListForPatient.Add(appointment);
@@ -97,8 +95,6 @@ namespace SIMS_Projekat.Repository
             List<Appointment> appointmentListForDoctor = new List<Appointment>();
             foreach (Appointment appointment in appointmentList)
             {
-                //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
-
                 if (appointment.doctor.LicenceNumber.Equals(licenceNumber))
                 {
                     appointmentListForDoctor.Add(appointment);
@@ -127,16 +123,6 @@ namespace SIMS_Projekat.Repository
                 
             return newAppointment;
         }
-
-
-        //public void RemoveAppointment(Appointment oldAppointment)
-        //{
-        //    if (oldAppointment == null)
-        //        return;
-        //    if (this.appointmentList != null)
-        //        if (this.appointmentList.Contains(oldAppointment))
-        //            this.appointmentList.Remove(oldAppointment);
-        //}
 
         public Appointment DeleteAppointment(Appointment oldAppointment)
         {
