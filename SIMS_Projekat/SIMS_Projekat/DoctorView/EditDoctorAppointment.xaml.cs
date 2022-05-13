@@ -286,13 +286,13 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.SetAppointment(appointment);
             App.appointmentRepo.Serialize(); 
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
 

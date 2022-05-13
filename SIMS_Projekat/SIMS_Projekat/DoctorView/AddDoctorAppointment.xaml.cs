@@ -214,7 +214,7 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.AddAppointment(appointment);
 
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
 
@@ -260,7 +260,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
     }

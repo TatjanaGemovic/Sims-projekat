@@ -15,23 +15,24 @@ namespace SIMS_Projekat.DoctorView
         private Doctor doctor;
         DateTime selectedDate1;
         string selectedDate2;
+        string selectedDate;
         string dateTime;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public Scheduling(Frame frame, String selectedDate, Doctor d)
+        public Scheduling(Frame frame, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
+        }
+
+        private void Date_picker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedDate = Date_picker.SelectedDate.ToString();
             selectedDate2 = selectedDate;
             selectedDate1 = DateTime.Parse(selectedDate);
             appointmentInformations = new BindingList<AppointmentInformation>();
             createList();
 
-            dateTime = selectedDate1.ToString("MM/dd/yyyy HH:mm");
-            selectedDate1 = DateTime.Parse(dateTime);
-            String[] datePart = dateTime.Split(" ");
-            string date = datePart[0]; //datum
-            Datum.Text = date;
             OperationsList.ItemsSource = appointmentInformations;
             this.DataContext = this;
         }
@@ -131,8 +132,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AppointmentCalendar appointmentCalendar = new AppointmentCalendar(Frame, doctor);
-            Frame.Content = appointmentCalendar;
+            Frame.Content = new DoctorAppointments(Frame, doctor);
         }
 
         private void OperationsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -143,5 +143,6 @@ namespace SIMS_Projekat.DoctorView
                 Otkazite_Termin.IsEnabled = true;
             }
         }
+
     }
 }

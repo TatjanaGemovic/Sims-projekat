@@ -28,7 +28,7 @@ namespace SIMS_Projekat.DoctorView
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SelectedDate = Kalendar1.SelectedDate.ToString();
-            Frame.Content = new Scheduling(Frame, SelectedDate, doctor);
+            Frame.Content = new Scheduling(Frame, doctor);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
