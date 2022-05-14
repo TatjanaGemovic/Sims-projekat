@@ -1,19 +1,8 @@
 ﻿using SIMS_Projekat.Model;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS_Projekat.DoctorView
 {
@@ -24,7 +13,7 @@ namespace SIMS_Projekat.DoctorView
     {
         private Doctor doctor;
         Frame Frame;
-        public BindingList<Patients> patientList{ get; set; }
+        public BindingList<Patients> patientList { get; set; }
         public PatientList(Frame mainFrame, Doctor doctor1)
         {
             InitializeComponent();
@@ -43,16 +32,13 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            /*AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
-            int appointmentID = appointmentInformation.appointmentId;
-            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);*/
 
             Patients patient = (Patients)PatientLists.SelectedItem;
             string id = patient.ID;
             Patient patient1 = new Patient();
-            foreach(Patient p in App.accountController.GetAllPatientAccounts())
+            foreach (Patient p in App.accountController.GetAllPatientAccounts())
             {
-                if(p.ID == id)
+                if (p.ID == id)
                 {
                     patient1 = p;
                     break;
@@ -74,12 +60,20 @@ namespace SIMS_Projekat.DoctorView
 
         public void createList()
         {
-            foreach(Model.Patient patient in App.accountRepository.GetAllPatientAccounts())
+            foreach (Model.Patient patient in App.accountRepository.GetAllPatientAccounts())
             {
                 string id = patient.ID;
                 string name = patient.FirstName + " " + patient.LastName;
 
                 patientList.Add(new Patients(id, name));
+            }
+        }
+
+        private void PatientLists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PatientLists.SelectedItem != null)
+            {
+                Show.IsEnabled = true;
             }
         }
     }

@@ -83,5 +83,13 @@ namespace SIMS_Projekat.DoctorView
                 MessageBox.Show("Niste izabrali pregled za prikaz!", "Greska");
             }
         }
+
+        private void PatientExaminatinLists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PatientExaminatinLists.SelectedItem != null)
+            {
+                Details.IsEnabled = true;
+            }
+        }
     }
 }

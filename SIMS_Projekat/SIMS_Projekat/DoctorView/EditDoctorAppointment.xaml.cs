@@ -221,6 +221,14 @@ namespace SIMS_Projekat.DoctorView
                 InitializeListOfAppointments();
             }
         }
+
+        private void Vreme_pocetka_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Ime_pacijenta.SelectedItem != null && Tip_operacije.SelectedItem != null && Ime_sobe.SelectedItem != null)
+            {
+                Izmeni.IsEnabled = true;
+            }
+        }
         private void DataWindow_Closing(object sender, EventArgs e)
         {
             App.appointmentRepo.Serialize();
@@ -278,13 +286,13 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.SetAppointment(appointment);
             App.appointmentRepo.Serialize(); 
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Scheduling scheduling = new Scheduling(Frame, selectedDate1, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor);
             Frame.Content = scheduling;
         }
 

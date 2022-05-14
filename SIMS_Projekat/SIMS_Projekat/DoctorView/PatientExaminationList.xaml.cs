@@ -74,16 +74,17 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (PatientExaminatinLists.SelectedItem != null)
-            {
                 FinishedAppointment2 appointmentInformation = (FinishedAppointment2)PatientExaminatinLists.SelectedItem;
                 int appointmentID = appointmentInformation.id;
                 FinishedAppointment appointment = App.finishedappointmentRepo.GetAppointmentByID(appointmentID);
                 Frame.Content = new PatientExaminationInfo(Frame, doctor, appointment);
-            }
-            else
+        }
+
+        private void PatientExaminatinLists_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PatientExaminatinLists.SelectedItem != null)
             {
-                MessageBox.Show("Niste izabrali pregled za prikaz!", "Greska");
+                Details.IsEnabled = true;
             }
         }
     }

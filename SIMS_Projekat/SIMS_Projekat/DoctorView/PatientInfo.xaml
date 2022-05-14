@@ -15,7 +15,12 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="MedicalCarton" Content="Karton" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="MedicalCarton_Click"/>
+                <Button x:Name="MedicalCarton" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="MedicalCarton_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/medical-history.png" Width="22" Margin="0,0,0,0" HorizontalAlignment="Stretch"/>
+                        <TextBlock FontSize="16">Karton</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Button x:Name="Examination" Content="Pregledi" HorizontalAlignment="Left" Margin="16,530,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Examination_Click"/>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="419" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Ime" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>

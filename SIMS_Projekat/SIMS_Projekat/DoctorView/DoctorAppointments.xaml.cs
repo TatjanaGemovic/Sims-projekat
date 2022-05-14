@@ -41,7 +41,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new AppointmentCalendar(MainFrame, doctor);
+            MainFrame.Content = new Scheduling(MainFrame, doctor);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -57,6 +57,11 @@ namespace SIMS_Projekat.DoctorView
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Examinations(MainFrame, doctor);
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new Medicines(MainFrame, doctor);
         }
     }
 }

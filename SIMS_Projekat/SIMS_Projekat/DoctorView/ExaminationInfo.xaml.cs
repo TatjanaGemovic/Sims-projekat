@@ -59,5 +59,10 @@ namespace SIMS_Projekat.DoctorView
         {
             Frame.Content = new ReceiptPage(Frame, doctor, appointment.patient, appointment);
         }
+
+        private void Izmenite_Termin_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new Schedule(Frame, doctor, appointment.patient, appointment);
+        }
     }
 }
