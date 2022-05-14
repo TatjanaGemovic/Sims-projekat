@@ -2,7 +2,6 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace SIMS_Projekat.Service
@@ -65,55 +64,24 @@ namespace SIMS_Projekat.Service
 
                 if (dan2 == dan) //za dan
                 {
-                    if (op) //ako trazim za operacijun
+                    if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) //provera operacione sale
                     {
-                        //if (appointment.operation)
-                        //{
-                        if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) //provera operacione sale
-                        {
-                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                        }
-                        else
-                        {
-                            //Patient patient = (Patient)App.accountController.GetPatientAccountByID(selectedPatient.ID); //problem
-                            if (!CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate))
-                            {
-                                listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                            }
-                            else
-                            {
-                                if (!CheckIfDoctorIsAvailable(doctor, appointment.beginningDate))
-                                {
-                                    listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                                }
-                            }
-                        }
-                        //}
+                        listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                     }
                     else
                     {
-                        //if (!appointment.operation)
-                        //{
-                        if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) //provera operacione sale
+                        //Patient patient = (Patient)App.accountController.GetPatientAccountByID(selectedPatient.ID); //problem
+                        if (!CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate))
                         {
                             listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                         }
                         else
                         {
-                            //Patient patient = (Patient)App.accountController.GetPatientAccountByID(selectedPatient.ID); //problem
-                            if (!CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate))
+                            if (!CheckIfDoctorIsAvailable(doctor, appointment.beginningDate))
                             {
                                 listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                             }
-                            else
-                            {
-                                if (!CheckIfDoctorIsAvailable(doctor, appointment.beginningDate))
-                                {
-                                    listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                                }
-                            }
                         }
-                        //}
                     }
                 }
             }
@@ -130,7 +98,7 @@ namespace SIMS_Projekat.Service
                 {
                     rooms.Remove(app.room);
                 }
-            }     
+            }
             return rooms.Count == 0;
         }
         public bool CheckRoomOccupancyOperation(DateTime dt, Room selectedRoom)
@@ -181,9 +149,9 @@ namespace SIMS_Projekat.Service
             foreach (Appointment appointment in GetAllAppointments())
             {
                 if (dt.Date == appointment.beginningDate.Date && !appointment.operation) //za dan
-                {     
-                    if (CheckRoomOccupancy(appointment.beginningDate) || 
-                        !CheckIfDoctorIsAvailable(doctor, appointment.beginningDate) || 
+                {
+                    if (CheckRoomOccupancy(appointment.beginningDate) ||
+                        !CheckIfDoctorIsAvailable(doctor, appointment.beginningDate) ||
                         !CheckIfPatientIsAvailable(p, appointment.beginningDate)) //1.5. 2022. 15:30
                     {
                         listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));            // 15:30
@@ -196,7 +164,7 @@ namespace SIMS_Projekat.Service
         public List<Appointment> GetAppointmentsByRoomIdAndDate(string roomID, DateTime date)
         {
             List<Appointment> appointmentList = appointmentRepository.GetAllAppointments().Where(
-                appointment => appointment.roomID == roomID 
+                appointment => appointment.roomID == roomID
                 && appointment.beginningDate.DayOfYear == date.DayOfYear).ToList();
 
             return appointmentList;
@@ -229,14 +197,14 @@ namespace SIMS_Projekat.Service
             {
                 startDate = CreateRandomDateAndTime();
                 if (patient.doctorLicenceNumber == "")
-                { 
+                {
                     doctor = GetRandomDoctor();
                 }
                 else
                 {
                     doctor = App.accountService.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber) as Doctor;
                 }
-    
+
             }
             while (CheckRoomOccupancy(startDate) || !CheckIfDoctorIsAvailable(doctor, startDate) || !CheckIfPatientIsAvailable(patient, startDate));
 
@@ -251,18 +219,18 @@ namespace SIMS_Projekat.Service
                 room = room
             };
             return appointment;
-            
+
         }
 
         private DateTime CreateRandomDateAndTime()
         {
             var random = new Random();
-            
+
             DateTime currentDate = DateTime.Now;
-            List<DateTime>  dateList = new List<DateTime> { currentDate.AddDays(1), currentDate.AddDays(2), currentDate.AddDays(3) };
+            List<DateTime> dateList = new List<DateTime> { currentDate.AddDays(1), currentDate.AddDays(2), currentDate.AddDays(3) };
             int dateIndex = random.Next(dateList.Count);    // 10.5.2022.  12:00 AM
 
-            List<string>  timeList = createAppointmentTime();
+            List<string> timeList = createAppointmentTime();
             int timeIndex = random.Next(timeList.Count);
 
             DateTime startDate = dateList[dateIndex].Date;
@@ -275,7 +243,7 @@ namespace SIMS_Projekat.Service
         {
             var random = new Random();
 
-            List<Doctor>  doctorList = App.accountService.GetAllDoctorAccounts();
+            List<Doctor> doctorList = App.accountService.GetAllDoctorAccounts();
             int doctorIndex = random.Next(doctorList.Count);
             Doctor doctor = doctorList[doctorIndex];
             return doctor;
