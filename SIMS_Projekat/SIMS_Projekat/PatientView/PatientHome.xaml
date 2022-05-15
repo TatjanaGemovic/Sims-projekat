@@ -6,59 +6,64 @@
         xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
         xmlns:local="clr-namespace:SIMS_Projekat"
         mc:Ignorable="d"
-        Title="PatientHome" Height="800" Width="1600" WindowState="Maximized"
-        Closing="DataWindow_Closing">
+        Title="Zdravo Bolnica" Height="800" Width="1600" WindowState="Maximized"
+        Closing="DataWindow_Closing" Background="#61B15A">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="94*"/>
+            <RowDefinition Height="635*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" MinWidth="201"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DockPanel  x:Name= "menubar" Grid.Row="0" Grid.ColumnSpan="2">
-            <Button x:Name="logout" Content="Odjavite se" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" 
-                    Foreground="Black" Background="#FFB6DAD6" Width="130" HorizontalAlignment="Right" Height="40" 
-                    Margin="0,0,20,0" DockPanel.Dock="Right" Click="logout_Click"></Button>
-            
-            <Label x:Name="name_surname" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" Foreground="Black" 
-                   Width="350"  Height="40" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
-                   HorizontalContentAlignment="Right" />        
-        </DockPanel>
-        <DockPanel x:Name= "Button_Selection" Grid.Row="1" Grid.Column="0">
-            <Button x:Name="make_appointment" Content="Termini" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Click="make_appointment_Click" Margin="20,10,20,10" Height="40" />
-            
-            <Button x:Name="choose_doctor" Content="Izaberite lekara" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="choose_doctor_Click"/>
-            
-            <Button x:Name="reports" Content="Izveštaji" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            
-            <Button x:Name="therapy" Content="Terapija" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            
-            <Button x:Name="notes" Content="Beleške" DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            
-            <Button x:Name="reminders" Content="Podsetnici"  DockPanel.Dock="Top" FontSize="24" FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6" HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40"/>
-            
-            <Button x:Name="homepage" Content="Početna strana" DockPanel.Dock="Bottom" FontSize="24"  FontFamily="Segoe UI" 
-                    FontWeight="Normal" Foreground="Black" Background="#FFB6DAD6"  HorizontalAlignment="Stretch" 
-                    VerticalAlignment="Stretch" Margin="20,10,20,10" Height="40" Click="homepage_Click" />
+        <DockPanel  x:Name= "menubar" Grid.Row="0" Grid.ColumnSpan="2" Height="61">
+            <Button x:Name="logout" Content="Odjavite se" Style="{StaticResource ResourceKey=PatientButtons}" 
+                    Margin="0,0,20,0" DockPanel.Dock="Right" Click="logout_Click" Width="201" ></Button>
+
+            <Label x:Name="name_surname" FontSize="26" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#FFF76A" 
+                   Width="350" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
+                   HorizontalContentAlignment="Right" VerticalAlignment="Center" />
         </DockPanel>
 
+        <Grid x:Name= "Button_Selection" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="61*"/>
+                <RowDefinition Height="182*"/>
+            </Grid.RowDefinitions>
 
-        <DockPanel  Grid.Row="1" Grid.Column="1">
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+            <Button x:Name="make_appointment" Style="{StaticResource ResourceKey=PatientButtons}" 
+                    Content="Termini" Click="make_appointment_Click" Margin="0,60,0,60" Grid.RowSpan="3" />
+
+            <Button x:Name="choose_doctor" Grid.Row="2" Style="{StaticResource ResourceKey=PatientButtons}" 
+                    Content="Izaberite lekara" Click="choose_doctor_Click"/>
+
+            <Button x:Name="reports" Grid.Row="3" Style="{StaticResource ResourceKey=PatientButtons}"
+                    Content="Izveštaji" />
+
+            <Button x:Name="therapy" Grid.Row="4" Style="{StaticResource ResourceKey=PatientButtons}"
+                    Content="Terapija" />
+
+            <Button x:Name="notes" Grid.Row="5" Style="{StaticResource ResourceKey=PatientButtons}"
+                    Content="Beleške" />
+
+            <Button x:Name="reminders" Grid.Row="6" Style="{StaticResource ResourceKey=PatientButtons}"
+                    Content="Podsetnici" />
+
+            <Button x:Name="homepage" Grid.Row="8" Style="{StaticResource ResourceKey=PatientButtons}"
+                    Content="Početna strana"  Click="homepage_Click" />
+        </Grid>
+        <DockPanel  Grid.Row="1" Grid.Column="1" Grid.RowSpan="2">
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" BorderBrush="#FFCE89" BorderThickness="3"/>
         </DockPanel>
 
     </Grid>

@@ -7,17 +7,18 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Homepage">
-    
+
     <Grid >
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="123*"/>
+            <RowDefinition Height="62*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="62*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -27,23 +28,23 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Dobrodošli u Zdravo!" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
-               HorizontalAlignment="Stretch" FontSize="48" FontWeight="Bold" HorizontalContentAlignment="Center" />
+        <Label Content="Dobrodošli u Zdravo!" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" 
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
-        <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" Foreground="Black"
-                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+        <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" 
+                Style="{StaticResource ResourceKey=PatientButtons}" Height="61" Width="215" Grid.RowSpan="2" />
 
-        <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!" Foreground="Black" 
-                Background="#FFB6DAD6" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="24" Margin="30,0,30,0" />
+        <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
+                Style="{StaticResource ResourceKey=PatientButtons}" Height="61" Width="201" Grid.RowSpan="2" />
 
-        <Rectangle Grid.Row="2" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFB6DAD6" StrokeThickness="4" 
-                   RadiusX="10.5" RadiusY="10.5"/>
+        <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="4" 
+                   RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>
 
-        <ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
-                  Margin="0,20,0,0" Background="Transparent" BorderBrush="Transparent" x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+        <!--<ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  Margin="0,20,0,61" Background="Transparent" BorderBrush="Transparent" x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                   SelectionMode="Single" >
             <ListView.ItemTemplate>
-                
+
                 <DataTemplate>
                     <DockPanel>
                         <WrapPanel Grid.Column="0" DockPanel.Dock="Left">
@@ -62,7 +63,7 @@
                         <RadioButton x:Name="notificationRead" Content="Pročitano" FontSize="24" DockPanel.Dock="Right" Checked="notificationRead_Checked"
                                     IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" ></RadioButton>
                     </DockPanel>
-                    
+
                 </DataTemplate>
             </ListView.ItemTemplate>
 
@@ -74,7 +75,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListView">
-                                        <TextBlock Text="Trenutno nemate obaveštenja!" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                                        <TextBlock Text="Trenutno nemate obaveštenja!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
@@ -82,8 +83,47 @@
                     </Style.Triggers>
                 </Style>
             </ListView.Style>
-        </ListView>
+        </ListView>-->
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
-               VerticalAlignment="Top" HorizontalAlignment="Center" Background="White" FontSize="24" Margin="0,37,0,0"/>
+               VerticalAlignment="Top" HorizontalAlignment="Center" Background="#61B15A" FontSize="26" 
+               Margin="0,37,0,0" Foreground="#FFF76A"/>
+
+        <DataGrid  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="10,20,10,61" 
+                   ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
+                  x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotificationGrid}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="Uzmite terapiju: " FontSize="24" />
+                                <TextBlock Text="{Binding receipt.Record}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text=", u vreme  " FontSize="24" />
+                                <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="SemiBold" FontSize="24"/>
+                                <TextBlock Text=", dana " FontSize="24" />
+                                <TextBlock Text="{Binding date.Day}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="." FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="{Binding date.Month}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="." FontWeight="SemiBold" FontSize="24" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton x:Name="notificationRead" Content="Pročitano" Checked="notificationRead_Checked" 
+                                        GroupName="gridRadio"
+                                        IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, 
+                                        AncestorType={x:Type DataGridRow}}}" Style="{StaticResource ResourceKey=PatientDataGridRadioButton}" >
+                            </RadioButton>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
     </Grid>
 </Page>
