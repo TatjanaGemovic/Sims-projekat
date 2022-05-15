@@ -40,6 +40,7 @@
     <None Remove="Resources\icons_patient\reminder.png" />
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
+    <None Remove="Resources\icons_patient\video.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +78,7 @@
     <Resource Include="Resources\icons_patient\reminder.png" />
     <Resource Include="Resources\icons_patient\report.png" />
     <Resource Include="Resources\icons_patient\stethoscope.png" />
+    <Resource Include="Resources\icons_patient\video.png" />
   </ItemGroup>
 
   <ItemGroup>

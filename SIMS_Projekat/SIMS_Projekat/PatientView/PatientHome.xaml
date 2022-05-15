@@ -29,6 +29,14 @@
             <Label x:Name="name_surname" FontSize="26" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#FFF76A" 
                    Width="350" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
                    HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+
+            <Button x:Name="demo"  Style="{StaticResource ResourceKey=PatientButtons}" DockPanel.Dock="Left" 
+                    Width="201" HorizontalAlignment="Left" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons_patient/video.png" Width="30" Height="30"></Image>
+                    <Label Content="Demo prikaz" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
+                </StackPanel>
+            </Button>
         </DockPanel>
 
         <Grid x:Name= "Button_Selection" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
