@@ -45,7 +45,12 @@
                 Click="scheduleAppointment_Click"/>
         
         <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                Content="Osveži" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                 Click="showAppointmentButton_Click" />
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}"
+                 Click="showAppointmentButton_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
+                <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>
