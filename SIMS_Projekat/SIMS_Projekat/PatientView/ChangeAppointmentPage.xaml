@@ -65,7 +65,7 @@
                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold" Foreground="#FFF76A" />
 
         <Label x:Name="chosen_doctor" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  FontSize="24" 
-               Style="{StaticResource ResourceKey=PatientRegularLabels}"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" Foreground="#FFF76A"
                Content="{Binding SelectedItem.doctorName, ElementName=choose_doctor }" />
 
         <TextBlock Grid.Row="1" Grid.Column="2" x:Name="existing_doctor" FontSize="24" Foreground="#FFF76A"
@@ -103,7 +103,7 @@
         <ComboBox Grid.Column="2" Grid.Row="4" AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFF76A"
                   ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}"
-                  SourceUpdated="comboTime_SourceUpdated" Margin="10,29,10,29" 
+                  SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center"
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
         <Button  Grid.Row="9" Grid.Column="5" Content="Izmeni" Grid.ColumnSpan="2" 
