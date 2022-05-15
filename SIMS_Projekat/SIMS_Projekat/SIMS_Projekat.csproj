@@ -17,7 +17,9 @@
     <None Remove="Resources\icons\edit.png" />
     <None Remove="Resources\icons\meeting.png" />
     <None Remove="Resources\icons\page.png" />
+    <None Remove="Resources\icons\patient.png" />
     <None Remove="Resources\icons\save.png" />
+    <None Remove="Resources\icons\stethoscope.png" />
     <None Remove="Resources\icons\syringe.png" />
     <None Remove="Resources\icons\timesheet.png" />
     <None Remove="Resources\icons\view.png" />
@@ -44,6 +46,8 @@
 
   <ItemGroup>
     <Resource Include="Resources\icons\meeting.png" />
+    <Resource Include="Resources\icons\patient.png" />
+    <Resource Include="Resources\icons\stethoscope.png" />
     <Resource Include="Resources\icons\syringe.png" />
     <Resource Include="Resources\icons\timesheet.png" />
     <Resource Include="Resources\icons\work_calendar.png" />
