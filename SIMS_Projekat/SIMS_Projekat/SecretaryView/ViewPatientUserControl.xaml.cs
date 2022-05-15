@@ -25,8 +25,6 @@ namespace SIMS_Projekat.SecretaryView
     {
         private ContentControl contentControl;
         private UserControl accountsView;
-
-        private string ID;
         public Patient Patient { get; set; }
 
         public ViewPatientUserControl(ContentControl contentControl, UserControl accountsView, Patient selectedPatient)

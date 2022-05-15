@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView" xmlns:converters="clr-namespace:SIMS_Projekat.SecretaryView.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
     <UserControl.Resources>
+        <converters:UrgentPatientIndicatorConverter x:Key="UrgentPatientIndicatorConverter" />
         <Style TargetType="DataGridRow">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsUrgent}" Value="true">
@@ -44,7 +45,7 @@
                             <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width ="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Hitan slucaj" Binding="{Binding IsUrgent}" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Hitan slucaj" Binding="{Binding IsUrgent, Converter={StaticResource UrgentPatientIndicatorConverter}}" Width ="*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
