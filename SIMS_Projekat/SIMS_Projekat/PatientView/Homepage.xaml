@@ -32,10 +32,10 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" 
-                Style="{StaticResource ResourceKey=PatientButtons}" Height="61" Width="215" Grid.RowSpan="2" />
+                Style="{StaticResource ResourceKey=PatientButtons}" Width="220" Grid.RowSpan="2" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
-                Style="{StaticResource ResourceKey=PatientButtons}" Height="61" Width="201" Grid.RowSpan="2" />
+                Style="{StaticResource ResourceKey=PatientButtons}" Grid.RowSpan="2" />
 
         <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="4" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>

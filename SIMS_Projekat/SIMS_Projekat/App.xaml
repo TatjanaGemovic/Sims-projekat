@@ -254,6 +254,8 @@
             <Setter Property="Foreground" Value="#FFF76A"/>
             <Setter Property="FontSize" Value="26" />
             <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Width" Value="201" />
+            <Setter Property="Height" Value="61" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -360,5 +362,61 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="PatientAppointmentGrid" TargetType="DataGrid">
+            <Setter Property="Foreground" Value="#FFF76A"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Normal" />
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="#FFCE89"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="GridLinesVisibility" Value="None"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Height" Value="500"/>
+            <Setter Property="Width" Value="1000"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="RowHeaderWidth" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="HasItems"
+                         Value="False">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGrid">
+                                <TextBlock Text="Trenutno nemate ništa zakazano!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PatientDataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="#FFF76A"/>
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Background" Value="#61B15A"/>
+            <Setter Property="BorderBrush" Value="#FFCE89"/>
+            <Setter Property="Width" Value="180"/>
+        </Style>
+
+        <Style x:Key="PatientDataGridAppointmentRow" TargetType="DataGridRow">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="#FFCE89" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ADCE74"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#ADCE74"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Application.Resources>
 </Application>
