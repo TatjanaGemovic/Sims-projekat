@@ -12,9 +12,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
@@ -29,30 +28,31 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Novi termin" HorizontalAlignment="Center"  Grid.Row="0" Grid.ColumnSpan="3"
-                VerticalAlignment="Center" FontSize="48" FontWeight="Bold"/>
+        <Label Content="Novi termin" Grid.Row="0" Grid.ColumnSpan="9"
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
-        <Label Content="Izabrani lekar:" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"
-               VerticalAlignment="Center" FontSize="24" />
-        <Label Content="Datum:" HorizontalAlignment="Left"  Grid.Row="4" Grid.Column="1"
-               VerticalAlignment="Center" FontSize="24" />
-        <Label Content="Vreme:" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1"
-               VerticalAlignment="Center" FontSize="24"  />
+        <Label Content="Izabrani lekar:" Grid.Row="1" Grid.Column="1" FontWeight="SemiBold"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label Content="Datum:" Grid.Row="3" Grid.Column="1" FontWeight="SemiBold"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label Content="Vreme:" Grid.Row="4" Grid.Column="1" FontWeight="SemiBold"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"  />
 
 
         <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" AllowDrop="True" x:Name="choose_doctor"
                   FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                  ItemsSource="{Binding doctorInfoList}" DisplayMemberPath="doctorName" 
-                  SelectionChanged="choose_doctor_SelectionChanged" Margin="0,0,88,0"/>
+                  ItemsSource="{Binding doctorInfoList}" DisplayMemberPath="doctorName" Foreground="#FFF76A" 
+                  SelectionChanged="choose_doctor_SelectionChanged" Margin="0,0,88,0"
+                  Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
-        <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text=" Promenite lekara" IsHitTestVisible="False" FontSize="24" 
-                   VerticalAlignment="Center" HorizontalAlignment="Left" >
-            <TextBlock.Style>
-                <Style TargetType="TextBlock">
+        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content=" Promenite lekara" IsHitTestVisible="False" FontSize="24" 
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A" Background="Transparent" FontWeight="SemiBold">
+            <Label.Style>
+                <Style TargetType="Label">
                     <Setter Property="Visibility" Value="Hidden"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=choose_doctor,Path=SelectedItem}" Value="{x:Null}">
@@ -60,18 +60,19 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Grid.Row="6" Grid.Column="1" 
-                  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24"/>
+            </Label.Style>
+        </Label>
+
+        <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" Background="#FFCE89" 
+                  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold" Foreground="#FFF76A" />
 
         <Label x:Name="chosen_doctor" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  FontSize="24" 
-               HorizontalContentAlignment="Left"
+               HorizontalContentAlignment="Left" Foreground="#FFF76A"
                VerticalContentAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                Content="{Binding SelectedItem.doctorName, ElementName=choose_doctor }" />
 
         <TextBlock Grid.Row="1" Grid.Column="2" x:Name="existing_doctor" FontSize="24" 
-                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left">
+                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -89,34 +90,39 @@
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
-        <DatePicker x:Name="date" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center" 
-                   VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday"
-                    SelectedDateChanged="date_SelectedDateChanged" DisplayDateStart="{x:Static sys:DateTime.Now}" >
+        <DatePicker x:Name="date" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday" Width="200"
+                    SelectedDateChanged="date_SelectedDateChanged" DisplayDateStart="{x:Static sys:DateTime.Now}"
+                    Foreground="#FFF76A" BorderBrush="#FFCE89" Background="#FFADCE74">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
+                    <Setter Property="Background" Value="#FFADCE74"/>
+                    <Setter Property="Text" Value="Izaberite dan"/>
+                    <Setter Property="BorderBrush" Value="#FFCE89"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                </Style>
+                <Style TargetType="Popup">
+                    <Setter Property="Placement" Value="Right"/>
                 </Style>
             </DatePicker.Resources>
-            <DatePicker.BlackoutDates />
-
         </DatePicker>
 
-        <ComboBox Grid.Column="2" Grid.Row="5" IsEditable="False" IsHitTestVisible="False" Focusable="False"
+        <ComboBox Grid.Column="2" Grid.Row="4" IsEditable="False" IsHitTestVisible="False" Focusable="False"
                   AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                   ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" 
-                  SourceUpdated="comboTime_SourceUpdated" Margin="10,29,10,29" SelectionChanged="comboTime_SelectionChanged"/>
+                  SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center" SelectionChanged="comboTime_SelectionChanged"
+                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
 
-        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="5" Content="Zakaži" Foreground="Black" Background="#FFB6DAD6" 
-                 HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                FontSize="24" Click="scheduleClick" IsEnabled="False" />
-        
-        <Button Grid.Row="9" Grid.Column="7" Content="Odustani" Foreground="Black" Background="#FFB6DAD6" 
-                HorizontalAlignment="Stretch" VerticalAlignment="Center" 
-                FontSize="24" Click="cancelClick"/>
+        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="4" Content="Zakaži" Grid.ColumnSpan="2"
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="scheduleClick" IsEnabled="False" />
 
-        <Border BorderBrush="#FFB6DAD6" BorderThickness="2" Grid.Row="1" Grid.Column="5" Grid.RowSpan="5" Grid.ColumnSpan="3">
-            <DockPanel  Grid.Row="1" Grid.Column="5" Grid.RowSpan="5" Grid.ColumnSpan="3">
+        <Button Grid.Row="9" Grid.Column="6" Content="Odustani" Grid.ColumnSpan="2"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="cancelClick"/>
+
+        <Border BorderBrush="#FFCE89" BorderThickness="2" Grid.Row="1" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="100,57,0,58">
+            <DockPanel  Grid.Row="1" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="3">
                 <Frame x:Name="RandomAppointmentFrame" NavigationUIVisibility="Hidden"/>
             </DockPanel>
         </Border>

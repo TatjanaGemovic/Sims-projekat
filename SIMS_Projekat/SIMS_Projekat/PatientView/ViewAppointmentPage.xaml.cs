@@ -46,7 +46,7 @@ namespace SIMS_Projekat.PatientView
             if (appointment.operation)
             {
                 isOperationField.Content = "Operacija";
-                changeButton.IsEnabled = false;
+                changeButton.IsEnabled = false;             
             }
             else
             {
