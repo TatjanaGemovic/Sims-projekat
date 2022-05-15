@@ -16,28 +16,27 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Grid.ColumnSpan="3" Content="Izaberite lekara" HorizontalAlignment="Center" Height="102" 
-               Margin="10,10,0,0" VerticalAlignment="Top" FontSize="48" FontWeight="Bold"/>
+        <Label Grid.Row="0" Grid.ColumnSpan="4" Content="Izaberite lekara" 
+               Style="{StaticResource ResourceKey=PatientBigLabels}" />
+
+        <Label Grid.Row="2" Grid.Column="1" Content="Izabran lekar:" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
         
-        <Label Grid.Row="2" Grid.Column="1" Content="Izabran lekar:" HorizontalAlignment="left" FontSize="36" 
-               VerticalAlignment="Center"/>
-        
-        <Label Grid.Row="2" Grid.Column="1" x:Name="chosen_doctor" FontSize="36" Width="300" 
-                   HorizontalAlignment="Right" VerticalAlignment="Stretch"
-                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" 
+        <Label Grid.Row="2" Grid.Column="2" x:Name="chosen_doctor"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"
                Content="{Binding SelectedItem.doctorName, ElementName=doctorComboBox }" />
 
-        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="existing_doctor" FontSize="36" Width="300" 
-                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Right" >
+        <TextBlock Grid.Row="2" Grid.Column="2" x:Name="existing_doctor" FontSize="24" 
+                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A" >
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -50,11 +49,14 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfoList}" 
-                  DisplayMemberPath="doctorName" FontSize="36" SelectionChanged="doctorComboBox_SelectionChanged"/>
-        
-        <TextBlock Grid.Row="4" Grid.Column="1" Text="Izaberite doktora" IsHitTestVisible="False" FontSize="36" 
-                   VerticalAlignment="Center" HorizontalAlignment="Center" >
+        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfoList}" 
+                  DisplayMemberPath="doctorName" SelectionChanged="doctorComboBox_SelectionChanged"
+                  AllowDrop="True" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Izaberite doktora" IsHitTestVisible="False" FontSize="24" 
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A" Background="Transparent" FontWeight="SemiBold" >
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -66,5 +68,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Foreground ="#FFF76A"
+              FontSize="24" TextWrapping="Wrap" Text="Odabirom doktora, prilikom svakog zakazivanja termina, on će biti postavljen kao zadužen za pregled. I dalje postoji opcija da zakažete pregled kod drugog doktora, ako to želite. Takođe, ako imate izabranog doktora, svi predlozi termina biće vezani za njega. Možete da promenite izabranog lekara u bilo kom momentu, na nekog drugog od ponuđenih. " Margin="20,0,20,0"/>
     </Grid>
 </Page>
