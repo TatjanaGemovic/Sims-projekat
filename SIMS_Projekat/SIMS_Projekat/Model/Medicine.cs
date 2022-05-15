@@ -10,16 +10,16 @@ namespace SIMS_Projekat.Model
     public class Medicine : Serialization.Serializable, INotifyPropertyChanged
     {
         private string medicineID;
-        private string medicineName;
-        private int medicineDose;
-        private MedicineType medicineType;
-        private MedicineUseType medicineUseType;
-        private Boolean verify;
-        private Boolean sendToDoctor;
-        private Boolean onObservation;
-        private string doctorComment;
-        private List<Medicine> replacmentMedicine;
-        private List<String> medicineComponents;
+        public string medicineName;
+        public int medicineDose;
+        public MedicineType medicineType;
+        public MedicineUseType medicineUseType;
+        public Boolean verify;
+        public Boolean sendToDoctor;
+        public Boolean onObservation;
+        public string doctorComment;
+        public List<Medicine> replacmentMedicine;
+        public List<String> medicineComponents;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Medicine()

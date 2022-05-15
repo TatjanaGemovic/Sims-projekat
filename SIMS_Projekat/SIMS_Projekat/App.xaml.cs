@@ -54,6 +54,8 @@ namespace SIMS_Projekat
         private static string ROOM_EQUIPMENT_CSV = @".\..\..\..\Resources\roomEquipmentDTO.txt";
         private static string EXCHANGE_EQ_CSV = @".\..\..\..\Resources\exchangeEquipmentRequest.txt";
         private static string RENOVATION_CSV = @".\..\..\..\Resources\renovation.txt";
+        private static string MEDICINES_CSV = @".\..\..\..\Resources\renovation.txt";
+        public static MedicineRepository medicineRepository;
         public static RoomRepository roomRepository;
         public static RoomService roomService;
         public static RoomController roomController;
@@ -70,6 +72,7 @@ namespace SIMS_Projekat
         public static RenovationRequestController renovationRequestController;
         public App()
         {
+            medicineRepository = new MedicineRepository(MEDICINES_CSV);
             roomRepository = new RoomRepository(ROOM_CSV);
             roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -139,6 +142,7 @@ namespace SIMS_Projekat
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
             renovationRequestController.Deserialize();
+            medicineRepository.Deserialize();
         }
     }
 }

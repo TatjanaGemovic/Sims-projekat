@@ -15,24 +15,22 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Reject" HorizontalAlignment="Center" Margin="0,557,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="223">
+                <Button x:Name="Reject" HorizontalAlignment="Center" Margin="0,557,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="223" Click="Reject_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/medical-history.png" Width="0" Margin="0,0,0,0" HorizontalAlignment="Stretch"/>
-                        <TextBlock FontSize="20">Odbij</TextBlock>
+                        <TextBlock FontSize="20">Odbi</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Approve" FontSize="20" Content="Odobri" HorizontalAlignment="Center" Margin="0,470,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="223"/>
+                <Button x:Name="Approve" FontSize="20" Content="Odobri" HorizontalAlignment="Center" Margin="0,470,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="223" Click="Approve_Click"/>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="419" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
-                <Label Content="Ime" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Id" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Datum proizvodnje" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Namena" HorizontalAlignment="Left" Margin="38,248,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Alergeni" HorizontalAlignment="Left" Margin="38,340,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <TextBox x:Name="Ime" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Id" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Datum_proizvodnje" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,202,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Namena" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,248,50,0" VerticalAlignment="Top" Height="77" Width="150"/>
-                <TextBox x:Name="Alergeni" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,340,50,0" VerticalAlignment="Top" Height="77" Width="150"/>
+                <Label Content="Tip" HorizontalAlignment="Left" Margin="38,110,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Doza" HorizontalAlignment="Left" Margin="38,156,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Namena" HorizontalAlignment="Left" Margin="38,202,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Komentar" HorizontalAlignment="Left" Margin="38,304,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <TextBox x:Name="Type" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,110,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Dose" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,156,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="UseType" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,217,50,0" VerticalAlignment="Top" Height="77" Width="150"/>
+                <TextBox x:Name="Comment" BorderThickness="0" FontSize="15" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,319,50,0" VerticalAlignment="Top" Height="77" Width="150"/>
                 <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>
                 <TextBox x:Name="Ime_leka" IsReadOnly="True"  HorizontalAlignment="Left" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="40" Foreground="#FF676FA3" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
             </Grid>
