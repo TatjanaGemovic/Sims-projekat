@@ -32,60 +32,16 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" 
-                Style="{StaticResource ResourceKey=PatientButtons}" Width="220" Grid.RowSpan="2" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Width="220" Grid.RowSpan="2" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
-                Style="{StaticResource ResourceKey=PatientButtons}" Grid.RowSpan="2" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" />
 
-        <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="4" 
+        <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>
 
-        <!--<ListView Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
-                  Margin="0,20,0,61" Background="Transparent" BorderBrush="Transparent" x:Name="ListView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                  SelectionMode="Single" >
-            <ListView.ItemTemplate>
-
-                <DataTemplate>
-                    <DockPanel>
-                        <WrapPanel Grid.Column="0" DockPanel.Dock="Left">
-                            <TextBlock Text="Uzmite terapiju: " FontSize="24" />
-                            <TextBlock Text="{Binding receipt.Record}" FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text=", u vreme  " FontSize="24" />
-                            <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="Bold" FontSize="24"/>
-                            <TextBlock Text=", dana " FontSize="24" />
-                            <TextBlock Text="{Binding date.Day}" FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text="{Binding date.Month}" FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text="." FontWeight="Bold" FontSize="24" />
-                            <TextBlock Text="                           " FontWeight="Bold" FontSize="24" />
-                        </WrapPanel>
-
-                        <RadioButton x:Name="notificationRead" Content="Pročitano" FontSize="24" DockPanel.Dock="Right" Checked="notificationRead_Checked"
-                                    IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListViewItem}}}" ></RadioButton>
-                    </DockPanel>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-
-            <ListView.Style>
-                <Style TargetType="ListView">
-                    <Style.Triggers>
-                        <Trigger Property="HasItems"
-                         Value="False">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="ListView">
-                                        <TextBlock Text="Trenutno nemate obaveštenja!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </ListView.Style>
-        </ListView>-->
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
-               VerticalAlignment="Top" HorizontalAlignment="Center" Background="#61B15A" FontSize="26" 
+               VerticalAlignment="Top" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
                Margin="0,37,0,0" Foreground="#FFF76A"/>
 
         <DataGrid  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="10,20,10,61" 
