@@ -129,10 +129,7 @@
                         <ControlTemplate TargetType="RadioButton">
                             <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                                 <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Image Source="/Resources/icons/accounts.png" Width="20" Height="20" Margin="10"/>
-                                        <TextBlock Text="{TemplateBinding Property=Content}" VerticalAlignment="Center" />
-                                    </StackPanel>
+                                    <ContentPresenter/>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
