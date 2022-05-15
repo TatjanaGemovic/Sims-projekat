@@ -5,12 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="515"
+      d:DesignHeight="399" d:DesignWidth="500"
       Title="RandomAppontmentFirstPage">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -21,31 +20,37 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="showAppointmentButton" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
-                Content="Biraj nasumičan termin" FontSize="24" HorizontalAlignment="Right"
-                Foreground="Black" Background="#FFB6DAD6" Click="showAppointmentButton_Click" />
+        <Label Content="Predlog termina" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+               Style="{StaticResource ResourceKey=PatientBigLabels}" FontSize="26" FontWeight="SemiBold"/>
+        <Label x:Name="doctorLabel" Content="Lekar:" Grid.Row="1" Grid.Column="1"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label x:Name="dateLabel" Content="Datum:"  Grid.Row="2" Grid.Column="1"
+              Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label x:Name="timeLabel" Content="Vreme:" Grid.Row="3" Grid.Column="1"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <Label x:Name="doctorLabel" Content="Lekar:" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1"
-               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
-        <Label x:Name="dateLabel" Content="Datum:" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="1"
-               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
-        <Label x:Name="timeLabel" Content="Vreme:" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1"
-               VerticalAlignment="Stretch" FontSize="24" Visibility="Hidden" />
+        <Label x:Name="doctorContentLabel" Grid.Row="1" Grid.Column="2"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label x:Name="dateContentLabel"  Grid.Row="2" Grid.Column="2"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        <Label x:Name="timeContentLabel" Grid.Row="3" Grid.Column="2"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"  />
 
-        <Label x:Name="doctorContentLabel" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="2"
-               VerticalAlignment="Stretch" FontSize="24" />
-        <Label x:Name="dateContentLabel" HorizontalAlignment="Left"  Grid.Row="3" Grid.Column="2"
-               VerticalAlignment="Stretch" FontSize="24" />
-        <Label x:Name="timeContentLabel" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="2"
-               VerticalAlignment="Stretch" FontSize="24"  />
-
-        <Button x:Name="scheduleAppointment" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-                Content="Zakaži" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"
-                Foreground="Black" Background="#FFB6DAD6" Click="scheduleAppointment_Click" Width="142" Visibility="Hidden"/>
-
+        <Button x:Name="scheduleAppointment" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
+                Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}"
+                Click="scheduleAppointment_Click"/>
+        
+        <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}"
+                 Click="showAppointmentButton_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
+                <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

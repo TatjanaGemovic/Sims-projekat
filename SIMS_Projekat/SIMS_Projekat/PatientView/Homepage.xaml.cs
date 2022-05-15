@@ -60,9 +60,9 @@ namespace SIMS_Projekat.PatientView
 
         private void notificationRead_Checked(object sender, RoutedEventArgs e)
         {
-            if (ListView.SelectedItem != null)
+            if (GridView.SelectedItem != null)
             {
-                TherapyNotification tn = ListView.SelectedItem as TherapyNotification;
+                TherapyNotification tn = GridView.SelectedItem as TherapyNotification;
                 App.therapyNotificationController.DeleteNotification(tn);
             }
         }

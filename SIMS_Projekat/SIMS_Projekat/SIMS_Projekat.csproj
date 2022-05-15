@@ -15,8 +15,15 @@
     <None Remove="Resources\icons\close.png" />
     <None Remove="Resources\icons\delete.png" />
     <None Remove="Resources\icons\edit.png" />
+    <None Remove="Resources\icons\meeting.png" />
+    <None Remove="Resources\icons\page.png" />
+    <None Remove="Resources\icons\patient.png" />
     <None Remove="Resources\icons\save.png" />
+    <None Remove="Resources\icons\stethoscope.png" />
+    <None Remove="Resources\icons\syringe.png" />
+    <None Remove="Resources\icons\timesheet.png" />
     <None Remove="Resources\icons\view.png" />
+    <None Remove="Resources\icons\work_calendar.png" />
     <None Remove="Resources\icons_doctor\cardiogram.png" />
     <None Remove="Resources\icons_doctor\create-new-pencil-button.png" />
     <None Remove="Resources\icons_doctor\exit-to-app-button.png" />
@@ -31,9 +38,29 @@
     <None Remove="Resources\icons_doctor\trash.png" />
     <None Remove="Resources\icons_doctor\underline-button.png" />
     <None Remove="Resources\icons_doctor\write.png" />
+    <None Remove="Resources\icons_patient\appointment.png" />
+    <None Remove="Resources\icons_patient\copy-writing.png" />
+    <None Remove="Resources\icons_patient\home.png" />
+    <None Remove="Resources\icons_patient\log-out.png" />
+    <None Remove="Resources\icons_patient\pills.png" />
+    <None Remove="Resources\icons_patient\reload.png" />
+    <None Remove="Resources\icons_patient\reminder.png" />
+    <None Remove="Resources\icons_patient\report.png" />
+    <None Remove="Resources\icons_patient\stethoscope.png" />
+    <None Remove="Resources\icons_patient\video.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\icons\page.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\meeting.png" />
+    <Resource Include="Resources\icons\patient.png" />
+    <Resource Include="Resources\icons\stethoscope.png" />
+    <Resource Include="Resources\icons\syringe.png" />
+    <Resource Include="Resources\icons\timesheet.png" />
+    <Resource Include="Resources\icons\work_calendar.png" />
     <Resource Include="Resources\icons_doctor\cardiogram.png" />
     <Resource Include="Resources\icons_doctor\medicines.png" />
     <Resource Include="Resources\icons_doctor\patient.png" />
@@ -59,6 +86,16 @@
     <Resource Include="Resources\icons_doctor\trash.png" />
     <Resource Include="Resources\icons_doctor\underline-button.png" />
     <Resource Include="Resources\icons_doctor\write.png" />
+    <Resource Include="Resources\icons_patient\appointment.png" />
+    <Resource Include="Resources\icons_patient\copy-writing.png" />
+    <Resource Include="Resources\icons_patient\home.png" />
+    <Resource Include="Resources\icons_patient\log-out.png" />
+    <Resource Include="Resources\icons_patient\pills.png" />
+    <Resource Include="Resources\icons_patient\reload.png" />
+    <Resource Include="Resources\icons_patient\reminder.png" />
+    <Resource Include="Resources\icons_patient\report.png" />
+    <Resource Include="Resources\icons_patient\stethoscope.png" />
+    <Resource Include="Resources\icons_patient\video.png" />
   </ItemGroup>
 
   <ItemGroup>

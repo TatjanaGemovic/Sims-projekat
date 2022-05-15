@@ -29,15 +29,14 @@ namespace SIMS_Projekat.PatientView
             patient = p;
             mainFrame = frame;
             InitializeComponent();
+            appointment = App.appointmentController.CreateRandomAppointment(patient);
+            doctorContentLabel.Content = appointment.doctor.FirstName + " " + appointment.doctor.LastName;
+            dateContentLabel.Content = appointment.beginningDate.Date.ToString("dd.MM.yyyy.");
+            timeContentLabel.Content = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
         }
 
         private void showAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
-            doctorLabel.Visibility = Visibility.Visible;
-            dateLabel.Visibility = Visibility.Visible;
-            timeLabel.Visibility = Visibility.Visible;
-            scheduleAppointment.Visibility = Visibility.Visible;
-
             appointment = App.appointmentController.CreateRandomAppointment(patient);
 
             doctorContentLabel.Content = appointment.doctor.FirstName + " " + appointment.doctor.LastName;
