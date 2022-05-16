@@ -50,14 +50,6 @@
                             <TextBox x:Name="Hospitalizacija" HorizontalAlignment="Left" Margin="210,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2"/>
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Dijagnoza" FontSize="18" FontWeight="Bold">
-                        <Grid>
-                            <Label Content="Dijagnoza:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="122" Height="40"/>
-                            <Label Content="Trenutna terapija:" Style="{StaticResource ClassicLabel}" Margin="30,200,0,0" Width="151" Height="40"/>
-                            <TextBox x:Name="Dijagnoza" HorizontalAlignment="Right" Margin="0,55,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
-                            <TextBox x:Name="Terapija" HorizontalAlignment="Right" Margin="0,220,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80"/>
-                        </Grid>
-                    </TabItem>
                 </TabControl>
                 <Button x:Name="Save" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Save_Click">
                     <StackPanel Orientation="Horizontal">

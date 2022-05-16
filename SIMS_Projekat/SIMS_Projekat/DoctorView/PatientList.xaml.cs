@@ -1,5 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,16 +15,16 @@ namespace SIMS_Projekat.DoctorView
     {
         private Doctor doctor;
         Frame Frame;
-        public BindingList<Patients> patientList { get; set; }
+        public List<Patients> patientList { get; set; }
+        public ObservableCollection<Patients> listOfPatients = new ObservableCollection<Patients>();
         public PatientList(Frame mainFrame, Doctor doctor1)
         {
             InitializeComponent();
             Frame = mainFrame;
             doctor = doctor1;
-            patientList = new BindingList<Patients>();
+            patientList = new List<Patients>();
             createList();
-            PatientLists.ItemsSource = patientList;
-            this.DataContext = this;
+            //this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,11 +36,10 @@ namespace SIMS_Projekat.DoctorView
         {
 
             Patients patient = (Patients)PatientLists.SelectedItem;
-            string id = patient.ID;
             Patient patient1 = new Patient();
             foreach (Patient p in App.accountController.GetAllPatientAccounts())
             {
-                if (p.ID == id)
+                if (p.FirstName + " " + p.LastName == patient.fullName)
                 {
                     patient1 = p;
                     break;
@@ -49,11 +50,9 @@ namespace SIMS_Projekat.DoctorView
 
         public class Patients
         {
-            public string ID { get; set; }
             public string fullName { get; set; }
-            public Patients(String ID1, String fullName1)
+            public Patients(String fullName1)
             {
-                ID = ID1;
                 fullName = fullName1;
             }
         }
@@ -62,11 +61,12 @@ namespace SIMS_Projekat.DoctorView
         {
             foreach (Model.Patient patient in App.accountRepository.GetAllPatientAccounts())
             {
-                string id = patient.ID;
                 string name = patient.FirstName + " " + patient.LastName;
 
-                patientList.Add(new Patients(id, name));
+                //listOfPatients.Add(new Patients(id, name));
+                patientList.Add(new Patients(name));
             }
+            PatientLists.ItemsSource = patientList;
         }
 
         private void PatientLists_SelectionChanged(object sender, SelectionChangedEventArgs e)

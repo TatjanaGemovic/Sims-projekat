@@ -14,36 +14,15 @@
             <Label Content="Pacijenti" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="PatientLists" SelectionChanged="PatientLists_SelectionChanged" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding patientList}" Margin="0,25,0,0" Height="463">
-                <DataGrid.RowStyle>
-                    <Style TargetType="DataGridRow">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#CDDEFF"/>
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#676FA3"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.RowStyle>
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#CDDEFF"/>
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#676FA3"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.CellStyle>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding ="{Binding ID}" Width="30"/>
-                    <DataGridTextColumn Header="Prezime i ime pacijenta" Binding ="{Binding fullName}"  Width="*"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListView x:Name="PatientLists" Width="360" Height="480" Margin="0,20,0,110" BorderThickness="4" BorderBrush="#676FA3" SelectionChanged="PatientLists_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding fullName}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </DockPanel>
         <Button x:Name="Show" Content="Prikazi" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,580,13,0" Click="Button_Click_1"/>
     </Grid>
