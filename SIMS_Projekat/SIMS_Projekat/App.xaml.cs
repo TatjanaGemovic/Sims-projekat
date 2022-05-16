@@ -21,9 +21,14 @@ namespace SIMS_Projekat
     {
 
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
-        private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
         public static AppointmentRepository appointmentRepo;
+        public static AppointmentService appointmentService;
+        public static AppointmentController appointmentController;
+
+        private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
         public static FinishedAppointmentRepository finishedappointmentRepo;
+        public static FinishedAppointmentService finishedAppointmentService;
+        public static FinishedAppointmentController finishedAppointmentController;
 
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
@@ -46,8 +51,6 @@ namespace SIMS_Projekat
         public static AllergenRepository AllergenRepository;
         public static AllergenService AllergenService;
         public static AllergenController AllergenController;
-
-        public static AppointmentController appointmentController;
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
@@ -88,7 +91,18 @@ namespace SIMS_Projekat
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
             renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
             renovationRequestController = new RenovationRequestController(renovationRequestService);
-            AppointmentService appointmentService = new AppointmentService()
+
+            finishedAppointmentService = new FinishedAppointmentService()
+            {
+                finishedAppointmentRepository = finishedappointmentRepo
+            };
+            appointmentController = new AppointmentController()
+            {
+                appointmentService = appointmentService
+            };
+
+
+            appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
             };

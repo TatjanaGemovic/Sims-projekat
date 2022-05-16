@@ -50,8 +50,14 @@ namespace SIMS_Projekat.PatientView
             }
             else
             {
+                if (appointment.isDelayed)
+                {
+                    changeButton.IsEnabled = false;
+                }
                 isOperationField.Content = "Pregled";
             }
+            
+          
         }
 
         private void deleteClick(object sender, RoutedEventArgs e)

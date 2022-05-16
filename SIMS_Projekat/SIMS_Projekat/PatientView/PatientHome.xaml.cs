@@ -23,7 +23,7 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class PatientHome : Window
     {
-        public static Patient patient;
+        public Patient patient;
         private string nameSurname;
         static Timer timer;
         Page Homepage;
@@ -32,7 +32,7 @@ namespace SIMS_Projekat.PatientView
             timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
-            
+
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
             Homepage = new Homepage(patient);

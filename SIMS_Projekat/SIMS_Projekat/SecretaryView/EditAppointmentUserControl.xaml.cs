@@ -106,7 +106,9 @@ namespace SIMS_Projekat.SecretaryView
                 doctor = selectedDoctor,
                 patient = selectedPatient,
                 room = selectedRoom,
-                operation = false
+                operation = false,
+                isDelayed = selectedAppointment.isDelayed,
+                isScheduledByPatient = selectedAppointment.isScheduledByPatient,
 
             };
             appointmentController.SetAppointment(newAppointment);

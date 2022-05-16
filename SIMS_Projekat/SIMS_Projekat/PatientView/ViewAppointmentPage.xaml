@@ -61,7 +61,7 @@
         <Label Grid.Row="6" Grid.Column="2" x:Name="isOperationField"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Izmeni" Click="changeClick" x:Name="changeButton"
+        <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Izmeni" Click="changeClick" x:Name="changeButton"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}">
             
             <!--<Button.ToolTip>
@@ -86,9 +86,9 @@
                
         </Button>
         
-        <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
+        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
-        <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Nazad" Click="cancelClick"
+        <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="cancelClick"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
 
     </Grid>

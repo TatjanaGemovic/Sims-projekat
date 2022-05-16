@@ -37,6 +37,8 @@ namespace SIMS_Projekat.PatientView
 
             AppointmentsTable.ItemsSource = appointmentInformations;
             this.DataContext = this;
+
+            CheckIfThereIsAlreadyTooManyScheduledAppointments();
         }
 
         private void make_appointment_Click(object sender, RoutedEventArgs e)
@@ -103,6 +105,14 @@ namespace SIMS_Projekat.PatientView
                     appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
                                                   appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber, appointment.operation));
                 
+            }
+        }
+        public void CheckIfThereIsAlreadyTooManyScheduledAppointments()
+        {
+            DateTime now = DateTime.Now;
+            if (!App.appointmentController.CheckForScheduledAppointments(patient, new DateTime(now.Year, now.Month, 1)))
+            {
+                make_appointment.IsEnabled = false;
             }
         }
     }
