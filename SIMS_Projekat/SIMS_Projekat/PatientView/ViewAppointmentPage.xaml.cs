@@ -57,6 +57,10 @@ namespace SIMS_Projekat.PatientView
                 isOperationField.Content = "Pregled";
             }
             
+            if(patient.numberOfCancelledAppointments == 2)
+            {
+                deleteButton.IsEnabled = false;
+            }
           
         }
 
@@ -66,7 +70,7 @@ namespace SIMS_Projekat.PatientView
             if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
             "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                
+                patient.numberOfCancelledAppointments++;
                 App.appointmentController.DeleteAppointment(appointment);
 
                 Appointments Appointments = new Appointments(mainFrame, patient);

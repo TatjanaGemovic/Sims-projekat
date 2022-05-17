@@ -32,7 +32,7 @@ namespace SIMS_Projekat.PatientView
             timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
-
+            App.accountController.CheckIfItsNewMonth(patient);
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
             Homepage = new Homepage(patient);

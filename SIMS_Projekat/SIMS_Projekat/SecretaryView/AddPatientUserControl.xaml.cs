@@ -74,7 +74,10 @@ namespace SIMS_Projekat.SecretaryView
                 Symptoms = "N/A",
                 IsUrgent = false,
                 MedicalRecord = App.medRecordRepository.CreateMedicalRecord(new MedicalRecord()),
-                Allergens = selectedAllergens
+                Allergens = selectedAllergens,
+                month = DateTime.Now.Month,
+                year = DateTime.Now.Year,
+                numberOfCancelledAppointments = 0
 
             };
             AccountController.CreatePatientAccount(newPatient);

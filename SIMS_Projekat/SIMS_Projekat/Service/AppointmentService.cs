@@ -232,7 +232,7 @@ namespace SIMS_Projekat.Service
             List<DateTime> dateList = new List<DateTime> { currentDate.AddDays(1), currentDate.AddDays(2), currentDate.AddDays(3) };
             int dateIndex = random.Next(dateList.Count);    // 10.5.2022.  12:00 AM
 
-            List<string> timeList = createAppointmentTime();
+            List<string> timeList = CreateAppointmentTime();
             int timeIndex = random.Next(timeList.Count);
 
             DateTime startDate = dateList[dateIndex].Date;
@@ -251,7 +251,7 @@ namespace SIMS_Projekat.Service
             return doctor;
         }
 
-        public List<string> createAppointmentTime()
+        public List<string> CreateAppointmentTime()
         {
             List<string> timeList = new List<string> { "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30",
                                                         "09:45", "10:00", "10:15", "10:30" ,"10:45" ,"11:00" ,"11:15",
