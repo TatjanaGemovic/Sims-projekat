@@ -92,9 +92,6 @@ namespace SIMS_Projekat.Repository
                     oldPatient.Email = patient.Email;
                     oldPatient.IsUrgent = String.IsNullOrEmpty(patient.Username) || String.IsNullOrEmpty(patient.Password);
                     oldPatient.Allergens = patient.Allergens;
-                    oldPatient.month = patient.month;
-                    oldPatient.year = patient.year;
-                    oldPatient.numberOfCancelledAppointments = patient.numberOfCancelledAppointments;
                 }
             }
             return null;

@@ -87,7 +87,7 @@
         </Button>
         
         <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
-                x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
         <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="cancelClick"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
 

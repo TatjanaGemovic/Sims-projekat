@@ -51,7 +51,7 @@ namespace SIMS_Projekat.SecretaryView
             this.appointmentController = appointmentController;
 
             Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableNotMeetingRooms());
-            AvailableTimes = new ObservableCollection<string>(this.appointmentController.CreateAppointmentTime());
+            AvailableTimes = new ObservableCollection<string>(this.appointmentController.createAppointmentTime());
             AvailableDoctors = new ObservableCollection<Doctor>(accountController.GetAllDoctorAccounts());
             AvailablePatients = new ObservableCollection<Patient>(accountController.GetAllPatientAccounts());
 
@@ -104,7 +104,7 @@ namespace SIMS_Projekat.SecretaryView
         {
             
             List<Appointment> allAppointments = appointmentController.GetAppointmentsByRoomIdAndDate(roomID, date);
-            List<string> allTimes = appointmentController.CreateAppointmentTime();
+            List<string> allTimes = appointmentController.createAppointmentTime();
 
             AvailableTimes.Clear();
 

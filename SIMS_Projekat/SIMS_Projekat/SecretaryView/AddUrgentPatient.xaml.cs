@@ -45,11 +45,7 @@ namespace SIMS_Projekat.SecretaryView
                 Username = "",
                 Password = "",
                 Symptoms = Symptoms.Text,
-                IsUrgent = true,
-                month = DateTime.Now.Month,
-                year = DateTime.Now.Year,
-                numberOfCancelledAppointments = 0
-                
+                IsUrgent = true
             };
 
             AccountController.CreatePatientAccount(newUrgentPatient);
