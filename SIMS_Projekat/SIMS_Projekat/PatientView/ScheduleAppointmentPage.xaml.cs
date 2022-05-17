@@ -119,7 +119,7 @@ namespace SIMS_Projekat.PatientView
             
 
             // Create the new BindingList of Part type.
-            listOfAppointmentTime = new BindingList<String>(App.appointmentController.createAppointmentTime());
+            listOfAppointmentTime = new BindingList<String>(App.appointmentController.CreateAppointmentTime());
             listOfTakenAppointmentTime = new BindingList<String>(list);
 
             // Allow new parts to be added, but not removed once committed.        
@@ -191,10 +191,11 @@ namespace SIMS_Projekat.PatientView
                 doctor = doctor,
                 patient = patient,
                 operation = false,
+                isDelayed = false,
+                isScheduledByPatient = true
             };
 
             App.appointmentController.AddAppointment(appointment);
-
             Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }

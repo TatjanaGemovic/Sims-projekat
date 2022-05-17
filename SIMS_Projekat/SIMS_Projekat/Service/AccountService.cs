@@ -71,5 +71,16 @@ namespace SIMS_Projekat.Service
             return AccountRepository.GetDoctorAccountByLicenceNumber(licenceNumber);
 
         }
+
+        public Patient CheckIfItsNewMonth(Patient patient)
+        {
+            if(patient.year != DateTime.Now.Year || patient.month != DateTime.Now.Month)
+            {
+                patient.year = DateTime.Now.Year;
+                patient.month = DateTime.Now.Month;
+                patient.numberOfCancelledAppointments = 0;
+            }
+            return patient;
+        }
     }
 }

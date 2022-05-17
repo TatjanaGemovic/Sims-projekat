@@ -51,7 +51,8 @@ namespace SIMS_Projekat.DoctorView
                 doctor = doctor,
                 patient = appointment.patient,
                 Anamnesis = diagnosis,
-                Treatment = treatment
+                Treatment = treatment,
+                isScheduledByPatient = appointment.isScheduledByPatient
             };
 
             App.finishedappointmentRepo.AddFinishedAppointment(app, appointment.appointmentID);
