@@ -112,7 +112,7 @@
                             <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Broj licence" Binding="{Binding LicenceNumber}" Width ="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Specijalizacija" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Speciality}" Width ="*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 

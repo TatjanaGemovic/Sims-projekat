@@ -142,6 +142,7 @@ namespace SIMS_Projekat.Repository
                     oldDoctor.DateOfBirth = doctor.DateOfBirth;
                     oldDoctor.Email = doctor.Email;
                     oldDoctor.LicenceNumber = doctor.LicenceNumber;
+                    oldDoctor.Speciality = doctor.Speciality;
 
                     return oldDoctor;
                 }

@@ -19,6 +19,8 @@
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition />
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -34,6 +36,7 @@
         <TextBlock Grid.Column="0" Grid.Row="6" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Broj licence:</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="7" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Korisničko ime</TextBlock>
         <TextBlock Grid.Column="0" Grid.Row="8" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Lozinka</TextBlock>
+        <TextBlock Grid.Column="0" Grid.Row="9" Margin="20,0,0,0" FontSize="14" VerticalAlignment="Center">Specijalizacija</TextBlock>
 
 
 
@@ -47,7 +50,9 @@
         <TextBox Grid.Column="1" Grid.Row="6" x:Name="LicenceNumber" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="7" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <PasswordBox Grid.Column="1" Grid.Row="8" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></PasswordBox>
-        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="9" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
+        <ComboBox Grid.Column="1" Grid.Row="9" x:Name="SpecialityComboBox" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></ComboBox>
+
+        <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="10" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

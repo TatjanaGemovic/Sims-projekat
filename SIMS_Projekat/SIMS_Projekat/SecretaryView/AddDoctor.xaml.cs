@@ -15,10 +15,13 @@ namespace SIMS_Projekat.SecretaryView
         {
             InitializeComponent();
             AccountController = accountController;
+            SpecialityComboBox.ItemsSource = Enum.GetValues(typeof(DoctorSpeciality));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            DoctorSpeciality selectedSpeciality = DoctorSpeciality.GENERAL_PRACTITIONER;
+            Enum.TryParse(SpecialityComboBox.Text, out selectedSpeciality);
             var newDoctor = new Doctor()
             {
                 FirstName = FirstName.Text,
@@ -29,7 +32,8 @@ namespace SIMS_Projekat.SecretaryView
                 PhoneNumber = PhoneNumber.Text,
                 LicenceNumber = LicenceNumber.Text,
                 Username = Username.Text,
-                Password = Password.Password
+                Password = Password.Password,
+                Speciality = selectedSpeciality
             };
             AccountController.CreateDoctorAccount(newDoctor);
             AccountsView.AddDoctor(newDoctor);

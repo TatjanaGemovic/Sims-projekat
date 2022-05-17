@@ -5,7 +5,8 @@ namespace SIMS_Projekat.Model
     public class Doctor : Account
     {
         public string LicenceNumber { get; set; }
-        
+        public DoctorSpeciality Speciality { get; set; }
+
         public override string[] toCSV()
         {
             string[] values =
@@ -19,7 +20,8 @@ namespace SIMS_Projekat.Model
                 base.Username,
                 base.Password,
                 base.ID,
-                LicenceNumber
+                LicenceNumber,
+                Speciality.ToString()
             };
             return values;
         }
@@ -36,6 +38,9 @@ namespace SIMS_Projekat.Model
             base.Password = values[7];
             base.ID = values[8];
             LicenceNumber = values[9];
+            DoctorSpeciality spec = DoctorSpeciality.GENERAL_PRACTITIONER;
+            Enum.TryParse(values[10], out spec);
+            Speciality = spec;
         }
 
     }
