@@ -35,7 +35,7 @@ namespace SIMS_Projekat.PatientView
             
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
-            Homepage = new Homepage(patient);
+            Homepage = new Homepage(MainFrame, patient);
             MainFrame.Content = Homepage;
         }
 
@@ -64,7 +64,7 @@ namespace SIMS_Projekat.PatientView
 
         private void homepage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new Homepage(patient);
+            MainFrame.Content = new Homepage(MainFrame, patient);
         }
 
         private void choose_doctor_Click(object sender, RoutedEventArgs e)

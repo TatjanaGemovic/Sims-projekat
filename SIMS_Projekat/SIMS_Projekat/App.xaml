@@ -316,7 +316,7 @@
         </Style>
 
         <Style x:Key="PatientRegularLabels" TargetType="Label">
-            <Setter Property="Foreground" Value="#FFF76A"/>
+            <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -621,6 +621,21 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="PatientRadioButtons" TargetType="RadioButton">
+            <Setter Property="Background" Value="#FFCE89"/>
+            <Setter Property="Foreground" Value="#FFF76A"/>
+            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+           
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#ADCE74"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#ADCE74"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         
 
     </Application.Resources>

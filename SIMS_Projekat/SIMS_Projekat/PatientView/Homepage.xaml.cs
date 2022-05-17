@@ -25,7 +25,7 @@ namespace SIMS_Projekat.PatientView
     public partial class Homepage : Page, INotifyPropertyChanged
     {
         private Patient patient;
-
+        private Frame mainFrame;
         private ObservableCollection<TherapyNotification> notificationCollection;
 
         public ObservableCollection<TherapyNotification> NotificationCollection
@@ -48,10 +48,11 @@ namespace SIMS_Projekat.PatientView
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-        public Homepage(Patient p)
+        public Homepage(Frame frame,Patient p)
         {
             InitializeComponent();
             patient = p;
+            mainFrame = frame;
             this.DataContext = this;
             
             NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
@@ -65,6 +66,11 @@ namespace SIMS_Projekat.PatientView
                 TherapyNotification tn = GridView.SelectedItem as TherapyNotification;
                 App.therapyNotificationController.DeleteNotification(tn);
             }
+        }
+
+        private void evaluationButton_Click(object sender, RoutedEventArgs e)
+        {
+            mainFrame.Content = new EvaluationPage(mainFrame, patient);
         }
     }
 }
