@@ -3,16 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="ViewAppointmentPage">
 
-    <Page.Resources>
-        <converters:OppositeConverter x:Key="OppositeConverter" />
-        <converters:ToolTipTextConverter x:Key="ToolTipTextConverter" />
-    </Page.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -67,15 +62,32 @@
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
         <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Izmeni" Click="changeClick" x:Name="changeButton"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                ToolTip="{Binding Path=Content, ElementName=isOperationField, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ToolTipTextConverter}}" ToolTipService.ShowOnDisabled="True" 
-                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
-
-        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
-                x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                ToolTip="Iskoristili ste maksimalni broj otkazivanja termina!" ToolTipService.ShowOnDisabled="True" 
-                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
+                Style="{StaticResource ResourceKey=PatientButtonsPage}">
+            
+            <!--<Button.ToolTip>
+                <ToolTip>
+                    <TextBlock Text="Ne možete da izmenite termin za operaciju!" FontSize="18" Foreground="#FFF76A" />
+                    <ToolTip.Style>
+                        <Style TargetType="ToolTip">
+                            <Setter Property="IsOpen" Value="False"/>
+                            <Setter Property="Visibility" Value="Hidden"/>
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=changeButton, Path=IsEnabled}" Value="False">
+                                    <Setter Property="IsOpen" Value="True"/>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ToolTip.Style>
+                </ToolTip>
+            </Button.ToolTip>-->
+               
+        </Button>
         
+        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
+                x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
         <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="cancelClick"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
 

@@ -61,7 +61,7 @@ namespace SIMS_Projekat.PatientView
             {
                 deleteButton.IsEnabled = false;
             }
-            
+          
         }
 
         private void deleteClick(object sender, RoutedEventArgs e)
