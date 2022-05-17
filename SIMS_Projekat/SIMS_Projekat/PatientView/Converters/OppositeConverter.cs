@@ -12,15 +12,10 @@ namespace SIMS_Projekat.PatientView.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool)
-            {
-                if ((bool)value == false)
-                    return true;
-                else return false;
-            }
-            else
+            if (value is not bool)
                 throw new InvalidOperationException("The value must be a boolean and parameter must be a string");
 
+            return (bool)value == false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

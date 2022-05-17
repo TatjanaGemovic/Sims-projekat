@@ -58,24 +58,9 @@ namespace SIMS_Projekat.Model
             {
                 operation = true;
             }
-            string delayed = values[7];
-            if (delayed.Equals("False"))
-            {
-                isDelayed = false;
-            }
-            else
-            {
-                isDelayed = true;
-            }
-            string byPatient = values[8];
-            if (byPatient.Equals("False"))
-            {
-                isScheduledByPatient = false;
-            }
-            else
-            {
-                isScheduledByPatient = true;
-            }
+            isDelayed = bool.Parse(values[7]);
+            isScheduledByPatient = bool.Parse(values[8]);
+            
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
             room = App.roomController.GetRoomByID(roomID);

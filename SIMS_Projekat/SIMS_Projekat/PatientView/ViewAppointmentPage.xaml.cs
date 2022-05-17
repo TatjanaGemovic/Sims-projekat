@@ -42,11 +42,15 @@ namespace SIMS_Projekat.PatientView
 
             Room r = App.roomController.GetRoomByID(appointment.room.RoomID);
             roomField.Content = "Sprat " + r.Floor + ", broj " + r.RoomNumber;
-
+            EnableButtons();
+            
+        }
+        public void EnableButtons()
+        {
             if (appointment.operation)
             {
                 isOperationField.Content = "Operacija";
-                changeButton.IsEnabled = false;             
+                changeButton.IsEnabled = false;
             }
             else
             {
@@ -56,14 +60,12 @@ namespace SIMS_Projekat.PatientView
                 }
                 isOperationField.Content = "Pregled";
             }
-            
-            if(patient.numberOfCancelledAppointments == 2)
+
+            if (patient.numberOfCancelledAppointments == 2)
             {
                 deleteButton.IsEnabled = false;
             }
-            
         }
-
         private void deleteClick(object sender, RoutedEventArgs e)
         {
             

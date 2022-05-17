@@ -12,19 +12,14 @@ namespace SIMS_Projekat.PatientView.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value != null)
-            {
-                if (value.Equals("Operacija"))
-                {
-                    return "Ne mozete da pomerite termin operacije";
-                }
-                else
-                    return "Vec ste pomerili termin pregleda!";
 
-            }
-            else 
+            if (value == null)
                 return "";
 
+            if (value.Equals("Operacija"))
+                return "Ne mozete da pomerite termin operacije";
+            else
+                return "Vec ste pomerili termin pregleda!";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

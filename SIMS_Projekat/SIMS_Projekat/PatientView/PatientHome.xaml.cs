@@ -32,13 +32,45 @@ namespace SIMS_Projekat.PatientView
             timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
-            App.accountController.CheckIfItsNewMonth(patient);
+
+            if (App.accountController.CheckIfItsNewMonth(patient))      //ako je novi mesec, promeni podatke u pacijentu i stavi broj otkazanih termina na 0
+                ResetPatient();
+                
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
             Homepage = new Homepage(patient);
             MainFrame.Content = Homepage;
         }
-
+        private void ResetPatient()
+        {
+            Patient p = new Patient()
+            {
+                FirstName = patient.FirstName,
+                LastName = patient.LastName,
+                Allergens = patient.Allergens,
+                Appointment = patient.Appointment,
+                BloodType = patient.BloodType,
+                DateOfBirth = patient.DateOfBirth,
+                doctorLicenceNumber = patient.doctorLicenceNumber,
+                Email = patient.Email,
+                HealthInsuranceID = patient.HealthInsuranceID,
+                Height = patient.Height,
+                ID = patient.ID,
+                IsUrgent = patient.IsUrgent,
+                Jmbg = patient.Jmbg,
+                MedicalRecord = patient.MedicalRecord,
+                Password = patient.Password,
+                Username = patient.Username,
+                PhoneNumber = patient.PhoneNumber,
+                Symptoms = patient.Symptoms,
+                Weight = patient.Weight,
+                year = DateTime.Now.Year,
+                month = DateTime.Now.Month,
+                numberOfCancelledAppointments = 0,
+                MedicalRecordID = patient.MedicalRecordID
+            };
+            App.accountController.EditPatientAccount(p, patient.ID);
+        }
         private void make_appointment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Appointments(MainFrame, patient);   
