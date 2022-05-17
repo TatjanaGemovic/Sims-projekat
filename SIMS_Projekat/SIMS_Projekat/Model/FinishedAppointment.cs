@@ -17,7 +17,6 @@ namespace SIMS_Projekat.Model
         public string ReceiptID { get; set; }
         public bool operation { get; set; } //true jeste operacija
         public bool isScheduledByPatient { get; set; }
-
         public Patient patient { get; set; }
         public string patientID { get; set; }
         public string licenceNumber { get; set; }
