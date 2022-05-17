@@ -29,6 +29,7 @@ namespace SIMS_Projekat
         private AllergenController allergenController;
         private RoomController roomController;
         private int prozor;
+        public static Patient patient;
 
         public LoginWindow(int prozor1, AccountController accountController, AccountRepository accountRepository, AllergenController allergenController, RoomController roomController)
         {
@@ -49,10 +50,11 @@ namespace SIMS_Projekat
             if(prozor == 3)
             {
                 List<Patient> patients = accountController.GetAllPatientAccounts();
-                foreach(Patient patient in patients)
+                foreach(Patient pat in patients)
                 {
-                    if(patient.Username.Equals(username) && patient.Password.Equals(password))
+                    if(pat.Username.Equals(username) && pat.Password.Equals(password))
                     {
+                        patient = pat;
                         PatientHome patientHomePage = new PatientHome(patient);
                         this.Close();
                         patientHomePage.Show();

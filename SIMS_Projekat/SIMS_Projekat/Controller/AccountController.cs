@@ -66,5 +66,10 @@ namespace SIMS_Projekat.Controller
         {
             return AccountService.GetDoctorAccountByLicenceNumber(licenceNumber);
         }
+
+        public Patient CheckIfItsNewMonth(Patient patient)
+        {
+            return AccountService.CheckIfItsNewMonth(patient);
+        }
     }
 }
