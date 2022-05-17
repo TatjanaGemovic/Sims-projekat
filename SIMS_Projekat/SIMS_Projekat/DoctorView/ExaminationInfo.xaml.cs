@@ -52,6 +52,13 @@ namespace SIMS_Projekat.DoctorView
         private void Zavrsi_Pregled_Click(object sender, RoutedEventArgs e)
         {
             App.appointmentController.DeleteAppointment(appointment);
+            Evaluation evaluation = new Evaluation()
+            {
+                isFilled = false,
+                patient = appointment.patient,
+                doctor = appointment.doctor,
+            };
+            App.evaluationController.AddEvaluation(evaluation);
             Frame.Content = new Examinations(Frame, doctor);
         }
 

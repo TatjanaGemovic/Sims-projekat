@@ -9,6 +9,7 @@ namespace SIMS_Projekat.Model
     public class Evaluation : Serialization.Serializable
     {
         public int evaluationID { get; set; }
+        public bool isFilled { get; set; }
         public int staff { get; set; }
         public int waitingTime { get; set; }
         public int recommendHospital { get; set; }
@@ -35,6 +36,7 @@ namespace SIMS_Projekat.Model
             doctorIsInterested = Convert.ToInt32(values[8]);
             recommendDoctor = Convert.ToInt32(values[9]);
             evaluationID = Convert.ToInt32(values[10]);
+            isFilled = bool.Parse(values[11]);
             
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByID(doctorID) as Doctor;
@@ -54,7 +56,8 @@ namespace SIMS_Projekat.Model
                 doctorIsUnderstandable.ToString(),
                 doctorIsInterested.ToString(),
                 recommendDoctor.ToString(),
-                evaluationID.ToString()
+                evaluationID.ToString(),
+                isFilled.ToString()
             };
             return values;
         }

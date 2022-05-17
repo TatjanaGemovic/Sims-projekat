@@ -62,6 +62,7 @@ namespace SIMS_Projekat.Repository
                     evaluation1.recommendDoctor = evaluation.recommendDoctor;
                     evaluation1.waitingTime = evaluation.waitingTime;
                     evaluation1.staff = evaluation.staff;
+                    evaluation1.isFilled = evaluation.isFilled;
                     return evaluation1;
                 }
 

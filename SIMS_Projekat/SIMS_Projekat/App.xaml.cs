@@ -38,6 +38,11 @@ namespace SIMS_Projekat
         public static TherapyNotificationService therapyNotificationService;
         public static TherapyNotificationController therapyNotificationController;
 
+        public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
+        public static EvaluationRepository evaluationRepository;
+        public static EvaluationService evaluationService;
+        public static EvaluationController evaluationController;
+
         public static AccountRepository accountRepository;
         public static MedicalRecordRepository medRecordRepository;
         public static AccountService accountService;
@@ -127,6 +132,16 @@ namespace SIMS_Projekat
                 therapyNotificationService = therapyNotificationService
             };
 
+            evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
+            evaluationService = new EvaluationService()
+            {
+                evaluationRepository = evaluationRepository
+            };
+            evaluationController = new EvaluationController()
+            {
+                evaluationService = evaluationService
+            };
+
             AllergenController.Deserialize();
             medRecordRepository.Deserialize();
             accountRepository.Deserialize();
@@ -139,6 +154,7 @@ namespace SIMS_Projekat
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
             renovationRequestController.Deserialize();
+            evaluationRepository.Deserialize();
         }
     }
 }
