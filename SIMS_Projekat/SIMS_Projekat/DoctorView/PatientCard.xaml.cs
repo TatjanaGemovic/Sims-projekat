@@ -35,8 +35,6 @@ namespace SIMS_Projekat.DoctorView
             TrenTerapija.Text = patient1.MedicalRecord.CurrentTherapy;
             Dodatno.Text = patient1.MedicalRecord.Note;
             Hospitalizacija.Text = patient1.MedicalRecord.BeenHospitalized.ToString();
-            Dijagnoza.Text = patient1.MedicalRecord.Diagnosis;
-            Terapija.Text = patient1.MedicalRecord.Treatment;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -58,8 +56,6 @@ namespace SIMS_Projekat.DoctorView
             {
                 hosp2 = true;
             }
-            string diag = Dijagnoza.Text;
-            string treat = Terapija.Text;
 
             string id = patient.MedicalRecord.ID;
 
@@ -69,8 +65,6 @@ namespace SIMS_Projekat.DoctorView
                 CurrentTherapy = ter,
                 Note = note,
                 BeenHospitalized = hosp2,
-                Diagnosis = diag,
-                Treatment = treat
             };
 
             App.medRecordRepository.SetMedicalRecord(record);
