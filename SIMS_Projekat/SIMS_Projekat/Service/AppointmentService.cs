@@ -263,33 +263,47 @@ namespace SIMS_Projekat.Service
 
         public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
         {
+            int numberOfAppointments = CheckForFollowingAppointments(patient, beginningOfMonth);
+
+            if(numberOfAppointments < 0)
+                return false;
+
+            int numberOfTakenAppointments = CheckForFinishedAppointments(patient, beginningOfMonth);
+            if (numberOfTakenAppointments < 0)
+                return false;
+
+            if(numberOfAppointments + numberOfTakenAppointments >= 3)
+                return false;
+
+            return true;        // nije zakazao 3
+        }
+        public int CheckForFollowingAppointments(Patient patient, DateTime beginningOfMonth)
+        {
             int numberOfAppointments = 0;
             foreach (Appointment appoint in GetAppointmentByPatientID(patient.ID))
             {
                 if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
                 {
                     numberOfAppointments++;
-                    if(numberOfAppointments >= 3)
-                    {
-                        return false;       //zakazao je vec 3
-                    }
+                    if (numberOfAppointments >= 3)
+                        return -1;       //zakazao je vec 3    
                 }
             }
+            return numberOfAppointments;
+        }
+        public int CheckForFinishedAppointments(Patient patient, DateTime beginningOfMonth)
+        {
+            int numberOfAppointments = 0;
             foreach (FinishedAppointment appoint in App.finishedAppointmentService.GetAppointmentByPatientID(patient.ID))
-            {
+            { 
                 if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
                 {
                     numberOfAppointments++;
                     if (numberOfAppointments >= 3)
-                    {
-                        return false;       //zakazao je vec 3
-                    }
+                        return -1;      //prosla 3 termina vec
                 }
             }
-
-            return true;        // nije zakazao 3
+            return numberOfAppointments;
         }
-
-        
     }
 }
