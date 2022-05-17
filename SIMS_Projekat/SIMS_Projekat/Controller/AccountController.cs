@@ -66,6 +66,5 @@ namespace SIMS_Projekat.Controller
         {
             return AccountService.GetDoctorAccountByLicenceNumber(licenceNumber);
         }
-
     }
 }

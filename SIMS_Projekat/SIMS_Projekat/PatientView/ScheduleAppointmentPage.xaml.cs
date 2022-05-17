@@ -191,11 +191,10 @@ namespace SIMS_Projekat.PatientView
                 doctor = doctor,
                 patient = patient,
                 operation = false,
-                isDelayed = false,
-                isScheduledByPatient = true
             };
 
             App.appointmentController.AddAppointment(appointment);
+
             Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }

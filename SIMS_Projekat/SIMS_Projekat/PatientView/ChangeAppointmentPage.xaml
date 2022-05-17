@@ -106,9 +106,9 @@
                   SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center"
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
-        <Button  Grid.Row="9" Grid.Column="7" Content="Izmeni" Grid.ColumnSpan="2" 
+        <Button  Grid.Row="9" Grid.Column="5" Content="Izmeni" Grid.ColumnSpan="2" 
                  Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="changeClick"/>
-        <Button Grid.Row="9" Grid.Column="5" Content="Odustani" Grid.ColumnSpan="2"
+        <Button Grid.Row="9" Grid.Column="7" Content="Odustani" Grid.ColumnSpan="2"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" FontSize="24" Click="cancelClick"/>
 
 

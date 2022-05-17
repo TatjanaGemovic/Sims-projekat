@@ -71,6 +71,5 @@ namespace SIMS_Projekat.Service
             return AccountRepository.GetDoctorAccountByLicenceNumber(licenceNumber);
 
         }
-
     }
 }

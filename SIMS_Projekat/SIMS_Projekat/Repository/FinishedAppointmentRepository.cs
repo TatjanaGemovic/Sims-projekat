@@ -57,7 +57,6 @@ namespace SIMS_Projekat.Repository
                     appointment1.endDate = appointment.endDate;
                     appointment1.doctor = appointment.doctor;
                     appointment1.operation = appointment.operation;
-                    appointment1.isScheduledByPatient = appointment.isScheduledByPatient;
                     return appointment1;
                 }
 

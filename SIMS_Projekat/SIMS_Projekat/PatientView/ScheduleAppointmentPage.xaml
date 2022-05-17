@@ -85,9 +85,9 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <Label x:Name="warning" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Visibility="Hidden"
+        <Label x:Name="warning" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" Visibility="Hidden" 
                Content="Morate izabrati doktora!" Foreground="#FFFF001C" FontSize="24"
-               HorizontalContentAlignment="Left" VerticalContentAlignment="Bottom"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 
         <DatePicker x:Name="date" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" 
@@ -115,10 +115,10 @@
                   SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center" SelectionChanged="comboTime_SelectionChanged"
                   Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
 
-        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="6" Content="Zakaži" Grid.ColumnSpan="2"
+        <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="4" Content="Zakaži" Grid.ColumnSpan="2"
                  Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="scheduleClick" IsEnabled="False" />
 
-        <Button Grid.Row="9" Grid.Column="4" Content="Odustani" Grid.ColumnSpan="2"
+        <Button Grid.Row="9" Grid.Column="6" Content="Odustani" Grid.ColumnSpan="2"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="cancelClick"/>
 
         <Border BorderBrush="#FFCE89" BorderThickness="2" Grid.Row="1" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="100,57,0,58">

@@ -16,8 +16,6 @@ namespace SIMS_Projekat.Model
         public Doctor doctor { get; set; }
         public string ReceiptID { get; set; }
         public bool operation { get; set; } //true jeste operacija
-        public bool isScheduledByPatient { get; set; }
-
         public Patient patient { get; set; }
         public string patientID { get; set; }
         public string licenceNumber { get; set; }
@@ -38,20 +36,9 @@ namespace SIMS_Projekat.Model
             {
                 operation = true;
             }
-
-            string byPatient = values[6];
-            if (byPatient.Equals("False"))
-            {
-                isScheduledByPatient = false;
-            }
-            else
-            {
-                isScheduledByPatient = true;
-            }
-
-            Anamnesis = values[7];
-            Treatment = values[8];
-            //ReceiptID = values[9];
+            Anamnesis = values[6];
+            Treatment = values[7];
+            //ReceiptID = values[8];
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
         }
@@ -66,7 +53,6 @@ namespace SIMS_Projekat.Model
                 patient.ID,
                 doctor.LicenceNumber,
                 operation.ToString(),
-                isScheduledByPatient.ToString(),
                 Anamnesis.ToString(),
                 Treatment.ToString(),
                 //Receipt.ID.ToString(),

@@ -82,10 +82,5 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.createAppointmentTime();
         }
-
-        public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
-        {
-            return appointmentService.CheckForScheduledAppointments(patient, beginningOfMonth);
-        }
     }
 }

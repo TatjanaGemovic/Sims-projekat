@@ -216,9 +216,7 @@ namespace SIMS_Projekat.Service
                 patient = patient,
                 endDate = startDate.AddMinutes(15),
                 operation = false,
-                room = room,
-                isDelayed = false,
-                isScheduledByPatient = true
+                room = room
             };
             return appointment;
 
@@ -260,36 +258,5 @@ namespace SIMS_Projekat.Service
                                                         "15:00" ,"15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45"};
             return timeList;
         }
-
-        public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
-        {
-            int numberOfAppointments = 0;
-            foreach (Appointment appoint in GetAppointmentByPatientID(patient.ID))
-            {
-                if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
-                {
-                    numberOfAppointments++;
-                    if(numberOfAppointments >= 3)
-                    {
-                        return false;       //zakazao je vec 3
-                    }
-                }
-            }
-            foreach (FinishedAppointment appoint in App.finishedAppointmentService.GetAppointmentByPatientID(patient.ID))
-            {
-                if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
-                {
-                    numberOfAppointments++;
-                    if (numberOfAppointments >= 3)
-                    {
-                        return false;       //zakazao je vec 3
-                    }
-                }
-            }
-
-            return true;        // nije zakazao 3
-        }
-
-        
     }
 }

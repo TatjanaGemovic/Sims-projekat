@@ -224,9 +224,7 @@ namespace SIMS_Projekat.PatientView
                     room = room,
                     doctor = doctor,
                     patient = patient,
-                    operation = false,
-                    isDelayed = true,
-                    isScheduledByPatient = this.appointment.isScheduledByPatient
+                    operation = false,      
                 };
                 App.appointmentController.SetAppointment(newAppointment);
 

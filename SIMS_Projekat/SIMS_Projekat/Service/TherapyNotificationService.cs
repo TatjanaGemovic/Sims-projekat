@@ -187,7 +187,7 @@ namespace SIMS_Projekat.Service
         }
         public static void TickTimer(object state)
         {
-            foreach(TherapyNotification notification in GetNotificationByPatientID(LoginWindow.patient.ID))
+            foreach(TherapyNotification notification in GetNotificationByPatientID(PatientHome.patient.ID))
             {
                 if(DateTime.Now >= notification.date)
                 {

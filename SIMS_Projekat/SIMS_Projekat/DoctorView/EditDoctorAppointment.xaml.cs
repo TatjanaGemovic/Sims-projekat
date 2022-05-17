@@ -24,7 +24,6 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame Frame;
         int id;
-        Appointment appoint;
         String selectedDate1;
         BindingList<String> appointmentType;
         BindingList<String> patients;
@@ -47,7 +46,6 @@ namespace SIMS_Projekat.DoctorView
             selectedDate1 = datePart[0];
             DateTime pickedDate = selectedDate.Date;
             id = app.appointmentID;
-            appoint = app;
 
             InitializeComboBox1();
             InitializeComboBox2();
@@ -283,9 +281,7 @@ namespace SIMS_Projekat.DoctorView
                 operation = op,
                 room = selectedRoom,
                 doctor = doctor,
-                patient = selectedPatient,
-                isScheduledByPatient = appoint.isScheduledByPatient,
-                isDelayed = appoint.isDelayed,
+                patient = selectedPatient
             };
 
             App.appointmentController.SetAppointment(appointment);

@@ -20,10 +20,31 @@ namespace SIMS_Projekat.Model
 
         public Patient patient { get; set; }
 
-        public bool isDelayed { get; set; }
-
-        public bool isScheduledByPatient { get; set; }
-
+        //public Patient Patient
+        //{
+        //    get
+        //    {
+        //        return Patient;
+        //    }
+        //    set
+        //    {
+        //        if (this.Patient == null || !this.Patient.Equals(value))
+        //        {
+        //            if (this.Patient != null)
+        //            {
+        //                Patient oldPatient = this.Patient;
+        //                this.Patient = null;
+        //                oldPatient.RemoveAppointment(this);
+        //            }
+        //            if (value != null)
+        //            {
+        //                this.Patient = value;
+        //                this.Patient.AddAppointment(this);
+        //            }
+        //        }
+        //    }
+        //}
+       
         public string[] toCSV()
         {
             string[] values =
@@ -35,8 +56,6 @@ namespace SIMS_Projekat.Model
                 doctor.LicenceNumber,
                 room.RoomID,
                 operation.ToString(),
-                isDelayed.ToString(),
-                isScheduledByPatient.ToString()
             };
             return values;
         }
@@ -57,24 +76,6 @@ namespace SIMS_Projekat.Model
             else
             {
                 operation = true;
-            }
-            string delayed = values[7];
-            if (delayed.Equals("False"))
-            {
-                isDelayed = false;
-            }
-            else
-            {
-                isDelayed = true;
-            }
-            string byPatient = values[8];
-            if (byPatient.Equals("False"))
-            {
-                isScheduledByPatient = false;
-            }
-            else
-            {
-                isScheduledByPatient = true;
             }
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
