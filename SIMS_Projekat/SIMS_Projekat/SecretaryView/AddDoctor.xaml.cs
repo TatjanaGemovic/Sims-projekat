@@ -1,7 +1,10 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Converters;
 using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Data;
 
 namespace SIMS_Projekat.SecretaryView
 {
@@ -11,11 +14,17 @@ namespace SIMS_Projekat.SecretaryView
     public partial class AddDoctor : Window
     {
         public AccountController AccountController { get; set; }
+        public List<DoctorSpeciality> DoctorSpecialitiesList { get; set; }
         public AddDoctor(AccountController accountController)
         {
             InitializeComponent();
+            this.DataContext = this;
             AccountController = accountController;
-            SpecialityComboBox.ItemsSource = Enum.GetValues(typeof(DoctorSpeciality));
+            DoctorSpecialitiesList = new List<DoctorSpeciality>();
+            foreach(DoctorSpeciality doctorSpeciality in Enum.GetValues(typeof(DoctorSpeciality)))
+            {
+                DoctorSpecialitiesList.Add(doctorSpeciality);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

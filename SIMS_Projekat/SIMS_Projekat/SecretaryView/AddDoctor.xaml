@@ -3,9 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+        xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView" xmlns:converters="clr-namespace:SIMS_Projekat.SecretaryView.Converters"
         mc:Ignorable="d"
         Title="Add Doctor" Height="520" Width="350">
+
+    <Window.Resources>
+        <converters:DoctorSpecialityConverter x:Key="DoctorSpecialityConverter" />
+    </Window.Resources>
+    
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -50,7 +56,13 @@
         <TextBox Grid.Column="1" Grid.Row="6" x:Name="LicenceNumber" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <TextBox Grid.Column="1" Grid.Row="7" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></TextBox>
         <PasswordBox Grid.Column="1" Grid.Row="8" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></PasswordBox>
-        <ComboBox Grid.Column="1" Grid.Row="9" x:Name="SpecialityComboBox" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="9" x:Name="SpecialityComboBox" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="14" ItemsSource="{Binding DoctorSpecialitiesList}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource DoctorSpecialityConverter}}"></TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <Button Content="Sačuvaj" Background="YellowGreen" Margin="0,0,0,0" Grid.Row="10" Grid.ColumnSpan="2" Width="90" Height="35" BorderBrush="{x:Null}" Foreground="White" Grid.RowSpan="2" FontSize="14" FontFamily="Poppins" FontWeight="Normal" Click="Button_Click">
             <Button.RenderTransform>
