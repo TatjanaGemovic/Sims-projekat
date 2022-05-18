@@ -57,6 +57,8 @@ namespace SIMS_Projekat
         private static string ROOM_EQUIPMENT_CSV = @".\..\..\..\Resources\roomEquipmentDTO.txt";
         private static string EXCHANGE_EQ_CSV = @".\..\..\..\Resources\exchangeEquipmentRequest.txt";
         private static string RENOVATION_CSV = @".\..\..\..\Resources\renovation.txt";
+        private static string REQUEST_FILE = @".\..\..\..\Resources\requests.txt";
+        public static FreeDayRequestRepository freeDayRequestRepository;
         public static RoomRepository roomRepository;
         public static RoomService roomService;
         public static RoomController roomController;
@@ -88,6 +90,7 @@ namespace SIMS_Projekat
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
             receiptRepository = new ReceiptRepository(RECEIPT_FILE);
+            freeDayRequestRepository = new FreeDayRequestRepository(REQUEST_FILE);
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
             renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
             renovationRequestController = new RenovationRequestController(renovationRequestService);
@@ -153,6 +156,7 @@ namespace SIMS_Projekat
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
             renovationRequestController.Deserialize();
+            freeDayRequestRepository.Deserialize();
         }
     }
 }

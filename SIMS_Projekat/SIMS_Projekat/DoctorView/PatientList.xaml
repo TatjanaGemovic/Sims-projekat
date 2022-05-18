@@ -14,11 +14,11 @@
             <Label Content="Pacijenti" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <ListView x:Name="PatientLists" Width="360" Height="480" Margin="0,20,0,110" BorderThickness="4" BorderBrush="#676FA3" SelectionChanged="PatientLists_SelectionChanged">
+            <ListView x:Name="PatientLists" Width="360" Height="480" Margin="0,20,0,110" BorderThickness="4" BorderBrush="#676FA3" SelectionChanged="PatientLists_SelectionChanged" SelectionMode="Single">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding fullName}" />
+                            <TextBlock Text="{Binding fullName}" Height="25" FontSize="17" FontWeight="SemiBold"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
