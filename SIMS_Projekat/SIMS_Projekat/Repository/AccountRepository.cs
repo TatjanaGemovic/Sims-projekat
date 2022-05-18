@@ -170,5 +170,15 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
+        public Account GetDoctorAccountBySpeciality(string speciality)
+        {
+            foreach (Doctor doctor in Doctors)
+            {
+                if (doctor.speciality.Equals(speciality))
+                    return doctor;
+            }
+            return null;
+        }
+
     }
 }
