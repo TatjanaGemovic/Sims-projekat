@@ -66,8 +66,23 @@ namespace SIMS_Projekat.DoctorView
                 {
                     if (r.doctor.Equals(doctor))
                     {
-                        string time = r.from.ToString() + "  -  " + r.until.ToString();
-                        string status = r.status.ToString();
+                        string from1 = r.from.ToString();
+                        string until1 = r.until.ToString();
+                        String[] parts = from1.Split(" ");
+                        String[] parts2 = until1.Split(" ");
+                        string time = parts[0] + "  -  " + parts2[0];
+                        string status;
+                        if (r.status.ToString().Equals("Waiting"))
+                        {
+                            status = "Na cekanju";
+                        }else if (r.status.ToString().Equals("Accepted"))
+                        {
+                            status = "Prihvacen";
+                        }
+                        else
+                        {
+                            status = "Odbijen";
+                        }
 
                         RequestList.Add(new Request2(time, status));
                     }
