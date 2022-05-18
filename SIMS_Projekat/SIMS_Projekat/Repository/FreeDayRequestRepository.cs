@@ -27,6 +27,19 @@ namespace SIMS_Projekat.Repository
             return requests;
         }
 
+        public List<FreeDayRequest> GetRequestsByDoctor(Doctor d)
+        {
+            List<FreeDayRequest> requests1 = new List<FreeDayRequest>();
+            foreach(FreeDayRequest r in requests)
+            {
+                if (r.doctor.Equals(d))
+                {
+                    requests1.Add(r);
+                }
+            }
+            return requests1;
+        }
+
         public FreeDayRequest AddRequest(FreeDayRequest newRequest)
         {
             requests.Add(newRequest);

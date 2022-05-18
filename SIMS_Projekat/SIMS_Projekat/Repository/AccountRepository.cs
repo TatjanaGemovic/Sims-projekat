@@ -174,14 +174,15 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public Account GetDoctorAccountBySpeciality(string speciality)
+        public List<Doctor> GetAllDoctorAccountBySpeciality(string speciality)
         {
+            List<Doctor> doctors1 = new List<Doctor>();
             foreach (Doctor doctor in Doctors)
             {
-                if (doctor.speciality.Equals(speciality))
-                    return doctor;
+                if (doctor.Speciality.ToString().Equals(speciality))
+                    doctors1.Add(doctor);
             }
-            return null;
+            return doctors1;
         }
 
     }
