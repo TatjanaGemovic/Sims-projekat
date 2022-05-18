@@ -10,6 +10,7 @@
     
     <UserControl.Resources>
         <converters:UrgentPatientIndicatorConverter x:Key="UrgentPatientIndicatorConverter" />
+        <converters:DoctorSpecialityConverter x:Key="DoctorSpecialityConverter" />
         <Style TargetType="DataGridRow">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsUrgent}" Value="true">
@@ -112,7 +113,7 @@
                             <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Broj licence" Binding="{Binding LicenceNumber}" Width ="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Specijalizacija" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Specijalizacija" Binding="{Binding Speciality, Converter={StaticResource DoctorSpecialityConverter}}" Width ="*"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 

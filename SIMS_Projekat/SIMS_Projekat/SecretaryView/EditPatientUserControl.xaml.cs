@@ -95,8 +95,10 @@ namespace SIMS_Projekat.SecretaryView
                 Weight = Double.Parse(Weight.Text),
                 Username = Username.Text,
                 Password = Password.Password,
-                Allergens = selectedAllergens
-
+                Allergens = selectedAllergens,
+                month = patient.month,
+                year = patient.year,
+                numberOfCancelledAppointments = patient.numberOfCancelledAppointments
             };
             AccountController.EditPatientAccount(newPatient, ID);
             AccountsView.Refresh();

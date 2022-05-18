@@ -42,25 +42,37 @@ namespace SIMS_Projekat.PatientView
 
             Room r = App.roomController.GetRoomByID(appointment.room.RoomID);
             roomField.Content = "Sprat " + r.Floor + ", broj " + r.RoomNumber;
-
+            EnableButtons();
+            
+        }
+        public void EnableButtons()
+        {
             if (appointment.operation)
             {
                 isOperationField.Content = "Operacija";
-                changeButton.IsEnabled = false;             
+                changeButton.IsEnabled = false;
             }
             else
             {
+                if (appointment.isDelayed)
+                {
+                    changeButton.IsEnabled = false;
+                }
                 isOperationField.Content = "Pregled";
             }
-        }
 
+            if (patient.numberOfCancelledAppointments == 2)
+            {
+                deleteButton.IsEnabled = false;
+            }
+        }
         private void deleteClick(object sender, RoutedEventArgs e)
         {
             
             if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
             "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                
+                patient.numberOfCancelledAppointments++;
                 App.appointmentController.DeleteAppointment(appointment);
 
                 Appointments Appointments = new Appointments(mainFrame, patient);

@@ -216,7 +216,9 @@ namespace SIMS_Projekat.Service
                 patient = patient,
                 endDate = startDate.AddMinutes(15),
                 operation = false,
-                room = room
+                room = room,
+                isDelayed = false,
+                isScheduledByPatient = true
             };
             return appointment;
 
@@ -230,7 +232,7 @@ namespace SIMS_Projekat.Service
             List<DateTime> dateList = new List<DateTime> { currentDate.AddDays(1), currentDate.AddDays(2), currentDate.AddDays(3) };
             int dateIndex = random.Next(dateList.Count);    // 10.5.2022.  12:00 AM
 
-            List<string> timeList = createAppointmentTime();
+            List<string> timeList = CreateAppointmentTime();
             int timeIndex = random.Next(timeList.Count);
 
             DateTime startDate = dateList[dateIndex].Date;
@@ -249,7 +251,7 @@ namespace SIMS_Projekat.Service
             return doctor;
         }
 
-        public List<string> createAppointmentTime()
+        public List<string> CreateAppointmentTime()
         {
             List<string> timeList = new List<string> { "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30",
                                                         "09:45", "10:00", "10:15", "10:30" ,"10:45" ,"11:00" ,"11:15",
@@ -257,6 +259,51 @@ namespace SIMS_Projekat.Service
                                                         "13:15", "13:30","13:45", "14:00", "14:15", "14:30" ,"14:45" ,
                                                         "15:00" ,"15:15", "15:30", "15:45", "16:00", "16:15", "16:30", "16:45"};
             return timeList;
+        }
+
+        public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
+        {
+            int numberOfAppointments = CheckForFollowingAppointments(patient, beginningOfMonth);
+
+            if(numberOfAppointments < 0)
+                return false;
+
+            int numberOfTakenAppointments = CheckForFinishedAppointments(patient, beginningOfMonth);
+            if (numberOfTakenAppointments < 0)
+                return false;
+
+            if(numberOfAppointments + numberOfTakenAppointments >= 3)
+                return false;
+
+            return true;        // nije zakazao 3
+        }
+        public int CheckForFollowingAppointments(Patient patient, DateTime beginningOfMonth)
+        {
+            int numberOfAppointments = 0;
+            foreach (Appointment appoint in GetAppointmentByPatientID(patient.ID))
+            {
+                if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
+                {
+                    numberOfAppointments++;
+                    if (numberOfAppointments >= 3)
+                        return -1;       //zakazao je vec 3    
+                }
+            }
+            return numberOfAppointments;
+        }
+        public int CheckForFinishedAppointments(Patient patient, DateTime beginningOfMonth)
+        {
+            int numberOfAppointments = 0;
+            foreach (FinishedAppointment appoint in App.finishedAppointmentService.GetAppointmentByPatientID(patient.ID))
+            { 
+                if (appoint != null && appoint.isScheduledByPatient && beginningOfMonth <= appoint.beginningDate)
+                {
+                    numberOfAppointments++;
+                    if (numberOfAppointments >= 3)
+                        return -1;      //prosla 3 termina vec
+                }
+            }
+            return numberOfAppointments;
         }
     }
 }

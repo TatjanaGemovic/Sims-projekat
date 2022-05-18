@@ -20,31 +20,10 @@ namespace SIMS_Projekat.Model
 
         public Patient patient { get; set; }
 
-        //public Patient Patient
-        //{
-        //    get
-        //    {
-        //        return Patient;
-        //    }
-        //    set
-        //    {
-        //        if (this.Patient == null || !this.Patient.Equals(value))
-        //        {
-        //            if (this.Patient != null)
-        //            {
-        //                Patient oldPatient = this.Patient;
-        //                this.Patient = null;
-        //                oldPatient.RemoveAppointment(this);
-        //            }
-        //            if (value != null)
-        //            {
-        //                this.Patient = value;
-        //                this.Patient.AddAppointment(this);
-        //            }
-        //        }
-        //    }
-        //}
-       
+        public bool isDelayed { get; set; }
+
+        public bool isScheduledByPatient { get; set; }
+
         public string[] toCSV()
         {
             string[] values =
@@ -56,6 +35,8 @@ namespace SIMS_Projekat.Model
                 doctor.LicenceNumber,
                 room.RoomID,
                 operation.ToString(),
+                isDelayed.ToString(),
+                isScheduledByPatient.ToString()
             };
             return values;
         }
@@ -77,6 +58,9 @@ namespace SIMS_Projekat.Model
             {
                 operation = true;
             }
+            isDelayed = bool.Parse(values[7]);
+            isScheduledByPatient = bool.Parse(values[8]);
+            
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
             room = App.roomController.GetRoomByID(roomID);
