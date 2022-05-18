@@ -92,5 +92,43 @@ namespace SIMS_Projekat.ManagerView
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (filterCombo.SelectedIndex == -1 || filterCombo.SelectedIndex == 2)
+            {
+                if (searchBox.Text != "")
+                {
+                    datagGridEquipment.ItemsSource = App.equipmentController.GetEquipment().Where(x => x.EquipmentName.ToLower().Contains(searchBox.Text.ToLower()));
+                }
+                else
+                    datagGridEquipment.ItemsSource = EquipmentList;
+            }
+            else
+            {
+
+                if (searchBox.Text != "")
+                {
+
+                    datagGridEquipment.ItemsSource = App.equipmentController.GetEquipment().Where(x => x.EquipmentName.ToLower().Contains(searchBox.Text.ToLower()) && (int)x.pEquipmentType == filterCombo.SelectedIndex);
+                }
+                else
+                {
+                    datagGridEquipment.ItemsSource = App.equipmentController.GetEquipment().Where(x => (int)x.pEquipmentType == filterCombo.SelectedIndex);
+                }
+
+            }
+        }
+
+        private void filterCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            searchBox.Clear();
+            if (filterCombo.SelectedIndex != -1 && filterCombo.SelectedIndex != 2)
+            {
+                datagGridEquipment.ItemsSource = App.equipmentController.GetEquipment().Where(x => (int)x.pEquipmentType == filterCombo.SelectedIndex);
+            }
+            else
+                datagGridEquipment.ItemsSource = EquipmentList;
+        }
     }
 }

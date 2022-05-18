@@ -27,7 +27,59 @@
                 <RowDefinition Height="45"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="Oprema" FontSize="35" FontWeight="Bold" Margin="0,10,0,0" ></Label>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Oprema" FontSize="35" FontWeight="Bold" Margin="0,10,0,0" ></Label>
+
+
+                <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="161,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="109*"></ColumnDefinition>
+                        <ColumnDefinition Width="144*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="28*"></ColumnDefinition>
+                            <ColumnDefinition Width="47*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Pretraga:" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
+                        <TextBox x:Name="searchBox" Grid.Row="0" VerticalAlignment="Top" Height="21" Margin="0,14,10,0" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="41*"></ColumnDefinition>
+                            <ColumnDefinition Width="86*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Filter:" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
+                        <ComboBox x:Name="filterCombo" Margin="0,14,1,4" Grid.Column="1" SelectionChanged="filterCombo_SelectionChanged">
+                            <ComboBoxItem Content="static"/>
+                            <ComboBoxItem Content="dynamic"/>
+                            <ComboBoxItem Content="all type"/>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+
+            </Grid>
+
+
+
             <DataGrid x:Name="datagGridEquipment" ItemsSource="{Binding EquipmentList}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="columnName" Binding ="{Binding EquipmentName}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
