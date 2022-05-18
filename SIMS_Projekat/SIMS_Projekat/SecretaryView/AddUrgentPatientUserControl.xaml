@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="SIMS_Projekat.SecretaryView.AddUrgentPatientUserControl "
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+             mc:Ignorable="d" 
+             d:DesignHeight="748" d:DesignWidth="784" Background="White">
+    <Grid Margin="60,0,60,60">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Content="Hitan slučaj" Margin="10" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Grid.Column="0" Grid.Row="1" Margin="0,0,90,0" FontSize="16" VerticalAlignment="Center">Ime:</TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="1" x:Name="FirstName" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Width="200"></TextBox>
+        </StackPanel>
+        <StackPanel  Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Grid.Column="0" Grid.Row="2" Margin="0,0,60,0" FontSize="16" VerticalAlignment="Center">Prezime:</TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="2" x:Name="LastName" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Width="200"></TextBox>
+        </StackPanel>
+        <StackPanel  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Grid.Column="0" Grid.Row="3" Margin="0,0,10,0" FontSize="16" VerticalAlignment="Center">Datum rodjenja:</TextBlock>
+            <DatePicker x:Name="Date" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Left" FontSize="16" Width="200"/>
+        </StackPanel>
+        <StackPanel  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Grid.Column="0" Grid.Row="4" Margin="0,0,35,0" FontSize="16" VerticalAlignment="Center">Krvna grupa:</TextBlock>
+            <ComboBox Grid.Column="1" Grid.Row="4" x:Name="BloodType" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Width="200">
+                <ComboBoxItem>O+</ComboBoxItem>
+                <ComboBoxItem>O-</ComboBoxItem>
+                <ComboBoxItem>A+</ComboBoxItem>
+                <ComboBoxItem>A-</ComboBoxItem>
+                <ComboBoxItem>B+</ComboBoxItem>
+                <ComboBoxItem>B-</ComboBoxItem>
+                <ComboBoxItem>AB+</ComboBoxItem>
+                <ComboBoxItem>AB-</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Grid.Column="0" Grid.Row="5" Margin="0,0,55,0" FontSize="16" VerticalAlignment="Center">Simptomi:</TextBlock>
+            <TextBox Grid.Column="1" Grid.Row="5" x:Name="Symptoms" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Width="200"
+            TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="200"></TextBox>
+        </StackPanel>
+
+
+
+
+        <StackPanel Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,40,0,0">
+            <Button HorizontalAlignment="Right" Margin="0,0,30,0" Height="50" Width="110" Style="{StaticResource ResourceKey=SecretaryViewButton}" Click="CloseButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/close.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Odustani</TextBlock>
+                </StackPanel>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Margin="30,0,0,0" Height="50" Width="110" Style="{StaticResource ResourceKey=SecretaryViewButton}" Click="SaveButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/save.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Sačuvaj</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

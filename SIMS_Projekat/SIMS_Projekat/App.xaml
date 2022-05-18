@@ -157,6 +157,44 @@
             </Style.Triggers>
         </Style>
 
+        <Style TargetType="RadioButton" x:Key="SecretaryViewUrgentPatientRadioButton">
+            <Style.Setters>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
+                                    <ContentPresenter/>
+                                </Grid>
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Direction="270"/>
+                                </Border.Effect>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Background" Value="Red"/>
+                <Setter Property="BorderBrush" Value="White"/>
+                <Setter Property="BorderThickness" Value="2,2,2,2"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Foreground" Value="White"/>
+
+
+            </Style.Setters>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFC31212"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                    <Setter Property="BorderThickness" Value="2,0,0,0"/>
+                    <Setter Property="Background" Value="#FFB20E0E"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
 
         <Style TargetType="Button" x:Key="SecretaryViewButton">
             <Style.Resources>
