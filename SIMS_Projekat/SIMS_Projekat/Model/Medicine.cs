@@ -18,6 +18,7 @@ namespace SIMS_Projekat.Model
         private Boolean sendToDoctor;
         private Boolean onObservation;
         private string doctorComment;
+        private string doctorRevision;
         private List<Medicine> replacmentMedicine;
         private List<String> medicineComponents;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,6 +40,7 @@ namespace SIMS_Projekat.Model
             if (values[6].Equals("True")) { sendToDoctor = true; } else { sendToDoctor = false; }
             if (values[7].Equals("True")) { onObservation = true; } else { onObservation  = false; }
             doctorComment = values[8];
+            doctorRevision = values[9];
         }
 
         public string[] toCSV()
@@ -52,7 +54,8 @@ namespace SIMS_Projekat.Model
                 verify.ToString(),
                 sendToDoctor.ToString(),
                 onObservation.ToString(),
-                doctorComment
+                doctorComment,
+                doctorRevision
             };
 
             return values;
@@ -151,6 +154,17 @@ namespace SIMS_Projekat.Model
                 doctorComment = value;
                 OnPropertyChanged(nameof(DoctorComment));
             }
+        }
+
+        public String DoctorRevision {
+
+            get { return doctorRevision; }
+            set
+            {
+                doctorRevision = value;
+                OnPropertyChanged(nameof(DoctorRevision));
+            }
+
         }
 
         public List<Medicine> ReplacmentMedicine

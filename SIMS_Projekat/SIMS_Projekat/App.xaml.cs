@@ -58,6 +58,10 @@ namespace SIMS_Projekat
         private static string EXCHANGE_EQ_CSV = @".\..\..\..\Resources\exchangeEquipmentRequest.txt";
         private static string RENOVATION_CSV = @".\..\..\..\Resources\renovation.txt";
         private static string REQUEST_FILE = @".\..\..\..\Resources\requests.txt";
+        private static string MEDICINE_CSV = @".\..\..\..\Resources\medicine.txt";
+        private static string MEDICINE_COMPONENT_CSV = @".\..\..\..\Resources\medicineComponentDTO.txt";
+        private static string MEDICINE_REPLACMENT_CSV = @".\..\..\..\Resources\medicineReplacmentDTO.txt";
+
         public static FreeDayRequestRepository freeDayRequestRepository;
         public static RoomRepository roomRepository;
         public static RoomService roomService;
@@ -73,6 +77,13 @@ namespace SIMS_Projekat
         public static RenovationRequestRepository renovationRequestRepository;
         public static RenovationRequestService renovationRequestService;
         public static RenovationRequestController renovationRequestController;
+        public static MedicineRepository medicineRepository;
+        public static MedicineComponentDTORepository medicineComponentsRepository;
+        public static MedicineReplacmentDTORepository medicineReplacmentRepository;
+        public static MedicineService medicineService;
+        public static MedicineController medicineController;
+
+
         public App()
         {
             roomRepository = new RoomRepository(ROOM_CSV);
@@ -94,6 +105,12 @@ namespace SIMS_Projekat
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
             renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
             renovationRequestController = new RenovationRequestController(renovationRequestService);
+            medicineRepository = new MedicineRepository(MEDICINE_CSV);
+            medicineComponentsRepository = new MedicineComponentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository.GetMedicine());
+            medicineReplacmentRepository = new MedicineReplacmentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository);
+            medicineService = new MedicineService(medicineRepository);
+            medicineController = new MedicineController(medicineService);
+
 
             finishedAppointmentService = new FinishedAppointmentService()
             {
@@ -157,6 +174,9 @@ namespace SIMS_Projekat
             exchangeEquipmentRequestController.Deserialize();
             renovationRequestController.Deserialize();
             freeDayRequestRepository.Deserialize();
+            medicineController.Deserialize();
+            medicineComponentsRepository.Deserialize();
+            medicineReplacmentRepository.Deserialize();
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public List<Medicine> GetVerifyMedicine(string medicineID)
+        public List<Medicine> GetVerifyMedicine()
         {
             var medicineList = new List<Medicine>();
             foreach (Medicine _medicine in medicine)
@@ -47,7 +47,7 @@ namespace SIMS_Projekat.Repository
             return medicineList;
         }
 
-        public List<Medicine> GetRejectMedicine(string medicineID)
+        public List<Medicine> GetRejectMedicine()
         {
             var medicineList = new List<Medicine>();
             foreach (Medicine _medicine in medicine)
@@ -61,12 +61,12 @@ namespace SIMS_Projekat.Repository
             return medicineList;
         }
 
-        public List<Medicine> GetSendToDoctorMedicine()
+        public List<Medicine> GetSendToDoctorMedicine(string doctor)
         {
             var medicineList = new List<Medicine>();
             foreach (Medicine _medicine in medicine)
             {
-                if (_medicine.SendToDoctor == true && _medicine.OnObservation == true)
+                if (_medicine.SendToDoctor == true && _medicine.OnObservation == true && _medicine.DoctorRevision.Equals(doctor))
                 {
                     medicineList.Add(_medicine);
                 }
