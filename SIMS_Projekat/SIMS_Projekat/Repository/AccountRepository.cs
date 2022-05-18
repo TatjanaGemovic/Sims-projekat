@@ -92,6 +92,9 @@ namespace SIMS_Projekat.Repository
                     oldPatient.Email = patient.Email;
                     oldPatient.IsUrgent = String.IsNullOrEmpty(patient.Username) || String.IsNullOrEmpty(patient.Password);
                     oldPatient.Allergens = patient.Allergens;
+                    oldPatient.month = patient.month;
+                    oldPatient.year = patient.year;
+                    oldPatient.numberOfCancelledAppointments = patient.numberOfCancelledAppointments;
                 }
             }
             return null;
@@ -139,6 +142,7 @@ namespace SIMS_Projekat.Repository
                     oldDoctor.DateOfBirth = doctor.DateOfBirth;
                     oldDoctor.Email = doctor.Email;
                     oldDoctor.LicenceNumber = doctor.LicenceNumber;
+                    oldDoctor.Speciality = doctor.Speciality;
 
                     return oldDoctor;
                 }

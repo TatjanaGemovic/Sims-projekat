@@ -3,11 +3,15 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="1400"
       Title="Appointments">
-
+    
+    <Page.Resources>
+        <converters:OppositeConverter x:Key="OppositeConverter" />
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,7 +24,9 @@
         <Label Content="Termini" Grid.Row="0" Style="{StaticResource PatientBigLabels}"/>
 
         <Button x:Name="make_appointment" Content="Zakaži Termin" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                HorizontalAlignment="Right" Click="make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" />
+                HorizontalAlignment="Right" Click="make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" 
+                ToolTip="Iskoristili ste maksimalni broj zakazivanja termina do sledećeg meseca!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
 
         <Button x:Name="show_appointment" Content="Prikaži Termin" Style="{StaticResource ResourceKey=PatientButtonsPage}" 
                 HorizontalAlignment="Right" Click="show_appointment_Click"  Grid.Row="1" Margin="0,0,250,0" />

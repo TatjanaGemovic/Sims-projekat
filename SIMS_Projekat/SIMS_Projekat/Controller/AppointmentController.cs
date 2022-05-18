@@ -78,9 +78,14 @@ namespace SIMS_Projekat.Controller
             return appointmentService.CreateRandomAppointment(p);
         }
 
-        public List<string> createAppointmentTime()
+        public List<string> CreateAppointmentTime()
         {
-            return appointmentService.createAppointmentTime();
+            return appointmentService.CreateAppointmentTime();
+        }
+
+        public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
+        {
+            return appointmentService.CheckForScheduledAppointments(patient, beginningOfMonth);
         }
     }
 }

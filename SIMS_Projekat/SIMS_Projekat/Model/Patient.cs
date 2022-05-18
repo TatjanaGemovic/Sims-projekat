@@ -22,6 +22,9 @@ namespace SIMS_Projekat.Model
         public string MedicalRecordID;
         public MedicalRecord MedicalRecord { get; set; }
 
+        public int month { get; set; }              //using this 3 properties for anti-troll mechanism
+        public int year { get; set; }
+        public int numberOfCancelledAppointments { get; set; }
         public override string[] toCSV()
         {
             List<string> allergens = new List<string>();
@@ -49,9 +52,11 @@ namespace SIMS_Projekat.Model
                 Weight.ToString(),
                 Symptoms.ToString(),
                 IsUrgent.ToString(),
+                month.ToString(),
+                year.ToString(),
+                numberOfCancelledAppointments.ToString(),
                 MedicalRecord.ID.ToString(),
-                String.Join(",", allergens)       
-                
+                String.Join(",", allergens) 
             };
             return values;
         }
@@ -74,17 +79,19 @@ namespace SIMS_Projekat.Model
             Weight = double.Parse(values[13]);
             Symptoms = values[14];
             IsUrgent = bool.Parse(values[15]);
-            MedicalRecordID = values[16];
+            month = int.Parse(values[16]);
+            year = int.Parse(values[17]);
+            numberOfCancelledAppointments = int.Parse(values[18]);
+            MedicalRecordID = values[19];
             MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
             Allergens = new List<Allergen>();
-            string[] allergensArray = values[17].Split(",");
+            string[] allergensArray = values[20].Split(",");
             foreach(string arrPart in allergensArray)
             {
                 Allergen newAllergen = App.AllergenRepository.GetAllergenByName(arrPart);
                 if(newAllergen != null)
                     Allergens.Add(newAllergen);
-            }  
-            
+            }      
         }
 
 
