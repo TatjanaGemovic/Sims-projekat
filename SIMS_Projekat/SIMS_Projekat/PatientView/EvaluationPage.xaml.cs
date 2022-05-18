@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Model;
+using SIMS_Projekat.PatientView.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,11 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class EvaluationPage : Page
     {
-        public EvaluationPage(Frame frame, Patient patient)
+        public EvaluationPage(Frame frame, Patient patient, Evaluation evaluation)
         {
             InitializeComponent();
+            this.DataContext = new EvaluationViewModel(frame, patient, evaluation);
         }
+
     }
 }

@@ -48,6 +48,28 @@ namespace SIMS_Projekat.Service
             return evaluationRepository.DeleteEvaluation(oldEvaluation);
 
         }
+        public List<Evaluation> GetEmptyEvaluationsForPatient(Patient patient)
+        {
+            List<Evaluation> evaluationList = GetEvaluationByPatientID(patient.ID);
+            List<Evaluation> emptyEvaluations = new List<Evaluation>();
+
+            foreach(Evaluation evaluation in evaluationList)
+            {
+                if(!evaluation.isFilled)
+                    emptyEvaluations.Add(evaluation);
+            }
+            return emptyEvaluations;
+        }
+        public bool DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(Patient patient)
+        {
+            foreach (Evaluation evaluation in GetEvaluationByPatientID(patient.ID))
+            {
+                if (!evaluation.isFilled && (evaluation.evaluationCreated.AddDays(5)) < DateTime.Now)
+                    DeleteEvaluation(evaluation);
+            }
+            return true;
+        }
+
 
     }
 }

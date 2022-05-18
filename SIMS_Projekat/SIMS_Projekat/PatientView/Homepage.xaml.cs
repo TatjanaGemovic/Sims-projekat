@@ -56,7 +56,12 @@ namespace SIMS_Projekat.PatientView
             this.DataContext = this;
             
             NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
-            
+
+            App.evaluationController.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
+
+            if (App.evaluationController.GetEmptyEvaluationsForPatient(patient).Count == 0)
+                evaluationButton.IsEnabled = false;
+
         }
 
         private void notificationRead_Checked(object sender, RoutedEventArgs e)
@@ -70,7 +75,7 @@ namespace SIMS_Projekat.PatientView
 
         private void evaluationButton_Click(object sender, RoutedEventArgs e)
         {
-            mainFrame.Content = new EvaluationPage(mainFrame, patient);
+            mainFrame.Content = new EvaluationPage(mainFrame, patient, App.evaluationController.GetEmptyEvaluationsForPatient(patient).Last<Evaluation>());
         }
     }
 }

@@ -48,5 +48,17 @@ namespace SIMS_Projekat.Controller
             return evaluationService.DeleteEvaluation(oldEvaluation);
 
         }
+
+        public List<Evaluation> GetEmptyEvaluationsForPatient(Patient patient)
+        {
+            return evaluationService.GetEmptyEvaluationsForPatient(patient);
+
+        }
+
+        public bool DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(Patient patient)
+        {
+             return evaluationService.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
+
+        }
     }
 }
