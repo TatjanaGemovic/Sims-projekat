@@ -30,7 +30,7 @@ namespace SIMS_Projekat
         private readonly AccountsView accountsView;
         private readonly AppointmentsUserControl appointmentsUserControl;
         private readonly AllergensUserControl allergensUserControl;
-        private readonly AddUrgentPatientUserControl addUrgentPatientUserControl;
+        private AddUrgentPatientUserControl addUrgentPatientUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -54,9 +54,11 @@ namespace SIMS_Projekat
             appointmentRepository = App.appointmentRepo;
 
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
-            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, appointmentController, ContentControl);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, 
+                appointmentController, ContentControl);
             allergensUserControl = new AllergensUserControl(allergenController);
-            addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, ContentControl, accountsView, Accounts_RadioButton);
+            addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController, 
+                appointmentController, ContentControl, accountsView, Accounts_RadioButton);
 
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
@@ -91,6 +93,8 @@ namespace SIMS_Projekat
 
         private void UrgentPatient_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+            addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController,
+                appointmentController, ContentControl, accountsView, Accounts_RadioButton);
             ContentControl.Content = addUrgentPatientUserControl;
         }
     }

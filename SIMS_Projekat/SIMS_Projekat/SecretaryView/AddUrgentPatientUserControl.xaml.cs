@@ -24,25 +24,60 @@ namespace SIMS_Projekat.SecretaryView
     public partial class AddUrgentPatientUserControl : UserControl
     {
         public AccountController AccountController { get; set; }
+        public RoomController RoomController { get; set; }
+        public AppointmentController AppointmentController { get; set; }
+        public ObservableCollection<Room> AvailableRooms { get; set; }
+        public ObservableCollection<Patient> Patients { get; set; }
 
         private ContentControl contentControl;
         private UserControl accountsView;
         private RadioButton accountsRadioButton;
 
-        public AddUrgentPatientUserControl(AccountController accountController, ContentControl contentControl, UserControl accountsView, RadioButton radioButton)
+        public AddUrgentPatientUserControl(AccountController accountController, RoomController roomController,
+            AppointmentController appointmentController, ContentControl contentControl, UserControl accountsView,
+            RadioButton radioButton)
         {
             InitializeComponent();
             this.DataContext = this;
             this.contentControl = contentControl;
             this.accountsView = accountsView;
+
+            RoomController = roomController;
             AccountController = accountController;
+            AppointmentController = appointmentController;
+
             accountsRadioButton = radioButton;
+
+            AvailableRooms = new ObservableCollection<Room>(RoomController.GetAvailableNotMeetingRooms().OrderBy(room => room.RoomNumber));
+            Patients = new ObservableCollection<Patient>(AccountController.GetAllPatientAccounts());
         }
 
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            Patient patient;
+            if (NewPatientExpander.IsExpanded)
+            {
+                patient = CreateNewPatient();
+            }
+            else if (ExistingPatientExpander.IsExpanded)
+            {
+                patient = ExistingPatientsListBox.SelectedItem as Patient;
+            }
+            else
+            {
+                MessageBox.Show("Morate izabrati pacijenta iz liste postojecih ili napraviti novi nalog");
+                return;
+            }
 
+            CreateNewAppointment(patient);
+
+            contentControl.Content = accountsView;
+            accountsRadioButton.IsChecked = true;
+        }
+
+        private Patient CreateNewPatient()
+        {
             var newPatient = new Patient()
             {
                 FirstName = FirstName.Text,
@@ -56,17 +91,60 @@ namespace SIMS_Projekat.SecretaryView
                 month = DateTime.Now.Month,
                 year = DateTime.Now.Year,
                 numberOfCancelledAppointments = 0
-
             };
             AccountController.CreatePatientAccount(newPatient);
             AccountsView.AddPatient(newPatient);
-            contentControl.Content = accountsView;
-            accountsRadioButton.IsChecked = true;
+
+            return newPatient;
         }
+        
+        private void CreateNewAppointment(Patient patient)
+        {
+            DateTime dateTime = CreateStartTimeForCurrentAppointment();
+            var newAppointment = new Appointment()
+            {
+                beginningDate = dateTime,
+                endDate = dateTime.AddMinutes(15),
+                doctor = AccountController.GetAvailableDoctors(dateTime)[0],
+                patient = patient,
+                room = (Room)RoomComboBox.SelectedItem,
+                operation = false,
+                isDelayed = false,
+                isScheduledByPatient = false
+
+            };
+            AppointmentController.AddAppointment(newAppointment);
+            AppointmentsUserControl.AddAppointment(newAppointment);
+        }
+
+        private DateTime CreateStartTimeForCurrentAppointment()
+        {
+            DateTime startDateTime = DateTime.Now;
+            int minutes = GetCurrentAppointmentStartMinute(startDateTime.Minute);
+            
+            return new DateTime(startDateTime.Year, startDateTime.Month, startDateTime.Day, 
+                startDateTime.Hour, minutes, 0);
+        }
+
+        private int GetCurrentAppointmentStartMinute(int currentMinute)
+        {
+            return currentMinute / 15 * 15;
+        }
+
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             accountsRadioButton.IsChecked = true;
             contentControl.Content = accountsView;
+        }
+
+        private void ExistingPatientExpander_Expanded(object sender, RoutedEventArgs e)
+        {
+            NewPatientExpander.IsExpanded = false;
+        }
+
+        private void NewPatientExpander_Expanded(object sender, RoutedEventArgs e)
+        {
+            ExistingPatientExpander.IsExpanded = false;
         }
 
     }

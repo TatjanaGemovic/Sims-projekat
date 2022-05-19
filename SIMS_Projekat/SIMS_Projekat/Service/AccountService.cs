@@ -82,5 +82,18 @@ namespace SIMS_Projekat.Service
             }
             return patient;
         }
+
+        public List<Doctor> GetAvailableDoctors(DateTime dateTime)
+        {
+            List<Doctor> availableDoctors = new List<Doctor>();
+            foreach(Doctor doctor in GetAllDoctorAccounts())
+            {
+                if(App.appointmentService.CheckIfDoctorIsAvailable(doctor, dateTime))
+                {
+                    availableDoctors.Add(doctor);
+                }
+            }
+            return availableDoctors;
+        }
     }
 }
