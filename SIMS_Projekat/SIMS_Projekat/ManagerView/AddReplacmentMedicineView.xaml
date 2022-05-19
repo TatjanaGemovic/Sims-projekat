@@ -1,0 +1,59 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.AddReplacmentMedicineView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="554"
+      Title="AddReplacmentMedicineView">
+
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="121*"></ColumnDefinition>
+                <ColumnDefinition Width="155*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85*"></RowDefinition>
+                    <RowDefinition Height="319*"></RowDefinition>
+                    <RowDefinition Height="44*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="Izaberite lek koji zelite da dodate" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20"></Label>
+                <DataGrid x:Name="datagGridMedicine"  Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="92*"></RowDefinition>
+                    <RowDefinition Height="154*"></RowDefinition>
+                    <RowDefinition Height="46*"></RowDefinition>
+                    <RowDefinition Height="57*"></RowDefinition>
+                    <RowDefinition Height="54*"></RowDefinition>
+                    <RowDefinition Height="45*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="Zamenski lekovi:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Margin="50,30,20,20" FontSize="14"> </Label>
+                <DataGrid x:Name="datagGridReplacmentMedicine"  Grid.Row="1" Margin="50,0,50,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="columnName1" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnFloor1" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button x:Name="DodajZamenskeBtn" Content="Dodaj zamenski lek" Grid.Row="3" Margin="50,10,50,10" Click="DodajZamenskeBtn_Click"/>
+                <Button x:Name="Zavrsi" Content="Zavrsi dodavanje" Grid.Row="4" Margin="50,10,50,10" Click="Zavrsi_Click"/>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+</Page>

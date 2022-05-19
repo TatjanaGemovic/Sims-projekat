@@ -79,7 +79,7 @@ namespace SIMS_Projekat.ManagerView
 
         private void AddReplacmentMedicine_Btn_Click(object sender, RoutedEventArgs e)
         {
-            //ManagerHome.mainFrame.Content = new AddReplacmentMedicineView(newMedicine,1);
+            ManagerHome.mainFrame.Content = new AddReplacmentMedicineView(newMedicine,1);
         }
     }
 }
