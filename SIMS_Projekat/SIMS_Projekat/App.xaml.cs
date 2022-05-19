@@ -118,7 +118,7 @@ namespace SIMS_Projekat
             renovationRequestController = new RenovationRequestController(renovationRequestService);
             medicineRepository = new MedicineRepository(MEDICINE_CSV);
             medicineComponentsRepository = new MedicineComponentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository.GetMedicine());
-            medicineReplacmentRepository = new MedicineReplacmentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository);
+            medicineReplacmentRepository = new MedicineReplacmentDTORepository(MEDICINE_REPLACMENT_CSV, medicineRepository);
             medicineService = new MedicineService(medicineRepository);
             medicineController = new MedicineController(medicineService);
 

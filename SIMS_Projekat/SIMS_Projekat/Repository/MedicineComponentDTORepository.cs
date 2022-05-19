@@ -34,6 +34,19 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
+        public DTO.MedicineComponentDTO GetDTOByMedicineAndComponent(string medicineID, string component)
+        {
+            foreach (DTO.MedicineComponentDTO _dto in allDTO)
+            {
+                if (_dto.mainMedicineID.Equals(medicineID) && _dto.component.Equals(component))
+                {
+                    return _dto;
+                }
+            }
+
+            return null;
+        }
+
         public List<string> GetComponentsByMedicineID(string medicineID)
         {
             List<string> components = new List<string>();
@@ -88,7 +101,7 @@ namespace SIMS_Projekat.Repository
         public void Deserialize()
         {
             allDTO = serializer.fromCSV(file);
-            foreach (Medicine medicine in _medicine)
+            foreach (Medicine medicine in App.medicineController.GetMedicine())
             {
                 medicine.MedicineComponents = GetComponentsByMedicineID(medicine.MedicineID);
             }

@@ -1,0 +1,45 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.SendMedicineToDoctorView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="554"
+      Title="SendMedicineToDoctorView">
+
+    <Border BorderBrush="Black" BorderThickness="1">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="Izaberite lekara kom zelite da posaljete zahtev:" FontSize="14" VerticalAlignment="Bottom" Margin="0,10,0,10" ></Label>
+            <DataGrid x:Name="datagGridDoctors" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=FirstName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=LastName}" IsReadOnly="True" Header="surename"  Width="120" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=Speciality}" IsReadOnly="True" Header="speciality"  Width="120" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="PosaljiBtn" Grid.Column="1" Content="Zavrsi" HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="Zavrsi_Click" />
+            <Button  x:Name="OdustaniBtn" Grid.Column="1" Content="Odustani" HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="OdustaniBtn_Click"  />
+            
+           
+        </Grid>
+    </Border>
+</Page>

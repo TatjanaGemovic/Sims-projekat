@@ -8,6 +8,6 @@ namespace SIMS_Projekat.Model
 {
     public enum MedicineUseType
     {
-        per_os, sublingvalno, rektalno, inhalaciono, 
+        per_os, sublingvalno, rektalno, inhalaciono
     }
 }
