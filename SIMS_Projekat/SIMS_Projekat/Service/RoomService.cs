@@ -89,6 +89,22 @@ namespace SIMS_Projekat.Service
             return filterRooms;
         }
 
+        public List<Room> GetAvailableRooms(DateTime time)
+        {
+            List<Room> rooms = _roomRepository.GetRooms();
+            List<Appointment> appointments = App.appointmentService.GetAllAppointments();
+            bool a;
+            foreach (Appointment appointment in appointments)
+            {
+                if (appointment.beginningDate == time)
+                    rooms.RemoveAll(x => x.RoomID == appointment.room.RoomID);
+
+            }
+
+            return rooms;
+        }
+
+
         public List<Room> GetAvailableNotMeetingRooms()
         {
             var allRooms = this._roomRepository.GetRooms();

@@ -48,8 +48,18 @@ namespace SIMS_Projekat.SecretaryView
 
             accountsRadioButton = radioButton;
 
-            AvailableRooms = new ObservableCollection<Room>(RoomController.GetAvailableNotMeetingRooms().OrderBy(room => room.RoomNumber));
+            AvailableRooms = new ObservableCollection<Room>(GetRooms().OrderBy(room => room.RoomNumber));
             Patients = new ObservableCollection<Patient>(AccountController.GetAllPatientAccounts());
+        }
+
+        private List<Room> GetRooms()
+        {
+            List<Room> rooms = RoomController.GetAvailableRooms(CreateStartTimeForCurrentAppointment());
+            if(rooms.Count <= 0)
+            {
+                rooms.Add(RoomController.GetRoomsByType(RoomType.examRoom)[0]);
+            }
+            return rooms;
         }
 
 
