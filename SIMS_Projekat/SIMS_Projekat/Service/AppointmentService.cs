@@ -62,15 +62,14 @@ namespace SIMS_Projekat.Service
                 int mesec2 = int.Parse(deoDatuma2[0]);
                 int dan2 = int.Parse(deoDatuma2[1]);
 
-                if (dan2 == dan) //za dan
+                if (dan2 == dan) 
                 {
-                    if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) //provera operacione sale
+                    if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) 
                     {
                         listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                     }
                     else
                     {
-                        //Patient patient = (Patient)App.accountController.GetPatientAccountByID(selectedPatient.ID); //problem
                         if (!CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate))
                         {
                             listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
