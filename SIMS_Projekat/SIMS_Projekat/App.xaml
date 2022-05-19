@@ -316,7 +316,7 @@
         </Style>
 
         <Style x:Key="PatientRegularLabels" TargetType="Label">
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Foreground" Value="#FFF76A"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Normal"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
