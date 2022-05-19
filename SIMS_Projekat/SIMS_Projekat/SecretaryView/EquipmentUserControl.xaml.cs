@@ -49,12 +49,39 @@ namespace SIMS_Projekat.SecretaryView
                 contentControl, this);
             equipmentOrderListUserControl = new EquipmentOrderListUserControl(equipmentOrderController, 
                 contentControl, this);
+            HasEquipmentArrived();
         }
 
 
+        private void HasEquipmentArrived()
+        {
+            List<EquipmentOrder> equipmentOrders = new List<EquipmentOrder>(equipmentOrderController.GetAllEquipmentOrders());
+            DateTime todayDate = DateTime.Now;
+
+            foreach (EquipmentOrder equipmentOrder in equipmentOrders)
+            {
+                if(todayDate > equipmentOrder.ArrivalDate)
+                {
+                    ReceiveOrder(equipmentOrder.Equipment, equipmentOrder.Quantity);
+                    equipmentOrderController.DeleteEquipmentOrder(equipmentOrder);
+                }
+            }
+        }
+
+        private void ReceiveOrder(Equipment receivedEquipment, int quantity)
+        {
+            foreach(Equipment equipment in Equipment)
+            {
+                if(equipment.EquipmentID == receivedEquipment.EquipmentID)
+                {
+                    equipment.Quantity += quantity;
+                }
+            }
+        }
+
         private void OrderEquipmentButton_Click(object sender, RoutedEventArgs e)
         {
-            orderEquipmentUserControl = new OrderEquipmentUserControl(equipmentController, equipmentOrderController, contentControl, equipmentOrderListUserControl);
+            orderEquipmentUserControl = new OrderEquipmentUserControl(equipmentController, equipmentOrderController, contentControl, this);
             contentControl.Content = orderEquipmentUserControl;
         }
 
