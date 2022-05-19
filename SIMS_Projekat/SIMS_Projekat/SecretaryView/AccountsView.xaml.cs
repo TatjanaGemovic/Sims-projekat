@@ -124,12 +124,6 @@ namespace SIMS_Projekat.SecretaryView
         }
 
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            AddUrgentPatient addUrgentPatient = new(AccountController);
-            addUrgentPatient.Show();
-        }
-
         private void AddDoctor_Click(object sender, RoutedEventArgs e)
         {
             AddDoctor addDoctor = new AddDoctor(AccountController);

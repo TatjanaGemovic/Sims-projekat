@@ -31,6 +31,7 @@ namespace SIMS_Projekat
         private readonly AppointmentsUserControl appointmentsUserControl;
         private readonly AllergensUserControl allergensUserControl;
         private AddUrgentPatientUserControl addUrgentPatientUserControl;
+        private EquipmentUserControl equipmentUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -42,7 +43,11 @@ namespace SIMS_Projekat
 
         private readonly RoomController roomController;
 
-        public SecretaryHome(AccountRepository repository, AccountController controller, AllergenController newAllergenController, RoomController newRoomController)
+        private readonly EquipmentController equipmentController;
+        private readonly EquipmentOrderController equipmentOrderController;
+
+        public SecretaryHome(AccountRepository repository, AccountController controller, 
+            AllergenController newAllergenController, RoomController newRoomController)
         {
             InitializeComponent();
             accountController = controller;
@@ -53,12 +58,17 @@ namespace SIMS_Projekat
             appointmentController = App.appointmentController;
             appointmentRepository = App.appointmentRepo;
 
+            equipmentController = App.equipmentController;
+            equipmentOrderController = App.EquipmentOrderController;
+
+
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
             appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, 
                 appointmentController, ContentControl);
             allergensUserControl = new AllergensUserControl(allergenController);
             addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController, 
                 appointmentController, ContentControl, accountsView, Accounts_RadioButton);
+            equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
 
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
@@ -75,6 +85,7 @@ namespace SIMS_Projekat
             accountController.Serialize();
             allergenController.Serialize();
             appointmentRepository.Serialize();
+            equipmentOrderController.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -96,6 +107,12 @@ namespace SIMS_Projekat
             addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController,
                 appointmentController, ContentControl, accountsView, Accounts_RadioButton);
             ContentControl.Content = addUrgentPatientUserControl;
+        }
+
+        private void EquipmentRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
+            ContentControl.Content=equipmentUserControl;
         }
     }
 }

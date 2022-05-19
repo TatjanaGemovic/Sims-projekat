@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="SIMS_Projekat.SecretaryView.EquipmentUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+             mc:Ignorable="d" 
+             d:DesignHeight="748" d:DesignWidth="784" Background="White">
+    <Grid Margin="60,0,60,60">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Content="Potrošni materijal" Margin="10,10,10,30" FontSize="50" FontWeight="Normal" Foreground="#203A43" FontFamily="Futura Round Demi"/>
+       
+
+        <DataGrid x:Name="dataGridEquipment" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Height="450" ItemsSource="{Binding Path = Equipment}" IsReadOnly="True" 
+                    SelectionMode="Single" AutoGenerateColumns="False" Margin="20,20,20,20" Style="{DynamicResource SecretaryDataGridStyle}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" Vrsta materijala" Binding="{Binding EquipmentName}" Width ="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Količina" Binding="{Binding Quantity}" Width ="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 30, 20, 0">
+            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Click="OrderEquipmentButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/package.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock FontSize="15">Naruči</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110" Click="OrdersButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source ="/Resources/icons/orders.png" Width="20" Margin="0,0,5,0"/>
+                    <TextBlock TextAlignment="Center" Text="Porudžbine" FontSize="15"></TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

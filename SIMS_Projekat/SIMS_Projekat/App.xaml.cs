@@ -37,6 +37,8 @@ namespace SIMS_Projekat
         private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
+        private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
+
 
         public static string THERAPY_NOTIFICATION_CSV = @".\..\..\..\Resources\therapy_notifications.txt";
         public static TherapyNotificationRepository therapyNotificationRepository;
@@ -56,6 +58,10 @@ namespace SIMS_Projekat
         public static AllergenRepository AllergenRepository;
         public static AllergenService AllergenService;
         public static AllergenController AllergenController;
+
+        public static EquipmentOrderRepository EquipmentOrderRepository;
+        public static EquipmentOrderService EquipmentOrderService;
+        public static EquipmentOrderController EquipmentOrderController;
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
@@ -146,6 +152,18 @@ namespace SIMS_Projekat
                 AccountService = accountService
             };
 
+
+            EquipmentOrderRepository = new EquipmentOrderRepository(EQUIPMENT_ORDERS_CSV);
+            EquipmentOrderService = new EquipmentOrderService()
+            {
+                EquipmentOrderRepository = EquipmentOrderRepository
+            };
+            EquipmentOrderController = new EquipmentOrderController()
+            {
+                EquipmentOrderService = EquipmentOrderService
+            };
+
+
             AllergenRepository = new AllergenRepository(ALLERGENS_CSV);
             AllergenService = new AllergenService()
             {
@@ -195,6 +213,8 @@ namespace SIMS_Projekat
             medicineReplacmentRepository.Deserialize();
 
             evaluationRepository.Deserialize();
+
+            EquipmentOrderController.Deserialize();
 
         }
     }
