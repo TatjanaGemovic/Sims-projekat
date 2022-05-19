@@ -36,6 +36,7 @@ namespace SIMS_Projekat.ManagerView
             this.DataContext = this;
             _roomForRenovation = roomsForRenovation; ;
             _renovationRequestController = App.renovationRequestController;
+            gridMergeRoom.ItemsSource = App.roomService.GetRoomsExceptRoom(_roomForRenovation);
         }
 
         
@@ -71,6 +72,13 @@ namespace SIMS_Projekat.ManagerView
             renovationRequest.check = false;
             renovationRequest.roomsForRenovation = _roomForRenovation.RoomID;
             renovationRequest.renovationType = (RenovationType)comboTip.SelectedIndex;
+            if (renovationRequest.renovationType == RenovationType.Merge)
+            {
+                var selectedRoom = (Room)gridMergeRoom.SelectedItem;
+                renovationRequest.roomForMerge = selectedRoom.RoomID;
+            }
+            else
+                renovationRequest.roomForMerge = "";
             return renovationRequest;
         }
 
@@ -85,6 +93,11 @@ namespace SIMS_Projekat.ManagerView
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             ManagerHome.mainFrame.Content = new RoomView();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

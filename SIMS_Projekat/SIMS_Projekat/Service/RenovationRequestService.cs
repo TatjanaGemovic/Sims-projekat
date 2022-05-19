@@ -14,14 +14,12 @@ namespace SIMS_Projekat.Service
     {
         private readonly RenovationRequestRepository _requestRepository;
         private readonly RoomRepository _roomRepository;
-        //private readonly RenovationRoomDTORepository _renovationRoomRepository;
         private readonly ExchangeEquipmentRequestRepository _exchangeEquipmentRequestRepository;
 
         public RenovationRequestService(RenovationRequestRepository renovationRequestRepository, RoomRepository roomRepository, ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository)
         {
             _requestRepository = renovationRequestRepository;
             _roomRepository = roomRepository;
-            //_renovationRoomRepository = renovationRoomDTORepository;
             _exchangeEquipmentRequestRepository = exchangeEquipmentRequestRepository;
 
         }
@@ -37,18 +35,21 @@ namespace SIMS_Projekat.Service
         }
         public void NotifyStart(RenovationRequest request)
         {
-            
-                var newRoom = _roomRepository.GetRoomByID(request.roomsForRenovation);
-                newRoom.Available = false;
-                _roomRepository.EditRoom(newRoom.RoomID, newRoom);
-                if(newRoom.pEquipment.Count>0)
-                    ExchangeAllEquipmentFromRoom(newRoom);
-               
-            
 
+            DisableRoom(request.roomsForRenovation);
+            if(!request.roomForMerge.Equals(""))
+                DisableRoom(request.roomForMerge);
             request.check = true;
         }
 
+        private void DisableRoom(string roomID)
+        {
+            var room = _roomRepository.GetRoomByID(roomID);
+            room.Available = false;
+            _roomRepository.EditRoom(room.RoomID, room);
+            if (room.pEquipment.Count > 0)
+                ExchangeAllEquipmentFromRoom(room);
+        }
         
         public void NotifyEnd(RenovationRequest request)
         {
@@ -82,22 +83,29 @@ namespace SIMS_Projekat.Service
         {
             if (request.renovationType == RenovationType.Merge)
             {
-                //obrisi ostale prostorije ostavi samo jednu
+                var roomForMerge = _roomRepository.GetRoomByID(request.roomForMerge);
+                _roomRepository.DeleteRoomByID(request.roomForMerge);
             }
-            else
-            { 
-                //napravi jos jednu prostoriju, eventualno prvoj promeni br u 101a
+            else if(request.renovationType == RenovationType.Split)
+            {
+                var newRoom = CreateNewSplitRoom(request.roomsForRenovation);
+                while (_roomRepository.AddRoom(newRoom) == null)
+                    newRoom.RoomNumber += new Random().Next(1, 100);
             }
         }
 
-        /*private void DeleteAllDTO(string requestID)
+        private Room CreateNewSplitRoom(string roomForRenovationID)
         {
-            var listOfDTO = _renovationRoomRepository.GetRoomRenovationByRequestID(requestID);
-            foreach (RenovationRoomDTO dto in listOfDTO)
-            {
-                _renovationRoomRepository.DeleteRoomRenovation(dto);
-            }
-        }*/
+            var oldRoom = _roomRepository.GetRoomByID(roomForRenovationID);
+            var newRoom = new Room();
+            newRoom.RoomID = Guid.NewGuid().ToString();
+            newRoom.RoomNumber = oldRoom.RoomNumber + 1;
+            newRoom.Floor = oldRoom.Floor;
+            newRoom.pRoomType = oldRoom.pRoomType;
+            newRoom.Available = true;
+            return newRoom;
+        }
+
         public RenovationRequest AddRequest(RenovationRequest newRequest)
         {
             return _requestRepository.AddRequest(newRequest);
@@ -150,7 +158,6 @@ namespace SIMS_Projekat.Service
                             {
 
                                 NotifyEnd(request);
-                                //DeleteAllDTO(request.requestID);
                                 DeleteRequest(request);
                                 Serialize();
                                 
@@ -166,7 +173,6 @@ namespace SIMS_Projekat.Service
                 }
 
                 await Task.Delay(TimeSpan.FromMilliseconds(10));
-               // Thread.Sleep(60 * 1000);
             }
 
         }

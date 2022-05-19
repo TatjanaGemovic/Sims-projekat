@@ -21,6 +21,8 @@ namespace SIMS_Projekat.DTOModel
         public string reason { get; set; }
         public string roomsForRenovation { get; set; }
 
+        public string roomForMerge { get; set; }
+
 
         public void fromCSV(string[] values)
         {
@@ -31,6 +33,7 @@ namespace SIMS_Projekat.DTOModel
             renovationType = (RenovationType)int.Parse(values[4]);
             reason = values[5];
             roomsForRenovation = values[6];
+            roomForMerge = values[7];
         }
 
         public string[] toCSV()
@@ -42,7 +45,8 @@ namespace SIMS_Projekat.DTOModel
                 check.ToString(),
                 ((int)renovationType).ToString(),
                 reason,
-                roomsForRenovation
+                roomsForRenovation,
+                roomForMerge
             };
 
             return values;
