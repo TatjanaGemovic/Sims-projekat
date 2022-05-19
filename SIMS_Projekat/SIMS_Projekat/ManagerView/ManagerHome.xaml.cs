@@ -38,7 +38,7 @@ namespace SIMS_Projekat
             th1.IsBackground = true;
             th1.Start();
 
-            th2 = new Thread(new ThreadStart(App.renovationRequestController.ThreadFunction));
+            th2 = new Thread(new ThreadStart(App.renovationRequestController.RunRenovation));
             th2.IsBackground = true;
             th2.Start();
 

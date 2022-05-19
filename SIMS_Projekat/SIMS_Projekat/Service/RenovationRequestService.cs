@@ -54,9 +54,9 @@ namespace SIMS_Projekat.Service
         public void NotifyEnd(RenovationRequest request)
         {
 
-            var newRoom = _roomRepository.GetRoomByID(request.roomsForRenovation);
-            newRoom.Available = true;
-            _roomRepository.EditRoom(newRoom.RoomID, newRoom);
+            var roomForRenovation = _roomRepository.GetRoomByID(request.roomsForRenovation);
+            roomForRenovation.Available = true;
+            _roomRepository.EditRoom(roomForRenovation.RoomID, roomForRenovation);
            
             RunRenovationType(request);
         }
@@ -133,7 +133,7 @@ namespace SIMS_Projekat.Service
             _requestRepository.Deserialize();
         }
 
-        public async void ThreadFunction()
+        public async void RunRenovation()
         {
             while (true)
             {
@@ -142,26 +142,18 @@ namespace SIMS_Projekat.Service
                 {
                     foreach (RenovationRequest request in App.renovationRequestController.GetAllRequests())
                     {
-                        if (request.check != true)
+                        if (request.check != true && (DateTime.Compare(request.scheduleDateStart, DateTime.Now) <= 0))
                         {
-                            if (DateTime.Compare(request.scheduleDateStart, DateTime.Now) <= 0)
-                            {
-                                
                                     NotifyStart(request);
                                     Serialize();
-                                
-                            }
                         }
-                        else
+                        else if (DateTime.Compare(request.scheduleDateEnd, DateTime.Now) <= 0)
                         {
-                            if (DateTime.Compare(request.scheduleDateEnd, DateTime.Now) <= 0)
-                            {
-
+                           
                                 NotifyEnd(request);
                                 DeleteRequest(request);
                                 Serialize();
-                                
-                            }
+
                         }
 
                     }
