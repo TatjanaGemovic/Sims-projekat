@@ -16,7 +16,6 @@ namespace SIMS_Projekat.Repository
 
         public List<Medicine> GetMedicine()
         {
-
             return medicine;
         }
 

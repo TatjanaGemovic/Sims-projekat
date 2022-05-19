@@ -14,7 +14,7 @@
             <Label Content="Lekovi" Width="102" Height="49" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,77,0,0">
-            <DataGrid x:Name="MedicinesLists" SelectionChanged="MedicinesLists_SelectionChanged" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding}" Margin="0,25,0,0" Height="463">
+            <DataGrid x:Name="MedicinesLists" SelectionChanged="MedicinesLists_SelectionChanged" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding medicineInformations}" Margin="0,25,0,0" Height="463">
                 <DataGrid.RowStyle>
                     <Style TargetType="DataGridRow">
                         <Style.Triggers>
@@ -40,8 +40,7 @@
                     </Style>
                 </DataGrid.CellStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding ="{Binding}" Width="30"/>
-                    <DataGridTextColumn Header="Naziv leka" Binding ="{Binding}"  Width="*"/>
+                    <DataGridTextColumn Header="Naziv leka" Binding ="{Binding medicineName}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
