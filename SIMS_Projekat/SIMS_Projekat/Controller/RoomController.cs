@@ -52,6 +52,11 @@ namespace SIMS_Projekat.Controller
             return this._roomService.GetAvailableRooms();
         }
 
+        public List<Room> GetAvailableRooms(DateTime time)
+        {
+            return _roomService.GetAvailableRooms(time);
+        }
+
         public List<Room> GetAvailableNotMeetingRooms()
         {
             return this._roomService.GetAvailableNotMeetingRooms();

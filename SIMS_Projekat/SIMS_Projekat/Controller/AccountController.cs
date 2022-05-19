@@ -71,5 +71,10 @@ namespace SIMS_Projekat.Controller
         {
             return AccountService.CheckIfItsNewMonth(patient);
         }
+
+        public List<Doctor> GetAvailableDoctors(DateTime dateTime)
+        {
+            return AccountService.GetAvailableDoctors(dateTime);
+        }
     }
 }

@@ -10,6 +10,7 @@
     <None Remove="Resources\icons\accounts.png" />
     <None Remove="Resources\icons\add_account.png" />
     <None Remove="Resources\icons\allergen.png" />
+    <None Remove="Resources\icons\ambulance.png" />
     <None Remove="Resources\icons\calendar.png" />
     <None Remove="Resources\icons\cancel.png" />
     <None Remove="Resources\icons\close.png" />
@@ -48,6 +49,10 @@
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
     <None Remove="Resources\icons_patient\video.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons\ambulance.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -120,6 +125,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SecretaryView\AddDoctor.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="SecretaryView\AddUrgentPatientUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="SecretaryView\EditAppointmentUserControl.xaml">
