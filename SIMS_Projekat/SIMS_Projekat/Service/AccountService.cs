@@ -57,7 +57,7 @@ namespace SIMS_Projekat.Service
 
         public Account GetDoctorAccountByID(string doctorID)
         {
-            throw new NotImplementedException();
+            return AccountRepository.GetDoctorAccountByID(doctorID);
         }
 
         public void Serialize()

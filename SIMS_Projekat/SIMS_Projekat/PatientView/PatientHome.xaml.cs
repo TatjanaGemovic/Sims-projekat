@@ -38,7 +38,7 @@ namespace SIMS_Projekat.PatientView
                 
             nameSurname = p.FirstName + " " + p.LastName;
             name_surname.Content = nameSurname;
-            Homepage = new Homepage(patient);
+            Homepage = new Homepage(MainFrame, patient);
             MainFrame.Content = Homepage;
         }
         private void ResetPatient()
@@ -81,6 +81,7 @@ namespace SIMS_Projekat.PatientView
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
             App.therapyNotificationRepository.Serialize();
+            App.evaluationRepository.Serialize();
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
@@ -89,6 +90,7 @@ namespace SIMS_Projekat.PatientView
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
             App.therapyNotificationRepository.Serialize();
+            App.evaluationRepository.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
@@ -96,7 +98,7 @@ namespace SIMS_Projekat.PatientView
 
         private void homepage_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new Homepage(patient);
+            MainFrame.Content = new Homepage(MainFrame, patient);
         }
 
         private void choose_doctor_Click(object sender, RoutedEventArgs e)

@@ -1,0 +1,255 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.EvaluationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      xmlns:viewModel="clr-namespace:SIMS_Projekat.PatientView.ViewModel"
+      xmlns:data="clr-namespace:SIMS_Projekat.Model"
+      mc:Ignorable="d" 
+      d:DesignHeight="790" d:DesignWidth="1350"
+      Title="EvaluationPage">
+    <Page.Resources>
+        <local:DoctorNameLabelConverter x:Key="DoctorNameLabelConverter" />
+        <local:LabelConverter x:Key="LabelConverter" />
+        <local:RadioButtonConverter x:Key="RadioButtonConverter" />
+    </Page.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Ocenite nas!" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" 
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
+
+        <Label Content="Odgovorite na pitanja tako što ćete dati ocenu od 1 do 5, gde 1 predstavlja najmanju ocenu, a 5 najvišu."
+               Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource PatientRegularLabels}" Margin="0,10,0,10"/>
+        <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
+                   RadiusX="10.5" RadiusY="10.5" Margin="0,18,0,0"/>
+
+        <Label x:Name="reviewHospital" Grid.Row="2" Grid.Column="1" Content="  Ocenite objekat  " 
+               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
+               Foreground="#FFF76A"/>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10,0,10">
+            <Label x:Name="firstQuestion" Content="Da li je osoblje u prijemnoj prostoriji bilo prijatno?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"  />
+
+            <Label x:Name="secondQuestion" Content="Da li ste primljeni na pregled u prihvatljivom vremenskom periodu?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+
+            <Label x:Name="thirdQuestion" Content="Da li biste preporučili ovu bolnicu svojim prijateljima i porodici?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Vertical"  >
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" x:Name="radio1" GroupName="first" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=Staff, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}"/>
+                <RadioButton Content="2" x:Name="radio2" GroupName="first" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=Staff, Mode=OneWayToSource, 
+                             Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" x:Name="radio3" GroupName="first" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=Staff, Mode=OneWayToSource, 
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" x:Name="radio4" GroupName="first" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=Staff, Mode=OneWayToSource, 
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" x:Name="radio5" GroupName="first" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=Staff, Mode=OneWayToSource, 
+                             Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" GroupName="second" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=WaitingTime, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}" />
+                <RadioButton Content="2" GroupName="second" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=WaitingTime, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" GroupName="second" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=WaitingTime, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" GroupName="second" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=WaitingTime, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" GroupName="second" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=WaitingTime, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" GroupName="third" Style="{StaticResource ResourceKey=PatientRadioButtons}"
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendHospital, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}"/>
+                <RadioButton Content="2" GroupName="third" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendHospital, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" GroupName="third" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendHospital, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" GroupName="third" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendHospital, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" GroupName="third" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendHospital, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="0,10,0,0" Grid.Row="3" Grid.Column="0">
+            <Label Grid.Row="3" Content="*" FontSize="30" Foreground="Red" HorizontalContentAlignment="Right" x:Name="label1" >
+                <Label.Visibility>
+                    <MultiBinding Converter="{StaticResource LabelConverter}">
+                        <Binding Path="IsChecked" ElementName="radio1"/>
+                        <Binding Path="IsChecked" ElementName="radio2"/>
+                        <Binding Path="IsChecked" ElementName="radio3"/>
+                        <Binding Path="IsChecked" ElementName="radio5"/>
+                        <Binding Path="IsChecked" ElementName="radio4"/>
+                    </MultiBinding>
+                </Label.Visibility>
+                <!--<Label.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=radio1, Path=IsChecked}" Value="True" />
+                                    <Condition Binding="{Binding ElementName=radio2, Path=IsChecked}" Value="True" />
+                                    <Condition Binding="{Binding ElementName=radio3, Path=IsChecked}" Value="True" />
+                                    <Condition Binding="{Binding ElementName=radio4, Path=IsChecked}" Value="True" />
+                                    <Condition Binding="{Binding ElementName=radio5, Path=IsChecked}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter TargetName="label1" Property="Visibility" Value="Hidden" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>-->
+            </Label>
+
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" Visibility="Hidden"/>
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" Visibility="Hidden"/>
+        </StackPanel>
+        
+        <Rectangle Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
+                   RadiusX="10.5" RadiusY="10.5" Margin="0,38,0,0"/>
+
+        <Label x:Name="reviewDoctor" Grid.Row="4" Grid.Column="1" 
+               Content="{Binding Path=DoctorFullName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoctorNameLabelConverter}}" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
+               Foreground="#FFF76A" Margin="0,15,0,0"/>
+        
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10,0,10">
+            <Label x:Name="fourthQuestion" Content="Da li je ste imali osećaj da razumete šta vam doktor govori?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+
+            <Label x:Name="fifthQuestion" Content="Da li Vas je doktor pažljivo slusao?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+
+            <Label x:Name="sixthQuestion" Content="Da li biste preporučili doktora svojim prijateljima i porodici?" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Margin="0,15,0,0" Grid.Row="5" Grid.Column="0">
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" Visibility="Hidden"/>
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" Visibility="Hidden"/>
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" Visibility="Hidden"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="3" Orientation="Vertical"  >
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" GroupName="fourth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsUnderstandable, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}"/>
+                <RadioButton Content="2" GroupName="fourth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsUnderstandable, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" GroupName="fourth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsUnderstandable, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" GroupName="fourth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsUnderstandable, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" GroupName="fourth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsUnderstandable, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" GroupName="fifth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsInterested, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}"/>
+                <RadioButton Content="2" GroupName="fifth" Style="{StaticResource ResourceKey=PatientRadioButtons}"
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsInterested, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" GroupName="fifth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsInterested, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" GroupName="fifth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsInterested, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" GroupName="fifth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=DoctorIsInterested, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+                <RadioButton Content="1" GroupName="sixth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendDoctor, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=1}"/>
+                <RadioButton Content="2" GroupName="sixth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendDoctor, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=2}"/>
+                <RadioButton Content="3" GroupName="sixth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendDoctor, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=3}"/>
+                <RadioButton Content="4" GroupName="sixth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendDoctor, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=4}"/>
+                <RadioButton Content="5" GroupName="sixth" Style="{StaticResource ResourceKey=PatientRadioButtons}" 
+                             Margin="40,0,0,0" IsChecked="{Binding Path=RecommendDoctor, Mode=OneWayToSource,
+                            Converter={StaticResource RadioButtonConverter}, ConverterParameter=5}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" >
+            <Label Content="Komentar (opciono):" Grid.Row="6" Grid.Column="1" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" VerticalAlignment="Top"/>
+            <TextBox IsEnabled="True" Width="891" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
+                     FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
+                     Height="100" AcceptsTab="False" Text="{Binding Path=Comment, Mode=OneWayToSource}" >
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,0">
+            <Button x:Name="goBackButton" Content="Nazad" Command="{Binding BackCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+
+            <Button x:Name="evaluationButton" Content="Posalji" Margin="30,0,0,0" Command="{Binding SendCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
+        </StackPanel>
+
+
+        
+        
+    </Grid>
+</Page>
