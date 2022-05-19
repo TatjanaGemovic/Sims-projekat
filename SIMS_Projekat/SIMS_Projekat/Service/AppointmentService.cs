@@ -45,43 +45,42 @@ namespace SIMS_Projekat.Service
             return appointmentRepository.GetAllAppointments();
         }
 
+        public int ChangeDateFormat(DateTime date)
+        {
+                DateTime dt = date;
+                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
+                String[] datePart = dateTime.Split(" ");
+                string date1 = datePart[0]; //datum
+                String[] deoDatuma = date1.Split("/");
+                int mesec = int.Parse(deoDatuma[0]);
+                int dan = int.Parse(deoDatuma[1]);
+
+                return dan;
+        }
+
+        public int ChangeDateFormat2(string date)
+        {
+                String[] deoDatuma2 = date.Split("/");
+                int mesec2 = int.Parse(deoDatuma2[0]);
+                int dan2 = int.Parse(deoDatuma2[1]);
+                return dan2;
+        }
+
         public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, String pickedDate, Patient selectedPatient, bool op, Room selectedRoom)
         {
             List<string> listOfTakenAppointmentTime = new List<string>();
             foreach (Appointment appointment in GetAllAppointments())
-            {//uopste ne udje ovde
-                DateTime dt = appointment.beginningDate;
-                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
-                String[] datePart = dateTime.Split(" ");
-                string date = datePart[0]; //datum
-                String[] deoDatuma = date.Split("/");
-                int mesec = int.Parse(deoDatuma[0]);
-                int dan = int.Parse(deoDatuma[1]);
+            {
+                int day1 = ChangeDateFormat(appointment.beginningDate);
+                int day2 = ChangeDateFormat2(pickedDate);
 
-                String[] deoDatuma2 = pickedDate.Split("/");
-                int mesec2 = int.Parse(deoDatuma2[0]);
-                int dan2 = int.Parse(deoDatuma2[1]);
-
-                if (dan2 == dan) //za dan
+                if (day2 == day1) 
                 {
-                    if (CheckRoomOccupancyOperation(appointment.beginningDate, selectedRoom)) //provera operacione sale
+                    if (CheckSelectedRoomOccupancy(appointment.beginningDate, selectedRoom) ||
+                       !CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate) ||
+                       !CheckIfDoctorIsAvailable(doctor, appointment.beginningDate)) 
                     {
                         listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                    }
-                    else
-                    {
-                        //Patient patient = (Patient)App.accountController.GetPatientAccountByID(selectedPatient.ID); //problem
-                        if (!CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate))
-                        {
-                            listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                        }
-                        else
-                        {
-                            if (!CheckIfDoctorIsAvailable(doctor, appointment.beginningDate))
-                            {
-                                listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                            }
-                        }
                     }
                 }
             }
@@ -101,14 +100,13 @@ namespace SIMS_Projekat.Service
             }
             return rooms.Count == 0;
         }
-        public bool CheckRoomOccupancyOperation(DateTime dt, Room selectedRoom)
+        public bool CheckSelectedRoomOccupancy(DateTime date, Room selectedRoom)
         {
-            //ObservableCollection<Room> rooms = App.roomController.GetRoomsByType(RoomType.operatingRoom);
             Room room = App.roomController.GetRoomByID(selectedRoom.RoomID);
 
             foreach (Appointment app in GetAllAppointments())
             {
-                if (dt == app.beginningDate)
+                if (date == app.beginningDate)
                 {
                     if (room == app.room)
                     {
@@ -118,11 +116,11 @@ namespace SIMS_Projekat.Service
             }
             return false;
         }
-        public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime dt)
+        public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime date)
         {
             foreach (Appointment appointment in GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
-                if (dt == appointment.beginningDate)
+                if (date == appointment.beginningDate)
                 {
                     return false;           //doktor je zauzet, znaci termin se dodaje u listu zauzetih termina
                 }
