@@ -17,9 +17,9 @@ namespace SIMS_Projekat.Controller
             _renovationRequestService = renovationRequestService;
         }
 
-        public void ThreadFunction()
+        public void RunRenovation()
         {
-            _renovationRequestService.ThreadFunction();
+            _renovationRequestService.RunRenovation();
         }
 
         public void AddRequest(RenovationRequest newRequest)

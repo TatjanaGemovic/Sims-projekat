@@ -22,6 +22,13 @@ namespace SIMS_Projekat.Service
             return this._roomRepository.GetRooms();
         }
 
+        public List<Room> GetRoomsExceptRoom(Room except)
+        {
+            var rooms = GetAvailableRooms();
+            rooms.Remove(except);
+            return rooms;
+        }
+
         public Model.Room GetRoomByID(string roomID)
         {
             return this._roomRepository.GetRoomByID(roomID);

@@ -72,10 +72,16 @@ namespace SIMS_Projekat.Repository
         public Model.Room AddRoom(Model.Room NewRoom)
         {
             if (GetRoomByID(NewRoom.RoomID) == null)
+            {
+                foreach (Room oRoom in rooms)
+                {
+                    if (oRoom.RoomNumber == NewRoom.RoomNumber)
+                    {
+                        return null;
+                    }
+                }
                 rooms.Add(NewRoom);
-            else
-                return null;
-
+            }
             Serialize();
             return NewRoom;
         }

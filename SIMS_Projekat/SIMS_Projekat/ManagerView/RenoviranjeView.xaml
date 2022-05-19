@@ -10,20 +10,27 @@
 
     <Grid>
         <Label Content="Renoviranje prostorije u periodu" HorizontalAlignment="Left" Margin="22,43,0,0" VerticalAlignment="Top"/>
-        <Label Content="od" HorizontalAlignment="Left" Margin="22,95,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DateStart" HorizontalAlignment="Left" Height="26" Margin="62,95,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="do" HorizontalAlignment="Left" Height="26" Margin="158,95,0,0" VerticalAlignment="Top" Width="34"/>
-        <DatePicker x:Name="DateEnd" HorizontalAlignment="Center" Height="26" Margin="0,95,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label Content="od" HorizontalAlignment="Left" Margin="22,84,0,0" VerticalAlignment="Top" Height="37"/>
+        <DatePicker x:Name="DateStart" HorizontalAlignment="Left" Height="37" Margin="62,84,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label Content="do" HorizontalAlignment="Left" Height="37" Margin="158,84,0,0" VerticalAlignment="Top" Width="34"/>
+        <DatePicker x:Name="DateEnd" HorizontalAlignment="Center" Height="37" Margin="0,84,0,0" VerticalAlignment="Top" Width="104"/>
         <Label Content="Razlog renoviranja" HorizontalAlignment="Left" Height="24" Margin="37,155,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="ReasnonBox" HorizontalAlignment="Left" Height="92" Margin="49,195,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="255"/>
-        <Label Content="tip renoviranja" HorizontalAlignment="Left" Height="33" Margin="49,315,0,0" VerticalAlignment="Top" Width="115"/>
-        <ComboBox x:Name="comboTip"  HorizontalAlignment="Left" Height="33" Margin="196,315,0,0" VerticalAlignment="Top" Width="108">
+        <TextBox x:Name="ReasnonBox" HorizontalAlignment="Left" Height="41" Margin="49,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="255"/>
+        <Label Content="tip renoviranja" HorizontalAlignment="Left" Height="46" Margin="49,235,0,0" VerticalAlignment="Top" Width="115"/>
+        <ComboBox x:Name="comboTip"  HorizontalAlignment="Left" Height="45" Margin="196,237,0,0" VerticalAlignment="Top" Width="108">
             <ComboBoxItem Content="Classic"/>
             <ComboBoxItem Content="Merge"/>
             <ComboBoxItem Content="Split"/>
         </ComboBox>
         <Button Content="Zavrsi" HorizontalAlignment="Left" Height="35" Margin="364,197,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click"/>
         <Button Content="Otkazi" HorizontalAlignment="Left" Height="36" Margin="364,253,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_1"/>
+        <DataGrid x:Name="gridMergeRoom" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="72" Margin="49,298,0,0" VerticalAlignment="Top" Width="255"  SelectionChanged="DataGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
+                <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Page>
