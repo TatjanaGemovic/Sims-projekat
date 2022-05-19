@@ -95,5 +95,10 @@ namespace SIMS_Projekat
             main.Show();
             this.Close();
         }
+
+        private void lekovi_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Content = new MedicineView();
+        }
     }
 }
