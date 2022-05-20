@@ -111,11 +111,18 @@ namespace SIMS_Projekat.SecretaryView
         private void CreateNewAppointment(Patient patient)
         {
             DateTime dateTime = CreateStartTimeForCurrentAppointment();
+            List<Doctor> availableDoctors = AccountController.GetAvailableDoctors(dateTime);
+            while(availableDoctors.Count <= 0)
+            {
+                RescheduleDoctorAppointment(AccountController.GetAllDoctorAccounts()[0]);
+                availableDoctors = AccountController.GetAvailableDoctors(dateTime);
+            }
+
             var newAppointment = new Appointment()
             {
                 beginningDate = dateTime,
                 endDate = dateTime.AddMinutes(15),
-                doctor = AccountController.GetAvailableDoctors(dateTime)[0],
+                doctor = availableDoctors[0],
                 patient = patient,
                 room = (Room)RoomComboBox.SelectedItem,
                 operation = false,
@@ -125,6 +132,11 @@ namespace SIMS_Projekat.SecretaryView
             };
             AppointmentController.AddAppointment(newAppointment);
             AppointmentsUserControl.AddAppointment(newAppointment);
+        }
+
+        private void RescheduleDoctorAppointment(Doctor doctor)
+        {
+            AppointmentController.RescheduleCurrentAppointmentForDoctor(doctor, CreateStartTimeForCurrentAppointment());
         }
 
         private DateTime CreateStartTimeForCurrentAppointment()

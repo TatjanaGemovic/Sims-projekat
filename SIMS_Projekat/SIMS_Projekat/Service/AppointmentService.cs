@@ -290,6 +290,47 @@ namespace SIMS_Projekat.Service
             return true;        // nije zakazao 3
         }
 
-        
+
+        public void RescheduleCurrentAppointmentForDoctor(Doctor doctor, DateTime time)
+        {
+            foreach(Appointment appointment in appointmentRepository.GetAllAppointments())
+            {
+                if (appointment.doctor == doctor && appointment.beginningDate == time)
+                {
+                    FindNewAppointment(appointment, doctor, appointment.patient);
+                    
+                }
+            }
+        }
+
+        private void FindNewAppointment(Appointment appointment, Doctor doctor, Patient patient)
+        {
+            List<string> availableTimes = CreateAppointmentTime();
+            DateTime dateTime = DateTime.Now;
+
+            List<TimeSpan> availableTimesTimeSpan = new List<TimeSpan>();
+            foreach (string time in availableTimes)
+            {
+                availableTimesTimeSpan.Add(TimeSpan.Parse(time));
+            }
+
+            availableTimesTimeSpan = availableTimesTimeSpan.Where(x => x < dateTime.TimeOfDay).ToList();
+
+            foreach(TimeSpan time in availableTimesTimeSpan)
+            {
+                DateTime dt = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, time.Hours, time.Minutes, 0);
+                if (CheckIfDoctorIsAvailable(doctor, dt) && CheckIfPatientIsAvailable(patient, dt))
+                {
+                    appointment.beginningDate = dt;
+                    appointment.endDate = dt.AddMinutes(15);
+                    return;
+                }
+                    
+            }
+
+        }
+
+
+
     }
 }

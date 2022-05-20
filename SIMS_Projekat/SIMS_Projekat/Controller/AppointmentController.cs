@@ -87,5 +87,11 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.CheckForScheduledAppointments(patient, beginningOfMonth);
         }
+
+        public void RescheduleCurrentAppointmentForDoctor(Doctor doctor, DateTime time)
+        {
+            appointmentService.RescheduleCurrentAppointmentForDoctor(doctor, time);
+        }
+
     }
 }
