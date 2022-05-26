@@ -35,7 +35,7 @@ namespace SIMS_Projekat.PatientView
             timeContentLabel.Content = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
         }
 
-        private void showAppointmentButton_Click(object sender, RoutedEventArgs e)
+        private void ShowAppointmentButton_Click(object sender, RoutedEventArgs e)
         {
             appointment = App.appointmentController.CreateRandomAppointment(patient);
 
@@ -44,7 +44,7 @@ namespace SIMS_Projekat.PatientView
             timeContentLabel.Content = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
         }
 
-        private void scheduleAppointment_Click(object sender, RoutedEventArgs e)
+        private void ScheduleAppointment_Click(object sender, RoutedEventArgs e)
         {
             App.appointmentController.AddAppointment(appointment);
 

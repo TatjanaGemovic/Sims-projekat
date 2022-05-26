@@ -33,28 +33,24 @@ namespace SIMS_Projekat.PatientView
             patient = p;
             
             appointmentInformations = new BindingList<AppointmentInformation>();
-            createList();
+            CreateList();
 
-            AppointmentsTable.ItemsSource = appointmentInformations;
             this.DataContext = this;
 
             CheckIfThereIsAlreadyTooManyScheduledAppointments();
         }
 
-        private void make_appointment_Click(object sender, RoutedEventArgs e)
+        private void Make_appointment_Click(object sender, RoutedEventArgs e)
         {
             ScheduleAppointmentPage ScheduleAppointmentPage = new ScheduleAppointmentPage(frame, patient);
             frame.Content = ScheduleAppointmentPage;
         }
-        private void show_appointment_Click(object sender, RoutedEventArgs e)
+        private void Show_appointment_Click(object sender, RoutedEventArgs e)
         {
             if (AppointmentsTable.SelectedItem != null)
             {
                 AppointmentInformation appointmentInformation = (AppointmentInformation)AppointmentsTable.SelectedItem;
-
-                int appointmentID = appointmentInformation.appointmentId;
-
-                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(frame, appointmentID, patient);
+                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(frame, appointmentInformation.appointmentId, patient);
                 frame.Content = viewAppointmentPage;
             }
             else
@@ -90,21 +86,16 @@ namespace SIMS_Projekat.PatientView
                 }
             }
         }
-        public void createList()
+        public void CreateList()
         {
-            foreach (Model.Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
+            foreach (Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
             {
-                    DateTime dt = appointment.beginningDate;
-                    string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
+                string dateTime = appointment.beginningDate.ToString("MM/dd/yyyy HH:mm");
 
-                    String[] deloviDatuma = dateTime.Split(" ");
-                    string datum = deloviDatuma[0];
+                String[] deloviDatuma = dateTime.Split(" ");
 
-                    string vreme = deloviDatuma[1];
-
-                    appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                                  appointment.doctor.FirstName + " " + appointment.doctor.LastName, datum, vreme, appointment.room.RoomNumber, appointment.operation));
-                
+                appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
+                                                appointment.doctor.FirstName + " " + appointment.doctor.LastName, deloviDatuma[0], deloviDatuma[1], appointment.room.RoomNumber, appointment.operation));      
             }
         }
         public void CheckIfThereIsAlreadyTooManyScheduledAppointments()

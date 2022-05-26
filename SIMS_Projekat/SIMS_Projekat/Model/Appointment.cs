@@ -20,7 +20,7 @@ namespace SIMS_Projekat.Model
 
         public Patient patient { get; set; }
 
-        public bool isDelayed { get; set; }
+        public bool isDelayedByPatient { get; set; }
 
         public bool isScheduledByPatient { get; set; }
 
@@ -35,7 +35,7 @@ namespace SIMS_Projekat.Model
                 doctor.LicenceNumber,
                 room.RoomID,
                 operation.ToString(),
-                isDelayed.ToString(),
+                isDelayedByPatient.ToString(),
                 isScheduledByPatient.ToString()
             };
             return values;
@@ -58,7 +58,7 @@ namespace SIMS_Projekat.Model
             {
                 operation = true;
             }
-            isDelayed = bool.Parse(values[7]);
+            isDelayedByPatient = bool.Parse(values[7]);
             isScheduledByPatient = bool.Parse(values[8]);
             
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;

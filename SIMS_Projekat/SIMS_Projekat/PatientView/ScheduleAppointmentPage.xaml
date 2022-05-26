@@ -46,7 +46,7 @@
         <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" AllowDrop="True" x:Name="choose_doctor"
                   FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   ItemsSource="{Binding doctorInfoList}" DisplayMemberPath="doctorName" Foreground="#FFF76A" 
-                  SelectionChanged="choose_doctor_SelectionChanged" Margin="0,0,88,0"
+                  SelectionChanged="Choose_doctor_SelectionChanged" Margin="0,0,88,0"
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
         <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content=" Promenite lekara" IsHitTestVisible="False" FontSize="24" 
@@ -92,7 +92,7 @@
 
         <DatePicker x:Name="date" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday" Width="200"
-                    SelectedDateChanged="date_SelectedDateChanged" DisplayDateStart="{x:Static sys:DateTime.Now}"
+                    SelectedDateChanged="Date_SelectedDateChanged" DisplayDateStart="{x:Static sys:DateTime.Now}"
                     Foreground="#FFF76A" BorderBrush="#FFCE89" Background="#FFADCE74">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
@@ -112,14 +112,14 @@
                   AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                   ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}" IsEnabled="False" 
-                  SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center" SelectionChanged="comboTime_SelectionChanged"
+                  SourceUpdated="ComboTime_SourceUpdated" VerticalAlignment="Center" SelectionChanged="ComboTime_SelectionChanged"
                   Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
 
         <Button  x:Name="scheduleClickButton" Grid.Row="9" Grid.Column="6" Content="Zakaži" Grid.ColumnSpan="2"
-                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="scheduleClick" IsEnabled="False" />
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="ScheduleClick" IsEnabled="False" />
 
         <Button Grid.Row="9" Grid.Column="4" Content="Odustani" Grid.ColumnSpan="2"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="cancelClick"/>
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="CancelClick"/>
 
         <Border BorderBrush="#FFCE89" BorderThickness="2" Grid.Row="1" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="3" Margin="100,57,0,58">
             <DockPanel  Grid.Row="1" Grid.Column="4" Grid.RowSpan="5" Grid.ColumnSpan="3">

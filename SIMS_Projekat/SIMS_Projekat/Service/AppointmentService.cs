@@ -139,7 +139,7 @@ namespace SIMS_Projekat.Service
             return true;
         }
 
-        public List<string> GetAvailableAppointmentsForPatient(Patient p, DateTime dt, String licence)
+        public List<string> GetTakenAppointmentsForPatient(Patient p, DateTime dt, String licence)
         {
             List<string> listOfTakenAppointmentTime = new List<string>();
             Doctor doctor = App.accountService.GetDoctorAccountByLicenceNumber(licence) as Doctor;
@@ -215,7 +215,7 @@ namespace SIMS_Projekat.Service
                 endDate = startDate.AddMinutes(15),
                 operation = false,
                 room = room,
-                isDelayed = false,
+                isDelayedByPatient = false,
                 isScheduledByPatient = true
             };
             return appointment;

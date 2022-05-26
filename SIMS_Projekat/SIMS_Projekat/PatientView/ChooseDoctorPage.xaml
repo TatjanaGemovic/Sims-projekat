@@ -50,7 +50,7 @@
         </TextBlock>
 
         <ComboBox Grid.Row="3" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfoList}" 
-                  DisplayMemberPath="doctorName" SelectionChanged="doctorComboBox_SelectionChanged"
+                  DisplayMemberPath="doctorName" SelectionChanged="DoctorComboBox_SelectionChanged"
                   AllowDrop="True" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                   Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>

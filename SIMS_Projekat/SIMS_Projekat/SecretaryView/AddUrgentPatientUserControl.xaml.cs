@@ -98,9 +98,9 @@ namespace SIMS_Projekat.SecretaryView
                 IsUrgent = true,
                 MedicalRecord = App.medRecordRepository.CreateMedicalRecord(new MedicalRecord()),
                 Allergens = new List<Allergen>(),
-                month = DateTime.Now.Month,
-                year = DateTime.Now.Year,
-                numberOfCancelledAppointments = 0
+                currentMonthUsableForCancellingAppointmentsByPatient = DateTime.Now.Month,
+                currentYearUsableForCancellingAppointmentsByPatient = DateTime.Now.Year,
+                numberOfCancelledAppointmentsByPatientMonthly = 0
             };
             AccountController.CreatePatientAccount(newPatient);
             AccountsView.AddPatient(newPatient);
@@ -119,7 +119,7 @@ namespace SIMS_Projekat.SecretaryView
                 patient = patient,
                 room = (Room)RoomComboBox.SelectedItem,
                 operation = false,
-                isDelayed = false,
+                isDelayedByPatient = false,
                 isScheduledByPatient = false
 
             };

@@ -26,7 +26,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private int recommendDoctor;
 
         private Frame mainFrame;
-        public EvaluationViewModel(Frame frame, Patient patient, Evaluation evaluation)
+        public EvaluationViewModel(Frame frame, Evaluation evaluation)
         {
             mainFrame = frame;
             selectedEvaluation = evaluation;

@@ -206,7 +206,7 @@ namespace SIMS_Projekat.DoctorView
                 room = selectedRoom,
                 doctor = selectedDoctor,
                 patient = patient,
-                isDelayed = false,
+                isDelayedByPatient = false,
                 isScheduledByPatient = false
             };
 

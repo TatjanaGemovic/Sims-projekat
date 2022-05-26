@@ -17,9 +17,9 @@ namespace SIMS_Projekat.PatientView.Converters
                 return "";
 
             if (value.Equals("Operacija"))
-                return "Ne mozete da pomerite termin operacije";
+                return "Ne možete da pomerite termin operacije";
             else
-                return "Vec ste pomerili termin pregleda!";
+                return "Već ste pomerili termin pregleda!";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

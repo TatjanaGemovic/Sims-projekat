@@ -51,133 +51,36 @@ namespace SIMS_Projekat.Service
             TherapyNotificationsForPatient.Remove(oldNotification);
             return therapyNotificationRepository.DeleteNotification(oldNotification);
         }
-        public TherapyNotification CreateNotification(Receipt receipt)
+        public void CreateNotification(Receipt receipt)
         {
             int dailyDose;
             foreach (DateTime day in EachDay(receipt.beginningDate, receipt.endDate))
             {
-                if(receipt.DailyMed == 1)
+                DateTime date = day.Date;
+                TimeSpan timeStart = TimeSpan.Parse("00:00");
+                date = date.Add(timeStart);
+
+                for (dailyDose = 0; dailyDose < receipt.DailyMed; dailyDose++)
                 {
-                    DateTime date = day.Date;
-                    TimeSpan timeStart = TimeSpan.Parse("12:00");
-                    date = date.Add(timeStart);
+                    if(receipt.DailyMed == 1)
+                        date = date.AddHours(12);
+                    
                     TherapyNotification notification = new TherapyNotification()
                     {
                         date = date,
                         receipt = receipt,
-                        patient = receipt.patient,       
-                    };
-                    AddNotification(notification);
-                }
-                else if(receipt.DailyMed == 2)
-                {
-                    DateTime firstDate = day.Date;
-                    TimeSpan timeStart = TimeSpan.Parse("00:00");
-                    firstDate = firstDate.Add(timeStart);
-                    TherapyNotification notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
                         patient = receipt.patient,
                     };
                     AddNotification(notification);
 
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("12:00");
-                    firstDate = firstDate.Add(timeStart);
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-                }
-                else if(receipt.DailyMed == 3)
-                {
-                    DateTime firstDate = day.Date;
-                    TimeSpan timeStart = TimeSpan.Parse("00:00");
-                    firstDate = firstDate.Add(timeStart);
-                    TherapyNotification notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("08:00");
-                    firstDate = firstDate.Add(timeStart);
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("16:00");
-                    firstDate = firstDate.Add(timeStart);
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-                }
-                else
-                {
-                    DateTime firstDate = day.Date;
-                    TimeSpan timeStart = TimeSpan.Parse("00:00");
-                    firstDate = firstDate.Add(timeStart);
-                    TherapyNotification notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("06:00");
-                    firstDate = firstDate.Add(timeStart);
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("12:00");
-                    firstDate = firstDate.Add(timeStart);
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
-                    firstDate = day.Date;
-                    timeStart = TimeSpan.Parse("18:00");
-                    firstDate = firstDate.Add(timeStart);
-                    
-                    notification = new TherapyNotification()
-                    {
-                        date = firstDate,
-                        receipt = receipt,
-                        patient = receipt.patient,
-                    };
-                    AddNotification(notification);
-
+                    if (receipt.DailyMed == 2)
+                        date = date.AddHours(12);
+                    else if(receipt.DailyMed == 3)
+                        date = date.AddHours(8);
+                    else
+                        date = date.AddHours(6);
                 }
             }
-            return null;
         }
 
         public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)

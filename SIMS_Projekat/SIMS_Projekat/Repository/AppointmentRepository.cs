@@ -56,7 +56,7 @@ namespace SIMS_Projekat.Repository
                     appointment1.doctor = appointment.doctor;
                     appointment1.room = appointment.room;
                     appointment1.operation = appointment.operation;
-                    appointment1.isDelayed = appointment.isDelayed;
+                    appointment1.isDelayedByPatient = appointment.isDelayedByPatient;
                     appointment1.isScheduledByPatient = appointment.isScheduledByPatient;
                     return appointment1;
                 }

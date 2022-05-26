@@ -25,7 +25,6 @@ namespace SIMS_Projekat.PatientView
     {
         Patient patient;
         public ObservableCollection<DoctorInfo> doctorInfoList = new ObservableCollection<DoctorInfo>();
-        string doctorName;
         public DoctorInfo doctorInfo;
         public ChooseDoctorPage(Patient p)
         {
@@ -35,15 +34,13 @@ namespace SIMS_Projekat.PatientView
 
             if (patient.doctorLicenceNumber != "")
             {
-                doctorName = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber).FirstName
+                existing_doctor.Text = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber).FirstName
                                     + " " + App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber).LastName;
             }
             else
             {
-                doctorName = "";
+                existing_doctor.Text = "";
             }
-
-            existing_doctor.Text = doctorName;
 
             InitializeComboBox();
 
@@ -70,7 +67,7 @@ namespace SIMS_Projekat.PatientView
             doctorComboBox.ItemsSource = doctorInfoList;
         }
 
-        private void doctorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DoctorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             var drInfo = doctorComboBox.SelectedItem as DoctorInfo;

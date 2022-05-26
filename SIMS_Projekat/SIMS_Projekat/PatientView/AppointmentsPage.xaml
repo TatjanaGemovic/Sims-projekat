@@ -24,12 +24,12 @@
         <Label Content="Termini" Grid.Row="0" Style="{StaticResource PatientBigLabels}"/>
 
         <Button x:Name="make_appointment" Content="Zakaži Termin" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                HorizontalAlignment="Right" Click="make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" 
+                HorizontalAlignment="Right" Click="Make_appointment_Click" Grid.Row="1" Margin="0,0,20,0" 
                 ToolTip="Iskoristili ste maksimalni broj zakazivanja termina do sledećeg meseca!" ToolTipService.ShowOnDisabled="True" 
                 ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
 
         <Button x:Name="show_appointment" Content="Prikaži Termin" Style="{StaticResource ResourceKey=PatientButtonsPage}" 
-                HorizontalAlignment="Right" Click="show_appointment_Click"  Grid.Row="1" Margin="0,0,250,0" />
+                HorizontalAlignment="Right" Click="Show_appointment_Click"  Grid.Row="1" Margin="0,0,250,0" />
 
         <DataGrid  Grid.Row="2" x:Name="AppointmentsTable" ItemsSource="{Binding appointmentInformations}" 
                    Style="{StaticResource ResourceKey=PatientAppointmentGrid}" 

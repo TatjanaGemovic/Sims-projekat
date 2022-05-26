@@ -285,7 +285,7 @@ namespace SIMS_Projekat.DoctorView
                 doctor = doctor,
                 patient = selectedPatient,
                 isScheduledByPatient = appoint.isScheduledByPatient,
-                isDelayed = appoint.isDelayed,
+                isDelayedByPatient = appoint.isDelayedByPatient,
             };
 
             App.appointmentController.SetAppointment(appointment);

@@ -25,7 +25,7 @@ namespace SIMS_Projekat.PatientView
         public EvaluationPage(Frame frame, Patient patient, Evaluation evaluation)
         {
             InitializeComponent();
-            this.DataContext = new EvaluationViewModel(frame, patient, evaluation);
+            this.DataContext = new EvaluationViewModel(frame, evaluation);
         }
 
     }

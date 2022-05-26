@@ -64,7 +64,7 @@ namespace SIMS_Projekat.PatientView
 
         }
 
-        private void notificationRead_Checked(object sender, RoutedEventArgs e)
+        private void NotificationRead_Checked(object sender, RoutedEventArgs e)
         {
             if (GridView.SelectedItem != null)
             {
@@ -73,7 +73,7 @@ namespace SIMS_Projekat.PatientView
             }
         }
 
-        private void evaluationButton_Click(object sender, RoutedEventArgs e)
+        private void EvaluationButton_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = new EvaluationPage(mainFrame, patient, App.evaluationController.GetEmptyEvaluationsForPatient(patient).Last<Evaluation>());
         }

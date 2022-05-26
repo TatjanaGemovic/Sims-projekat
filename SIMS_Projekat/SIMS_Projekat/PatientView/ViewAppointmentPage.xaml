@@ -66,17 +66,17 @@
         <Label Grid.Row="6" Grid.Column="2" x:Name="isOperationField"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Izmeni" Click="changeClick" x:Name="changeButton"
+        <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Izmeni" Click="ChangeClick" x:Name="changeButton"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"
                 ToolTip="{Binding Path=Content, ElementName=isOperationField, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ToolTipTextConverter}}" ToolTipService.ShowOnDisabled="True" 
                 ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
 
-        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="deleteClick"
+        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="DeleteClick"
                 x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}"
                 ToolTip="Iskoristili ste maksimalni broj otkazivanja termina!" ToolTipService.ShowOnDisabled="True" 
                 ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
-        
-        <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="cancelClick"
+
+        <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="CancelClick"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
 
     </Grid>

@@ -96,9 +96,9 @@ namespace SIMS_Projekat.SecretaryView
                 Username = Username.Text,
                 Password = Password.Password,
                 Allergens = selectedAllergens,
-                month = patient.month,
-                year = patient.year,
-                numberOfCancelledAppointments = patient.numberOfCancelledAppointments
+                currentMonthUsableForCancellingAppointmentsByPatient = patient.currentMonthUsableForCancellingAppointmentsByPatient,
+                currentYearUsableForCancellingAppointmentsByPatient = patient.currentYearUsableForCancellingAppointmentsByPatient,
+                numberOfCancelledAppointmentsByPatientMonthly = patient.numberOfCancelledAppointmentsByPatientMonthly
             };
             AccountController.EditPatientAccount(newPatient, ID);
             AccountsView.Refresh();

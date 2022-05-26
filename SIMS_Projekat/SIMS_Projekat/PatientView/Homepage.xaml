@@ -35,7 +35,7 @@
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Width="220" Grid.RowSpan="2" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="evaluationButton_Click" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="EvaluationButton_Click" />
 
         <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>
@@ -70,7 +70,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="notificationRead" Content="Pročitano" Checked="notificationRead_Checked" 
+                            <RadioButton x:Name="notificationRead" Content="Pročitano" Checked="NotificationRead_Checked" 
                                         GroupName="gridRadio"
                                         IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, 
                                         AncestorType={x:Type DataGridRow}}}" Style="{StaticResource ResourceKey=PatientDataGridRadioButton}" >

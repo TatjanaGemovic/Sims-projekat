@@ -33,7 +33,7 @@ namespace SIMS_Projekat.PatientView
             InitializeComponent();
             patient = p;
 
-            if (App.accountController.CheckIfItsNewMonth(patient))      //ako je novi mesec, promeni podatke u pacijentu i stavi broj otkazanih termina na 0
+            if (App.accountController.CheckIfItsTheBeginningOfANewMonth(patient))      //ako je novi mesec, promeni podatke u pacijentu i stavi broj otkazanih termina na 0
                 ResetPatient();
                 
             nameSurname = p.FirstName + " " + p.LastName;
@@ -64,14 +64,14 @@ namespace SIMS_Projekat.PatientView
                 PhoneNumber = patient.PhoneNumber,
                 Symptoms = patient.Symptoms,
                 Weight = patient.Weight,
-                year = DateTime.Now.Year,
-                month = DateTime.Now.Month,
-                numberOfCancelledAppointments = 0,
+                currentYearUsableForCancellingAppointmentsByPatient = DateTime.Now.Year,
+                currentMonthUsableForCancellingAppointmentsByPatient = DateTime.Now.Month,
+                numberOfCancelledAppointmentsByPatientMonthly = 0,
                 MedicalRecordID = patient.MedicalRecordID
             };
             App.accountController.EditPatientAccount(p, patient.ID);
         }
-        private void make_appointment_Click(object sender, RoutedEventArgs e)
+        private void Make_appointment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Appointments(MainFrame, patient);   
         }
@@ -84,7 +84,7 @@ namespace SIMS_Projekat.PatientView
             App.evaluationRepository.Serialize();
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
             App.therapyNotificationController.DeleteActiveNotifications();
             App.appointmentRepo.Serialize();
@@ -96,12 +96,12 @@ namespace SIMS_Projekat.PatientView
             this.Close();
         }
 
-        private void homepage_Click(object sender, RoutedEventArgs e)
+        private void Homepage_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Homepage(MainFrame, patient);
         }
 
-        private void choose_doctor_Click(object sender, RoutedEventArgs e)
+        private void Choose_doctor_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new ChooseDoctorPage(patient);
         }
