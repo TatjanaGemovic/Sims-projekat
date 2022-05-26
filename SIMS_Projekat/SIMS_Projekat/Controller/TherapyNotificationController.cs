@@ -42,9 +42,9 @@ namespace SIMS_Projekat.Controller
             return therapyNotificationService.DeleteNotification(oldNotification);
         }
 
-        public TherapyNotification CreateNotification(Receipt receipt)
+        public void CreateNotification(Receipt receipt)
         {
-            return therapyNotificationService.CreateNotification(receipt);
+            therapyNotificationService.CreateNotification(receipt);
         }
 
         public static void TickTimer(object state)
