@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.DoctorView.ViewModel;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,23 +22,23 @@ namespace SIMS_Projekat.DoctorView
     /// </summary>
     public partial class MedicineInfo : Page
     {
-
-        Frame Frame;
-        Doctor doctor;
-        Medicine medicine;
-        public MedicineInfo(Frame main, Doctor d, Medicine m)
+        //Frame Frame;
+        //Doctor doctor;
+        //Medicine medicine;
+        public MedicineInfo(Frame frame, Doctor d, Medicine m)
         {
-            Frame = main;
-            doctor = d;
-            medicine = m;
+            //Frame = main;
+            //doctor = d;
+            //medicine = m;
             InitializeComponent();
+            this.DataContext = new MedicineInfoViewModel(frame, d, m);
 
-            Ime.Text = medicine.MedicineName;
-            Doza.Text = medicine.MedicineDose.ToString();
-            Namena.Text = medicine.pMedicineUseType.ToString();
+            //Ime.Text = medicine.MedicineName;
+            //Doza.Text = medicine.MedicineDose.ToString();
+            //Namena.Text = medicine.pMedicineUseType.ToString();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = new Medicines(Frame, doctor);
         }
@@ -59,6 +60,6 @@ namespace SIMS_Projekat.DoctorView
 
             App.medicineRepository.Serialize();
             Frame.Content = new Medicines(Frame, doctor);
-        }
+        }*/
     }
 }
