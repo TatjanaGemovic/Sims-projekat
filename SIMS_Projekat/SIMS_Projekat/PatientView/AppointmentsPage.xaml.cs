@@ -47,17 +47,9 @@ namespace SIMS_Projekat.PatientView
         }
         private void Show_appointment_Click(object sender, RoutedEventArgs e)
         {
-            if (AppointmentsTable.SelectedItem != null)
-            {
-                AppointmentInformation appointmentInformation = (AppointmentInformation)AppointmentsTable.SelectedItem;
-                ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(frame, appointmentInformation.appointmentId, patient);
-                frame.Content = viewAppointmentPage;
-            }
-            else
-            {
-                MessageBox.Show("Niste izabrali termin za prikaz!", "Greska");
-            }
-
+            AppointmentInformation appointmentInformation = (AppointmentInformation)AppointmentsTable.SelectedItem;
+            ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(frame, appointmentInformation.appointmentId, patient);
+            frame.Content = viewAppointmentPage;
         }
         public class AppointmentInformation
         {

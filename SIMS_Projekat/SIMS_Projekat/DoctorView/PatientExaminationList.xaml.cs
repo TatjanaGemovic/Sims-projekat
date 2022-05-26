@@ -52,9 +52,9 @@ namespace SIMS_Projekat.DoctorView
 
         public void createList()
         {
-            if (App.finishedappointmentRepo.GetAllAppointments() != null)
+            if (App.finishedAppointmentRepo.GetAllAppointments() != null)
             {
-                foreach (FinishedAppointment app in App.finishedappointmentRepo.GetAllAppointments())
+                foreach (FinishedAppointment app in App.finishedAppointmentRepo.GetAllAppointments())
                 {
                     if (app.patient.ID.Equals(patient.ID))
                     {
@@ -76,7 +76,7 @@ namespace SIMS_Projekat.DoctorView
         {
                 FinishedAppointment2 appointmentInformation = (FinishedAppointment2)PatientExaminatinLists.SelectedItem;
                 int appointmentID = appointmentInformation.id;
-                FinishedAppointment appointment = App.finishedappointmentRepo.GetAppointmentByID(appointmentID);
+                FinishedAppointment appointment = App.finishedAppointmentRepo.GetAppointmentByID(appointmentID);
                 Frame.Content = new PatientExaminationInfo(Frame, doctor, appointment);
         }
 

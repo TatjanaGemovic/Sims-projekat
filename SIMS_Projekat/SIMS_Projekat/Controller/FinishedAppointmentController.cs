@@ -24,7 +24,7 @@ namespace SIMS_Projekat.Controller
 
         public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment, int id)
         {
-            return finishedAppointmentService.AddFinishedAppointment(appointment, id);
+            return finishedAppointmentService.AddFinishedAppointment(appointment);
         }
 
         public FinishedAppointment GetAppointmentByID(int appointmentID)

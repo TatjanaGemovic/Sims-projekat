@@ -22,9 +22,9 @@ namespace SIMS_Projekat.Service
             return finishedAppointmentRepository.DeleteAppointment(appointment);
         }
 
-        public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment, int id)
+        public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment)
         {
-            return finishedAppointmentRepository.AddFinishedAppointment(appointment, id);
+            return finishedAppointmentRepository.AddFinishedAppointment(appointment);
         }
 
         public FinishedAppointment GetAppointmentByID(int appointmentID)

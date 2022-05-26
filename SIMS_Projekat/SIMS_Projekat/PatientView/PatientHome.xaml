@@ -70,7 +70,7 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="reports" Grid.Row="3" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,3,3,2">
+            <Button x:Name="reports" Grid.Row="3" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,3,3,2" Click="Reports_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/report.png" Width="30" Height="30"></Image>
                     <Label Content="Izveštaji" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />

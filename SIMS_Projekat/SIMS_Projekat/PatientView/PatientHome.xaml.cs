@@ -106,6 +106,9 @@ namespace SIMS_Projekat.PatientView
             MainFrame.Content = new ChooseDoctorPage(patient);
         }
 
-
+        private void Reports_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new ReportsPage(MainFrame, patient);
+        }
     }
 }
