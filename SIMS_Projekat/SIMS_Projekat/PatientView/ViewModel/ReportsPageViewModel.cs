@@ -16,6 +16,21 @@ namespace SIMS_Projekat.PatientView.ViewModel
         public Injector Inject { get; set; }
         public MyICommand DetailsCommand { get; set; }
 
+        private ReportViewModel reportViewModel;
+        public ReportViewModel ReportViewModel
+        {
+            get { return reportViewModel; }
+            set
+            {
+                if (reportViewModel != value)
+                {
+                    reportViewModel = value;
+                    OnPropertyChanged("ReportViewModel");
+
+                }
+            }
+        }
+
         private ObservableCollection<ReportViewModel> reports;
         public ObservableCollection<ReportViewModel> Reports
         {
@@ -43,7 +58,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
     
         private void OnDetail()
         {
-            //mainFrame.NavigationService.Navigate();
+            ViewReportPage viewReportPage = new ViewReportPage(mainFrame, ReportViewModel);
+            mainFrame.NavigationService.Navigate(viewReportPage);
         }
     }
 }

@@ -124,19 +124,6 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-        //public Patient Patient
-        //{
-        //    get { return patient; }
-        //    set
-        //    {
-        //        if (patient != value)
-        //        {
-        //            patient = value;
-        //            OnPropertyChanged("Patient");
-
-        //        }
-        //    }
-        //}
         public int Index
         {
             get { return index; }

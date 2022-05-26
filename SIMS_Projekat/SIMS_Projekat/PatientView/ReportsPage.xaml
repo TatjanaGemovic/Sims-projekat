@@ -29,7 +29,7 @@
                    Style="{StaticResource ResourceKey=PatientReportsGrid}" 
                    ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridColumnHeaderStyle}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridAppointmentRow}"
-                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}" >
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}" SelectedItem="{Binding ReportViewModel, Mode=OneWayToSource}" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Broj izveštaja" Binding ="{Binding Index}" />
                 <DataGridTextColumn Header="Datum" Binding ="{Binding Date}" />
