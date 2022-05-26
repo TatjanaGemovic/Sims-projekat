@@ -1,16 +1,17 @@
-5/10/2022 12:30:00 PM|5/10/2022 12:30:00 PM|1|100|1524159823|False|False|Gips 6 nedelja|Slomljena noga
-5/1/2022 11:30:00 AM|5/1/2022 11:45:00 AM|2|101|1524159823|True|False|Rehabilitacija u trajanju od godinu dana|Operisano kolena
-5/3/2022 12:30:00 PM|5/1/2022 1:30:00 PM|3|102|1524159823|False|True|Bez tretmana|Dijagnostikovana aritmija srca
-5/1/2022 10:15:00 AM|5/1/2022 10:30:00 AM|4|100|1524159823|True|False|Rehabilitacija u trajanju od 6 nedelja|Polomljena ruka
-5/1/2022 12:30:00 PM|5/1/2022 12:45:00 PM|5|101|1524159823|True|False|Nista|Nista
-5/6/2022 10:30:00 AM|5/6/2022 10:45:00 AM|6|103|1524159823|False|True|Disi|Pazi na zdravlje
-5/5/2022 10:00:00 AM|5/5/2022 10:15:00 AM|7|103|1524159823|False|False|lezi|slaba
-4/7/2022 10:45:00 AM|4/7/2022 11:00:00 AM|8|101|1524159823|False|True|Sve ok|Pregled obican
-5/14/2022 4:30:00 PM|5/14/2022 4:45:00 PM|9|100|1524159823|False|True|Lezi|Bolestan
-5/4/2022 8:30:00 AM|5/6/2022 8:45:00 AM|10|100|1524159823|False|False|da lezi|slaba
-5/15/2022 11:00:00 AM|5/15/2022 11:15:00 AM|11|100|1524159823|False|False|Odmor|Bolestan
-4/15/2022 9:30:00 AM|4/15/2022 9:45:00 AM|12|101|1524159823|False|True|Da ode|Dosadan
-5/1/2022 9:30:00 AM|5/1/2022 9:45:00 AM|13|100|1524159823|True|False|nista|dobar je
-5/14/2022 8:30:00 AM|5/14/2022 8:45:00 AM|14|100|1524159823|False|False|ful|ful
-5/1/2022 12:30:00 PM|5/1/2022 12:45:00 PM|15|101|1524159823|True|False|njah|njah
-5/27/2022 8:00:00 AM|5/27/2022 8:15:00 AM|16|103|1111159823|False|True|Preporucuje se lezanje u krevetu|Bolesna je prilicno
+5/10/2022 12:30:00 PM|5/10/2022 12:30:00 PM|1|100|1524159823|False|False|Gips 6 nedelja|Slomljena noga|0
+5/1/2022 11:30:00 AM|5/1/2022 11:45:00 AM|2|101|1524159823|True|False|Rehabilitacija u trajanju od godinu dana|Operisano kolena|0
+5/3/2022 12:30:00 PM|5/1/2022 1:30:00 PM|3|102|1524159823|False|True|Bez tretmana|Dijagnostikovana aritmija srca|0
+5/1/2022 10:15:00 AM|5/1/2022 10:30:00 AM|4|100|1524159823|True|False|Rehabilitacija u trajanju od 6 nedelja|Polomljena ruka|0
+5/1/2022 12:30:00 PM|5/1/2022 12:45:00 PM|5|101|1524159823|True|False|Nista|Nista|0
+5/6/2022 10:30:00 AM|5/6/2022 10:45:00 AM|6|103|1524159823|False|True|Disi|Pazi na zdravlje|0
+5/5/2022 10:00:00 AM|5/5/2022 10:15:00 AM|7|103|1524159823|False|False|lezi|slaba|0
+4/7/2022 10:45:00 AM|4/7/2022 11:00:00 AM|8|101|1524159823|False|True|Sve ok|Pregled obican|0
+5/14/2022 4:30:00 PM|5/14/2022 4:45:00 PM|9|100|1524159823|False|True|Lezi|Bolestan|0
+5/4/2022 8:30:00 AM|5/6/2022 8:45:00 AM|10|100|1524159823|False|False|da lezi|slaba|0
+5/15/2022 11:00:00 AM|5/15/2022 11:15:00 AM|11|100|1524159823|False|False|Odmor|Bolestan|0
+4/15/2022 9:30:00 AM|4/15/2022 9:45:00 AM|12|101|1524159823|False|True|Da ode|Dosadan|0
+5/1/2022 9:30:00 AM|5/1/2022 9:45:00 AM|13|100|1524159823|True|False|nista|dobar je|0
+5/14/2022 8:30:00 AM|5/14/2022 8:45:00 AM|14|100|1524159823|False|False|ful|ful|0
+5/1/2022 12:30:00 PM|5/1/2022 12:45:00 PM|15|101|1524159823|True|False|njah|njah|0
+5/27/2022 8:00:00 AM|5/27/2022 8:15:00 AM|16|103|1111159823|False|True|Preporucuje se lezanje u krevetu|Bolesna je prilicno|0
+5/21/2022 10:45:00 AM|5/21/2022 11:00:00 AM|17|100|1111159823|False|False|Ispiranje|Ima upalu uha|0

@@ -20,8 +20,7 @@ namespace SIMS_Projekat.Model
         public Patient patient { get; set; }
         public string patientID { get; set; }
         public string licenceNumber { get; set; }
-
-        
+        public int patientNoteID { get; set; }
 
         public void fromCSV(string[] values)
         {
@@ -51,7 +50,8 @@ namespace SIMS_Projekat.Model
             }
             Treatment = values[7];
             Anamnesis = values[8];
-            //ReceiptID = values[9];
+            patientNoteID = Convert.ToInt32(values[9]);
+            //ReceiptID = values[10];
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
         }
@@ -69,6 +69,7 @@ namespace SIMS_Projekat.Model
                 isScheduledByPatient.ToString(),
                 Treatment.ToString(),
                 Anamnesis.ToString(),
+                patientNoteID.ToString()
                 //Receipt.ID.ToString(),
             };
             return values;
