@@ -30,6 +30,11 @@ namespace SIMS_Projekat
         public static FinishedAppointmentService finishedAppointmentService;
         public static FinishedAppointmentController finishedAppointmentController;
 
+        private static string NOTE_FILE = @".\..\..\..\Resources\notes.txt";
+        public static NoteRepository noteRepository;
+        public static NoteService noteService;
+        public static NoteController noteController;
+
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
 
@@ -140,6 +145,16 @@ namespace SIMS_Projekat
                 finishedAppointmentService = finishedAppointmentService
             };
 
+            noteRepository = new NoteRepository(NOTE_FILE);
+            noteService = new NoteService()
+            {
+                noteRepository = noteRepository
+            };
+            noteController = new NoteController()
+            {
+                noteService = noteService
+            };
+
             accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
             accountService = new AccountService()
             {
@@ -197,6 +212,7 @@ namespace SIMS_Projekat
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
+            noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
             receiptRepository.Deserialize();
             therapyNotificationRepository.Deserialize();
