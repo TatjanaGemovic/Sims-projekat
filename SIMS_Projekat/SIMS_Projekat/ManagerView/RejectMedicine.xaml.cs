@@ -19,21 +19,19 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.ManagerView
 {
     /// <summary>
-    /// Interaction logic for MedicineView.xaml
+    /// Interaction logic for RejectMedicine.xaml
     /// </summary>
-    public partial class MedicineView : Page, INotifyPropertyChanged
+    public partial class RejectMedicine : Page, INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Medicine> _medicine;
-
-        public MedicineView()
+        public RejectMedicine()
         {
             InitializeComponent();
             this.DataContext = this;
-            Medicine = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
+            Medicine = new ObservableCollection<Medicine>(App.medicineController.GetRejectMedicine());
         }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Medicine> _medicine;
 
-        
 
         public ObservableCollection<Medicine> Medicine
         {
@@ -62,20 +60,15 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
-        private void DodajLekBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ManagerHome.mainFrame.Content = new AddMedicineView(null) ;
-        }
-
         private void IzmenaLekaBtn_Click(object sender, RoutedEventArgs e)
         {
             Medicine selectedMedicine = (Medicine)datagGridMedicine.SelectedItem;
             ManagerHome.mainFrame.Content = new EditMedicineView(selectedMedicine);
         }
 
-        private void OdbijeniLekoviBtn_Click(object sender, RoutedEventArgs e)
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            ManagerHome.mainFrame.Content = new RejectMedicine();
+            ManagerHome.mainFrame.Content = new MedicineView();
         }
     }
 }
