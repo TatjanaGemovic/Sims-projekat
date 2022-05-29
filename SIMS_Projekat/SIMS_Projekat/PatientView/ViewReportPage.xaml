@@ -6,11 +6,16 @@
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="740" d:DesignWidth="1350"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="ViewReportPage">
     <Page.Resources>
-        <converters:ReportNoteIDToButtonContentConverter x:Key="ReportNoteIDToButtonContentConverter" />
-        <converters:ReportNoteIDToVisibilityConverter x:Key="ReportNoteIDToVisibilityConverter" />
+        <ResourceDictionary>
+            <converters:ReportNoteIDToButtonContentConverter x:Key="ReportNoteIDToButtonContentConverter" />
+            <converters:ReportNoteIDToVisibilityConverter x:Key="ReportNoteIDToVisibilityConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -26,18 +31,17 @@
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
 
-
         <Label Content="Izveštaj" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" >
-            <Label Content="Datum pregleda:" Height="60" VerticalContentAlignment="Top"
+            <Label Content="Datum pregleda:" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" />
-            <Label Content="Vreme pregleda:" Height="60" VerticalContentAlignment="Top"
+            <Label Content="Vreme pregleda:" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold"/>
-            <Label Content="Tip pregleda:"  Height="60" VerticalContentAlignment="Top"
+            <Label Content="Tip pregleda:"  Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" />
-            <Label Content="Doktor:" Height="60" VerticalContentAlignment="Top"
+            <Label Content="Doktor:" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" />
             <Label Content="Dijagnoza:" Height="120" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" />
@@ -47,13 +51,13 @@
 
         <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical">
 
-            <Label Content="{Binding Report.Date}" Height="60" VerticalContentAlignment="Top"
+            <Label Content="{Binding Report.Date}" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}" />
-            <Label Content="{Binding Report.Time}" Height="60" VerticalContentAlignment="Top"
+            <Label Content="{Binding Report.Time}" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
-            <Label Content="{Binding Report.OperationOrExam}" Height="60" VerticalContentAlignment="Top"
+            <Label Content="{Binding Report.OperationOrExam}" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
-            <Label Content="{Binding Report.DoctorName}" Height="60" VerticalContentAlignment="Top"
+            <Label Content="{Binding Report.DoctorName}" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
             <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                      FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
@@ -67,7 +71,7 @@
             </TextBox>
             <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                      FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
-                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120"
+                     VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120" Margin="0,10,0,0"
                      AcceptsTab="False" Text="{Binding Report.Anamnesis}" IsReadOnly="True" >
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
@@ -93,7 +97,7 @@
         
         <Button x:Name="createNoteButton" Grid.Row="1" Grid.Column="3"
                 Content="{Binding Path=Report.NoteID, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReportNoteIDToButtonContentConverter}}" 
-                Command="{Binding CreateNoteCommand}" Margin="0,10,0,0"
+                Command="{Binding NoteCommand}" Margin="0,10,0,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
         
         <TextBox  Grid.Row="2" Grid.Column="3" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 

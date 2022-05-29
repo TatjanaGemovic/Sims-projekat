@@ -12,7 +12,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private ReportsConverter reportsConverter = new ReportsConverter();
 
-        //private SubjectConverter subjectConverter = new SubjectConverter();
+        private NotesConverter notesConverter = new NotesConverter();
 
         //private StudentConverter studentConverter = new StudentConverter();
 
@@ -23,10 +23,10 @@ namespace SIMS_Projekat.PatientView.ViewModel
             get { return reportsConverter; }
         }
 
-        //public TeacherConverter TeacherConverter
-        //{
-        //    get { return teacherConverter; }
-        //}
+        public NotesConverter NotesConverter
+        {
+            get { return notesConverter; }
+        }
 
         //public StudentConverter StudentConverter
         //{

@@ -7,11 +7,16 @@
       xmlns:viewModel="clr-namespace:SIMS_Projekat.PatientView.ViewModel"
       xmlns:data="clr-namespace:SIMS_Projekat.Model"
       mc:Ignorable="d" 
-      d:DesignHeight="790" d:DesignWidth="1350"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="EvaluationPage">
     <Page.Resources>
-        <local:DoctorNameLabelConverter x:Key="DoctorNameLabelConverter" />
-        <local:RadioButtonConverter x:Key="RadioButtonConverter" />
+        <ResourceDictionary>
+            <local:DoctorNameLabelConverter x:Key="DoctorNameLabelConverter" />
+            <local:RadioButtonConverter x:Key="RadioButtonConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid >
         <Grid.RowDefinitions>

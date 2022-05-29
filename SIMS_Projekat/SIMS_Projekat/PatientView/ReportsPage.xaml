@@ -6,11 +6,16 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
-      d:DesignHeight="790" d:DesignWidth="1350"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="ReportsPage">
-    
+
     <Page.Resources>
-        <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+        <ResourceDictionary>
+            <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     
     <Grid>

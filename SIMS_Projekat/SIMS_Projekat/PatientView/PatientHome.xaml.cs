@@ -112,5 +112,10 @@ namespace SIMS_Projekat.PatientView
         {
             MainFrame.Content = new ReportsPage(MainFrame, patient);
         }
+
+        private void Notes_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new NotesPage(MainFrame, patient);
+        }
     }
 }

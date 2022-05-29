@@ -8,6 +8,13 @@
         mc:Ignorable="d"
         Title="Zdravo Bolnica" Height="800" Width="1600" WindowState="Maximized"
         Closing="DataWindow_Closing" Background="#61B15A">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -84,7 +91,8 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="notes" Grid.Row="5" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,2,3,2">
+            <Button x:Name="notes" Grid.Row="5" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" 
+                    Margin="3,2,3,2" Click="Notes_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/copy-writing.png" Width="30" Height="30"></Image>
                     <Label Content="Beleške" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />

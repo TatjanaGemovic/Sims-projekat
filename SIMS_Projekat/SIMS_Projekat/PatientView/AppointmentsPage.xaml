@@ -6,12 +6,16 @@
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="Appointments">
-    
     <Page.Resources>
-        <converters:OppositeConverter x:Key="OppositeConverter" />
-        <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+        <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
+            <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
