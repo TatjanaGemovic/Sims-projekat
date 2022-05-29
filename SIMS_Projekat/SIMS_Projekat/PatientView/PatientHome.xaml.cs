@@ -83,6 +83,7 @@ namespace SIMS_Projekat.PatientView
             App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
             App.noteRepository.Serialize();
+            App.finishedAppointmentRepo.Serialize();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
@@ -93,6 +94,7 @@ namespace SIMS_Projekat.PatientView
             App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
             App.noteRepository.Serialize();
+            App.finishedAppointmentRepo.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();

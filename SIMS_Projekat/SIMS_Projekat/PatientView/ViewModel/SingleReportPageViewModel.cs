@@ -28,10 +28,30 @@ namespace SIMS_Projekat.PatientView.ViewModel
             }
         }
 
+        private string noteContent;
+        public string NoteContent
+        {
+            get { return noteContent; }
+            set
+            {
+                if (noteContent != value)
+                {
+                    noteContent = value;
+                    OnPropertyChanged("NoteContent");
+
+                }
+            }
+        }
+
         public SingleReportPageViewModel(Frame frame, ReportViewModel vmReport)
         {
             mainFrame = frame;
             Report = vmReport;
+            
+            if(vmReport.NoteID != "0")
+            {
+                NoteContent = App.noteController.GetNoteByID(Convert.ToInt32(vmReport.NoteID)).content;
+            }
 
             BackCommand = new MyICommand(OnBack);
             NoteCommand = new MyICommand(OnNote);
@@ -41,8 +61,9 @@ namespace SIMS_Projekat.PatientView.ViewModel
         {
             if(Report.NoteID == "0")
             {
-                CreateNotePage createNotePage = new CreateNotePage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, true);
+                CreateNotePage createNotePage = new CreateNotePage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, true, Report);
                 mainFrame.NavigationService.Navigate(createNotePage);
+                return;
             }
 
             //CreateNotePage createNotePage = new CreateNotePage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, true);
@@ -50,8 +71,6 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
         private void OnBack()
         {
-            //ReportsPage reportsPage = new ReportsPage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient);
-            //mainFrame.NavigationService.Navigate(reportsPage);
             mainFrame.NavigationService.GoBack();
         }
     }

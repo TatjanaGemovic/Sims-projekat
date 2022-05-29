@@ -40,7 +40,7 @@
         <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="True" Width="500" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                  FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0" HorizontalAlignment="Left"
-                 AcceptsTab="False" Text="{Binding Path=Comment, Mode=OneWayToSource}" Height="41" >
+                 AcceptsTab="False" Text="{Binding Path=Title, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="41" MaxLines="2" MaxHeight="80">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -51,7 +51,7 @@
         <TextBox Grid.Row="4" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                  FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
-                 Height="300" AcceptsTab="False" Text="{Binding Path=Comment, Mode=OneWayToSource}" >
+                 Height="300" AcceptsTab="False" Text="{Binding Path=Content, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" >
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>

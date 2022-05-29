@@ -103,7 +103,7 @@
         <TextBox  Grid.Row="2" Grid.Column="3" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                   FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                   VerticalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                  Text="{Binding Report.Anamnesis}" IsReadOnly="True" Margin="10,10,20,270" 
+                  Text="{Binding NoteContent}" IsReadOnly="True" Margin="10,10,20,270" 
                   Visibility="{Binding Path=Report.NoteID, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReportNoteIDToVisibilityConverter}}">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">

@@ -46,5 +46,11 @@ namespace SIMS_Projekat.Service
         {
             return finishedAppointmentRepository.GetAllAppointments();
         }
+        public FinishedAppointment AddNoteToAppointment(int appointmentID, int noteID)
+        {
+            FinishedAppointment appointment = GetAppointmentByID(appointmentID);
+            appointment.patientNoteID = noteID;
+            return appointment;
+        }
     }
 }

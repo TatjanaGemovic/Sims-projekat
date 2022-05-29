@@ -48,5 +48,10 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             }
             return vmReports;
         }
+
+        public FinishedAppointment ConvertViewModelToModel(ReportViewModel reportFromView, Patient patient)
+        {
+            return App.finishedAppointmentController.AddNoteToAppointment(reportFromView.FinishedAppointmentID, Convert.ToInt32(reportFromView.NoteID));
+        }
     }
 }

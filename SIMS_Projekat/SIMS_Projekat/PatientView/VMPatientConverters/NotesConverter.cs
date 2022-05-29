@@ -22,7 +22,7 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             noteViewModel.Date = note.creationDate.Date.ToString("dd.MM.yyyy.");
             noteViewModel.Time = note.creationDate.TimeOfDay.ToString(@"hh\:mm");
             noteViewModel.NoteID = note.noteID.ToString();            
-
+            //noteViewModel.PatientID = note.patient.ID;
             id++;
             return noteViewModel;
         }
@@ -38,6 +38,19 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
                 vmNotes.Add(noteViewModel);
             }
             return vmNotes;
+        }
+
+        public int ConvertViewModelToModel(NoteViewModel noteFromView, Patient patient)
+        {
+            Note note = new Note()
+            {
+                content = noteFromView.Content,
+                title = noteFromView.Title,
+                creationDate = DateTime.Now,
+                patient = patient
+            };
+            App.noteController.AddNote(note);
+            return App.noteController.GetNotesByPatientID(patient.ID).Last<Note>().noteID;
         }
     }
 }

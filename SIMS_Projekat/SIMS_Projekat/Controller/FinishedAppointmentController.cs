@@ -46,5 +46,11 @@ namespace SIMS_Projekat.Controller
         {
             return finishedAppointmentService.GetAllAppointments();
         }
+
+        public FinishedAppointment AddNoteToAppointment(int appointmentID, int noteID)
+        {
+            return finishedAppointmentService.AddNoteToAppointment(appointmentID, noteID);
+        }
+        
     }
 }
