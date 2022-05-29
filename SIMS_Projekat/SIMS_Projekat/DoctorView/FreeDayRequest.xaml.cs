@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.DoctorView.ViewModel;
+using SIMS_Projekat.Model;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,17 +11,14 @@ namespace SIMS_Projekat.DoctorView
     /// </summary>
     public partial class FreeDayRequest : Page
     {
-        Frame Frame;
-        Doctor doctor;
         public FreeDayRequest(Frame main, Doctor d)
         {
-            Frame = main;
-            doctor = d;
             InitializeComponent();
-            SetBlackOutDates();
+            this.DataContext = new FreeDayRequestViewModel(main, d);
+            //SetBlackOutDates();
         }
 
-        private void SetBlackOutDates()
+        /*private void SetBlackOutDates()
         {
             DateTime firstDay = DateTime.Today.AddDays(2);
             DateTime lastDay = DateTime.Today.AddMonths(6);
@@ -105,6 +103,6 @@ namespace SIMS_Projekat.DoctorView
                 Frame.Content = new Requests(Frame, doctor);
             }
 
-        }
+        }*/
     }
 }

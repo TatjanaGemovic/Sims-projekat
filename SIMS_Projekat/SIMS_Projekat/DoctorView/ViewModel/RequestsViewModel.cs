@@ -1,51 +1,40 @@
-﻿using SIMS_Projekat.DoctorView.ViewModel;
-using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace SIMS_Projekat.DoctorView
+namespace SIMS_Projekat.DoctorView.ViewModel
 {
-    /// <summary>
-    /// Interaction logic for Requests.xaml
-    /// </summary>
-    public partial class Requests : Page
+    public class RequestsViewModel : BindableBase
     {
-        //Frame Frame;
-        //Doctor doctor;
-        //public BindingList<Request2> RequestList { get; set; }
-        public Requests(Frame main, Doctor d)
+        private Frame frame;
+        private Doctor doctor;
+        public ObservableCollection<Request2> Requests { get; set; }
+        public MyICommand showCommand { get; set; }
+        public MyICommand backCommand { get; set; }
+        public RequestsViewModel(Frame main, Doctor d)
         {
-            //Frame = main;
-            //doctor = d;
-            
-            //RequestList = new BindingList<Request2>();
-            //createList();
-            //RequestsList.ItemsSource = RequestList;
-            InitializeComponent();
-            this.DataContext = new RequestsViewModel(main, d) ;
+            frame = main;
+            doctor = d;
+            loadRequests();
+
+            showCommand = new MyICommand(OnShow);
+            backCommand = new MyICommand(OnBack);
         }
 
-        /*private void Button_Click(object sender, RoutedEventArgs e)
+        private void OnBack()
         {
-            Frame.Content = new DoctorAppointments(Frame, doctor);
+            frame.Content = new DoctorAppointments(frame, doctor);
         }
 
-        private void Posalji_zahtev_Click(object sender, RoutedEventArgs e)
+        private void OnShow()
         {
-            Frame.Content = new FreeDayRequest(Frame, doctor);
+            frame.Content = new FreeDayRequest(frame, doctor);
         }
 
         public class Request2
@@ -60,8 +49,9 @@ namespace SIMS_Projekat.DoctorView
             }
         }
 
-        public void createList()
+        public void loadRequests()
         {
+            ObservableCollection<Request2> requests = new ObservableCollection<Request2>();
             if (App.freeDayRequestRepository.GetRequests() != null)
             {
                 foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
@@ -77,7 +67,8 @@ namespace SIMS_Projekat.DoctorView
                         if (r.status.ToString().Equals("Waiting"))
                         {
                             status = "Na cekanju";
-                        }else if (r.status.ToString().Equals("Accepted"))
+                        }
+                        else if (r.status.ToString().Equals("Accepted"))
                         {
                             status = "Prihvacen";
                         }
@@ -86,10 +77,11 @@ namespace SIMS_Projekat.DoctorView
                             status = "Odbijen";
                         }
 
-                        RequestList.Add(new Request2(time, status));
+                        requests.Add(new Request2(time, status));
                     }
                 }
             }
-        }*/
+            Requests = requests;
+        }
     }
 }
