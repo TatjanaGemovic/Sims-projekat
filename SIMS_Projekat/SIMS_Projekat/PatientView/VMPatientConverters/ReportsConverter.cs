@@ -23,6 +23,7 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             rpViewModel.DoctorName = finishedAppointment.doctor.FirstName + " " + finishedAppointment.doctor.LastName;
             rpViewModel.Date = finishedAppointment.beginningDate.Date.ToString("dd.MM.yyyy.");
             rpViewModel.Time = finishedAppointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
+            rpViewModel.NoteID = finishedAppointment.patientNoteID.ToString();
 
             if (finishedAppointment.operation)
                 rpViewModel.OperationOrExam = "Operacija";

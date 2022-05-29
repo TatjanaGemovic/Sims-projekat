@@ -17,7 +17,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private string doctorName { get; set; }
         private string receiptID { get; set; }
         private string operationOrExam { get; set; } 
-        //private Patient patient { get; set; }
+        private string noteID { get; set; }
         private int index { get; set; }
 
         public string Date
@@ -120,6 +120,20 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 {
                     operationOrExam = value;
                     OnPropertyChanged("OperationOrExam");
+
+                }
+            }
+        }
+
+        public string NoteID
+        {
+            get { return noteID; }
+            set
+            {
+                if (noteID != value)
+                {
+                    noteID = value;
+                    OnPropertyChanged("NoteID");
 
                 }
             }
