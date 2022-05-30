@@ -229,15 +229,11 @@
         <Setter Property="BorderBrush" Value="#FFCE89"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="HeadersVisibility" Value="None"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Height" Value="500"/>
-        <Setter Property="Width" Value="1000"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
-        <Setter Property="CanUserResizeRows" Value="False"/>
-        <Setter Property="CanUserResizeColumns" Value="False"/>
-        <Setter Property="RowHeaderWidth" Value="0" />
         <Style.Triggers>
             <Trigger Property="HasItems"
                          Value="False">

@@ -71,7 +71,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
         private void OnBack()
         {
-            mainFrame.NavigationService.GoBack();
+            ReportsPage reportsPage = new ReportsPage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient);
+            mainFrame.NavigationService.Navigate(reportsPage);
         }
     }
 }

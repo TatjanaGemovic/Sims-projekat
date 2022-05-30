@@ -54,15 +54,15 @@ namespace SIMS_Projekat.PatientView.ViewModel
             ObservableCollection<Note> notes = new ObservableCollection<Note>(App.noteController.GetNotesByPatientID(patient.ID));
             Inject = new Injector();
             Notes = new ObservableCollection<NoteViewModel>(Inject.NotesConverter.ConvertCollectionToViewModel(notes));
-            //DetailsCommand = new MyICommand(OnDetail);
+            DetailsCommand = new MyICommand(OnDetail);
             NewNoteCommand = new MyICommand(OnCreate);
         }
 
-        //private void OnDetail()
-        //{
-        //    ViewReportPage viewReportPage = new ViewReportPage(mainFrame, ReportViewModel);
-        //    mainFrame.NavigationService.Navigate(viewReportPage);
-        //}
+        private void OnDetail()
+        {
+            ViewNotePage viewNotePage = new ViewNotePage(mainFrame, NoteViewModel, patient);
+            mainFrame.NavigationService.Navigate(viewNotePage);
+        }
 
         private void OnCreate()
         {

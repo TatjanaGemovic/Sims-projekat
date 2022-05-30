@@ -51,6 +51,11 @@ namespace SIMS_Projekat.Controller
         {
             return finishedAppointmentService.AddNoteToAppointment(appointmentID, noteID);
         }
+
+        public bool EraseNoteForAppointmentIfExists(int noteID, Patient patient)
+        {
+            return finishedAppointmentService.EraseNoteForAppointmentIfExists(noteID, patient);
+        }
         
     }
 }

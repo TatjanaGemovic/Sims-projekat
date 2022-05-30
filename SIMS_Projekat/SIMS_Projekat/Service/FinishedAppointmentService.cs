@@ -52,5 +52,17 @@ namespace SIMS_Projekat.Service
             appointment.patientNoteID = noteID;
             return appointment;
         }
+        public bool EraseNoteForAppointmentIfExists(int noteID, Patient patient)
+        {
+            List<FinishedAppointment> appointmentList = GetAppointmentByPatientID(patient.ID);
+
+            FinishedAppointment appointment = appointmentList.Find(appoint => appoint.patientNoteID == noteID);
+            if(appointment != null)
+            {
+                appointment.patientNoteID = 0;
+                return true;
+            }
+            return false;
+        }
     }
 }

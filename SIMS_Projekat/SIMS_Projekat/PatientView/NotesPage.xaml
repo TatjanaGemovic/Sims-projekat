@@ -19,44 +19,40 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
 
-        <Label Content="Beleške" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+        <Label Content="Beleške" Grid.Row="0"
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
-        <DataGrid  Grid.Column="1" Grid.Row="2"
-                   ItemsSource="{Binding Path=Notes, UpdateSourceTrigger=PropertyChanged}" 
+        <DataGrid  Grid.Row="2" Margin="150,0,150,0"
+                   ItemsSource="{Binding Notes}" Width="1000" Height="500"
                    x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotesGrid}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
-                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}">
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}"
+                   SelectedItem="{Binding NoteViewModel, Mode=OneWayToSource}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <TextBlock Text="{Binding Notes.Index}" FontSize="24" />
+                                <TextBlock Text="{Binding Index}" FontSize="24" />
                                 <TextBlock Text=". " FontSize="24" />
-                                <TextBlock Text="{Binding Notes.Title}" FontSize="24" />
+                                <TextBlock Text="{Binding Title}" FontSize="24" />
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="detailsButton" Grid.Row="3" Grid.Column="1" Content="Prikaži belešku"
+        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži belešku"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}"
+                Command="{Binding DetailsCommand}" Margin="0,0,250,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Button x:Name="newNoteButton" Grid.Row="3" Grid.Column="2" Content="Kreiraj belešku" 
-                Command="{Binding NewNoteCommand}"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj belešku" 
+                Command="{Binding NewNoteCommand}" Margin="0,0,20,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Page>

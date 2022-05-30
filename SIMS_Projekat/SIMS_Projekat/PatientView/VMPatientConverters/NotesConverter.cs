@@ -52,5 +52,13 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             App.noteController.AddNote(note);
             return App.noteController.GetNotesByPatientID(patient.ID).Last<Note>().noteID;
         }
+        public Note DeleteModel(NoteViewModel noteFromView, Patient patient)
+        {
+            App.finishedAppointmentController.EraseNoteForAppointmentIfExists(Convert.ToInt32(noteFromView.NoteID), patient);
+            Note note = App.noteController.GetNoteByID(Convert.ToInt32(noteFromView.NoteID));
+            App.noteController.DeleteNote(note);
+            
+            return note;
+        }
     }
 }

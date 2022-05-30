@@ -25,11 +25,6 @@ namespace SIMS_Projekat.PatientView.ViewModel
             get { return newNoteViewModel; }
             set
             {
-                //if(newNoteViewModel.Title != value.Title)
-                //    CreateCommand.RaiseCanExecuteChanged();
-                //if (newNoteViewModel.Content != value.Content)
-                //    CreateCommand.RaiseCanExecuteChanged();
-
                 if (newNoteViewModel != value)
                 {
                     newNoteViewModel = value;
