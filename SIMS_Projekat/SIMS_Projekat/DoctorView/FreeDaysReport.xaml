@@ -21,9 +21,16 @@
                         <chart:CategoryAxis/>
                     </chart:SfChart.PrimaryAxis>
                     <chart:SfChart.SecondaryAxis>
-                        <chart:NumericalAxis Minimum="0" Maximum="5"/>
+                        <chart:NumericalAxis Minimum="0" Maximum="4" Interval="1"/>
                     </chart:SfChart.SecondaryAxis>
-                    <chart:ColumnSeries Palette="BlueChrome"  ItemsSource="{Binding Data}" XBindingPath="Month" YBindingPath="RequestsNum"></chart:ColumnSeries>
+                    <chart:ColumnSeries Palette="Custom"  ItemsSource="{Binding Data}" XBindingPath="Month" YBindingPath="RequestsNum">
+                        <chart:ColumnSeries.Interior>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="#676FA3"/>
+                                <GradientStop Offset="1" Color="#CDDEFF"/>
+                            </LinearGradientBrush>
+                        </chart:ColumnSeries.Interior>
+                    </chart:ColumnSeries>
                 </chart:SfChart>
             </Grid>
         </DockPanel>
