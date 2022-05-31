@@ -1,0 +1,31 @@
+﻿<Page x:Class="SIMS_Projekat.DoctorView.FreeDaysReport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
+      xmlns:chart="http://schemas.syncfusion.com/wpf"
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView" 
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="430"
+      Title="FreeDaysReport">
+
+    <Grid>
+        <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,630">
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click" />
+            <Label Content="Izvestaj" Width="122" Height="48" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
+        </DockPanel>
+        <DockPanel Margin="0,90,0,0">
+            <Grid>
+                <chart:SfChart Header="Zahtevi za slobodne dane" FontSize="22" FontWeight="SemiBold"  Margin="10,22,10,40">
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:CategoryAxis/>
+                    </chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis Minimum="0" Maximum="5"/>
+                    </chart:SfChart.SecondaryAxis>
+                    <chart:ColumnSeries Palette="BlueChrome"  ItemsSource="{Binding Data}" XBindingPath="Month" YBindingPath="RequestsNum"></chart:ColumnSeries>
+                </chart:SfChart>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

@@ -17,6 +17,7 @@ namespace SIMS_Projekat.DoctorView.ViewModel
         public ObservableCollection<Request2> Requests { get; set; }
         public MyICommand showCommand { get; set; }
         public MyICommand backCommand { get; set; }
+        public MyICommand showReportCommand { get; set; }
         public RequestsViewModel(Frame main, Doctor d)
         {
             frame = main;
@@ -25,11 +26,17 @@ namespace SIMS_Projekat.DoctorView.ViewModel
 
             showCommand = new MyICommand(OnShow);
             backCommand = new MyICommand(OnBack);
+            showReportCommand = new MyICommand(OnShowReport);
         }
 
         private void OnBack()
         {
             frame.Content = new DoctorAppointments(frame, doctor);
+        }
+
+        private void OnShowReport()
+        {
+            frame.Content = new FreeDaysReport(frame, doctor);
         }
 
         private void OnShow()

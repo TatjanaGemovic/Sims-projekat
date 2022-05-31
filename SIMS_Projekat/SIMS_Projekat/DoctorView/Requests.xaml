@@ -50,10 +50,16 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button x:Name="Posalji_zahtev" Command="{Binding showCommand}" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="156" Height="60">
+                <Button x:Name="Posalji_zahtev" Command="{Binding showCommand}" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Napravi zahtev</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Izvestaj" Command="{Binding showReportCommand}" HorizontalAlignment="Left" Margin="13,535,20,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/clipboard-paste-button.png"  Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15"><Run Text="Izvestaj"/></TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>
