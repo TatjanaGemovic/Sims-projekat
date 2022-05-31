@@ -2,7 +2,6 @@
 using SIMS_Projekat.PatientView.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +18,14 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.PatientView
 {
     /// <summary>
-    /// Interaction logic for ViewNotePage.xaml
+    /// Interaction logic for ChangeNotePage.xaml
     /// </summary>
-    public partial class ViewNotePage : Page
+    public partial class ChangeNotePage : Page
     {
-        public ViewNotePage(Frame frame, NoteViewModel vmNote)
+        public ChangeNotePage(Frame frame, NoteViewModel note, bool fromReport)
         {
             InitializeComponent();
-            this.DataContext = new SingleNotePageViewModel(frame, vmNote);
+            this.DataContext = new ChangeNotePageViewModel(frame, note, fromReport);
         }
     }
 }

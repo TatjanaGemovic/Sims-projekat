@@ -64,5 +64,10 @@ namespace SIMS_Projekat.Service
             }
             return false;
         }
+
+        public FinishedAppointment GetAppointmentByNoteID(int noteiD)
+        {
+            return finishedAppointmentRepository.GetAppointmentByNoteID(noteiD);
+        }
     }
 }

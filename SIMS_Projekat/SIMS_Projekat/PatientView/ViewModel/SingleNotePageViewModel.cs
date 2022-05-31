@@ -31,37 +31,36 @@ namespace SIMS_Projekat.PatientView
                 }
             }
         }
-        private Patient patient;
-        public SingleNotePageViewModel(Frame frame, NoteViewModel vmNote, Patient pat)
+        public SingleNotePageViewModel(Frame frame, NoteViewModel vmNote)
         {
             mainFrame = frame;
             Note = vmNote;
-            patient = pat;
             Inject = new Injector();
             BackCommand = new MyICommand(OnBack);
-            //ChangeCommand = new MyICommand(OnChange);
+            ChangeCommand = new MyICommand(OnChange);
             DeleteCommand = new MyICommand(OnDelete);
         }
 
-        //private void OnChange()
-        //{
-        //    //ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note);
-        //    //mainFrame.NavigationService.Navigate(changeNotePage);
-        //} 
+        private void OnChange()
+        {
+            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, false);
+            mainFrame.NavigationService.Navigate(changeNotePage);
+        }
 
         private void OnDelete()
         {
             if (MessageBox.Show("Jeste li sigurni da zelite da obrišete belešku?",
             "Brisanje beleške", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Inject.NotesConverter.DeleteModel(Note, patient);
-                NotesPage notesPage = new NotesPage(mainFrame, patient);
+                Inject.NotesConverter.DeleteModel(Note, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
+                NotesPage notesPage = new NotesPage(mainFrame, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
                 mainFrame.NavigationService.Navigate(notesPage);
             }
         }
         private void OnBack()
         {
-            mainFrame.NavigationService.GoBack();
+            NotesPage notesPage = new NotesPage(mainFrame, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
+            mainFrame.NavigationService.Navigate(notesPage);
         }
     }
 }

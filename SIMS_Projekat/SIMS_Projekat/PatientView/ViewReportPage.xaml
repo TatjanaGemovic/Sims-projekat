@@ -62,7 +62,7 @@
             <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                      FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120" Margin="0,10,0,0"
-                     Text="{Binding Path=Report.Treatment}" IsReadOnly="True">
+                     Text="{Binding Path=Report.Anamnesis}" IsReadOnly="True">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>
@@ -72,7 +72,7 @@
             <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
                      FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120" Margin="0,10,0,0"
-                     AcceptsTab="False" Text="{Binding Report.Anamnesis}" IsReadOnly="True" >
+                     AcceptsTab="False" Text="{Binding Report.Treatment}" IsReadOnly="True" >
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="10"/>

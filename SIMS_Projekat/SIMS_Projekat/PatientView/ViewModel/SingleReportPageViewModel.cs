@@ -10,6 +10,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
     public class SingleReportPageViewModel : BindableBase
     {
         Frame mainFrame;
+        NoteViewModel Note;
         private ReportViewModel report;
         public Injector Inject { get; set; }
         public MyICommand BackCommand { get; set; }
@@ -45,12 +46,13 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         public SingleReportPageViewModel(Frame frame, ReportViewModel vmReport)
         {
+            Inject = new Injector();
             mainFrame = frame;
             Report = vmReport;
-            
             if(vmReport.NoteID != "0")
             {
-                NoteContent = App.noteController.GetNoteByID(Convert.ToInt32(vmReport.NoteID)).content;
+                Note = Inject.NotesConverter.ConvertModelToViewModel(App.noteController.GetNoteByID(Convert.ToInt32(vmReport.NoteID)));
+                NoteContent = Note.Content;
             }
 
             BackCommand = new MyICommand(OnBack);
@@ -61,13 +63,13 @@ namespace SIMS_Projekat.PatientView.ViewModel
         {
             if(Report.NoteID == "0")
             {
-                CreateNotePage createNotePage = new CreateNotePage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, true, Report);
+                CreateNotePage createNotePage = new CreateNotePage(mainFrame, true, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, Report);
                 mainFrame.NavigationService.Navigate(createNotePage);
                 return;
             }
-
-            //CreateNotePage createNotePage = new CreateNotePage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, true);
-            //mainFrame.NavigationService.Navigate(createNotePage);
+            
+            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, true);
+            mainFrame.NavigationService.Navigate(changeNotePage);
         }
         private void OnBack()
         {

@@ -108,6 +108,20 @@ namespace SIMS_Projekat.Repository
             return appointmentListForDoctor;
         }
 
+        public FinishedAppointment GetAppointmentByNoteID(int noteiD)
+        {
+            foreach (FinishedAppointment appointment in finishedAppointmentList)
+            {
+                FinishedAppointment appointment1 = finishedAppointmentList.Find(appointment => appointment.patientNoteID == noteiD);
+
+                if (appointment1 != null)
+                {
+                    return appointment1;
+                }
+            }
+            return null;
+        }
+
         public List<FinishedAppointment> GetAllAppointments()
         {
             return finishedAppointmentList;

@@ -12,9 +12,9 @@ namespace SIMS_Projekat.PatientView.ViewModel
     public class CreateNotePageViewModel : BindableBase
     {
         Frame mainFrame;
-        Patient patient;
         bool fromReport;
         ReportViewModel vmReport;
+        Patient patient;
         public Injector Inject { get; set; }
         public MyICommand GoBackCommand { get; set; }
         public MyICommand CreateCommand { get; set; }
@@ -81,12 +81,12 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-        public CreateNotePageViewModel(Frame f, Patient p, bool fromRep, ReportViewModel vmReport)
+        public CreateNotePageViewModel(Frame f, bool fromRep, Patient p, ReportViewModel vmReport)
         {
             mainFrame = f;
-            patient = p;
             Inject = new Injector();
             fromReport = fromRep;
+            patient = p;
             this.vmReport = vmReport;
             GoBackCommand = new MyICommand(OnBack);
             CreateCommand = new MyICommand(OnCreate, CanCreate);
@@ -101,12 +101,13 @@ namespace SIMS_Projekat.PatientView.ViewModel
         {
             NewNoteViewModel.Title = Title;
             NewNoteViewModel.Content = Content;
-            int id = Inject.NotesConverter.ConvertViewModelToModel(NewNoteViewModel, patient);
-
+            Note newNote = Inject.NotesConverter.ConvertViewModelToModel(NewNoteViewModel, patient);
+            newNote = App.noteController.AddNote(newNote);
+            
             if (fromReport)
             {
-                vmReport.NoteID = id.ToString();
-                Inject.ReportsConverter.ConvertViewModelToModel(vmReport, patient);
+                vmReport.NoteID = newNote.noteID.ToString();
+                App.finishedAppointmentController.AddNoteToAppointment(vmReport.FinishedAppointmentID, Convert.ToInt32(vmReport.NoteID));
                 ViewReportPage viewReportPage = new ViewReportPage(mainFrame, vmReport);
                 mainFrame.NavigationService.Navigate(viewReportPage);
                 return;

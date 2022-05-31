@@ -40,18 +40,19 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             return vmNotes;
         }
 
-        public int ConvertViewModelToModel(NoteViewModel noteFromView, Patient patient)
+        public Note ConvertViewModelToModel(NoteViewModel noteFromView, Patient patient)
         {
             Note note = new Note()
             {
                 content = noteFromView.Content,
                 title = noteFromView.Title,
                 creationDate = DateTime.Now,
-                patient = patient
+                patient = patient,
+                noteID = Convert.ToInt32(noteFromView.NoteID)
             };
-            App.noteController.AddNote(note);
-            return App.noteController.GetNotesByPatientID(patient.ID).Last<Note>().noteID;
+            return note;
         }
+        
         public Note DeleteModel(NoteViewModel noteFromView, Patient patient)
         {
             App.finishedAppointmentController.EraseNoteForAppointmentIfExists(Convert.ToInt32(noteFromView.NoteID), patient);
