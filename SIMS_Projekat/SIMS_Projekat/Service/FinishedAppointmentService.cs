@@ -22,9 +22,9 @@ namespace SIMS_Projekat.Service
             return finishedAppointmentRepository.DeleteAppointment(appointment);
         }
 
-        public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment, int id)
+        public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment)
         {
-            return finishedAppointmentRepository.AddFinishedAppointment(appointment, id);
+            return finishedAppointmentRepository.AddFinishedAppointment(appointment);
         }
 
         public FinishedAppointment GetAppointmentByID(int appointmentID)
@@ -45,6 +45,29 @@ namespace SIMS_Projekat.Service
         public List<FinishedAppointment> GetAllAppointments()
         {
             return finishedAppointmentRepository.GetAllAppointments();
+        }
+        public FinishedAppointment AddNoteToAppointment(int appointmentID, int noteID)
+        {
+            FinishedAppointment appointment = GetAppointmentByID(appointmentID);
+            appointment.patientNoteID = noteID;
+            return appointment;
+        }
+        public bool EraseNoteForAppointmentIfExists(int noteID, Patient patient)
+        {
+            List<FinishedAppointment> appointmentList = GetAppointmentByPatientID(patient.ID);
+
+            FinishedAppointment appointment = appointmentList.Find(appoint => appoint.patientNoteID == noteID);
+            if(appointment != null)
+            {
+                appointment.patientNoteID = 0;
+                return true;
+            }
+            return false;
+        }
+
+        public FinishedAppointment GetAppointmentByNoteID(int noteiD)
+        {
+            return finishedAppointmentRepository.GetAppointmentByNoteID(noteiD);
         }
     }
 }

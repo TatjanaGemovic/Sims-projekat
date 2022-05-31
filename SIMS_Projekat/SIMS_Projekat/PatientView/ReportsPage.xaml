@@ -1,0 +1,52 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.ReportsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
+      d:DesignHeight="720" d:DesignWidth="1370"
+      Title="ReportsPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Lekarski izveštaji" Grid.Row="0"
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
+
+        <DataGrid  Grid.Row="2" x:Name="ReportsTable" ItemsSource="{Binding Reports }" 
+                   Style="{StaticResource ResourceKey=PatientReportsGrid}" 
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}" SelectedItem="{Binding ReportViewModel, Mode=OneWayToSource}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Broj izveštaja" Binding ="{Binding Index}" />
+                <DataGridTextColumn Header="Datum" Binding ="{Binding Date}" />
+                <DataGridTextColumn Header="Vreme" Binding ="{Binding Time}" />
+                <DataGridTextColumn Header="Tip pregleda" Binding ="{Binding OperationOrExam}" />
+                <DataGridTextColumn Header="Doktor" Binding ="{Binding DoctorName}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="detailsButton" Grid.Row="3" Grid.RowSpan="2" Content="Detaljnije" 
+                IsEnabled="{Binding Path=SelectedItem, ElementName=ReportsTable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
+                Command="{Binding DetailsCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center" 
+                Margin="0,0,20,0"/>
+    </Grid>
+</Page>

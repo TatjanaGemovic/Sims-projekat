@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using SIMS_Projekat.Model;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace SIMS_Projekat.PatientView.ViewModel
 {
@@ -14,6 +15,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
         public ObservableCollection<Evaluation> Evaluations { get; set; }
         public MyICommand BackCommand { get; set; }
         public MyICommand SendCommand { get; set; }
+        //public NavigationService NavService { get; set; }
+
         private Evaluation selectedEvaluation;
         private string doctorFullName;
 
@@ -71,7 +74,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
         private void OnBack()
         {
-            mainFrame.Content = new Homepage(mainFrame, selectedEvaluation.patient);
+            Homepage homepage = new Homepage(mainFrame, selectedEvaluation.patient);
+            mainFrame.NavigationService.Navigate(homepage);
         }
 
         public void LoadEvaluation()

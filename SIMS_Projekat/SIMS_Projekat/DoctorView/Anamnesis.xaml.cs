@@ -55,8 +55,8 @@ namespace SIMS_Projekat.DoctorView
                 isScheduledByPatient = appointment.isScheduledByPatient
             };
 
-            App.finishedappointmentRepo.AddFinishedAppointment(app, appointment.appointmentID);
-            App.finishedappointmentRepo.Serialize();
+            App.finishedAppointmentRepo.AddFinishedAppointment(app);
+            App.finishedAppointmentRepo.Serialize();
 
             Frame.Content = new ExaminationInfo(Frame, appointment, doctor);
         }

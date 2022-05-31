@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         Background="YellowGreen">
+    
     <Grid>
         <Button Background="AntiqueWhite" Content="Pacijent" HorizontalAlignment="Left" VerticalAlignment="Top" Height="49" Width="156" Margin="217,338,0,0" FontFamily="Poppins Medium" FontSize="14" Click="Button_Click_2"/>
         <Button Background="AntiqueWhite" Content="Lekar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="49" Width="156" Margin="217,258,0,0" FontFamily="Poppins Medium" FontSize="14" Click="Button_Click"/>

@@ -227,7 +227,7 @@ namespace SIMS_Projekat.PatientView
         private void cancelClick(object sender, RoutedEventArgs e)
         {
             ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, appointment.appointmentID, patient);
-            mainFrame.Content = viewAppointmentPage;
+            mainFrame.Content = viewAppointmentPage;     
         }
 
     }

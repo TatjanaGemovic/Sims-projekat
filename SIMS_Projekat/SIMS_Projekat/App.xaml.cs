@@ -26,9 +26,14 @@ namespace SIMS_Projekat
         public static AppointmentController appointmentController;
 
         private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
-        public static FinishedAppointmentRepository finishedappointmentRepo;
+        public static FinishedAppointmentRepository finishedAppointmentRepo;
         public static FinishedAppointmentService finishedAppointmentService;
         public static FinishedAppointmentController finishedAppointmentController;
+
+        private static string NOTE_FILE = @".\..\..\..\Resources\notes.txt";
+        public static NoteRepository noteRepository;
+        public static NoteService noteService;
+        public static NoteController noteController;
 
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
@@ -108,9 +113,7 @@ namespace SIMS_Projekat
             roomEquipmentDTOService = new RoomEquipmentDTOService(roomEquipmentDTORepository);
             exchangeEquipmentRequestService = new ExchangeEquipmentRequestService(exchangeEquipmentRequestRepository, roomEquipmentDTORepository, equipmentRepository);
             exchangeEquipmentRequestController = new ExchangeEquipmentRequestController(equipmentService, exchangeEquipmentRequestService);
-            medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
-            appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
-            finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
+            medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);    
             receiptRepository = new ReceiptRepository(RECEIPT_FILE);
             freeDayRequestRepository = new FreeDayRequestRepository(REQUEST_FILE);
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
@@ -122,17 +125,7 @@ namespace SIMS_Projekat
             medicineService = new MedicineService(medicineRepository);
             medicineController = new MedicineController(medicineService);
 
-
-            finishedAppointmentService = new FinishedAppointmentService()
-            {
-                finishedAppointmentRepository = finishedappointmentRepo
-            };
-            appointmentController = new AppointmentController()
-            {
-                appointmentService = appointmentService
-            };
-
-
+            appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
@@ -140,6 +133,26 @@ namespace SIMS_Projekat
             appointmentController = new AppointmentController()
             {
                 appointmentService = appointmentService
+            };
+
+            finishedAppointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
+            finishedAppointmentService = new FinishedAppointmentService()
+            {
+                finishedAppointmentRepository = finishedAppointmentRepo
+            };
+            finishedAppointmentController = new FinishedAppointmentController()
+            {
+                finishedAppointmentService = finishedAppointmentService
+            };
+
+            noteRepository = new NoteRepository(NOTE_FILE);
+            noteService = new NoteService()
+            {
+                noteRepository = noteRepository
+            };
+            noteController = new NoteController()
+            {
+                noteService = noteService
             };
 
             accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
@@ -199,7 +212,8 @@ namespace SIMS_Projekat
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
-            finishedappointmentRepo.Deserialize();
+            noteRepository.Deserialize();
+            finishedAppointmentRepo.Deserialize();
             receiptRepository.Deserialize();
             therapyNotificationRepository.Deserialize();
             equipmentController.Deserialize();
