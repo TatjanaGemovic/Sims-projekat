@@ -11,26 +11,26 @@
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
             <Button Content="&lt; Nazad" Command="{Binding backCommand}" Style="{StaticResource BackButton}" Margin="10,0,0,0"/>
-            <Label Content="Lek info" Width="134" Height="48" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+            <Label Content="Lek info" Width="160" Height="48" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Reject" Command="{Binding denyCommand}" HorizontalAlignment="Center" Margin="0,522,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="224">
+                <Button x:Name="Reject" Command="{Binding denyCommand}" HorizontalAlignment="Center" Margin="0,532,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/medical-history.png" Width="0" Margin="0,0,0,0" HorizontalAlignment="Stretch"/>
                         <TextBlock FontSize="20">Odbij</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Approve" Command="{Binding approveCommand}" FontSize="20" Content="Odobri" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="224"/>
-                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="346" Margin="0,41,0,0" RadiusX="10.5" RadiusY="10.5"/>
-                <Label Content="Ime" HorizontalAlignment="Left" Margin="38,100,0,0" VerticalAlignment="Top" Height="31" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Doza" HorizontalAlignment="Left" Margin="38,146,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Namena" HorizontalAlignment="Left" Margin="38,192,0,0" VerticalAlignment="Top" Width="161" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Komentar" HorizontalAlignment="Left" Margin="38,266,0,0" VerticalAlignment="Top" Width="126" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <TextBox x:Name="Ime" Text="{Binding Path=Name, Mode=OneWay}" BorderThickness="0" FontSize="15" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,100,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Doza" Text="{Binding Path=Dose, Mode=OneWay}" BorderThickness="0" FontSize="15" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,146,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
-                <TextBox x:Name="Namena" Text="{Binding Path=Use, Mode=OneWay}" BorderThickness="0" FontSize="15" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,200,51,0" VerticalAlignment="Top" Height="56" Width="150"/>
-                <TextBox x:Name="Komentar" Text="{Binding Path=Comment, Mode=OneWayToSource}" BorderThickness="1" FontSize="15" FontWeight="Bold" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,266,51,0" VerticalAlignment="Top" Height="71" Width="150"/>
+                <Button x:Name="Approve" Command="{Binding approveCommand}" FontSize="20" Content="Odobri" HorizontalAlignment="Center" Margin="0,450,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320"/>
+                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Stroke="#676FA3" StrokeThickness="4" Height="370" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Label Content="Ime" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top"  Width="108" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Doza" HorizontalAlignment="Left" Margin="50,130,0,0" VerticalAlignment="Top" Width="161" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Namena" HorizontalAlignment="Left" Margin="50,180,0,0" VerticalAlignment="Top" Width="161" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Komentar" HorizontalAlignment="Left" Margin="50,235,0,0" VerticalAlignment="Top" Width="161" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <TextBox x:Name="Ime" Text="{Binding Path=Name, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,80,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Doza" Text="{Binding Path=Dose, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,135,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
+                <TextBox x:Name="Namena" Text="{Binding Path=Use, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,185,51,0" VerticalAlignment="Top" Height="56" Width="150"/>
+                <TextBox x:Name="Komentar" Text="{Binding Path=Comment, Mode=OneWayToSource}" BorderThickness="1" FontSize="20" FontWeight="Bold" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,285,75,0" VerticalAlignment="Top" Height="73" Width="255"/>
             </Grid>
         </DockPanel>
     </Grid>

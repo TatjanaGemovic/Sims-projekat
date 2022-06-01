@@ -16,7 +16,10 @@
         </DockPanel>
         <DockPanel Margin="0,90,0,0">
             <Grid>
-                <chart:SfChart Header="Zahtevi za slobodne dane" FontSize="22" FontWeight="SemiBold"  Margin="10,22,10,40">
+                <Rectangle Fill="#EEF2FF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="540" Margin="0,35,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#EEF2FF" VerticalAlignment="Top" Width="290"/>
+                <TextBox IsReadOnly="True" Text="Zahtevi za slobodan dan" HorizontalAlignment="Left" Margin="38,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="290" Height="40" Foreground="#FF676FA3" FontSize="24" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <chart:SfChart Header="" FontSize="22" FontWeight="SemiBold"  Margin="10,25,10,38">
                     <chart:SfChart.PrimaryAxis>
                         <chart:CategoryAxis/>
                     </chart:SfChart.PrimaryAxis>

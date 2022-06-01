@@ -47,6 +47,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
-        <Button x:Name="Details" Content="Detaljnije" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,580,13,0" Click="Button_Click_1"/>
+        <Button x:Name="Details" Content="Detaljnije" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,610,13,0" Click="Button_Click_1"/>
     </Grid>
 </Page>

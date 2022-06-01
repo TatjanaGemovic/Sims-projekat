@@ -24,8 +24,8 @@
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="480" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Dijagnoza" HorizontalAlignment="Left" Margin="38,70,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Tretman" HorizontalAlignment="Left" Margin="38,295,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
-                <TextBox x:Name="Dijagnoza" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,330,50,0" VerticalAlignment="Top" Height="149" Width="312"/>
-                <TextBox x:Name="Tretman" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,106,50,0" VerticalAlignment="Top" Height="164" Width="312"/>
+                <TextBox x:Name="Dijagnoza" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,337,50,0" VerticalAlignment="Top" Height="140" Width="293"/>
+                <TextBox x:Name="Tretman" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,114,50,0" VerticalAlignment="Top" Height="155" Width="293"/>
                 <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>
                 <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="40" Foreground="#FF676FA3" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
             </Grid>
