@@ -1,0 +1,57 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.RemindersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1370"
+      Title="RemindersPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Podsetnici" Grid.Row="0"
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
+
+        <DataGrid  Grid.Row="2" Margin="150,0,150,0"
+                   ItemsSource="{Binding Notes}" Width="1000" Height="500"
+                   x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotesGrid}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}"
+                   SelectedItem="{Binding NoteViewModel, Mode=OneWayToSource}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="{Binding Index}" FontSize="24" />
+                                <TextBlock Text=". " FontSize="24" />
+                                <TextBlock Text="{Binding Title}" FontSize="24" />
+                            </WrapPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži belešku"
+                IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
+                Command="{Binding DetailsCommand}" Margin="0,0,250,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj belešku" 
+                Command="{Binding NewNoteCommand}" Margin="0,0,20,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    </Grid>
+</Page>
