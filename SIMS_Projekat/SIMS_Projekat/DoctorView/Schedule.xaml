@@ -15,23 +15,23 @@
         </DockPanel>
         <DockPanel Margin="0,90,0,0">
             <Grid>
-                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="315" Margin="0,75,0,0" RadiusX="10.5" RadiusY="10.5"/>
-                <Button IsEnabled="False" x:Name="Dodaj_operaciju" HorizontalAlignment="Right" Margin="0,520,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Dodaj_operaciju_Click">
+                <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="388" Margin="0,34,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Button IsEnabled="False" x:Name="Dodaj_operaciju" HorizontalAlignment="Right" Margin="0,540,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Dodaj_operaciju_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,10,0"/>
                         <TextBlock FontSize="17">Zakazi</TextBlock>
                     </StackPanel>
                 </Button>
-                <Label Content="Tip pregleda" HorizontalAlignment="Left" Margin="38,164,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="38,118,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="38,210,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Datum pocetka" HorizontalAlignment="Left" Margin="38,256,0,0" VerticalAlignment="Top" Width="120" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="38,302,0,0" VerticalAlignment="Top" Height="31" Width="120" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <ComboBox x:Name="Tip_operacije" SelectionChanged="Tip_operacije_SelectionChanged" IsEditable="False" Margin="200,164,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" />
-                <ComboBox x:Name="Ime_lekara" SelectionChanged="Ime_lekara_SelectionChanged" IsEditable="False" Margin="200,118,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" />
-                <ComboBox x:Name="Ime_sobe" SelectionChanged="Ime_sobe_SelectionChanged"  IsEnabled="False" IsEditable="False" Margin="200,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" />
-                <DatePicker x:Name="Datum_pocetka" SelectedDateChanged="Datum_pocetka_SelectedDateChanged" Margin="200,256,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="151" />
-                <ComboBox x:Name="Vreme_pocetka" SelectionChanged="Vreme_pocetka_SelectionChanged" IsEnabled="False" IsEditable="False" HorizontalAlignment="Left" Margin="200,302,0,0" VerticalAlignment="Top" Width="151" Height="24" ItemsSource="{Binding listofAppointmentTime, NotifyOnSourceUpdated=True}" SourceUpdated="Vreme_pocetka_SourceUpdated"/>
+                <Label Content="Tip pregleda" HorizontalAlignment="Left" Margin="50,123,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Ime lekara" HorizontalAlignment="Left" Margin="50,56,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Broj sobe" HorizontalAlignment="Left" Margin="50,190,0,0" VerticalAlignment="Top" Width="108" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Datum pocetka" HorizontalAlignment="Left" Margin="50,257,0,0" VerticalAlignment="Top" Width="120" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Vreme pocetka" HorizontalAlignment="Left" Margin="50,323,0,0" VerticalAlignment="Top" Height="31" Width="120" FontSize="15" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <ComboBox x:Name="Tip_operacije" SelectionChanged="Tip_operacije_SelectionChanged" IsEditable="False" Margin="50,158,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="27" />
+                <ComboBox x:Name="Ime_lekara" SelectionChanged="Ime_lekara_SelectionChanged" IsEditable="False" Margin="50,91,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="27" />
+                <ComboBox x:Name="Ime_sobe" SelectionChanged="Ime_sobe_SelectionChanged"  IsEnabled="False" IsEditable="False" Margin="50,225,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="27"/>
+                <DatePicker x:Name="Datum_pocetka" SelectedDateChanged="Datum_pocetka_SelectedDateChanged" Margin="50,292,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="26" />
+                <ComboBox x:Name="Vreme_pocetka" SelectionChanged="Vreme_pocetka_SelectionChanged" IsEnabled="False" IsEditable="False" HorizontalAlignment="Left" Margin="50,359,0,0" VerticalAlignment="Top" Width="250" Height="27" ItemsSource="{Binding listofAppointmentTime, NotifyOnSourceUpdated=True}" SourceUpdated="Vreme_pocetka_SourceUpdated"/>
             </Grid>
         </DockPanel>
     </Grid>

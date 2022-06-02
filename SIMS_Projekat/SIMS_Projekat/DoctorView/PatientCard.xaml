@@ -31,7 +31,7 @@
                             <Label Content="Dodatno:" Style="{StaticResource ClassicLabel}" Margin="30,48,0,0" Width="151" Height="40" Grid.Row="3"/>
                             <TextBox HorizontalAlignment="Right" Margin="0,21,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" BorderBrush="White" Grid.Row="1"/>
                             <TextBox x:Name="TrenTerapija" HorizontalAlignment="Right" Margin="0,146,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.RowSpan="2" Grid.Row="1"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="216,8,0,0" VerticalAlignment="Top" Width="123" Grid.Row="3"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="190,8,0,0" VerticalAlignment="Top" Width="150" Grid.Row="3"/>
                             <TextBox x:Name="Dodatno" HorizontalAlignment="Right" Margin="0,58,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.Row="3"/>
 
                         </Grid>
@@ -47,7 +47,7 @@
                             <Label Content="Prethodna terapija terapija:" Style="{StaticResource ClassicLabel}" Margin="30,240,0,0" Width="151" Height="40"/>
                             <TextBox HorizontalAlignment="Right" Margin="0,35,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
                             <TextBox HorizontalAlignment="Right" Margin="0,240,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="Hospitalizacija" HorizontalAlignment="Left" Margin="210,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="Hospitalizacija" HorizontalAlignment="Left" Margin="182,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

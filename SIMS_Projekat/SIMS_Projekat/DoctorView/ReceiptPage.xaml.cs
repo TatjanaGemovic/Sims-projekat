@@ -27,6 +27,7 @@ namespace SIMS_Projekat.DoctorView
         private Patient patient;
         private Appointment appointment;
         BindingList<String> times;
+        BindingList<String> medicines;
 
         public ReceiptPage(Frame frame, Doctor doctor1, Patient patient1, Appointment app)
         {
@@ -37,6 +38,14 @@ namespace SIMS_Projekat.DoctorView
             appointment = app; 
             Ime_pacijenta.Text = patient.FirstName + " " + patient.LastName;
             InitializeComboBox();
+            InitializeComboBox2();
+            SetBlackoutDates();
+        }
+
+        private void SetBlackoutDates()
+        {
+            Od.DisplayDateStart = DateTime.Now;
+            Do.DisplayDateStart = DateTime.Now.AddDays(1);
         }
 
         private void InitializeComboBox()
@@ -47,6 +56,31 @@ namespace SIMS_Projekat.DoctorView
             times.Add("3");
             times.Add("4");
             Dnevno.ItemsSource = times;
+        }
+
+        private void InitializeComboBox2()
+        {
+            medicines = new BindingList<String>();
+            foreach(Medicine m in App.medicineController.GetMedicine())
+            {
+                bool temp = true;
+                foreach(Allergen a in patient.Allergens)
+                {
+                    List<string> komponente = m.MedicineComponents;
+                    foreach(String k in komponente)
+                    {
+                        if (a.Name.Equals(k))
+                        {
+                            temp = false; //ne moze ovaj lek
+                        }
+                    }    
+                }
+                if (temp)
+                {
+                    medicines.Add(m.MedicineName);
+                }
+            }
+            Lekovi.ItemsSource = medicines;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -62,6 +96,14 @@ namespace SIMS_Projekat.DoctorView
 
             int broj = int.Parse(Dnevno.SelectedItem.ToString());
 
+            Medicine selectedMedicine = null;
+            foreach(Medicine m in App.medicineController.GetMedicine())
+            {
+                if (m.MedicineName.Equals(Lekovi.SelectedItem.ToString())){
+                    selectedMedicine = m;
+                }
+            }
+
             Receipt receipt = new Receipt()
             {
                 beginningDate = from,
@@ -69,7 +111,8 @@ namespace SIMS_Projekat.DoctorView
                 Record = treatment,
                 patient = patient,
                 DailyMed = broj,
-                appointmentID = appointment.appointmentID
+                appointmentID = appointment.appointmentID,
+                medicine = selectedMedicine
             };
 
             Receipt receiptWithID = App.receiptRepository.AddReceipt(receipt);
