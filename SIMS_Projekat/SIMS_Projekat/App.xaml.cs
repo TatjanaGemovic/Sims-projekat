@@ -215,7 +215,7 @@ namespace SIMS_Projekat
             appointmentRepo.Deserialize();
             noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
-            receiptRepository.Deserialize();
+            
             therapyNotificationRepository.Deserialize();
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
@@ -224,6 +224,7 @@ namespace SIMS_Projekat
 
             freeDayRequestRepository.Deserialize();
             medicineController.Deserialize();
+            receiptRepository.Deserialize();
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
