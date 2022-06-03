@@ -77,5 +77,15 @@ namespace SIMS_Projekat.ManagerView
         {
             ManagerHome.mainFrame.Content = new RejectMedicine();
         }
+
+        private void datagGridMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridMedicine.SelectedItem != null)
+            {
+                IzmenaLekaBtn.IsEnabled = true;
+                ObrisiLekBtn.IsEnabled = true;
+               
+            }
+        }
     }
 }

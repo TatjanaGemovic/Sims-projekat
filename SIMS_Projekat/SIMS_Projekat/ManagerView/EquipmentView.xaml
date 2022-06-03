@@ -8,11 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="EquipmentView">
 
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="127.685"/>
+                <ColumnDefinition Width="140"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
@@ -25,16 +25,17 @@
                 <RowDefinition Height="45"></RowDefinition>
                 <RowDefinition Height="45"></RowDefinition>
                 <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-
+            
             <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Oprema" FontSize="35" FontWeight="Bold" Margin="0,10,0,0" ></Label>
+                <Label  Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Oprema"  ></Label>
 
 
                 <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="161,0,0,0">
@@ -56,7 +57,7 @@
                             <ColumnDefinition Width="47*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Pretraga:" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Pretraga:" Style="{DynamicResource LabelInButton}" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
                         <TextBox x:Name="searchBox" Grid.Row="0" VerticalAlignment="Top" Height="21" Margin="0,14,10,0" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
 
                     </Grid>
@@ -67,7 +68,7 @@
                             <ColumnDefinition Width="86*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Filter:" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Filter:" Style="{DynamicResource LabelInButton}" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
                         <ComboBox x:Name="filterCombo" Margin="0,14,1,4" Grid.Column="1" SelectionChanged="filterCombo_SelectionChanged">
                             <ComboBoxItem Content="static"/>
                             <ComboBoxItem Content="dynamic"/>
@@ -80,18 +81,43 @@
 
 
 
-            <DataGrid x:Name="datagGridEquipment" ItemsSource="{Binding EquipmentList}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+            <DataGrid x:Name="datagGridEquipment" ItemsSource="{Binding EquipmentList}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectionChanged="datagGridEquipment_SelectionChanged"  >
                 <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="columnName" Binding ="{Binding EquipmentName}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnKolicina" Binding ="{Binding Quantity, NotifyOnSourceUpdated=True, Mode=TwoWay}" IsReadOnly="True" Header="kolicina"  Width="100" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding pEquipmentType}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnName" Binding ="{Binding EquipmentName}" Header="naziv"  Width="*" />
+                    <DataGridTextColumn x:Name="columnKolicina" Binding ="{Binding Quantity, NotifyOnSourceUpdated=True, Mode=TwoWay}" Header="kolicina"  Width="100" />
+                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding pEquipmentType}"  Header="tip"  Width="100" />
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="PregledPoProstorijamaBtn" Grid.Column="1" Content="Pregled po prostorijama" HorizontalAlignment="Left" Height="25" Grid.Row="2" VerticalAlignment="Center" Width="113" Margin="5,0,0,0" Click="PregledPoProstorijamaBtn_Click" />
-            <Button x:Name="OpremaPremestanjeBtn" Grid.Column="1" Content="Premestanje u prostoriju" HorizontalAlignment="Left" Height="25" Grid.Row="3" VerticalAlignment="Center" Width="113" Margin="5,0,0,0" Click="OpremaPremestanjeBtn_Click" />
-            <Button x:Name="DodajOpremuBtn" Grid.Column="1" Content="Dodaj opremu" HorizontalAlignment="Left" Height="25" Grid.Row="4" VerticalAlignment="Center" Width="113" Margin="5,0,0,0" Click="DodajOpremuBtn_Click"/>
-            <Button  x:Name="IzmenaOpremuBtn" Grid.Column="1" Content="Izmeni opremu" HorizontalAlignment="Left" Height="25" Grid.Row="5" VerticalAlignment="Center" Width="113" Margin="5,0,0,0" Click="IzmenaOpremeeBtn_Click" />
-            <Button x:Name ="ObrisiOpremuBtn" Grid.Column="1" Content="Obrisi opremu" HorizontalAlignment="Left" Height="25" Grid.Row="6" VerticalAlignment="Center" Width="113" Margin="5,0,0,0" Click="ObrisiOpremeBtn_Click"/>
+            <Button x:Name="PregledPoProstorijamaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  Grid.Row="2" Height="30" Width="130" IsEnabled="False"  Click="PregledPoProstorijamaBtn_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerInventar.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Pregled opreme" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="OpremaPremestanjeBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Height="30" Grid.Row="3"  Width="130" IsEnabled="False" Click="OpremaPremestanjeBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerTransfer.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Premesti opremu" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="DodajOpremuBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130"  Click="DodajOpremuBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
+                    <Label   Content="Dodaj opremu" Style="{DynamicResource LabelInButton}" />
+                </StackPanel>
+            </Button>
+            <Button  x:Name="IzmenaOpremuBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  Height="30" Grid.Row="5"  Width="130" IsEnabled="False"  Click="IzmenaOpremeeBtn_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Izmeni opremu" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="ObrisiOpremuBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Height="30" Grid.Row="6"  Width="130" IsEnabled="False"  Click="ObrisiOpremeBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Obrisi opremu" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
 
 
         </Grid>

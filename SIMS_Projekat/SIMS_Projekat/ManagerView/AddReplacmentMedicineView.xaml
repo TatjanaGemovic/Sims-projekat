@@ -8,11 +8,11 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddReplacmentMedicineView">
 
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="121*"></ColumnDefinition>
-                <ColumnDefinition Width="155*"></ColumnDefinition>
+                <ColumnDefinition Width="280*"></ColumnDefinition>
+                <ColumnDefinition Width="295*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Row="0" Grid.Column="0">
@@ -22,13 +22,14 @@
                     <RowDefinition Height="44*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Content="Izaberite lek koji zelite da dodate" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,20"></Label>
-                <DataGrid x:Name="datagGridMedicine"  Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                <Label Content="Zamenski lekovi:" Style="{DynamicResource LabelInButton}" Grid.Row="0" VerticalAlignment="Bottom" Margin="20,0,0,20" FontSize="14" HorizontalAlignment="Left" Width="113"/>
+                <DataGrid x:Name="datagGridReplacmentMedicine" Style="{DynamicResource ManagerDataGridStyle}"  Grid.Row="1" Margin="20,0,20,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" SelectionChanged="datagGridReplacmentMedicine_SelectionChanged" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnName1" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnFloor1" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
+
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="1">
@@ -41,16 +42,28 @@
                     <RowDefinition Height="45*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Content="Zamenski lekovi:" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom" Margin="50,30,20,20" FontSize="14"> </Label>
-                <DataGrid x:Name="datagGridReplacmentMedicine"  Grid.Row="1" Margin="50,0,50,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                <Label Content="Izaberite lek koji zelite da dodate:" Style="{DynamicResource LabelInButton}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,36,0,0" Width="263"></Label>
+                <DataGrid x:Name="datagGridMedicine" Style="{DynamicResource ManagerDataGridStyle}"  Grid.Row="1" Grid.Column="0" Margin="20,0,20,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="columnName1" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnFloor1" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button x:Name="DodajZamenskeBtn" Content="Dodaj zamenski lek" Grid.Row="3" Margin="50,10,50,10" Click="DodajZamenskeBtn_Click"/>
-                <Button x:Name="Zavrsi" Content="Zavrsi dodavanje" Grid.Row="4" Margin="50,10,50,10" Click="Zavrsi_Click"/>
+
+
+                <Button x:Name="DodajZamenskeBtn"  Style="{DynamicResource ManagerButtonCRUD}" IsEnabled="False" Grid.Row="3" Click="DodajZamenskeBtn_Click" Width="193">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
+                        <Label   Content="Dodaj zamenski lek" Style="{DynamicResource LabelInButton}" Width="128" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Zavrsi" Style="{DynamicResource ManagerButtonCRUD}" Grid.Row="4" Click="Zavrsi_Click" Width="193">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
+                        <Label   Content="Zavrsi dodavanje" Style="{DynamicResource LabelInButton}" Width="129" />
+                    </StackPanel>
+                </Button>
 
             </Grid>
 

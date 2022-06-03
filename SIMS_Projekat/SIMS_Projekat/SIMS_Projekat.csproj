@@ -53,6 +53,18 @@
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
     <None Remove="Resources\icons_patient\video.png" />
+    <None Remove="Resources\icon_manager\ManagerAdd.png" />
+    <None Remove="Resources\icon_manager\ManagerComponents.png" />
+    <None Remove="Resources\icon_manager\ManagerDelete.png" />
+    <None Remove="Resources\icon_manager\ManagerDone.png" />
+    <None Remove="Resources\icon_manager\ManagerEdit.png" />
+    <None Remove="Resources\icon_manager\ManagerInventar.png" />
+    <None Remove="Resources\icon_manager\ManagerLogOut.png" />
+    <None Remove="Resources\icon_manager\ManagerQuit.png" />
+    <None Remove="Resources\icon_manager\ManagerRejected.png" />
+    <None Remove="Resources\icon_manager\ManagerRenoviranje.png" />
+    <None Remove="Resources\icon_manager\ManagerReplacmentMedicine.png" />
+    <None Remove="Resources\icon_manager\ManagerTransfer.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,6 +128,18 @@
     <Resource Include="Resources\icons_patient\report.png" />
     <Resource Include="Resources\icons_patient\stethoscope.png" />
     <Resource Include="Resources\icons_patient\video.png" />
+    <Resource Include="Resources\icon_manager\ManagerAdd.png" />
+    <Resource Include="Resources\icon_manager\ManagerComponents.png" />
+    <Resource Include="Resources\icon_manager\ManagerDelete.png" />
+    <Resource Include="Resources\icon_manager\ManagerDone.png" />
+    <Resource Include="Resources\icon_manager\ManagerEdit.png" />
+    <Resource Include="Resources\icon_manager\ManagerInventar.png" />
+    <Resource Include="Resources\icon_manager\ManagerLogOut.png" />
+    <Resource Include="Resources\icon_manager\ManagerQuit.png" />
+    <Resource Include="Resources\icon_manager\ManagerRejected.png" />
+    <Resource Include="Resources\icon_manager\ManagerRenoviranje.png" />
+    <Resource Include="Resources\icon_manager\ManagerReplacmentMedicine.png" />
+    <Resource Include="Resources\icon_manager\ManagerTransfer.png" />
   </ItemGroup>
 
   <ItemGroup>

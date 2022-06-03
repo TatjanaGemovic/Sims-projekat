@@ -9,7 +9,7 @@
       Title="MedicineView">
 
 
-        <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -17,30 +17,51 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="85"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                    <RowDefinition Height="45"></RowDefinition>
-                </Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Content="Lekovi" FontSize="35" FontWeight="Bold" Margin="0,10,0,0" ></Label>
-                <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Lekovi" ></Label>
+            <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectionChanged="datagGridMedicine_SelectionChanged" >
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=pMedicineUseType}" IsReadOnly="True" Header="use type"  Width="120" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
+                        <DataGridTextColumn x:Name="columnUseType" Binding ="{Binding Path=pMedicineUseType}" IsReadOnly="True" Header="use type"  Width="120" CanUserResize="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
-  
-                <Button x:Name="DodajLekBtn" Grid.Column="1" Content="Dodaj lek" HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="DodajLekBtn_Click" />
-                <Button  x:Name="IzmenaLekaBtn" Grid.Column="1" Content="Izmeni lek" HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="IzmenaLekaBtn_Click"  />
-                <Button x:Name ="ObrisiLekBtn" Grid.Column="1" Content="Obrisi lek" HorizontalAlignment="Left" Height="30" Grid.Row="5" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="ObrisiLekBtn_Click" />
-                <Button x:Name ="OdbijeniLekoviBtn" Grid.Column="1" Content="Odbijeni lekovi" HorizontalAlignment="Left" Height="30" Grid.Row="0" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="OdbijeniLekoviBtn_Click" />
+
+            <Button x:Name="DodajLekBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Click="DodajLekBtn_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
+                    <Label   Content=" Dodaj lek" Style="{DynamicResource LabelInButton}" />
+                </StackPanel>
+            </Button>
+            <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"   Height="30" Grid.Row="4"  Width="130" IsEnabled="False" Click="IzmenaLekaBtn_Click"  >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content=" Izmeni lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  Height="30" Grid.Row="5"  Width="130" IsEnabled="False"  Click="ObrisiLekBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Obrisi lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="OdbijeniLekoviBtn"  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="0" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="OdbijeniLekoviBtn_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerRejected.png" Height="20" Width="20"/>
+                    <Label Content="Odbijeni lekovi" Style="{DynamicResource LabelInButton}" />
+                </StackPanel>
+            </Button>
                
 
             </Grid>

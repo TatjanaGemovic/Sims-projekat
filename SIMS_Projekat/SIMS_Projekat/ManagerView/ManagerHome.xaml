@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS_Projekat"
         mc:Ignorable="d"
-        Title="ManagerHome" Height="450" Width="800">
+     Title="ManagerHome" Height="470" Width="800">
 
 
     <Grid x:Name="main">
@@ -18,32 +18,33 @@
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <DockPanel x:Name="sideMenuDock" Grid.Row="0" Grid.Column="0" >
+        <DockPanel x:Name="sideMenuDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="0" Grid.Column="0" >
             <ListView BorderBrush="Transparent" Background="Transparent" >
 
-                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Height="40" Width="132" KeyUp="notifikacije_KeyUp" KeyDown="notifikacije_KeyDown" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
-                <ListViewItem x:Name="prostorijeView" Content="Prostorije" Height="40" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
-                <ListViewItem x:Name="lekoviView" Content="Lekovi" Height="40" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
-                <ListViewItem x:Name="opremaView" Content="Oprema" Height="40" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
-                <ListViewItem x:Name="anketeView" Content="Ankete" Height="40"></ListViewItem>
-                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Height="40"></ListViewItem>
-                <ListViewItem x:Name="pomocView" Content="Pomoc" Height="40"></ListViewItem>
+                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Style="{DynamicResource ManagerMenuText}" KeyUp="notifikacije_KeyUp" KeyDown="notifikacije_KeyDown" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
+                <ListViewItem x:Name="prostorijeView" Content="Prostorije" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
+                <ListViewItem x:Name="lekoviView" Content="Lekovi" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
+                <ListViewItem x:Name="opremaView" Content="Oprema" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
+                <ListViewItem x:Name="anketeView" Content="Ankete" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
+                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Style="{DynamicResource ManagerMenuText}" ></ListViewItem>
+                <ListViewItem x:Name="pomocView" Content="Pomoc" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
 
             </ListView>
 
         </DockPanel>
 
-        <DockPanel x:Name="sideLogOutDock" Grid.Row="1" Grid.Column="0" >
-            <Button Content="Odjavi se" Width="112"  Height="41" Click="Button_Click" />
+        <DockPanel x:Name="sideLogOutDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="1" Grid.Column="0" >
+            <Button Style="{DynamicResource ManagerLogOutButton}" Width="112"  Height="41" Click="Button_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerLogOut.png" Height="20" Width="20"/>
+                    <Label   Content="  Odjavi se" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
 
         </DockPanel>
 
-        <DockPanel x:Name="pagesDock" Grid.Column="1" Grid.RowSpan="2" >
-            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Margin="10,10,10,10" >
-
-
-            </Frame>
-
+        <DockPanel x:Name="pagesDock" Style="{DynamicResource ManagerPagesDock}"  Grid.Column="1" Grid.RowSpan="2" >
+            <Frame x:Name="MainFrame" Style="{DynamicResource ManagerMainFrame}" NavigationUIVisibility="Hidden"  />
         </DockPanel>
 
 

@@ -83,5 +83,18 @@ namespace SIMS_Projekat.ManagerView
             var selectedRooms = (Room)datagGridRooms.SelectedItem;
             ManagerHome.mainFrame.Content = new RenoviranjeView(selectedRooms);
         }
+
+        private void datagGridRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridRooms.SelectedItems != null)
+            {
+                ZakaziRenoviranjeBtn.IsEnabled = true;
+                IzmenaProstorijeBtn.IsEnabled = true;
+                InventarProstorijeBtn.IsEnabled = true;
+                ObrisiProstorijuBtn.IsEnabled = true;
+
+            }
+        }
+
     }
 }

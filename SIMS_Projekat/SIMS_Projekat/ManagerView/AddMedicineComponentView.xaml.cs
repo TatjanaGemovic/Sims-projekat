@@ -77,5 +77,11 @@ namespace SIMS_Projekat.ManagerView
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private void ComponentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ComponentList.SelectedItem != null)
+                DeleteComponentBtn.IsEnabled = true;
+        }
     }
 }

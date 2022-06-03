@@ -32,7 +32,7 @@ namespace SIMS_Projekat.ManagerView
             this.DataContext = this;
             _medicine = medicine;
             _mood = mood;
-            datagGridMedicine.ItemsSource = new ObservableCollection<Medicine>(App.medicineController.GetMedicine());
+            datagGridMedicine.ItemsSource = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
             datagGridReplacmentMedicine.ItemsSource = new ObservableCollection<Medicine>(_medicine.ReplacmentMedicine);
         }
 
@@ -54,6 +54,12 @@ namespace SIMS_Projekat.ManagerView
             dto.mainMedicineID = _medicine.MedicineID;
             dto.replacmentMedicineID = item.MedicineID;
             App.medicineReplacmentRepository.AddDTO(dto);
+        }
+
+        private void datagGridReplacmentMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridMedicine.SelectedItem != null)
+                DodajZamenskeBtn.IsEnabled = true;
         }
     }
 }
