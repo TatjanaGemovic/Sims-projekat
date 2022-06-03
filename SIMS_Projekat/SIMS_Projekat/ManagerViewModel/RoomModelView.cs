@@ -56,7 +56,7 @@ namespace SIMS_Projekat.ManagerModelView
         {
             get
             {
-                return inventarProstorije ?? (new RelayCommand(param => InventarProstorijeBtn1_Click(), param => canCommand()));
+                return inventarProstorije ?? (new RelayCommand(param => InventarProstorijeBtn1_Click(), param => canCommandExecut()));
             }
         }
 
@@ -72,7 +72,7 @@ namespace SIMS_Projekat.ManagerModelView
         {
             get
             {
-                return editRoom ?? (new RelayCommand(param => IzmenaProstorijeBtn_Click(), param => canCommand()));
+                return editRoom ?? (new RelayCommand(param => IzmenaProstorijeBtn_Click(), param => canCommandExecut()));
             }
         }
 
@@ -80,7 +80,7 @@ namespace SIMS_Projekat.ManagerModelView
         {
             get
             {
-                return deleteRoom ?? (new RelayCommand(param => ObrisiProstorijuBtn_Click(), param => canCommand()));
+                return deleteRoom ?? (new RelayCommand(param => ObrisiProstorijuBtn_Click(), param => canCommandExecut()));
             }
         }
 
@@ -88,11 +88,11 @@ namespace SIMS_Projekat.ManagerModelView
         {
             get
             {
-                return renovationRoom?? (new RelayCommand(param => RenoviranjeProstorijeBtn_Click(), param => canCommand()));
+                return renovationRoom?? (new RelayCommand(param => RenoviranjeProstorijeBtn_Click(), param => canCommandExecut()));
             }
         }
 
-        private Boolean canCommand()
+        private Boolean canCommandExecut()
         {
             return SelectedItem != null;
         }
@@ -133,16 +133,6 @@ namespace SIMS_Projekat.ManagerModelView
             ManagerHome.mainFrame.Content = new RenoviranjeView(SelectedItem);
         }
 
-        /*private void datagGridRooms_SelectionChanged()
-        {
-            if (SelectedItem != null)
-            {
-                // ZakaziRenoviranjeBtn.IsEnabled = true;
-                //IzmenaProstorijeBtn.IsEnabled = true;
-                //InventarProstorijeBtn.IsEnabled = true;
-                //ObrisiProstorijuBtn.IsEnabled = true;
-
-            }
-        }*/
+        
     }
 }

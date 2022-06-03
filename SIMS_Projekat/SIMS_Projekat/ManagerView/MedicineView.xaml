@@ -30,7 +30,7 @@
             </Grid.RowDefinitions>
 
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Lekovi" ></Label>
-            <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectionChanged="datagGridMedicine_SelectionChanged" >
+            <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
                         <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
@@ -38,25 +38,25 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-            <Button x:Name="DodajLekBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Click="DodajLekBtn_Click" >
+            <Button x:Name="DodajLekBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Command="{Binding AddMedicine}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
                     <Label   Content=" Dodaj lek" Style="{DynamicResource LabelInButton}" />
                 </StackPanel>
             </Button>
-            <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"   Height="30" Grid.Row="4"  Width="130" IsEnabled="False" Click="IzmenaLekaBtn_Click"  >
+            <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"   Height="30" Grid.Row="4"  Width="130" Command="{Binding EditMedicine}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
                     <Label   Content=" Izmeni lek" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  Height="30" Grid.Row="5"  Width="130" IsEnabled="False"  Click="ObrisiLekBtn_Click">
+            <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  Height="30" Grid.Row="5"  Width="130" Command="{Binding DeleteMedicine}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
                     <Label   Content="Obrisi lek" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name ="OdbijeniLekoviBtn"  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="0" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="OdbijeniLekoviBtn_Click" >
+            <Button x:Name ="OdbijeniLekoviBtn"  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="0" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Command="{Binding RejectedMedicine}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerRejected.png" Height="20" Width="20"/>
                     <Label Content="Odbijeni lekovi" Style="{DynamicResource LabelInButton}" />
