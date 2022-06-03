@@ -68,7 +68,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
     <PackageReference Include="Syncfusion.SfChart.WPF" Version="20.1.0.58" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>

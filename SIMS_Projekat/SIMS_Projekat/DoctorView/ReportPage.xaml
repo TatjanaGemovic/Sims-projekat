@@ -19,21 +19,17 @@
                     <ColumnDefinition Width="215*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="Generisi_Izvestaj" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="200" Height="60">
+                <Button x:Name="Generisi_Izvestaj" IsEnabled="False" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="200" Height="60" Click="Generisi_Izvestaj_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Generisi izvestaj</TextBlock>
                     </StackPanel>
                 </Button>
-                <Label Content="Od" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                <Label Content="Do" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+
+                <Label Content="Izaberite mesec: " HorizontalAlignment="Left" Margin="20,8,0,0" VerticalAlignment="Top" Foreground="#FF676FA3" FontSize="21" FontWeight="Bold" Width="175" />
+                <ComboBox x:Name="Mesec" HorizontalAlignment="Right" SelectionChanged="Mesec_SelectionChanged" Margin="0,18,20,0" VerticalAlignment="Top" Width="145" Height="22"/>
+                <Rectangle HorizontalAlignment="Right" Height="26" Margin="0,16,18,0"  Stroke="#676FA3" StrokeThickness="4" VerticalAlignment="Top" Width="149" RadiusX="5" RadiusY="5"/>
             </Grid>
         </DockPanel>
-        <Viewbox Margin="214,100,20,580" Width="130">
-            <DatePicker Width="130" x:Name="Od" SelectedDateChanged="Od_SelectedDateChanged"></DatePicker>
-        </Viewbox>
-        <Viewbox Margin="35,100,206,580" Width="130">
-            <DatePicker Width="130" x:Name="Do"></DatePicker>
-        </Viewbox>
     </Grid>
 </Page>
