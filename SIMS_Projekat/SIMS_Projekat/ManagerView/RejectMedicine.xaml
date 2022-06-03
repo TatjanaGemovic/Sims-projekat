@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="RejectMedicine">
 
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -27,18 +27,33 @@
                 <RowDefinition Height="45"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Content="Odbijeni lekovi" FontSize="35" FontWeight="Bold" Margin="0,10,0,0" ></Label>
-            <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Odbijeni lekovi" Margin="0,10,0,0" ></Label>
+            <DataGrid x:Name="datagGridMedicine" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn x:Name="medicineName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="medicine"  Width="100" CanUserResize="False"/>
                     <DataGridTextColumn x:Name="comment" Binding ="{Binding Path=DoctorComment}" IsReadOnly="True" Header="doctor comment"  Width="*" CanUserResize="False"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-           
-            <Button  x:Name="IzmenaLekaBtn" Grid.Column="1" Content="Izmeni lek" HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="IzmenaLekaBtn_Click"  />
-            <Button x:Name ="ObrisiLekBtn" Grid.Column="1" Content="Obrisi lek" HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="ObrisiLekBtn_Click" />
-            <Button x:Name ="BackBtn" Grid.Column="1" Content="Nazad" HorizontalAlignment="Left" Height="30" Grid.Row="7" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="BackBtn_Click" />
+
+            <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="IzmenaLekaBtn_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Izmeni lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Click="ObrisiLekBtn_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Obrisi lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="BackBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="7" Width="78" Click="BackBtn_Click" Margin="57,0,0,0" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                </StackPanel>
+            </Button>
 
 
         </Grid>

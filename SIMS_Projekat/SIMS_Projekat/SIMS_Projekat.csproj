@@ -54,6 +54,7 @@
     <None Remove="Resources\icons_patient\stethoscope.png" />
     <None Remove="Resources\icons_patient\video.png" />
     <None Remove="Resources\icon_manager\ManagerAdd.png" />
+    <None Remove="Resources\icon_manager\ManagerBack.png" />
     <None Remove="Resources\icon_manager\ManagerComponents.png" />
     <None Remove="Resources\icon_manager\ManagerDelete.png" />
     <None Remove="Resources\icon_manager\ManagerDone.png" />
@@ -65,6 +66,10 @@
     <None Remove="Resources\icon_manager\ManagerRenoviranje.png" />
     <None Remove="Resources\icon_manager\ManagerReplacmentMedicine.png" />
     <None Remove="Resources\icon_manager\ManagerTransfer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icon_manager\ManagerBack.png" />
   </ItemGroup>
 
   <ItemGroup>
