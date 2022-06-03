@@ -119,6 +119,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="SecretaryView\ViewPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -179,6 +184,13 @@
     <Resource Include="Resources\icons\delete.png" />
     <Resource Include="Resources\icons\edit.png" />
     <Resource Include="Resources\icons\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
