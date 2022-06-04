@@ -51,7 +51,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
             mainFrame = f;
             patient = p;
 
-            ObservableCollection<Reminder> reminders = new ObservableCollection<Reminder>(App.reminderController.GetRemindersByPatientID(patient.ID));
+            ObservableCollection<Reminder> reminders = new ObservableCollection<Reminder>(App.reminderController.GetRemindersByTypeAndPatient("Podsetnik: ", patient.ID));
             Inject = new Injector();
             Reminders = new ObservableCollection<ReminderViewModel>(Inject.RemindersConverter.ConvertCollectionToViewModel(reminders));
             DetailsCommand = new MyICommand(OnDetail);

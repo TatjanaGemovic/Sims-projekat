@@ -25,6 +25,7 @@ namespace SIMS_Projekat.Service
 
         public Reminder DeleteReminder(Reminder reminder)
         {
+            RemindersForPatient.Remove(reminder);
             return reminderRepository.DeleteReminder(reminder);
         }
 
@@ -123,6 +124,18 @@ namespace SIMS_Projekat.Service
         {
             for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
                 yield return day;
+        }
+
+        public List<Reminder> GetRemindersByTypeAndPatient(string type, string patientID)
+        {
+            List<Reminder> allPatientReminders = ReminderRepository.GetRemindersByPatientID(patientID);
+            List<Reminder> neededReminders = new List<Reminder>();
+            foreach(Reminder r in allPatientReminders)
+            {
+                if (r.type.Equals(type))
+                    neededReminders.Add(r);
+            }
+            return neededReminders;
         }
     }
 }

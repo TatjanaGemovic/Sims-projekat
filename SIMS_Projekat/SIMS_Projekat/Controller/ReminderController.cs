@@ -42,6 +42,11 @@ namespace SIMS_Projekat.Controller
             return reminderService.GetAllReminders();
         }
 
+        public List<Reminder> GetRemindersByTypeAndPatient(string type, string patientID)
+        {
+            return reminderService.GetRemindersByTypeAndPatient(type, patientID);
+        }
+        
         public static void TickTimer(object state)
         {
             ReminderService.TickTimer(state);

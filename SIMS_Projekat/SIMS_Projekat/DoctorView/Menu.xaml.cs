@@ -43,6 +43,7 @@ namespace SIMS_Projekat.DoctorView
         {
             App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.reminderRepository.Serialize();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             doctorHomePage.Close();

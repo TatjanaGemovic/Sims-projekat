@@ -25,13 +25,12 @@ namespace SIMS_Projekat.PatientView
     {
         public Patient patient;
         private string nameSurname;
-        static Timer timer1;
-        static Timer timer2;
+        static Timer timer;
         Page Homepage;
         public PatientHome(Patient p)
         {
-            timer1 = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
-            timer2 = new Timer(new TimerCallback(ReminderController.TickTimer), null, 60, 30000);
+            //timer1 = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
+            timer = new Timer(new TimerCallback(ReminderController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
 

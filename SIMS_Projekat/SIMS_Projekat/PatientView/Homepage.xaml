@@ -60,7 +60,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <WrapPanel>
-                                <TextBlock Text="Uzmite terapiju: " FontSize="24" />
+                                <TextBlock Text="{Binding type}" FontSize="24" />
                                 <TextBlock Text="{Binding content}" FontWeight="SemiBold" FontSize="24" />
                                 <TextBlock Text=", u vreme  " FontSize="24" />
                                 <TextBlock Text="{Binding startTime.TimeOfDay}" FontWeight="SemiBold" FontSize="24"/>
