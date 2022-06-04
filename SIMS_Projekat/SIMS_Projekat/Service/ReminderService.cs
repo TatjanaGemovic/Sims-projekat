@@ -107,6 +107,7 @@ namespace SIMS_Projekat.Service
                         type = "Uzmite terapiju: ",
                         content = receipt.medicine.MedicineName,
                         patient = receipt.patient,
+                        isRepeatable = "Nikada"
                     };
                     AddReminder(reminder);
 
@@ -136,6 +137,20 @@ namespace SIMS_Projekat.Service
                     neededReminders.Add(r);
             }
             return neededReminders;
+        }
+        public Reminder CreateNewReminderIfItIsRepeatableAndDeleteIfNot(Reminder reminder)
+        {
+            RemindersForPatient.Remove(reminder);
+            if (reminder.isRepeatable.Equals("Nikada"))
+                DeleteReminder(reminder);
+            else if (reminder.isRepeatable.Equals("Svaki dan"))
+                reminder.startTime = reminder.startTime.AddDays(1);
+            else if (reminder.isRepeatable.Equals("Nedeljno"))
+                reminder.startTime = reminder.startTime.AddDays(7);
+            else if (reminder.isRepeatable.Equals("Mesečno"))
+                reminder.startTime = reminder.startTime.AddMonths(1);
+
+            return reminder;
         }
     }
 }

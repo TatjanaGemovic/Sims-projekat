@@ -26,22 +26,7 @@ namespace SIMS_Projekat.PatientView
     {
         private Patient patient;
         private Frame mainFrame;
-        private ObservableCollection<TherapyNotification> notificationCollection;
         private ObservableCollection<Reminder> reminderCollection;
-
-        public ObservableCollection<TherapyNotification> NotificationCollection
-        {
-            get { return notificationCollection; }
-            set
-            {
-                if (value != notificationCollection)
-                {
-                    notificationCollection = value;
-                    OnPropertyChanged("NotificationCollection");
-                }
-            }
-        }
-
         public ObservableCollection<Reminder> ReminderCollection
         {
             get { return reminderCollection; }
@@ -69,7 +54,6 @@ namespace SIMS_Projekat.PatientView
             mainFrame = frame;
             this.DataContext = this;
             
-            //NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
             ReminderCollection = App.reminderController.GetActiveReminders();
 
             App.evaluationController.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
@@ -83,11 +67,8 @@ namespace SIMS_Projekat.PatientView
         {
             if (GridView.SelectedItem != null)
             {
-                //TherapyNotification tn = GridView.SelectedItem as TherapyNotification;
-                //App.therapyNotificationController.DeleteNotification(tn);
-
                 Reminder rem = GridView.SelectedItem as Reminder;
-                App.reminderController.DeleteReminder(rem);
+                App.reminderController.CreateNewReminderIfItIsRepeatableAndDeleteIfNot(rem);
             }
         }
 

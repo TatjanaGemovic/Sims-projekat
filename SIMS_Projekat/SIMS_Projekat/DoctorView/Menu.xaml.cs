@@ -41,7 +41,6 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
             App.reminderRepository.Serialize();
             MainWindow mainWindow = new MainWindow();

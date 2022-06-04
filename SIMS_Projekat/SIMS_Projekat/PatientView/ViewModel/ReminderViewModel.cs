@@ -12,6 +12,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private string time { get; set; }
         private string reminderID { get; set; }
         private string content { get; set; }
+        private string isRepeatable { get; set; }
         private int index { get; set; }
 
         public string Date
@@ -36,6 +37,20 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 {
                     time = value;
                     OnPropertyChanged("Time");
+
+                }
+            }
+        }
+
+        public string IsRepeatable
+        {
+            get { return isRepeatable; }
+            set
+            {
+                if (isRepeatable != value)
+                {
+                    isRepeatable = value;
+                    OnPropertyChanged("IsRepeatable");
 
                 }
             }

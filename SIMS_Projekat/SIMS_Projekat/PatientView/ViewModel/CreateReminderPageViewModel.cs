@@ -101,6 +101,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
             NewReminderViewModel.Date = splitDate[0];
             NewReminderViewModel.Content = Content;
             NewReminderViewModel.Time = Time;
+            NewReminderViewModel.IsRepeatable = CanRepeat;
             Reminder newReminder = Inject.RemindersConverter.ConvertViewModelToModel(NewReminderViewModel, patient);
             newReminder = App.reminderController.AddReminder(newReminder);
 

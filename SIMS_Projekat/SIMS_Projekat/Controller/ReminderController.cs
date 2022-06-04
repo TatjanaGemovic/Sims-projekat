@@ -66,5 +66,11 @@ namespace SIMS_Projekat.Controller
         {
             reminderService.CreateNotificationForTherapy(receipt);
         }
+
+        public Reminder CreateNewReminderIfItIsRepeatableAndDeleteIfNot(Reminder reminder)
+        {
+            return reminderService.CreateNewReminderIfItIsRepeatableAndDeleteIfNot(reminder);
+        }
+        
     }
 }

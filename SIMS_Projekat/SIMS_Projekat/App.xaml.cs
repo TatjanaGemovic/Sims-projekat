@@ -49,12 +49,6 @@ namespace SIMS_Projekat
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
         private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
 
-
-        public static string THERAPY_NOTIFICATION_CSV = @".\..\..\..\Resources\therapy_notifications.txt";
-        public static TherapyNotificationRepository therapyNotificationRepository;
-        public static TherapyNotificationService therapyNotificationService;
-        public static TherapyNotificationController therapyNotificationController;
-
         public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
         public static EvaluationRepository evaluationRepository;
         public static EvaluationService evaluationService;
@@ -203,16 +197,6 @@ namespace SIMS_Projekat
                 AllergenService = AllergenService
             };
 
-            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
-            therapyNotificationService = new TherapyNotificationService()
-            {
-                therapyNotificationRepository = therapyNotificationRepository
-            };
-            therapyNotificationController = new TherapyNotificationController()
-            {
-                therapyNotificationService = therapyNotificationService
-            };
-
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
             evaluationService = new EvaluationService()
             {
@@ -243,7 +227,6 @@ namespace SIMS_Projekat
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
-            therapyNotificationRepository.Deserialize();
             reminderRepository.Deserialize();
             evaluationRepository.Deserialize();
 

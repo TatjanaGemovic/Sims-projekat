@@ -12,8 +12,8 @@ namespace SIMS_Projekat.Model
         public DateTime startTime { get; set; }
         public string type { get; set; }
         public string content { get; set; }
-        public string patientID { get; set; }
-       
+        public string patientID { get; set; }    
+        public string isRepeatable { get; set; }
         public Patient patient { get; set; }
         public void fromCSV(string[] values)
         {
@@ -22,7 +22,7 @@ namespace SIMS_Projekat.Model
             content = values[2];
             type = values[3];
             patientID = values[4];
-
+            isRepeatable= values[5];
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
 
@@ -34,7 +34,8 @@ namespace SIMS_Projekat.Model
                 startTime.ToString(),
                 content,
                 type,
-                patient.ID,      
+                patient.ID,
+                isRepeatable
             };
             return values;
         }
