@@ -18,14 +18,14 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.PatientView
 {
     /// <summary>
-    /// Interaction logic for RemindersPage.xaml
+    /// Interaction logic for CreateReminderPage.xaml
     /// </summary>
-    public partial class RemindersPage : Page
+    public partial class CreateReminderPage : Page
     {
-        public RemindersPage(Frame frame, Patient patient)
+        public CreateReminderPage(Frame frame, Patient patient)
         {
             InitializeComponent();
-            this.DataContext = new RemindersPageViewModel(frame, patient);
+            this.DataContext = new CreateReminderPageViewModel(frame, patient);
         }
     }
 }

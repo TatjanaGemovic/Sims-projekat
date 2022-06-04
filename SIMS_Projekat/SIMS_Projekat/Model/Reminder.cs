@@ -10,7 +10,6 @@ namespace SIMS_Projekat.Model
     {
         public int ID { get; set; }
         public DateTime startTime { get; set; }
-        public DateTime endTime { get; set; }
         public string content { get; set; }
         public string patientID { get; set; }
        
@@ -19,9 +18,8 @@ namespace SIMS_Projekat.Model
         {
             ID = Convert.ToInt32(values[0]);
             startTime = DateTime.Parse(values[1]);
-            content = values[3];
-            endTime = DateTime.Parse(values[2]);
-            patientID = values[4];
+            content = values[2];
+            patientID = values[3];
            
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
@@ -33,7 +31,6 @@ namespace SIMS_Projekat.Model
                 ID.ToString(),
                 startTime.ToString(),
                 content,
-                endTime.ToString(),
                 patient.ID,      
             };
             return values;

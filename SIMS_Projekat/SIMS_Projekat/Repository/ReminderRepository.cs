@@ -55,7 +55,6 @@ namespace SIMS_Projekat.Repository
                     reminder1.patient = reminder.patient;
                     reminder1.content = reminder.content;
                     reminder1.startTime = reminder.startTime;
-                    reminder1.endTime = reminder.endTime;
                     return reminder1;
                 }
 

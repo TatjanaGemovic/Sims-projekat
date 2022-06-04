@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1370"
@@ -10,6 +11,7 @@
 
     <Page.Resources>
         <ResourceDictionary>
+            <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -27,8 +29,8 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <DataGrid  Grid.Row="2" Margin="150,0,150,0"
-                   ItemsSource="{Binding Notes}" Width="1000" Height="500"
-                   x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotesGrid}"
+                   ItemsSource="{Binding Reminders}" Width="1000" Height="500"
+                   x:Name="GridView" Style="{StaticResource ResourceKey=PatientRemindersGrid}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
                    CellStyle="{StaticResource ResourceKey=PatientDataGridCell}"
                    SelectedItem="{Binding NoteViewModel, Mode=OneWayToSource}">
@@ -39,19 +41,19 @@
                             <WrapPanel>
                                 <TextBlock Text="{Binding Index}" FontSize="24" />
                                 <TextBlock Text=". " FontSize="24" />
-                                <TextBlock Text="{Binding Title}" FontSize="24" />
+                                <TextBlock Text="{Binding Content}" FontSize="24" />
                             </WrapPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži belešku"
+        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži podsetnik" Width="240"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}" Margin="0,0,250,0"
+                Command="{Binding DetailsCommand}" Margin="0,0,280,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj belešku" 
-                Command="{Binding NewNoteCommand}" Margin="0,0,20,0"
+        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj podsetnik" Width="240" 
+                Command="{Binding NewReminderCommand}" Margin="0,0,20,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Page>

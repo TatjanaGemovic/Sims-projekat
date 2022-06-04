@@ -14,7 +14,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private NotesConverter notesConverter = new NotesConverter();
 
-        //private StudentConverter studentConverter = new StudentConverter();
+        private RemindersConverter remindersConverter = new RemindersConverter();
 
 
 
@@ -28,9 +28,9 @@ namespace SIMS_Projekat.PatientView.ViewModel
             get { return notesConverter; }
         }
 
-        //public StudentConverter StudentConverter
-        //{
-        //    get { return studentConverter; }
-        //}
+        public RemindersConverter RemindersConverter
+        {
+            get { return remindersConverter; }
+        }
     }
 }
