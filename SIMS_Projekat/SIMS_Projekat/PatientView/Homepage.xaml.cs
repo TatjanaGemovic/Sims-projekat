@@ -27,6 +27,7 @@ namespace SIMS_Projekat.PatientView
         private Patient patient;
         private Frame mainFrame;
         private ObservableCollection<TherapyNotification> notificationCollection;
+        private ObservableCollection<Reminder> reminderCollection;
 
         public ObservableCollection<TherapyNotification> NotificationCollection
         {
@@ -37,6 +38,19 @@ namespace SIMS_Projekat.PatientView
                 {
                     notificationCollection = value;
                     OnPropertyChanged("NotificationCollection");
+                }
+            }
+        }
+
+        public ObservableCollection<Reminder> ReminderCollection
+        {
+            get { return reminderCollection; }
+            set
+            {
+                if (value != reminderCollection)
+                {
+                    reminderCollection = value;
+                    OnPropertyChanged("ReminderCollection");
                 }
             }
         }
@@ -56,6 +70,7 @@ namespace SIMS_Projekat.PatientView
             this.DataContext = this;
             
             NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
+            ReminderCollection = App.reminderController.GetActiveReminders();
 
             App.evaluationController.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
 

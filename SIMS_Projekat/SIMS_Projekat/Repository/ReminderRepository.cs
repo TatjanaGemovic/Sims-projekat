@@ -55,6 +55,7 @@ namespace SIMS_Projekat.Repository
                     reminder1.patient = reminder.patient;
                     reminder1.content = reminder.content;
                     reminder1.startTime = reminder.startTime;
+                    reminder1.type = reminder.type;
                     return reminder1;
                 }
 
@@ -76,7 +77,7 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public List<Reminder> GetRemindersByPatientID(string patientID)
+        public static List<Reminder> GetRemindersByPatientID(string patientID)
         {
             List<Reminder> reminderListForPatient = new List<Reminder>();
             foreach (Reminder reminder in reminderList)

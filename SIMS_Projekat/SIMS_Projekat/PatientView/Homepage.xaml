@@ -51,7 +51,7 @@
                Margin="0,37,0,0" Foreground="#FFF76A"/>
 
         <DataGrid  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="10,20,10,61" 
-                   ItemsSource="{Binding Path=NotificationCollection, UpdateSourceTrigger=PropertyChanged}" 
+                   ItemsSource="{Binding Path=ReminderCollection, UpdateSourceTrigger=PropertyChanged}" 
                   x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotificationGrid}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
                    CellStyle="{StaticResource ResourceKey=PatientDataGridCell}">
@@ -61,13 +61,13 @@
                         <DataTemplate>
                             <WrapPanel>
                                 <TextBlock Text="Uzmite terapiju: " FontSize="24" />
-                                <TextBlock Text="{Binding medicineName}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="{Binding content}" FontWeight="SemiBold" FontSize="24" />
                                 <TextBlock Text=", u vreme  " FontSize="24" />
-                                <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="SemiBold" FontSize="24"/>
+                                <TextBlock Text="{Binding startTime.TimeOfDay}" FontWeight="SemiBold" FontSize="24"/>
                                 <TextBlock Text=", dana " FontSize="24" />
-                                <TextBlock Text="{Binding date.Day}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="{Binding startTime.Day}" FontWeight="SemiBold" FontSize="24" />
                                 <TextBlock Text="." FontWeight="SemiBold" FontSize="24" />
-                                <TextBlock Text="{Binding date.Month}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="{Binding startTime.Month}" FontWeight="SemiBold" FontSize="24" />
                                 <TextBlock Text="." FontWeight="SemiBold" FontSize="24" />
                             </WrapPanel>
                         </DataTemplate>

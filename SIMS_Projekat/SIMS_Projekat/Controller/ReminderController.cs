@@ -2,6 +2,7 @@
 using SIMS_Projekat.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,12 +34,32 @@ namespace SIMS_Projekat.Controller
 
         public List<Reminder> GetRemindersByPatientID(string patientID)
         {
-            return reminderService.GetRemindersByPatientID(patientID);
+            return ReminderService.GetRemindersByPatientID(patientID);
         }
 
         public List<Reminder> GetAllReminders()
         {
             return reminderService.GetAllReminders();
+        }
+
+        public static void TickTimer(object state)
+        {
+            ReminderService.TickTimer(state);
+        }
+
+        public ObservableCollection<Reminder> GetActiveReminders()
+        {
+            return reminderService.GetActiveReminders();
+        }
+
+        public void DeleteActiveNotifications()
+        {
+            reminderService.DeleteActiveNotifications();
+        }
+
+        public void CreateNotificationForTherapy(Receipt receipt)
+        {
+            reminderService.CreateNotificationForTherapy(receipt);
         }
     }
 }

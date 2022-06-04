@@ -47,6 +47,7 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
                 content = reminderFromView.Content,
                 startTime = start,
                 patient = patient,
+                type = "Podsetnik: ",
                 ID = Convert.ToInt32(reminderFromView.ReminderID)
             };
             return reminder;

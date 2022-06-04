@@ -34,6 +34,7 @@ namespace SIMS_Projekat.DoctorView
             App.medRecordRepository.Serialize();
             App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.reminderRepository.Serialize();
         }
     }
 }
