@@ -11,6 +11,8 @@ namespace SIMS_Projekat.Model
         public int receiptID { get; set; }
         public int appointmentID { get; set; }
         public string Record { get; set; }
+        public string medicineID { get; set; }
+        public Medicine medicine { get; set; }
         public DateTime beginningDate { get; set; }
         public DateTime endDate { get; set; }
         public string patientID { get; set; }
@@ -26,7 +28,9 @@ namespace SIMS_Projekat.Model
             Record = values[4];
             DailyMed = int.Parse(values[5]);
             appointmentID = Convert.ToInt32(values[6]);
+            medicineID = values[7];
             
+            medicine = App.medicineController.GetMedicineByID(medicineID);
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
 
@@ -40,7 +44,8 @@ namespace SIMS_Projekat.Model
                 patient.ID,
                 Record,
                 DailyMed.ToString(),
-                appointmentID.ToString()
+                appointmentID.ToString(),
+                medicine.MedicineID
             };
             return values;
         }

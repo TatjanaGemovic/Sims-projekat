@@ -130,5 +130,17 @@ namespace SIMS_Projekat.ManagerView
             else
                 datagGridEquipment.ItemsSource = EquipmentList;
         }
+
+        private void datagGridEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridEquipment.SelectedItem != null)
+            {
+                PregledPoProstorijamaBtn.IsEnabled = true;
+                IzmenaOpremuBtn.IsEnabled = true;
+                ObrisiOpremuBtn.IsEnabled = true;
+                OpremaPremestanjeBtn.IsEnabled = true;
+            }
+
+        }
     }
 }

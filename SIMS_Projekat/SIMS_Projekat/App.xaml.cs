@@ -19,7 +19,7 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class App : Application
     {
-
+        public static ResourceDictionary ThemeDictionary => Application.Current.Resources.MergedDictionaries[0];
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
         public static AppointmentRepository appointmentRepo;
         public static AppointmentService appointmentService;
@@ -102,6 +102,7 @@ namespace SIMS_Projekat
 
         public App()
         {
+            InitializeComponent();
             roomRepository = new RoomRepository(ROOM_CSV);
             roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -214,7 +215,7 @@ namespace SIMS_Projekat
             appointmentRepo.Deserialize();
             noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
-            receiptRepository.Deserialize();
+            
             therapyNotificationRepository.Deserialize();
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
@@ -223,12 +224,34 @@ namespace SIMS_Projekat
 
             freeDayRequestRepository.Deserialize();
             medicineController.Deserialize();
+            receiptRepository.Deserialize();
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
             evaluationRepository.Deserialize();
 
             EquipmentOrderController.Deserialize();
+
+            if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
+            {
+                ChangeTheme(new Uri("Theme/LightTheme.xaml", UriKind.RelativeOrAbsolute));
+                SIMS_Projekat.Properties.Settings.Default.CurrentTheme = "Light";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+
+            }
+            else
+            {
+                ChangeTheme(new Uri("Theme/DarkTheme.xaml", UriKind.RelativeOrAbsolute));
+                SIMS_Projekat.Properties.Settings.Default.CurrentTheme = "Dark";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void ChangeTheme(Uri uri)
+        {
+            App.ThemeDictionary.MergedDictionaries.Clear();
+            App.ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
 
         }
     }

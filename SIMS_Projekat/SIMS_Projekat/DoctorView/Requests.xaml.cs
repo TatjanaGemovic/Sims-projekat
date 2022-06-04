@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.DoctorView.ViewModel;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,21 +23,22 @@ namespace SIMS_Projekat.DoctorView
     /// </summary>
     public partial class Requests : Page
     {
-        Frame Frame;
-        Doctor doctor;
-        public BindingList<Request2> RequestList { get; set; }
+        //Frame Frame;
+        //Doctor doctor;
+        //public BindingList<Request2> RequestList { get; set; }
         public Requests(Frame main, Doctor d)
         {
-            Frame = main;
-            doctor = d;
+            //Frame = main;
+            //doctor = d;
+            
+            //RequestList = new BindingList<Request2>();
+            //createList();
+            //RequestsList.ItemsSource = RequestList;
             InitializeComponent();
-            RequestList = new BindingList<Request2>();
-            createList();
-            RequestsList.ItemsSource = RequestList;
-            this.DataContext = this;
+            this.DataContext = new RequestsViewModel(main, d) ;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /*private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Content = new DoctorAppointments(Frame, doctor);
         }
@@ -88,6 +90,6 @@ namespace SIMS_Projekat.DoctorView
                     }
                 }
             }
-        }
+        }*/
     }
 }

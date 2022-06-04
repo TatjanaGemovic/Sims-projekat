@@ -109,5 +109,23 @@ namespace SIMS_Projekat.ManagerView
         {
             ManagerHome.mainFrame.Content = new EquipmentView();
         }
+
+        private void datagGridRooms_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridRooms.SelectedItem != null && !kolicina.Text.Equals("") && datum.SelectedDate != null)
+                PotvrdiPrebacivanje.IsEnabled = true;
+        }
+
+        private void kolicina_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (datagGridRooms.SelectedItem != null && !kolicina.Text.Equals("") && datum.SelectedDate != null)
+                PotvrdiPrebacivanje.IsEnabled = true;
+        }
+
+        private void PickDate(object sender, RoutedEventArgs e)
+        {
+            if (datagGridRooms.SelectedItem != null && !kolicina.Text.Equals("") && datum.SelectedDate != null)
+                PotvrdiPrebacivanje.IsEnabled = true;
+        }
     }
 }

@@ -69,5 +69,17 @@ namespace SIMS_Projekat.ManagerView
         {
             ManagerHome.mainFrame.Content = new RoomView();
         }
+
+        private void kolicina_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if ( !kolicina.Text.Equals("") && datum.SelectedDate != null)
+                PotvrdiPrebacivanje.IsEnabled = true;
+        }
+
+        private void PickDate(object sender, RoutedEventArgs e)
+        {
+            if (!kolicina.Text.Equals("") && datum.SelectedDate != null)
+                PotvrdiPrebacivanje.IsEnabled = true;
+        }
     }
 }

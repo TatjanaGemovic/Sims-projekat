@@ -47,5 +47,10 @@ namespace SIMS_Projekat.DoctorView
             mainWindow.Show();
             doctorHomePage.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new ReportPage(Frame, doctor, doctorHomePage);
+        }
     }
 }

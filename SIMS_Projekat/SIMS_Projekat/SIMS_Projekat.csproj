@@ -29,6 +29,7 @@
     <None Remove="Resources\icons\view.png" />
     <None Remove="Resources\icons\work_calendar.png" />
     <None Remove="Resources\icons_doctor\cardiogram.png" />
+    <None Remove="Resources\icons_doctor\clipboard-paste-button.png" />
     <None Remove="Resources\icons_doctor\create-new-pencil-button.png" />
     <None Remove="Resources\icons_doctor\exit-to-app-button.png" />
     <None Remove="Resources\icons_doctor\medical-history.png" />
@@ -52,6 +53,31 @@
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
     <None Remove="Resources\icons_patient\video.png" />
+    <None Remove="Resources\icon_manager\ManagerAdd.png" />
+    <None Remove="Resources\icon_manager\ManagerBack.png" />
+    <None Remove="Resources\icon_manager\ManagerComponents.png" />
+    <None Remove="Resources\icon_manager\ManagerDelete.png" />
+    <None Remove="Resources\icon_manager\ManagerDone.png" />
+    <None Remove="Resources\icon_manager\ManagerEdit.png" />
+    <None Remove="Resources\icon_manager\ManagerInventar.png" />
+    <None Remove="Resources\icon_manager\ManagerLogOut.png" />
+    <None Remove="Resources\icon_manager\ManagerQuit.png" />
+    <None Remove="Resources\icon_manager\ManagerRejected.png" />
+    <None Remove="Resources\icon_manager\ManagerRenoviranje.png" />
+    <None Remove="Resources\icon_manager\ManagerReplacmentMedicine.png" />
+    <None Remove="Resources\icon_manager\ManagerTransfer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icon_manager\ManagerBack.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="20.1.0.58" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icons_doctor\clipboard-paste-button.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -107,9 +133,26 @@
     <Resource Include="Resources\icons_patient\report.png" />
     <Resource Include="Resources\icons_patient\stethoscope.png" />
     <Resource Include="Resources\icons_patient\video.png" />
+    <Resource Include="Resources\icon_manager\ManagerAdd.png" />
+    <Resource Include="Resources\icon_manager\ManagerComponents.png" />
+    <Resource Include="Resources\icon_manager\ManagerDelete.png" />
+    <Resource Include="Resources\icon_manager\ManagerDone.png" />
+    <Resource Include="Resources\icon_manager\ManagerEdit.png" />
+    <Resource Include="Resources\icon_manager\ManagerInventar.png" />
+    <Resource Include="Resources\icon_manager\ManagerLogOut.png" />
+    <Resource Include="Resources\icon_manager\ManagerQuit.png" />
+    <Resource Include="Resources\icon_manager\ManagerRejected.png" />
+    <Resource Include="Resources\icon_manager\ManagerRenoviranje.png" />
+    <Resource Include="Resources\icon_manager\ManagerReplacmentMedicine.png" />
+    <Resource Include="Resources\icon_manager\ManagerTransfer.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Update="SecretaryView\ViewPatientUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -170,6 +213,13 @@
     <Resource Include="Resources\icons\delete.png" />
     <Resource Include="Resources\icons\edit.png" />
     <Resource Include="Resources\icons\view.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

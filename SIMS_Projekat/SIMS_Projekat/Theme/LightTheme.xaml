@@ -1,0 +1,397 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- DataGrid style -->
+
+    <Style x:Key="ManagerDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ManagerColumnHeaderStyle}"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="CanUserResizeColumns" Value="False"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="BorderThickness" Value="1,1,1,1"/>
+        <Setter Property="BorderBrush" Value="#AAAAAA"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Margin" Value="10,0,10,0"/>
+    </Style>
+    <Style x:Key="ManagerColumnHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Background" Value="#AAAAAA"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#AAAAAA"/>
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+
+
+    <!-- GroupBox style -->
+    <Style x:Key="ManagerGroupBoxText" TargetType="{x:Type GroupBox}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#AAAAAA"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="10,10,10,10" />
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
+
+    <!--Label-->
+    <Style x:Key="ManagerMainLabelPages" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontSize" Value="35"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="0,10,0,0"/>
+    </Style>
+
+    <Style x:Key="ManagerLabelCRUD" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+
+    </Style>
+
+    <!-- Button style -->
+
+    <Style x:Key="ManagerButtonCRUD" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="#AAAAAA"/>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5,0,5,0"/>
+    </Style>
+
+    <Style x:Key="ManagerButtonCRUDOk" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="#AAAAAA"/>
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="LabelInButton" TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="105"/>
+    </Style>
+
+
+    <!-- Pages style -->
+    <Style x:Key="ManagerMainFrame" TargetType="{x:Type Frame}" >
+        <Setter Property="Background" Value="#CCF2F4"/>
+        <Setter Property="Margin" Value="10,10,10,10"/>
+    </Style>
+
+    <Style x:Key="ManagerPagesDock" TargetType="{x:Type DockPanel}">
+        <Setter Property="Background" Value="#A4EBF3"/>
+    </Style>
+
+    <!-- Border style -->
+    <Style x:Key="ManagerBorderMain" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="Black"></Setter>
+        <Setter Property="BorderThickness" Value="1"/>
+    </Style>
+
+
+
+    <!-- Side menu style -->
+
+    <Style x:Key="ManagerMenuDock" TargetType="{x:Type DockPanel}">
+        <Setter Property="Background" Value="#AAAAAA"/>
+    </Style>
+
+    <Style x:Key="ManagerMenuText" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Foreground" Value="Black"></Setter>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="132"/>
+    </Style>
+
+    <Style x:Key="ManagerLogOutButton" TargetType="{x:Type Button}" >
+        <Setter Property="Background" Value="#A4EBF3"/>
+    </Style>
+
+
+
+
+
+    <!--Doctor style-->
+    <Style TargetType="Button" x:Key="ClassicButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#FF5959"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="110"/>
+    </Style>
+    <Style TargetType="Button" x:Key="BiggerClassicButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#FF5959"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="65"/>
+        <Setter Property="Width" Value="140"/>
+        <Setter Property="Margin" Value="0,522,16,0"/>
+    </Style>
+    <Style TargetType="Button" x:Key="DoctorHomePageButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="26"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#CDDEFF"/>
+        <Setter Property="BorderBrush" Value="#676FA3"/>
+        <Setter Property="BorderThickness" Value="6"/>
+        <Setter Property="Height" Value="140"/>
+        <Setter Property="Width" Value="360"/>
+        <Setter Property="Margin" Value="0,10,10,0"/>
+    </Style>
+    <Style TargetType="Button" x:Key="DoctorHomePageSmallButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="26"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#CDDEFF"/>
+        <Setter Property="BorderBrush" Value="#676FA3"/>
+        <Setter Property="BorderThickness" Value="6"/>
+        <Setter Property="Height" Value="110"/>
+        <Setter Property="Width" Value="160"/>
+    </Style>
+    <Style TargetType="Button" x:Key="BackButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="5"/>
+            </Style>
+        </Style.Resources>
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Background" Value="#FF5959"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="BorderBrush" Value="#EEF2FF"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="75"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="ActionBarLabel">
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style TargetType="Label" x:Key="ClassicLabel">
+        <Setter Property="FontFamily"  Value="Segoe UI Symbol"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="DoctorDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DoctorColumnHeaderStyle}"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#676FA3"/>
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Width" Value="370"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+    </Style>
+
+    <Style x:Key="DoctorColumnHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="#676FA3"/>
+        <Setter Property="Foreground" Value="#EEF2FF"/>
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+
+    <!--SecretaryView Styles-->
+
+    <Style TargetType="RadioButton" x:Key="SecretaryViewRadioButton">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
+                                <ContentPresenter/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Red"/>
+            <Setter Property="BorderThickness" Value="2,0,0,0"/>
+
+
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#122127"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="BorderBrush" Value="Red"/>
+                <Setter Property="BorderThickness" Value="2,0,0,0"/>
+                <Setter Property="Background" Value="#2C5364"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="RadioButton" x:Key="SecretaryViewUrgentPatientRadioButton">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{TemplateBinding Background}">
+                                <ContentPresenter/>
+                            </Grid>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="1" Direction="270"/>
+                            </Border.Effect>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="2,2,2,2"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Foreground" Value="White"/>
+
+
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFC31212"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="BorderBrush" Value="Red"/>
+                <Setter Property="BorderThickness" Value="2,0,0,0"/>
+                <Setter Property="Background" Value="#FFB20E0E"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="SecretaryViewButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="4"/>
+            </Style>
+        </Style.Resources>
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="#2C5364"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#203A43"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SecretaryViewDeleteButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="4"/>
+            </Style>
+        </Style.Resources>
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style.Setters>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#FFAA0000"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style x:Key="SecretaryDataGridStyle" TargetType="{x:Type DataGrid}">
+        <Setter Property="ColumnHeaderStyle" Value="{DynamicResource SecretaryColumnHeaderStyle}"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="AlternatingRowBackground" Value="#d4e5ec"/>
+        <Setter Property="BorderThickness" Value="1,0,1,1"/>
+        <Setter Property="BorderBrush" Value="#2C5364"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+
+    </Style>
+    <!-- DataGridColumnHeader style -->
+    <Style x:Key="SecretaryColumnHeaderStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="#2C5364"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="ToolTip" Value="Klikni da sortiraš"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>
