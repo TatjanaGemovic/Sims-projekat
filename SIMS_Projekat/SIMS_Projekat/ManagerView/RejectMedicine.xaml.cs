@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.ManagerViewModel;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,54 +22,14 @@ namespace SIMS_Projekat.ManagerView
     /// <summary>
     /// Interaction logic for RejectMedicine.xaml
     /// </summary>
-    public partial class RejectMedicine : Page, INotifyPropertyChanged
+    public partial class RejectMedicine : Page
     {
         public RejectMedicine()
         {
             InitializeComponent();
-            this.DataContext = this;
-            Medicine = new ObservableCollection<Medicine>(App.medicineController.GetRejectMedicine());
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Medicine> _medicine;
-
-
-        public ObservableCollection<Medicine> Medicine
-        {
-            get { return _medicine; }
-            set
-            {
-                _medicine = value;
-                OnPropertyChanged(nameof(Medicine));
-            }
+            this.DataContext = new RejectedMedicineViewModel();
+           
         }
 
-
-        private void ObrisiLekBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Medicine selectedMedicine = (Medicine)datagGridMedicine.SelectedItem;
-            App.medicineController.DeleteMedicine(selectedMedicine);
-        }
-
-
-
-        public void OnPropertyChanged(String propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private void IzmenaLekaBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Medicine selectedMedicine = (Medicine)datagGridMedicine.SelectedItem;
-            ManagerHome.mainFrame.Content = new EditMedicineView(selectedMedicine);
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ManagerHome.mainFrame.Content = new MedicineView();
-        }
     }
 }
