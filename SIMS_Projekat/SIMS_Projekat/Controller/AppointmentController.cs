@@ -44,9 +44,9 @@ namespace SIMS_Projekat.Controller
             return appointmentService.GetAllAppointments();
         }
 
-        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, string pickedDate, Patient selectedPatient, bool op, Room selectedRoom)
+        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, string pickedDate, Patient selectedPatient, Room selectedRoom)
         {
-            return appointmentService.GetAvailableAppointmentsForDoctor(doctor, pickedDate, selectedPatient, op, selectedRoom);
+            return appointmentService.GetAvailableAppointmentsForDoctor(doctor, pickedDate, selectedPatient, selectedRoom);
         }
 
         public List<string> GetTakenAppointmentsForPatient(Patient p, DateTime dt, string licence) 

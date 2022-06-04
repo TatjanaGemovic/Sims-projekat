@@ -21,6 +21,7 @@ namespace SIMS_Projekat.DoctorView
     public partial class DoctorHomePage : Window
     {
         Doctor doctor;
+
         public DoctorHomePage(Doctor d)
         {
             InitializeComponent();

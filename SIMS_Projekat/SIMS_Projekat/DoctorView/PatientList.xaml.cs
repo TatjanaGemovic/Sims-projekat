@@ -63,7 +63,6 @@ namespace SIMS_Projekat.DoctorView
             {
                 string name = patient.FirstName + " " + patient.LastName;
 
-                //listOfPatients.Add(new Patients(id, name));
                 patientList.Add(new Patients(name));
             }
             PatientLists.ItemsSource = patientList;

@@ -59,7 +59,7 @@ namespace SIMS_Projekat.DoctorView.ViewModel
                         int temp = f.from.CompareTo(from2); //pocetni isti
                         int temp2 = f.until.CompareTo(until2); //krajnji isti
                         int temp3 = f.until.CompareTo(from2); //kraj-pocetak
-                        int temp4 = f.from.CompareTo(until2); // ppocetak-kraj
+                        int temp4 = f.from.CompareTo(until2); // pocetak-kraj
                         if (temp == 0 || temp2 == 0 || temp3 == 0 || temp4 == 0)
                         {
                             can = false;

@@ -66,7 +66,7 @@ namespace SIMS_Projekat.Service
                 return dan2;
         }
 
-        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, String pickedDate, Patient selectedPatient, bool op, Room selectedRoom)
+        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, String pickedDate, Patient selectedPatient, Room selectedRoom)
         {
             List<string> listOfTakenAppointmentTime = new List<string>();
             foreach (Appointment appointment in GetAllAppointments())

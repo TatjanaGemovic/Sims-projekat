@@ -76,7 +76,6 @@ namespace SIMS_Projekat.DoctorView
                 int appointmentID = appointmentInformation.id;
                 Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
                 Frame.Content = new ExaminationInfo(Frame, appointment, doctor);
-                //Frame.Content = new EditDoctorAppointment(Frame, appointment, selectedDate1, doctor);
             }
             else
             {

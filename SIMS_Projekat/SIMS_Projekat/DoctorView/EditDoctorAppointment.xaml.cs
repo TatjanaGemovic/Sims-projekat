@@ -145,7 +145,7 @@ namespace SIMS_Projekat.DoctorView
         {
             List<String> list = new List<string>();
 
-            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, op, selectedRoom);
+            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, selectedRoom);
             
             listofAppointmentTime = new BindingList<String>();
             listofTakenAppointmentTime = new BindingList<String>(list);
@@ -237,36 +237,6 @@ namespace SIMS_Projekat.DoctorView
         }
         private void Promeni_Click(object sender, RoutedEventArgs e)
         {
-            /*bool op;
-            String tip = Tip_operacije.SelectionBoxItem.ToString();
-            if (tip.Equals("Pregled"))
-            {
-                op = false;
-            }
-            else
-            {
-                op = true;
-            }
-            Patient patient1 = new Patient();
-            String patient = Ime_pacijenta.SelectionBoxItem.ToString();
-            foreach (Patient p in App.accountController.GetAllPatientAccounts())
-            {
-                string str = p.FirstName + " " + p.Username;
-                if (str.Equals(patient))
-                {
-                    patient1 = p;
-                }
-            }
-            Room room1 = new Room();
-            String name = Ime_sobe.SelectionBoxItem.ToString();
-            foreach (Room r in App.roomController.GetRooms())
-            {
-                if (r.RoomNumber == Int16.Parse(name))
-                {
-                    room1 = r;
-                }
-            }*/
-
             string dateFromPage = selectedDate1.ToString();
             DateTime start = DateTime.Parse(dateFromPage);
             DateTime startDate = start.Date;

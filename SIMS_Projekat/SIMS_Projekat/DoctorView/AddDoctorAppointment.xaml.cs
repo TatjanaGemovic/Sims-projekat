@@ -47,11 +47,9 @@ namespace SIMS_Projekat.DoctorView
             String[] datePart = selectedDate1.Split(" ");
             selectedDate1 = datePart[0];
             DateTime pickedDate = selectedDate.Date;
-            //pickedDate = selectedDate;
+
             InitializeComboBox1();
             InitializeComboBox2();
-            //InitializeComboBox3();
-            //InitializeListOfAppointments();
         }
 
         private void InitializeComboBox1()
@@ -105,7 +103,7 @@ namespace SIMS_Projekat.DoctorView
         {
             List<String> list = new List<string>();
 
-            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, op, selectedRoom);
+            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, selectedRoom);
 
             listofAppointmentTime = new BindingList<String>();
             listofTakenAppointmentTime = new BindingList<String>(list);

@@ -1,19 +1,7 @@
 ﻿using SIMS_Projekat.Model;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SIMS_Projekat.DoctorView
 {
@@ -33,7 +21,7 @@ namespace SIMS_Projekat.DoctorView
             frame = f;
             Data = new BindingList<ViewModelChart>();
             LoadData();
-            
+
             this.DataContext = this;
         }
 
@@ -58,22 +46,19 @@ namespace SIMS_Projekat.DoctorView
         {
             string mesec = "Maj";
             int num;
-            for (int month=5; month <= 12; month++)
+            for (int month = 5; month <= 12; month++)
             {
                 num = 0;
                 foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
                 {
-                    if (r.doctor.Equals(doctor))
+                    if (r.doctor.Equals(doctor) && r.from.Month == month)
                     {
-                        if(r.from.Month == month)
-                        {
-                            num++;
-                        }
+                        num++;
                     }
                 }
-                if(month == 6)
+                if (month == 6)
                     mesec = "Jun";
-                else if(month == 7)
+                else if (month == 7)
                     mesec = "Jul";
                 else if (month == 8)
                     mesec = "Avg";

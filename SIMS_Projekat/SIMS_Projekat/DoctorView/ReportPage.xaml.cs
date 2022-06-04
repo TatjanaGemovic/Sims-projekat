@@ -3,6 +3,7 @@ using PdfSharp.Pdf;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,18 +26,22 @@ namespace SIMS_Projekat.DoctorView
     {
         private Frame frame;
         private Doctor doctor;
-        private DoctorHomePage homePage;
+        //private DoctorHomePage homePage;
         List<String> meseci;
         List<PdfData> data;
+        public BindingList<ReportChartData> DataChart { get; set; }
 
-        public ReportPage(Frame f, Doctor d, DoctorHomePage doctorHomePage)
+        public ReportPage(Frame f, Doctor d)
         {
             frame = f;
             doctor = d;
-            homePage = doctorHomePage;
             data = new List<PdfData>();
+            DataChart = new BindingList<ReportChartData>();
             InitializeComponent();
             InitializeComboBox();
+            LoadChartData();
+
+            this.DataContext = this;
         }
 
         private void InitializeComboBox()
@@ -59,7 +64,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            frame.Content = new DoctorAppointments(frame, doctor, homePage);
+            frame.Content = new DoctorAppointments(frame, doctor);
         }
 
         private void Generisi_Izvestaj_Click(object sender, RoutedEventArgs e)
@@ -107,6 +112,39 @@ namespace SIMS_Projekat.DoctorView
             if (Mesec.SelectedItem != null)
             {
                 Generisi_Izvestaj.IsEnabled = true;
+                InitializeList();
+            }
+        }
+
+        private void LoadChartData()
+        {
+            int num;
+            for (int month2 = 1; month2 <= 12; month2++)
+            {
+                num = 0;
+                foreach (Appointment a in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
+                {
+                    string datum = a.beginningDate.ToString();
+                    String[] deoDatuma = datum.Split("/");
+                    int mesec = int.Parse(deoDatuma[0]);
+                    //int dan = int.Parse(deoDatuma[1]);
+                    if (month2 == mesec)
+                    {
+                        num++;
+                    }
+                }
+                foreach(FinishedAppointment f in App.finishedAppointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
+                {
+                    string datum = f.beginningDate.ToString();
+                    String[] deoDatuma = datum.Split("/");
+                    int mesec = int.Parse(deoDatuma[0]);
+                    //int dan = int.Parse(deoDatuma[1]);
+                    if (month2 == mesec)
+                    {
+                        num++;
+                    }
+                }
+                DataChart.Add(new ReportChartData(month2, num));
             }
         }
 
@@ -156,6 +194,19 @@ namespace SIMS_Projekat.DoctorView
                     }
                     data.Add(new PdfData(dan.ToString() + " " + Mesec.SelectedItem.ToString(), a.patient.FirstName + " " + a.patient.LastName, op));
                 }
+            }
+            
+        }
+
+        public class ReportChartData
+        {
+            public int AppNum { get; set; }
+            public int Days { get; set; }
+
+            public ReportChartData(int m, int br)
+            {
+                AppNum = br;
+                Days = m;
             }
         }
 

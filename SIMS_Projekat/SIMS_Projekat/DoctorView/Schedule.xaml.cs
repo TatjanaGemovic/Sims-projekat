@@ -168,7 +168,7 @@ namespace SIMS_Projekat.DoctorView
         {
             List<String> list = new List<string>();
 
-            list = App.appointmentController.GetAvailableAppointmentsForDoctor(selectedDoctor, selectedDate1, patient, op, selectedRoom);
+            list = App.appointmentController.GetAvailableAppointmentsForDoctor(selectedDoctor, selectedDate1, patient, selectedRoom);
 
             listofAppointmentTime = new BindingList<String>();
             listofTakenAppointmentTime = new BindingList<String>(list);
