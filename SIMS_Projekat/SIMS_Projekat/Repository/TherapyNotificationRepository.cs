@@ -53,6 +53,7 @@ namespace SIMS_Projekat.Repository
                 if (notification1 != null)
                 {
                     notification1.patient = notification.patient;
+                    notification1.medicineName = notification.medicineName;
                     notification1.date = notification.date;
                     notification1.receipt = notification.receipt;
                     return notification1;
@@ -62,11 +63,11 @@ namespace SIMS_Projekat.Repository
             return null;
         }
 
-        public TherapyNotification GetNotificationByID(int notificationtID)
+        public TherapyNotification GetNotificationByID(int notificationID)
         {
             foreach (TherapyNotification notification in notificationList)
             {
-                TherapyNotification notification1 = notificationList.Find(notification => notification.ID == notificationtID);
+                TherapyNotification notification1 = notificationList.Find(notification => notification.ID == notificationID);
 
                 if (notification1 != null)
                 {

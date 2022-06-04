@@ -61,7 +61,7 @@
                         <DataTemplate>
                             <WrapPanel>
                                 <TextBlock Text="Uzmite terapiju: " FontSize="24" />
-                                <TextBlock Text="{Binding receipt.Record}" FontWeight="SemiBold" FontSize="24" />
+                                <TextBlock Text="{Binding medicineName}" FontWeight="SemiBold" FontSize="24" />
                                 <TextBlock Text=", u vreme  " FontSize="24" />
                                 <TextBlock Text="{Binding date.TimeOfDay}" FontWeight="SemiBold" FontSize="24"/>
                                 <TextBlock Text=", dana " FontSize="24" />

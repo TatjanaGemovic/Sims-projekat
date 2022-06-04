@@ -63,12 +63,13 @@ namespace SIMS_Projekat.Service
                 for (dailyDose = 0; dailyDose < receipt.DailyMed; dailyDose++)
                 {
                     if(receipt.DailyMed == 1)
-                        date = date.AddHours(12);
-                    
+                        date = date.AddHours(12); 
+
                     TherapyNotification notification = new TherapyNotification()
                     {
                         date = date,
                         receipt = receipt,
+                        medicineName = receipt.medicine.MedicineName,
                         patient = receipt.patient,
                     };
                     AddNotification(notification);

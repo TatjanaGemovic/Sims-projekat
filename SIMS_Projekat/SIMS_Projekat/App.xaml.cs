@@ -35,6 +35,11 @@ namespace SIMS_Projekat
         public static NoteService noteService;
         public static NoteController noteController;
 
+        private static string REMINDER_FILE = @".\..\..\..\Resources\reminders.txt";
+        public static ReminderRepository reminderRepository;
+        public static ReminderService reminderService;
+        public static ReminderController reminderController;
+
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
 
@@ -156,6 +161,16 @@ namespace SIMS_Projekat
                 noteService = noteService
             };
 
+            reminderRepository = new ReminderRepository(REMINDER_FILE);
+            reminderService = new ReminderService()
+            {
+                reminderRepository = reminderRepository
+            };
+            reminderController = new ReminderController()
+            {
+                reminderService = reminderService
+            };
+
             accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
             accountService = new AccountService()
             {
@@ -216,7 +231,7 @@ namespace SIMS_Projekat
             noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
             
-            therapyNotificationRepository.Deserialize();
+            
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
@@ -228,6 +243,8 @@ namespace SIMS_Projekat
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
+            therapyNotificationRepository.Deserialize();
+            reminderRepository.Deserialize();
             evaluationRepository.Deserialize();
 
             EquipmentOrderController.Deserialize();
