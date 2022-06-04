@@ -22,7 +22,7 @@ namespace SIMS_Projekat.Controller
             return MeetingService.DeleteMeeting(meeting);
         }
 
-        public List<Meeting> GetAllAlergens()
+        public List<Meeting> GetAllMeetings()
         {
             return MeetingService.GetAllMeetings();
         }
