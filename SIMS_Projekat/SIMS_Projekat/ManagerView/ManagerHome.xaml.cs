@@ -100,5 +100,10 @@ namespace SIMS_Projekat
         {
             MainFrame.Content = new MedicineView();
         }
+
+        private void settingsUp(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Content = new SettingsView();
+        }
     }
 }
