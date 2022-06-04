@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.DTO;
+using SIMS_Projekat.ManagerViewModel;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -24,42 +25,13 @@ namespace SIMS_Projekat.ManagerView
     public partial class AddReplacmentMedicineView : Page
     {
 
-        private Medicine _medicine;
-        private int _mood;
         public AddReplacmentMedicineView(Medicine medicine, int mood)
         {
             InitializeComponent();
-            this.DataContext = this;
-            _medicine = medicine;
-            _mood = mood;
-            datagGridMedicine.ItemsSource = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
-            datagGridReplacmentMedicine.ItemsSource = new ObservableCollection<Medicine>(_medicine.ReplacmentMedicine);
+            this.DataContext = new AddReplacmentMedicineViewModel(medicine,mood);
+           
         }
 
-        private void Zavrsi_Click(object sender, RoutedEventArgs e)
-        {
-            if (_mood == 1)
-                ManagerHome.mainFrame.Content = new AddMedicineView(_medicine);
-            else
-                ManagerHome.mainFrame.Content = new EditMedicineView(_medicine);
-        }
 
-        private void DodajZamenskeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var item = (Medicine)datagGridMedicine.SelectedItem;
-            _medicine.ReplacmentMedicine.Add(item);
-            datagGridReplacmentMedicine.ItemsSource =new ObservableCollection<Medicine>(_medicine.ReplacmentMedicine);
-            var dto = new ReplacmentMedicineDTO();
-            dto.dtoID = Guid.NewGuid().ToString();
-            dto.mainMedicineID = _medicine.MedicineID;
-            dto.replacmentMedicineID = item.MedicineID;
-            App.medicineReplacmentRepository.AddDTO(dto);
-        }
-
-        private void datagGridReplacmentMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (datagGridMedicine.SelectedItem != null)
-                DodajZamenskeBtn.IsEnabled = true;
-        }
     }
 }
