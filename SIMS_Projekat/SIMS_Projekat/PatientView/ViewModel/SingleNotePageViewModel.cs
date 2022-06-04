@@ -52,8 +52,12 @@ namespace SIMS_Projekat.PatientView
             if (MessageBox.Show("Jeste li sigurni da zelite da obrišete belešku?",
             "Brisanje beleške", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Inject.NotesConverter.DeleteModel(Note, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
-                NotesPage notesPage = new NotesPage(mainFrame, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
+                Patient patient = App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient;
+                Note note = App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID));
+                App.finishedAppointmentController.EraseNoteForAppointmentIfExists(note.noteID, patient);
+                App.noteController.DeleteNote(note);
+
+                NotesPage notesPage = new NotesPage(mainFrame, patient);
                 mainFrame.NavigationService.Navigate(notesPage);
             }
         }

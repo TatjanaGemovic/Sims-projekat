@@ -35,6 +35,11 @@ namespace SIMS_Projekat
         public static NoteService noteService;
         public static NoteController noteController;
 
+        private static string REMINDER_FILE = @".\..\..\..\Resources\reminders.txt";
+        public static ReminderRepository reminderRepository;
+        public static ReminderService reminderService;
+        public static ReminderController reminderController;
+
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
 
@@ -43,12 +48,6 @@ namespace SIMS_Projekat
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
         private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
-
-
-        public static string THERAPY_NOTIFICATION_CSV = @".\..\..\..\Resources\therapy_notifications.txt";
-        public static TherapyNotificationRepository therapyNotificationRepository;
-        public static TherapyNotificationService therapyNotificationService;
-        public static TherapyNotificationController therapyNotificationController;
 
         public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
         public static EvaluationRepository evaluationRepository;
@@ -156,6 +155,16 @@ namespace SIMS_Projekat
                 noteService = noteService
             };
 
+            reminderRepository = new ReminderRepository(REMINDER_FILE);
+            reminderService = new ReminderService()
+            {
+                reminderRepository = reminderRepository
+            };
+            reminderController = new ReminderController()
+            {
+                reminderService = reminderService
+            };
+
             accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
             accountService = new AccountService()
             {
@@ -188,16 +197,6 @@ namespace SIMS_Projekat
                 AllergenService = AllergenService
             };
 
-            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
-            therapyNotificationService = new TherapyNotificationService()
-            {
-                therapyNotificationRepository = therapyNotificationRepository
-            };
-            therapyNotificationController = new TherapyNotificationController()
-            {
-                therapyNotificationService = therapyNotificationService
-            };
-
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
             evaluationService = new EvaluationService()
             {
@@ -216,7 +215,7 @@ namespace SIMS_Projekat
             noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
             
-            therapyNotificationRepository.Deserialize();
+            
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
@@ -228,6 +227,7 @@ namespace SIMS_Projekat
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
+            reminderRepository.Deserialize();
             evaluationRepository.Deserialize();
 
             EquipmentOrderController.Deserialize();

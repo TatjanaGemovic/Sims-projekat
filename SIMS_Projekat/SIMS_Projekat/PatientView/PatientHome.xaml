@@ -99,7 +99,7 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="reminders" Grid.Row="6" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,3,3,2">
+            <Button x:Name="reminders" Grid.Row="6" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,3,3,2" Click="Reminders_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/reminder.png" Width="30" Height="30"></Image>
                     <Label Content="Podsetnici" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
