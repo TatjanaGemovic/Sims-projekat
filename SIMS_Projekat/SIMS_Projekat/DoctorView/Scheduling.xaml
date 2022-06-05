@@ -45,7 +45,7 @@
                         </Style>
                     </DataGrid.CellStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Vreme" Binding ="{Binding beginningTime}" Width="100"/>
+                        <DataGridTextColumn Header="Vreme" Binding ="{Binding beginningTime}" Width="65"/>
                         <DataGridTextColumn Header="Tip" Binding ="{Binding appointmentType}"  Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

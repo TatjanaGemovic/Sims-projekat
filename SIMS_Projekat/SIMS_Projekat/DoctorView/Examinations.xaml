@@ -41,8 +41,7 @@
                 </DataGrid.CellStyle>
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="80"/>
-                    <DataGridTextColumn Header="Datum" Binding ="{Binding beginningDate}"  Width="90"/>
+                    <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="120"/>
                     <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>

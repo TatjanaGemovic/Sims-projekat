@@ -17,11 +17,16 @@
             <Grid>
                 <Button x:Name="Reject" Command="{Binding denyCommand}" HorizontalAlignment="Center" Margin="0,532,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/medical-history.png" Width="0" Margin="0,0,0,0" HorizontalAlignment="Stretch"/>
+                        <Image Source="/Resources/icons_doctor/trash.png" Width="20" Margin="0,0,10,0"/>
                         <TextBlock FontSize="20">Odbij</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button x:Name="Approve" Command="{Binding approveCommand}" FontSize="20" Content="Odobri" HorizontalAlignment="Center" Margin="0,450,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320"/>
+                <Button x:Name="Approve" Command="{Binding approveCommand}" FontSize="20" HorizontalAlignment="Center" Margin="0,450,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons/tick-inside-circle.png"  Width="20" Margin="0,0,10,0"/>
+                        <TextBlock FontSize="20">Odobri</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="350" Stroke="#676FA3" StrokeThickness="4" Height="370" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Ime" HorizontalAlignment="Left" Margin="50,75,0,0" VerticalAlignment="Top"  Width="108" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Doza" HorizontalAlignment="Left" Margin="50,130,0,0" VerticalAlignment="Top" Width="161" FontSize="20" FontWeight="Bold" Foreground="#FF676FA3"/>

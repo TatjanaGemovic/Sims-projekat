@@ -45,7 +45,7 @@
                         </Style>
                     </DataGrid.CellStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Od - Do" Binding ="{Binding fromUntil}" Width="200"/>
+                        <DataGridTextColumn Header="Od - Do" Binding ="{Binding fromUntil}" Width="140"/>
                         <DataGridTextColumn Header="Status" Binding ="{Binding requestStatus}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

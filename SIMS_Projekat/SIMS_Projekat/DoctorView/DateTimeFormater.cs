@@ -22,7 +22,9 @@ namespace SIMS_Projekat.DoctorView
             string until1 = r.until.ToString();
             String[] parts = from1.Split(" ");
             String[] parts2 = until1.Split(" ");
-            return parts[0] + "  -  " + parts2[0];
+            String[] parts3 = parts[0].Split("/");
+            String[] parts4 = parts2[0].Split("/");
+            return parts3[1] + "." + parts3[0] + "  -  " + parts4[1] + "." + parts4[0];
         }
 
         public int ChangeDateFormat(DateTime date)

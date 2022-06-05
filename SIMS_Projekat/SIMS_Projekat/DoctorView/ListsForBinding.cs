@@ -82,10 +82,11 @@ namespace SIMS_Projekat.DoctorView
                     {
                         string date = app.beginningDate.ToString();
                         String[] datePart = date.Split(" ");
-                        date = datePart[0];
-                        string time = datePart[1];
+                        String[] timePart = datePart[1].Split(":");
+                        String[] datePart2 = datePart[0].Split("/");
+                        string time = datePart2[1] + "." + datePart2[0] + "." + " - " + timePart[0] + ":" + timePart[1];
 
-                        AppointmentList.Add(new Appointment2(app.appointmentID, date, app.patient.FirstName + " " + app.patient.LastName, time));
+                        AppointmentList.Add(new Appointment2(app.appointmentID, datePart[0], app.patient.FirstName + " " + app.patient.LastName, time));
                     }
                 }
             }
@@ -103,10 +104,11 @@ namespace SIMS_Projekat.DoctorView
                     {
                         string date = app.beginningDate.ToString();
                         String[] datePart = date.Split(" ");
-                        date = datePart[0];
-                        string time = datePart[1];
+                        String[] timePart = datePart[1].Split(":");
+                        String[] datePart2 = datePart[0].Split("/");
+                        string time = datePart2[1] + "." + " Maj" + "   " + timePart[0] + ":" + timePart[1];
 
-                        patientFinishedAppointmentList.Add(new FinishedAppointment2(app.finishedAppointmentID, date, app.doctor.FirstName + " " + app.doctor.LastName, time));
+                        patientFinishedAppointmentList.Add(new FinishedAppointment2(app.finishedAppointmentID, datePart2[1] + "." + " Maj", app.doctor.FirstName + " " + app.doctor.LastName, time));
                     }
                 }
             }
