@@ -79,29 +79,37 @@ namespace SIMS_Projekat.DoctorView
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
             XFont font = new XFont("Arial", 36, XFontStyle.Bold);
-            XFont font2 = new XFont("Arial", 14);
+            XFont font2 = new XFont("Arial", 14, XFontStyle.Regular);
+            XFont font22 = new XFont("Arial", 14, XFontStyle.Italic);
+            XFont font3 = new XFont("Arial", 20, XFontStyle.Bold);
 
-            string temp = "Lista pregleda za " + Mesec.SelectedItem.ToString();
-            gfx.DrawString(temp, font, XBrushes.Black, new XPoint(100, 70));
-            gfx.DrawLine(new XPen(XColor.FromArgb(103, 111, 163)), new XPoint(100, 100), new XPoint(500, 100));
-            gfx.DrawString("Termin", font2, XBrushes.Black, new XPoint(100, 280));
-            gfx.DrawString("Ime pacijenta", font2, XBrushes.Black, new XPoint(200, 280));
-            gfx.DrawString("Tip", font2, XBrushes.Black, new XPoint(400, 280));
+            XImage img = XImage.FromFile(@".\..\..\..\Resources\icons_doctor\cardiogram2.png");
+            gfx.DrawImage(img, 10, 10, 30 ,30);
 
-            gfx.DrawLine(new XPen(XColor.FromArgb(103, 111, 163)), new XPoint(50, 290), new XPoint(550, 290));
+            gfx.DrawString("Health korporacija", font22, XBrushes.Gray, new XPoint(50, 30));
+            gfx.DrawString("Doktor Petar Petrovic", font22, XBrushes.Gray, new XPoint(450, 30));
 
-            int currYposition_values = 303;
-            int currYposition_line = 310;
+            string temp = " Lista pregleda za " + Mesec.SelectedItem.ToString();
+            gfx.DrawString(temp, font, XBrushes.Black, new XPoint(110, 95));
+            gfx.DrawLine(new XPen(XColor.FromArgb(103, 111, 163)), new XPoint(100, 107), new XPoint(500, 107));
+            gfx.DrawString("Termin", font3, XBrushes.Black, new XPoint(100, 215));
+            gfx.DrawString("Ime pacijenta", font3, XBrushes.Black, new XPoint(200, 215));
+            gfx.DrawString("Tip", font3, XBrushes.Black, new XPoint(400, 215));
+
+            gfx.DrawLine(new XPen(XColor.FromArgb(103, 111, 163)), new XPoint(50, 222), new XPoint(550, 222));
+
+            int currYposition_values = 250;
+            int currYposition_line = 258;
 
             foreach(PdfData p in data)
             {
-                gfx.DrawString(p.Date, font2, XBrushes.Black, new XPoint(100, currYposition_values));
-                gfx.DrawString(p.PatientName, font2, XBrushes.Black, new XPoint(200, currYposition_values));
-                gfx.DrawString(p.Type, font2, XBrushes.Black, new XPoint(400, currYposition_values));
+                gfx.DrawString(p.Date, font2, XBrushes.DimGray, new XPoint(100, currYposition_values));
+                gfx.DrawString(p.PatientName, font2, XBrushes.DimGray, new XPoint(200, currYposition_values));
+                gfx.DrawString(p.Type, font2, XBrushes.DimGray, new XPoint(400, currYposition_values));
                 gfx.DrawLine(new XPen(XColor.FromArgb(205, 222, 255)), new XPoint(50, currYposition_line), new XPoint(550, currYposition_line));
 
-                currYposition_values += 20;
-                currYposition_line += 20;
+                currYposition_values += 28;
+                currYposition_line += 28;
             }
 
             document.Save(@".\..\..\..\Resources\pdf_files\Test.pdf");
