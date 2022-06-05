@@ -49,6 +49,7 @@ namespace SIMS_Projekat
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
         private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
         private static string MEETINGS_CSV = @".\..\..\..\Resources\meetings.txt";
+        private static string NOTIFICATIONS_CSV = @".\..\..\..\Resources\notifications.txt";
 
         public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
         public static EvaluationRepository evaluationRepository;
@@ -71,6 +72,10 @@ namespace SIMS_Projekat
         public static EquipmentOrderRepository EquipmentOrderRepository;
         public static EquipmentOrderService EquipmentOrderService;
         public static EquipmentOrderController EquipmentOrderController;
+
+        public static NotificationRepository NotificationRepository;
+        public static NotificationService NotificationService;
+        public static NotificationController NotificationController;
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
@@ -212,6 +217,15 @@ namespace SIMS_Projekat
                 MeetingService = MeetingService
             };
 
+            NotificationRepository = new NotificationRepository(NOTIFICATIONS_CSV);
+            NotificationService = new NotificationService()
+            {
+                NotificationRepository = NotificationRepository
+            };
+            NotificationController = new NotificationController()
+            {
+                NotificationService = NotificationService
+            };
 
 
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
@@ -249,6 +263,7 @@ namespace SIMS_Projekat
 
             EquipmentOrderController.Deserialize();
             MeetingController.Deserialize();
+            NotificationController.Deserialize();
 
             if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
             {

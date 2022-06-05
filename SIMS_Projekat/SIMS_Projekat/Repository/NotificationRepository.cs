@@ -53,22 +53,6 @@ namespace SIMS_Projekat.Repository
             return Notifications.Remove(notification) ? notification : null;
         }
 
-        public Notification EditNotification(Notification notification, string notificationID)
-        {
-            foreach (Notification oldNotification in Notifications)
-            {
-                if (oldNotification.ID.Equals(notificationID))
-                {
-                    oldNotification.Topic = notification.Topic;
-                    oldNotification.StartDateTime = notification.StartDateTime;
-                    oldNotification.EndDateTime = notification.EndDateTime;
-                    oldNotification.Description = notification.Description;
-                    oldNotification.InvitedStaff = notification.InvitedStaff;
-                }
-            }
-            return null;
-        }
-
         public List<Notification> GetAllNotifications()
         {
             return Notifications;
