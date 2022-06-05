@@ -52,9 +52,7 @@ namespace SIMS_Projekat.DoctorView
                 foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
                 {
                     if (r.doctor.Equals(doctor) && r.from.Month == month)
-                    {
                         num++;
-                    }
                 }
                 if (month == 6)
                     mesec = "Jun";

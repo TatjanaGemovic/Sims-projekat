@@ -61,25 +61,8 @@ namespace SIMS_Projekat.DoctorView
         private void InitializeComboBox2()
         {
             medicines = new BindingList<String>();
-            foreach(Medicine m in App.medicineController.GetMedicine())
-            {
-                bool temp = true;
-                foreach(Allergen a in patient.Allergens)
-                {
-                    List<string> komponente = m.MedicineComponents;
-                    foreach(String k in komponente)
-                    {
-                        if (a.Name.Equals(k))
-                        {
-                            temp = false; //ne moze ovaj lek
-                        }
-                    }    
-                }
-                if (temp)
-                {
-                    medicines.Add(m.MedicineName);
-                }
-            }
+
+            medicines = App.listsForBinding.CreateMedicineListForPatient(patient);
             Lekovi.ItemsSource = medicines;
         }
 

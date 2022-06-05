@@ -127,7 +127,6 @@ namespace SIMS_Projekat.DoctorView
                     string datum = a.beginningDate.ToString();
                     String[] deoDatuma = datum.Split("/");
                     int mesec = int.Parse(deoDatuma[0]);
-                    //int dan = int.Parse(deoDatuma[1]);
                     if (month2 == mesec)
                     {
                         num++;
@@ -138,7 +137,6 @@ namespace SIMS_Projekat.DoctorView
                     string datum = f.beginningDate.ToString();
                     String[] deoDatuma = datum.Split("/");
                     int mesec = int.Parse(deoDatuma[0]);
-                    //int dan = int.Parse(deoDatuma[1]);
                     if (month2 == mesec)
                     {
                         num++;
@@ -150,52 +148,8 @@ namespace SIMS_Projekat.DoctorView
 
         private void InitializeList()
         {
-            int month;
-            if (Mesec.SelectedItem.ToString().Equals("Januar"))
-                month = 1;
-            else if (Mesec.SelectedItem.ToString().Equals("Februar"))
-                month = 2;
-            else if (Mesec.SelectedItem.ToString().Equals("Mart"))
-                month = 3;
-            else if (Mesec.SelectedItem.ToString().Equals("April"))
-                month = 4;
-            else if (Mesec.SelectedItem.ToString().Equals("Maj"))
-                month = 5;
-            else if (Mesec.SelectedItem.ToString().Equals("Jun"))
-                month = 6;
-            else if (Mesec.SelectedItem.ToString().Equals("Jul"))
-                month = 7;
-            else if (Mesec.SelectedItem.ToString().Equals("Avgust"))
-                month = 8;
-            else if (Mesec.SelectedItem.ToString().Equals("Septembar"))
-                month = 9;
-            else if (Mesec.SelectedItem.ToString().Equals("Oktobar"))
-                month = 10;
-            else if (Mesec.SelectedItem.ToString().Equals("Novembar"))
-                month = 11;
-            else
-                month = 12;
-
-            foreach (Appointment a in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
-            {
-                string datum = a.beginningDate.ToString();
-                String[] deoDatuma = datum.Split("/");
-                int mesec = int.Parse(deoDatuma[0]);
-                int dan = int.Parse(deoDatuma[1]);
-                if (month == mesec)
-                {
-                    string op;
-                    if(a.operation == true)
-                    {
-                        op = "Operacija";
-                    }else
-                    {
-                        op = "Pregled";
-                    }
-                    data.Add(new PdfData(dan.ToString() + " " + Mesec.SelectedItem.ToString(), a.patient.FirstName + " " + a.patient.LastName, op));
-                }
-            }
-            
+            string selectedMonth = Mesec.SelectedItem.ToString();
+            data = App.listsForBinding.CreateListForPdf(selectedMonth, doctor);
         }
 
         public class ReportChartData

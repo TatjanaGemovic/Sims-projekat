@@ -24,7 +24,6 @@ namespace SIMS_Projekat.DoctorView
             doctor = doctor1;
             patientList = new List<Patients>();
             createList();
-            //this.DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

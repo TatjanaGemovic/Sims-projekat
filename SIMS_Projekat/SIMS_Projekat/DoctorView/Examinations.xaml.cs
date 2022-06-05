@@ -49,23 +49,7 @@ namespace SIMS_Projekat.DoctorView
         }
         public void createList()
         {
-            if (App.appointmentRepo.GetAllAppointments() != null)
-            {
-                foreach (Appointment app in App.appointmentRepo.GetAllAppointments())
-                {
-                    if (app.doctor.Equals(doctor))
-                    {
-                        int id = app.appointmentID;
-                        string date = app.beginningDate.ToString();
-                        String[] datePart = date.Split(" ");
-                        date = datePart[0];
-                        string time = datePart[1];
-                        string name = app.patient.FirstName + " " + app.patient.LastName;
-
-                        AppointmentList.Add(new Appointment2(id, date, name, time));
-                    }
-                }
-            }
+            AppointmentList = App.listsForBinding.CreateExaminationsList(doctor); 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

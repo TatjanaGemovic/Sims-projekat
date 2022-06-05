@@ -130,7 +130,6 @@ namespace SIMS_Projekat.DoctorView
 
         private void Ime_Pacijent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //selectedPatient = new Patient();
             String patient = Ime_pacijenta.SelectedItem.ToString();
             foreach (Patient p in App.accountController.GetAllPatientAccounts())
             {
@@ -220,42 +219,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void CreateList()
         {
-            listofAppointmentTime.Add("08:00");
-            listofAppointmentTime.Add("08:15");
-            listofAppointmentTime.Add("08:30");
-            listofAppointmentTime.Add("08:45");
-            listofAppointmentTime.Add("09:00");
-            listofAppointmentTime.Add("09:15");
-            listofAppointmentTime.Add("09:30");
-            listofAppointmentTime.Add("09:45");
-            listofAppointmentTime.Add("10:00");
-            listofAppointmentTime.Add("10:15");
-            listofAppointmentTime.Add("10:30");
-            listofAppointmentTime.Add("10:45");
-            listofAppointmentTime.Add("11:00");
-            listofAppointmentTime.Add("11:15");
-            listofAppointmentTime.Add("11:30");
-            listofAppointmentTime.Add("11:45");
-            listofAppointmentTime.Add("12:00");
-            listofAppointmentTime.Add("12:15");
-            listofAppointmentTime.Add("12:30");
-            listofAppointmentTime.Add("12:45");
-            listofAppointmentTime.Add("13:00");
-            listofAppointmentTime.Add("13:15");
-            listofAppointmentTime.Add("13:30");
-            listofAppointmentTime.Add("13:45");
-            listofAppointmentTime.Add("14:00");
-            listofAppointmentTime.Add("14:15");
-            listofAppointmentTime.Add("14:30");
-            listofAppointmentTime.Add("14:45");
-            listofAppointmentTime.Add("15:00");
-            listofAppointmentTime.Add("15:15");
-            listofAppointmentTime.Add("15:30");
-            listofAppointmentTime.Add("15:45");
-            listofAppointmentTime.Add("16:00");
-            listofAppointmentTime.Add("16:15");
-            listofAppointmentTime.Add("16:30");
-            listofAppointmentTime.Add("16:45");
+            listofAppointmentTime = new BindingList<String>(App.appointmentController.CreateAppointmentTime());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
