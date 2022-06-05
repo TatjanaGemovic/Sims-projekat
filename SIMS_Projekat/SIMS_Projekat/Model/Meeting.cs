@@ -14,6 +14,7 @@ namespace SIMS_Projekat.Model
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string Description { get; set; }
+        public Room Room { get; set; }
         public List<Account> InvitedStaff { get; set; }
 
         public void fromCSV(string[] values)
@@ -23,8 +24,9 @@ namespace SIMS_Projekat.Model
             StartDateTime = DateTime.Parse(values[2]);
             EndDateTime = DateTime.Parse(values[3]);
             Description = values[4];
+            Room = App.roomController.GetRoomByID(values[5]);
             InvitedStaff = new List<Account>();
-            string[] staffArray = values[5].Split(",");
+            string[] staffArray = values[6].Split(",");
             foreach (string arrPart in staffArray)
             {
                 Account account = App.accountRepository.GetDoctorAccountByID(arrPart);
@@ -49,6 +51,7 @@ namespace SIMS_Projekat.Model
                 StartDateTime.ToString(),
                 EndDateTime.ToString(),
                 Description,
+                Room.RoomID,
                 String.Join(",", staff)
 
             };

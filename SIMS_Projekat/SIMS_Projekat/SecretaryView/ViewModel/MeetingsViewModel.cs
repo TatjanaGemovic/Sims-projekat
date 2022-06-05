@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.DoctorView.ViewModel;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace SIMS_Projekat.SecretaryView.ViewModel
 {
@@ -45,15 +47,27 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 
 
         private MeetingController meetingController;
+        private ContentControl contentControl;
+        public MyICommand AddMeetingCommand { get; set; }
 
 
-        public MeetingsViewModel(MeetingController meetingController)
+
+        public MeetingsViewModel(MeetingController meetingController, ContentControl contentControl)
         {
             this.meetingController = meetingController;
             Meetings = new ObservableCollection<Meeting>(meetingController.GetAllMeetings());
             MeetingsForSelectedDate = new ObservableCollection<Meeting>();
             _selectedDate = DateTime.Now;
+
+            this.contentControl = contentControl;
+
+            AddMeetingCommand = new MyICommand(AddMeetingExecuteMethod);
         }
 
+
+        private void AddMeetingExecuteMethod()
+        {
+            contentControl.Content = new AddMeetingUserControl(contentControl);
+        }
     }
 }

@@ -27,6 +27,12 @@ namespace SIMS_Projekat.Controller
             return MeetingService.GetAllMeetings();
         }
 
+        public bool IsMeetingRoomAvailable(Room selectedRoom, DateTime selectedDateTime)
+        {
+            return MeetingService.IsMeetingRoomAvailable(selectedRoom, selectedDateTime);
+        }
+
+
         public void Serialize()
         {
             MeetingService.Serialize();

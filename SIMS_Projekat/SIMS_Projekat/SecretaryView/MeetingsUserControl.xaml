@@ -27,7 +27,7 @@
         </StackPanel>
 
 
-        <DataGrid x:Name="dataGridAppointments" Grid.Column="0" Grid.Row="2" Height="400" Width="300" ItemsSource="{Binding Path = MeetingsForSelectedDate}" IsReadOnly="True" 
+        <DataGrid x:Name="dataGridAppointments" Grid.Column="0" Grid.Row="2" Height="423" Width="300" ItemsSource="{Binding Path = MeetingsForSelectedDate}" IsReadOnly="True" 
                     SelectionMode="Single" AutoGenerateColumns="False" Margin="20,20,20,20" Style="{DynamicResource SecretaryDataGridStyle}" SelectedItem="{Binding SelectedMeeting}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header=" Tema sastanka" Binding="{Binding Topic}" Width ="*"></DataGridTextColumn>
@@ -55,7 +55,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 30, 20, 0">
-            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110">
+            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Command="{Binding AddMeetingCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/calendar.png" Width="20" Margin="0,0,5,0"/>
                     <TextBlock FontSize="15">Zakaži</TextBlock>

@@ -4,7 +4,6 @@ using SIMS_Projekat.SecretaryView.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +20,15 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.SecretaryView
 {
     /// <summary>
-    /// Interaction logic for AppointmentsView.xaml
+    /// Interaction logic for AddPatientUserControl.xaml
     /// </summary>
-    public partial class MeetingsUserControl : UserControl
+    public partial class AddMeetingUserControl : UserControl
     {
-
-        public MeetingsUserControl(MeetingController meetingController, ContentControl contentControl)
+        public AddMeetingUserControl(ContentControl contentControl)
         {
             InitializeComponent();
-            this.DataContext = new MeetingsViewModel(meetingController, contentControl);
-        }
+            this.DataContext = new AddMeetingViewModel(contentControl, App.appointmentController, App.roomController, App.MeetingController, App.accountController);    
 
+        }
     }
 }

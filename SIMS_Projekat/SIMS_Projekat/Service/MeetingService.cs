@@ -26,6 +26,22 @@ namespace SIMS_Projekat.Service
         {
             return MeetingRepository.Meetings;
         }
+
+        public bool IsMeetingRoomAvailable(Room selectedRoom, DateTime selectedDateTime)
+        {
+            List<Meeting> meetingsForSelectedRoom = MeetingRepository.Meetings.Where(meeting => meeting.Room.RoomID == selectedRoom.RoomID).ToList();
+
+            if (meetingsForSelectedRoom.Count == 0)
+                return true;
+
+            foreach(Meeting meeting in meetingsForSelectedRoom)
+            {
+                if (meeting.StartDateTime == selectedDateTime)
+                    return false;
+            }
+            return true;
+        }
+
         public void Serialize()
         {
             MeetingRepository.Serialize();

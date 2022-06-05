@@ -123,7 +123,7 @@ namespace SIMS_Projekat
 
         private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            meetingsUserControl = new MeetingsUserControl(meetingController);
+            meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
 
         }
