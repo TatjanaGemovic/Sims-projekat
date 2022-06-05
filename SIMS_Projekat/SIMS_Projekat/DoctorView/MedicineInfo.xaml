@@ -30,7 +30,7 @@
                 <TextBox x:Name="Ime" Text="{Binding Path=Name, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,80,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Doza" Text="{Binding Path=Dose, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,135,50,0" VerticalAlignment="Top" Height="31" Width="150"/>
                 <TextBox x:Name="Namena" Text="{Binding Path=Use, Mode=OneWay}" BorderThickness="0" FontSize="20" Foreground="#676FA3" FontWeight="Bold" Background="#CDDEFF" IsReadOnly="True" HorizontalAlignment="Right" Margin="0,185,51,0" VerticalAlignment="Top" Height="56" Width="150"/>
-                <TextBox x:Name="Komentar" Text="{Binding Path=Comment, Mode=OneWayToSource}" BorderThickness="1" FontSize="20" FontWeight="Bold" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,285,75,0" VerticalAlignment="Top" Height="73" Width="255"/>
+                <TextBox x:Name="Komentar" Text="{Binding Path=Comment, Mode=OneWayToSource}" BorderThickness="2" BorderBrush="#676FA3" FontSize="20" FontWeight="Bold" Background="#FFFFFF" HorizontalAlignment="Right" Margin="0,285,75,0" VerticalAlignment="Top" Height="73" Width="255"/>
             </Grid>
         </DockPanel>
     </Grid>

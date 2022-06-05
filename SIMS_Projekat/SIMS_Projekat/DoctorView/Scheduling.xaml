@@ -45,10 +45,8 @@
                         </Style>
                     </DataGrid.CellStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID" Binding ="{Binding appointmentId}" Width="30"/>
                         <DataGridTextColumn Header="Vreme" Binding ="{Binding beginningTime}" Width="100"/>
-                        <DataGridTextColumn Header="Tip" Binding ="{Binding appointmentType}"  Width="100"/>
-                        <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}" Width="*"/>
+                        <DataGridTextColumn Header="Tip" Binding ="{Binding appointmentType}"  Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Button x:Name="Zakazite_Termin" HorizontalAlignment="Left" Margin="13,543,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="110" Height="60">

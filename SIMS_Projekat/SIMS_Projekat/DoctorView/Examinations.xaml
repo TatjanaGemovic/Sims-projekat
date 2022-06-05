@@ -40,9 +40,9 @@
                     </Style>
                 </DataGrid.CellStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding ="{Binding id}" Width="30"/>
+
                     <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="80"/>
-                    <DataGridTextColumn Header="Datum" Binding ="{Binding beginningDate}"  Width="80"/>
+                    <DataGridTextColumn Header="Datum" Binding ="{Binding beginningDate}"  Width="90"/>
                     <DataGridTextColumn Header="Pacijent" Binding ="{Binding patientName}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
