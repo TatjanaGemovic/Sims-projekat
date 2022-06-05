@@ -133,7 +133,13 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="110"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="4"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    
     <Style TargetType="Button" x:Key="BiggerClassicButton">
         <Style.Resources>
             <Style TargetType="Border">
@@ -148,7 +154,13 @@
         <Setter Property="Height" Value="65"/>
         <Setter Property="Width" Value="140"/>
         <Setter Property="Margin" Value="0,522,16,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="4"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    
     <Style TargetType="Button" x:Key="DoctorHomePageButton">
         <Style.Resources>
             <Style TargetType="Border">
@@ -164,7 +176,13 @@
         <Setter Property="Height" Value="140"/>
         <Setter Property="Width" Value="360"/>
         <Setter Property="Margin" Value="0,10,10,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="12"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    
     <Style TargetType="Button" x:Key="DoctorHomePageSmallButton">
         <Style.Resources>
             <Style TargetType="Border">
@@ -179,7 +197,13 @@
         <Setter Property="BorderThickness" Value="6"/>
         <Setter Property="Height" Value="110"/>
         <Setter Property="Width" Value="160"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="10"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
+    
     <Style TargetType="Button" x:Key="BackButton">
         <Style.Resources>
             <Style TargetType="Border">
@@ -194,6 +218,11 @@
         <Setter Property="BorderBrush" Value="#EEF2FF"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="Width" Value="75"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="5"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="Label" x:Key="ActionBarLabel">

@@ -228,7 +228,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void CreateList()
         {
-            listofAppointmentTime = new BindingList<String>(App.appointmentController.CreateAppointmentTime());
+            listofAppointmentTime = new BindingList<String>(App.listsForBinding.CreateAppointmentTimeList());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

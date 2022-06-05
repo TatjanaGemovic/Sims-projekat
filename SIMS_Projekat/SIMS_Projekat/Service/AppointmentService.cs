@@ -47,29 +47,6 @@ namespace SIMS_Projekat.Service
             return appointmentRepository.GetAllAppointments();
         }
 
-        
-
-        public List<string> GetAvailableAppointmentsForDoctor(AppointmentServiceDTO dto)
-        {
-            List<string> listOfTakenAppointmentTime = new List<string>();
-            foreach (Appointment appointment in GetAllAppointments())
-            {
-                int day1 = App.dateTimeFormater.ChangeDateFormat(appointment.beginningDate);
-                int day2 = App.dateTimeFormater.ChangeDateFormat2(dto.date);
-
-                if (day2 == day1) 
-                {
-                    if (CheckSelectedRoomOccupancy(appointment.beginningDate, dto.room) ||
-                       !CheckIfPatientIsAvailable(dto.patient, appointment.beginningDate) ||
-                       !CheckIfDoctorIsAvailable(dto.doctor, appointment.beginningDate)) 
-                    {
-                        listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
-                    }
-                }
-            }
-            return listOfTakenAppointmentTime;
-        }
-
         public bool CheckRoomOccupancy(DateTime dt)
         {
             List<Room> rooms = App.roomController.GetRoomsByType(RoomType.examRoom);
@@ -83,25 +60,10 @@ namespace SIMS_Projekat.Service
             }
             return rooms.Count == 0;
         }
-        public bool CheckSelectedRoomOccupancy(DateTime date, Room selectedRoom)
-        {
-            Room room = App.roomController.GetRoomByID(selectedRoom.RoomID);
 
-            foreach (Appointment app in GetAllAppointments())
-            {
-                if (date == app.beginningDate)
-                {
-                    if (room == app.room)
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
         public bool CheckIfDoctorIsAvailable(Doctor doctor, DateTime date)
         {
-            foreach (Appointment appointment in GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
+            foreach (Appointment appointment in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
                 if (date == appointment.beginningDate)
                 {
@@ -112,7 +74,7 @@ namespace SIMS_Projekat.Service
         }
         public bool CheckIfPatientIsAvailable(Patient patient, DateTime dt)
         {
-            foreach (Appointment appointment in GetAppointmentByPatientID(patient.ID))
+            foreach (Appointment appointment in App.appointmentController.GetAppointmentByPatientID(patient.ID))
             {
                 if (dt == appointment.beginningDate)
                 {

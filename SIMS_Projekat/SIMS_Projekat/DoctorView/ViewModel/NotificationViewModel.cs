@@ -71,7 +71,7 @@ namespace SIMS_Projekat.DoctorView.ViewModel
         public void loadRequests()
         {
             ObservableCollection<Notification2> notifications = new ObservableCollection<Notification2>();
-            foreach(Notification n in App.NotificationController.GetNotificationsByRecipientID(doctor.LicenceNumber))
+            foreach(Notification n in App.NotificationController.GetNotificationsByRecipientID(doctor.ID))
             {
                 if(n.IsRead == false)
                     notifications.Add(new Notification2(n.Content));

@@ -25,6 +25,7 @@ namespace SIMS_Projekat
         public static AppointmentRepository appointmentRepo;
         public static AppointmentService appointmentService;
         public static AppointmentController appointmentController;
+        public static ScheduleAppointmentService scheduleAppointmentService;
 
         private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
         public static FinishedAppointmentRepository finishedAppointmentRepo;
@@ -144,6 +145,7 @@ namespace SIMS_Projekat
             dateTimeFormater = new DateTimeFormater();
 
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
+            scheduleAppointmentService = new ScheduleAppointmentService(appointmentRepo);
             appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
