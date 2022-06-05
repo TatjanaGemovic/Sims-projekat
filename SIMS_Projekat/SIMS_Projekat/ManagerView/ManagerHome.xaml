@@ -21,7 +21,7 @@
         <DockPanel x:Name="sideMenuDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="0" Grid.Column="0" >
             <ListView BorderBrush="Transparent" Background="Transparent" >
 
-                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Style="{DynamicResource ManagerMenuText}" KeyUp="notifikacije_KeyUp" KeyDown="notifikacije_KeyDown" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
+                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
                 <ListViewItem x:Name="prostorijeView" Content="Prostorije" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
                 <ListViewItem x:Name="lekoviView" Content="Lekovi" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
                 <ListViewItem x:Name="opremaView" Content="Oprema" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />

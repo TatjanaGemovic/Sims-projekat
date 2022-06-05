@@ -44,19 +44,11 @@ namespace SIMS_Projekat
 
         }
 
-        private void notifikacije_KeyUp(object sender, KeyEventArgs e)
-        {
 
-
-        }
-
-        private void notifikacije_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
 
         private void notifikacije_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            MainFrame.Content = new NotificationView();
 
         }
 
