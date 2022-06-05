@@ -30,7 +30,7 @@ namespace SIMS_Projekat.Service
         public List<Notification> GetNotificationsByRecipientID(string recipientID)
         {
             List<Notification> notifications = NotificationRepository.Notifications;
-            return notifications.Where(notification => notification.RecipientID == recipientID).ToList();
+            return notifications.Where(notification => notification.RecipientID.Equals(recipientID)).ToList();
             
         }
 

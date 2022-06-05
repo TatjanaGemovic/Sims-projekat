@@ -1,0 +1,61 @@
+﻿<Page x:Class="SIMS_Projekat.DoctorView.NotificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="400"
+      Title="NotificationPage">
+
+    <Grid>
+        <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,630">
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Command="{Binding backCommand}"/>
+            <Label Content="Notifikacije" Width="172" Height="48" Style="{StaticResource ActionBarLabel}" Margin="15,0,90,0"/>
+        </DockPanel>
+        <DockPanel Margin="0,90,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="215*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="RequestsList" SelectedItem="{Binding SelectedNotification}" IsReadOnly="True" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding Notifications}" Margin="0,48,0,0" Height="456">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#676FA3"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#676FA3"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Obavestenje" Binding ="{Binding text}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button x:Name="Procitano" Command="{Binding readCommand}" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="185" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/plus.png" Width="0" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15">Oznaci kao procitano</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Page>

@@ -52,5 +52,10 @@ namespace SIMS_Projekat.DoctorView
         {
             Frame.Content = new ReportPage(Frame, doctor);
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new NotificationPage(Frame, doctor);
+        }
     }
 }
