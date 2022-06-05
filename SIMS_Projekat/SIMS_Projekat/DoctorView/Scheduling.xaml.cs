@@ -92,42 +92,7 @@ namespace SIMS_Projekat.DoctorView
         }
         public void createList()
         {
-            foreach (Model.Appointment appointment in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
-            {
-                DateTime dt = appointment.beginningDate;
-                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
-                String[] datePart = dateTime.Split(" ");
-                string date = datePart[0]; //datum
-                String[] deoDatuma = date.Split("/");
-                int mesec = int.Parse(deoDatuma[0]);
-                int dan = int.Parse(deoDatuma[1]);
-                string time = datePart[1]; //vreme
-
-                String[] datePart2 = selectedDate2.Split(" ");
-                String date2 = datePart2[0];
-                String[] deoDatuma2 = date2.Split("/");
-                int mesec2 = int.Parse(deoDatuma2[0]);
-                int dan2 = int.Parse(deoDatuma2[1]);
-
-                DateTime dt2 = appointment.endDate;
-                String dateTime3 = dt2.ToString("MM/dd/yyyy HH:mm");
-
-                String type;
-                if (appointment.operation == false)
-                {
-                    type = "Pregled";
-                }
-                else
-                {
-                    type = "Operacija";
-                }
-                if (dan == dan2)
-                {
-                    appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
-                                              time, dateTime3, type));
-                }
-
-            }
+            appointmentInformations = App.listsForBinding.CreatePatientList(doctor, selectedDate2);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

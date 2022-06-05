@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.DoctorView;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.Service;
@@ -107,9 +108,12 @@ namespace SIMS_Projekat
         public static MedicineReplacmentDTORepository medicineReplacmentRepository;
         public static MedicineService medicineService;
         public static MedicineController medicineController;
+        public static FreeDayRequestService freeDayRequestService;
+        public static FreeDayRequestController freeDayRequestController;
+        public static ListsForBinding listsForBinding;
+        public static DateTimeFormater dateTimeFormater;
 
-
-        public App()
+        public App() 
         {
             InitializeComponent();
             roomRepository = new RoomRepository(ROOM_CSV);
@@ -134,6 +138,10 @@ namespace SIMS_Projekat
             medicineReplacmentRepository = new MedicineReplacmentDTORepository(MEDICINE_REPLACMENT_CSV, medicineRepository);
             medicineService = new MedicineService(medicineRepository);
             medicineController = new MedicineController(medicineService);
+            freeDayRequestService = new FreeDayRequestService(freeDayRequestRepository);
+            freeDayRequestController = new FreeDayRequestController(freeDayRequestService);
+            listsForBinding = new ListsForBinding();
+            dateTimeFormater = new DateTimeFormater();
 
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             appointmentService = new AppointmentService()

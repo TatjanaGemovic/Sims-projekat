@@ -2,8 +2,9 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:chart="http://schemas.syncfusion.com/wpf"
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView" 
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="430"
       Title="ReportPage">
@@ -15,25 +16,36 @@
         </DockPanel>
         <DockPanel Margin="0,90,0,0">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="215*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="Generisi_Izvestaj" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="200" Height="60">
+                <Rectangle Fill="#EEF2FF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="465" Margin="0,60,0,0" RadiusX="10.5" RadiusY="10.5"/>
+                <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,40,0,0" Fill="#EEF2FF" VerticalAlignment="Top" Width="310"/>
+                <TextBox IsReadOnly="True" Text="Raspored zakazanih pregleda" HorizontalAlignment="Left" Margin="38,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310" Height="40" Foreground="#FF676FA3" FontSize="22" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                <chart:SfChart Header="" FontSize="22" FontWeight="SemiBold"  Margin="10,32,10,60">
+                    <chart:SfChart.PrimaryAxis>
+                        <chart:CategoryAxis Interval="1"/>
+                    </chart:SfChart.PrimaryAxis>
+                    <chart:SfChart.SecondaryAxis>
+                        <chart:NumericalAxis Minimum="0" Maximum="50" Interval="5"/>
+                    </chart:SfChart.SecondaryAxis>
+                    <chart:ColumnSeries Palette="Custom"  ItemsSource="{Binding DataChart}" XBindingPath="Days" YBindingPath="AppNum">
+                        <chart:ColumnSeries.Interior>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="0" Color="#676FA3"/>
+                                <GradientStop Offset="1" Color="#CDDEFF"/>
+                            </LinearGradientBrush>
+                        </chart:ColumnSeries.Interior>
+                    </chart:ColumnSeries>
+                </chart:SfChart>
+                <Button x:Name="Generisi_Izvestaj" IsEnabled="False" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="200" Height="60" Click="Generisi_Izvestaj_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Generisi izvestaj</TextBlock>
                     </StackPanel>
                 </Button>
-                <Label Content="Od" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-                <Label Content="Do" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+
+                <Label Content="Izaberite mesec: " HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Foreground="#FF676FA3" FontSize="21" FontWeight="Bold" Width="175" />
+                <ComboBox x:Name="Mesec" HorizontalAlignment="Right" SelectionChanged="Mesec_SelectionChanged" Margin="0,12,20,0" VerticalAlignment="Top" Width="145" Height="22"/>
+                <Rectangle HorizontalAlignment="Right" Height="26" Margin="0,10,18,0"  Stroke="#676FA3" StrokeThickness="4" VerticalAlignment="Top" Width="149" RadiusX="5" RadiusY="5"/>
             </Grid>
         </DockPanel>
-        <Viewbox Margin="214,100,20,580" Width="130">
-            <DatePicker Width="130" x:Name="Od" SelectedDateChanged="Od_SelectedDateChanged"></DatePicker>
-        </Viewbox>
-        <Viewbox Margin="35,100,206,580" Width="130">
-            <DatePicker Width="130" x:Name="Do"></DatePicker>
-        </Viewbox>
     </Grid>
 </Page>
