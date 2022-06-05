@@ -15,6 +15,8 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
     {
         private ContentControl contentControl;
         private AppointmentController appointmentController;
+        private FreeDayRequestController freeDayRequestController;
+
         public ObservableCollection<FreeDayRequest> FreeDayRequests { get; set; }
 
         private FreeDayRequest _selectedFreeDayRequest;
@@ -25,7 +27,8 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             set 
             { 
                 _selectedFreeDayRequest = value;
-                UpdateAppointmentsForSelectedFreeDayRequest(_selectedFreeDayRequest.doctor, _selectedFreeDayRequest.from, _selectedFreeDayRequest.until);
+                if(_selectedFreeDayRequest != null)
+                    UpdateAppointmentsForSelectedFreeDayRequest(_selectedFreeDayRequest.doctor, _selectedFreeDayRequest.from, _selectedFreeDayRequest.until);
             }
         }
 
@@ -34,13 +37,17 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         public MyICommand ApproveFreeDayRequestCommand { get; set; }
         public MyICommand RejectFreeDayRequestCommand { get; set; }
 
-        public FreeDayApprovalViewModel(ContentControl contentControl, AppointmentController appointmentController)
+        public FreeDayApprovalViewModel(ContentControl contentControl, AppointmentController appointmentController, FreeDayRequestController freeDayRequestController)
         {
             this.contentControl = contentControl;
             this.appointmentController = appointmentController;
+            this.freeDayRequestController = freeDayRequestController;
 
-            FreeDayRequests = new ObservableCollection<FreeDayRequest>(App.freeDayRequestRepository.Requests.Where(request => request.status == Status.Waiting));
+            FreeDayRequests = new ObservableCollection<FreeDayRequest>(freeDayRequestController.GetRequests().Where(request => request.status == Status.Waiting));
             AppointmentsForSelectedTimeSpan = new ObservableCollection<Appointment>();
+
+            ApproveFreeDayRequestCommand = new MyICommand(ApproveFreeDayRequestExecuteMethod);
+            RejectFreeDayRequestCommand = new MyICommand(RejectFreeDayRequestExecuteMethod);
         }
 
         private void UpdateAppointmentsForSelectedFreeDayRequest(Doctor doctor, DateTime startDateTime, DateTime endDateTime)
@@ -50,6 +57,27 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             foreach(Appointment appointment in appointmentsForTimeSpan)
             {
                 AppointmentsForSelectedTimeSpan.Add(appointment);
+            }
+        }
+
+        private void ApproveFreeDayRequestExecuteMethod()
+        {
+            CancelAppointmentsForTimeSpan();
+            SelectedFreeDayRequest.status = Status.Accepted;
+            FreeDayRequests.Remove(SelectedFreeDayRequest);
+        }
+
+        private void RejectFreeDayRequestExecuteMethod()
+        {
+            SelectedFreeDayRequest.status = Status.Denied;
+            FreeDayRequests.Remove(SelectedFreeDayRequest);
+        }
+
+        private void CancelAppointmentsForTimeSpan()
+        {
+            foreach(Appointment appointment in AppointmentsForSelectedTimeSpan)
+            {
+                appointmentController.DeleteAppointment(appointment);
             }
         }
 

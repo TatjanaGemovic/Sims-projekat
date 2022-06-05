@@ -51,6 +51,8 @@ namespace SIMS_Projekat
         private readonly MeetingController meetingController;
         private readonly NotificationController notificationController;
 
+        private readonly FreeDayRequestRepository freeDayRequestRepository;
+
         public SecretaryHome(AccountRepository repository, AccountController controller, 
             AllergenController newAllergenController, RoomController newRoomController)
         {
@@ -68,7 +70,9 @@ namespace SIMS_Projekat
 
             meetingController = App.MeetingController;
             notificationController = App.NotificationController;
-            
+
+            freeDayRequestRepository = App.freeDayRequestRepository;
+
 
 
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
@@ -97,6 +101,8 @@ namespace SIMS_Projekat
             equipmentOrderController.Serialize();
             meetingController.Serialize();
             notificationController.Serialize();
+            freeDayRequestRepository.Serialize();
+
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)

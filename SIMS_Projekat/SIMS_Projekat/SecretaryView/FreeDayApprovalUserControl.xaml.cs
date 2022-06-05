@@ -29,7 +29,7 @@ namespace SIMS_Projekat.SecretaryView
         public FreeDayApprovalUserControl(ContentControl contentControl)
         {
             InitializeComponent();
-            this.DataContext = new FreeDayApprovalViewModel(contentControl, App.appointmentController);
+            this.DataContext = new FreeDayApprovalViewModel(contentControl, App.appointmentController, App.freeDayRequestController);
         }
 
     }
