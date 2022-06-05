@@ -22,7 +22,18 @@ namespace SIMS_Projekat.Model
         public Patient patient { get; set; }
         public string comment { get; set; }
 
+        public double averageDoctorRating { get; set; }
+        public double averageHospitalRating { get; set; }
+
         public DateTime evaluationCreated { get; set; }
+
+        public Evaluation()
+        {
+            this.averageDoctorRating = (recommendDoctor + doctorIsInterested + doctorIsUnderstandable) / 3.0;
+            this.averageHospitalRating = (staff + waitingTime + recommendHospital) / 3.0;
+        
+        }
+
         public void fromCSV(string[] values)
         {
             patientID = values[0];
@@ -37,6 +48,8 @@ namespace SIMS_Projekat.Model
             recommendDoctor = Convert.ToInt32(values[9]);
             evaluationID = Convert.ToInt32(values[10]);
             isFilled = bool.Parse(values[11]);
+            averageDoctorRating = Convert.ToDouble(values[12]);
+            averageHospitalRating = Convert.ToDouble(values[13]);
             
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByID(doctorID) as Doctor;
@@ -57,7 +70,9 @@ namespace SIMS_Projekat.Model
                 doctorIsInterested.ToString(),
                 recommendDoctor.ToString(),
                 evaluationID.ToString(),
-                isFilled.ToString()
+                isFilled.ToString(),
+                averageDoctorRating.ToString(),
+                averageHospitalRating.ToString()
             };
             return values;
         }

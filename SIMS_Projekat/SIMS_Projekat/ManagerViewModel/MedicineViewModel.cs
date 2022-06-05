@@ -14,11 +14,11 @@ using System.Windows.Controls;
 
 namespace SIMS_Projekat.ManagerViewModel
 {
-    public class MedicineViewModel
+    public class MedicineViewModel : INotifyPropertyChanged
     {
         private Medicine _selectedItem;
         public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<Medicine> _medicine;
+        private ObservableCollection<Medicine> _medicine;
         private RelayCommand addMedicine;
         private RelayCommand editMedicine;
         private RelayCommand deleteMedicine;
