@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Controller;
+﻿using SIMS.CompositeComon;
+using SIMS_Projekat.Controller;
 using SIMS_Projekat.DTOModel;
 using SIMS_Projekat.Model;
 using System;
@@ -28,7 +29,8 @@ namespace SIMS_Projekat.ManagerView
         public event PropertyChangedEventHandler PropertyChanged;
         private Room _roomForRenovation { get; set; }
         private readonly RenovationRequestController _renovationRequestController;
-
+        public RelayCommand zavrsi;
+        private Room selectedItem;
 
         public RenoviranjeView(Room roomsForRenovation)
         {
@@ -39,9 +41,44 @@ namespace SIMS_Projekat.ManagerView
             gridMergeRoom.ItemsSource = App.roomService.GetRoomsExceptRoom(_roomForRenovation);
         }
 
-        
+        public Room SelectedItem
+        {
+            get { return selectedItem; }
+            set
+            {
+                selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public RelayCommand Zavrsi
+        {
+            get
+            {
+                return zavrsi ?? (new RelayCommand(param => Button_Click(), param => canCommandExecut()));
+            }
+
+        }
+
+        private Boolean canCommandExecut()
+        {
+            if (SelectedItem != null && (RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
+                return false;
+            else if (SelectedItem == null && (RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
+                return true && isFormFilled();
+
+            return true && isFormFilled();
+        }
+
+        private Boolean isFormFilled()
+        {
+            if (ReasnonBox.Text != "" && comboTip.SelectedIndex != -1 && DateStart.Text != "" && DateEnd.Text != "")
+                return true;
+
+            return false;
+        }
+
+        private void Button_Click()
         {
             var request = createRequest();
             _renovationRequestController.AddRequest(request);
@@ -50,18 +87,7 @@ namespace SIMS_Projekat.ManagerView
             ManagerHome.mainFrame.Content = new RoomView();
         }
 
-       /* private void createDTO(RenovationRequest request)
-        {
-            foreach (Room room in request.roomsForRenovation)
-            {   
-                var newDto = new RenovationRoomDTO();
-                newDto.dtoID = room.RoomID+request.requestID;
-                newDto.roomID = room.RoomID;
-                newDto.requestID = request.requestID;
-                _renovationRoomDTOController.AddRoomRenovation(newDto);
-            }
-        }*/
-
+ 
         private RenovationRequest createRequest()
         {
             var renovationRequest = new RenovationRequest();
@@ -98,6 +124,18 @@ namespace SIMS_Projekat.ManagerView
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void comboTip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if ((RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
+                gridMergeRoom.IsEnabled = false;
+        }
+
+        private void comboDropDown(object sender, EventArgs e)
+        {
+            if ((RenovationType)comboTip.SelectedIndex == RenovationType.Merge)
+                gridMergeRoom.IsEnabled = true;
         }
     }
 }
