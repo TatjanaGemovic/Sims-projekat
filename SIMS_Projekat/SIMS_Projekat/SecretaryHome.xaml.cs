@@ -32,6 +32,7 @@ namespace SIMS_Projekat
         private readonly AllergensUserControl allergensUserControl;
         private AddUrgentPatientUserControl addUrgentPatientUserControl;
         private EquipmentUserControl equipmentUserControl;
+        private MeetingsUserControl meetingsUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -45,6 +46,8 @@ namespace SIMS_Projekat
 
         private readonly EquipmentController equipmentController;
         private readonly EquipmentOrderController equipmentOrderController;
+
+        private readonly MeetingController meetingController;
 
         public SecretaryHome(AccountRepository repository, AccountController controller, 
             AllergenController newAllergenController, RoomController newRoomController)
@@ -60,6 +63,8 @@ namespace SIMS_Projekat
 
             equipmentController = App.equipmentController;
             equipmentOrderController = App.EquipmentOrderController;
+
+            meetingController = App.MeetingController;
 
 
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
@@ -86,6 +91,7 @@ namespace SIMS_Projekat
             allergenController.Serialize();
             appointmentRepository.Serialize();
             equipmentOrderController.Serialize();
+            meetingController.Serialize();
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -112,7 +118,14 @@ namespace SIMS_Projekat
         private void EquipmentRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
-            ContentControl.Content=equipmentUserControl;
+            ContentControl.Content = equipmentUserControl;
+        }
+
+        private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
+            ContentControl.Content = meetingsUserControl;
+
         }
     }
 }

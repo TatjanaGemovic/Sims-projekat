@@ -48,6 +48,7 @@ namespace SIMS_Projekat
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
         private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
+        private static string MEETINGS_CSV = @".\..\..\..\Resources\meetings.txt";
 
         public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
         public static EvaluationRepository evaluationRepository;
@@ -62,6 +63,10 @@ namespace SIMS_Projekat
         public static AllergenRepository AllergenRepository;
         public static AllergenService AllergenService;
         public static AllergenController AllergenController;
+
+        public static MeetingRepository MeetingRepository;
+        public static MeetingService MeetingService;
+        public static MeetingController MeetingController;
 
         public static EquipmentOrderRepository EquipmentOrderRepository;
         public static EquipmentOrderService EquipmentOrderService;
@@ -197,6 +202,27 @@ namespace SIMS_Projekat
                 AllergenService = AllergenService
             };
 
+            MeetingRepository = new MeetingRepository(MEETINGS_CSV);
+            MeetingService = new MeetingService()
+            {
+                MeetingRepository = MeetingRepository
+            };
+            MeetingController = new MeetingController()
+            {
+                MeetingService = MeetingService
+            };
+
+
+            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
+            therapyNotificationService = new TherapyNotificationService()
+            {
+                therapyNotificationRepository = therapyNotificationRepository
+            };
+            therapyNotificationController = new TherapyNotificationController()
+            {
+                therapyNotificationService = therapyNotificationService
+            };
+
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
             evaluationService = new EvaluationService()
             {
@@ -231,6 +257,7 @@ namespace SIMS_Projekat
             evaluationRepository.Deserialize();
 
             EquipmentOrderController.Deserialize();
+            MeetingController.Deserialize();
 
             if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
             {
