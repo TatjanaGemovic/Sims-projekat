@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SIMS_Projekat.Controller
 {
-    public class NotificationController
+    public class NotificationController : INotificationController
     {
         public NotificationService NotificationService { get; set; }
 

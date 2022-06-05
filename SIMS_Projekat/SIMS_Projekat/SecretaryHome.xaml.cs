@@ -3,6 +3,7 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.SecretaryView;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,6 +34,7 @@ namespace SIMS_Projekat
         private AddUrgentPatientUserControl addUrgentPatientUserControl;
         private EquipmentUserControl equipmentUserControl;
         private MeetingsUserControl meetingsUserControl;
+        private FreeDayApprovalUserControl freeDayApprovalUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -49,6 +51,8 @@ namespace SIMS_Projekat
 
         private readonly MeetingController meetingController;
         private readonly NotificationController notificationController;
+
+        private readonly FreeDayRequestRepository freeDayRequestRepository;
 
         public SecretaryHome(AccountRepository repository, AccountController controller, 
             AllergenController newAllergenController, RoomController newRoomController)
@@ -67,7 +71,9 @@ namespace SIMS_Projekat
 
             meetingController = App.MeetingController;
             notificationController = App.NotificationController;
-            
+
+            freeDayRequestRepository = App.freeDayRequestRepository;
+
 
 
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
@@ -96,6 +102,8 @@ namespace SIMS_Projekat
             equipmentOrderController.Serialize();
             meetingController.Serialize();
             notificationController.Serialize();
+            freeDayRequestRepository.Serialize();
+
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -127,9 +135,16 @@ namespace SIMS_Projekat
 
         private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            meetingsUserControl = new MeetingsUserControl(notificationSender, meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
+        }
 
+        private void FreeDayRequests_RadioButtonChecked(object sender, RoutedEventArgs e)
+        {
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            freeDayApprovalUserControl = new FreeDayApprovalUserControl(notificationSender, ContentControl);
+            ContentControl.Content = freeDayApprovalUserControl;
         }
     }
 }

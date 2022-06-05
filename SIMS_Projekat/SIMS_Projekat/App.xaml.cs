@@ -273,6 +273,7 @@ namespace SIMS_Projekat
             MeetingController.Deserialize();
             NotificationController.Deserialize();
 
+
             if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
             {
                 ChangeTheme(new Uri("Theme/LightTheme.xaml", UriKind.RelativeOrAbsolute));

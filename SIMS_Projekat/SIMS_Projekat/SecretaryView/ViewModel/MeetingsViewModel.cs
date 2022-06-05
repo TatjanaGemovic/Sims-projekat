@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.DoctorView.ViewModel;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -48,11 +49,13 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 
         private MeetingController meetingController;
         private ContentControl contentControl;
+        private INotificationSender notificationSender;
         public MyICommand AddMeetingCommand { get; set; }
 
 
 
-        public MeetingsViewModel(MeetingController meetingController, ContentControl contentControl)
+        public MeetingsViewModel(INotificationSender notificationSender, MeetingController meetingController, 
+            ContentControl contentControl)
         {
             this.meetingController = meetingController;
             Meetings = new ObservableCollection<Meeting>(meetingController.GetAllMeetings());
@@ -60,6 +63,7 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             _selectedDate = DateTime.Now;
 
             this.contentControl = contentControl;
+            this.notificationSender = notificationSender;
 
             AddMeetingCommand = new MyICommand(AddMeetingExecuteMethod);
         }
@@ -67,7 +71,7 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 
         private void AddMeetingExecuteMethod()
         {
-            contentControl.Content = new AddMeetingUserControl(contentControl);
+            contentControl.Content = new AddMeetingUserControl(contentControl, notificationSender);
         }
     }
 }
