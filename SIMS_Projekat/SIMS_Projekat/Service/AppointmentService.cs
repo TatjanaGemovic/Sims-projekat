@@ -1,3 +1,5 @@
+using SIMS_Projekat.DoctorView;
+using SIMS_Projekat.DTO;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Repository;
 using System;
@@ -45,40 +47,21 @@ namespace SIMS_Projekat.Service
             return appointmentRepository.GetAllAppointments();
         }
 
-        public int ChangeDateFormat(DateTime date)
-        {
-                DateTime dt = date;
-                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
-                String[] datePart = dateTime.Split(" ");
-                string date1 = datePart[0]; //datum
-                String[] deoDatuma = date1.Split("/");
-                int mesec = int.Parse(deoDatuma[0]);
-                int dan = int.Parse(deoDatuma[1]);
+        
 
-                return dan;
-        }
-
-        public int ChangeDateFormat2(string date)
-        {
-                String[] deoDatuma2 = date.Split("/");
-                int mesec2 = int.Parse(deoDatuma2[0]);
-                int dan2 = int.Parse(deoDatuma2[1]);
-                return dan2;
-        }
-
-        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, String pickedDate, Patient selectedPatient, bool op, Room selectedRoom)
+        public List<string> GetAvailableAppointmentsForDoctor(AppointmentServiceDTO dto)
         {
             List<string> listOfTakenAppointmentTime = new List<string>();
             foreach (Appointment appointment in GetAllAppointments())
             {
-                int day1 = ChangeDateFormat(appointment.beginningDate);
-                int day2 = ChangeDateFormat2(pickedDate);
+                int day1 = App.dateTimeFormater.ChangeDateFormat(appointment.beginningDate);
+                int day2 = App.dateTimeFormater.ChangeDateFormat2(dto.date);
 
                 if (day2 == day1) 
                 {
-                    if (CheckSelectedRoomOccupancy(appointment.beginningDate, selectedRoom) ||
-                       !CheckIfPatientIsAvailable(selectedPatient, appointment.beginningDate) ||
-                       !CheckIfDoctorIsAvailable(doctor, appointment.beginningDate)) 
+                    if (CheckSelectedRoomOccupancy(appointment.beginningDate, dto.room) ||
+                       !CheckIfPatientIsAvailable(dto.patient, appointment.beginningDate) ||
+                       !CheckIfDoctorIsAvailable(dto.doctor, appointment.beginningDate)) 
                     {
                         listOfTakenAppointmentTime.Add(appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm"));
                     }

@@ -35,6 +35,13 @@ namespace SIMS_Projekat.DoctorView
             TrenTerapija.Text = patient1.MedicalRecord.CurrentTherapy;
             Dodatno.Text = patient1.MedicalRecord.Note;
             Hospitalizacija.Text = patient1.MedicalRecord.BeenHospitalized.ToString();
+            Krvna_grupa.Text = patient1.BloodType.ToString();
+            string temp ="";
+            foreach(Allergen a in patient1.Allergens)
+            {
+                temp += a.Name + ", ";
+            }
+            Alergije.Text = temp;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

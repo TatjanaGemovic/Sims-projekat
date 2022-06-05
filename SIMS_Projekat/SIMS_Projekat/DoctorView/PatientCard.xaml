@@ -15,8 +15,8 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <TabControl HorizontalAlignment="Center" Width="377" Margin="0,60,0,110" BorderThickness="2">
-                    <TabItem Header="Opste" FontSize="18" FontWeight="Bold">
+                <TabControl HorizontalAlignment="Center" Width="377" Margin="0,60,0,110" BorderThickness="4" BorderBrush="#676FA3">
+                    <TabItem Header="Opste" FontSize="18" FontWeight="Bold" Foreground="#676FA3">
                         <Grid Margin="0,0,0,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="21*"/>
@@ -24,30 +24,29 @@
                                 <RowDefinition Height="62*"/>
                                 <RowDefinition Height="191*"/>
                             </Grid.RowDefinitions>
-                            <Label Content="Krvna grupa:" Style="{StaticResource ClassicLabel}" Margin="30,14,0,0" Width="122" Height="40" Grid.Row="1"/>
-                            <Label Content="Alergije:" Style="{StaticResource ClassicLabel}" Margin="30,54,0,0" Width="122" Height="40" Grid.Row="1"/>
-                            <Label Content="Trenutna terapija:" Style="{StaticResource ClassicLabel}" Margin="30,139,0,0" Width="151" Height="40" Grid.RowSpan="2" Grid.Row="1"/>
-                            <Label Content="Prethodni pregled:" Style="{StaticResource ClassicLabel}" Margin="30,8,0,0" Width="151" Height="40" Grid.Row="3"/>
-                            <Label Content="Dodatno:" Style="{StaticResource ClassicLabel}" Margin="30,48,0,0" Width="151" Height="40" Grid.Row="3"/>
-                            <TextBox HorizontalAlignment="Right" Margin="0,21,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" BorderBrush="White" Grid.Row="1"/>
-                            <TextBox x:Name="TrenTerapija" HorizontalAlignment="Right" Margin="0,146,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.RowSpan="2" Grid.Row="1"/>
-                            <DatePicker HorizontalAlignment="Left" Margin="190,8,0,0" VerticalAlignment="Top" Width="150" Grid.Row="3"/>
-                            <TextBox x:Name="Dodatno" HorizontalAlignment="Right" Margin="0,58,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.Row="3"/>
+                            <Label Content="Krvna grupa:" Style="{StaticResource ClassicLabel}" Margin="30,12,0,0" Width="122" Height="40" Grid.Row="1" Foreground="#676FA3"/>
+                            <Label Content="Alergije:" Style="{StaticResource ClassicLabel}" Margin="30,50,0,0" Width="122" Height="40" Grid.Row="1" Foreground="#676FA3"/>
+                            <Label Content="Trenutna terapija:" Style="{StaticResource ClassicLabel}" Margin="30,-3,0,0" Width="151" Height="40" Grid.Row="2" Foreground="#676FA3"/>
+                            <Label Content="Dodatno:" Style="{StaticResource ClassicLabel}" Margin="30,48,0,0" Width="151" Height="40" Grid.Row="3" Foreground="#676FA3"/>
+                            <TextBox x:Name="Krvna_grupa" IsReadOnly="True" HorizontalAlignment="Right" BorderThickness="3" Margin="0,15,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Row="1" Foreground="#676FA3" BorderBrush="#676FA3"/>
+                            <TextBox x:Name="Alergije" IsReadOnly="True" HorizontalAlignment="Right" BorderThickness="3" Margin="0,81,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" Grid.Row="1" Height="60" Foreground="#676FA3" BorderBrush="#676FA3"/>
+                            <TextBox x:Name="TrenTerapija" HorizontalAlignment="Right" BorderThickness="3" Margin="0,28,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" Height="70" Grid.RowSpan="2" Grid.Row="2" Foreground="#676FA3" BorderBrush="#676FA3"/>
+                            <TextBox x:Name="Dodatno" HorizontalAlignment="Right" BorderThickness="3" Margin="0,80,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" Height="80" Grid.Row="3" Foreground="#676FA3" BorderBrush="#676FA3"/>
 
                         </Grid>
                     </TabItem>
-                    <TabItem Header="Istorija bolesti" FontSize="18" FontWeight="Bold">
+                    <TabItem Header="Istorija bolesti" FontSize="18" FontWeight="Bold" Foreground="#676FA3">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="231*"/>
                                 <ColumnDefinition Width="166*"/>
                             </Grid.ColumnDefinitions>
-                            <Label Content="Prethodne bolesti:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="151" Height="40"/>
-                            <Label Content="Hospitalizacija:" Style="{StaticResource ClassicLabel}" Margin="30,200,0,0" Width="122" Height="40"/>
-                            <Label Content="Prethodna terapija terapija:" Style="{StaticResource ClassicLabel}" Margin="30,240,0,0" Width="151" Height="40"/>
-                            <TextBox HorizontalAlignment="Right" Margin="0,35,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
-                            <TextBox HorizontalAlignment="Right" Margin="0,240,30,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Height="80" Grid.ColumnSpan="2"/>
-                            <TextBox x:Name="Hospitalizacija" HorizontalAlignment="Left" Margin="182,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" Grid.ColumnSpan="2"/>
+                            <Label Content="Prethodne bolesti:" Style="{StaticResource ClassicLabel}" Margin="30,35,0,0" Width="151" Height="40" Foreground="#676FA3"/>
+                            <Label Content="Hospitalizacija:" Style="{StaticResource ClassicLabel}" Margin="30,200,0,0" Width="122" Height="40" Foreground="#676FA3"/>
+                            <Label Content="Prethodna terapija terapija:" Style="{StaticResource ClassicLabel}" Margin="30,240,0,0" Width="151" Height="40" Foreground="#676FA3"/>
+                            <TextBox HorizontalAlignment="Right" BorderThickness="3" Margin="0,72,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" Height="100" Grid.ColumnSpan="2" BorderBrush="#676FA3" Foreground="#676FA3"/>
+                            <TextBox HorizontalAlignment="Right" BorderThickness="3" Margin="0,277,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280" Height="85" Grid.ColumnSpan="2" BorderBrush="#676FA3" Foreground="#676FA3"/>
+                            <TextBox x:Name="Hospitalizacija" BorderThickness="3" HorizontalAlignment="Right" Margin="0,200,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2" BorderBrush="#676FA3" Foreground="#676FA3"/>
                         </Grid>
                     </TabItem>
                 </TabControl>
@@ -57,7 +56,7 @@
                         <TextBlock FontSize="17">Sacuvaj</TextBlock>
                     </StackPanel>
                 </Button>
-                <TextBox x:Name="Ime_pacijenta" Background="#EEF2FF" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="24" BorderBrush="#FF6F6F6F" FontWeight="Bold" BorderThickness="0,0,0,3"/>
+                <TextBox x:Name="Ime_pacijenta" Background="#EEF2FF" IsReadOnly="True"  HorizontalAlignment="Left" Margin="13,-10,0,30" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="27" BorderBrush="#676FA3" FontWeight="Bold" BorderThickness="0,0,0,3" Foreground="#676FA3"/>
             </Grid>
         </DockPanel>
     </Grid>

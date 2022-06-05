@@ -59,35 +59,7 @@ namespace SIMS_Projekat.DoctorView.ViewModel
         public void loadRequests()
         {
             ObservableCollection<Request2> requests = new ObservableCollection<Request2>();
-            if (App.freeDayRequestRepository.GetRequests() != null)
-            {
-                foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
-                {
-                    if (r.doctor.Equals(doctor))
-                    {
-                        string from1 = r.from.ToString();
-                        string until1 = r.until.ToString();
-                        String[] parts = from1.Split(" ");
-                        String[] parts2 = until1.Split(" ");
-                        string time = parts[0] + "  -  " + parts2[0];
-                        string status;
-                        if (r.status.ToString().Equals("Waiting"))
-                        {
-                            status = "Na cekanju";
-                        }
-                        else if (r.status.ToString().Equals("Accepted"))
-                        {
-                            status = "Prihvacen";
-                        }
-                        else
-                        {
-                            status = "Odbijen";
-                        }
-
-                        requests.Add(new Request2(time, status));
-                    }
-                }
-            }
+            requests = App.listsForBinding.CreateRequestsList(doctor);  
             Requests = requests;
         }
     }

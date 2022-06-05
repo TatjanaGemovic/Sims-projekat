@@ -1,4 +1,4 @@
-﻿using SIMS_Projekat.DoctorView.ViewModel;
+﻿using SIMS_Projekat.ManagerViewModel;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -15,18 +15,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SIMS_Projekat.DoctorView
+namespace SIMS_Projekat.ManagerView
 {
     /// <summary>
-    /// Interaction logic for MedicineInfo.xaml
+    /// Interaction logic for PollView.xaml
     /// </summary>
-    public partial class MedicineInfo : Page
+    public partial class PollView : Page
     {
-        public MedicineInfo(Frame frame, Doctor d, Medicine m)
+        public PollView(Evaluation poll)
         {
             InitializeComponent();
-            this.DataContext = new MedicineInfoViewModel(frame, d, m);
+            this.DataContext = new PollViewModel(poll);
         }
-
     }
 }

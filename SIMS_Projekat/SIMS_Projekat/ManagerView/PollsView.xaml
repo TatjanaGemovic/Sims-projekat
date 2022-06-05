@@ -1,0 +1,56 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.PollsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="554"
+      Title="PollsView">
+
+    <Border Style="{DynamicResource ManagerBorderMain}">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Ankete" ></Label>
+            <DataGrid x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="doctorRatingPoll" Binding ="{Binding Path=averageDoctorRating}" IsReadOnly="True" Header="ocena za doktora"  Width="120" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="hospitalRatingPoll" Binding ="{Binding Path=averageHospitalRating}" IsReadOnly="True" Header="ocena za bolnicu"  Width="120" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="dateOfPoll" Binding ="{Binding Path=evaluationCreated}" IsReadOnly="True" Header="vreme kreiranja ankete"  Width="*" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="PrikaziAnketuBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Command="{Binding PollView}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerPoll.png" Height="20" Width="20"/>
+                    <Label   Content="Pogledaj anketu" Style="{DynamicResource LabelInButton}" />
+                </StackPanel>
+            </Button>
+            <Button  x:Name="NapraviIzvestajBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"   Height="30" Grid.Row="4"  Width="130" Command="{Binding CreateReport}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerReport.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label   Content="Napravi izvestaj" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+
+
+        </Grid>
+    </Border>
+</Page>
