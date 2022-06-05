@@ -213,15 +213,6 @@ namespace SIMS_Projekat
             };
 
 
-            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
-            therapyNotificationService = new TherapyNotificationService()
-            {
-                therapyNotificationRepository = therapyNotificationRepository
-            };
-            therapyNotificationController = new TherapyNotificationController()
-            {
-                therapyNotificationService = therapyNotificationService
-            };
 
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
             evaluationService = new EvaluationService()
