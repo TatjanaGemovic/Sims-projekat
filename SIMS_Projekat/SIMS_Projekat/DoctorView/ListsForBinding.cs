@@ -23,15 +23,15 @@ namespace SIMS_Projekat.DoctorView
 
             foreach (Model.Appointment appointment in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
-                DateTime dt = appointment.beginningDate;
-                string dateTime = dt.ToString("MM/dd/yyyy HH:mm");
-                DateTime dt2 = appointment.endDate;
-                string dateTime3 = dt2.ToString("MM/dd/yyyy HH:mm");
+                DateTime date = appointment.beginningDate;
+                string dateTime = date.ToString("MM/dd/yyyy HH:mm");
+                DateTime date2 = appointment.endDate;
+                string dateTime3 = date2.ToString("MM/dd/yyyy HH:mm");
 
                 String[] datePart = dateTime.Split(" ");
                 string time = datePart[1]; //vreme
-                int dan = FormatDate(dateTime);
-                int dan2 = FormatDate(selectedDate);
+                int day = FormatDate(dateTime);
+                int day2 = FormatDate(selectedDate);
 
                 String type;
                 if (appointment.operation == false)
@@ -39,7 +39,7 @@ namespace SIMS_Projekat.DoctorView
                 else
                     type = "Operacija";
 
-                if (dan == dan2)
+                if (day == day2)
                     appointmentInformations.Add(new AppointmentInformation(appointment.appointmentID, appointment.patient.FirstName + " " + appointment.patient.LastName,
                                               time, dateTime3, type));
             }
@@ -50,8 +50,8 @@ namespace SIMS_Projekat.DoctorView
         {
             String[] datePart2 = selectedDate.Split(" ");
             String date2 = datePart2[0];
-            String[] deoDatuma2 = date2.Split("/");
-            return int.Parse(deoDatuma2[1]);
+            String[] detePart2 = date2.Split("/");
+            return int.Parse(detePart2[1]);
         }
 
         public ObservableCollection<RequestsViewModel.Request2> CreateRequestsList(Doctor doctor)
@@ -192,11 +192,11 @@ namespace SIMS_Projekat.DoctorView
 
             foreach (Appointment a in App.appointmentController.GetAppointmentByDoctorLicenceNumber(doctor.LicenceNumber))
             {
-                string datum = a.beginningDate.ToString();
-                String[] deoDatuma = datum.Split("/");
-                int mesec = int.Parse(deoDatuma[0]);
-                int dan = int.Parse(deoDatuma[1]);
-                if (month == mesec)
+                string date = a.beginningDate.ToString();
+                String[] datePart = date.Split("/");
+                int month2 = int.Parse(datePart[0]);
+                int day = int.Parse(datePart[1]);
+                if (month == month2)
                 {
                     string op;
                     if (a.operation == true)
@@ -204,7 +204,7 @@ namespace SIMS_Projekat.DoctorView
                     else
                         op = "Pregled";
 
-                    data.Add(new PdfData(dan.ToString() + " " + selectedMonth, a.patient.FirstName + " " + a.patient.LastName, op));
+                    data.Add(new PdfData(day.ToString() + " " + selectedMonth, a.patient.FirstName + " " + a.patient.LastName, op));
                 }
             }
 

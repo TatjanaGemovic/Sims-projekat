@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.DTO;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -145,7 +146,15 @@ namespace SIMS_Projekat.DoctorView
         {
             List<String> list = new List<string>();
 
-            list = App.appointmentController.GetAvailableAppointmentsForDoctor(doctor, selectedDate1, selectedPatient, selectedRoom);
+            AppointmentServiceDTO dto = new AppointmentServiceDTO()
+            {
+                doctor = doctor,
+                date = selectedDate1,
+                patient = selectedPatient,
+                room = selectedRoom
+            };
+
+            list = App.appointmentController.GetAvailableAppointmentsForDoctor(dto);
             
             listofAppointmentTime = new BindingList<String>();
             listofTakenAppointmentTime = new BindingList<String>(list);

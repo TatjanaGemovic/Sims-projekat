@@ -40,20 +40,17 @@ namespace SIMS_Projekat.Service
             {
                 foreach (Doctor d in App.accountRepository.GetAllDoctorAccountBySpeciality(doctor.Speciality.ToString()))
                 {
-                    foreach (Model.FreeDayRequest f in App.freeDayRequestRepository.GetRequests())
+                    foreach (Model.FreeDayRequest request in App.freeDayRequestRepository.GetRequests())
                     {
-                        int temp = f.from.CompareTo(from); //pocetni isti
-                        int temp2 = f.until.CompareTo(until); //krajnji isti
-                        int temp3 = f.until.CompareTo(from); //kraj-pocetak
-                        int temp4 = f.from.CompareTo(until); // pocetak-kraj
+                        int temp = request.from.CompareTo(from); //pocetni isti
+                        int temp2 = request.until.CompareTo(until); //krajnji isti
+                        int temp3 = request.until.CompareTo(from); //kraj-pocetak
+                        int temp4 = request.from.CompareTo(until); // pocetak-kraj
+
                         if (temp == 0 || temp2 == 0 || temp3 == 0 || temp4 == 0)
-                        {
                             canSendRequest = false;
-                        }
                         else if (temp > 0 && temp4 < 0 || temp2 < 0 && temp3 > 0 || temp > 0 && temp2 < 0 || temp < 0 && temp2 > 0)
-                        {
                             canSendRequest = false;
-                        }
                     }
                 }
             }

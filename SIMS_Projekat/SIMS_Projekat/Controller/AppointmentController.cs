@@ -1,3 +1,4 @@
+using SIMS_Projekat.DTO;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Service;
 using System;
@@ -44,9 +45,9 @@ namespace SIMS_Projekat.Controller
             return appointmentService.GetAllAppointments();
         }
 
-        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, string pickedDate, Patient selectedPatient, Room selectedRoom)
+        public List<string> GetAvailableAppointmentsForDoctor(AppointmentServiceDTO dto)
         {
-            return appointmentService.GetAvailableAppointmentsForDoctor(doctor, pickedDate, selectedPatient, selectedRoom);
+            return appointmentService.GetAvailableAppointmentsForDoctor(dto);
         }
 
         public List<string> GetTakenAppointmentsForPatient(Patient p, DateTime dt, string licence) 
