@@ -25,6 +25,8 @@ namespace SIMS_Projekat.ManagerView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private RoomController roomController;
+
+
         public AddRoomView()
         {
             InitializeComponent();

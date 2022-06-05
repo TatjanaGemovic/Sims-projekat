@@ -105,5 +105,10 @@ namespace SIMS_Projekat
         {
             MainFrame.Content = new SettingsView();
         }
+
+        private void anketeView_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PollsView();
+        }
     }
 }
