@@ -102,6 +102,7 @@ namespace SIMS_Projekat
         public static FreeDayRequestService freeDayRequestService;
         public static FreeDayRequestController freeDayRequestController;
         public static ListsForBinding listsForBinding;
+        public static DateTimeFormater dateTimeFormater;
 
         public App() 
         {
@@ -131,6 +132,7 @@ namespace SIMS_Projekat
             freeDayRequestService = new FreeDayRequestService(freeDayRequestRepository);
             freeDayRequestController = new FreeDayRequestController(freeDayRequestService);
             listsForBinding = new ListsForBinding();
+            dateTimeFormater = new DateTimeFormater();
 
             appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
             appointmentService = new AppointmentService()

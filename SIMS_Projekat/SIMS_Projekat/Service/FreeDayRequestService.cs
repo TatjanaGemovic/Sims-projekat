@@ -32,9 +32,6 @@ namespace SIMS_Projekat.Service
         public bool CanSendRequest(bool urgent, DateTime from, DateTime until, Doctor doctor)
         {
             bool canSendRequest = true;
-            int var = from.CompareTo(until);
-            if (var == 0 || var > 0)
-                canSendRequest = false;
 
             if (!urgent)
             {
@@ -46,15 +43,15 @@ namespace SIMS_Projekat.Service
                         int temp2 = request.until.CompareTo(until); //krajnji isti
                         int temp3 = request.until.CompareTo(from); //kraj-pocetak
                         int temp4 = request.from.CompareTo(until); // pocetak-kraj
+                        int var = from.CompareTo(until);
 
-                        if (temp == 0 || temp2 == 0 || temp3 == 0 || temp4 == 0)
+                        if (temp == 0 || temp2 == 0 || temp3 == 0 || temp4 == 0 || var == 0 || var > 0)
                             canSendRequest = false;
                         else if (temp > 0 && temp4 < 0 || temp2 < 0 && temp3 > 0 || temp > 0 && temp2 < 0 || temp < 0 && temp2 > 0)
                             canSendRequest = false;
                     }
                 }
             }
-
             return canSendRequest;
         }
     }

@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static SIMS_Projekat.DoctorView.Examinations;
 using static SIMS_Projekat.DoctorView.PatientExaminationList;
 using static SIMS_Projekat.DoctorView.ReportPage;
@@ -17,6 +14,7 @@ namespace SIMS_Projekat.DoctorView
 {
     public class ListsForBinding
     {
+
         public BindingList<AppointmentInformation> CreatePatientList(Doctor doctor, string selectedDate)
         {
             BindingList<AppointmentInformation> appointmentInformations = new BindingList<AppointmentInformation>();
@@ -29,9 +27,9 @@ namespace SIMS_Projekat.DoctorView
                 string dateTime3 = date2.ToString("MM/dd/yyyy HH:mm");
 
                 String[] datePart = dateTime.Split(" ");
-                string time = datePart[1]; //vreme
-                int day = FormatDate(dateTime);
-                int day2 = FormatDate(selectedDate);
+                string time = datePart[1]; 
+                int day = App.dateTimeFormater.FormatDate(dateTime);
+                int day2 = App.dateTimeFormater.FormatDate(selectedDate);
 
                 String type;
                 if (appointment.operation == false)
@@ -46,14 +44,6 @@ namespace SIMS_Projekat.DoctorView
             return appointmentInformations;
         }
 
-        public int FormatDate(string selectedDate)
-        {
-            String[] datePart2 = selectedDate.Split(" ");
-            String date2 = datePart2[0];
-            String[] detePart2 = date2.Split("/");
-            return int.Parse(detePart2[1]);
-        }
-
         public ObservableCollection<RequestsViewModel.Request2> CreateRequestsList(Doctor doctor)
         {
             ObservableCollection<Request2> requests = new ObservableCollection<Request2>();
@@ -63,7 +53,7 @@ namespace SIMS_Projekat.DoctorView
                 {
                     if (r.doctor.Equals(doctor))
                     { 
-                        string time = FormatTime(r);
+                        string time = App.dateTimeFormater.FormatTime(r);
                         string status;
 
                         if (r.status.ToString().Equals("Waiting"))
@@ -78,16 +68,7 @@ namespace SIMS_Projekat.DoctorView
                 }
             }
             return requests;
-        }
-
-        public string FormatTime(Model.FreeDayRequest r)
-        {
-            string from1 = r.from.ToString();
-            string until1 = r.until.ToString();
-            String[] parts = from1.Split(" ");
-            String[] parts2 = until1.Split(" ");
-            return parts[0] + "  -  " + parts2[0];
-        }
+        }  
 
         public BindingList<Appointment2> CreateExaminationsList(Doctor doctor)
         {
@@ -207,7 +188,6 @@ namespace SIMS_Projekat.DoctorView
                     data.Add(new PdfData(day.ToString() + " " + selectedMonth, a.patient.FirstName + " " + a.patient.LastName, op));
                 }
             }
-
             return data;
         }
     }
