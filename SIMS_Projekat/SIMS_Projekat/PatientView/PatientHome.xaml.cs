@@ -29,7 +29,7 @@ namespace SIMS_Projekat.PatientView
         Page Homepage;
         public PatientHome(Patient p)
         {
-            timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
+            timer = new Timer(new TimerCallback(ReminderController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
 
@@ -80,20 +80,20 @@ namespace SIMS_Projekat.PatientView
         {
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
             App.noteRepository.Serialize();
             App.finishedAppointmentRepo.Serialize();
+            App.reminderRepository.Serialize();
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            App.therapyNotificationController.DeleteActiveNotifications();
+            App.reminderController.DeleteActiveNotifications();
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
             App.noteRepository.Serialize();
+            App.reminderRepository.Serialize();
             App.finishedAppointmentRepo.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
@@ -118,6 +118,11 @@ namespace SIMS_Projekat.PatientView
         private void Notes_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new NotesPage(MainFrame, patient);
+        }
+
+        private void Reminders_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new RemindersPage(MainFrame, patient);
         }
     }
 }

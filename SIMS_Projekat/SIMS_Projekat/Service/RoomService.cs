@@ -3,6 +3,7 @@ using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace SIMS_Projekat.Service
 {
@@ -141,6 +142,12 @@ namespace SIMS_Projekat.Service
 
             return filterRooms;
         }
+
+        public List<Room> GetAvailableMeetingRooms()
+        {
+            return _roomRepository.GetRooms().Where(room => room.pRoomType == RoomType.meetingRoom && room.Available).ToList();
+        }
+
 
         public void Serialize()
         {

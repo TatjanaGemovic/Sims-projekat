@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SIMS_Projekat.Model
 {
-    public class TherapyNotification : Serialization.Serializable
+    public class Reminder : Serialization.Serializable
     {
         public int ID { get; set; }
-        public int receiptID { get; set; }
-        public string patientID { get; set; }
-        public DateTime date { get; set; } 
-        public Receipt receipt { get; set; }
+        public DateTime startTime { get; set; }
+        public string type { get; set; }
+        public string content { get; set; }
+        public string patientID { get; set; }    
+        public string isRepeatable { get; set; }
         public Patient patient { get; set; }
-
         public void fromCSV(string[] values)
         {
             ID = Convert.ToInt32(values[0]);
-            receiptID = Convert.ToInt32(values[1]);
-            patientID = values[2];
-            date = DateTime.Parse(values[3]);
-
-            receipt = App.receiptRepository.GetReceiptByID(receiptID);
+            startTime = DateTime.Parse(values[1]);
+            content = values[2];
+            type = values[3];
+            patientID = values[4];
+            isRepeatable= values[5];
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
         }
 
@@ -32,9 +31,11 @@ namespace SIMS_Projekat.Model
             string[] values =
             {
                 ID.ToString(),
-                receipt.receiptID.ToString(),
+                startTime.ToString(),
+                content,
+                type,
                 patient.ID,
-                date.ToString(),
+                isRepeatable
             };
             return values;
         }

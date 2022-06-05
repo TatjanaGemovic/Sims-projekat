@@ -67,6 +67,11 @@ namespace SIMS_Projekat.Controller
             return this._roomService.GetAvailableNotMeetingRoomsExcept(exceptRoomID);
         }
 
+        public List<Room> GetAvailableMeetingRooms()
+        {
+            return _roomService.GetAvailableMeetingRooms();
+        }
+
         public void Serialize()
         {
             _roomService.Serialize();

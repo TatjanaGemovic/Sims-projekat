@@ -25,8 +25,8 @@
                 <ListViewItem x:Name="prostorijeView" Content="Prostorije" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
                 <ListViewItem x:Name="lekoviView" Content="Lekovi" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
                 <ListViewItem x:Name="opremaView" Content="Oprema" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
-                <ListViewItem x:Name="anketeView" Content="Ankete" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
-                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Style="{DynamicResource ManagerMenuText}" ></ListViewItem>
+                <ListViewItem x:Name="anketeView" Content="Ankete" Style="{DynamicResource ManagerMenuText}" Selected="anketeView_Selected"></ListViewItem>
+                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="settingsUp" ></ListViewItem>
                 <ListViewItem x:Name="pomocView" Content="Pomoc" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
 
             </ListView>

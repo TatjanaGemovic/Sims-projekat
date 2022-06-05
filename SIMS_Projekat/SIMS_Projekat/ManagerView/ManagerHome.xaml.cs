@@ -100,5 +100,15 @@ namespace SIMS_Projekat
         {
             MainFrame.Content = new MedicineView();
         }
+
+        private void settingsUp(object sender, MouseButtonEventArgs e)
+        {
+            MainFrame.Content = new SettingsView();
+        }
+
+        private void anketeView_Selected(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PollsView();
+        }
     }
 }
