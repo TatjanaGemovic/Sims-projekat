@@ -33,6 +33,7 @@ namespace SIMS_Projekat
         private AddUrgentPatientUserControl addUrgentPatientUserControl;
         private EquipmentUserControl equipmentUserControl;
         private MeetingsUserControl meetingsUserControl;
+        private FreeDayApprovalUserControl freeDayApprovalUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -126,6 +127,12 @@ namespace SIMS_Projekat
             meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
 
+        }
+
+        private void FreeDayRequests_RadioButtonChecked(object sender, RoutedEventArgs e)
+        {
+            freeDayApprovalUserControl = new FreeDayApprovalUserControl(ContentControl);
+            ContentControl.Content = freeDayApprovalUserControl;
         }
     }
 }

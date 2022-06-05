@@ -87,5 +87,10 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.CheckForScheduledAppointments(patient, beginningOfMonth);
         }
+
+        public List<Appointment> GetAppointmentsForTimeSpan(Doctor doctor, DateTime startDateTime, DateTime endDateTime)
+        {
+            return appointmentService.GetAppointmentsForTimeSpan(doctor, startDateTime, endDateTime);
+        }
     }
 }
