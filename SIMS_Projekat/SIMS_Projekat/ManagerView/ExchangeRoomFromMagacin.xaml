@@ -26,7 +26,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}" IsEnabled="False" Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Click="PotvrdiPrebacivanje_Click">
+            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding Potvrdi}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
                     <Label   Content="Potvrdi" Style="{DynamicResource LabelInButton}"/>
@@ -75,7 +75,7 @@
 
 
                 <Label Grid.Column="0" Grid.ColumnSpan="2" Content="Odaberite prostoriju u koju zelite da premestite opremu:" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Width="340" Margin="30,0,0,0" />
-                <DataGrid x:Name="datagGridRooms" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding Rooms}"  Margin="30,5,30,5" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4" SelectionChanged="datagGridRooms_SelectionChanged">
+                <DataGrid x:Name="datagGridRooms" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding Rooms}"  Margin="30,5,30,5"   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4">
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="columnType" Binding ="{Binding pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
                         <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
@@ -83,9 +83,9 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Label Content="Kolicina za prebacivanje:" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Row="5" HorizontalAlignment="Center" Width="135"/>
-                <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="5"  TextWrapping="Wrap" Text="" Margin="20,10,30,10" TextChanged="kolicina_TextChanged"/>
+                <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="5"  TextWrapping="Wrap" Text="" Margin="20,10,30,10" />
                 <Label Content="Vreme prebacivanja:" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Width="150" Margin="30,0,0,0"/>
-                <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="20,0,30,0" CalendarClosed="PickDate"/>
+                <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="20,0,30,0" />
             </Grid>
         </Grid>
     </Border>

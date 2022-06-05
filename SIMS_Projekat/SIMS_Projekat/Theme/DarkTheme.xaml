@@ -28,7 +28,6 @@
         <Setter Property="FontSize" Value="12" />
     </Style>
 
-
     <!-- GroupBox style -->
     <Style x:Key="ManagerGroupBoxText" TargetType="{x:Type GroupBox}">
         <Setter Property="Foreground" Value="White"/>
@@ -36,6 +35,7 @@
         <Setter Property="Margin" Value="10,10,10,10" />
         <Setter Property="FontSize" Value="24"/>
     </Style>
+ 
 
     <!--Label-->
     <Style x:Key="ManagerMainLabelPages" TargetType="{x:Type Label}">

@@ -37,7 +37,7 @@ namespace SIMS_Projekat.ManagerView
             get { return equipment; }
             set
             {
-                equipment =value;           
+                equipment = value;
                 OnPropertyChanged(nameof(ppEquipment));
             }
         }
@@ -58,9 +58,7 @@ namespace SIMS_Projekat.ManagerView
             _selectedRoom = selectedRoom;
             ppEquipment = new ObservableCollection<Equipment>(_selectedRoom.pEquipment);
             ppEquipmentQ = new ObservableCollection<int>(_selectedRoom.pEquipmentQuantity);
-            equipmentDataGrid.ItemsSource = ppEquipment;
- 
-            //equipmentDataGrid = datagGridRooms;
+            Podaci = new ObservableCollection<GridItem>();
 
         }
 
@@ -81,18 +79,64 @@ namespace SIMS_Projekat.ManagerView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var _selectedEquipment = (Equipment)equipmentDataGrid.SelectedItem;
-            int inx = equipmentDataGrid.SelectedIndex;
-            lista.SelectedIndex = equipmentDataGrid.SelectedIndex;
-            ManagerHome.mainFrame.Content = new ExchangeRoomFromMagacin(_selectedEquipment, _selectedRoom,(int) lista.SelectedItem) ;
+            var selectedIndex = gridView.SelectedIndex;
+            var _selectedEquipment = ppEquipment[selectedIndex];
+            int  kolicinaZaPrenos = ppEquipmentQ[selectedIndex];
+            ManagerHome.mainFrame.Content = new ExchangeRoomFromMagacin(_selectedEquipment, _selectedRoom, kolicinaZaPrenos);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var _selectedEquipment = (Equipment)equipmentDataGrid.SelectedItem;
-            int inx = equipmentDataGrid.SelectedIndex;
-            lista.SelectedIndex = equipmentDataGrid.SelectedIndex;
-            ManagerHome.mainFrame.Content = new ExchangeEquipmentToMagacin(_selectedEquipment, _selectedRoom, (int)lista.SelectedItem);
+            var selectedIndex = gridView.SelectedIndex;
+            var _selectedEquipment = ppEquipment[selectedIndex];
+            int kolicinaZaPrenos = ppEquipmentQ[selectedIndex];
+            ManagerHome.mainFrame.Content = new ExchangeEquipmentToMagacin(_selectedEquipment, _selectedRoom, kolicinaZaPrenos);
         }
+
+
+        public class GridItem
+        {
+            public string naziv { get; set; }
+            public EquipmentType tip { get; set; }
+            public int kolicina { get; set; }
+
+            public GridItem(string n, EquipmentType tip, int kol)
+            {
+                this.naziv = n;
+                this.tip = tip;
+                this.kolicina = kol;
+            }
+
+
+        }
+
+        public static ObservableCollection<GridItem> stvari;
+
+        public ObservableCollection<GridItem> Podaci
+        {
+            get { return stvari; }
+            set
+            {
+                stvari = value;
+                napravi();
+                OnPropertyChanged(nameof(Podaci));
+            }
+        }
+
+        private void napravi()
+        {
+            for (int i = 0; i != ppEquipment.Count; i++)
+            {
+                var eq = ppEquipment[i];
+                int kol = ppEquipmentQ[i];
+                var item = new GridItem(eq.EquipmentName, eq.pEquipmentType,kol);
+                stvari.Add(item);
+            }
+        }
+
     }
+
+   
+
+
 }

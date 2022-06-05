@@ -51,13 +51,15 @@ namespace SIMS_Projekat.Service
             else
             {
                 var dtoToChange = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID+request.equipmentID);
-                if (dtoToChange!= null)
-                     updateDTO(request,1);
-                else 
+                if (dtoToChange != null)
+                {
+                    updateDTO(request, 1);
+                }
+                else
                 {
                     var newDTO = createDTO(request);
                     _roomEquipmentDTORepository.AddRoomEquipment(newDTO);
-                       
+
                 }
                 
 
@@ -75,7 +77,9 @@ namespace SIMS_Projekat.Service
             else
             {
                 if (request.allEquipmentFromRoom == true)
+                {
                     deleteDTOData(request);
+                }
                 else
                 {
                     var dtoToChange = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID + request.equipmentID);
@@ -115,6 +119,7 @@ namespace SIMS_Projekat.Service
             _equipmentRepository.EditEquipment(oldEquipment, newEquipment);
         }
 
+
         private void updateDTO( ExchangeEquipmentRequest request, int mood)
         {
             var dtoForChange = new RoomEquipmentDTO();
@@ -143,7 +148,6 @@ namespace SIMS_Projekat.Service
         }
         public ExchangeEquipmentRequest AddRequest(ExchangeEquipmentRequest newRequest)
         {
-           //
             return _requestRepository.AddRequest(newRequest);
         }
         public ExchangeEquipmentRequest DeleteRequest(ExchangeEquipmentRequest deleteRequest)
