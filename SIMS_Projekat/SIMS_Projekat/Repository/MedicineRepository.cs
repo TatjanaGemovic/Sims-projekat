@@ -83,16 +83,22 @@ namespace SIMS_Projekat.Repository
 
         public Medicine EditMedicine(Medicine oldMedicine, Medicine newMedicine)
         {
+            changeMedicine(oldMedicine,newMedicine);
+            Serialize();
+            return newMedicine;
+
+        }
+
+        private void changeMedicine(Medicine oldMedicine, Medicine newMedicine) 
+        {
             oldMedicine.MedicineName = newMedicine.MedicineName;
             oldMedicine.MedicineDose = newMedicine.MedicineDose;
             oldMedicine.pMedicineType = newMedicine.pMedicineType;
             oldMedicine.Verify = newMedicine.Verify;
-            oldMedicine.SendToDoctor= newMedicine.SendToDoctor;
-            oldMedicine.OnObservation= newMedicine.OnObservation;
+            oldMedicine.SendToDoctor = newMedicine.SendToDoctor;
+            oldMedicine.OnObservation = newMedicine.OnObservation;
             oldMedicine.pMedicineUseType = newMedicine.pMedicineUseType;
             oldMedicine.DoctorComment = newMedicine.DoctorComment;
-            Serialize();
-            return newMedicine;
 
         }
 

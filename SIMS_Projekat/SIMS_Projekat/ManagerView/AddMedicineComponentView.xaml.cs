@@ -41,24 +41,44 @@ namespace SIMS_Projekat.ManagerView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            addToTable();
+            var newDTO = createDTO(); 
+            SastojakTextBox.Clear();
+            App.medicineComponentsRepository.AddDTO(newDTO);
+
+        }
+
+        private void addToTable()
+        {
             _medicine.MedicineComponents.Add(SastojakTextBox.Text);
             ComponentList.ItemsSource = new ObservableCollection<string>(_medicine.MedicineComponents);
+        }
+
+        private MedicineComponentDTO createDTO()
+        {
             var dto = new MedicineComponentDTO();
             dto.dtoID = Guid.NewGuid().ToString();
             dto.mainMedicineID = _medicine.MedicineID;
             dto.component = SastojakTextBox.Text;
-            SastojakTextBox.Clear();
-            App.medicineComponentsRepository.AddDTO(dto);
-
+            return dto;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var item = (string)ComponentList.SelectedItem;
-            _medicine.MedicineComponents.Remove(item);
-            ComponentList.ItemsSource = new ObservableCollection<string>(_medicine.MedicineComponents);
-            var dtoForDelete = App.medicineComponentsRepository.GetDTOByMedicineAndComponent(_medicine.MedicineID, item);
+            refreshTable();
+            var dtoForDelete = App.medicineComponentsRepository.GetDTOByMedicineAndComponent(_medicine.MedicineID, getSelectedItem());
             App.medicineComponentsRepository.DeleteDTO(dtoForDelete);
+        }
+
+        private void refreshTable()
+        {
+            _medicine.MedicineComponents.Remove(getSelectedItem());
+            ComponentList.ItemsSource = new ObservableCollection<string>(_medicine.MedicineComponents);
+        }
+
+        private string getSelectedItem()
+        { 
+            return (string)ComponentList.SelectedItem;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
