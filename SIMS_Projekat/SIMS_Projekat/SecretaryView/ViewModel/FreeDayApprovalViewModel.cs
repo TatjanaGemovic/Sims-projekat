@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.DoctorView.ViewModel;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,9 +14,13 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 {
     public class FreeDayApprovalViewModel
     {
+        private string APPROVED_NOTIFICATION = "Vaš zahtev za slobodne dane je prihvaćen";
+        private string REJECTED_NOTIFICATION = "Vaš zahtev za slobodne dane je odbijen";
+
         private ContentControl contentControl;
         private AppointmentController appointmentController;
         private FreeDayRequestController freeDayRequestController;
+        private INotificationSender notificationSender;
 
         public ObservableCollection<FreeDayRequest> FreeDayRequests { get; set; }
 
@@ -37,11 +42,13 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         public MyICommand ApproveFreeDayRequestCommand { get; set; }
         public MyICommand RejectFreeDayRequestCommand { get; set; }
 
-        public FreeDayApprovalViewModel(ContentControl contentControl, AppointmentController appointmentController, FreeDayRequestController freeDayRequestController)
+        public FreeDayApprovalViewModel(ContentControl contentControl, INotificationSender notificationSender,
+            AppointmentController appointmentController, FreeDayRequestController freeDayRequestController)
         {
             this.contentControl = contentControl;
             this.appointmentController = appointmentController;
             this.freeDayRequestController = freeDayRequestController;
+            this.notificationSender = notificationSender;
 
             FreeDayRequests = new ObservableCollection<FreeDayRequest>(freeDayRequestController.GetRequests().Where(request => request.status == Status.Waiting));
             AppointmentsForSelectedTimeSpan = new ObservableCollection<Appointment>();
@@ -64,13 +71,21 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         {
             CancelAppointmentsForTimeSpan();
             SelectedFreeDayRequest.status = Status.Accepted;
+            SendNotification(APPROVED_NOTIFICATION);
             FreeDayRequests.Remove(SelectedFreeDayRequest);
         }
 
         private void RejectFreeDayRequestExecuteMethod()
         {
             SelectedFreeDayRequest.status = Status.Denied;
+            SendNotification(REJECTED_NOTIFICATION);
             FreeDayRequests.Remove(SelectedFreeDayRequest);
+        }
+
+        private void SendNotification(string content)
+        {
+            string notificationContent = content + " " + _selectedFreeDayRequest.from.Date + " - " + _selectedFreeDayRequest.until.Date;
+            notificationSender.SendNotification(_selectedFreeDayRequest.doctor.ID, notificationContent);
         }
 
         private void CancelAppointmentsForTimeSpan()

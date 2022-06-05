@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.DoctorView.ViewModel;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,9 +14,11 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 {
     public class AddMeetingViewModel : BindableBase
     {
+        private string NOTIFICATION_CONTET = "Imate novi zakazani sastanak";
         private RoomController roomController;
         private MeetingController meetingController;
         private AccountController accountController;
+        private INotificationSender notificationSender;
 
         private ContentControl contentControl;
 
@@ -63,13 +66,14 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         public MyICommand CancelCommand { get; set; }
 
 
-        public AddMeetingViewModel(ContentControl contentControl, AppointmentController appointmentController, RoomController roomController, 
-            MeetingController meetingController, AccountController accountController)
+        public AddMeetingViewModel(ContentControl contentControl, INotificationSender notificationSender, 
+            AppointmentController appointmentController, RoomController roomController, MeetingController meetingController, AccountController accountController)
         {
             this.roomController = roomController;
             this.meetingController = meetingController;
             this.accountController = accountController;
             this.contentControl = contentControl;
+            this.notificationSender = notificationSender;
 
             AvailableTimes = new ObservableCollection<string>(appointmentController.CreateAppointmentTime());
             AvailableMeetingRooms = new ObservableCollection<Room>();
@@ -104,15 +108,33 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 
         private void SaveMeetingExecuteMethod()
         {
+            List<Account> selectedStaff = GetSelectedStaff();
+            CreateNewMeeting(selectedStaff);
+            SendNotifications(selectedStaff);
+           
+            contentControl.Content = new MeetingsUserControl(notificationSender, meetingController, contentControl);
+        }
+
+        private void CancelExecuteMethod()
+        {
+            contentControl.Content = new MeetingsUserControl(notificationSender, meetingController, contentControl);
+        }
+
+        private List<Account> GetSelectedStaff()
+        {
             List<Account> selectedStaff = new List<Account>();
-            foreach(StaffSelection staffSelection in AvailableStaff)
+            foreach (StaffSelection staffSelection in AvailableStaff)
             {
                 if (staffSelection.IsSelected)
                 {
                     selectedStaff.Add(staffSelection.Account);
                 }
             }
+            return selectedStaff;
+        }
 
+        private void CreateNewMeeting(List<Account> selectedStaff)
+        {
             Meeting newMeeting = new Meeting()
             {
                 Topic = Topic,
@@ -124,12 +146,15 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             };
 
             meetingController.AddMeeting(newMeeting);
-            contentControl.Content = new MeetingsUserControl(meetingController, contentControl);
         }
 
-        private void CancelExecuteMethod()
+        private void SendNotifications(List<Account> selectedStaff)
         {
-            contentControl.Content = new MeetingsUserControl(meetingController, contentControl);
+            foreach(Account account in selectedStaff)
+            {
+                string notificationContent = NOTIFICATION_CONTET + " " + SelectedDateTime;
+                notificationSender.SendNotification(account.ID, notificationContent);
+            }
         }
 
     }

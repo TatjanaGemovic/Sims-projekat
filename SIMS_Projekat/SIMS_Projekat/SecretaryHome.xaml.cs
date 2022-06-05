@@ -3,6 +3,7 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.SecretaryView;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -134,14 +135,15 @@ namespace SIMS_Projekat
 
         private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            meetingsUserControl = new MeetingsUserControl(notificationSender, meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
-
         }
 
         private void FreeDayRequests_RadioButtonChecked(object sender, RoutedEventArgs e)
         {
-            freeDayApprovalUserControl = new FreeDayApprovalUserControl(ContentControl);
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            freeDayApprovalUserControl = new FreeDayApprovalUserControl(notificationSender, ContentControl);
             ContentControl.Content = freeDayApprovalUserControl;
         }
     }

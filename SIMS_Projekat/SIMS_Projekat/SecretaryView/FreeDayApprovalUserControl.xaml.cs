@@ -1,5 +1,6 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Notifications;
 using SIMS_Projekat.SecretaryView.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,10 @@ namespace SIMS_Projekat.SecretaryView
     public partial class FreeDayApprovalUserControl : UserControl
     {
 
-        public FreeDayApprovalUserControl(ContentControl contentControl)
+        public FreeDayApprovalUserControl(INotificationSender notificationSender, ContentControl contentControl)
         {
             InitializeComponent();
-            this.DataContext = new FreeDayApprovalViewModel(contentControl, App.appointmentController, App.freeDayRequestController);
+            this.DataContext = new FreeDayApprovalViewModel(contentControl, notificationSender, App.appointmentController, App.freeDayRequestController);
         }
 
     }
