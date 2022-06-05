@@ -9,24 +9,46 @@
       d:DesignHeight="450" d:DesignWidth="544"
       Title="ProbaPregled">
 
-    <Grid>
-        <Label Content="Oprema po prostorijama" HorizontalAlignment="Left" Margin="116,71,0,0" VerticalAlignment="Top"/>
+    <Border Style="{DynamicResource ManagerBorderMain}">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="datagGridRooms" ItemsSource="{Binding rrRooms}"  Margin="56,131,262,131" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="columnType" Binding ="{Binding pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
-                <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
-                <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Content="Odustani" HorizontalAlignment="Left" Height="44" Margin="411,198,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click"/>
-        <ListView  x:Name="lista" ItemsSource="{Binding ppEquipmentQ}" HorizontalAlignment="Left" Height="188" Margin="326,0,0,0" VerticalAlignment="Center" Width="69" >
-            <ListView.View>
-                <GridView >
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
+
+
+            <DataGrid x:Name="gridView" ItemsSource="{Binding Podaci}"  Style="{DynamicResource ManagerDataGridStyle}" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Margin="10,0,0,0"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="columnNumber" Binding ="{Binding Path=broj}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnFlor" Binding ="{Binding Path=sprat}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=tip}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnKolicina" Binding ="{Binding Path=kolicina}" IsReadOnly="True" Header="kolicina"  Width="100" CanUserResize="False"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" RenderTransformOrigin="0.552,0.656" Height="37" Width="103" Click="Button_Click" Margin="37,0,10,0">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+    </Border>
 </Page>

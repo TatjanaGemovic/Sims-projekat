@@ -29,7 +29,7 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Oprema po prostorijama" ></Label>
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
 
 
             <DataGrid x:Name="gridView" ItemsSource="{Binding Podaci}"  Style="{DynamicResource ManagerDataGridStyle}" Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >
@@ -40,9 +40,9 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Content="Odustani" HorizontalAlignment="Left" Height="44" Grid.Column="1" Grid.Row="5" VerticalAlignment="Center" Width="130" Click="Button_Click"/>
-            <Button Content="Premesti opremu" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Height="37" Width="130" Click="Button_Click_1"/>
-            <Button Content="Premesti u magacin" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Top" RenderTransformOrigin="0.552,0.656" Height="37" Width="130" Click="Button_Click_2"/>
+            <Button Content="Odustani" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="5" Height="30" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="Button_Click"/>
+            <Button Content="U prostoriju" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="130" Margin="0,0,5,0" Click="Button_Click_1"/>
+            <Button Content="U magacin" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" RenderTransformOrigin="0.552,0.656" Margin="0,0,5,0" Height="30" Width="130" Click="Button_Click_2"/>
 
         </Grid>
     </Border>
