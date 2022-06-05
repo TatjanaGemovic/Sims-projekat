@@ -28,6 +28,7 @@ namespace SIMS_Projekat.SecretaryView
         public AppointmentController AppointmentController { get; set; }
         public ObservableCollection<Room> AvailableRooms { get; set; }
         public ObservableCollection<Patient> Patients { get; set; }
+        public ObservableCollection<Appointment> AppointmentsForRescheduling { get; set; }
 
         private ContentControl contentControl;
         private UserControl accountsView;
@@ -49,19 +50,29 @@ namespace SIMS_Projekat.SecretaryView
             accountsRadioButton = radioButton;
 
             AvailableRooms = new ObservableCollection<Room>(GetRooms().OrderBy(room => room.RoomNumber));
+
+            if(AvailableRooms.Count == 0 || 
+                AccountController.GetAvailableDoctors(CreateStartTimeForCurrentAppointment()).Count == 0)
+                ShowAppointmentsForRescheduling();
+
             Patients = new ObservableCollection<Patient>(AccountController.GetAllPatientAccounts());
         }
 
         private List<Room> GetRooms()
         {
-            List<Room> rooms = RoomController.GetAvailableRooms(CreateStartTimeForCurrentAppointment());
-            if(rooms.Count <= 0)
-            {
-                rooms.Add(RoomController.GetRoomsByType(RoomType.examRoom)[0]);
-            }
-            return rooms;
+            return RoomController.GetAvailableRooms(CreateStartTimeForCurrentAppointment());
         }
 
+        private void ShowAppointmentsForRescheduling()
+        {
+            RoomStackPanel.Visibility = Visibility.Hidden;
+            CancelAppointmentStackPanel.Visibility = Visibility.Visible;
+            AppointmentsForRescheduling = new ObservableCollection<Appointment>(GetTodayAppointments());
+        }
+        private List<Appointment> GetTodayAppointments() 
+        {
+            return AppointmentController.GetAllAppointmentForToday();
+        }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -110,22 +121,50 @@ namespace SIMS_Projekat.SecretaryView
         
         private void CreateNewAppointment(Patient patient)
         {
-            DateTime dateTime = CreateStartTimeForCurrentAppointment();
-            var newAppointment = new Appointment()
-            {
-                beginningDate = dateTime,
-                endDate = dateTime.AddMinutes(15),
-                doctor = AccountController.GetAvailableDoctors(dateTime)[0],
-                patient = patient,
-                room = (Room)RoomComboBox.SelectedItem,
-                operation = false,
-                isDelayedByPatient = false,
-                isScheduledByPatient = false
+            Appointment newAppointment;
 
-            };
+            if(CancelAppointmentStackPanel.Visibility == Visibility.Visible)
+            {
+                Appointment selectedAppointment = (Appointment)AppointmentsListBox.SelectedItem;
+                AppointmentController.DeleteAppointment(selectedAppointment);
+
+                DateTime dateTime = CreateStartTimeForCurrentAppointment();
+
+                newAppointment = new Appointment()
+                {
+                    beginningDate = selectedAppointment.beginningDate,
+                    endDate = selectedAppointment.endDate,
+                    doctor = selectedAppointment.doctor,
+                    patient = patient,
+                    room = selectedAppointment.room,
+                    operation = false,
+                    isDelayedByPatient = false,
+                    isScheduledByPatient = false
+                };
+            }
+            else
+            {
+                DateTime dateTime = CreateStartTimeForCurrentAppointment();
+
+                newAppointment = new Appointment()
+                {
+                    beginningDate = dateTime,
+                    endDate = dateTime.AddMinutes(15),
+                    doctor = AccountController.GetAvailableDoctors(dateTime)[0],
+                    patient = patient,
+                    room = (Room)RoomComboBox.SelectedItem,
+                    operation = false,
+                    isDelayedByPatient = false,
+                    isScheduledByPatient = false
+
+                };
+            }
+            
             AppointmentController.AddAppointment(newAppointment);
             AppointmentsUserControl.AddAppointment(newAppointment);
         }
+
+
 
         private DateTime CreateStartTimeForCurrentAppointment()
         {
