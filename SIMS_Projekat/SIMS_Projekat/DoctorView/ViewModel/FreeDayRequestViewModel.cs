@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,44 +35,16 @@ namespace SIMS_Projekat.DoctorView.ViewModel
             String until1 = Do;
             DateTime from2 = DateTime.Parse(from1);
             DateTime until2 = DateTime.Parse(until1);
-            bool can = true;
+
             bool urgent;
             if (Hitno == "True")
-            {
                 urgent = true;
-            }
             else
-            {
                 urgent = false;
-            }
-            int var = from2.CompareTo(until2);
-            if (var == 0 || var > 0)
-            {
-                can = false;
-            }
 
-            if (!urgent)
-            {
-                foreach (Doctor d in App.accountRepository.GetAllDoctorAccountBySpeciality(doctor.Speciality.ToString()))
-                {
-                    foreach (Model.FreeDayRequest f in App.freeDayRequestRepository.GetRequests())
-                    {
-                        int temp = f.from.CompareTo(from2); //pocetni isti
-                        int temp2 = f.until.CompareTo(until2); //krajnji isti
-                        int temp3 = f.until.CompareTo(from2); //kraj-pocetak
-                        int temp4 = f.from.CompareTo(until2); // ppocetak-kraj
-                        if (temp == 0 || temp2 == 0 || temp3 == 0 || temp4 == 0)
-                        {
-                            can = false;
-                        }
-                        else if (temp > 0 && temp4 < 0 || temp2 < 0 && temp3 > 0 || temp > 0 && temp2 < 0 || temp < 0 && temp2 > 0)
-                        {
-                            can = false;
-                        }
-                    }
-                }
-            }
-            if (can)
+             bool canSendRequest = App.freeDayRequestController.CanSendRequest(urgent, from2, until2, doctor);
+
+            if (canSendRequest)
             {
                 Model.FreeDayRequest request = new Model.FreeDayRequest()
                 {
