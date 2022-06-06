@@ -18,7 +18,7 @@
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="388" Margin="0,34,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Button IsEnabled="False" x:Name="Dodaj_operaciju" HorizontalAlignment="Right" Margin="0,540,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Dodaj_operaciju_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/drawing.png" Width="24" Margin="0,0,10,0"/>
                         <TextBlock FontSize="17">Zakazi</TextBlock>
                     </StackPanel>
                 </Button>

@@ -216,7 +216,7 @@
 
     <Style x:Key="DoctorDataGridStyle" TargetType="{x:Type DataGrid}">
         <Setter Property="ColumnHeaderStyle" Value="{DynamicResource DoctorColumnHeaderStyle}"/>
-        <Setter Property="RowHeight" Value="28"/>
+        <Setter Property="RowHeight" Value="35"/>
         <Setter Property="CanUserResizeRows" Value="False"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
         <Setter Property="GridLinesVisibility" Value="None"/>

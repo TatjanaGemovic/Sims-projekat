@@ -18,12 +18,18 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
+                            <Image Source="/Resources/icons_doctor/user (1).png" Width="22" Margin="0,0,5,0" HorizontalAlignment="Stretch"/>
                             <TextBlock Text="{Binding fullName}" Height="25" FontSize="17" FontWeight="SemiBold"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </DockPanel>
-        <Button x:Name="Show" Content="Prikazi" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,610,13,0" Click="Button_Click_1"/>
+        <Button x:Name="Show" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,610,13,0" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/icons_doctor/more.png" Width="25" Margin="0,0,10,0"/>
+                <TextBlock FontSize="15">Prikazi</TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

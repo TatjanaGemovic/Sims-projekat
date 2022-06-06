@@ -17,7 +17,7 @@
             <Grid>
                 <Button x:Name="Save" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Save_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/save.png" Width="20" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/floppy-disk.png" Width="20" Margin="0,0,10,0"/>
                         <TextBlock FontSize="17">Sacuvaj</TextBlock>
                     </StackPanel>
                 </Button>

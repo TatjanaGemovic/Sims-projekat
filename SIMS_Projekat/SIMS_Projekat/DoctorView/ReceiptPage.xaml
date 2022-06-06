@@ -15,7 +15,12 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Send" Content="Posalji" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Send_Click"/>
+                <Button x:Name="Send" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Send_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/message.png" Width="22" Margin="0,0,8,0" HorizontalAlignment="Stretch"/>
+                        <TextBlock FontSize="16">Posalji</TextBlock>
+                    </StackPanel>
+                   </Button>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="480" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Tretman" HorizontalAlignment="Left" Margin="38,80,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Uzimati   Od" HorizontalAlignment="Left" Margin="38,300,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>

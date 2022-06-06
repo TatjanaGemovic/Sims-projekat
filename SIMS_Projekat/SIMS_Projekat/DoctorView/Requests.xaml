@@ -29,6 +29,12 @@
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" Value="#676FA3"/>
                                 </Trigger>
+                                <DataTrigger Binding="{Binding requestStatus}" Value="Prihvacen">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding requestStatus}" Value="Odbijen">
+                                    <Setter Property="Background" Value="#FF5959"/>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </DataGrid.RowStyle>
@@ -52,13 +58,13 @@
 
                 <Button x:Name="Posalji_zahtev" Command="{Binding showCommand}" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/drawing.png" Width="22" Margin="0,0,8,0"/>
                         <TextBlock FontSize="15">Napravi zahtev</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Izvestaj" Command="{Binding showReportCommand}" HorizontalAlignment="Left" Margin="13,543,20,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/clipboard-paste-button.png"  Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/statistics.png"  Width="22" Margin="0,0,8,0"/>
                         <TextBlock FontSize="15"><Run Text="Izvestaj"/></TextBlock>
                     </StackPanel>
                 </Button>

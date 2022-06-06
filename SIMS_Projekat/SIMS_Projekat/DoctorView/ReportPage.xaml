@@ -37,7 +37,7 @@
                 </chart:SfChart>
                 <Button x:Name="Generisi_Izvestaj" IsEnabled="False" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="200" Height="60" Click="Generisi_Izvestaj_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/writing.png" Width="25" Margin="0,0,10,0"/>
                         <TextBlock FontSize="15">Generisi izvestaj</TextBlock>
                     </StackPanel>
                 </Button>

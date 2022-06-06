@@ -12,7 +12,7 @@
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,630">
             <Button Width="40" Height="40" FontWeight="Bold" FontSize="20" Margin="17,0,0,0" HorizontalContentAlignment="Right" BorderThickness="0" BorderBrush="{x:Null}" Click="Button_Click_2" Background="{x:Null}" Foreground="{x:Null}">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/icons_doctor/menu-button.png" Margin="0,0,0,0"/>
+                    <Image Source="/Resources/icons_doctor/menu.png" Margin="0,0,0,0"/>
                 </StackPanel>
             </Button>
             <Label Content="Pocetna" HorizontalAlignment="Center" Width="136" Height="49" Style="{StaticResource ActionBarLabel}" Margin="-40,0,0,0"/>
@@ -25,11 +25,21 @@
             <Button Content="Slobodni dani" IsEnabled="False" Style="{StaticResource DoctorHomePageSmallButton}" Margin="0,-20,10,0" Width="170" HorizontalAlignment="Right"/>
         </DockPanel>
         <ListView Width="300" Height="212" Margin="0,75,130,435" >
-            <Button Content="Notifikacije" Height="60" Width="280" BorderThickness="0,0,0,0" FontWeight="Bold" FontSize="24" Background="White" HorizontalContentAlignment="Left" Padding="10,1,1,1" Click="Button_Click_3"/>
-            <Button Content="Izvestaj" Height="60" Width="280" BorderThickness="0,4,0,0" FontWeight="Bold" FontSize="24" Background="White" HorizontalContentAlignment="Left" Padding="10,1,1,1" Click="Button_Click_1"/>
+            <Button Height="60" Width="280" BorderThickness="0,0,0,0" FontWeight="Bold" FontSize="24" Background="White" HorizontalContentAlignment="Left" Padding="10,1,1,1" Click="Button_Click_3">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons_doctor/notification.png" Width="30" Margin="0,0,15,0"/>
+                    <TextBlock FontSize="24">Notifikacije</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Height="60" Width="280" BorderThickness="0,4,0,0" FontWeight="Bold" FontSize="24" Background="White" HorizontalContentAlignment="Left" Padding="10,1,1,1" Click="Button_Click_1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons_doctor/statistics.png" Width="30" Margin="0,0,15,0"/>
+                    <TextBlock FontSize="24">Izvestaj</TextBlock>
+                </StackPanel>
+            </Button>
             <Button Height="60" Width="280" BorderThickness="0,4,0,0" FontWeight="Bold" FontSize="24" Background="White" HorizontalContentAlignment="Left" Padding="10,1,1,1" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/icons_doctor/exit-to-app-button.png" Width="30" Margin="0,0,15,0"/>
+                    <Image Source="/Resources/icons_doctor/previous.png" Width="30" Margin="0,0,15,0"/>
                     <TextBlock FontSize="24">Odjava</TextBlock>
                 </StackPanel>
             </Button>

@@ -51,19 +51,19 @@
                 </DataGrid>
                 <Button x:Name="Zakazite_Termin" HorizontalAlignment="Left" Margin="13,543,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Zakazite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/drawing.png" Width="22" Margin="0,0,6,0"/>
                         <TextBlock FontSize="15">Zakazite</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Otkazite_Termin" IsEnabled="False" HorizontalAlignment="Center" Margin="0,543,0,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Otkazite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/trash.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/bin.png" Width="22" Margin="0,0,6,0"/>
                         <TextBlock FontSize="15">Otkazite</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Izmenite_Termin" IsEnabled="False" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/edit (1).png" Width="22" Margin="0,0,6,0"/>
                         <TextBlock FontSize="15">Izmenite</TextBlock>
                     </StackPanel>
                 </Button>
