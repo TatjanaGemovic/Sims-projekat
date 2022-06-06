@@ -52,6 +52,21 @@
                 <TextBlock Text="Opis sastanka:" FontSize="14px" FontWeight="Bold"/>
                 <TextBlock Text="{Binding SelectedMeeting.Description}" FontSize="14px" Margin="17,0,0,0" Width="170" TextWrapping="Wrap" />
             </StackPanel>
+            <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                <TextBlock Text="Spisak osoblja:" FontSize="14px" FontWeight="Bold"/>
+                <ListBox VerticalAlignment="Top" Margin="14,0,0,0" FontSize="14" Height="Auto" ItemsSource="{Binding SelectedMeeting.InvitedStaff}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding LastName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 30, 20, 0">
