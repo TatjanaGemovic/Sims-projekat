@@ -11,7 +11,7 @@
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
             <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
-            <Label Content="Recept" Width="119" Height="53" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+            <Label Content="Recept" Width="150" Height="53" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
@@ -21,12 +21,14 @@
                 <Label Content="Uzimati   Od" HorizontalAlignment="Left" Margin="38,300,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
                 <Label Content="Do" HorizontalAlignment="Left" Margin="118,340,0,0" VerticalAlignment="Top" Width="38" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
                 <Label Content="Dnevno" HorizontalAlignment="Left" Margin="38,400,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
-                <TextBox x:Name="Tretman" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,121,50,0" VerticalAlignment="Top" Height="159" Width="312"/>
+                <TextBox x:Name="Tretman" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Right" Margin="0,121,50,0" VerticalAlignment="Top" Height="102" Width="293"/>
                 <Rectangle HorizontalAlignment="Left" Height="35" Margin="38,30,0,0" Fill="#CDDEFF" VerticalAlignment="Top" Width="228"/>
                 <TextBox x:Name="Ime_pacijenta" IsReadOnly="True"  HorizontalAlignment="Left" Margin="38,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228" Height="40" Foreground="#FF676FA3" FontSize="28" FontWeight="Bold" Background="{x:Null}" BorderBrush="{x:Null}"/>
-                <DatePicker x:Name="Od" HorizontalAlignment="Left" Margin="213,306,0,0" VerticalAlignment="Top" Width="137"/>
-                <DatePicker x:Name="Do" HorizontalAlignment="Left" Margin="213,346,0,0" VerticalAlignment="Top" Width="137"/>
+                <DatePicker x:Name="Od" HorizontalAlignment="Left" Margin="198,306,0,0" VerticalAlignment="Top" Width="137"/>
+                <DatePicker x:Name="Do" HorizontalAlignment="Left" Margin="198,346,0,0" VerticalAlignment="Top" Width="137"/>
                 <ComboBox x:Name="Dnevno" HorizontalAlignment="Left" Margin="152,408,0,0" VerticalAlignment="Top" Width="64"/>
+                <Label Content="Lek" HorizontalAlignment="Left" Margin="38,246,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
+                <ComboBox x:Name="Lekovi" HorizontalAlignment="Left" Margin="152,254,0,0" VerticalAlignment="Top" Width="183"/>
             </Grid>
         </DockPanel>
     </Grid>

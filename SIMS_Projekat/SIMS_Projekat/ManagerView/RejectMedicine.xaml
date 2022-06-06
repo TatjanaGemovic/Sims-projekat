@@ -1,0 +1,61 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.RejectMedicine"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="554"
+      Title="RejectMedicine">
+
+    <Border Style="{DynamicResource ManagerBorderMain}">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Odbijeni lekovi" Margin="0,10,0,0" ></Label>
+            <DataGrid x:Name="datagGridMedicine" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedItem}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="medicineName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="medicine"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="comment" Binding ="{Binding Path=DoctorComment}" IsReadOnly="True" Header="doctor comment"  Width="*" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+            <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding EditMedicine}" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Izmeni lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding DeleteMedicine}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Obrisi lek" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name ="BackBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="7" Width="78" Command="{Binding Back}" Margin="57,0,0,0" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                </StackPanel>
+            </Button>
+
+
+        </Grid>
+    </Border>
+</Page>

@@ -80,7 +80,7 @@ namespace SIMS_Projekat.SecretaryView
                 patient = selectedPatient,
                 room = selectedRoom,
                 operation = false,
-                isDelayed = false,
+                isDelayedByPatient = false,
                 isScheduledByPatient = false
 
             };

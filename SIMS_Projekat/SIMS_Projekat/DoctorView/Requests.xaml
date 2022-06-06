@@ -3,14 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView"
+      xmlns:local="clr-namespace:SIMS_Projekat.DoctorView" xmlns:viewmodel="clr-namespace:SIMS_Projekat.DoctorView.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:RequestsViewModel}"
       mc:Ignorable="d" 
       d:DesignHeight="750" d:DesignWidth="400"
       Title="Requests">
 
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,630">
-            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
+            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Command="{Binding backCommand}"/>
             <Label Content="Zahtevi" Width="122" Height="48" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,90,0,0">
@@ -19,7 +19,7 @@
                     <ColumnDefinition Width="215*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <DataGrid x:Name="RequestsList" IsReadOnly="True" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding appointmentInformations}" Margin="0,48,0,0" Height="456">
+                <DataGrid x:Name="RequestsList" IsReadOnly="True" Style="{StaticResource DoctorDataGridStyle}" ItemsSource="{Binding Requests}" Margin="0,48,0,0" Height="456">
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
                             <Style.Triggers>
@@ -45,15 +45,21 @@
                         </Style>
                     </DataGrid.CellStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Od - Do" Binding ="{Binding fromUntil}" Width="200"/>
+                        <DataGridTextColumn Header="Od - Do" Binding ="{Binding fromUntil}" Width="140"/>
                         <DataGridTextColumn Header="Status" Binding ="{Binding requestStatus}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Button x:Name="Posalji_zahtev" HorizontalAlignment="Right" Margin="0,535,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="156" Height="60" Click="Posalji_zahtev_Click">
+                <Button x:Name="Posalji_zahtev" Command="{Binding showCommand}" HorizontalAlignment="Right" Margin="0,543,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icons_doctor/plus.png" Width="20" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Napravi zahtev</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Izvestaj" Command="{Binding showReportCommand}" HorizontalAlignment="Left" Margin="13,543,20,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Width="160" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/clipboard-paste-button.png"  Width="20" Margin="0,0,5,0"/>
+                        <TextBlock FontSize="15"><Run Text="Izvestaj"/></TextBlock>
                     </StackPanel>
                 </Button>
             </Grid>

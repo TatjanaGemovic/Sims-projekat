@@ -5,9 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="ChooseDoctorPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -50,7 +56,7 @@
         </TextBlock>
 
         <ComboBox Grid.Row="3" Grid.Column="1" x:Name="doctorComboBox" ItemsSource="{Binding doctorInfoList}" 
-                  DisplayMemberPath="doctorName" SelectionChanged="doctorComboBox_SelectionChanged"
+                  DisplayMemberPath="doctorName" SelectionChanged="DoctorComboBox_SelectionChanged"
                   AllowDrop="True" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   HorizontalAlignment="Stretch" VerticalAlignment="Center" 
                   Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>

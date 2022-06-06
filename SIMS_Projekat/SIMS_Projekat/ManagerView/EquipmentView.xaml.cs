@@ -39,12 +39,10 @@ namespace SIMS_Projekat.ManagerView
         public EquipmentView()
         {
 
-
             InitializeComponent();
             this.DataContext = this;
             EquipmentList = new ObservableCollection<Equipment>(App.equipmentController.GetEquipment());
-
-
+            filterCombo.SelectedIndex = 2;
         }
 
         private void DodajOpremuBtn_Click(object sender, RoutedEventArgs e)
@@ -55,15 +53,8 @@ namespace SIMS_Projekat.ManagerView
         private void ObrisiOpremeBtn_Click(object sender, RoutedEventArgs e)
         {
             Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
-            if (selectedEquipment != null)
-            {
-                App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
+            App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
 
-            }
-            else
-            {
-
-            }
         }
 
         private void IzmenaOpremeeBtn_Click(object sender, RoutedEventArgs e)
@@ -129,6 +120,18 @@ namespace SIMS_Projekat.ManagerView
             }
             else
                 datagGridEquipment.ItemsSource = EquipmentList;
+        }
+
+        private void datagGridEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (datagGridEquipment.SelectedItem != null)
+            {
+                PregledPoProstorijamaBtn.IsEnabled = true;
+                IzmenaOpremuBtn.IsEnabled = true;
+                ObrisiOpremuBtn.IsEnabled = true;
+                OpremaPremestanjeBtn.IsEnabled = true;
+            }
+
         }
     }
 }

@@ -21,6 +21,7 @@ namespace SIMS_Projekat.DoctorView
     public partial class DoctorHomePage : Window
     {
         Doctor doctor;
+
         public DoctorHomePage(Doctor d)
         {
             InitializeComponent();
@@ -32,8 +33,8 @@ namespace SIMS_Projekat.DoctorView
         {
             App.appointmentRepo.Serialize();
             App.medRecordRepository.Serialize();
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.reminderRepository.Serialize();
         }
     }
 }

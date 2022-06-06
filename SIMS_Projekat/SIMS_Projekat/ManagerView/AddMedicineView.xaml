@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddMedicineView">
 
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="101*">
@@ -27,7 +27,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Lek za dodavanje" Margin="10,10,10,10" FontSize="24" Grid.Column="0" Grid.RowSpan="6" BorderThickness="2">
+            <GroupBox Header="Lek za dodavanje" Style="{DynamicResource ManagerGroupBoxText}"  Grid.Column="0" Grid.RowSpan="6" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -42,14 +42,14 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Naziv leka:" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
-                    <Label Content="Jacina leka [mg]:" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
-                    <Label Content="Tip leka:" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
-                    <Label Content="Nacin upotrebe:" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
+                    <Label Content="Naziv leka:" Style="{DynamicResource ManagerLabelCRUD}"   Grid.Row="1" Grid.Column="0" />
+                    <Label Content="Jacina leka [mg]:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="2" Grid.Column="0" />
+                    <Label Content="Tip leka:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0"/>
+                    <Label Content="Nacin upotrebe:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="4" Grid.Column="0" />
 
-                    <TextBox x:Name="medicineName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="108" />
-                    <TextBox x:Name="medicineDose" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="108" />
-                    <ComboBox x:Name="medicineType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="108">
+                    <TextBox x:Name="medicineName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
+                    <TextBox x:Name="medicineDose" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
+                    <ComboBox x:Name="medicineType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180">
                         <ComboBoxItem Content="antipetik"/>
                         <ComboBoxItem Content="analgetik"/>
                         <ComboBoxItem Content="antibiotik"/>
@@ -57,7 +57,7 @@
                         <ComboBoxItem Content="statini"/>
                         <ComboBoxItem Content="trankvilajzeri"/>
                     </ComboBox>
-                    <ComboBox x:Name="medicineUseType" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="108">
+                    <ComboBox x:Name="medicineUseType" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180">
                         <ComboBoxItem Content="per os"/>
                         <ComboBoxItem Content="sublingvalno"/>
                         <ComboBoxItem Content="rektalno"/>
@@ -78,11 +78,31 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AddComponent_Btn" Content="Dodaj sastojke" Grid.Column="0" Grid.Row="1" Margin="5,12,5,12" Click="AddComponent_Btn_Click" ></Button>
-                <Button x:Name="AddReplacmentMedicine_Btn" Content="Dodaj zamene" Grid.Column="0" Grid.Row="2" Margin="5,12,5,12" Click="AddReplacmentMedicine_Btn_Click" ></Button>
+                <Button x:Name="AddComponent_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="1" Margin="5,12,5,12" Click="AddComponent_Btn_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerComponents.png" Height="20" Width="20"/>
+                        <Label  Content="Dodaj sastojke" Style="{DynamicResource LabelInButton}" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="AddReplacmentMedicine_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="2" Margin="5,12,5,12" Click="AddReplacmentMedicine_Btn_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerReplacmentMedicine.png" Height="20" Width="20"/>
+                        <Label Content="Dodaj zamene" Style="{DynamicResource LabelInButton}" />
+                    </StackPanel>
+                </Button>
 
-                <Button x:Name="SendToDoctor_Btn" Content="Posalji doktoru" Grid.Column="0" Grid.Row="4" Margin="20,12,20,12" Click="SendToDoctor_Click"  ></Button>
-                <Button x:Name="QuitAdding" Content="Ponisti" Grid.Column="0" Grid.Row="5" Margin="20,12,20,12" Click="QuitAdding_Click" ></Button>
+                <Button x:Name="SendToDoctor_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="4" Margin="20,12,15,12" Click="SendToDoctor_Click"  >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
+                        <Label   Content="Posalji doktoru" Style="{DynamicResource LabelInButton}"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="QuitAdding" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="5" Margin="20,12,15,12" Click="QuitAdding_Click" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
+                        <Label   Content=" Ponisti" Style="{DynamicResource LabelInButton}" />
+                    </StackPanel>
+                </Button>
 
             </Grid>
 

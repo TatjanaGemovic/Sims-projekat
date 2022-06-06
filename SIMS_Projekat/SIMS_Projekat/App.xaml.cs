@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Controller;
+using SIMS_Projekat.DoctorView;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.Service;
@@ -19,16 +20,28 @@ namespace SIMS_Projekat
     /// </summary>
     public partial class App : Application
     {
-
+        public static ResourceDictionary ThemeDictionary => Application.Current.Resources.MergedDictionaries[0];
+        public static UnitService unitService;
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
         public static AppointmentRepository appointmentRepo;
         public static AppointmentService appointmentService;
         public static AppointmentController appointmentController;
+        public static ScheduleAppointmentService scheduleAppointmentService;
 
         private static string FINISHED_APPOINTMENT_FILE = @".\..\..\..\Resources\finished_appointment.txt";
-        public static FinishedAppointmentRepository finishedappointmentRepo;
+        public static FinishedAppointmentRepository finishedAppointmentRepo;
         public static FinishedAppointmentService finishedAppointmentService;
         public static FinishedAppointmentController finishedAppointmentController;
+
+        private static string NOTE_FILE = @".\..\..\..\Resources\notes.txt";
+        public static NoteRepository noteRepository;
+        public static NoteService noteService;
+        public static NoteController noteController;
+
+        private static string REMINDER_FILE = @".\..\..\..\Resources\reminders.txt";
+        public static ReminderRepository reminderRepository;
+        public static ReminderService reminderService;
+        public static ReminderController reminderController;
 
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
@@ -38,12 +51,8 @@ namespace SIMS_Projekat
         public static string MEDICALRECORD_CSV = @".\..\..\..\Resources\patient_carton.txt";
         public static string ALLERGENS_CSV = @".\..\..\..\Resources\allergens.txt";
         private static string EQUIPMENT_ORDERS_CSV = @".\..\..\..\Resources\equipment_orders.txt";
-
-
-        public static string THERAPY_NOTIFICATION_CSV = @".\..\..\..\Resources\therapy_notifications.txt";
-        public static TherapyNotificationRepository therapyNotificationRepository;
-        public static TherapyNotificationService therapyNotificationService;
-        public static TherapyNotificationController therapyNotificationController;
+        private static string MEETINGS_CSV = @".\..\..\..\Resources\meetings.txt";
+        private static string NOTIFICATIONS_CSV = @".\..\..\..\Resources\notifications.txt";
 
         public static string EVALUATION_CSV = @".\..\..\..\Resources\evaluation.txt";
         public static EvaluationRepository evaluationRepository;
@@ -59,9 +68,17 @@ namespace SIMS_Projekat
         public static AllergenService AllergenService;
         public static AllergenController AllergenController;
 
+        public static MeetingRepository MeetingRepository;
+        public static MeetingService MeetingService;
+        public static MeetingController MeetingController;
+
         public static EquipmentOrderRepository EquipmentOrderRepository;
         public static EquipmentOrderService EquipmentOrderService;
         public static EquipmentOrderController EquipmentOrderController;
+
+        public static NotificationRepository NotificationRepository;
+        public static NotificationService NotificationService;
+        public static NotificationController NotificationController;
 
         private static string ROOM_CSV = @".\..\..\..\Resources\rooms.txt";
         private static string EQUIPMENT_CSV = @".\..\..\..\Resources\equipment.txt";
@@ -80,7 +97,7 @@ namespace SIMS_Projekat
         public static EquipmentRepository equipmentRepository;
         public static EquipmentService equipmentService;
         public static EquipmentController equipmentController;
-        public static ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository;
+        //public static ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository;
         public static ExchangeEquipmentRequestService exchangeEquipmentRequestService;
         public static ExchangeEquipmentRequestController exchangeEquipmentRequestController;
         public static RoomEquipmentDTORepository roomEquipmentDTORepository;
@@ -93,10 +110,14 @@ namespace SIMS_Projekat
         public static MedicineReplacmentDTORepository medicineReplacmentRepository;
         public static MedicineService medicineService;
         public static MedicineController medicineController;
+        public static FreeDayRequestService freeDayRequestService;
+        public static FreeDayRequestController freeDayRequestController;
+        public static ListsForBinding listsForBinding;
+        public static DateTimeFormater dateTimeFormater;
 
-
-        public App()
+        public App() 
         {
+            InitializeComponent();
             roomRepository = new RoomRepository(ROOM_CSV);
             roomService = new RoomService(roomRepository);
             roomController = new RoomController(roomService);
@@ -104,35 +125,29 @@ namespace SIMS_Projekat
             equipmentService = new EquipmentService(equipmentRepository);
             equipmentController = new EquipmentController(equipmentService);
             roomEquipmentDTORepository = new RoomEquipmentDTORepository(ROOM_EQUIPMENT_CSV);
-            exchangeEquipmentRequestRepository = new ExchangeEquipmentRequestRepository(EXCHANGE_EQ_CSV);
+            unitService = new UnitService();
+            //exchangeEquipmentRequestRepository = new ExchangeEquipmentRequestRepository(EXCHANGE_EQ_CSV);
             roomEquipmentDTOService = new RoomEquipmentDTOService(roomEquipmentDTORepository);
-            exchangeEquipmentRequestService = new ExchangeEquipmentRequestService(exchangeEquipmentRequestRepository, roomEquipmentDTORepository, equipmentRepository);
+            exchangeEquipmentRequestService = new ExchangeEquipmentRequestService();
             exchangeEquipmentRequestController = new ExchangeEquipmentRequestController(equipmentService, exchangeEquipmentRequestService);
-            medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);
-            appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
-            finishedappointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
+            medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);    
             receiptRepository = new ReceiptRepository(RECEIPT_FILE);
             freeDayRequestRepository = new FreeDayRequestRepository(REQUEST_FILE);
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
-            renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
+            renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository);
             renovationRequestController = new RenovationRequestController(renovationRequestService);
             medicineRepository = new MedicineRepository(MEDICINE_CSV);
             medicineComponentsRepository = new MedicineComponentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository.GetMedicine());
             medicineReplacmentRepository = new MedicineReplacmentDTORepository(MEDICINE_REPLACMENT_CSV, medicineRepository);
             medicineService = new MedicineService(medicineRepository);
             medicineController = new MedicineController(medicineService);
+            freeDayRequestService = new FreeDayRequestService(freeDayRequestRepository);
+            freeDayRequestController = new FreeDayRequestController(freeDayRequestService);
+            listsForBinding = new ListsForBinding();
+            dateTimeFormater = new DateTimeFormater();
 
-
-            finishedAppointmentService = new FinishedAppointmentService()
-            {
-                finishedAppointmentRepository = finishedappointmentRepo
-            };
-            appointmentController = new AppointmentController()
-            {
-                appointmentService = appointmentService
-            };
-
-
+            appointmentRepo = new AppointmentRepository(APPOINTMENT_FILE);
+            scheduleAppointmentService = new ScheduleAppointmentService(appointmentRepo);
             appointmentService = new AppointmentService()
             {
                 appointmentRepository = appointmentRepo
@@ -140,6 +155,36 @@ namespace SIMS_Projekat
             appointmentController = new AppointmentController()
             {
                 appointmentService = appointmentService
+            };
+
+            finishedAppointmentRepo = new FinishedAppointmentRepository(FINISHED_APPOINTMENT_FILE);
+            finishedAppointmentService = new FinishedAppointmentService()
+            {
+                finishedAppointmentRepository = finishedAppointmentRepo
+            };
+            finishedAppointmentController = new FinishedAppointmentController()
+            {
+                finishedAppointmentService = finishedAppointmentService
+            };
+
+            noteRepository = new NoteRepository(NOTE_FILE);
+            noteService = new NoteService()
+            {
+                noteRepository = noteRepository
+            };
+            noteController = new NoteController()
+            {
+                noteService = noteService
+            };
+
+            reminderRepository = new ReminderRepository(REMINDER_FILE);
+            reminderService = new ReminderService()
+            {
+                reminderRepository = reminderRepository
+            };
+            reminderController = new ReminderController()
+            {
+                reminderService = reminderService
             };
 
             accountRepository = new AccountRepository(PATIENTS_CSV, DOCTORS_CSV);
@@ -174,15 +219,26 @@ namespace SIMS_Projekat
                 AllergenService = AllergenService
             };
 
-            therapyNotificationRepository = new TherapyNotificationRepository(THERAPY_NOTIFICATION_CSV);
-            therapyNotificationService = new TherapyNotificationService()
+            MeetingRepository = new MeetingRepository(MEETINGS_CSV);
+            MeetingService = new MeetingService()
             {
-                therapyNotificationRepository = therapyNotificationRepository
+                MeetingRepository = MeetingRepository
             };
-            therapyNotificationController = new TherapyNotificationController()
+            MeetingController = new MeetingController()
             {
-                therapyNotificationService = therapyNotificationService
+                MeetingService = MeetingService
             };
+
+            NotificationRepository = new NotificationRepository(NOTIFICATIONS_CSV);
+            NotificationService = new NotificationService()
+            {
+                NotificationRepository = NotificationRepository
+            };
+            NotificationController = new NotificationController()
+            {
+                NotificationService = NotificationService
+            };
+
 
             evaluationRepository = new EvaluationRepository(EVALUATION_CSV);
             evaluationService = new EvaluationService()
@@ -199,9 +255,10 @@ namespace SIMS_Projekat
             accountRepository.Deserialize();
             roomController.Deserialize();
             appointmentRepo.Deserialize();
-            finishedappointmentRepo.Deserialize();
-            receiptRepository.Deserialize();
-            therapyNotificationRepository.Deserialize();
+            noteRepository.Deserialize();
+            finishedAppointmentRepo.Deserialize();
+            
+            
             equipmentController.Deserialize();
             roomEquipmentDTOService.Deserialize(roomController.GetRooms(), equipmentController.GetEquipment());
             exchangeEquipmentRequestController.Deserialize();
@@ -209,12 +266,38 @@ namespace SIMS_Projekat
 
             freeDayRequestRepository.Deserialize();
             medicineController.Deserialize();
+            receiptRepository.Deserialize();
             medicineComponentsRepository.Deserialize();
             medicineReplacmentRepository.Deserialize();
 
+            reminderRepository.Deserialize();
             evaluationRepository.Deserialize();
 
             EquipmentOrderController.Deserialize();
+            MeetingController.Deserialize();
+            NotificationController.Deserialize();
+
+
+            if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
+            {
+                ChangeTheme(new Uri("Theme/LightTheme.xaml", UriKind.RelativeOrAbsolute));
+                SIMS_Projekat.Properties.Settings.Default.CurrentTheme = "Light";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+
+            }
+            else
+            {
+                ChangeTheme(new Uri("Theme/DarkTheme.xaml", UriKind.RelativeOrAbsolute));
+                SIMS_Projekat.Properties.Settings.Default.CurrentTheme = "Dark";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+            }
+
+        }
+
+        private void ChangeTheme(Uri uri)
+        {
+            App.ThemeDictionary.MergedDictionaries.Clear();
+            App.ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
 
         }
     }

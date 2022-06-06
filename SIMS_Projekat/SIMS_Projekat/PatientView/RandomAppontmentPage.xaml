@@ -5,9 +5,15 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="399" d:DesignWidth="500"
+      d:DesignHeight="343" d:DesignWidth="448"
       Title="RandomAppontmentFirstPage">
-
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -42,11 +48,11 @@
 
         <Button x:Name="scheduleAppointment" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
                 Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                Click="scheduleAppointment_Click"/>
+                Click="ScheduleAppointment_Click"/>
         
         <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                  Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                 Click="showAppointmentButton_Click">
+                 Click="ShowAppointmentButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
                 <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />

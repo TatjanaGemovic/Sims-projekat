@@ -4,3 +4,5 @@ Ampicillin
 Benzodiazepin
 Bupivacaine
 Clinadmycin
+paracetamol
+kofein

@@ -24,7 +24,7 @@ namespace SIMS_Projekat.Controller
 
         public FinishedAppointment AddFinishedAppointment(FinishedAppointment appointment, int id)
         {
-            return finishedAppointmentService.AddFinishedAppointment(appointment, id);
+            return finishedAppointmentService.AddFinishedAppointment(appointment);
         }
 
         public FinishedAppointment GetAppointmentByID(int appointmentID)
@@ -46,5 +46,20 @@ namespace SIMS_Projekat.Controller
         {
             return finishedAppointmentService.GetAllAppointments();
         }
+
+        public FinishedAppointment AddNoteToAppointment(int appointmentID, int noteID)
+        {
+            return finishedAppointmentService.AddNoteToAppointment(appointmentID, noteID);
+        }
+
+        public bool EraseNoteForAppointmentIfExists(int noteID, Patient patient)
+        {
+            return finishedAppointmentService.EraseNoteForAppointmentIfExists(noteID, patient);
+        }
+        public FinishedAppointment GetAppointmentByNoteID(int noteiD)
+        {
+            return finishedAppointmentService.GetAppointmentByNoteID(noteiD);
+        }
+        
     }
 }

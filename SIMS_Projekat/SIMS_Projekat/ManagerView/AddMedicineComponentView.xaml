@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddMedicineComponentView">
 
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="121*"></ColumnDefinition>
@@ -22,27 +22,50 @@
                     <RowDefinition Height="44*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Content="Sastojci" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0"></Label>
-                <ListBox x:Name="ComponentList"  Grid.Row="1" Margin="20,5,20,5">
-
-                </ListBox>
+                <Label Content="Sastojci" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" ></Label>
+                <ListBox x:Name="ComponentList"  Grid.Row="1" Margin="10,5,20,5" SelectionChanged="ComponentList_SelectionChanged" ></ListBox>
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="92*"></RowDefinition>
                     <RowDefinition Height="121*"></RowDefinition>
-                    <RowDefinition Height="49*"></RowDefinition>
-                    <RowDefinition Height="87*"></RowDefinition>
+                    <RowDefinition Height="54*"></RowDefinition>
+                    <RowDefinition Height="81*"></RowDefinition>
                     <RowDefinition Height="54*"></RowDefinition>
                     <RowDefinition Height="45*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="4" Margin="30,10,30,10" Content="Zavrsi" Click="Button_Click_2"></Button>
-                <Button Grid.Row="2" Margin="30,10,30,10" Content="Obrisi sastojak" Click="Button_Click_1"></Button>
-                <Label Content="Unesite novi sastojak leka" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="250"/>
-                <TextBox x:Name="SastojakTextBox"   HorizontalAlignment="Left" Margin="30,60,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="165" Height="30"/>
-                <Button Content="Dodaj" HorizontalAlignment="Left" Margin="209,60,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="71" Click="Button_Click"/>
+                <Border Grid.Column="1" Grid.Row="1" BorderBrush="White" BorderThickness="1" Margin="25,10,25,10" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Unesite novi sastojak leka:" Grid.Row="0" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Center" Margin="10,10,0,0"  VerticalAlignment="Top" Width="250"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <TextBox  x:Name="SastojakTextBox" TextWrapping="Wrap" Text="" Width="160" Height="30" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <Button Content="Dodaj" Style="{DynamicResource ManagerButtonCRUDOk}"  HorizontalAlignment="Left"   VerticalAlignment="Center" Height="30" Width="70" Click="Button_Click" Margin="10,0,10,0"/>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Border>
+                <Button Grid.Row="4" Style="{DynamicResource ManagerButtonCRUDOk}" Margin="30,10,30,10"  Click="Button_Click_2">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
+                        <Label Content="Zavrsi" Style="{DynamicResource LabelInButton}" Width="48" />
+                    </StackPanel>
+                </Button>
+                <Button x:Name="DeleteComponentBtn" Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Row="2" Margin="30,10,30,10" IsEnabled="False" Click="Button_Click_1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                        <Label  Content="Obrisi sastojak" Style="{DynamicResource LabelInButton}"/>
+                    </StackPanel>
+                </Button>
+                
+                
+                
 
             </Grid>
 

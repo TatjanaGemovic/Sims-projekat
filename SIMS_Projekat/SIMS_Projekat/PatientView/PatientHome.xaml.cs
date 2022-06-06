@@ -29,11 +29,11 @@ namespace SIMS_Projekat.PatientView
         Page Homepage;
         public PatientHome(Patient p)
         {
-            timer = new Timer(new TimerCallback(TherapyNotificationController.TickTimer), null, 60, 30000);
+            timer = new Timer(new TimerCallback(ReminderController.TickTimer), null, 60, 30000);
             InitializeComponent();
             patient = p;
 
-            if (App.accountController.CheckIfItsNewMonth(patient))      //ako je novi mesec, promeni podatke u pacijentu i stavi broj otkazanih termina na 0
+            if (App.accountController.CheckIfItsTheBeginningOfANewMonth(patient))      //ako je novi mesec, promeni podatke u pacijentu i stavi broj otkazanih termina na 0
                 ResetPatient();
                 
             nameSurname = p.FirstName + " " + p.LastName;
@@ -64,14 +64,14 @@ namespace SIMS_Projekat.PatientView
                 PhoneNumber = patient.PhoneNumber,
                 Symptoms = patient.Symptoms,
                 Weight = patient.Weight,
-                year = DateTime.Now.Year,
-                month = DateTime.Now.Month,
-                numberOfCancelledAppointments = 0,
+                currentYearUsableForCancellingAppointmentsByPatient = DateTime.Now.Year,
+                currentMonthUsableForCancellingAppointmentsByPatient = DateTime.Now.Month,
+                numberOfCancelledAppointmentsByPatientMonthly = 0,
                 MedicalRecordID = patient.MedicalRecordID
             };
             App.accountController.EditPatientAccount(p, patient.ID);
         }
-        private void make_appointment_Click(object sender, RoutedEventArgs e)
+        private void Make_appointment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Appointments(MainFrame, patient);   
         }
@@ -80,32 +80,49 @@ namespace SIMS_Projekat.PatientView
         {
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.noteRepository.Serialize();
+            App.finishedAppointmentRepo.Serialize();
+            App.reminderRepository.Serialize();
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
+        private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            App.therapyNotificationController.DeleteActiveNotifications();
+            App.reminderController.DeleteActiveNotifications();
             App.appointmentRepo.Serialize();
             App.accountRepository.Serialize();
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.noteRepository.Serialize();
+            App.reminderRepository.Serialize();
+            App.finishedAppointmentRepo.Serialize();
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }
 
-        private void homepage_Click(object sender, RoutedEventArgs e)
+        private void Homepage_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new Homepage(MainFrame, patient);
         }
 
-        private void choose_doctor_Click(object sender, RoutedEventArgs e)
+        private void Choose_doctor_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new ChooseDoctorPage(patient);
         }
 
+        private void Reports_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new ReportsPage(MainFrame, patient);
+        }
 
+        private void Notes_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new NotesPage(MainFrame, patient);
+        }
+
+        private void Reminders_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new RemindersPage(MainFrame, patient);
+        }
     }
 }

@@ -107,7 +107,7 @@ namespace SIMS_Projekat.SecretaryView
                 patient = selectedPatient,
                 room = selectedRoom,
                 operation = false,
-                isDelayed = selectedAppointment.isDelayed,
+                isDelayedByPatient = selectedAppointment.isDelayedByPatient,
                 isScheduledByPatient = selectedAppointment.isScheduledByPatient,
 
             };

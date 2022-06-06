@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using SIMS_Projekat.Model;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace SIMS_Projekat.PatientView.ViewModel
 {
@@ -14,6 +15,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
         public ObservableCollection<Evaluation> Evaluations { get; set; }
         public MyICommand BackCommand { get; set; }
         public MyICommand SendCommand { get; set; }
+        //public NavigationService NavService { get; set; }
+
         private Evaluation selectedEvaluation;
         private string doctorFullName;
 
@@ -26,7 +29,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private int recommendDoctor;
 
         private Frame mainFrame;
-        public EvaluationViewModel(Frame frame, Patient patient, Evaluation evaluation)
+        public EvaluationViewModel(Frame frame, Evaluation evaluation)
         {
             mainFrame = frame;
             selectedEvaluation = evaluation;
@@ -55,12 +58,12 @@ namespace SIMS_Projekat.PatientView.ViewModel
             {
                 patient = selectedEvaluation.patient,
                 doctor = selectedEvaluation.doctor,
-                doctorIsInterested = DoctorIsInterested,
-                doctorIsUnderstandable = DoctorIsUnderstandable,
-                waitingTime = WaitingTime,
-                recommendDoctor = RecommendDoctor,
-                recommendHospital = RecommendHospital,
-                staff = Staff,
+                doctorIsInterested = DoctorIsInterested+1,
+                doctorIsUnderstandable = DoctorIsUnderstandable+1,
+                waitingTime = WaitingTime+1,
+                recommendDoctor = RecommendDoctor+1,
+                recommendHospital = RecommendHospital+1,
+                staff = Staff+1,
                 comment = Comment,
                 evaluationCreated = DateTime.Now,
                 isFilled = true,
@@ -71,7 +74,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
         private void OnBack()
         {
-            mainFrame.Content = new Homepage(mainFrame, selectedEvaluation.patient);
+            Homepage homepage = new Homepage(mainFrame, selectedEvaluation.patient);
+            mainFrame.NavigationService.Navigate(homepage);
         }
 
         public void LoadEvaluation()

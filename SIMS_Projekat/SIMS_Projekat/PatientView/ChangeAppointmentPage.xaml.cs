@@ -27,8 +27,8 @@ namespace SIMS_Projekat.PatientView
         public Appointment appointment;
         Patient patient;
         BindingList<String> listOfTakenAppointmentTime;
-        BindingList<String> listOfAppointmentTime;
-        public ObservableCollection<DoctorInfo> doctorInfoList = new ObservableCollection<DoctorInfo>();
+        public BindingList<String> listOfAppointmentTime { get; set; }
+        public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         DateTime pickedDate;
 
@@ -39,18 +39,20 @@ namespace SIMS_Projekat.PatientView
             patient = p;
             appointment = App.appointmentController.GetAppointmentByID(appointmentID);
 
+            this.DataContext = this;
             SetBlackOutDates();
             InitializeDoctorComboBox();
+            FillLabels();
+            
+        }
+        public void FillLabels()
+        {
             Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(appointment.doctor.LicenceNumber) as Doctor;
             chosen_doctor.Content = d.FirstName + " " + d.LastName;
             drInfo = new DoctorInfo(d.FirstName + " " + d.LastName, d.LicenceNumber);
 
-            string appointmentDate = appointment.beginningDate.Date.ToString("MM/dd/yyyy");
-            date.Text = appointmentDate;
-
-            string appointmentTime = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
-            comboTime.Text = appointmentTime;
-         
+            date.Text = appointment.beginningDate.Date.ToString("MM/dd/yyyy");
+            comboTime.Text = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
         }
         private void SetBlackOutDates()
         {
@@ -99,15 +101,14 @@ namespace SIMS_Projekat.PatientView
         }
         public void InitializeDoctorComboBox()
         {
+            doctorInfoList = new ObservableCollection<DoctorInfo>();
             foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
             {
                 doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
-
             }
-            choose_doctor.ItemsSource = doctorInfoList;
         }
 
-        private void choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             drInfo = choose_doctor.SelectedItem as DoctorInfo;
             chosen_doctor.Content = drInfo.doctorName;
@@ -116,7 +117,7 @@ namespace SIMS_Projekat.PatientView
             
         }
 
-        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             string date = this.date.ToString();
             pickedDate = DateTime.Parse(date);
@@ -124,16 +125,15 @@ namespace SIMS_Projekat.PatientView
            
         }
 
-        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void ComboTime_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             comboTime.ItemsSource = listOfAppointmentTime;
         }
         private void InitializeListOfAppointments()
         {
             List<string> list;
-            list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
-            
-           
+            list = App.appointmentController.GetTakenAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
+              
             // Create the new BindingList of Part type.
             listOfAppointmentTime = new BindingList<String>(App.appointmentController.CreateAppointmentTime());
             listOfTakenAppointmentTime = new BindingList<String>(list);
@@ -154,20 +154,15 @@ namespace SIMS_Projekat.PatientView
                 {
                     if (drInfo.licenceNumber.Equals(appointment.doctor.LicenceNumber))
                     {
-                        continue;
+                        continue;   // u pitanju je isti doktor, znaci to vreme je dozvoljeno
                     }
                     else
                     {
                         Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
-                        bool isAvailable  = App.appointmentController.CheckIfDoctorIsAvailable(d, appointment.beginningDate);
-                        if (isAvailable)
-                        {
+                        if (App.appointmentController.CheckIfDoctorIsAvailable(d, appointment.beginningDate))
                             continue;       // dr slobodan
-                        }
                         else
-                        {
                             listOfAppointmentTime.Remove(time);
-                        }
                     }
                 }
                 else 
@@ -176,17 +171,14 @@ namespace SIMS_Projekat.PatientView
                 }             
             }
             comboTime.ItemsSource = listOfAppointmentTime;
-
         }
       
         private void changeClick(object sender, RoutedEventArgs e)
         {
-            string dateFromPage = this.date.ToString();
-            DateTime start = DateTime.Parse(dateFromPage);
+            DateTime start = DateTime.Parse(this.date.ToString());
             DateTime startDate = start.Date;
 
-            string timeFromPage = this.comboTime.SelectionBoxItem.ToString();
-            TimeSpan timeStart = TimeSpan.Parse(timeFromPage);
+            TimeSpan timeStart = TimeSpan.Parse(this.comboTime.SelectionBoxItem.ToString());
             startDate = startDate.Add(timeStart);
 
             Doctor doctor;
@@ -208,13 +200,9 @@ namespace SIMS_Projekat.PatientView
             {
                 Room room;
                 if (!startDate.Equals(this.appointment.beginningDate))
-                {
-                   room = App.appointmentController.GetAvailableRoom(startDate);
-                }
+                    room = App.appointmentController.GetAvailableRoom(startDate);
                 else
-                {
                     room = this.appointment.room;
-                }
                 
                 Appointment newAppointment = new Appointment()
                 {
@@ -225,7 +213,7 @@ namespace SIMS_Projekat.PatientView
                     doctor = doctor,
                     patient = patient,
                     operation = false,
-                    isDelayed = true,
+                    isDelayedByPatient = true,
                     isScheduledByPatient = this.appointment.isScheduledByPatient
                 };
                 App.appointmentController.SetAppointment(newAppointment);
@@ -239,7 +227,7 @@ namespace SIMS_Projekat.PatientView
         private void cancelClick(object sender, RoutedEventArgs e)
         {
             ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, appointment.appointmentID, patient);
-            mainFrame.Content = viewAppointmentPage;
+            mainFrame.Content = viewAppointmentPage;     
         }
 
     }

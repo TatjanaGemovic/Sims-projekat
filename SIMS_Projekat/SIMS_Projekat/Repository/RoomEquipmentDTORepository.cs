@@ -66,7 +66,7 @@ namespace SIMS_Projekat.Repository
         {
             roomEquipment.Remove(_roomEquipment);
             Serialize();
-           // Deserialize(_rooms, _equipment);
+            Deserialize(_rooms, _equipment);
             return _roomEquipment;
         }
 
@@ -74,7 +74,7 @@ namespace SIMS_Projekat.Repository
         {
             oldRoomEquipment.QuantityDTO = newRoomEquipment.QuantityDTO;
             Serialize();
-            //Deserialize(_rooms, _equipment);
+            Deserialize(_rooms, _equipment);
             return newRoomEquipment;
         
         }
@@ -83,7 +83,7 @@ namespace SIMS_Projekat.Repository
         {
             roomEquipment.Add(newRoomEquipment);
             Serialize();
-            //Deserialize(_rooms, _equipment);
+            Deserialize(_rooms, _equipment);
             return newRoomEquipment;
         }
 

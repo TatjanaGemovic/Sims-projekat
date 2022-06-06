@@ -67,9 +67,9 @@ namespace SIMS_Projekat.Controller
             return AccountService.GetDoctorAccountByLicenceNumber(licenceNumber);
         }
 
-        public bool CheckIfItsNewMonth(Patient patient)
+        public bool CheckIfItsTheBeginningOfANewMonth(Patient patient)
         {
-            return AccountService.CheckIfItsNewMonth(patient);
+            return AccountService.CheckIfItsTheBeginningOfANewMonth(patient);
         }
 
         public List<Doctor> GetAvailableDoctors(DateTime dateTime)

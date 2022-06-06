@@ -9,21 +9,21 @@
       Title="FreeDayRequest">
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
-            <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
-            <Label Content="Novi zahtev" Width="182" Height="52" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+            <Button Content="&lt; Nazad" Command="{Binding backCommand}" Style="{StaticResource BackButton}" Margin="10,0,0,0"/>
+            <Label Content="Novi zahtev" Width="210" Height="52" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Send" Content="Posalji" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Send_Click"/>
+                <Button x:Name="Send" Command="{Binding sendCommand}" Content="Posalji" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}"/>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="455" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
-                <Label Content="Razlog" HorizontalAlignment="Left" Margin="38,197,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
-                <Label Content="Od" HorizontalAlignment="Left" Margin="38,77,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
-                <Label Content="Do" HorizontalAlignment="Left" Margin="38,132,0,0" VerticalAlignment="Top" Width="38" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="34"/>
-                <TextBox x:Name="Razlog" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Center" Margin="0,238,0,0" VerticalAlignment="Top" Height="118" Width="295"/>
-                <DatePicker x:Name="Od" HorizontalAlignment="Left" Margin="200,88,0,0" VerticalAlignment="Top" Width="137"/>
-                <DatePicker x:Name="Do" HorizontalAlignment="Left" Margin="200,142,0,0" VerticalAlignment="Top" Width="137"/>
-                <Viewbox Margin="45,379,114,192">
-                    <CheckBox x:Name="Hitno" Content="Hitno" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="158"/>
+                <Label Content="Razlog" HorizontalAlignment="Left" Margin="50,197,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
+                <Label Content="Od" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>
+                <Label Content="Do" HorizontalAlignment="Left" Margin="50,135,0,0" VerticalAlignment="Top" Width="38" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="34"/>
+                <TextBox x:Name="Razlog" Text="{Binding Path=Razlog, Mode=OneWayToSource}" BorderThickness="2" BorderBrush="#676FA3" FontSize="15" FontWeight="Bold" Background="#EEF2FF" HorizontalAlignment="Center" Margin="8,240,0,0" VerticalAlignment="Top" Height="118" Width="280"/>
+                <DatePicker x:Name="Od" DisplayDateStart="{Binding StartDate}"  SelectedDate="{Binding Path=Od, Mode=OneWayToSource}" HorizontalAlignment="Left" Margin="175,88,0,0" VerticalAlignment="Top" Width="160"/>
+                <DatePicker x:Name="Do" DisplayDateStart="{Binding EndDate}" SelectedDate="{Binding Path=Do, Mode=OneWayToSource}" HorizontalAlignment="Left" Margin="175,142,0,0" VerticalAlignment="Top" Width="160"/>
+                <Viewbox Margin="55,379,114,192">
+                    <CheckBox x:Name="Hitno" IsChecked="{Binding Path=Hitno, Mode=OneWayToSource}" Content="Hitno" HorizontalAlignment="Center" VerticalAlignment="Center" Height="20" Width="158"/>
                 </Viewbox>
             </Grid>
         </DockPanel>

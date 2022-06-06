@@ -22,9 +22,9 @@ namespace SIMS_Projekat.Model
         public string MedicalRecordID;
         public MedicalRecord MedicalRecord { get; set; }
 
-        public int month { get; set; }              //using this 3 properties for anti-troll mechanism
-        public int year { get; set; }
-        public int numberOfCancelledAppointments { get; set; }
+        public int currentMonthUsableForCancellingAppointmentsByPatient { get; set; }              //using this 3 properties for anti-troll mechanism
+        public int currentYearUsableForCancellingAppointmentsByPatient { get; set; }
+        public int numberOfCancelledAppointmentsByPatientMonthly { get; set; }
         public override string[] toCSV()
         {
             List<string> allergens = new List<string>();
@@ -52,9 +52,9 @@ namespace SIMS_Projekat.Model
                 Weight.ToString(),
                 Symptoms.ToString(),
                 IsUrgent.ToString(),
-                month.ToString(),
-                year.ToString(),
-                numberOfCancelledAppointments.ToString(),
+                currentMonthUsableForCancellingAppointmentsByPatient.ToString(),
+                currentYearUsableForCancellingAppointmentsByPatient.ToString(),
+                numberOfCancelledAppointmentsByPatientMonthly.ToString(),
                 MedicalRecord.ID.ToString(),
                 String.Join(",", allergens) 
             };
@@ -79,9 +79,9 @@ namespace SIMS_Projekat.Model
             Weight = double.Parse(values[13]);
             Symptoms = values[14];
             IsUrgent = bool.Parse(values[15]);
-            month = int.Parse(values[16]);
-            year = int.Parse(values[17]);
-            numberOfCancelledAppointments = int.Parse(values[18]);
+            currentMonthUsableForCancellingAppointmentsByPatient = int.Parse(values[16]);
+            currentYearUsableForCancellingAppointmentsByPatient = int.Parse(values[17]);
+            numberOfCancelledAppointmentsByPatientMonthly = int.Parse(values[18]);
             MedicalRecordID = values[19];
             MedicalRecord = App.medRecordRepository.GetMedicalRecordByID(MedicalRecordID);
             Allergens = new List<Allergen>();

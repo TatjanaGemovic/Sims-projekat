@@ -30,7 +30,7 @@ namespace SIMS_Projekat.PatientView
         DateTime pickedDate;
         BindingList<String> listOfTakenAppointmentTime;
         BindingList<String> listOfAppointmentTime;
-        public ObservableCollection<DoctorInfo> doctorInfoList = new ObservableCollection<DoctorInfo>();
+        public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         public ScheduleAppointmentPage(Frame mainFrame, Patient p)
         {
@@ -38,6 +38,7 @@ namespace SIMS_Projekat.PatientView
             patient = p;
 
             InitializeComponent();
+            this.DataContext = this;
             RandomAppointmentFrame.Content = new RandomAppontmentFirstPage(patient, frame);
             SetBlackOutDates();
 
@@ -75,17 +76,14 @@ namespace SIMS_Projekat.PatientView
         }
         public void InitializeDoctorComboBox()
         {
+            doctorInfoList = new ObservableCollection<DoctorInfo>();
             foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
             {
                 doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
 
             }
-            choose_doctor.ItemsSource = doctorInfoList;
         }
-
-
-
-        private void date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if(patient.doctorLicenceNumber != "" || choose_doctor.SelectedItem != null)
             {
@@ -101,8 +99,6 @@ namespace SIMS_Projekat.PatientView
                 string date = this.date.ToString();
                 pickedDate = DateTime.Parse(date);
             }
-            
-
         }
 
         private void InitializeListOfAppointments()
@@ -110,11 +106,11 @@ namespace SIMS_Projekat.PatientView
             List<string> list;
             if (choose_doctor.SelectedItem != null)
             {
-               list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
+               list = App.appointmentController.GetTakenAppointmentsForPatient(patient, pickedDate, drInfo.licenceNumber);
             }
             else
             {
-               list = App.appointmentController.GetAvailableAppointmentsForPatient(patient, pickedDate, patient.doctorLicenceNumber);
+               list = App.appointmentController.GetTakenAppointmentsForPatient(patient, pickedDate, patient.doctorLicenceNumber);
             }
             
 
@@ -139,18 +135,15 @@ namespace SIMS_Projekat.PatientView
             comboTime.ItemsSource = listOfAppointmentTime;
         }
        
-        private void comboTime_SourceUpdated(object sender, DataTransferEventArgs e)
+        private void ComboTime_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             comboTime.ItemsSource = listOfAppointmentTime;
-            //comboTime.SelectedIndex = 0;
         }
        
 
-        private void choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             drInfo = choose_doctor.SelectedItem as DoctorInfo;
-            //patient.doctorLicenceNumber = drInfo.licenceNumber;
-
             
             if (date.SelectedDate != null)
             {
@@ -159,15 +152,12 @@ namespace SIMS_Projekat.PatientView
                 InitializeListOfAppointments();
             }
         }
-        private void scheduleClick(object sender, RoutedEventArgs e)
+        private void ScheduleClick(object sender, RoutedEventArgs e)
         {
-           
-            string dateFromPage = this.date.ToString();
-            DateTime start = DateTime.Parse(dateFromPage);
+            DateTime start = DateTime.Parse(this.date.ToString());
             DateTime startDate = start.Date;
 
-            string timeFromPage = this.comboTime.SelectionBoxItem.ToString();
-            TimeSpan timeStart = TimeSpan.Parse(timeFromPage);
+            TimeSpan timeStart = TimeSpan.Parse(this.comboTime.SelectionBoxItem.ToString());
             startDate = startDate.Add(timeStart);
            
             Doctor doctor;
@@ -191,7 +181,7 @@ namespace SIMS_Projekat.PatientView
                 doctor = doctor,
                 patient = patient,
                 operation = false,
-                isDelayed = false,
+                isDelayedByPatient = false,
                 isScheduledByPatient = true
             };
 
@@ -200,13 +190,13 @@ namespace SIMS_Projekat.PatientView
             frame.Content = Appointments;
         }
 
-        private void cancelClick(object sender, RoutedEventArgs e)
+        private void CancelClick(object sender, RoutedEventArgs e)
         {
             Appointments Appointments = new Appointments(frame, patient);
             frame.Content = Appointments;
         }
         
-        private void comboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             scheduleClickButton.IsEnabled = true;
         }

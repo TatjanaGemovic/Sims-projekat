@@ -13,7 +13,7 @@ namespace SIMS_Projekat.Repository
         private string path { get; set; }
         private Serializer<FinishedAppointment> serializer;
         private List<FinishedAppointment> finishedAppointmentList;
-        //private int id;
+        private int id;
 
         public List<FinishedAppointment> AppointmentList
         {
@@ -29,7 +29,7 @@ namespace SIMS_Projekat.Repository
                 if (value != null)
                 {
                     foreach (FinishedAppointment oAppointment in value)
-                        AddFinishedAppointment(oAppointment, oAppointment.finishedAppointmentID);
+                        AddFinishedAppointment(oAppointment);
                 }
             }
         }
@@ -38,7 +38,7 @@ namespace SIMS_Projekat.Repository
         {
             this.path = path;
             serializer = new Serializer<FinishedAppointment>();
-            //id = 0;
+            id = 0;
         }
 
 
@@ -58,6 +58,7 @@ namespace SIMS_Projekat.Repository
                     appointment1.doctor = appointment.doctor;
                     appointment1.operation = appointment.operation;
                     appointment1.isScheduledByPatient = appointment.isScheduledByPatient;
+                    appointment1.patientNoteID = appointment.patientNoteID;
                     return appointment1;
                 }
 
@@ -84,8 +85,6 @@ namespace SIMS_Projekat.Repository
             List<FinishedAppointment> appointmentListForPatient = new List<FinishedAppointment>();
             foreach (FinishedAppointment appointment in finishedAppointmentList)
             {
-                //Appointment appointment1 = appointmentList.FindLast(appointment => appointment.Patient.PatientID == patientID);
-
                 if (appointment.patient.ID.Equals(patientID1))
                 {
                     appointmentListForPatient.Add(appointment);
@@ -109,14 +108,28 @@ namespace SIMS_Projekat.Repository
             return appointmentListForDoctor;
         }
 
+        public FinishedAppointment GetAppointmentByNoteID(int noteiD)
+        {
+            foreach (FinishedAppointment appointment in finishedAppointmentList)
+            {
+                FinishedAppointment appointment1 = finishedAppointmentList.Find(appointment => appointment.patientNoteID == noteiD);
+
+                if (appointment1 != null)
+                {
+                    return appointment1;
+                }
+            }
+            return null;
+        }
+
         public List<FinishedAppointment> GetAllAppointments()
         {
             return finishedAppointmentList;
         }
 
-        public FinishedAppointment AddFinishedAppointment(FinishedAppointment newAppointment,int id)
+        public FinishedAppointment AddFinishedAppointment(FinishedAppointment newAppointment)
         {
-            //id++;
+            id++;
             if (newAppointment == null)
                 return null;
             if (this.finishedAppointmentList == null)
@@ -154,10 +167,10 @@ namespace SIMS_Projekat.Repository
         {
             finishedAppointmentList = serializer.fromCSV(path);
 
-            /*foreach (FinishedAppointment appointment in finishedAppointmentList)
+            foreach (FinishedAppointment appointment in finishedAppointmentList)
             {
                 id = appointment.finishedAppointmentID;
-            }*/
+            }
         }
     }
 }

@@ -40,9 +40,7 @@
                     </Style>
                 </DataGrid.CellStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding ="{Binding id}" Width="30"/>
-                    <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="110"/>
-                    <DataGridTextColumn Header="Datum" Binding ="{Binding beginningDate}"  Width="*"/>
+                    <DataGridTextColumn Header="Vreme" Binding ="{Binding time}"  Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>

@@ -3,6 +3,7 @@ using SIMS_Projekat.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace SIMS_Projekat.Service
 {
@@ -98,9 +99,8 @@ namespace SIMS_Projekat.Service
 
         public List<Room> GetAvailableRooms(DateTime time)
         {
-            List<Room> rooms = _roomRepository.GetRooms();
+            List<Room> rooms = _roomRepository.GetRooms().Where(room => room.pRoomType != RoomType.meetingRoom).ToList();
             List<Appointment> appointments = App.appointmentService.GetAllAppointments();
-            bool a;
             foreach (Appointment appointment in appointments)
             {
                 if (appointment.beginningDate == time)
@@ -141,6 +141,12 @@ namespace SIMS_Projekat.Service
 
             return filterRooms;
         }
+
+        public List<Room> GetAvailableMeetingRooms()
+        {
+            return _roomRepository.GetRooms().Where(room => room.pRoomType == RoomType.meetingRoom && room.Available).ToList();
+        }
+
 
         public void Serialize()
         {

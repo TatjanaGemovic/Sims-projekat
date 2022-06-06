@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Model;
+﻿using SIMS.CompositeComon;
+using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,31 @@ namespace SIMS_Projekat.ManagerView
     {
         private Room _fromRoom;
         private Equipment selectedEquipment;
+        private RelayCommand potvrdi;
+        private RelayCommand otkazi;
+
+        public RelayCommand Potvrdi
+        {
+            get
+            {
+                return potvrdi ?? (new RelayCommand(param => PotvrdiPrebacivanje_Click(), param => canCommandExecut()));
+            }
+        }
+
+        public RelayCommand OtkaziCommand
+        {
+            get
+            {
+                return otkazi ?? (new RelayCommand(param => Otkazi_Click()));
+            }
+        }
+
+        private Boolean canCommandExecut()
+        {
+            return !kolicina.Text.Equals("") && datum.SelectedDate != null && int.Parse(kolicina.Text) <= int.Parse(dostupnaKolicina.Text);
+                
+        }
+
         public ExchangeEquipmentToMagacin(Model.Equipment oldEquipment, Model.Room fromRoom, int br)
         {
             InitializeComponent();
@@ -32,7 +58,7 @@ namespace SIMS_Projekat.ManagerView
             fillForm(br);
         }
 
-        private void PotvrdiPrebacivanje_Click(object sender, RoutedEventArgs e)
+        private void PotvrdiPrebacivanje_Click()
         {
             createRequest();
             ManagerHome.mainFrame.Content = new RoomView();
@@ -54,20 +80,33 @@ namespace SIMS_Projekat.ManagerView
             n.toRoomID = "magacin";
             n.fromRoomID = _fromRoom.RoomID;
             if (int.Parse(kolicina.Text) == int.Parse(dostupnaKolicina.Text))
+            {
                 n.allEquipmentFromRoom = true;
-            else if (int.Parse(kolicina.Text) > int.Parse(dostupnaKolicina.Text))
-            { }//greska
+                refreshFromRoomAll();
+            }
             else
-            { n.allEquipmentFromRoom = false; }
+            {
+                n.allEquipmentFromRoom = false;
+            }
             n.requestID = n.toRoomID + n.equipmentID;
             App.exchangeEquipmentRequestController.AddRequest(n);
             App.equipmentController.Serialize();
 
         }
 
-        private void Otkazi_Click(object sender, RoutedEventArgs e)
+
+        private void refreshFromRoomAll()
+        {
+            var ind = _fromRoom.pEquipment.IndexOf(selectedEquipment);
+            _fromRoom.pEquipment.Remove(selectedEquipment);
+            var brisanje = _fromRoom.pEquipmentQuantity[ind];
+            _fromRoom.pEquipmentQuantity.Remove(brisanje);
+        }
+
+        private void Otkazi_Click()
         {
             ManagerHome.mainFrame.Content = new RoomView();
         }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using SIMS_Projekat.Model;
+﻿ using SIMS_Projekat.Model;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -52,31 +52,14 @@ namespace SIMS_Projekat.DoctorView
 
         public void createList()
         {
-            if (App.finishedappointmentRepo.GetAllAppointments() != null)
-            {
-                foreach (FinishedAppointment app in App.finishedappointmentRepo.GetAllAppointments())
-                {
-                    if (app.patient.ID.Equals(patient.ID))
-                    {
-                        int id = app.finishedAppointmentID;
-
-                        string date = app.beginningDate.ToString();
-                        String[] datePart = date.Split(" ");
-                        date = datePart[0];
-                        string time = datePart[1];
-                        string name = app.doctor.FirstName + " " + app.doctor.LastName;
-
-                        patientFinishedAppointmentList.Add(new FinishedAppointment2(id, date, name, time));
-                    }
-                }
-            }
+            patientFinishedAppointmentList = App.listsForBinding.CreateExaminationListForPatient(patient);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
                 FinishedAppointment2 appointmentInformation = (FinishedAppointment2)PatientExaminatinLists.SelectedItem;
                 int appointmentID = appointmentInformation.id;
-                FinishedAppointment appointment = App.finishedappointmentRepo.GetAppointmentByID(appointmentID);
+                FinishedAppointment appointment = App.finishedAppointmentRepo.GetAppointmentByID(appointmentID);
                 Frame.Content = new PatientExaminationInfo(Frame, doctor, appointment);
         }
 

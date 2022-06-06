@@ -30,22 +30,22 @@ namespace SIMS_Projekat.PatientView
             mainFrame = frame;
             patient = p;
             appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-            
+
+            FillLabels();     
+            ButtonControl();        
+        }
+        public void FillLabels()
+        {
             Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(appointment.doctor.LicenceNumber) as Doctor;
             chosenDoctor.Content = d.FirstName + " " + d.LastName;
 
-            string date= appointment.beginningDate.Date.ToString("dd.MM.yyyy.");
-            dateField.Content = date;
-
-            string time = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
-            timeField.Content = time;
+            dateField.Content = appointment.beginningDate.Date.ToString("dd.MM.yyyy.");
+            timeField.Content = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
 
             Room r = App.roomController.GetRoomByID(appointment.room.RoomID);
             roomField.Content = "Sprat " + r.Floor + ", broj " + r.RoomNumber;
-            EnableButtons();
-            
         }
-        public void EnableButtons()
+        public void ButtonControl()
         {
             if (appointment.operation)
             {
@@ -54,25 +54,25 @@ namespace SIMS_Projekat.PatientView
             }
             else
             {
-                if (appointment.isDelayed)
+                if (appointment.isDelayedByPatient)
                 {
                     changeButton.IsEnabled = false;
                 }
                 isOperationField.Content = "Pregled";
             }
 
-            if (patient.numberOfCancelledAppointments == 2)
+            if (patient.numberOfCancelledAppointmentsByPatientMonthly == 2)
             {
                 deleteButton.IsEnabled = false;
             }
         }
-        private void deleteClick(object sender, RoutedEventArgs e)
+        private void DeleteClick(object sender, RoutedEventArgs e)
         {
             
             if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
             "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                patient.numberOfCancelledAppointments++;
+                patient.numberOfCancelledAppointmentsByPatientMonthly++;
                 App.appointmentController.DeleteAppointment(appointment);
 
                 Appointments Appointments = new Appointments(mainFrame, patient);
@@ -81,13 +81,13 @@ namespace SIMS_Projekat.PatientView
             
         }
 
-        private void cancelClick(object sender, RoutedEventArgs e)
+        private void CancelClick(object sender, RoutedEventArgs e)
         {
             Appointments Appointments = new Appointments(mainFrame, patient);
             mainFrame.Content = Appointments;
         }
 
-        private void changeClick(object sender, RoutedEventArgs e)
+        private void ChangeClick(object sender, RoutedEventArgs e)
         {
             ChangeAppointmentPage changeAppointmentPage = new ChangeAppointmentPage(mainFrame, appointment.appointmentID, patient);
             mainFrame.Content = changeAppointmentPage;

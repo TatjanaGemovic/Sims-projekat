@@ -6,8 +6,16 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="1400"
+      d:DesignHeight="720" d:DesignWidth="1370"
       Title="ChangeAppointmentPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -45,7 +53,7 @@
         <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" AllowDrop="True" x:Name="choose_doctor"
                   FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   Foreground="#FFF76A" ItemsSource="{Binding doctorInfoList}" DisplayMemberPath="doctorName" 
-                  SelectionChanged="choose_doctor_SelectionChanged" Margin="0,0,88,0"
+                  SelectionChanged="Choose_doctor_SelectionChanged" Margin="0,0,88,0"
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
         <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content=" Promenite lekara" IsHitTestVisible="False" FontSize="24" 
@@ -89,7 +97,7 @@
 
         <DatePicker x:Name="date" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" 
                    VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday" Foreground="#FFF76A"
-                    SelectedDateChanged="date_SelectedDateChanged" Margin="0,0,2,0" BorderBrush="#FFCE89" Background="#FFADCE74">
+                    SelectedDateChanged="Date_SelectedDateChanged" Margin="0,0,2,0" BorderBrush="#FFCE89" Background="#FFADCE74">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
@@ -102,8 +110,8 @@
 
         <ComboBox Grid.Column="2" Grid.Row="4" AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Foreground="#FFF76A"
-                  ItemsSource="{Binding listOfAppointmentTime , NotifyOnSourceUpdated=True}"
-                  SourceUpdated="comboTime_SourceUpdated" VerticalAlignment="Center"
+                  ItemsSource="{Binding listOfAppointmentTime, NotifyOnSourceUpdated=True}"
+                  SourceUpdated="ComboTime_SourceUpdated" VerticalAlignment="Center"
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
         <Button  Grid.Row="9" Grid.Column="7" Content="Izmeni" Grid.ColumnSpan="2" 

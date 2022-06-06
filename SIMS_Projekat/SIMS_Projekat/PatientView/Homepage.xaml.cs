@@ -26,17 +26,16 @@ namespace SIMS_Projekat.PatientView
     {
         private Patient patient;
         private Frame mainFrame;
-        private ObservableCollection<TherapyNotification> notificationCollection;
-
-        public ObservableCollection<TherapyNotification> NotificationCollection
+        private ObservableCollection<Reminder> reminderCollection;
+        public ObservableCollection<Reminder> ReminderCollection
         {
-            get { return notificationCollection; }
+            get { return reminderCollection; }
             set
             {
-                if (value != notificationCollection)
+                if (value != reminderCollection)
                 {
-                    notificationCollection = value;
-                    OnPropertyChanged("NotificationCollection");
+                    reminderCollection = value;
+                    OnPropertyChanged("ReminderCollection");
                 }
             }
         }
@@ -55,7 +54,7 @@ namespace SIMS_Projekat.PatientView
             mainFrame = frame;
             this.DataContext = this;
             
-            NotificationCollection = App.therapyNotificationController.GetActiveNotifications();
+            ReminderCollection = App.reminderController.GetActiveReminders();
 
             App.evaluationController.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
 
@@ -64,16 +63,16 @@ namespace SIMS_Projekat.PatientView
 
         }
 
-        private void notificationRead_Checked(object sender, RoutedEventArgs e)
+        private void NotificationRead_Checked(object sender, RoutedEventArgs e)
         {
             if (GridView.SelectedItem != null)
             {
-                TherapyNotification tn = GridView.SelectedItem as TherapyNotification;
-                App.therapyNotificationController.DeleteNotification(tn);
+                Reminder rem = GridView.SelectedItem as Reminder;
+                App.reminderController.CreateNewReminderIfItIsRepeatableAndDeleteIfNot(rem);
             }
         }
 
-        private void evaluationButton_Click(object sender, RoutedEventArgs e)
+        private void EvaluationButton_Click(object sender, RoutedEventArgs e)
         {
             mainFrame.Content = new EvaluationPage(mainFrame, patient, App.evaluationController.GetEmptyEvaluationsForPatient(patient).Last<Evaluation>());
         }

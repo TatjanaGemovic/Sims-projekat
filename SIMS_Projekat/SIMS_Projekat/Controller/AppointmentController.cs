@@ -1,3 +1,4 @@
+using SIMS_Projekat.DTO;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Service;
 using System;
@@ -44,14 +45,14 @@ namespace SIMS_Projekat.Controller
             return appointmentService.GetAllAppointments();
         }
 
-        public List<string> GetAvailableAppointmentsForDoctor(Doctor doctor, string pickedDate, Patient selectedPatient, bool op, Room selectedRoom)
+        public List<string> GetAvailableAppointmentsForDoctor(AppointmentServiceDTO dto)
         {
-            return appointmentService.GetAvailableAppointmentsForDoctor(doctor, pickedDate, selectedPatient, op, selectedRoom);
+            return App.scheduleAppointmentService.GetAvailableAppointmentsForDoctor(dto);
         }
 
-        public List<string> GetAvailableAppointmentsForPatient(Patient p, DateTime dt, string licence) 
+        public List<string> GetTakenAppointmentsForPatient(Patient p, DateTime dt, string licence) 
         {
-            return appointmentService.GetAvailableAppointmentsForPatient(p, dt, licence);
+            return appointmentService.GetTakenAppointmentsForPatient(p, dt, licence);
         } 
 
         public Room GetAvailableRoom(DateTime start)
@@ -86,6 +87,16 @@ namespace SIMS_Projekat.Controller
         public bool CheckForScheduledAppointments(Patient patient, DateTime beginningOfMonth)
         {
             return appointmentService.CheckForScheduledAppointments(patient, beginningOfMonth);
+        }
+
+        public List<Appointment> GetAppointmentsForTimeSpan(Doctor doctor, DateTime startDateTime, DateTime endDateTime)
+        {
+            return appointmentService.GetAppointmentsForTimeSpan(doctor, startDateTime, endDateTime);
+        }
+
+        public List<Appointment> GetAllAppointmentForToday()
+        {
+            return appointmentService.GetAllAppointmentForToday();
         }
     }
 }

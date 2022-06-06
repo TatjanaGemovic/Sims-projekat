@@ -22,7 +22,7 @@ namespace SIMS_Projekat.DoctorView
     public partial class Menu : Page
     {
         private Frame Frame;
-        Doctor doctor;
+        private Doctor doctor;
         private DoctorHomePage doctorHomePage;
 
         public Menu(Frame mainFrame, Doctor doctor1, DoctorHomePage doctorHomePage1)
@@ -36,16 +36,26 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Frame.Content = new DoctorAppointments(Frame, doctor, doctorHomePage);
+            Frame.Content = new DoctorAppointments(Frame, doctor);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            App.therapyNotificationRepository.Serialize();
             App.evaluationRepository.Serialize();
+            App.reminderRepository.Serialize();
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             doctorHomePage.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new ReportPage(Frame, doctor);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Frame.Content = new NotificationPage(Frame, doctor);
         }
     }
 }

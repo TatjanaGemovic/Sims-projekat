@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddRoomView">
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="101*">
@@ -25,8 +25,8 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            
-            <GroupBox Header="Prostorija za dodavanje" Margin="10,10,10,10" FontSize="24" Grid.Column="0" Grid.RowSpan="6" BorderThickness="2">
+
+            <GroupBox Header="Prostorija za dodavanje" Style="{DynamicResource ManagerGroupBoxText}" Grid.Column="0" Grid.RowSpan="6" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -40,13 +40,13 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Broj prostorije:" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
-                    <Label Content="Broj sprata:" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
-                    <Label Content="Tips prostorije:" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="18"/>
+                    <Label Content="Broj prostorije:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Grid.Column="0" />
+                    <Label Content="Broj sprata:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="2" Grid.Column="0" />
+                    <Label Content="Tips prostorije:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="3" Grid.Column="0" />
 
-                    <TextBox x:Name="roomNumber" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="108" />
-                    <TextBox x:Name="roomFloor" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="108" />
-                    <ComboBox x:Name="roomType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="108">
+                    <TextBox x:Name="roomNumber" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
+                    <TextBox x:Name="roomFloor" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
+                    <ComboBox x:Name="roomType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180" >
                         <ComboBoxItem Content="recoveryRoom"/>
                         <ComboBoxItem Content="operatingRoom"/>
                         <ComboBoxItem Content="examRoom"/>
@@ -55,10 +55,20 @@
                 </Grid>
             </GroupBox>
 
-            <Button x:Name="AddRoom" Content="Potvrdi dodavanje" Grid.Column="1" Grid.Row="2" Margin="10,15,10,15" Click="AddRoom_Click" ></Button>
-            <Button x:Name="QuitAdding" Content="Ponisti" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitAdding_Click" ></Button>
+            <Button x:Name="AddRoom" Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="2" Margin="10,15,10,15" Click="AddRoom_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
+                    <Label   Content="Potvrdi dodavanje" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="QuitAdding"  Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitAdding_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
+                    <Label   Content="Ponisti dodavanje" Style="{DynamicResource LabelInButton}"/>
+                </StackPanel>
+            </Button>
 
-            
+
         </Grid>
     </Border>
 </Page>

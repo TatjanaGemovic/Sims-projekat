@@ -72,9 +72,10 @@ namespace SIMS_Projekat.Service
 
         }
 
-        public bool CheckIfItsNewMonth(Patient patient)
+        public bool CheckIfItsTheBeginningOfANewMonth(Patient patient)
         {
-            if (patient.year != DateTime.Now.Year || patient.month != DateTime.Now.Month)
+            if (patient.currentYearUsableForCancellingAppointmentsByPatient != DateTime.Now.Year || 
+                patient.currentMonthUsableForCancellingAppointmentsByPatient != DateTime.Now.Month)
                 return true;
 
             return false;
