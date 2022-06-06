@@ -30,6 +30,7 @@ namespace SIMS_Projekat.PatientView
         DateTime pickedDate;
         BindingList<String> listOfTakenAppointmentTime;
         BindingList<String> listOfAppointmentTime;
+        RandomAppontmentFirstPage RandomAppontmentFirstPage;
         public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         public ScheduleAppointmentPage(Frame mainFrame, Patient p)
@@ -39,7 +40,9 @@ namespace SIMS_Projekat.PatientView
 
             InitializeComponent();
             this.DataContext = this;
-            RandomAppointmentFrame.Content = new RandomAppontmentFirstPage(patient, frame);
+            RandomAppontmentFirstPage = new RandomAppontmentFirstPage(patient, frame);
+            RandomAppointmentFrame.Content = RandomAppontmentFirstPage;
+
             SetBlackOutDates();
 
             if (patient.doctorLicenceNumber != "")
@@ -212,6 +215,162 @@ namespace SIMS_Projekat.PatientView
             };
             newReminder = App.reminderController.AddReminder(newReminder);
             return newReminder.ID;
+        }
+
+        public void DemoExecution()
+        {
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     choose_doctor.IsDropDownOpen = true;
+                     choose_doctor.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     choose_doctor.SelectedIndex = 1;
+                     choose_doctor.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(4500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     date.IsDropDownOpen = true;
+                     date.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(6000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     date.SelectedDate = DateTime.Now.AddDays(1);
+                     date.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(7500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     comboTime.IsDropDownOpen = true;
+                     comboTime.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(9000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     comboTime.SelectedIndex = 2;
+                     comboTime.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(10500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     checkbox.IsChecked = true;
+                 }
+                ));
+            });
+
+            Task.Delay(12000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     checkbox.IsChecked = false;
+                 }
+                ));
+            });
+
+            Task.Delay(13500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     RandomAppontmentFirstPage.DemoExecution();
+                 }
+                ));
+            });
+
+            Task.Delay(24000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+                 }
+                ));
+            });
+
+            Task.Delay(25500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     Appointments appointmentsPage = new Appointments(frame, patient);
+                     frame.Content = appointmentsPage;
+
+                 }
+                ));
+            });
+
+            Task.Delay(25600).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                 }
+                ));
+            });
+
         }
     }
     

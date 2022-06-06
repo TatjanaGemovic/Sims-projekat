@@ -46,10 +46,94 @@ namespace SIMS_Projekat.PatientView
 
         private void ScheduleAppointment_Click(object sender, RoutedEventArgs e)
         {
+            int reminderID = CreateReminderPage(appointment.beginningDate);
+            appointment.reminderForPatientID = reminderID;
             App.appointmentController.AddAppointment(appointment);
 
             Appointments Appointments = new Appointments(mainFrame, patient);
             mainFrame.Content = Appointments;
+        }
+
+        private int CreateReminderPage(DateTime date)
+        {
+            Reminder newReminder = new Reminder()
+            {
+                isRepeatable = "Nikada",
+                patient = patient,
+                startTime = date.AddDays(-1),
+                type = "Pregled: ",
+                content = "sutra u " + date.TimeOfDay.ToString(@"hh\:mm")
+            };
+            newReminder = App.reminderController.AddReminder(newReminder);
+            return newReminder.ID;
+        }
+
+        public void DemoExecution()
+        {
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     showAppointmentButton.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+                 }
+                ));
+            });
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     showAppointmentButton.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     appointment = App.appointmentController.CreateRandomAppointment(patient);
+                     doctorContentLabel.Visibility = Visibility.Hidden;
+                     dateContentLabel.Visibility = Visibility.Hidden;
+                     timeContentLabel.Visibility = Visibility.Hidden;
+                 }
+                ));
+            });
+
+            Task.Delay(5000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     doctorContentLabel.Visibility = Visibility.Visible;
+                     doctorContentLabel.Content = appointment.doctor.FirstName + " " + appointment.doctor.LastName;
+                 }
+                ));
+            });
+            Task.Delay(7000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     dateContentLabel.Visibility = Visibility.Visible;
+                     dateContentLabel.Content = appointment.beginningDate.Date.ToString("dd.MM.yyyy.");
+                 }
+                ));
+            });
+            Task.Delay(9000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     timeContentLabel.Visibility = Visibility.Visible;
+                     timeContentLabel.Content = appointment.beginningDate.TimeOfDay.ToString(@"hh\:mm");
+                 }
+                ));
+            });
+
         }
     }
 }

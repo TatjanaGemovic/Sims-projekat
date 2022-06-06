@@ -38,7 +38,7 @@
                    HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
             <Button x:Name="demo"  Style="{StaticResource ResourceKey=PatientButtons}" DockPanel.Dock="Left" 
-                    Width="201" HorizontalAlignment="Left" >
+                    Width="201" HorizontalAlignment="Left" Click="Demo_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/video.png" Width="30" Height="30"></Image>
                     <Label Content="Demo prikaz" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />

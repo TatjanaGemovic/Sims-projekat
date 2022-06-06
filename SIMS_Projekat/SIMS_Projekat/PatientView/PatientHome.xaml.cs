@@ -124,5 +124,37 @@ namespace SIMS_Projekat.PatientView
         {
             MainFrame.Content = new RemindersPage(MainFrame, patient);
         }
+
+        private void Demo_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     make_appointment.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+                 }
+                ));
+            });
+
+            Task.Delay(3500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     make_appointment.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     Appointments appointmentsPage = new Appointments(MainFrame, patient);
+                     MainFrame.Content = appointmentsPage;
+                     appointmentsPage.DemoExecution();
+                     appointmentsPage.make_appointment.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+
+                 }
+                ));
+            });
+        }
     }
 }
