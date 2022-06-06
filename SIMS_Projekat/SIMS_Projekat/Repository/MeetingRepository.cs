@@ -64,6 +64,7 @@ namespace SIMS_Projekat.Repository
                     oldMeeting.EndDateTime = meeting.EndDateTime;
                     oldMeeting.Description = meeting.Description;
                     oldMeeting.InvitedStaff = meeting.InvitedStaff;
+                    return oldMeeting;
                 }
             }
             return null;

@@ -61,13 +61,13 @@
                     <TextBlock FontSize="15">Zakaži</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110">
+            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110" Command="{Binding EditMeetingCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
                     <TextBlock FontSize="15">Izmeni</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SecretaryViewDeleteButton}" Margin="80,0,0,0" Height="50" Width="110" >
+            <Button Style="{StaticResource SecretaryViewDeleteButton}" Margin="80,0,0,0" Height="50" Width="110" Command="{Binding DeleteMeetingCommand}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
                     <TextBlock FontSize="15">Obriši</TextBlock>

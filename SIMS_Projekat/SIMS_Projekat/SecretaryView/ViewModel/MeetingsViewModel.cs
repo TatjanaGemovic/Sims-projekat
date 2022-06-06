@@ -51,7 +51,8 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         private ContentControl contentControl;
         private INotificationSender notificationSender;
         public MyICommand AddMeetingCommand { get; set; }
-
+        public MyICommand DeleteMeetingCommand { get; set; }
+        public MyICommand EditMeetingCommand { get; set; }
 
 
         public MeetingsViewModel(INotificationSender notificationSender, MeetingController meetingController, 
@@ -66,12 +67,28 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             this.notificationSender = notificationSender;
 
             AddMeetingCommand = new MyICommand(AddMeetingExecuteMethod);
+            DeleteMeetingCommand = new MyICommand(DeleteMeetingExecuteMethod);
+            EditMeetingCommand = new MyICommand(EditMeetingExecuteMethod);
         }
 
 
         private void AddMeetingExecuteMethod()
         {
             contentControl.Content = new AddMeetingUserControl(contentControl, notificationSender);
+        }
+
+        private void DeleteMeetingExecuteMethod()
+        {
+            meetingController.DeleteMeeting(_selectedMeeting);
+            MeetingsForSelectedDate.Remove(_selectedMeeting);
+        }
+        private void EditMeetingExecuteMethod()
+        {
+            string selectedTime = SelectedMeeting.StartDateTime.Hour + ":" + SelectedMeeting.StartDateTime.Minute;
+            contentControl.Content = new EditMeetingUserControl(contentControl, notificationSender, SelectedMeeting.Topic,
+                SelectedMeeting.StartDateTime.Date, selectedTime, SelectedMeeting.Room, SelectedMeeting.Description, 
+                SelectedMeeting.InvitedStaff, SelectedMeeting.ID);
+
         }
     }
 }
