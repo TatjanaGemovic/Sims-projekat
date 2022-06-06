@@ -82,6 +82,8 @@ namespace SIMS_Projekat
             addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController, 
                 appointmentController, ContentControl, accountsView, Accounts_RadioButton);
             equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController,
+                appointmentController, ContentControl);
 
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;

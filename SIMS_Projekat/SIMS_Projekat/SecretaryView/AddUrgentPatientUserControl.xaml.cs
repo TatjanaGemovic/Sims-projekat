@@ -53,9 +53,36 @@ namespace SIMS_Projekat.SecretaryView
 
             if(AvailableRooms.Count == 0 || 
                 AccountController.GetAvailableDoctors(CreateStartTimeForCurrentAppointment()).Count == 0)
+            {
+                FindFirstFreeRoom();
                 ShowAppointmentsForRescheduling();
+            }
 
             Patients = new ObservableCollection<Patient>(AccountController.GetAllPatientAccounts());
+        }
+
+        private void FindFirstFreeRoom()
+        {
+            DateTime dateTime = CreateStartTimeForCurrentAppointment().AddMinutes(15);
+            DateTime tommorow = DateTime.Today.AddDays(1);
+            while(dateTime < tommorow)
+            {
+                List<Room> rooms = RoomController.GetAvailableRooms(dateTime);
+                if(rooms.Count != 0)
+                {
+                    AppointmentController.AddAppointment(new Appointment
+                    {
+                        beginningDate = dateTime,
+                        endDate = dateTime.AddMinutes(15),
+                        room = rooms[0],
+                        roomID = rooms[0].RoomID
+                    });
+                    return;
+                }
+                dateTime = dateTime.AddMinutes(15);
+
+
+            }
         }
 
         private List<Room> GetRooms()
@@ -134,7 +161,7 @@ namespace SIMS_Projekat.SecretaryView
                 {
                     beginningDate = selectedAppointment.beginningDate,
                     endDate = selectedAppointment.endDate,
-                    doctor = selectedAppointment.doctor,
+                    doctor = AccountController.GetAvailableDoctors(dateTime)[0],
                     patient = patient,
                     room = selectedAppointment.room,
                     operation = false,

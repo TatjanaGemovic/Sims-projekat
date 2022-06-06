@@ -43,8 +43,8 @@ namespace SIMS_Projekat.SecretaryView
             this.contentControl = contentControl;
             dataGrid = dataGridAppointments;
 
-            Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableNotMeetingRooms().OrderBy(room => room.RoomNumber));
             Appointments = new ObservableCollection<Appointment>();
+            Rooms = new ObservableCollection<Room>(this.roomController.GetAvailableNotMeetingRooms().OrderBy(room => room.RoomNumber));
 
             SortDataGrid();
            
