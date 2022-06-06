@@ -164,19 +164,13 @@ namespace SIMS_Projekat.PatientView
 
             TimeSpan timeStart = TimeSpan.Parse(this.comboTime.SelectionBoxItem.ToString());
             startDate = startDate.Add(timeStart);
-           
-            Doctor doctor;
-            if (choose_doctor.SelectedItem != null)
-            {
-                doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
-            }
-            else
-            {
-                doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber) as Doctor;
-            }
 
+            int reminderID = 0;
+            if ((bool)checkbox.IsChecked)
+                reminderID = CreateReminder(startDate);
+
+            Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
             Room room = App.appointmentController.GetAvailableRoom(startDate);
-
 
             Appointment appointment = new Appointment()
             {
@@ -187,7 +181,8 @@ namespace SIMS_Projekat.PatientView
                 patient = patient,
                 operation = false,
                 isDelayedByPatient = false,
-                isScheduledByPatient = true
+                isScheduledByPatient = true,
+                reminderForPatientID = reminderID
             };
 
             App.appointmentController.AddAppointment(appointment);
@@ -204,6 +199,19 @@ namespace SIMS_Projekat.PatientView
         private void ComboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             scheduleClickButton.IsEnabled = true;
+        }
+        private int CreateReminder(DateTime timeOfAppointment)
+        {
+            Reminder newReminder = new Reminder()
+            {
+                isRepeatable = "Nikada",
+                patient = patient,
+                startTime = timeOfAppointment.AddDays(-1),
+                type = "Pregled: ",
+                content = "sutra u " + timeOfAppointment.TimeOfDay.ToString(@"hh\:mm")
+            };
+            newReminder = App.reminderController.AddReminder(newReminder);
+            return newReminder.ID;
         }
     }
     

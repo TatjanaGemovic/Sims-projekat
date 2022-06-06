@@ -261,5 +261,12 @@ namespace SIMS_Projekat.Service
             List<Appointment> appointments = appointmentRepository.GetAllAppointments();
             return appointments.Where(appointment => appointment.beginningDate.Date == DateTime.Today).ToList();
         }
+
+        public Appointment DeleteReminderForAppointment(int reminderID)
+        {
+            Appointment appointment = appointmentRepository.GetAppointmentByReminderID(reminderID);
+            appointment.reminderForPatientID = 0;
+            return appointment;
+        }
     }
 }

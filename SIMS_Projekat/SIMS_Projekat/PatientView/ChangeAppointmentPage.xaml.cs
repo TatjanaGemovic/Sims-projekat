@@ -31,7 +31,6 @@ namespace SIMS_Projekat.PatientView
         public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         DateTime pickedDate;
-        string chosenDoctor;
 
         public ChangeAppointmentPage(Frame frame, int appointmentID, Patient p)
         {
@@ -184,29 +183,50 @@ namespace SIMS_Projekat.PatientView
             TimeSpan timeStart = TimeSpan.Parse(this.comboTime.SelectionBoxItem.ToString());
             startDate = startDate.Add(timeStart);
 
-            Doctor doctor;
-            if (choose_doctor.SelectedItem != null)
-            {
-                doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
-            }
-            else
-            {
-                doctor = this.appointment.doctor;
-            }
+            Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
             
             if(startDate.Equals(this.appointment.beginningDate) && doctor.LicenceNumber.Equals(this.appointment.doctor.LicenceNumber))
             {
+                int reminderID = CheckCheckBoxReminderIfThereIsNoChange();
+                if(reminderID != 0)
+                    appointment.reminderForPatientID = reminderID;
+
                 ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, this.appointment.appointmentID, patient);
                 mainFrame.Content = viewAppointmentPage;
             }
             else
             {
                 Room room;
+                int reminderID = 0;
                 if (!startDate.Equals(this.appointment.beginningDate))
+                {
                     room = App.appointmentController.GetAvailableRoom(startDate);
+                    if ((bool)checkbox.IsChecked)
+                    {
+                        if (appointment.reminderForPatientID == 0)
+                            reminderID = AddNewReminder(startDate);
+                        else
+                        {
+                            Reminder oldReminder = App.reminderController.GetReminderByID(appointment.reminderForPatientID);
+                            App.reminderController.DeleteReminder(oldReminder);
+                            reminderID = AddNewReminder(startDate);
+                        }
+                    }
+                    else
+                    {
+                        if (appointment.reminderForPatientID != 0)
+                        {
+                            Reminder oldReminder = App.reminderController.GetReminderByID(appointment.reminderForPatientID);
+                            App.reminderController.DeleteReminder(oldReminder);
+                        }
+                    }
+                }
                 else
+                {
+                    reminderID = CheckCheckBoxReminderIfThereIsNoChange();
                     room = this.appointment.room;
-                
+                }
+                    
                 Appointment newAppointment = new Appointment()
                 {
                     appointmentID = this.appointment.appointmentID,
@@ -217,9 +237,11 @@ namespace SIMS_Projekat.PatientView
                     patient = patient,
                     operation = false,
                     isDelayedByPatient = true,
-                    isScheduledByPatient = this.appointment.isScheduledByPatient
+                    isScheduledByPatient = this.appointment.isScheduledByPatient,
+                    reminderForPatientID = reminderID
                 };
-                App.appointmentController.SetAppointment(newAppointment);
+                appointment = App.appointmentController.SetAppointment(newAppointment);
+                
 
                 ViewAppointmentPage viewAppointmentPage = new ViewAppointmentPage(mainFrame, appointment.appointmentID, patient);
                 mainFrame.Content = viewAppointmentPage;
@@ -233,5 +255,28 @@ namespace SIMS_Projekat.PatientView
             mainFrame.Content = viewAppointmentPage;     
         }
 
+        private int CheckCheckBoxReminderIfThereIsNoChange()
+        {
+            if ((bool)checkbox.IsChecked)
+            {
+                if (appointment.reminderForPatientID == 0)
+                    return AddNewReminder(appointment.beginningDate);
+            }
+            return 0;
+        }
+
+        private int AddNewReminder(DateTime appointmentDate) { 
+            Reminder newReminder = new Reminder()
+            {
+                isRepeatable = "Nikada",
+                patient = patient,
+                startTime = appointmentDate.AddDays(-1),
+                type = "Pregled: ",
+                content = "sutra u " + appointmentDate.TimeOfDay.ToString(@"hh\:mm")
+            };
+            newReminder = App.reminderController.AddReminder(newReminder);
+            return newReminder.ID;
+        }
     }
+
 }

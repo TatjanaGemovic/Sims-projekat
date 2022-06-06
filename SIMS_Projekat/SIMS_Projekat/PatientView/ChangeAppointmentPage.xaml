@@ -56,9 +56,8 @@
                   Style="{StaticResource ResourceKey=PatientComboBox}"/>
 
         <CheckBox Content="  Napravi podsetnik" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" Background="#FFCE89" 
-                  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold" Foreground="#FFF76A" />
-
-
+                  Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="24" FontWeight="SemiBold" Foreground="#FFF76A" 
+                  x:Name="checkbox"/>
 
         <TextBlock Grid.Row="1" Grid.Column="2" x:Name="existing_doctor" FontSize="24" Foreground="#FFF76A"
                    IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left">
