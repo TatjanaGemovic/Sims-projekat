@@ -93,5 +93,10 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.GetAppointmentsForTimeSpan(doctor, startDateTime, endDateTime);
         }
+
+        public List<Appointment> GetAllAppointmentForToday()
+        {
+            return appointmentService.GetAllAppointmentForToday();
+        }
     }
 }

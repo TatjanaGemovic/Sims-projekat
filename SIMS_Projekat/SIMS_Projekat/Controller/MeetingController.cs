@@ -21,6 +21,10 @@ namespace SIMS_Projekat.Controller
         {
             return MeetingService.DeleteMeeting(meeting);
         }
+        public Meeting EditMeeting(Meeting meeting, string meetingID)
+        {
+            return MeetingService.EditMeeting(meeting, meetingID);
+        }
 
         public List<Meeting> GetAllMeetings()
         {
