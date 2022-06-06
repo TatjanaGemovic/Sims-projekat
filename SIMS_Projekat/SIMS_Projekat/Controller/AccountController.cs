@@ -76,5 +76,10 @@ namespace SIMS_Projekat.Controller
         {
             return AccountService.GetAvailableDoctors(dateTime);
         }
+        public List<Doctor> GetGeneralPractitionerDoctors()
+        {
+            return AccountService.GetGeneralPractitionerDoctors();
+        }
+        
     }
 }

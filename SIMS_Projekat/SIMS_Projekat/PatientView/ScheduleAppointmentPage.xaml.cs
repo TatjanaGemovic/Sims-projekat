@@ -44,9 +44,8 @@ namespace SIMS_Projekat.PatientView
 
             if (patient.doctorLicenceNumber != "")
             {
-                Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber)as Doctor;
-                existing_doctor.Text = doctor.FirstName + " " + doctor.LastName;
-                
+                Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber)as Doctor;       
+                drInfo = new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber);
             }
 
             InitializeDoctorComboBox();
@@ -77,11 +76,17 @@ namespace SIMS_Projekat.PatientView
         public void InitializeDoctorComboBox()
         {
             doctorInfoList = new ObservableCollection<DoctorInfo>();
-            foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            int doctorPlaceInCollection = 0;
+
+            foreach (Doctor doctor in App.accountController.GetGeneralPractitionerDoctors())
             {
                 doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
-
-            }
+                if (drInfo != null && drInfo.doctorName.Equals(doctor.FirstName + " " + doctor.LastName))
+                {
+                    doctorPlaceInCollection = doctorInfoList.Count() - 1;
+                    choose_doctor.SelectedItem = doctorInfoList[doctorPlaceInCollection];
+                }       
+            }          
         }
         private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {

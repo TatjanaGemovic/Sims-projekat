@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="343" d:DesignWidth="448"
+      d:DesignHeight="343" d:DesignWidth="476"
       Title="RandomAppontmentFirstPage">
     <Page.Resources>
         <ResourceDictionary>
@@ -26,7 +26,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
@@ -46,12 +46,12 @@
         <Label x:Name="timeContentLabel" Grid.Row="3" Grid.Column="2"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"  />
 
-        <Button x:Name="scheduleAppointment" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2"
-                Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}"
+        <Button x:Name="scheduleAppointment" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,15,0"
+                Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right"
                 Click="ScheduleAppointment_Click"/>
         
-        <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
-                 Style="{StaticResource ResourceKey=PatientButtonsPage}"
+        <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="15,0,0,0" HorizontalAlignment="Left"
                  Click="ShowAppointmentButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>

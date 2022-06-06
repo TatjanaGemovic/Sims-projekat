@@ -188,7 +188,7 @@ namespace SIMS_Projekat.Service
         {
             var random = new Random();
 
-            List<Doctor> doctorList = App.accountService.GetAllDoctorAccounts();
+            List<Doctor> doctorList = App.accountController.GetGeneralPractitionerDoctors();
             int doctorIndex = random.Next(doctorList.Count);
             Doctor doctor = doctorList[doctorIndex];
             return doctor;

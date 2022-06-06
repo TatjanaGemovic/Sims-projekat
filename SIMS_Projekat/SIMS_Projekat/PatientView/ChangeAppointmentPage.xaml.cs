@@ -31,6 +31,7 @@ namespace SIMS_Projekat.PatientView
         public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         DateTime pickedDate;
+        string chosenDoctor;
 
         public ChangeAppointmentPage(Frame frame, int appointmentID, Patient p)
         {
@@ -41,14 +42,13 @@ namespace SIMS_Projekat.PatientView
 
             this.DataContext = this;
             SetBlackOutDates();
-            InitializeDoctorComboBox();
             FillLabels();
+            InitializeDoctorComboBox();
             
         }
         public void FillLabels()
         {
             Doctor d = App.accountController.GetDoctorAccountByLicenceNumber(appointment.doctor.LicenceNumber) as Doctor;
-            chosen_doctor.Content = d.FirstName + " " + d.LastName;
             drInfo = new DoctorInfo(d.FirstName + " " + d.LastName, d.LicenceNumber);
 
             date.Text = appointment.beginningDate.Date.ToString("MM/dd/yyyy");
@@ -102,19 +102,22 @@ namespace SIMS_Projekat.PatientView
         public void InitializeDoctorComboBox()
         {
             doctorInfoList = new ObservableCollection<DoctorInfo>();
-            foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            
+            int doctorPlaceInCollection = 0;
+            foreach (Doctor doctor in App.accountController.GetGeneralPractitionerDoctors())
             {
                 doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
+                if (drInfo.doctorName.Equals(doctor.FirstName + " " + doctor.LastName))
+                    doctorPlaceInCollection = doctorInfoList.Count() -1;
             }
+            choose_doctor.SelectedItem = doctorInfoList[doctorPlaceInCollection];
         }
 
         private void Choose_doctor_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             drInfo = choose_doctor.SelectedItem as DoctorInfo;
-            chosen_doctor.Content = drInfo.doctorName;
 
-            InitializeListOfAppointments();
-            
+            InitializeListOfAppointments();    
         }
 
         private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)

@@ -93,5 +93,18 @@ namespace SIMS_Projekat.Service
             }
             return availableDoctors;
         }
+
+        public List<Doctor> GetGeneralPractitionerDoctors()
+        {
+            List<Doctor> generalPractitionerDoctors = new List<Doctor>();
+            foreach (Doctor doctor in GetAllDoctorAccounts())
+            {
+                if (doctor.Speciality == DoctorSpeciality.GENERAL_PRACTITIONER)
+                {
+                    generalPractitionerDoctors.Add(doctor);
+                }
+            }
+            return generalPractitionerDoctors;
+        }
     }
 }
