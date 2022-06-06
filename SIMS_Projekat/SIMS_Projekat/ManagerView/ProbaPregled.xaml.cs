@@ -29,7 +29,6 @@ namespace SIMS_Projekat.ManagerView
         public event PropertyChangedEventHandler PropertyChanged;
         public static ObservableCollection<Room> rooms { get; set; }
         public static ObservableCollection<int> equipmentQ;
-        private DataGrid roomsGrid { get; set; }
         private Equipment selectedEquipment;
 
         public ObservableCollection<Room> rrRooms
@@ -59,7 +58,8 @@ namespace SIMS_Projekat.ManagerView
             selectedEquipment = oldEquipment;
             rrRooms = new ObservableCollection<Room>(selectedEquipment.Rooms); 
             ppEquipmentQ = new ObservableCollection<int>(selectedEquipment.ppEquipmentQuantity);
-            datagGridRooms.ItemsSource = rrRooms;
+            Podaci = new ObservableCollection<GridItem>();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -76,5 +76,49 @@ namespace SIMS_Projekat.ManagerView
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        public class GridItem
+        {
+            public int broj { get; set; }
+            public int sprat { get; set; }
+            public RoomType tip { get; set; }
+            public int kolicina { get; set; }
+
+            public GridItem(int br, int sp,RoomType tip, int kol)
+            {
+                this.broj = br;
+                this.tip = tip;
+                this.sprat = sp;
+                this.kolicina = kol;
+            }
+
+
+        }
+
+        public static ObservableCollection<GridItem> stvari;
+
+        public ObservableCollection<GridItem> Podaci
+        {
+            get { return stvari; }
+            set
+            {
+                stvari = value;
+                napravi();
+                OnPropertyChanged(nameof(Podaci));
+            }
+        }
+
+        private void napravi()
+        {
+            for (int i = 0; i != rrRooms.Count; i++)
+            {
+                var eq = rrRooms[i];
+                int kol = ppEquipmentQ[i];
+                var item = new GridItem(eq.RoomNumber,eq.Floor, eq.pRoomType, kol);
+                stvari.Add(item);
+            }
+        }
+
+
     }
 }

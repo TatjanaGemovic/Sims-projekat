@@ -11,6 +11,7 @@
     <None Remove="Resources\icons\add_account.png" />
     <None Remove="Resources\icons\allergen.png" />
     <None Remove="Resources\icons\ambulance.png" />
+    <None Remove="Resources\icons\approved.png" />
     <None Remove="Resources\icons\back.png" />
     <None Remove="Resources\icons\calendar.png" />
     <None Remove="Resources\icons\cancel.png" />
@@ -71,6 +72,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\icons\approved.png" />
     <Resource Include="Resources\icon_manager\ManagerBack.png" />
   </ItemGroup>
 
@@ -176,6 +178,10 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="SecretaryView\EditMeetingUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SecretaryView\AddMeetingUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -190,6 +196,9 @@
     <Page Update="SecretaryView\AddUrgentPatientUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\FreeDayApprovalUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="SecretaryView\OrderEquipmentUserControl - Copy.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>

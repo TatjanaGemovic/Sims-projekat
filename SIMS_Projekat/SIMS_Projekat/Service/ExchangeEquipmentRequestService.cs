@@ -14,26 +14,23 @@ namespace SIMS_Projekat.Service
     public class ExchangeEquipmentRequestService
     {
         
-        private readonly ExchangeEquipmentRequestRepository _requestRepository;
-        private readonly EquipmentRepository _equipmentRepository;
-        private readonly RoomEquipmentDTORepository _roomEquipmentDTORepository;
+        private readonly UnitService _unitService;
+        
 
-        public ExchangeEquipmentRequestService(ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository, RoomEquipmentDTORepository roomEquipmentDTORepository, EquipmentRepository equipmentRepository)
+        public ExchangeEquipmentRequestService()
         {
-            _requestRepository = exchangeEquipmentRequestRepository;
-            _equipmentRepository = equipmentRepository;
-            _roomEquipmentDTORepository = roomEquipmentDTORepository;
-            
+            _unitService = new UnitService();
+
         }
 
         public List<ExchangeEquipmentRequest> GetAllRequest()
         {
-            return _requestRepository.GetAllRequest();
+            return _unitService._exchangeEquipmentRequestRepository.GetAll();
         }
 
         public ExchangeEquipmentRequest GetRequestByID(string id)
         {
-            return _requestRepository.GetRequestByID(id);
+            return _unitService._exchangeEquipmentRequestRepository.GetByID(id);
         }
         public void Notify(ExchangeEquipmentRequest request)
         {
@@ -50,14 +47,16 @@ namespace SIMS_Projekat.Service
             }
             else
             {
-                var dtoToChange = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID+request.equipmentID);
-                if (dtoToChange!= null)
-                     updateDTO(request,1);
-                else 
+                var dtoToChange = _unitService._roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID+request.equipmentID);
+                if (dtoToChange != null)
+                {
+                    updateDTO(request, 1);
+                }
+                else
                 {
                     var newDTO = createDTO(request);
-                    _roomEquipmentDTORepository.AddRoomEquipment(newDTO);
-                       
+                    _unitService._roomEquipmentDTORepository.AddRoomEquipment(newDTO);
+
                 }
                 
 
@@ -75,10 +74,12 @@ namespace SIMS_Projekat.Service
             else
             {
                 if (request.allEquipmentFromRoom == true)
+                {
                     deleteDTOData(request);
+                }
                 else
                 {
-                    var dtoToChange = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID + request.equipmentID);
+                    var dtoToChange = _unitService._roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID + request.equipmentID);
                     if (dtoToChange != null)
                     {
                         updateDTO(request, 2);
@@ -102,8 +103,8 @@ namespace SIMS_Projekat.Service
 
         private void updateEquipmentRepository(ExchangeEquipmentRequest request, int mood) 
         {
-            var oldEquipment = _equipmentRepository.GetEquipmentByID(request.equipmentID);
-            var newEquipment = _equipmentRepository.GetEquipmentByID(request.equipmentID);
+            var oldEquipment = _unitService._equipmentRepository.GetEquipmentByID(request.equipmentID);
+            var newEquipment = _unitService._equipmentRepository.GetEquipmentByID(request.equipmentID);
             if (oldEquipment != null)
             {
                 if(mood==1)
@@ -112,45 +113,41 @@ namespace SIMS_Projekat.Service
                     newEquipment.Quantity -= request.quantity;
                 
             }
-            _equipmentRepository.EditEquipment(oldEquipment, newEquipment);
+            _unitService._equipmentRepository.EditEquipment(oldEquipment, newEquipment);
         }
+
 
         private void updateDTO( ExchangeEquipmentRequest request, int mood)
         {
-            var dtoForChange = new RoomEquipmentDTO();
-            var newDTO = new RoomEquipmentDTO();
+            var dtoForChange = _unitService._roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID + request.equipmentID);
+            var newDTO = _unitService._roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID + request.equipmentID);
             if (mood == 1)
             {
-                dtoForChange= _roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID + request.equipmentID);
-                newDTO= _roomEquipmentDTORepository.GetRoomEquipmentByID(request.toRoomID + request.equipmentID);
                 newDTO.QuantityDTO += request.quantity;
             }
             else 
             {
-                dtoForChange = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID + request.equipmentID);
-                newDTO = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID + request.equipmentID);
                 newDTO.QuantityDTO -= request.quantity;
             }
-            _roomEquipmentDTORepository.EditRoomEquipment(dtoForChange, newDTO);
+            _unitService._roomEquipmentDTORepository.EditRoomEquipment(dtoForChange, newDTO);
         }
 
         private void deleteDTOData(ExchangeEquipmentRequest request)
         {
-            var dtoFromRepository = _roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID+ request.equipmentID);
+            var dtoFromRepository = _unitService._roomEquipmentDTORepository.GetRoomEquipmentByID(request.fromRoomID+ request.equipmentID);
             if(dtoFromRepository!= null)
-                _roomEquipmentDTORepository.DeleteRoomEquipment(dtoFromRepository);
+                _unitService._roomEquipmentDTORepository.DeleteRoomEquipment(dtoFromRepository);
 
         }
         public ExchangeEquipmentRequest AddRequest(ExchangeEquipmentRequest newRequest)
         {
-           //
-            return _requestRepository.AddRequest(newRequest);
+            return _unitService._exchangeEquipmentRequestRepository.Add(newRequest);
         }
         public ExchangeEquipmentRequest DeleteRequest(ExchangeEquipmentRequest deleteRequest)
         {
             if (GetRequestByID(deleteRequest.requestID) != null)
             {
-                return _requestRepository.DeleteRequest(deleteRequest);
+                return _unitService._exchangeEquipmentRequestRepository.Delete(deleteRequest);
             }
 
             return null;
@@ -160,13 +157,13 @@ namespace SIMS_Projekat.Service
 
         public void Serialize()
         {
-            _requestRepository.Serialize();
+            _unitService._exchangeEquipmentRequestRepository.Serialize();
       
         }
 
         public void Deserialize()
         {
-            _requestRepository.Deserialize();
+            _unitService._exchangeEquipmentRequestRepository.Deserialize();
         }
 
         public async void ThreadFunction()
@@ -176,12 +173,12 @@ namespace SIMS_Projekat.Service
                 
                 try
                 {
-                    foreach (ExchangeEquipmentRequest request in _requestRepository.GetAllRequest())
+                    foreach (ExchangeEquipmentRequest request in _unitService._exchangeEquipmentRequestRepository.GetAll())
                     {
                         if (DateTime.Compare(request.scheduleDate, DateTime.Now) <= 0)
                         {
                             Notify(request);
-                            _requestRepository.DeleteRequest(request);
+                            _unitService._exchangeEquipmentRequestRepository.Delete(request);
                             Serialize();
                             
                         }

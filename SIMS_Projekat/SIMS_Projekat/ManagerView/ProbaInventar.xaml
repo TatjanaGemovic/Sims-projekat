@@ -9,27 +9,41 @@
       d:DesignHeight="450" d:DesignWidth="554"
       Title="ProbaInventar">
 
-    <Grid Width="554">
-        <Label Content="Oprema prostorije" HorizontalAlignment="Left" Margin="116,71,0,0" VerticalAlignment="Top"/>
+    <Border Style="{DynamicResource ManagerBorderMain}">
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="equipmentDataGrid" ItemsSource="{Binding ppEquipment}"  Margin="89,104,304,89" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False"  AutoGenerateColumns="False" >
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=EquipmentName}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
-                <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pEquipmentType}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="85"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
 
-            </DataGrid.Columns>
-        </DataGrid>
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
 
-        <Button Content="Odustani" HorizontalAlignment="Left" Height="44" Margin="396,287,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click"/>
-        <Button Content="Premesti opremu" HorizontalAlignment="Left" Margin="396,164,0,0" VerticalAlignment="Top" Height="37" Width="105" Click="Button_Click_1"/>
-        <Button Content="Premesti u magacin" HorizontalAlignment="Left" Margin="396,223,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.552,0.656" Height="37" Width="105" Click="Button_Click_2"/>
-        <ListView  x:Name="lista" ItemsSource="{Binding ppEquipmentQ}" HorizontalAlignment="Left" Height="142" Margin="277,104,0,0" VerticalAlignment="Top" Width="69" >
-            <ListView.View>
-                <GridView >
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
 
-    </Grid>
+            <DataGrid x:Name="gridView" ItemsSource="{Binding Podaci}"  Style="{DynamicResource ManagerDataGridStyle}" Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=naziv}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=tip}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnKolicina" Binding ="{Binding Path=kolicina}" IsReadOnly="True" Header="kolicina"  Width="100" CanUserResize="False"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Odustani" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="5" Height="30" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="Button_Click"/>
+            <Button Content="U prostoriju" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="130" Margin="0,0,5,0" Click="Button_Click_1"/>
+            <Button Content="U magacin" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" RenderTransformOrigin="0.552,0.656" Margin="0,0,5,0" Height="30" Width="130" Click="Button_Click_2"/>
+
+        </Grid>
+    </Border>
 </Page>

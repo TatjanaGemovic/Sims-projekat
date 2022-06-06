@@ -15,7 +15,6 @@ namespace SIMS_Projekat.Repository
 
         public List<Room> GetRooms()
         {
-            DeserializeInApp();
             return rooms;
         }
 
@@ -125,11 +124,6 @@ namespace SIMS_Projekat.Repository
             serializer.toCSV(file, rooms);
         }
 
-        public void DeserializeInApp()
-        {
-            rooms = serializer.fromCSV(file);
-            App.roomEquipmentDTORepository.Deserialize(rooms, App.equipmentRepository.GetEquipment());
-        }
         public void Deserialize()
         {
             rooms = serializer.fromCSV(file);

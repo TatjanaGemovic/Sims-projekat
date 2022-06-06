@@ -8,29 +8,77 @@
       d:DesignHeight="450" d:DesignWidth="544"
       Title="RenoviranjeView">
 
-    <Grid>
-        <Label Content="Renoviranje prostorije u periodu" HorizontalAlignment="Left" Margin="22,43,0,0" VerticalAlignment="Top"/>
-        <Label Content="od" HorizontalAlignment="Left" Margin="22,84,0,0" VerticalAlignment="Top" Height="37"/>
-        <DatePicker x:Name="DateStart" HorizontalAlignment="Left" Height="37" Margin="62,84,0,0" VerticalAlignment="Top" Width="78"/>
-        <Label Content="do" HorizontalAlignment="Left" Height="37" Margin="158,84,0,0" VerticalAlignment="Top" Width="34"/>
-        <DatePicker x:Name="DateEnd" HorizontalAlignment="Center" Height="37" Margin="0,84,0,0" VerticalAlignment="Top" Width="104"/>
-        <Label Content="Razlog renoviranja" HorizontalAlignment="Left" Height="24" Margin="37,155,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox x:Name="ReasnonBox" HorizontalAlignment="Left" Height="41" Margin="49,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="255"/>
-        <Label Content="tip renoviranja" HorizontalAlignment="Left" Height="46" Margin="49,235,0,0" VerticalAlignment="Top" Width="115"/>
-        <ComboBox x:Name="comboTip"  HorizontalAlignment="Left" Height="45" Margin="196,237,0,0" VerticalAlignment="Top" Width="108">
-            <ComboBoxItem Content="Classic"/>
-            <ComboBoxItem Content="Merge"/>
-            <ComboBoxItem Content="Split"/>
-        </ComboBox>
-        <Button Content="Zavrsi" HorizontalAlignment="Left" Height="35" Margin="364,197,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click"/>
-        <Button Content="Otkazi" HorizontalAlignment="Left" Height="36" Margin="364,253,0,0" VerticalAlignment="Top" Width="129" Click="Button_Click_1"/>
-        <DataGrid x:Name="gridMergeRoom" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="72" Margin="49,298,0,0" VerticalAlignment="Top" Width="255"  SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
-                <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
-                <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
-            </DataGrid.Columns>
-        </DataGrid>
+    <Border Style="{DynamicResource ManagerBorderMain}" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="344*"></ColumnDefinition>
+                <ColumnDefinition Width="200*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+                <RowDefinition Height="107*"></RowDefinition>
+                <RowDefinition Height="46*"></RowDefinition>
+                <RowDefinition Height="166*"></RowDefinition>
+                <RowDefinition Height="29*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-    </Grid>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="Renoviranje prostorije u periodu" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Width="241" Margin="50,0,0,0" />
+
+                <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0">
+                    <Label Content="od:" Style="{DynamicResource LabelInButton}"   Height="37" Width="38" VerticalContentAlignment="Center"/>
+                    <DatePicker x:Name="DateStart" Height="28"  Width="104"/>
+                    <Label Content="do" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Height="37"   Width="38" VerticalContentAlignment="Center"/>
+                    <DatePicker x:Name="DateEnd" Height="25"  Width="104"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Row="1" Grid.Column="0" Margin="50,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Content="Razlog renoviranja:" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Height="24"  Width="366"/>
+                <TextBox x:Name="ReasnonBox" Grid.Row="1" Height="52" TextWrapping="Wrap" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" Width="273" Margin="10,0,0,0"/>
+            </Grid>
+
+            <DataGrid x:Name="gridMergeRoom" Style="{DynamicResource ManagerDataGridStyle}" IsEnabled="False" Grid.Row="3" AutoGenerateColumns="False" HorizontalAlignment="Left"  Width="284" SelectedItem="{Binding Path=SelectedItem}" SelectionChanged="DataGrid_SelectionChanged" Margin="50,0,0,0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
+                    <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="50,0,0,0">
+                <Label Content="Tip renoviranja:" Style="{DynamicResource LabelInButton}" Height="46"  Width="156" VerticalContentAlignment="Center"/>
+                <ComboBox x:Name="comboTip" Height="32"  Width="128" SelectionChanged="comboTip_SelectionChanged" DropDownClosed="comboDropDown" >
+                    <ComboBoxItem Content="Classic"/>
+                    <ComboBoxItem Content="Merge"/>
+                    <ComboBoxItem Content="Split"/>
+                </ComboBox>
+            </StackPanel>
+
+            <Button  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="35"  Width="129" Command="{Binding Zavrsi}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
+                    <Label   Content="Zavrsi"  Style="{DynamicResource LabelInButton}" Width="61" />
+                </StackPanel>
+            </Button>
+            
+            <Button  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" Height="36"  VerticalAlignment="Bottom" Width="129" Click="Button_Click_1">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
+                    <Label   Content="Odustani" Style="{DynamicResource LabelInButton}" Width="63" />
+                </StackPanel>
+            </Button>
+
+        </Grid>
+    </Border>
 </Page>

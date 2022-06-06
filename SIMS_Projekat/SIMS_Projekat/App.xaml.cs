@@ -21,6 +21,7 @@ namespace SIMS_Projekat
     public partial class App : Application
     {
         public static ResourceDictionary ThemeDictionary => Application.Current.Resources.MergedDictionaries[0];
+        public static UnitService unitService;
         private static string APPOINTMENT_FILE = @".\..\..\..\Resources\appointment.txt";
         public static AppointmentRepository appointmentRepo;
         public static AppointmentService appointmentService;
@@ -96,7 +97,7 @@ namespace SIMS_Projekat
         public static EquipmentRepository equipmentRepository;
         public static EquipmentService equipmentService;
         public static EquipmentController equipmentController;
-        public static ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository;
+        //public static ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository;
         public static ExchangeEquipmentRequestService exchangeEquipmentRequestService;
         public static ExchangeEquipmentRequestController exchangeEquipmentRequestController;
         public static RoomEquipmentDTORepository roomEquipmentDTORepository;
@@ -124,15 +125,16 @@ namespace SIMS_Projekat
             equipmentService = new EquipmentService(equipmentRepository);
             equipmentController = new EquipmentController(equipmentService);
             roomEquipmentDTORepository = new RoomEquipmentDTORepository(ROOM_EQUIPMENT_CSV);
-            exchangeEquipmentRequestRepository = new ExchangeEquipmentRequestRepository(EXCHANGE_EQ_CSV);
+            unitService = new UnitService();
+            //exchangeEquipmentRequestRepository = new ExchangeEquipmentRequestRepository(EXCHANGE_EQ_CSV);
             roomEquipmentDTOService = new RoomEquipmentDTOService(roomEquipmentDTORepository);
-            exchangeEquipmentRequestService = new ExchangeEquipmentRequestService(exchangeEquipmentRequestRepository, roomEquipmentDTORepository, equipmentRepository);
+            exchangeEquipmentRequestService = new ExchangeEquipmentRequestService();
             exchangeEquipmentRequestController = new ExchangeEquipmentRequestController(equipmentService, exchangeEquipmentRequestService);
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);    
             receiptRepository = new ReceiptRepository(RECEIPT_FILE);
             freeDayRequestRepository = new FreeDayRequestRepository(REQUEST_FILE);
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
-            renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository, exchangeEquipmentRequestRepository);
+            renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository);
             renovationRequestController = new RenovationRequestController(renovationRequestService);
             medicineRepository = new MedicineRepository(MEDICINE_CSV);
             medicineComponentsRepository = new MedicineComponentDTORepository(MEDICINE_COMPONENT_CSV, medicineRepository.GetMedicine());
@@ -274,6 +276,7 @@ namespace SIMS_Projekat
             EquipmentOrderController.Deserialize();
             MeetingController.Deserialize();
             NotificationController.Deserialize();
+
 
             if (SIMS_Projekat.Properties.Settings.Default.CurrentTheme == "Light")
             {

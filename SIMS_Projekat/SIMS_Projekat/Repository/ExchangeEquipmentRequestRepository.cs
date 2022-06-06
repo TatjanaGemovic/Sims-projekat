@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SIMS_Projekat.Repository
 {
 
-        public class ExchangeEquipmentRequestRepository
+    public class ExchangeEquipmentRequestRepository : IRepository<ExchangeEquipmentRequest>
         {
             List<ExchangeEquipmentRequest> requests;
             private Serializer<ExchangeEquipmentRequest> serializer;
@@ -23,41 +23,20 @@ namespace SIMS_Projekat.Repository
 
             }
 
-            public List<ExchangeEquipmentRequest> GetAllRequest()
+            public ExchangeEquipmentRequest Edit(ExchangeEquipmentRequest entity)
+            {
+                throw new NotImplementedException();
+            }
+
+            public ExchangeEquipmentRequest GetByID(string id)
+            {
+                return requests.Where(x => x.requestID == id).FirstOrDefault();
+            }
+
+            public List<ExchangeEquipmentRequest> GetAll()
             {
                 return requests;
             }
-
-            public ExchangeEquipmentRequest GetRequestByID(string id)
-            {
-                foreach (ExchangeEquipmentRequest request in requests)
-                {
-                    if (request.requestID.Equals(id))
-                    {
-                        return request;
-                    }
-                }
-
-                return null;
-            }
-
-            public ExchangeEquipmentRequest AddRequest(ExchangeEquipmentRequest newRequest)
-            {
-                requests.Add(newRequest);
-                Serialize();
-                Deserialize();
-                return newRequest;
-            }
-            public ExchangeEquipmentRequest DeleteRequest(ExchangeEquipmentRequest deleteRequest)
-            {
-
-                requests.Remove(deleteRequest);
-                Serialize();
-                Deserialize();
-                return deleteRequest;
-
-            }
-
 
             public void Serialize()
             {
@@ -69,6 +48,21 @@ namespace SIMS_Projekat.Repository
                 requests = serializer.fromCSV(file);
             }
 
-        }
+            public ExchangeEquipmentRequest Add(ExchangeEquipmentRequest entity)
+            {
+                requests.Add(entity);
+                Serialize();
+                Deserialize();
+                return entity;
+            }
+
+            public ExchangeEquipmentRequest Delete(ExchangeEquipmentRequest entity)
+            {
+                requests.Remove(entity);
+                Serialize();
+                Deserialize();
+                return entity;
+            }
+    }
     
 }

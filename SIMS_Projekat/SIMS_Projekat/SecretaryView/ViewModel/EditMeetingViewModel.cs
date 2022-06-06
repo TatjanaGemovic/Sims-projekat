@@ -12,7 +12,7 @@ using System.Windows.Controls;
 
 namespace SIMS_Projekat.SecretaryView.ViewModel
 {
-    public class AddMeetingViewModel : BindableBase
+    public class EditMeetingViewModel : BindableBase
     {
         private string NOTIFICATION_CONTET = "Imate novi zakazani sastanak";
         private RoomController roomController;
@@ -21,6 +21,7 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         private INotificationSender notificationSender;
 
         private ContentControl contentControl;
+        private string selectedMeetingID;
 
         public string Topic { get; set; }
         public string Description { get; set; }
@@ -66,8 +67,10 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
         public MyICommand CancelCommand { get; set; }
 
 
-        public AddMeetingViewModel(ContentControl contentControl, INotificationSender notificationSender, 
-            AppointmentController appointmentController, RoomController roomController, MeetingController meetingController, AccountController accountController)
+        public EditMeetingViewModel(ContentControl contentControl, INotificationSender notificationSender, 
+            AppointmentController appointmentController, RoomController roomController, MeetingController meetingController, 
+            AccountController accountController, string topic, DateTime selectedDate, string selectedTime, Room room, 
+            string description, List<Account> selectedStaff, string meetingID)
         {
             this.roomController = roomController;
             this.meetingController = meetingController;
@@ -79,10 +82,18 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             AvailableMeetingRooms = new ObservableCollection<Room>();
             AvailableStaff = new ObservableCollection<StaffSelection>();
 
+            Topic = topic;
+            SelectedTime = selectedTime;
+            SelectedDateTime = selectedDate;
+            SelectedRoom = room;
+            Description = description;
+            selectedMeetingID = meetingID;
+            UpdateAvailableDoctors(SelectedDateTime);
+            SetSelectedDoctors(selectedStaff);
+
+
             SaveMeetingCommand = new MyICommand(SaveMeetingExecuteMethod);
             CancelCommand = new MyICommand(CancelExecuteMethod);
-
-            SelectedDateTime = DateTime.Today;
         }
 
         private void UpdateAvailableMeetingRooms(DateTime selectedDateTime)
@@ -106,10 +117,24 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             }
         }
 
+        private void SetSelectedDoctors(List<Account> selectedStaff)
+        {
+            foreach(Account account in selectedStaff)
+            {
+                foreach(StaffSelection staffSelection in AvailableStaff)
+                {
+                    if(staffSelection.Account == account)
+                    {
+                        staffSelection.IsSelected = true;
+                    }
+                }
+            }
+        }
+
         private void SaveMeetingExecuteMethod()
         {
             List<Account> selectedStaff = GetSelectedStaff();
-            CreateNewMeeting(selectedStaff);
+            EditMeeting(selectedStaff);
             SendNotifications(selectedStaff);
            
             contentControl.Content = new MeetingsUserControl(notificationSender, meetingController, contentControl);
@@ -133,7 +158,7 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
             return selectedStaff;
         }
 
-        private void CreateNewMeeting(List<Account> selectedStaff)
+        private void EditMeeting(List<Account> selectedStaff)
         {
             Meeting newMeeting = new Meeting()
             {
@@ -145,7 +170,7 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
                 InvitedStaff = selectedStaff
             };
 
-            meetingController.AddMeeting(newMeeting);
+            meetingController.EditMeeting(newMeeting, selectedMeetingID);
         }
 
         private void SendNotifications(List<Account> selectedStaff)
@@ -159,16 +184,4 @@ namespace SIMS_Projekat.SecretaryView.ViewModel
 
     }
 
-
-    public class StaffSelection
-    {
-        public Account Account { get; set; }
-        public bool IsSelected { get; set; }
-
-        public StaffSelection(Account account)
-        {
-            Account = account;
-            IsSelected = false;
-        }
-    }
 }

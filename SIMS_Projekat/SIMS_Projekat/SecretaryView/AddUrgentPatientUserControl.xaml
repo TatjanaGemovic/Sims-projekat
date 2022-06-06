@@ -87,10 +87,10 @@
         <StackPanel  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,20">
             <TextBlock Margin="0,0,55,0" FontSize="16" VerticalAlignment="Center">Simptomi:</TextBlock>
             <TextBox x:Name="Symptoms" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="16" Width="200"
-            TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="200"></TextBox>
+            TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Height="80"></TextBox>
         </StackPanel>
 
-        <StackPanel  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel x:Name="RoomStackPanel" Visibility="Visible" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <TextBlock Margin="0,0,87,0" FontSize="16" VerticalAlignment="Center">Soba:</TextBlock>
             <ComboBox Grid.Column="1" Grid.Row="9" x:Name="RoomComboBox" Margin="0,0,0,0" VerticalAlignment="Center" FontSize="16" ItemsSource="{Binding AvailableRooms}" Width="200">
                 <ComboBox.ItemTemplate>
@@ -103,6 +103,31 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+        </StackPanel>
+
+        <StackPanel x:Name="CancelAppointmentStackPanel" Visibility="Hidden" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center">
+            <TextBlock Margin="0,0,0,0" FontSize="16" VerticalAlignment="Center">Svi termini su zauzeti, izaberite neki</TextBlock>
+            <TextBlock Margin="0,0,0,0" FontSize="16" VerticalAlignment="Center">od trenutnih koji će biti otkazan:</TextBlock>
+            <ListBox x:Name="AppointmentsListBox" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16" Height="100" ItemsSource="{Binding AppointmentsForRescheduling}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding beginningDate, StringFormat=\{0:HH:mm:ss\}}"/>
+                            <TextBlock Text=" Soba: "/>
+                            <TextBlock Text="{Binding roomID}"/>
+                            <TextBlock Text=" Pacijent: "/>
+                            <TextBlock Text="{Binding patient.FirstName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding patient.LastName}"/>
+                            <TextBlock Text=" Doktor: "/>
+                            <TextBlock Text="{Binding doctor.FirstName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding doctor.LastName}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </StackPanel>
 
 

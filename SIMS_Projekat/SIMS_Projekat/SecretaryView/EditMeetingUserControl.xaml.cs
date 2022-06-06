@@ -23,12 +23,16 @@ namespace SIMS_Projekat.SecretaryView
     /// <summary>
     /// Interaction logic for AddPatientUserControl.xaml
     /// </summary>
-    public partial class AddMeetingUserControl : UserControl
+    public partial class EditMeetingUserControl : UserControl
     {
-        public AddMeetingUserControl(ContentControl contentControl, INotificationSender notificationSender)
+        public EditMeetingUserControl(ContentControl contentControl, INotificationSender notificationSender, 
+            string topic, DateTime selectedDate, string selectedTime, Room room, string description, 
+            List<Account> selectedStaff, string meetingID)
         {
             InitializeComponent();
-            this.DataContext = new AddMeetingViewModel(contentControl, notificationSender, App.appointmentController, App.roomController, App.MeetingController, App.accountController);    
+            this.DataContext = new EditMeetingViewModel(contentControl, notificationSender, App.appointmentController, 
+                App.roomController, App.MeetingController, App.accountController, topic, selectedDate, selectedTime, room, 
+                description, selectedStaff, meetingID);    
 
         }
     }

@@ -1,5 +1,6 @@
 ﻿using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.SecretaryView.Notifications;
 using SIMS_Projekat.SecretaryView.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,11 @@ namespace SIMS_Projekat.SecretaryView
     public partial class MeetingsUserControl : UserControl
     {
 
-        public MeetingsUserControl(MeetingController meetingController, ContentControl contentControl)
+        public MeetingsUserControl(INotificationSender notificationSender, MeetingController meetingController, 
+            ContentControl contentControl)
         {
             InitializeComponent();
-            this.DataContext = new MeetingsViewModel(meetingController, contentControl);
+            this.DataContext = new MeetingsViewModel(notificationSender, meetingController, contentControl);
         }
 
     }

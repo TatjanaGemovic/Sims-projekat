@@ -3,6 +3,7 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.SecretaryView;
+using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,11 +29,12 @@ namespace SIMS_Projekat
         public object CurrentView { get; set; }
 
         private readonly AccountsView accountsView;
-        private readonly AppointmentsUserControl appointmentsUserControl;
         private readonly AllergensUserControl allergensUserControl;
+        private AppointmentsUserControl appointmentsUserControl;
         private AddUrgentPatientUserControl addUrgentPatientUserControl;
         private EquipmentUserControl equipmentUserControl;
         private MeetingsUserControl meetingsUserControl;
+        private FreeDayApprovalUserControl freeDayApprovalUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -49,6 +51,8 @@ namespace SIMS_Projekat
 
         private readonly MeetingController meetingController;
         private readonly NotificationController notificationController;
+
+        private readonly FreeDayRequestRepository freeDayRequestRepository;
 
         public SecretaryHome(AccountRepository repository, AccountController controller, 
             AllergenController newAllergenController, RoomController newRoomController)
@@ -67,16 +71,19 @@ namespace SIMS_Projekat
 
             meetingController = App.MeetingController;
             notificationController = App.NotificationController;
-            
+
+            freeDayRequestRepository = App.freeDayRequestRepository;
+
 
 
             accountsView = new AccountsView(accountRepository, accountController, allergenController, ContentControl);
-            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController, 
-                appointmentController, ContentControl);
+
             allergensUserControl = new AllergensUserControl(allergenController);
             addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController, 
                 appointmentController, ContentControl, accountsView, Accounts_RadioButton);
             equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController,
+                appointmentController, ContentControl);
 
             ContentControl.Content = accountsView;
             Accounts_RadioButton.IsChecked = true;
@@ -96,6 +103,8 @@ namespace SIMS_Projekat
             equipmentOrderController.Serialize();
             meetingController.Serialize();
             notificationController.Serialize();
+            freeDayRequestRepository.Serialize();
+
         }
 
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -104,6 +113,8 @@ namespace SIMS_Projekat
         }
         private void Appointments_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
+            appointmentsUserControl = new AppointmentsUserControl(roomController, accountController,
+                appointmentController, ContentControl);
             ContentControl.Content = appointmentsUserControl;
         }
 
@@ -127,9 +138,16 @@ namespace SIMS_Projekat
 
         private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            meetingsUserControl = new MeetingsUserControl(meetingController, ContentControl);
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            meetingsUserControl = new MeetingsUserControl(notificationSender, meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
+        }
 
+        private void FreeDayRequests_RadioButtonChecked(object sender, RoutedEventArgs e)
+        {
+            INotificationSender notificationSender = new NotificationSender(notificationController);
+            freeDayApprovalUserControl = new FreeDayApprovalUserControl(notificationSender, ContentControl);
+            ContentControl.Content = freeDayApprovalUserControl;
         }
     }
 }
