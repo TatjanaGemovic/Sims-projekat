@@ -46,9 +46,9 @@ namespace SIMS_Projekat.DoctorView
         public ObservableCollection<RequestsViewModel.Request2> CreateRequestsList(Doctor doctor)
         {
             ObservableCollection<Request2> requests = new ObservableCollection<Request2>();
-            if (App.freeDayRequestRepository.GetRequests() != null)
+            if (App.freeDayRequestRepository.GetAll() != null)
             {
-                foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
+                foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetAll())
                 {
                     if (r.doctor.Equals(doctor))
                     { 

@@ -16,7 +16,7 @@ namespace SIMS_Projekat.Service
 
         public List<FreeDayRequest> GetRequests()
         {
-            return freeDayRequestRepository.GetRequests();
+            return freeDayRequestRepository.GetAll();
         }
 
         public List<FreeDayRequest> GetRequestsByDoctor(Doctor d)
@@ -26,7 +26,7 @@ namespace SIMS_Projekat.Service
 
         public FreeDayRequest AddRequest(FreeDayRequest newRequest)
         {
-            return freeDayRequestRepository.AddRequest(newRequest);
+            return freeDayRequestRepository.Add(newRequest);
         }
 
         public bool CanSendRequest(bool urgent, DateTime from, DateTime until, Doctor doctor)
@@ -37,7 +37,7 @@ namespace SIMS_Projekat.Service
             {
                 foreach (Doctor d in App.accountRepository.GetAllDoctorAccountBySpeciality(doctor.Speciality.ToString()))
                 {
-                    foreach (Model.FreeDayRequest request in App.freeDayRequestRepository.GetRequests())
+                    foreach (Model.FreeDayRequest request in App.freeDayRequestRepository.GetAll())
                     {
                         int temp = request.from.CompareTo(from); //pocetni isti
                         int temp2 = request.until.CompareTo(until); //krajnji isti

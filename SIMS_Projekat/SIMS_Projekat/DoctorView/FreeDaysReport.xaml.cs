@@ -49,7 +49,7 @@ namespace SIMS_Projekat.DoctorView
             for (int month = 5; month <= 12; month++)
             {
                 num = 0;
-                foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetRequests())
+                foreach (Model.FreeDayRequest r in App.freeDayRequestRepository.GetAll())
                 {
                     if (r.doctor.Equals(doctor) && r.from.Month == month)
                         num++;

@@ -57,7 +57,7 @@ namespace SIMS_Projekat.DoctorView.ViewModel
                     isUrgent = urgent
                 };
 
-                App.freeDayRequestRepository.AddRequest(request);
+                App.freeDayRequestRepository.Add(request);
 
                 App.freeDayRequestRepository.Serialize();
                 frame.Content = new Requests(frame, doctor);

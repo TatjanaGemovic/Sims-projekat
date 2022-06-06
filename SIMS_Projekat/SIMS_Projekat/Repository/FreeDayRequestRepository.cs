@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SIMS_Projekat.Repository
 {
-    public class FreeDayRequestRepository
+    public class FreeDayRequestRepository : IRepository<FreeDayRequest>
     {
         public static List<FreeDayRequest> requests;
         private Serializer<FreeDayRequest> serializer;
@@ -22,15 +22,48 @@ namespace SIMS_Projekat.Repository
 
         }
 
-        public List<FreeDayRequest> GetRequests()
+        public List<FreeDayRequest> GetAll()
         {
             return requests;
+        }
+
+        public FreeDayRequest Add(FreeDayRequest newRequest)
+        {
+            requests.Add(newRequest);
+            Serialize();
+            return newRequest;
+        }
+
+        public FreeDayRequest Delete(FreeDayRequest entity)
+        {
+            requests.Remove(entity);
+            return entity;
+        }
+
+        public void Serialize()
+        {
+            serializer.toCSV(file, requests);
+        }
+
+        public void Deserialize()
+        {
+            requests = serializer.fromCSV(file);
+        }
+
+        public FreeDayRequest Edit(FreeDayRequest entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FreeDayRequest GetByID(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public List<FreeDayRequest> GetRequestsByDoctor(Doctor d)
         {
             List<FreeDayRequest> requests1 = new List<FreeDayRequest>();
-            foreach(FreeDayRequest r in requests)
+            foreach (FreeDayRequest r in requests)
             {
                 if (r.doctor.Equals(d))
                 {
@@ -38,13 +71,6 @@ namespace SIMS_Projekat.Repository
                 }
             }
             return requests1;
-        }
-
-        public FreeDayRequest AddRequest(FreeDayRequest newRequest)
-        {
-            requests.Add(newRequest);
-            Serialize();
-            return newRequest;
         }
 
         public List<FreeDayRequest> Requests
@@ -61,7 +87,7 @@ namespace SIMS_Projekat.Repository
                 if (value != null)
                 {
                     foreach (FreeDayRequest oRequest in value)
-                        AddRequest(oRequest);
+                        Add(oRequest);
                 }
             }
         }
@@ -70,16 +96,6 @@ namespace SIMS_Projekat.Repository
         {
             if (requests != null)
                 requests.Clear();
-        }
-
-        public void Serialize()
-        {
-            serializer.toCSV(file, requests);
-        }
-
-        public void Deserialize()
-        {
-            requests = serializer.fromCSV(file);
         }
     }
 }
