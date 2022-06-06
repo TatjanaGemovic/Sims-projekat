@@ -12,16 +12,18 @@ namespace SIMS_Projekat.Service
 {
     public class RenovationRequestService
     {
+        private UnitService unitService;
         private readonly RenovationRequestRepository _requestRepository;
         private readonly RoomRepository _roomRepository;
         private readonly ExchangeEquipmentRequestRepository _exchangeEquipmentRequestRepository;
 
-        public RenovationRequestService(RenovationRequestRepository renovationRequestRepository, RoomRepository roomRepository, ExchangeEquipmentRequestRepository exchangeEquipmentRequestRepository)
+        public RenovationRequestService(RenovationRequestRepository renovationRequestRepository, RoomRepository roomRepository)
         {
+            unitService = new UnitService();
             _requestRepository = renovationRequestRepository;
             _roomRepository = roomRepository;
-            _exchangeEquipmentRequestRepository = exchangeEquipmentRequestRepository;
-
+            _exchangeEquipmentRequestRepository = unitService._exchangeEquipmentRequestRepository;
+            
         }
 
         public List<RenovationRequest> GetAllRequest()
@@ -74,7 +76,7 @@ namespace SIMS_Projekat.Service
                 newExchangeRequest.quantity = equipmentFromRoom.ppEquipmentQuantity[br];
                 newExchangeRequest.allEquipmentFromRoom = true;
                 newExchangeRequest.scheduleDate = DateTime.Now;
-                _exchangeEquipmentRequestRepository.AddRequest(newExchangeRequest);
+                _exchangeEquipmentRequestRepository.Add(newExchangeRequest);
                 br++;
             }
         }
