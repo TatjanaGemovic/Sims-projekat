@@ -54,8 +54,8 @@
             </StackPanel>
             <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
                 <TextBlock Text="Spisak osoblja:" FontSize="14px" FontWeight="Bold"/>
-                <ListBox VerticalAlignment="Top" Margin="14,0,0,0" FontSize="14" Height="Auto" ItemsSource="{Binding SelectedMeeting.InvitedStaff}">
-                    <ListBox.ItemTemplate>
+                <ItemsControl VerticalAlignment="Top" Margin="13,0,0,0" FontSize="14" Height="Auto" ItemsSource="{Binding SelectedMeeting.InvitedStaff}">
+                    <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{Binding FirstName}"/>
@@ -63,8 +63,8 @@
                                 <TextBlock Text="{Binding LastName}"/>
                             </StackPanel>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
             </StackPanel>
         </StackPanel>
