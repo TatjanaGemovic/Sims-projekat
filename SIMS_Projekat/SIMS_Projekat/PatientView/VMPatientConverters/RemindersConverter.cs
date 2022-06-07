@@ -21,7 +21,8 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             reminderViewModel.Date = reminder.startTime.Date.ToString("dd.MM.yyyy.");
             reminderViewModel.Time = reminder.startTime.TimeOfDay.ToString(@"hh\:mm");
             reminderViewModel.ReminderID = reminder.ID.ToString();
-           
+            reminderViewModel.IsRepeatable = reminder.isRepeatable;
+
             id++;
             return reminderViewModel;
         }
@@ -56,7 +57,9 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
 
         public DateTime ConvertFromStringToDate(ReminderViewModel reminderFromView)
         {
-            DateTime start = DateTime.Parse(reminderFromView.Date);
+            string[] dateParts = reminderFromView.Date.Split(".");
+            string Date = dateParts[1] + "/" + dateParts[0] + "/" + dateParts[2];
+            DateTime start = DateTime.Parse(Date);
             DateTime startDate = start.Date;
 
             TimeSpan timeStart = TimeSpan.Parse(reminderFromView.Time);

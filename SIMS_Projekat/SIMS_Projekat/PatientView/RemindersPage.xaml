@@ -28,12 +28,12 @@
         <Label Content="Podsetnici" Grid.Row="0"
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
-        <DataGrid  Grid.Row="2" Margin="150,0,150,0"
+        <DataGrid  Grid.Row="2" Margin="150,0,150,0" MinRowHeight="50"
                    ItemsSource="{Binding Reminders}" Width="1000" Height="500"
                    x:Name="GridView" Style="{StaticResource ResourceKey=PatientRemindersGrid}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
                    CellStyle="{StaticResource ResourceKey=PatientDataGridCell}"
-                   SelectedItem="{Binding NoteViewModel, Mode=OneWayToSource}">
+                   SelectedItem="{Binding ReminderViewModel, Mode=OneWayToSource}">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="*">
                     <DataGridTemplateColumn.CellTemplate>
