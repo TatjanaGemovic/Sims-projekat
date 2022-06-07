@@ -23,7 +23,7 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Zamenski lekovi:" Style="{DynamicResource LabelInButton}" Grid.Row="0" VerticalAlignment="Bottom" Margin="20,0,0,20" FontSize="14" HorizontalAlignment="Left" Width="113"/>
-                <DataGrid x:Name="datagGridReplacmentMedicine" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding ReplacmentMedicine}"  Grid.Row="1" Margin="20,0,20,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False"  >
+                <DataGrid x:Name="datagGridReplacmentMedicine" Style="{DynamicResource ManagerDataGridStyle}" Focusable="False"  ItemsSource="{Binding ReplacmentMedicine}"  Grid.Row="1" Margin="20,0,20,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="columnName1" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
                         <DataGridTextColumn x:Name="columnFloor1" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
@@ -43,12 +43,14 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Izaberite lek koji zelite da dodate:" Style="{DynamicResource LabelInButton}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,36,0,0" Width="263"></Label>
-                <DataGrid x:Name="datagGridMedicine" Style="{DynamicResource ManagerDataGridStyle}" ItemsSource="{Binding AllMedicine}" SelectedItem="{Binding SelectedItem}" Grid.Row="1" Grid.Column="0" Margin="20,0,20,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <ListView x:Name="datagGridMedicine" ItemsSource="{Binding AllMedicine}" SelectedItem="{Binding SelectedItem}" Grid.Row="1" Grid.Column="0" Margin="20,0,20,0" SelectionMode="Single" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="name"  Width="100" />
+                            <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="type"  Width="120" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
 
 
 

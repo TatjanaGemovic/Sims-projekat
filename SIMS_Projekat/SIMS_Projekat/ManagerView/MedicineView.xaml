@@ -30,13 +30,15 @@
             </Grid.RowDefinitions>
 
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Lekovi" ></Label>
-            <DataGrid x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
-                    <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=MedicineName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pMedicineType}" IsReadOnly="True" Header="type"  Width="120" CanUserResize="False"/>
-                        <DataGridTextColumn x:Name="columnUseType" Binding ="{Binding Path=pMedicineUseType}" IsReadOnly="True" Header="use type"  Width="120" CanUserResize="False"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+            <ListView x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="name"  Width="100" />
+                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="type"  Width="120" />
+                        <GridViewColumn x:Name="columnUseType" DisplayMemberBinding ="{Binding Path=pMedicineUseType}"  Header="use type"  Width="120" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <Button x:Name="DodajLekBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Command="{Binding AddMedicine}" >
                 <StackPanel Orientation="Horizontal">

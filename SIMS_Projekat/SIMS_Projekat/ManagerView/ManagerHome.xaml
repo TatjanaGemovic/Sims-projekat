@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel x:Name="sideMenuDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="0" Grid.Column="0" >
-            <ListView BorderBrush="Transparent" Background="Transparent" >
+            <ListView BorderBrush="Transparent"  Background="Transparent" >
 
                 <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
                 <ListViewItem x:Name="prostorijeView" Content="Prostorije" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
@@ -34,7 +34,7 @@
         </DockPanel>
 
         <DockPanel x:Name="sideLogOutDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="1" Grid.Column="0" >
-            <Button Style="{DynamicResource ManagerLogOutButton}" Width="112"  Height="41" Click="Button_Click" >
+            <Button Style="{DynamicResource ManagerLogOutButton}"  Width="112"  Height="41" Click="Button_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerLogOut.png" Height="20" Width="20"/>
                     <Label   Content="  Odjavi se" Style="{DynamicResource LabelInButton}"/>
@@ -44,7 +44,7 @@
         </DockPanel>
 
         <DockPanel x:Name="pagesDock" Style="{DynamicResource ManagerPagesDock}"  Grid.Column="1" Grid.RowSpan="2" >
-            <Frame x:Name="MainFrame" Style="{DynamicResource ManagerMainFrame}" NavigationUIVisibility="Hidden"  />
+            <Frame x:Name="MainFrame" Style="{DynamicResource ManagerMainFrame}" NavigationUIVisibility="Hidden" Focusable="False"  />
         </DockPanel>
 
 

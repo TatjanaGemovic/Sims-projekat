@@ -17,6 +17,7 @@ namespace SIMS_Projekat.ManagerModelView
     public class RoomModelView : INotifyPropertyChanged
     {
         private Room _selectedItem;
+        private int _selectedIndex;
         public event PropertyChangedEventHandler PropertyChanged;
         public static RoomController roomController;
         public ObservableCollection<Room> rooms;
@@ -35,6 +36,17 @@ namespace SIMS_Projekat.ManagerModelView
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
+
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set
+            {
+                _selectedIndex = value;
+                OnPropertyChanged(nameof(SelectedIndex));
+            }
+        }
+
         public ObservableCollection<Room> RoomsR
         {
             get { return rooms; }
@@ -133,6 +145,11 @@ namespace SIMS_Projekat.ManagerModelView
             ManagerHome.mainFrame.Content = new RenoviranjeView(SelectedItem);
         }
 
+
         
+
+       
+
+
     }
 }

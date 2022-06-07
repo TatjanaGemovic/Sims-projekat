@@ -48,22 +48,26 @@
                 <TextBox x:Name="ReasnonBox" Grid.Row="1" Height="52" TextWrapping="Wrap" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" Width="273" Margin="10,0,0,0"/>
             </Grid>
 
-            <DataGrid x:Name="gridMergeRoom" Style="{DynamicResource ManagerDataGridStyle}" IsEnabled="False" Grid.Row="3" AutoGenerateColumns="False" HorizontalAlignment="Left"  Width="284" SelectedItem="{Binding Path=SelectedItem}" SelectionChanged="DataGrid_SelectionChanged" Margin="50,0,0,0">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=pRoomType}" IsReadOnly="True" Header="type"  Width="*" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=Floor}" IsReadOnly="True" Header="floor"  Width="100" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=RoomNumber}" IsReadOnly="True" Header="number"  Width="100" CanUserResize="False"/>
-                </DataGrid.Columns>
-            </DataGrid>
-
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="50,0,0,0">
                 <Label Content="Tip renoviranja:" Style="{DynamicResource LabelInButton}" Height="46"  Width="156" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="comboTip" Height="32"  Width="128" SelectionChanged="comboTip_SelectionChanged" DropDownClosed="comboDropDown" >
+                <ComboBox x:Name="comboTip" Height="32"  Width="128" SelectionChanged="comboTip_SelectionChanged"  SelectedIndex="{Binding SelectedIndex}" DropDownClosed="comboDropDown" KeyUp="PROBA"  >
                     <ComboBoxItem Content="Classic"/>
                     <ComboBoxItem Content="Merge"/>
                     <ComboBoxItem Content="Split"/>
                 </ComboBox>
             </StackPanel>
+
+            <ListView x:Name="gridMergeRoom"  IsEnabled="False" Grid.Row="3" HorizontalAlignment="Left"  Width="284" SelectedItem="{Binding Path=SelectedItem}" SelectionChanged="DataGrid_SelectionChanged" Margin="50,0,0,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="type"  Width="100" />
+                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="floor"  Width="100"/>
+                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=RoomNumber}" Header="number"  Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            
 
             <Button  Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Height="35"  Width="129" Command="{Binding Zavrsi}">
                 <StackPanel Orientation="Horizontal">

@@ -28,13 +28,15 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelInButton}" Content="Izaberite lekara kom zelite da posaljete zahtev:" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="335" ></Label>
-            <DataGrid x:Name="datagGridDoctors" Style="{DynamicResource ManagerDataGridStyle}" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" CanUserAddRows="False" IsReadOnly="True" SelectionMode="Extended" CanUserResizeRows="False"  AutoGenerateColumns="False" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="columnName" Binding ="{Binding Path=FirstName}" IsReadOnly="True" Header="name"  Width="*" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnFloor" Binding ="{Binding Path=LastName}" IsReadOnly="True" Header="surename"  Width="120" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnRoomNumber" Binding ="{Binding Path=Speciality}" IsReadOnly="True" Header="speciality"  Width="120" CanUserResize="False"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListView x:Name="datagGridDoctors" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=FirstName}"  Header="name"  Width="100" />
+                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=LastName}"  Header="surename"  Width="120" />
+                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=Speciality}"  Header="speciality"  Width="120" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <Button x:Name="PosaljiBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Command="{Binding Done}" >
                 <StackPanel Orientation="Horizontal">

@@ -29,13 +29,15 @@
             </Grid.RowDefinitions>
 
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Ankete" ></Label>
-            <DataGrid x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerDataGridStyle}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="doctorRatingPoll" Binding ="{Binding Path=averageDoctorRating}" IsReadOnly="True" Header="ocena za doktora"  Width="120" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="hospitalRatingPoll" Binding ="{Binding Path=averageHospitalRating}" IsReadOnly="True" Header="ocena za bolnicu"  Width="120" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="dateOfPoll" Binding ="{Binding Path=evaluationCreated}" IsReadOnly="True" Header="vreme kreiranja ankete"  Width="*" CanUserResize="False"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <ListView x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}"  Header="ocena za doktora"  Width="120" />
+                        <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="ocena za bolnicu"  Width="120" />
+                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="vreme kreiranja ankete"  Width="100" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <Button x:Name="PrikaziAnketuBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Command="{Binding PollView}" >
                 <StackPanel Orientation="Horizontal">

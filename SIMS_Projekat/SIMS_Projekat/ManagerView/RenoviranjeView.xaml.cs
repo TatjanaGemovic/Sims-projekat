@@ -31,6 +31,7 @@ namespace SIMS_Projekat.ManagerView
         private readonly RenovationRequestController _renovationRequestController;
         public RelayCommand zavrsi;
         private Room selectedItem;
+        private Room selectedIndex;
 
         public RenoviranjeView(Room roomsForRenovation)
         {
@@ -51,6 +52,16 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
+        public Room SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                selectedIndex = value;
+                OnPropertyChanged(nameof(SelectedIndex));
+            }
+        }
+
         public RelayCommand Zavrsi
         {
             get
@@ -59,6 +70,8 @@ namespace SIMS_Projekat.ManagerView
             }
 
         }
+        
+       
 
         private Boolean canCommandExecut()
         {
@@ -130,12 +143,38 @@ namespace SIMS_Projekat.ManagerView
         {
             if ((RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
                 gridMergeRoom.IsEnabled = false;
+            else
+            {
+                gridMergeRoom.IsEnabled = false;
+                gridMergeRoom.UnselectAll();
+            }
         }
+
 
         private void comboDropDown(object sender, EventArgs e)
         {
             if ((RenovationType)comboTip.SelectedIndex == RenovationType.Merge)
                 gridMergeRoom.IsEnabled = true;
+            else
+            {
+                gridMergeRoom.IsEnabled = false;
+                gridMergeRoom.UnselectAll();
+            }
+        }
+
+        private void PROBA(object sender, KeyEventArgs e)
+        {
+            if ((RenovationType)comboTip.SelectedIndex == RenovationType.Merge)
+                gridMergeRoom.IsEnabled = true;
+            else
+            {
+                gridMergeRoom.IsEnabled = false;
+                gridMergeRoom.UnselectAll();
+                
+            }
+
+            
+
         }
     }
 }
