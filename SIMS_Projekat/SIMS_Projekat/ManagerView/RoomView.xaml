@@ -32,9 +32,9 @@
             <ListView x:Name="datagGridRooms"   ItemsSource="{Binding Path=RoomsR}" SelectedIndex="{Binding Path=SelectedIndex}"   SelectedItem="{Binding Path=SelectedItem }" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0"   >
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn x:Name="columnType"  DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="tip"   />
-                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="sprat"  />
-                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding="{Binding Path=RoomNumber}"  Header="broj"  />
+                        <GridViewColumn x:Name="columnType"  DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="tip"  Width="200" />
+                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="sprat"  Width="100" />
+                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding="{Binding Path=RoomNumber}"  Header="broj"  Width="100" />
                     </GridView>
                 </ListView.View>
             </ListView>
