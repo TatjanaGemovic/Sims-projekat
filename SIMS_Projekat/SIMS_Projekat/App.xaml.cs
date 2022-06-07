@@ -254,9 +254,9 @@ namespace SIMS_Projekat
             medRecordRepository.Deserialize();
             accountRepository.Deserialize();
             roomController.Deserialize();
-            appointmentRepo.Deserialize();
             noteRepository.Deserialize();
             finishedAppointmentRepo.Deserialize();
+            appointmentRepo.Deserialize();      
             
             
             equipmentController.Deserialize();

@@ -169,8 +169,17 @@ namespace SIMS_Projekat.Repository
             {
                 id = appointment.appointmentID;
             }
+            CheckForFinishedAppointmentID();
+        }
+        public void CheckForFinishedAppointmentID()
+        {
+            foreach (FinishedAppointment appointment in App.finishedAppointmentRepo.GetAllAppointments())
+            {
+                if(id < appointment.finishedAppointmentID)
+                    id = appointment.finishedAppointmentID;
+            }
         }
 
-        
+
     }
 }

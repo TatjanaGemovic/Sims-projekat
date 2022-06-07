@@ -14,7 +14,6 @@ namespace SIMS_Projekat.Model
         public string Anamnesis { get; set; }
         public string Treatment { get; set; }
         public Doctor doctor { get; set; }
-        public string ReceiptID { get; set; }
         public bool operation { get; set; } //true jeste operacija
         public bool isScheduledByPatient { get; set; }
         public Patient patient { get; set; }
@@ -51,7 +50,6 @@ namespace SIMS_Projekat.Model
             Treatment = values[7];
             Anamnesis = values[8];
             patientNoteID = Convert.ToInt32(values[9]);
-            //ReceiptID = values[10];
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
         }
@@ -70,7 +68,6 @@ namespace SIMS_Projekat.Model
                 Treatment.ToString(),
                 Anamnesis.ToString(),
                 patientNoteID.ToString()
-                //Receipt.ID.ToString(),
             };
             return values;
         }

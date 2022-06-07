@@ -13,7 +13,7 @@ namespace SIMS_Projekat.Repository
         private string path { get; set; }
         private Serializer<FinishedAppointment> serializer;
         private List<FinishedAppointment> finishedAppointmentList;
-        private int id;
+        //private int id;
 
         public List<FinishedAppointment> AppointmentList
         {
@@ -38,7 +38,7 @@ namespace SIMS_Projekat.Repository
         {
             this.path = path;
             serializer = new Serializer<FinishedAppointment>();
-            id = 0;
+            //id = 0;
         }
 
 
@@ -129,14 +129,13 @@ namespace SIMS_Projekat.Repository
 
         public FinishedAppointment AddFinishedAppointment(FinishedAppointment newAppointment)
         {
-            id++;
+            //id++;
             if (newAppointment == null)
                 return null;
             if (this.finishedAppointmentList == null)
                 this.finishedAppointmentList = new List<FinishedAppointment>();
             if (!this.finishedAppointmentList.Contains(newAppointment))
             {
-                newAppointment.finishedAppointmentID = id;
                 this.finishedAppointmentList.Add(newAppointment);
             }
 
@@ -166,11 +165,6 @@ namespace SIMS_Projekat.Repository
         public void Deserialize()
         {
             finishedAppointmentList = serializer.fromCSV(path);
-
-            foreach (FinishedAppointment appointment in finishedAppointmentList)
-            {
-                id = appointment.finishedAppointmentID;
-            }
         }
     }
 }
