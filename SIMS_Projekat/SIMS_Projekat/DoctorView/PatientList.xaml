@@ -19,7 +19,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/icons_doctor/user (1).png" Width="22" Margin="0,0,5,0" HorizontalAlignment="Stretch"/>
-                            <TextBlock Text="{Binding fullName}" Height="25" FontSize="17" FontWeight="SemiBold"/>
+                            <TextBlock Text="{Binding fullName}" Height="27" FontSize="17" FontWeight="SemiBold"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

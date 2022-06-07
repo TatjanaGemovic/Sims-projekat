@@ -11,7 +11,7 @@
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
             <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
-            <Label Content="Zakazivanje" Width="174" Height="48" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
+            <Label Content="Uput" Width="90" Height="48" Style="{StaticResource ActionBarLabel}" Margin="0,0,90,0"/>
         </DockPanel>
         <DockPanel Margin="0,90,0,0">
             <Grid>
