@@ -124,7 +124,10 @@ namespace SIMS_Projekat.PatientView
         {
             MainFrame.Content = new RemindersPage(MainFrame, patient);
         }
-
+        private void Therapy_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new TherapyPage(MainFrame, patient);
+        }
         private void Demo_Click(object sender, RoutedEventArgs e)
         {
             Task.Delay(1500).ContinueWith(_ =>

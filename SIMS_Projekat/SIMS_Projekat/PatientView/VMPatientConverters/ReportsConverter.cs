@@ -30,8 +30,6 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             else
                 rpViewModel.OperationOrExam = "Pregled";
 
-            rpViewModel.ReceiptID = finishedAppointment.ReceiptID;
-
             id++;
             return rpViewModel;
         }

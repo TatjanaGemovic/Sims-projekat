@@ -16,6 +16,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private RemindersConverter remindersConverter = new RemindersConverter();
 
+        private TherapyConverter therapyConverter = new TherapyConverter();
 
 
         public ReportsConverter ReportsConverter
@@ -31,6 +32,10 @@ namespace SIMS_Projekat.PatientView.ViewModel
         public RemindersConverter RemindersConverter
         {
             get { return remindersConverter; }
+        }
+        public TherapyConverter TherapyConverter
+        {
+            get { return therapyConverter; }
         }
     }
 }

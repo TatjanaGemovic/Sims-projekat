@@ -35,6 +35,30 @@ namespace SIMS_Projekat.Repository
             return null;
 
         }
+        public Receipt SetReceipt(Receipt receipt)
+        {
+            int index;
+            foreach (Receipt r in receiptList)
+            {
+                Receipt receipt1 = receiptList.Find(r => r.receiptID == receipt.receiptID);
+                index = receiptList.IndexOf(receipt1);
+
+                if (receipt1 != null)
+                {
+                    receipt1.patient = receipt.patient;
+                    receipt1.beginningDate = receipt.beginningDate;
+                    receipt1.endDate = receipt.endDate;
+                    receipt1.appointmentID = receipt.appointmentID;
+                    receipt1.DailyMed = receipt.DailyMed;
+                    receipt1.Record = receipt.Record;
+                    receipt1.medicine = receipt.medicine;
+
+                    return receipt1;
+                }
+
+            }
+            return null;
+        }
         public List<Receipt> GetReceiptByPatientID(string patientID1)
         {
             List<Receipt> receiptListForPatient = new List<Receipt>();
@@ -63,7 +87,26 @@ namespace SIMS_Projekat.Repository
 
             return newReceipt;
         }
+        public List<Receipt> GetAllReceipts()
+        {
+            return receiptList;
+        }
 
+        public Receipt DeleteReceipt(Receipt oldReceipt)
+        {
+            if (oldReceipt == null)
+                return null;
+            if (receiptList != null)
+                if (receiptList.Contains(oldReceipt))
+                    receiptList.Remove(oldReceipt);
+            return oldReceipt;
+        }
+
+        public void RemoveAllReceipts()
+        {
+            if (receiptList != null)
+                receiptList.Clear();
+        }
         public void Serialize()
         {
             serializer.toCSV(path, receiptList);

@@ -45,6 +45,8 @@ namespace SIMS_Projekat
 
         private static string RECEIPT_FILE = @".\..\..\..\Resources\receipt.txt";
         public static ReceiptRepository receiptRepository;
+        public static ReceiptService receiptService;
+        public static ReceiptController receiptController;
 
         private static string PATIENTS_CSV = @".\..\..\..\Resources\patients.txt";
         private static string DOCTORS_CSV = @".\..\..\..\Resources\doctors.txt";
@@ -131,7 +133,6 @@ namespace SIMS_Projekat
             exchangeEquipmentRequestService = new ExchangeEquipmentRequestService();
             exchangeEquipmentRequestController = new ExchangeEquipmentRequestController(equipmentService, exchangeEquipmentRequestService);
             medRecordRepository = new MedicalRecordRepository(MEDICALRECORD_CSV);    
-            receiptRepository = new ReceiptRepository(RECEIPT_FILE);
             freeDayRequestRepository = new FreeDayRequestRepository(REQUEST_FILE);
             renovationRequestRepository = new RenovationRequestRepository(RENOVATION_CSV);
             renovationRequestService = new RenovationRequestService(renovationRequestRepository, roomRepository);
@@ -248,6 +249,16 @@ namespace SIMS_Projekat
             evaluationController = new EvaluationController()
             {
                 evaluationService = evaluationService
+            };
+
+            receiptRepository = new ReceiptRepository(RECEIPT_FILE);
+            receiptService = new ReceiptService()
+            {
+                receiptRepository = receiptRepository
+            };
+            receiptController = new ReceiptController()
+            {
+                receiptService = receiptService
             };
 
             AllergenController.Deserialize();

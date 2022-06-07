@@ -1,0 +1,48 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.TherapyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1370"
+      Title="TherapyPage">
+    <Page.Resources>
+        <ResourceDictionary>
+            <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Terapije pacijenta" Grid.Row="0"
+               Style="{StaticResource ResourceKey=PatientBigLabels}"/>
+
+        <DataGrid  Grid.Row="2" x:Name="ReceiptsTable" ItemsSource="{Binding Therapies }" 
+                   Style="{StaticResource ResourceKey=PatientTherapyGrid}" 
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridCell}" SelectedItem="{Binding TherapyViewModel, Mode=OneWayToSource}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Broj terapije" Binding ="{Binding Index}" />
+                <DataGridTextColumn Header="Ime leka" Binding ="{Binding MedicineName}" />
+                <DataGridTextColumn Header="Početak terapije" Binding ="{Binding BeginningDate}" />
+                <DataGridTextColumn Header="Kraj terapije" Binding ="{Binding EndDate}" />
+                <DataGridTextColumn Header="Doktor" Binding ="{Binding Doctor}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="detailsButton" Grid.Row="3" Content="Detaljnije"
+                IsEnabled="{Binding Path=SelectedItem, ElementName=ReceiptsTable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
+                Command="{Binding DetailsCommand}" Margin="0,0,30,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    </Grid>
+</Page>
