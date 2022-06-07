@@ -31,6 +31,7 @@
     <None Remove="Resources\icons\work_calendar.png" />
     <None Remove="Resources\icons_doctor\bin.png" />
     <None Remove="Resources\icons_doctor\calendar.png" />
+    <None Remove="Resources\icons_doctor\cardiogram %283%29.png" />
     <None Remove="Resources\icons_doctor\cardiogram.png" />
     <None Remove="Resources\icons_doctor\check.png" />
     <None Remove="Resources\icons_doctor\checkmark.png" />
@@ -100,6 +101,7 @@
     <Resource Include="Resources\icons\approved.png" />
     <Resource Include="Resources\icons_doctor\bin.png" />
     <Resource Include="Resources\icons_doctor\calendar.png" />
+    <Resource Include="Resources\icons_doctor\cardiogram (3).png" />
     <Resource Include="Resources\icons_doctor\check.png" />
     <Resource Include="Resources\icons_doctor\checkmark.png" />
     <Resource Include="Resources\icons_doctor\delete.png" />

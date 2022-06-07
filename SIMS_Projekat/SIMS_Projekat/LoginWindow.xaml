@@ -6,16 +6,19 @@
         xmlns:local="clr-namespace:SIMS_Projekat"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800"
-        Background="YellowGreen">
+        Background="#222831">
     <Grid Margin="0,-1,0,1">
-        <Label Content="Zdravo" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Poppins Black" FontWeight="Bold"/>
-        <Button Background="AntiqueWhite" Content="Prijavi se" HorizontalAlignment="Center" Width="131" Margin="0,317,0,0" VerticalAlignment="Top" Click="Button_Click" Height="32" FontSize="18"/>
-        <TextBox Background="AntiqueWhite" x:Name="Username" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="149" Margin="391,199,0,0" Height="21" FontSize="16"/>
-        <Label Content="Korisnicko ime" HorizontalAlignment="Left" Margin="266,193,0,0" VerticalAlignment="Top" Height="30" Width="118" FontSize="16"/>
-        <Label Content="Lozinka" HorizontalAlignment="Left" Margin="315,242,0,0" VerticalAlignment="Top" Height="31" Width="69" FontSize="16" RenderTransformOrigin="0.585,0.485"/>
-        <Label x:Name="WrongDataLabel" Content="" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,275,0,0" Height="30" Width="101"/>
-        <PasswordBox Background="AntiqueWhite" x:Name="Password"  HorizontalAlignment="Left" Margin="391,247,0,0" VerticalAlignment="Top" Width="149" Height="21"/>
-        <Button Background="AntiqueWhite" Content="Nazad" HorizontalAlignment="Left" Margin="27,34,0,0" VerticalAlignment="Top" Height="24" Width="55" Click="Button_Click_1"/>
+        <Label Content="Zdravo" HorizontalAlignment="Left" Margin="323,27,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Poppins Black" FontWeight="Bold" Foreground="#DDDDDD"/>
+        <StackPanel Background="#222831" Margin="172,20,501,300">
+            <Image Source="/Resources/icons_doctor/cardiogram (3).png" Width="96" Margin="0,0,0,0" Height="96"/>
+        </StackPanel>
+        <Button Background="#FF5959" BorderThickness="4" Style="{StaticResource BiggerClassicButton}" Foreground="#222831" BorderBrush="#DDDDDD" Content="Prijavi se" HorizontalAlignment="Left" Width="157" Margin="405,345,0,0" VerticalAlignment="Top" Click="Button_Click" Height="45" FontSize="18"/>
+        <TextBox FontSize="20" Foreground="#222831" FontWeight="DemiBold" Background="#DDDDDD" x:Name="Username" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Width="292" Height="32"/>
+        <Label Content="Korisnicko ime" Foreground="#DDDDDD" FontWeight="Bold" HorizontalAlignment="Left" Margin="306,148,0,0" VerticalAlignment="Top" Height="38" Width="180" FontSize="24"/>
+        <Label Content="Lozinka" FontWeight="Bold" Foreground="#DDDDDD" HorizontalAlignment="Left" Margin="340,230,0,0" VerticalAlignment="Top" Height="41" Width="103" FontSize="24"/>
+        <Label x:Name="WrongDataLabel" Content="" Foreground="#FF5959" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,305,0,0" Height="38" Width="184" FontWeight="Bold" FontSize="20"/>
+        <PasswordBox FontSize="20" Foreground="#222831" FontWeight="DemiBold" Background="#DDDDDD" x:Name="Password"  HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" Width="292" Height="32"/>
+        <Button Background="#FF5959" BorderThickness="4" Style="{StaticResource BiggerClassicButton}" Foreground="#222831" BorderBrush="#DDDDDD" Content="Nazad" HorizontalAlignment="Left" Margin="227,345,0,0" VerticalAlignment="Top" Height="45" Width="157" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

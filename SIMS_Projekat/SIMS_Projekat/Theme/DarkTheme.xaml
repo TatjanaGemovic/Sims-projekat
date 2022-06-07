@@ -182,7 +182,15 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="Button" x:Key="HomePageButton">
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="26"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
     <Style TargetType="Button" x:Key="DoctorHomePageSmallButton">
         <Style.Resources>
             <Style TargetType="Border">
