@@ -24,6 +24,7 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             therapyViewModel.EndDate = receipt.endDate.Date.ToString("dd.MM.yyyy.");
             therapyViewModel.FinishedAppointmentID = receipt.appointmentID;
             therapyViewModel.ReceiptID = receipt.receiptID;
+            therapyViewModel.NoteID = receipt.patientNoteID.ToString();
 
             FinishedAppointment appointment = App.finishedAppointmentController.GetAppointmentByID(receipt.appointmentID);
             therapyViewModel.Doctor = appointment.doctor.FirstName + " " + appointment.doctor.LastName;

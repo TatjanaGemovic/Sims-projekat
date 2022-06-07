@@ -44,5 +44,20 @@ namespace SIMS_Projekat.Controller
         {
             return receiptService.GetActiveReceiptByPatientID(patientID);
         }
+        
+        public Receipt AddNoteToReceipt(int receiptID, int noteID)
+        {
+            return receiptService.AddNoteToReceipt(receiptID, noteID);
+        }
+
+        public Receipt GetReceiptByNoteID(int noteID)
+        {
+            return receiptService.GetReceiptByNoteID(noteID);
+        }
+        
+        public bool EraseNoteForReceiptIfExists(int noteID, Patient patient)
+        {
+            return receiptService.EraseNoteForReceiptIfExists(noteID, patient);
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace SIMS_Projekat.PatientView
 
         private void OnChange()
         {
-            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, false);
+            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, 0);
             mainFrame.NavigationService.Navigate(changeNotePage);
         }
 

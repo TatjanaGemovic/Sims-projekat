@@ -51,5 +51,30 @@ namespace SIMS_Projekat.Service
             }
             return activeReceipts;
         }
+
+        public Receipt AddNoteToReceipt(int receiptID, int noteID)
+        {
+            Receipt receipt = GetReceiptByID(receiptID);
+            receipt.patientNoteID = noteID;
+            return receipt;
+        }
+
+        public Receipt GetReceiptByNoteID(int noteID)
+        {
+            return receiptRepository.GetReceiptByNoteID(noteID);
+        }
+
+        public bool EraseNoteForReceiptIfExists(int noteID, Patient patient)
+        {
+            List<Receipt> receiptList = GetReceiptByPatientID(patient.ID);
+
+            Receipt receipt = receiptList.Find(rec => rec.patientNoteID == noteID);
+            if (receipt != null)
+            {
+                receipt.patientNoteID = 0;
+                return true;
+            }
+            return false;
+        }
     }
 }

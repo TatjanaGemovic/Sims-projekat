@@ -63,12 +63,12 @@ namespace SIMS_Projekat.PatientView.ViewModel
         {
             if(Report.NoteID == "0")
             {
-                CreateNotePage createNotePage = new CreateNotePage(mainFrame, true, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, Report);
+                CreateNotePage createNotePage = new CreateNotePage(mainFrame, 1, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient, Report);
                 mainFrame.NavigationService.Navigate(createNotePage);
                 return;
             }
             
-            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, true);
+            ChangeNotePage changeNotePage = new ChangeNotePage(mainFrame, Note, 1);
             mainFrame.NavigationService.Navigate(changeNotePage);
         }
         private void OnBack()

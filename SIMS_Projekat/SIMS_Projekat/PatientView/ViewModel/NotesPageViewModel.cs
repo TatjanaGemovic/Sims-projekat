@@ -66,7 +66,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private void OnCreate()
         {
-            CreateNotePage createNotePage = new CreateNotePage(mainFrame, false, patient);
+            CreateNotePage createNotePage = new CreateNotePage(mainFrame, 0, patient);
             mainFrame.NavigationService.Navigate(createNotePage);
         }
     }

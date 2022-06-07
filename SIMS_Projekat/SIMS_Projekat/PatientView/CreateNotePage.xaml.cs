@@ -22,10 +22,10 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class CreateNotePage : Page
     {
-        public CreateNotePage(Frame frame, bool fromReport, Patient patient, ReportViewModel vmReport = null)
+        public CreateNotePage(Frame frame, int fromWhere, Patient patient, ReportViewModel vmReport = null, TherapyViewModel vmTherapy = null)
         {
             InitializeComponent();
-            this.DataContext = new CreateNotePageViewModel(frame, fromReport, patient, vmReport);
+            this.DataContext = new CreateNotePageViewModel(frame, fromWhere, patient, vmReport, vmTherapy);
         }
     }
 }

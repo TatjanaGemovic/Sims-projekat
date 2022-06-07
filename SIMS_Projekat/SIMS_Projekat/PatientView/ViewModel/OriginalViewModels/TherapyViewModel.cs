@@ -17,6 +17,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private int index { get; set; }
         private int finishedAppointmentID { get; set; }
         private int receiptID { get; set; }
+        private string noteID { get; set; }
 
         public string BeginningDate
         {
@@ -137,7 +138,20 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-
         
+        public string NoteID
+        {
+            get { return noteID; }
+            set
+            {
+                if (noteID != value)
+                {
+                    noteID = value;
+                    OnPropertyChanged("NoteID");
+
+                }
+            }
+        }
+
     }
 }

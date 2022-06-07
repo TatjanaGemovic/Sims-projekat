@@ -52,6 +52,7 @@ namespace SIMS_Projekat.Repository
                     receipt1.DailyMed = receipt.DailyMed;
                     receipt1.Record = receipt.Record;
                     receipt1.medicine = receipt.medicine;
+                    receipt1.patientNoteID = receipt.patientNoteID;
 
                     return receipt1;
                 }
@@ -106,6 +107,20 @@ namespace SIMS_Projekat.Repository
         {
             if (receiptList != null)
                 receiptList.Clear();
+        }
+
+        public Receipt GetReceiptByNoteID(int noteiD)
+        {
+            foreach (Receipt receipt in receiptList)
+            {
+                Receipt receipt1 = receiptList.Find(receipt => receipt.patientNoteID == noteiD);
+
+                if (receipt1 != null)
+                {
+                    return receipt1;
+                }
+            }
+            return null;
         }
         public void Serialize()
         {
