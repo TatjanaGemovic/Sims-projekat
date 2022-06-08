@@ -35,7 +35,7 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
-        public RelayCommand OtkaziCommand
+        public RelayCommand OtkaziComannd
         {
             get
             {

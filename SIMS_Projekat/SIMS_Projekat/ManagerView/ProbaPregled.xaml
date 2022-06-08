@@ -32,15 +32,17 @@
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
 
 
-            <DataGrid x:Name="gridView" ItemsSource="{Binding Podaci}" Focusable="False"  Style="{DynamicResource ManagerDataGridStyle}" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Margin="10,0,0,0"  >
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="columnNumber" Binding ="{Binding Path=broj}" IsReadOnly="True" Header="naziv"  Width="*" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnFlor" Binding ="{Binding Path=sprat}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnType" Binding ="{Binding Path=tip}" IsReadOnly="True" Header="tip"  Width="100" CanUserResize="False"/>
-                    <DataGridTextColumn x:Name="columnKolicina" Binding ="{Binding Path=kolicina}" IsReadOnly="True" Header="kolicina"  Width="100" CanUserResize="False"/>
+            <ListView x:Name="gridView" ItemsSource="{Binding Podaci}" Focusable="False"  Style="{DynamicResource ManagerListViewStyle}" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Margin="10,0,0,0" Width="450"  >
+                <ListView.View>
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="columnNumber" DisplayMemberBinding ="{Binding Path=broj}" Header="naziv"  Width="110" />
+                        <GridViewColumn x:Name="columnFlor" DisplayMemberBinding ="{Binding Path=sprat}" Header="sprat"  Width="110" />
+                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=tip}"  Header="tip"  Width="110" />
+                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="kolicina"  Width="110" />
 
-                </DataGrid.Columns>
-            </DataGrid>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
             <Button Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" RenderTransformOrigin="0.552,0.656" Height="37" Width="103" Click="Button_Click" Margin="37,0,10,0">
                 <StackPanel Orientation="Horizontal">

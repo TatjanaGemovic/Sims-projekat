@@ -57,12 +57,12 @@
                 </ComboBox>
             </StackPanel>
 
-            <ListView x:Name="gridMergeRoom"  IsEnabled="False" Grid.Row="3" HorizontalAlignment="Left"  Width="284" SelectedItem="{Binding Path=SelectedItem}" SelectionChanged="DataGrid_SelectionChanged" Margin="50,0,0,0">
+            <ListView x:Name="gridMergeRoom"  IsEnabled="False" Grid.Row="3" HorizontalAlignment="Left" Style="{DynamicResource ManagerListViewStyle}" Width="284" SelectedItem="{Binding Path=SelectedItem}" SelectionChanged="DataGrid_SelectionChanged" Margin="50,0,0,0">
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="type"  Width="100" />
-                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="floor"  Width="100"/>
-                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=RoomNumber}" Header="number"  Width="100" />
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="type"  Width="90" />
+                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="floor"  Width="92"/>
+                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=RoomNumber}" Header="number"  Width="92" />
                     </GridView>
                 </ListView.View>
             </ListView>

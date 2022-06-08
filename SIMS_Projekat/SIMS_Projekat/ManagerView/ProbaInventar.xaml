@@ -32,21 +32,26 @@
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
 
 
-            <ListView x:Name="gridView" ItemsSource="{Binding Podaci}"   Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >
+            <ListView x:Name="gridView" ItemsSource="{Binding Podaci}" Style="{DynamicResource ManagerListViewStyle}"  Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=naziv}" Header="naziv"  Width="100" />
-                        <GridViewColumn x:Name="columnTip" DisplayMemberBinding ="{Binding Path=tip}" Header="tip"  Width="100" />
-                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="kolicina"  Width="100" />
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=naziv}" Header="naziv"  Width="200" />
+                        <GridViewColumn x:Name="columnTip" DisplayMemberBinding ="{Binding Path=tip}" Header="tip"  Width="95" />
+                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="kolicina"  Width="95" />
 
                     </GridView>
                 </ListView.View>
             </ListView>
             <Button Content="U magacin" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" RenderTransformOrigin="0.552,0.656" Margin="0,0,5,0" Height="30" Width="130" Click="Button_Click_2"/>
             <Button Content="U prostoriju" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="130" Margin="0,0,5,0" Click="Button_Click_1"/>
-            <Button Content="Odustani" Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="5" Height="30" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Click="Button_Click"/>
-            
-            
+            <Button  Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="7" Height="30" Width="74" Margin="56,0,0,0" Click="Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
+                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                </StackPanel>
+            </Button>
+
+
 
         </Grid>
     </Border>

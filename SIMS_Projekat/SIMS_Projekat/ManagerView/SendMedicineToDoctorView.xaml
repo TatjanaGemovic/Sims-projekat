@@ -28,12 +28,12 @@
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelInButton}" Content="Izaberite lekara kom zelite da posaljete zahtev:" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="335" ></Label>
-            <ListView x:Name="datagGridDoctors" SelectedItem="{Binding Path=SelectedItem}" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" >
+            <ListView x:Name="datagGridDoctors" SelectedItem="{Binding Path=SelectedItem}" Style="{DynamicResource ManagerListViewStyle}" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" Width="450" >
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=FirstName}"  Header="name"  Width="100" />
-                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=LastName}"  Header="surename"  Width="120" />
-                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=Speciality}"  Header="speciality"  Width="120" />
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=FirstName}"  Header="name"  Width="180" />
+                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=LastName}"  Header="surename"  Width="130" />
+                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=Speciality}"  Header="speciality"  Width="130" />
                     </GridView>
                 </ListView.View>
             </ListView>

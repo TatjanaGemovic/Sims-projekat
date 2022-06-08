@@ -29,12 +29,12 @@
             </Grid.RowDefinitions>
 
             <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Ankete" ></Label>
-            <ListView x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
+            <ListView x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerListViewStyle}" Width="450" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}"  Header="ocena za doktora"  Width="120" />
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}" Header="ocena za doktora"  Width="120" />
                         <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="ocena za bolnicu"  Width="120" />
-                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="vreme kreiranja ankete"  Width="100" />
+                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="vreme kreiranja ankete"  Width="200" />
                     </GridView>
                 </ListView.View>
             </ListView>

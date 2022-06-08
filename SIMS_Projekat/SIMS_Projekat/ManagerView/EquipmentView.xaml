@@ -73,7 +73,7 @@
                             <ColumnDefinition Width="47*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Pretraga:" Style="{DynamicResource LabelInButton}" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,64,0"></Label>
+                        <Label Grid.Row="0" Grid.Column="0" Content="Pretraga:" Style="{DynamicResource LabelInButton}" FontSize="11" VerticalAlignment="Top"  Grid.ColumnSpan="2" Height="28" Margin="0,14,86,0"></Label>
                         <TextBox x:Name="searchBox" Grid.Row="0" VerticalAlignment="Top" Height="21" Margin="0,14,10,0" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
 
                     </Grid>
@@ -83,12 +83,12 @@
 
 
 
-            <ListView x:Name="datagGridEquipment" ItemsSource="{Binding EquipmentList}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectionChanged="datagGridEquipment_SelectionChanged"  >
+            <ListView x:Name="datagGridEquipment" ItemsSource="{Binding EquipmentList}" Style="{DynamicResource ManagerListViewStyle}" Width="450" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectionChanged="datagGridEquipment_SelectionChanged"  >
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding EquipmentName}" Header="naziv"  Width="100" />
-                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Quantity, NotifyOnSourceUpdated=True, Mode=TwoWay}" Header="kolicina"  Width="100" />
-                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding pEquipmentType}"  Header="tip"  Width="100" />
+                    <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
+                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding EquipmentName}" Header="naziv"  Width="200" />
+                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Quantity, NotifyOnSourceUpdated=True, Mode=TwoWay}" Header="kolicina"  Width="120" />
+                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding pEquipmentType}"  Header="tip"  Width="120" />
                     </GridView>
                 </ListView.View>
             </ListView>
