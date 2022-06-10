@@ -27,7 +27,7 @@ namespace SIMS_Projekat.DoctorView
     {
         Frame Frame;
         public String selectedDate1;
-        //DateTime pickedDate;
+        DateTime pD;
         BindingList<String> appointmentType;
         BindingList<String> patients;
         BindingList<String> rooms;
@@ -44,6 +44,7 @@ namespace SIMS_Projekat.DoctorView
             InitializeComponent();
             Frame = frame;
             doctor = d;
+            pD = selectedDate;
             selectedDate1 = selectedDate.ToString("MM/dd/yyyy HH:mm");
             String[] datePart = selectedDate1.Split(" ");
             selectedDate1 = datePart[0];
@@ -198,7 +199,7 @@ namespace SIMS_Projekat.DoctorView
             App.appointmentRepo.Serialize();
         }
 
-        private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
+        private async void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
         {
             string dateFromPage =selectedDate1.ToString();
             DateTime start = DateTime.Parse(dateFromPage);
@@ -222,7 +223,11 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.AddAppointment(appointment);
 
-            Scheduling scheduling = new Scheduling(Frame, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor, pD);
+            ApproveDialog dialog = new ApproveDialog("Uspesno dodat pregled");
+            dialog.Show();
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            dialog.Close();
             Frame.Content = scheduling;
         }
 
@@ -233,7 +238,7 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Scheduling scheduling = new Scheduling(Frame, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor, pD);
             Frame.Content = scheduling;
         }
     }

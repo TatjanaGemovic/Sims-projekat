@@ -1,6 +1,7 @@
 ﻿using SIMS_Projekat.Model;
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,13 +17,21 @@ namespace SIMS_Projekat.DoctorView
         DateTime selectedDate1;
         string selectedDate2;
         string selectedDate;
-        string dateTime;
         public BindingList<AppointmentInformation> appointmentInformations { get; set; }
-        public Scheduling(Frame frame, Doctor d)
+        public Scheduling(Frame frame, Doctor d, DateTime selectedDate)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
+            string sd = selectedDate.ToString();
+            string [] dateTime = sd.Split(" ");
+            selectedDate2 = dateTime[0];
+            appointmentInformations = new BindingList<AppointmentInformation>();
+            createList();
+
+            OperationsList.ItemsSource = appointmentInformations;
+            this.DataContext = this;
+            Date_picker.Text = sd;
         }
 
         private void Date_picker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -37,24 +46,25 @@ namespace SIMS_Projekat.DoctorView
             this.DataContext = this;
         }
 
-        private void Otkazite_Termin_Click(object sender, RoutedEventArgs e)
+        private async void Otkazite_Termin_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Jeste li sigurni da zelite da otkazete odabrani termin?",
-            "Otkazivanje termina", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+
+            int appointmentID = appointmentInformation.appointmentId;
+
+            Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
+
+            if (appointment != null)
             {
-                AppointmentInformation appointmentInformation = (AppointmentInformation)OperationsList.SelectedItem;
+                App.appointmentController.DeleteAppointment(appointment);
+                //appointmentInformations.Clear();
+                appointmentInformations.Remove(appointmentInformation);
+                createList();
+                DeleteDialog dialog = new DeleteDialog("Uspesno izbrisan pregled");
+                dialog.Show();
+                await Task.Delay(TimeSpan.FromSeconds(2));
+                dialog.Close();
 
-                int appointmentID = appointmentInformation.appointmentId;
-
-                Appointment appointment = App.appointmentController.GetAppointmentByID(appointmentID);
-
-                if (appointment != null)
-                {
-                    App.appointmentController.DeleteAppointment(appointment);
-
-                    appointmentInformations.Clear();
-                    createList();
-                }
             }
         }
 

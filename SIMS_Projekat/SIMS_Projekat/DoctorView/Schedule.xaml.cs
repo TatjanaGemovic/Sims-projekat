@@ -197,7 +197,7 @@ namespace SIMS_Projekat.DoctorView
             Vreme_pocetka.ItemsSource = listofAppointmentTime;
         }
 
-        private void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
+        private async void Dodaj_operaciju_Click(object sender, RoutedEventArgs e)
         {
             string dateFromPage = selectedDate1.ToString();
             DateTime start = DateTime.Parse(dateFromPage);
@@ -221,6 +221,10 @@ namespace SIMS_Projekat.DoctorView
 
             App.appointmentController.AddAppointment(appointment);
             App.appointmentRepo.Serialize();
+            ApproveDialog dialog = new ApproveDialog("Uspesno napravljen uput");
+            dialog.Show();
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            dialog.Close();
             Frame.Content = new ExaminationInfo(Frame, appointment, doctor);;
         }
 

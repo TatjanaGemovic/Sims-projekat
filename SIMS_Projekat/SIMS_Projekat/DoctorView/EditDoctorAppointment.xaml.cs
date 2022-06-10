@@ -38,11 +38,13 @@ namespace SIMS_Projekat.DoctorView
         Room selectedRoom;
         bool op;
         Patient selectedPatient;
+        DateTime pD;
         public EditDoctorAppointment(Frame frame, Appointment app, DateTime selectedDate, Doctor d)
         {
             InitializeComponent();
             Frame = frame;
             doctor = d;
+            pD = selectedDate;
             selectedDate1 = selectedDate.ToString("MM/dd/yyyy HH:mm");
             String[] datePart = selectedDate1.Split(" ");
             selectedDate1 = datePart[0];
@@ -243,7 +245,7 @@ namespace SIMS_Projekat.DoctorView
         {
             App.appointmentRepo.Serialize();
         }
-        private void Promeni_Click(object sender, RoutedEventArgs e)
+        private async void Promeni_Click(object sender, RoutedEventArgs e)
         {
             string dateFromPage = selectedDate1.ToString();
             DateTime start = DateTime.Parse(dateFromPage);
@@ -267,14 +269,18 @@ namespace SIMS_Projekat.DoctorView
             };
 
             App.appointmentController.SetAppointment(appointment);
-            App.appointmentRepo.Serialize(); 
-            Scheduling scheduling = new Scheduling(Frame, doctor);
+            App.appointmentRepo.Serialize();
+            ApproveDialog dialog = new ApproveDialog("Uspesno izmenjen pregled");
+            dialog.Show();
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            dialog.Close();
+            Scheduling scheduling = new Scheduling(Frame, doctor, pD);
             Frame.Content = scheduling;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Scheduling scheduling = new Scheduling(Frame, doctor);
+            Scheduling scheduling = new Scheduling(Frame, doctor, pD);
             Frame.Content = scheduling;
         }
 

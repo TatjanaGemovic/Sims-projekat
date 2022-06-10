@@ -41,7 +41,8 @@ namespace SIMS_Projekat.DoctorView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new Scheduling(MainFrame, doctor);
+           DateTime selectedDate = DateTime.Now;
+            MainFrame.Content = new Scheduling(MainFrame, doctor, selectedDate);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
