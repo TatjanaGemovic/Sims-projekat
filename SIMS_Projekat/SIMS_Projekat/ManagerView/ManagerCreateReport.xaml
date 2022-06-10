@@ -27,7 +27,7 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content=" Izvestaj anketa u periodu " Style="{DynamicResource ManagerLabelCRUD}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="34" Margin="109,0,0,0" Width="222" />
+                    <Label Content=" Izvestaj anketa u periodu " Style="{DynamicResource ManagerLabelCRUD}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="34" Margin="119,0,0,0" Width="222" />
                     <Label Content="od:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Height="34" Width="35" HorizontalAlignment="Left"  Margin="115,0,0,0"/>
                     <Label Content="do:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="2" Height="34" Width="35" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="115,0,0,0"/>
 
