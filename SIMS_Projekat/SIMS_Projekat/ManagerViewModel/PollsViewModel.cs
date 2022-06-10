@@ -81,8 +81,8 @@ namespace SIMS_Projekat.ManagerViewModel
         }
 
         private void CreateReportBtn_Click()
-        { 
-        
+        {
+            ManagerHome.mainFrame.Content = new ManagerCreateReport();
         }
 
     }
