@@ -60,5 +60,10 @@ namespace SIMS_Projekat.Controller
              return evaluationService.DeleteEvaluationIfMoreThanFiveDaysPassedForPatient(patient);
 
         }
+
+        public List<Evaluation> GetPollsForInterval(DateTime start, DateTime end)
+        {
+            return evaluationService.GetPollsForInterval(start,end);
+        }
     }
 }

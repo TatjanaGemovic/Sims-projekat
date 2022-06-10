@@ -70,6 +70,19 @@ namespace SIMS_Projekat.Service
             return true;
         }
 
+        public List<Evaluation> GetPollsForInterval(DateTime start, DateTime end)
+        {
+            List<Evaluation> evaluationList = GetAllEvaluations();
+            List<Evaluation> polls = new List<Evaluation>();
+
+            foreach (Evaluation evaluation in evaluationList)
+            {
+                if (evaluation.evaluationCreated>= start && evaluation.evaluationCreated<=end)
+                    polls.Add(evaluation);
+            }
+            return polls;
+        }
+
 
     }
 }
