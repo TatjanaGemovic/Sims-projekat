@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="544"
       Title="RenoviranjeView">
@@ -32,9 +32,9 @@
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="50,0,0,0">
                     <Label Content="od:" Style="{DynamicResource LabelInButton}"   Height="37" Width="38" VerticalContentAlignment="Center"/>
-                    <DatePicker x:Name="DateStart" Height="28"  Width="104"/>
-                    <Label Content="do" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Height="37"   Width="38" VerticalContentAlignment="Center"/>
-                    <DatePicker x:Name="DateEnd" Height="25"  Width="104"/>
+                    <DatePicker x:Name="DateStart" Height="28"  Width="104" SelectedDate="{Binding Path=SelectedDateStart, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="do" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Height="37"   Width="38" VerticalContentAlignment="Center" />
+                    <DatePicker x:Name="DateEnd" Height="25"  Width="104"  SelectedDate="{Binding Path=SelectedDateEnd, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Grid>
 
@@ -45,12 +45,20 @@
                 </Grid.RowDefinitions>
 
                 <Label Content="Razlog renoviranja:" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Height="24"  Width="366"/>
-                <TextBox x:Name="ReasnonBox" Grid.Row="1" Height="52" TextWrapping="Wrap" Text="" VerticalAlignment="Center" HorizontalAlignment="Left" Width="273" Margin="10,0,0,0"/>
+                <TextBox x:Name="ReasnonBox" Grid.Row="1" Height="52" TextWrapping="Wrap"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="273" Margin="10,0,0,0">
+                    <TextBox.Text>
+                        <Binding Path="Razlog" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <managervalidation:EmptyValidation/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
 
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="50,0,0,0">
                 <Label Content="Tip renoviranja:" Style="{DynamicResource LabelInButton}" Height="46"  Width="156" VerticalContentAlignment="Center"/>
-                <ComboBox x:Name="comboTip" Height="32"  Width="128" SelectionChanged="comboTip_SelectionChanged"  SelectedIndex="{Binding SelectedIndex}" DropDownClosed="comboDropDown" KeyUp="PROBA"  >
+                <ComboBox x:Name="comboTip" Height="32"  Width="128" SelectionChanged="comboTip_SelectionChanged"  SelectedIndex="{Binding SelectedIndex, UpdateSourceTrigger=PropertyChanged}" DropDownClosed="comboDropDown" KeyUp="PROBA"  >
                     <ComboBoxItem Content="Classic"/>
                     <ComboBoxItem Content="Merge"/>
                     <ComboBoxItem Content="Split"/>

@@ -27,6 +27,20 @@ namespace SIMS_Projekat.ManagerView
 
         public RoomController roomController {get; set;}
         private Room selectedRoom;
+        private string _roomNumber;
+        private string _roomFloor;
+
+
+        public string RoomNumber
+        {
+            get { return _roomNumber; }
+            set { _roomNumber = value; OnPropertyChanged(nameof(RoomNumber)); }
+        }
+        public string RoomFloor
+        {
+            get { return _roomFloor; }
+            set { _roomFloor = value; OnPropertyChanged(nameof(RoomFloor)); }
+        }
         public EditRoomView(Room oldRoom)
         {
             InitializeComponent();
@@ -49,8 +63,8 @@ namespace SIMS_Projekat.ManagerView
         {
             Room newRoom = new Room();
             newRoom.RoomID = selectedRoom.RoomID;
-            newRoom.RoomNumber = int.Parse(roomNumber.Text);
-            newRoom.Floor = int.Parse(roomFloor.Text);
+            newRoom.RoomNumber = int.Parse(selectedRoom.RoomNumber.ToString());
+            newRoom.Floor = int.Parse(selectedRoom.Floor.ToString());
             newRoom.pRoomType = (RoomType)roomType.SelectedIndex;
             newRoom.Available = selectedRoom.Available;
             return newRoom;
@@ -58,8 +72,8 @@ namespace SIMS_Projekat.ManagerView
 
         private void fillForm()
         {
-            roomNumber.Text = selectedRoom.RoomNumber.ToString();
-            roomFloor.Text = selectedRoom.Floor.ToString();
+            RoomNumber= selectedRoom.RoomNumber.ToString();
+            RoomFloor = selectedRoom.Floor.ToString();
             roomType.SelectedIndex = (int)selectedRoom.pRoomType;
         }
 
@@ -74,6 +88,18 @@ namespace SIMS_Projekat.ManagerView
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void roomNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            EditRoom.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+        }
+
+        private void roomFloor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            EditRoom.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
         }
     }
 }

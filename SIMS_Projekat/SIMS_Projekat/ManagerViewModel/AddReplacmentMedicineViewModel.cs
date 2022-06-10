@@ -67,7 +67,7 @@ namespace SIMS_Projekat.ManagerViewModel
 
         private Boolean canCommandExecut()
         {
-            return SelectedItem != null && !ReplacmentMedicine.Contains(SelectedItem);
+            return SelectedItem != null && !ReplacmentMedicine.Contains(SelectedItem) && _medicine!=SelectedItem;
         }
 
         public RelayCommand AddReplacmentMedicine

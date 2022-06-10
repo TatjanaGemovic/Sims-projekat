@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddMedicineComponentView">
@@ -45,8 +45,16 @@
 
                         <Label Content="Unesite novi sastojak leka:" Grid.Row="0" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Center" Margin="10,10,0,0"  VerticalAlignment="Top" Width="250"/>
                         <StackPanel Orientation="Horizontal" Grid.Row="1">
-                            <TextBox  x:Name="SastojakTextBox" TextWrapping="Wrap" Text="" Width="160" Height="30" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                            <Button Content="Dodaj" Style="{DynamicResource ManagerButtonCRUDOk}"  HorizontalAlignment="Left"   VerticalAlignment="Center" Height="30" Width="70" Click="Button_Click" Margin="10,0,10,0"/>
+                            <TextBox  x:Name="SastojakTextBox" TextWrapping="Wrap"  Width="160" Height="30" VerticalAlignment="Center" Margin="10,0,0,0" TextChanged="SastojakTextBox_TextChanged" >
+                                <TextBox.Text>
+                                    <Binding Path="Sastojak" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <managervalidation:StringValidation/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <Button x:Name="DodajBtn"  Content="Dodaj" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" HorizontalAlignment="Left"   VerticalAlignment="Center" Height="30" Width="70" Click="Button_Click" Margin="10,0,10,0"/>
                         </StackPanel>
                         
                     </Grid>

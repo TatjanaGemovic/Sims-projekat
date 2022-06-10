@@ -27,6 +27,13 @@ namespace SIMS_Projekat.ManagerView
         private Medicine _medicine;
         public event PropertyChangedEventHandler PropertyChanged;
         private int _mood;
+        private string _sastojak;
+
+        public string Sastojak
+        {
+            get { return _sastojak; }
+            set { _sastojak = value; OnPropertyChanged(nameof(Sastojak)); }
+        }
 
         public AddMedicineComponentView(Medicine medicine, int mood)
         {
@@ -45,6 +52,7 @@ namespace SIMS_Projekat.ManagerView
             var newDTO = createDTO(); 
             SastojakTextBox.Clear();
             App.medicineComponentsRepository.AddDTO(newDTO);
+            
 
         }
 
@@ -103,5 +111,15 @@ namespace SIMS_Projekat.ManagerView
             if (ComponentList.SelectedItem != null)
                 DeleteComponentBtn.IsEnabled = true;
         }
+
+        private void SastojakTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            DodajBtn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(SastojakTextBox.Text))
+                DodajBtn.IsEnabled = false;
+        }
+
+        
     }
 }

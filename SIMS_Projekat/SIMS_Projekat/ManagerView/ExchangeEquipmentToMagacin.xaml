@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="544"
       Title="ExchangeEquipmentToMagacin">
@@ -37,18 +37,28 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
 
 
 
 
-                <Label Content="Kolicina za prebacivanje:" Grid.Column="0" Grid.Row="2" Style="{DynamicResource LabelInButton}" Width="150"/>
-                <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="2"  TextWrapping="Wrap" Text="" Margin="20,10,20,10"/>
-                <Label Style="{DynamicResource LabelInButton}" Content="Vreme prebacivanja:" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Width="150"></Label>
-                <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="20,0,20,0" Height="30" ></DatePicker>
+                <Label Content="Kolicina za prebacivanje:" Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}" Width="150"/>
+                <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Center" Style="{DynamicResource ManagerIntValidation}" Margin="20,10,20,10" TextChanged="kolicina_TextChanged">
+                    <TextBox.Text>
+                        <Binding Path="Kolicina" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <managervalidation:IntValidation ValidationStep="RawProposedValue"/>
+                                <managervalidation:MinMaxValidation ValidationStep="ConvertedProposedValue" Min="1" Max="100000"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Style="{DynamicResource LabelInButton}" Content="Vreme prebacivanja:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="150"></Label>
+                <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,20,0" Height="30" SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}">
+                   
+                    
+                </DatePicker>
             </Grid>
 
             <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding Potvrdi}">
@@ -77,7 +87,7 @@
                     <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource LabelInButton}" Content="Naziv opreme:"></Label>
                     <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}"  Content="Dostupna kolicina:"></Label>
                     <TextBox  x:Name="nazivOpreme" Focusable="False" Grid.Column="1" Grid.Row="0"  TextWrapping="Wrap" Text="" Margin="20,6,20,6" />
-                    <TextBox  x:Name="dostupnaKolicina" Focusable="False" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="" Margin="20,6,20,6" />
+                    <TextBox  x:Name="dostupnaKolicina" Focusable="False" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{Binding Path=DostupnaKolicina, UpdateSourceTrigger=PropertyChanged}" Margin="20,6,20,6" />
                 </Grid>
 
             </Border>

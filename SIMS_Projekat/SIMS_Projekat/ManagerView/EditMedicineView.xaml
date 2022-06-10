@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="EditMedicineView">
@@ -46,9 +46,25 @@
                     <Label Content="Jacina leka [mg]:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="2" Grid.Column="0" />
                     <Label Content="Tip leka:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0"/>
                     <Label Content="Nacin upotrebe:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="4" Grid.Column="0" />
-                    
-                    <TextBox x:Name="medicineName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
-                    <TextBox x:Name="medicineDose" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="180" />
+
+                    <TextBox x:Name="medicineName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Style="{DynamicResource ManagerIntValidation}" VerticalAlignment="Center" Width="180" TextChanged="medicineName_TextChanged" >
+                        <TextBox.Text>
+                            <Binding Path="Naziv" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <managervalidation:OnlyStringValidationcs/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                    <TextBox x:Name="medicineDose" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Style="{DynamicResource ManagerIntValidation}" VerticalAlignment="Center" Width="180" TextChanged="medicineDose_TextChanged" >
+                        <TextBox.Text>
+                            <Binding Path="Jacina" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <managervalidation:DoubleValidation/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                     <ComboBox x:Name="medicineType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180">
                         <ComboBoxItem Content="antipetik"/>
                         <ComboBoxItem Content="analgetik"/>
@@ -78,20 +94,20 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="AddComponent_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="1" Margin="5,12,5,12" Click="AddComponent_Btn_Click" >
+                <Button x:Name="AddComponent_Btn" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False"  Grid.Column="0" Grid.Row="1" Margin="5,12,5,12" Click="AddComponent_Btn_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icon_manager/ManagerComponents.png" Height="20" Width="20"/>
                         <Label  Content="Dodaj sastojke" Style="{DynamicResource LabelInButton}" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="AddReplacmentMedicine_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="2" Margin="5,12,5,12" Click="AddReplacmentMedicine_Btn_Click" >
+                <Button x:Name="AddReplacmentMedicine_Btn" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False"  Grid.Column="0" Grid.Row="2" Margin="5,12,5,12" Click="AddReplacmentMedicine_Btn_Click" >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icon_manager/ManagerReplacmentMedicine.png" Height="20" Width="20"/>
                         <Label Content="Dodaj zamene" Style="{DynamicResource LabelInButton}" />
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="SendToDoctor_Btn" Style="{DynamicResource ManagerButtonCRUDOk}"  Grid.Column="0" Grid.Row="4" Margin="20,12,15,12" Click="SendToDoctor_Click"  >
+                <Button x:Name="SendToDoctor_Btn" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" Grid.Column="0" Grid.Row="4" Margin="20,12,15,12" Click="SendToDoctor_Click"  >
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
                         <Label   Content="Posalji doktoru" Style="{DynamicResource LabelInButton}"/>

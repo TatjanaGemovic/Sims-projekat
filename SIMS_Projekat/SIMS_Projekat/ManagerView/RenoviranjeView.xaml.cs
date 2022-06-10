@@ -31,7 +31,21 @@ namespace SIMS_Projekat.ManagerView
         private readonly RenovationRequestController _renovationRequestController;
         public RelayCommand zavrsi;
         private Room selectedItem;
-        private Room selectedIndex;
+        private int selectedIndex;
+        private string _razlog;
+        private DateTime _datumStart;
+        private DateTime _datumEnd;
+
+        public DateTime SelectedDateEnd
+        {
+            get { return _datumEnd; }
+            set { _datumEnd = value; OnPropertyChanged(nameof(SelectedDateEnd)); }
+        }
+        public DateTime SelectedDateStart
+        {
+            get { return _datumStart; }
+            set { _datumStart = value; OnPropertyChanged(nameof(SelectedDateStart)); }
+        }
 
         public RenoviranjeView(Room roomsForRenovation)
         {
@@ -40,6 +54,10 @@ namespace SIMS_Projekat.ManagerView
             _roomForRenovation = roomsForRenovation; ;
             _renovationRequestController = App.renovationRequestController;
             gridMergeRoom.ItemsSource = App.roomService.GetRoomsExceptRoom(_roomForRenovation);
+            SelectedIndex = 0;
+            SelectedDateStart = DateTime.Now;
+            SelectedDateEnd = DateTime.Now;
+
         }
 
         public Room SelectedItem
@@ -51,8 +69,17 @@ namespace SIMS_Projekat.ManagerView
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }
+        public string Razlog
+        {
+            get { return _razlog; }
+            set
+            {
+                _razlog = value;
+                OnPropertyChanged(nameof(Razlog));
+            }
+        }
 
-        public Room SelectedIndex
+        public int SelectedIndex
         {
             get { return selectedIndex; }
             set
@@ -75,11 +102,9 @@ namespace SIMS_Projekat.ManagerView
 
         private Boolean canCommandExecut()
         {
-            if (SelectedItem != null && (RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
+            if (SelectedItem == null && (RenovationType)comboTip.SelectedIndex == RenovationType.Merge)
                 return false;
-            else if (SelectedItem == null && (RenovationType)comboTip.SelectedIndex != RenovationType.Merge)
-                return true && isFormFilled();
-
+            
             return true && isFormFilled();
         }
 
@@ -165,12 +190,15 @@ namespace SIMS_Projekat.ManagerView
         private void PROBA(object sender, KeyEventArgs e)
         {
             if ((RenovationType)comboTip.SelectedIndex == RenovationType.Merge)
+            {
                 gridMergeRoom.IsEnabled = true;
+
+            }
             else
             {
                 gridMergeRoom.IsEnabled = false;
                 gridMergeRoom.UnselectAll();
-                
+
             }
 
             

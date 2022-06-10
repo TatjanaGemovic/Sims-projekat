@@ -2,6 +2,7 @@
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,41 @@ namespace SIMS_Projekat.ManagerView
     /// <summary>
     /// Interaction logic for ExchangeEquipmentToMagacin.xaml
     /// </summary>
-    public partial class ExchangeEquipmentToMagacin : Page
+    public partial class ExchangeEquipmentToMagacin : Page, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
         private Room _fromRoom;
         private Equipment selectedEquipment;
         private RelayCommand potvrdi;
         private RelayCommand otkazi;
+        private string _dostupnaKolicina;
+        private string _kolicina;
+        private DateTime _datum;
+        private string _datumText;
+
+        public string SelectedDateText
+        {
+            get { return _datumText; }
+            set { _datumText = value; OnPropertyChanged(nameof(SelectedDateText)); }
+        }
+        public DateTime SelectedDate
+        {
+            get { return _datum; }
+            set { _datum = value; OnPropertyChanged(nameof(SelectedDate)); }
+        }
+
+        public string Kolicina
+        {
+            get { return _kolicina; }
+            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+        }
+
+        public string DostupnaKolicina
+        {
+            get { return _dostupnaKolicina; }
+            set { _dostupnaKolicina = value; OnPropertyChanged(nameof(DostupnaKolicina)); }
+        }
+
 
         public RelayCommand Potvrdi
         {
@@ -45,7 +75,7 @@ namespace SIMS_Projekat.ManagerView
 
         private Boolean canCommandExecut()
         {
-            return !kolicina.Text.Equals("") && datum.SelectedDate != null && int.Parse(kolicina.Text) <= int.Parse(dostupnaKolicina.Text);
+            return !kolicina.Text.Equals("") && datum.SelectedDate != null && int.TryParse(kolicina.Text, out int result) && result <= int.Parse(dostupnaKolicina.Text);
                 
         }
 
@@ -56,6 +86,7 @@ namespace SIMS_Projekat.ManagerView
             _fromRoom = fromRoom;
             selectedEquipment = oldEquipment;
             fillForm(br);
+            SelectedDate = DateTime.Now;
         }
 
         private void PotvrdiPrebacivanje_Click()
@@ -68,7 +99,7 @@ namespace SIMS_Projekat.ManagerView
         private void fillForm(int br)
         {
             nazivOpreme.Text = selectedEquipment.EquipmentName;
-            dostupnaKolicina.Text = br.ToString();
+            DostupnaKolicina = br.ToString();
         }
 
         private void createRequest()
@@ -108,5 +139,22 @@ namespace SIMS_Projekat.ManagerView
             ManagerHome.mainFrame.Content = new RoomView();
         }
 
+        public void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void kolicina_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            PotvrdiPrebacivanje.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(kolicina.Text))
+            {
+                PotvrdiPrebacivanje.IsEnabled = false;
+            }
+        }
     }
 }

@@ -90,6 +90,7 @@ namespace SIMS_Projekat.ManagerViewModel
         private void ObrisiLekBtn_Click()
         {
             App.medicineController.DeleteMedicine(SelectedItem);
+            Medicine = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
         }
 
 

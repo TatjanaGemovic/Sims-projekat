@@ -25,6 +25,22 @@ namespace SIMS_Projekat.ManagerView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Equipment selectedEquipment;
+        private string _kolicina;
+        private string _naziv;
+
+        public string Kolicina
+        {
+            get { return _kolicina; }
+            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+        }
+
+        public string Naziv
+        {
+            get { return _naziv; }
+            set { _naziv = value; OnPropertyChanged(nameof(Naziv)); }
+        }
+
+
         public EditEquipmentView(Equipment oldEquipment)
         {
             InitializeComponent();
@@ -51,8 +67,8 @@ namespace SIMS_Projekat.ManagerView
 
         private void fillForm()
         {
-            equipmentName.Text = selectedEquipment.EquipmentName;
-            equipmentQuantity.Text = selectedEquipment.Quantity.ToString();
+            Naziv = selectedEquipment.EquipmentName;
+            Kolicina= selectedEquipment.Quantity.ToString();
             equipmentType.SelectedIndex = (int)selectedEquipment.pEquipmentType;
         }
 
@@ -67,6 +83,18 @@ namespace SIMS_Projekat.ManagerView
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void equipmentName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            EditEquipment.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+        }
+
+        private void equipmentQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            EditEquipment.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
         }
     }
 }

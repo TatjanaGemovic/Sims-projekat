@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Controller;
+﻿using SIMS.CompositeComon;
+using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
 using SIMS_Projekat.Service;
 using System;
@@ -29,8 +30,32 @@ namespace SIMS_Projekat.ManagerView
         public event PropertyChangedEventHandler PropertyChanged;
         public static ObservableCollection<Equipment> equipment;
         public static ObservableCollection<int> equipmentQ;
-        private DataGrid roomsGrid { get; set; }
         private Room _selectedRoom;
+        private RelayCommand _magacin;
+        private RelayCommand _prostorija;
+
+        public RelayCommand Magacin
+        {
+            get
+            {
+                return _magacin ?? (new RelayCommand(param => Button_Click_2(), param => canCommandExecut()));
+            }
+        }
+
+        public RelayCommand Prostorija
+        {
+            get
+            {
+                return _prostorija ?? (new RelayCommand(param => Button_Click_1(), param => canCommandExecut()));
+            }
+        }
+
+        private Boolean canCommandExecut()
+        {
+            return gridView.SelectedItem != null;
+        }
+
+  
 
         public ObservableCollection<Equipment> ppEquipment
         {
@@ -77,7 +102,7 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click_1()
         {
             var selectedIndex = gridView.SelectedIndex;
             var _selectedEquipment = ppEquipment[selectedIndex];
@@ -85,7 +110,7 @@ namespace SIMS_Projekat.ManagerView
             ManagerHome.mainFrame.Content = new ExchangeRoomFromMagacin(_selectedEquipment, _selectedRoom, kolicinaZaPrenos);
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void Button_Click_2()
         {
             var selectedIndex = gridView.SelectedIndex;
             var _selectedEquipment = ppEquipment[selectedIndex];

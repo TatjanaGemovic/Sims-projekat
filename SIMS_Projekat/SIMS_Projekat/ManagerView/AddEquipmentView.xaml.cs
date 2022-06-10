@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Controller;
+﻿using SIMS.CompositeComon;
+using SIMS_Projekat.Controller;
 using SIMS_Projekat.Model;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,10 @@ namespace SIMS_Projekat.ManagerView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private EquipmentController equipmentController;
+        private string _kolicina;
+        private string _naziv;
+        private int _selectedIndex;
+
         public AddEquipmentView()
         {
             InitializeComponent();
@@ -33,7 +38,25 @@ namespace SIMS_Projekat.ManagerView
 
         }
 
-        private void AddEquipment_Click(object sender, RoutedEventArgs e)
+
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set { _selectedIndex = value; OnPropertyChanged(nameof(SelectedIndex)); }
+        }
+        public string Kolicina
+        {
+            get { return _kolicina; }
+            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+        }
+        
+        public string Naziv
+        {
+            get { return _naziv; }
+            set { _naziv = value; OnPropertyChanged(nameof(Naziv)); }
+        }
+
+        private void AddEquipment_Click()
         {
             equipmentController.AddEquipment(getEquipmentFromForm());
             ManagerHome.mainFrame.Content = new EquipmentView();
@@ -44,7 +67,7 @@ namespace SIMS_Projekat.ManagerView
             Equipment newEquipment = new Equipment();
             newEquipment.EquipmentID = Guid.NewGuid().ToString();
             newEquipment.EquipmentName = equipmentName.Text;
-            newEquipment.Quantity = int.Parse(equipmentQuantity.Text);
+            newEquipment.Quantity = int.Parse(Kolicina);
             newEquipment.pEquipmentType = (EquipmentType)equipmentType.SelectedIndex;
             return newEquipment;
         }
@@ -58,6 +81,26 @@ namespace SIMS_Projekat.ManagerView
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void equipmentName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddEquipment.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(equipmentName.Text) || string.IsNullOrEmpty(equipmentQuantity.Text))
+            {
+                AddEquipment.IsEnabled = false;
+            }
+        }
+
+        private void equipmentQuantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddEquipment.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(equipmentName.Text) || string.IsNullOrEmpty(equipmentQuantity.Text))
+            {
+                AddEquipment.IsEnabled = false;
             }
         }
     }

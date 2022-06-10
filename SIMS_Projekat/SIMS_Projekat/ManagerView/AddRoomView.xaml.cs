@@ -25,6 +25,25 @@ namespace SIMS_Projekat.ManagerView
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private RoomController roomController;
+        private string _roomNumber;
+        private string _roomFloor;
+        private int _selectedIndex;
+
+        public int SelectedIndex
+        {
+            get { return _selectedIndex; }
+            set { _selectedIndex = value; OnPropertyChanged(nameof(SelectedIndex)); }
+        }
+        public string RoomNumber
+        {
+            get { return _roomNumber; }
+            set { _roomNumber = value; OnPropertyChanged(nameof(RoomNumber)); }
+        } 
+        public string RoomFloor
+        {
+            get { return _roomFloor; }
+            set { _roomFloor = value; OnPropertyChanged(nameof(RoomFloor)); }
+        }
 
 
         public AddRoomView()
@@ -45,8 +64,8 @@ namespace SIMS_Projekat.ManagerView
         {
             Room newRoom = new Room();
             newRoom.RoomID = Guid.NewGuid().ToString();
-            newRoom.RoomNumber = int.Parse(roomNumber.Text);
-            newRoom.Floor = int.Parse(roomFloor.Text);
+            newRoom.RoomNumber = int.Parse(RoomNumber);
+            newRoom.Floor = int.Parse(RoomFloor);
             newRoom.pRoomType = (RoomType)roomType.SelectedIndex;
             newRoom.Available = true;
             return newRoom;
@@ -62,6 +81,22 @@ namespace SIMS_Projekat.ManagerView
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        private void roomNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddRoom.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(roomFloor.Text) || string.IsNullOrEmpty(roomNumber.Text))
+                AddRoom.IsEnabled = false;
+        }
+
+        private void roomFloor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddRoom.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(roomFloor.Text) || string.IsNullOrEmpty(roomNumber.Text))
+                AddRoom.IsEnabled = false;
         }
     }
 }

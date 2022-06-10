@@ -30,6 +30,19 @@ namespace SIMS_Projekat.ManagerView
         private Equipment selectedEquipment;
         private Room _fromRoom;
         private RelayCommand potvrdi;
+        private string _kolicina;
+        private DateTime _datum;
+        
+        public DateTime SelectedDate
+        {
+            get { return _datum; }
+            set { _datum = value; OnPropertyChanged(nameof(SelectedDate)); }
+        }
+        public string Kolicina
+        {
+            get { return _kolicina; }
+            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+        }
 
         public ObservableCollection<Room> Rooms
         {
@@ -53,9 +66,9 @@ namespace SIMS_Projekat.ManagerView
         private Boolean canCommandExecut()
         {
             if (_fromRoom != null)
-                return !kolicina.Text.Equals("") && datum.SelectedDate != null && int.Parse(kolicina.Text) <= int.Parse(dostupnaKolicina.Text) && _fromRoom.RoomID != ((Room)datagGridRooms.SelectedItem).RoomID;
+                return !kolicina.Text.Equals("") && int.TryParse(kolicina.Text, out int result) && result <= int.Parse(dostupnaKolicina.Text) && datagGridRooms.SelectedItem!= null && _fromRoom.RoomID != ((Room)datagGridRooms.SelectedItem).RoomID;
             else
-                return !kolicina.Text.Equals("") && datum.SelectedDate != null && int.Parse(kolicina.Text) <= int.Parse(dostupnaKolicina.Text);
+                return !kolicina.Text.Equals("")  && int.TryParse(kolicina.Text, out int result)  && result<= int.Parse(dostupnaKolicina.Text) && datagGridRooms.SelectedItem != null;
 
         }
         public ExchangeRoomFromMagacin(Model.Equipment oldEquipment, Model.Room fromRoom, int br)
@@ -70,7 +83,7 @@ namespace SIMS_Projekat.ManagerView
             selectedEquipment = oldEquipment;
            
             fillForm(br);
-
+            SelectedDate = DateTime.Now;
 
         }
 
@@ -142,8 +155,14 @@ namespace SIMS_Projekat.ManagerView
             ManagerHome.mainFrame.Content = new EquipmentView();
         }
 
-
-
-       
+        private void kolicina_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            PotvrdiPrebacivanje.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(kolicina.Text))
+            {
+                PotvrdiPrebacivanje.IsEnabled = false;
+            }
+        }
     }
 }

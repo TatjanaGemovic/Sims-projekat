@@ -54,6 +54,8 @@ namespace SIMS_Projekat.ManagerView
         {
             Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
             App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
+            EquipmentList.Remove(selectedEquipment);
+            EquipmentList = new ObservableCollection<Equipment>(App.equipmentController.GetEquipment());
 
         }
 

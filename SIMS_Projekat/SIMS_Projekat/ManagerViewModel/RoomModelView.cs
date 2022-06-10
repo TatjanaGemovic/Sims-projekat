@@ -118,6 +118,7 @@ namespace SIMS_Projekat.ManagerModelView
         {
            
             App.roomController.DeleteRoomByID(SelectedItem.RoomID);
+            RoomsR = new ObservableCollection<Room>(App.roomController.GetAvailableRooms());
         }
 
         private void IzmenaProstorijeBtn_Click()

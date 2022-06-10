@@ -20,17 +20,35 @@ namespace SIMS_Projekat.ManagerView
     /// <summary>
     /// Interaction logic for AddMedicineView.xaml
     /// </summary>
-    public partial class AddMedicineView : Page
+    public partial class AddMedicineView : Page, INotifyPropertyChanged
     {
         private Medicine newMedicine;
         public event PropertyChangedEventHandler PropertyChanged;
+        private string _naziv;
+        private string _jacina;
+
+
+        public string Naziv
+        {
+            get { return _naziv; }
+            set { _naziv = value; OnPropertyChanged(nameof(Naziv)); }
+        }
+        public string Jacina
+        {
+            get { return _jacina; }
+            set { _jacina = value; OnPropertyChanged(nameof(Jacina)); }
+        }
 
         public AddMedicineView(Medicine medicine)
         {
             InitializeComponent();
             this.DataContext = this;
             if (medicine == null)
+            {
                 newMedicine = new Medicine();
+                medicineType.SelectedIndex = 0;
+                medicineUseType.SelectedIndex = 0;
+            }
             else
             {
                 newMedicine = medicine;
@@ -44,6 +62,8 @@ namespace SIMS_Projekat.ManagerView
             medicineDose.Text = newMedicine.MedicineDose.ToString();
             medicineType.SelectedIndex = (int)newMedicine.pMedicineType;
             medicineUseType.SelectedIndex = (int)newMedicine.pMedicineUseType;
+            Naziv = newMedicine.MedicineName;
+            Jacina = newMedicine.MedicineDose.ToString();
         }
         private void getMedicineFromForm()
         {
@@ -80,6 +100,43 @@ namespace SIMS_Projekat.ManagerView
         private void AddReplacmentMedicine_Btn_Click(object sender, RoutedEventArgs e)
         {
             ManagerHome.mainFrame.Content = new AddReplacmentMedicineView(newMedicine,1);
+        }
+
+        public void OnPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void medicineName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddComponent_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            AddReplacmentMedicine_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            SendToDoctor_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(medicineName.Text) || string.IsNullOrEmpty(medicineDose.Text)) 
+            {
+                AddComponent_Btn.IsEnabled = false;
+                AddReplacmentMedicine_Btn.IsEnabled = false;
+                SendToDoctor_Btn.IsEnabled = false;
+            }
+               
+        }
+
+        private void medicineDose_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            AddComponent_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            AddReplacmentMedicine_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            SendToDoctor_Btn.IsEnabled = Validation.GetHasError(tb) == true ? false : true;
+            if (string.IsNullOrEmpty(medicineName.Text) || string.IsNullOrEmpty(medicineDose.Text))
+            {
+                AddComponent_Btn.IsEnabled = false;
+                AddReplacmentMedicine_Btn.IsEnabled = false;
+                SendToDoctor_Btn.IsEnabled = false;
+            }
         }
     }
 }
