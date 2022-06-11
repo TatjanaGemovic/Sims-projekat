@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+             xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView" xmlns:converters="clr-namespace:SIMS_Projekat.SecretaryView.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="748" d:DesignWidth="784" Background="White">
+    
+    <UserControl.Resources>
+        <converters:IsButtonEnabledConverter x:Key="IsButtonEnabledConverter" />
+    </UserControl.Resources>
+    
     <Grid Margin="60,0,60,60">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -49,7 +54,7 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding beginningDate}"></TextBlock>
+                            <TextBlock Text="{Binding beginningDate, StringFormat=\{0:dd/MM/yyyy\}}"></TextBlock>
                             <TextBlock Text=" "></TextBlock>
                             <TextBlock Text="{Binding patient.FirstName}"></TextBlock>
                             <TextBlock Text=" "></TextBlock>
@@ -61,13 +66,15 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 30, 20, 0">
-            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Command="{Binding ApproveFreeDayRequestCommand}">
+            <Button Style="{StaticResource SecretaryViewButton}" Height="50" Width="110" Command="{Binding ApproveFreeDayRequestCommand}"
+                    IsEnabled="{Binding SelectedItem, ElementName=dataGridAppointments, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/approved.png" Width="20" Margin="0,0,5,0"/>
                     <TextBlock FontSize="15">Odobri</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110" Command="{Binding RejectFreeDayRequestCommand}">
+            <Button Style="{StaticResource SecretaryViewButton}" Margin="80,0,0,0" Height="50" Width="110" Command="{Binding RejectFreeDayRequestCommand}"
+                    IsEnabled="{Binding SelectedItem, ElementName=dataGridAppointments, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/close.png" Width="20" Margin="0,0,5,0"/>
                     <TextBlock FontSize="15">Odbij</TextBlock>

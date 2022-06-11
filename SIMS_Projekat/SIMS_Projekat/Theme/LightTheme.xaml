@@ -343,6 +343,10 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#203A43"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" Value="#FF657C84"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -363,14 +367,18 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Background" Value="#2C5364"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style.Setters>
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFAA0000"/>
+                <Setter Property="Background" Value="#203A43"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Background" Value="#FF657C84"/>
+                <Setter Property="Foreground" Value="White"/>
             </Trigger>
         </Style.Triggers>
     </Style>

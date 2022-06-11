@@ -144,5 +144,13 @@ namespace SIMS_Projekat.SecretaryView
         {
 
         }
+
+
+        // Deselect data grid selection
+        private void dataGridPatients_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            dataGrid.SelectedItem = null;
+        }
+
     }
 }

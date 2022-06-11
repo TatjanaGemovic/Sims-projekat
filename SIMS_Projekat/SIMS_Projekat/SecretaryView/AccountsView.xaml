@@ -11,6 +11,8 @@
     <UserControl.Resources>
         <converters:UrgentPatientIndicatorConverter x:Key="UrgentPatientIndicatorConverter" />
         <converters:DoctorSpecialityConverter x:Key="DoctorSpecialityConverter" />
+        <converters:IsButtonEnabledConverter x:Key="IsButtonEnabledConverter" />
+
         <Style TargetType="DataGridRow">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsUrgent}" Value="true">
@@ -48,7 +50,7 @@
                     </Grid.ColumnDefinitions>
 
                     <DataGrid x:Name="dataGridPatients" Grid.Row="0" ItemsSource="{Binding Path = Patients}" IsReadOnly="True" 
-                    SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0" Style="{DynamicResource SecretaryDataGridStyle}">
+                    SelectionMode="Single" AutoGenerateColumns="False" Margin="40,40,40,0" Style="{DynamicResource SecretaryDataGridStyle}" MouseDown="dataGridPatients_MouseDown">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
@@ -64,19 +66,25 @@
                                 <TextBlock FontSize="15">Dodaj</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewButton}" Margin="40,0,0,0" Height="50" Width="110" Click="EditPatient_Click">
+                        <Button Style="{StaticResource SecretaryViewButton}"  
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}" 
+                                Margin="40,0,0,0" Height="50" Width="110" Click="EditPatient_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Izmeni</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewButton}" Margin="40,0,0,0" Height="50" Width="110" Click="ShowPatient_Click">
+                        <Button Style="{StaticResource SecretaryViewButton}" 
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
+                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowPatient_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/view.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Prikaži</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewDeleteButton}" Margin="40,0,0,0" Height="50" Width="110" Click="DeletePatient_Click">
+                        <Button Style="{StaticResource SecretaryViewDeleteButton}" 
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
+                                Margin="40,0,0,0" Height="50" Width="110" Click="DeletePatient_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
                             <TextBlock FontSize="15">Obriši</TextBlock>
@@ -123,19 +131,25 @@
                                 <TextBlock FontSize="15">Dodaj</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewButton}" Margin="40,0,0,0" Height="50" Width="110" Click="EditDoctor_Click">
+                        <Button Style="{StaticResource SecretaryViewButton}" 
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
+                                Margin="40,0,0,0" Height="50" Width="110" Click="EditDoctor_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Izmeni</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewButton}" Margin="40,0,0,0" Height="50" Width="110" Click="ShowDoctor_Click">
+                        <Button Style="{StaticResource SecretaryViewButton}" 
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
+                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowDoctor_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/view.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Prikaži</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewDeleteButton}" Margin="40,0,0,0" Height="50" Width="110" Click="DeleteDoctor_Click">
+                        <Button Style="{StaticResource SecretaryViewDeleteButton}" 
+                                IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
+                                Margin="40,0,0,0" Height="50" Width="110" Click="DeleteDoctor_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Obriši</TextBlock>
