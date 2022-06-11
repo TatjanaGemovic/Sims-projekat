@@ -60,8 +60,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private void OnDetail()
         {
-            //ViewNotePage viewNotePage = new ViewNotePage(mainFrame, NoteViewModel);
-            //mainFrame.NavigationService.Navigate(viewNotePage);
+            ViewReminderPage viewReminderPage = new ViewReminderPage(mainFrame, ReminderViewModel);
+            mainFrame.NavigationService.Navigate(viewReminderPage);
         }
 
         private void OnCreate()

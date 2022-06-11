@@ -23,6 +23,7 @@ namespace SIMS_Projekat.Model
         public bool isDelayedByPatient { get; set; }
 
         public bool isScheduledByPatient { get; set; }
+        public int reminderForPatientID { get; set; }
 
         public string[] toCSV()
         {
@@ -36,7 +37,8 @@ namespace SIMS_Projekat.Model
                 room.RoomID,
                 operation.ToString(),
                 isDelayedByPatient.ToString(),
-                isScheduledByPatient.ToString()
+                isScheduledByPatient.ToString(),
+                reminderForPatientID.ToString()
             };
             return values;
         }
@@ -60,7 +62,8 @@ namespace SIMS_Projekat.Model
             }
             isDelayedByPatient = bool.Parse(values[7]);
             isScheduledByPatient = bool.Parse(values[8]);
-            
+            reminderForPatientID = Convert.ToInt32(values[9]);
+
             patient = App.accountRepository.GetPatientAccountByID(patientID) as Patient;
             doctor = App.accountRepository.GetDoctorAccountByLicenceNumber(licenceNumber) as Doctor;
             room = App.roomController.GetRoomByID(roomID);

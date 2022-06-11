@@ -12,8 +12,9 @@ namespace SIMS_Projekat.PatientView.ViewModel
     public class CreateNotePageViewModel : BindableBase
     {
         Frame mainFrame;
-        bool fromReport;
+        int fromWhere;
         ReportViewModel vmReport;
+        TherapyViewModel vmTherapy;
         Patient patient;
         public Injector Inject { get; set; }
         public MyICommand GoBackCommand { get; set; }
@@ -36,37 +37,6 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
 
 
-        //public Test TestVM
-        //{
-        //    get { return testVM; }
-        //    set
-        //    {
-        //        Test oldValue = testVM;
-        //        if (SetProperty(ref testVM, value))
-        //        {
-        //            if (oldValue != null)
-        //            {
-        //                oldValue.PropertyChanged -= TestPropertyChanged;
-        //            }
-
-        //            if (testVM != null)
-        //            {
-        //                testVM.PropertyChanged += TestPropertyChanged;
-        //            }
-        //        }
-        //    }
-        //}
-
-        //void TestPropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    // filter if necessary
-        //    if (e.PropertyName == "...")
-        //    {
-        //        StartTestCommand.RaiseCanExecuteChanged();
-        //    }
-        //}
-
-
         private ObservableCollection<NoteViewModel> notes;
         public ObservableCollection<NoteViewModel> Notes
         {
@@ -81,13 +51,14 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-        public CreateNotePageViewModel(Frame f, bool fromRep, Patient p, ReportViewModel vmReport)
+        public CreateNotePageViewModel(Frame f, int fromWhere, Patient p, ReportViewModel vmReport, TherapyViewModel vmTherapy)
         {
             mainFrame = f;
             Inject = new Injector();
-            fromReport = fromRep;
+            this.fromWhere = fromWhere;
             patient = p;
             this.vmReport = vmReport;
+            this.vmTherapy = vmTherapy;
             GoBackCommand = new MyICommand(OnBack);
             CreateCommand = new MyICommand(OnCreate, CanCreate);
         }
@@ -104,17 +75,27 @@ namespace SIMS_Projekat.PatientView.ViewModel
             Note newNote = Inject.NotesConverter.ConvertViewModelToModel(NewNoteViewModel, patient);
             newNote = App.noteController.AddNote(newNote);
             
-            if (fromReport)
+            if (fromWhere == 1)
             {
                 vmReport.NoteID = newNote.noteID.ToString();
                 App.finishedAppointmentController.AddNoteToAppointment(vmReport.FinishedAppointmentID, Convert.ToInt32(vmReport.NoteID));
-                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, vmReport);
+                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, vmReport, false);
                 mainFrame.NavigationService.Navigate(viewReportPage);
                 return;
             }
-
-            NotesPage notesPage = new NotesPage(mainFrame, patient);
-            mainFrame.NavigationService.Navigate(notesPage);
+            else if (fromWhere == 2)
+            {
+                vmTherapy.NoteID = newNote.noteID.ToString();
+                App.receiptController.AddNoteToReceipt(vmTherapy.ReceiptID, Convert.ToInt32(vmTherapy.NoteID));
+                ViewTherapyPage viewTherapyPage = new ViewTherapyPage(mainFrame, vmTherapy);
+                mainFrame.NavigationService.Navigate(viewTherapyPage);
+                return;
+            }
+            else
+            {
+                NotesPage notesPage = new NotesPage(mainFrame, patient);
+                mainFrame.NavigationService.Navigate(notesPage);
+            }         
         }
 
         private bool CanCreate()

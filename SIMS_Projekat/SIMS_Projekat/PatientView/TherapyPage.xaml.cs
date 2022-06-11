@@ -18,14 +18,15 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.PatientView
 {
     /// <summary>
-    /// Interaction logic for ChangeNotePage.xaml
+    /// Interaction logic for TherapyPage.xaml
     /// </summary>
-    public partial class ChangeNotePage : Page
+    public partial class TherapyPage : Page
     {
-        public ChangeNotePage(Frame frame, NoteViewModel note, int fromWhere)
+        public TherapyPage(Frame frame, Patient patient)
         {
             InitializeComponent();
-            this.DataContext = new ChangeNotePageViewModel(frame, note, fromWhere);
+            this.DataContext = new TherapiesPageViewModel(frame, patient);
+
         }
     }
 }

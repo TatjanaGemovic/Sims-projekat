@@ -1,5 +1,4 @@
-﻿using SIMS_Projekat.Model;
-using SIMS_Projekat.PatientView.ViewModel;
+﻿using SIMS_Projekat.PatientView.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +17,14 @@ using System.Windows.Shapes;
 namespace SIMS_Projekat.PatientView
 {
     /// <summary>
-    /// Interaction logic for ChangeNotePage.xaml
+    /// Interaction logic for ViewTherapyPage.xaml
     /// </summary>
-    public partial class ChangeNotePage : Page
+    public partial class ViewTherapyPage : Page
     {
-        public ChangeNotePage(Frame frame, NoteViewModel note, int fromWhere)
+        public ViewTherapyPage(Frame frame, TherapyViewModel vmTherapy)
         {
             InitializeComponent();
-            this.DataContext = new ChangeNotePageViewModel(frame, note, fromWhere);
+            this.DataContext = new SingleTherapyPageViewModel(frame, vmTherapy);
         }
     }
 }

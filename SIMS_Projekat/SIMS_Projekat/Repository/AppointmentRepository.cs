@@ -58,6 +58,7 @@ namespace SIMS_Projekat.Repository
                     appointment1.operation = appointment.operation;
                     appointment1.isDelayedByPatient = appointment.isDelayedByPatient;
                     appointment1.isScheduledByPatient = appointment.isScheduledByPatient;
+                    appointment1.reminderForPatientID = appointment.reminderForPatientID;
                     return appointment1;
                 }
 
@@ -105,6 +106,20 @@ namespace SIMS_Projekat.Repository
             return appointmentListForDoctor;
         }
 
+        public Appointment GetAppointmentByReminderID(int reminderID)
+        {
+            foreach (Appointment appointment in appointmentList)
+            {
+                Appointment appointment1 = appointmentList.Find(appointment => appointment.reminderForPatientID == reminderID);
+
+                if (appointment1 != null)
+                {
+                    return appointment1;
+                }
+            }
+            return null;
+        }
+        
         public List<Appointment> GetAllAppointments()
         {
             return appointmentList;
@@ -154,8 +169,17 @@ namespace SIMS_Projekat.Repository
             {
                 id = appointment.appointmentID;
             }
+            CheckForFinishedAppointmentID();
+        }
+        public void CheckForFinishedAppointmentID()
+        {
+            foreach (FinishedAppointment appointment in App.finishedAppointmentRepo.GetAllAppointments())
+            {
+                if(id < appointment.finishedAppointmentID)
+                    id = appointment.finishedAppointmentID;
+            }
         }
 
-        
+
     }
 }

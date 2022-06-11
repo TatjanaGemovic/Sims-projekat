@@ -56,6 +56,7 @@ namespace SIMS_Projekat.Repository
                     reminder1.content = reminder.content;
                     reminder1.startTime = reminder.startTime;
                     reminder1.type = reminder.type;
+                    reminder1.isRepeatable = reminder.isRepeatable;
                     return reminder1;
                 }
 

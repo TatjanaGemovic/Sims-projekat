@@ -98,5 +98,10 @@ namespace SIMS_Projekat.Controller
         {
             return appointmentService.GetAllAppointmentForToday();
         }
+        public Appointment DeleteReminderForAppointment(int reminderID)
+        {
+            return appointmentService.DeleteReminderForAppointment(reminderID);
+        }
+        
     }
 }

@@ -30,6 +30,7 @@ namespace SIMS_Projekat.PatientView
         DateTime pickedDate;
         BindingList<String> listOfTakenAppointmentTime;
         BindingList<String> listOfAppointmentTime;
+        RandomAppontmentFirstPage RandomAppontmentFirstPage;
         public ObservableCollection<DoctorInfo> doctorInfoList { get; set; }
         DoctorInfo drInfo;
         public ScheduleAppointmentPage(Frame mainFrame, Patient p)
@@ -39,14 +40,15 @@ namespace SIMS_Projekat.PatientView
 
             InitializeComponent();
             this.DataContext = this;
-            RandomAppointmentFrame.Content = new RandomAppontmentFirstPage(patient, frame);
+            RandomAppontmentFirstPage = new RandomAppontmentFirstPage(patient, frame);
+            RandomAppointmentFrame.Content = RandomAppontmentFirstPage;
+
             SetBlackOutDates();
 
             if (patient.doctorLicenceNumber != "")
             {
-                Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber)as Doctor;
-                existing_doctor.Text = doctor.FirstName + " " + doctor.LastName;
-                
+                Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber)as Doctor;       
+                drInfo = new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber);
             }
 
             InitializeDoctorComboBox();
@@ -77,11 +79,17 @@ namespace SIMS_Projekat.PatientView
         public void InitializeDoctorComboBox()
         {
             doctorInfoList = new ObservableCollection<DoctorInfo>();
-            foreach (Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            int doctorPlaceInCollection = 0;
+
+            foreach (Doctor doctor in App.accountController.GetGeneralPractitionerDoctors())
             {
                 doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
-
-            }
+                if (drInfo != null && drInfo.doctorName.Equals(doctor.FirstName + " " + doctor.LastName))
+                {
+                    doctorPlaceInCollection = doctorInfoList.Count() - 1;
+                    choose_doctor.SelectedItem = doctorInfoList[doctorPlaceInCollection];
+                }       
+            }          
         }
         private void Date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -159,19 +167,13 @@ namespace SIMS_Projekat.PatientView
 
             TimeSpan timeStart = TimeSpan.Parse(this.comboTime.SelectionBoxItem.ToString());
             startDate = startDate.Add(timeStart);
-           
-            Doctor doctor;
-            if (choose_doctor.SelectedItem != null)
-            {
-                doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
-            }
-            else
-            {
-                doctor = App.accountController.GetDoctorAccountByLicenceNumber(patient.doctorLicenceNumber) as Doctor;
-            }
 
+            int reminderID = 0;
+            if ((bool)checkbox.IsChecked)
+                reminderID = CreateReminder(startDate);
+
+            Doctor doctor = App.accountController.GetDoctorAccountByLicenceNumber(drInfo.licenceNumber) as Doctor;
             Room room = App.appointmentController.GetAvailableRoom(startDate);
-
 
             Appointment appointment = new Appointment()
             {
@@ -182,7 +184,8 @@ namespace SIMS_Projekat.PatientView
                 patient = patient,
                 operation = false,
                 isDelayedByPatient = false,
-                isScheduledByPatient = true
+                isScheduledByPatient = true,
+                reminderForPatientID = reminderID
             };
 
             App.appointmentController.AddAppointment(appointment);
@@ -199,6 +202,175 @@ namespace SIMS_Projekat.PatientView
         private void ComboTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             scheduleClickButton.IsEnabled = true;
+        }
+        private int CreateReminder(DateTime timeOfAppointment)
+        {
+            Reminder newReminder = new Reminder()
+            {
+                isRepeatable = "Nikada",
+                patient = patient,
+                startTime = timeOfAppointment.AddDays(-1),
+                type = "Pregled: ",
+                content = "sutra u " + timeOfAppointment.TimeOfDay.ToString(@"hh\:mm")
+            };
+            newReminder = App.reminderController.AddReminder(newReminder);
+            return newReminder.ID;
+        }
+
+        public void DemoExecution()
+        {
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     choose_doctor.IsDropDownOpen = true;
+                     choose_doctor.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     choose_doctor.SelectedIndex = 1;
+                     choose_doctor.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(4500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     date.IsDropDownOpen = true;
+                     date.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(6000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     date.SelectedDate = DateTime.Now.AddDays(1);
+                     date.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(7500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     comboTime.IsDropDownOpen = true;
+                     comboTime.Focus();
+                 }
+                ));
+            });
+
+            Task.Delay(9000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     comboTime.SelectedIndex = 2;
+                     comboTime.IsDropDownOpen = false;
+                 }
+                ));
+            });
+
+            Task.Delay(10500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     checkbox.IsChecked = true;
+                 }
+                ));
+            });
+
+            Task.Delay(12000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     checkbox.IsChecked = false;
+                 }
+                ));
+            });
+
+            Task.Delay(13500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     RandomAppontmentFirstPage.DemoExecution();
+                 }
+                ));
+            });
+
+            Task.Delay(24000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+                 }
+                ));
+            });
+
+            Task.Delay(25500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     Appointments appointmentsPage = new Appointments(frame, patient);
+                     frame.Content = appointmentsPage;
+
+                 }
+                ));
+            });
+
+            Task.Delay(25600).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                 }
+                ));
+            });
+
         }
     }
     

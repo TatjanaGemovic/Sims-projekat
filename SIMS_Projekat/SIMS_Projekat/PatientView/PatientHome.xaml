@@ -38,7 +38,7 @@
                    HorizontalContentAlignment="Right" VerticalAlignment="Center" />
 
             <Button x:Name="demo"  Style="{StaticResource ResourceKey=PatientButtons}" DockPanel.Dock="Left" 
-                    Width="201" HorizontalAlignment="Left" >
+                    Width="201" HorizontalAlignment="Left" Click="Demo_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/video.png" Width="30" Height="30"></Image>
                     <Label Content="Demo prikaz" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
@@ -84,7 +84,7 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="therapy" Grid.Row="4" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,2,3,3" >
+            <Button x:Name="therapy" Grid.Row="4" Style="{StaticResource ResourceKey=PatientButtons}" Grid.ColumnSpan="2" Margin="3,2,3,3" Click="Therapy_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/pills.png" Width="30" Height="30"></Image>
                     <Label Content="Terapija" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />

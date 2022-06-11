@@ -41,7 +41,6 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-
         public string IsRepeatable
         {
             get { return isRepeatable; }

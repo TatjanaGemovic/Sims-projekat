@@ -59,7 +59,7 @@ namespace SIMS_Projekat.PatientView
         }
         public void InitializeComboBox()
         {
-            foreach(Doctor doctor in App.accountController.GetAllDoctorAccounts())
+            foreach(Doctor doctor in App.accountController.GetGeneralPractitionerDoctors())
             {
                doctorInfoList.Add(new DoctorInfo(doctor.FirstName + " " + doctor.LastName, doctor.LicenceNumber));
                 

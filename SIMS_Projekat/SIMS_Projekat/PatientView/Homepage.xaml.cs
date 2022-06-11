@@ -68,6 +68,9 @@ namespace SIMS_Projekat.PatientView
             if (GridView.SelectedItem != null)
             {
                 Reminder rem = GridView.SelectedItem as Reminder;
+                if(rem.type.Equals("Pregled: "))
+                    App.appointmentController.DeleteReminderForAppointment(rem.ID);
+                
                 App.reminderController.CreateNewReminderIfItIsRepeatableAndDeleteIfNot(rem);
             }
         }

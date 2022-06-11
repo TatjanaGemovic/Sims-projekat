@@ -12,7 +12,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
     public class ChangeNotePageViewModel : BindableBase
     {
         Frame mainFrame;
-        bool fromReport;
+        int fromWhere;
         public Injector Inject { get; set; }
         public MyICommand ChangeCommand { get; set; }
         public MyICommand BackCommand { get; set; }
@@ -31,11 +31,11 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-        public ChangeNotePageViewModel(Frame frame, NoteViewModel vmNote, bool fromRep)
+        public ChangeNotePageViewModel(Frame frame, NoteViewModel vmNote, int fromWhere)
         {
             mainFrame = frame;
             Note = vmNote;
-            fromReport = fromRep;
+            this.fromWhere = fromWhere;
             Inject = new Injector();
 
             BackCommand = new MyICommand(OnBack);
@@ -53,16 +53,28 @@ namespace SIMS_Projekat.PatientView.ViewModel
             Note newNote = Inject.NotesConverter.ConvertViewModelToModel(Note, App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient);
             App.noteController.SetNote(newNote);
 
-            if(!fromReport)
+            if(fromWhere == 0)
             {
                 ViewNotePage viewNotePage = new ViewNotePage(mainFrame, Note);
                 mainFrame.NavigationService.Navigate(viewNotePage);
                 return;
             }
-         
-            ReportViewModel reportViewModel = getReportModel();
-            ViewReportPage viewReportPage = new ViewReportPage(mainFrame, reportViewModel);
-            mainFrame.NavigationService.Navigate(viewReportPage);
+            else if (fromWhere == 1)
+            {
+                ReportViewModel reportViewModel = getReportModel();
+                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, reportViewModel, false);
+                mainFrame.NavigationService.Navigate(viewReportPage);
+                return;
+            }
+            else
+            {
+                TherapyViewModel therapyViewModel = getTherapyModel();
+                ViewTherapyPage viewTherapyPage = new ViewTherapyPage(mainFrame, therapyViewModel);
+                mainFrame.NavigationService.Navigate(viewTherapyPage);
+                return;
+            }
+
+            
 
         }
         private bool CanChange()
@@ -75,6 +87,12 @@ namespace SIMS_Projekat.PatientView.ViewModel
         {
             FinishedAppointment appointment = App.finishedAppointmentController.GetAppointmentByNoteID(Convert.ToInt32(Note.NoteID));
             return Inject.ReportsConverter.ConvertModelToViewModel(appointment);
+        }
+
+        private TherapyViewModel getTherapyModel()
+        {
+            Receipt receipt = App.receiptController.GetReceiptByNoteID(Convert.ToInt32(Note.NoteID));
+            return Inject.TherapyConverter.ConvertModelToViewModel(receipt);
         }
         private void OnBack()
         {

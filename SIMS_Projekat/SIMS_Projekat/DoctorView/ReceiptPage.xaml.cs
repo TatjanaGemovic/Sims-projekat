@@ -98,7 +98,7 @@ namespace SIMS_Projekat.DoctorView
                 medicine = selectedMedicine
             };
 
-            Receipt receiptWithID = App.receiptRepository.AddReceipt(receipt);
+            Receipt receiptWithID = App.receiptController.AddReceipt(receipt);
             App.receiptRepository.Serialize();
             App.reminderController.CreateNotificationForTherapy(receiptWithID);
 

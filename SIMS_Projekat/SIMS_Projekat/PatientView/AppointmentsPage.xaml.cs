@@ -98,5 +98,47 @@ namespace SIMS_Projekat.PatientView
                 make_appointment.IsEnabled = false;
             }
         }
+
+        public void DemoExecution()
+        {
+            Task.Delay(1500).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     make_appointment.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+                 }
+                ));
+            });
+
+            Task.Delay(3000).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     ScheduleAppointmentPage ScheduleAppointmentPage = new ScheduleAppointmentPage(frame, patient);
+                     frame.Content = ScheduleAppointmentPage;
+                     ScheduleAppointmentPage.DemoExecution();
+                 }
+                ));
+            });
+
+            Task.Delay(3100).ContinueWith(_ =>
+            {
+                Application.Current.Dispatcher.Invoke(
+               System.Windows.Threading.DispatcherPriority.Normal,
+               new Action(
+                 delegate ()
+                 {
+                     make_appointment.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                 }
+                ));
+            });
+
+        }
     }
 }

@@ -188,7 +188,7 @@ namespace SIMS_Projekat.Service
         {
             var random = new Random();
 
-            List<Doctor> doctorList = App.accountService.GetAllDoctorAccounts();
+            List<Doctor> doctorList = App.accountController.GetGeneralPractitionerDoctors();
             int doctorIndex = random.Next(doctorList.Count);
             Doctor doctor = doctorList[doctorIndex];
             return doctor;
@@ -260,6 +260,13 @@ namespace SIMS_Projekat.Service
         {
             List<Appointment> appointments = appointmentRepository.GetAllAppointments();
             return appointments.Where(appointment => appointment.beginningDate.Date == DateTime.Today).ToList();
+        }
+
+        public Appointment DeleteReminderForAppointment(int reminderID)
+        {
+            Appointment appointment = appointmentRepository.GetAppointmentByReminderID(reminderID);
+            appointment.reminderForPatientID = 0;
+            return appointment;
         }
     }
 }
