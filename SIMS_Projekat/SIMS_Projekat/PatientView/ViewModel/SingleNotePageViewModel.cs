@@ -55,6 +55,7 @@ namespace SIMS_Projekat.PatientView
                 Patient patient = App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID)).patient;
                 Note note = App.noteController.GetNoteByID(Convert.ToInt32(Note.NoteID));
                 App.finishedAppointmentController.EraseNoteForAppointmentIfExists(note.noteID, patient);
+                App.receiptController.EraseNoteForReceiptIfExists(note.noteID, patient);
                 App.noteController.DeleteNote(note);
 
                 NotesPage notesPage = new NotesPage(mainFrame, patient);

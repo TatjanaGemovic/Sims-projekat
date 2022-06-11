@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,8 +82,18 @@ namespace SIMS_Projekat.PatientView.ViewModel
 
         private void OnReport()
         {
-            TherapyPage therapyPage = new TherapyPage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Therapy.FinishedAppointmentID).patient);
-            mainFrame.NavigationService.Navigate(therapyPage);
+            ReportViewModel report = GetReportViewModel();
+            
+            ViewReportPage viewReportPage = new ViewReportPage(mainFrame, report, true, Therapy);
+            mainFrame.NavigationService.Navigate(viewReportPage);
         }
+        private ReportViewModel GetReportViewModel()
+        {
+    
+            FinishedAppointment appointment = App.finishedAppointmentController.GetAppointmentByID(Therapy.FinishedAppointmentID);
+            ReportViewModel report = Inject.ReportsConverter.ConvertModelToViewModel(appointment);
+            return report;
+        }
+        
     }
 }

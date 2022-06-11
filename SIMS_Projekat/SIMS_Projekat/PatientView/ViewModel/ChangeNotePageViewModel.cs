@@ -62,7 +62,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
             else if (fromWhere == 1)
             {
                 ReportViewModel reportViewModel = getReportModel();
-                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, reportViewModel);
+                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, reportViewModel, false);
                 mainFrame.NavigationService.Navigate(viewReportPage);
                 return;
             }

@@ -79,7 +79,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
             {
                 vmReport.NoteID = newNote.noteID.ToString();
                 App.finishedAppointmentController.AddNoteToAppointment(vmReport.FinishedAppointmentID, Convert.ToInt32(vmReport.NoteID));
-                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, vmReport);
+                ViewReportPage viewReportPage = new ViewReportPage(mainFrame, vmReport, false);
                 mainFrame.NavigationService.Navigate(viewReportPage);
                 return;
             }

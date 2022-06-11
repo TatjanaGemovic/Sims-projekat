@@ -58,7 +58,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
     
         private void OnDetail()
         {
-            ViewReportPage viewReportPage = new ViewReportPage(mainFrame, ReportViewModel);
+            ViewReportPage viewReportPage = new ViewReportPage(mainFrame, ReportViewModel, false);
             mainFrame.NavigationService.Navigate(viewReportPage);
         }
     }

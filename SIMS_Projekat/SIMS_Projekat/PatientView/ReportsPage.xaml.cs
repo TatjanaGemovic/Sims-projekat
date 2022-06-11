@@ -24,8 +24,9 @@ namespace SIMS_Projekat.PatientView
     {
         public ReportsPage(Frame frame, Patient patient)
         {
-            InitializeComponent();
             this.DataContext = new ReportsPageViewModel(frame, patient);
+            InitializeComponent();
+            
         }
     }
 }

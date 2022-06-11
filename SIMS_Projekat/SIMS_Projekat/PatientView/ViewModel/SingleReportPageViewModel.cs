@@ -11,6 +11,8 @@ namespace SIMS_Projekat.PatientView.ViewModel
     {
         Frame mainFrame;
         NoteViewModel Note;
+        TherapyViewModel therapy;
+        bool fromTherapy;
         private ReportViewModel report;
         public Injector Inject { get; set; }
         public MyICommand BackCommand { get; set; }
@@ -44,12 +46,14 @@ namespace SIMS_Projekat.PatientView.ViewModel
             }
         }
 
-        public SingleReportPageViewModel(Frame frame, ReportViewModel vmReport)
+        public SingleReportPageViewModel(Frame frame, ReportViewModel vmReport, bool fromTherapy, TherapyViewModel therapy = null)
         {
             Inject = new Injector();
             mainFrame = frame;
             Report = vmReport;
-            if(vmReport.NoteID != "0")
+            this.fromTherapy = fromTherapy;
+            this.therapy = therapy;
+            if (vmReport.NoteID != "0")
             {
                 Note = Inject.NotesConverter.ConvertModelToViewModel(App.noteController.GetNoteByID(Convert.ToInt32(vmReport.NoteID)));
                 NoteContent = Note.Content;
@@ -73,6 +77,12 @@ namespace SIMS_Projekat.PatientView.ViewModel
         }
         private void OnBack()
         {
+            if (fromTherapy)
+            {
+                ViewTherapyPage viewTherapyPage = new ViewTherapyPage(mainFrame, therapy);
+                mainFrame.NavigationService.Navigate(viewTherapyPage);
+                return;
+            }
             ReportsPage reportsPage = new ReportsPage(mainFrame, App.finishedAppointmentController.GetAppointmentByID(Report.FinishedAppointmentID).patient);
             mainFrame.NavigationService.Navigate(reportsPage);
         }

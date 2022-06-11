@@ -21,10 +21,10 @@ namespace SIMS_Projekat.PatientView
     /// </summary>
     public partial class ViewReportPage : Page
     {
-        public ViewReportPage(Frame frame, ReportViewModel vmReport)
+        public ViewReportPage(Frame frame, ReportViewModel vmReport, bool fromTherapy, TherapyViewModel therapy = null)
         {
             InitializeComponent();
-            this.DataContext = new SingleReportPageViewModel(frame, vmReport);
+            this.DataContext = new SingleReportPageViewModel(frame, vmReport, fromTherapy, therapy);
         }
     }
 }
