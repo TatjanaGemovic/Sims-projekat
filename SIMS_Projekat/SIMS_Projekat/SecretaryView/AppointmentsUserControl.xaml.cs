@@ -55,7 +55,7 @@ namespace SIMS_Projekat.SecretaryView
             UpdateDataGrid();
         }
 
-        private void Calenadar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        private void DatePicker_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdateDataGrid();
         }
@@ -77,9 +77,9 @@ namespace SIMS_Projekat.SecretaryView
 
         private DateTime GetSelectedDate()
         {
-            if (Calenadar.SelectedDate == null)
+            if (DatePicker.SelectedDate == null)
                 return DateTime.Today;
-            return (DateTime)Calenadar.SelectedDate;
+            return (DateTime)DatePicker.SelectedDate;
         }
 
         private Room GetSelectedRoom()

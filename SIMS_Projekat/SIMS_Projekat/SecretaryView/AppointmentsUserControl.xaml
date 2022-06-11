@@ -9,7 +9,7 @@
     <Grid Margin="60,0,60,60">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
 
@@ -34,11 +34,13 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <Viewbox Grid.Column="1" Grid.Row="1" Width="250" Height="250">
-            <Calendar Grid.Column="0" Grid.Row="2" x:Name="Calenadar" SelectedDatesChanged="Calenadar_SelectedDatesChanged"/>
-        </Viewbox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="20,0,0,0" FontSize="16" VerticalAlignment="Center">Datum:</TextBlock>
+            <DatePicker x:Name="DatePicker" Height="30" Width="200" FontSize="16" Margin="20,0,0,0" SelectedDateChanged="DatePicker_SelectedDatesChanged"></DatePicker>
+        </StackPanel>
+        
 
-        <DataGrid x:Name="dataGridAppointments" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Height="200" ItemsSource="{Binding Path = Appointments}" IsReadOnly="True" 
+        <DataGrid x:Name="dataGridAppointments" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Height="400" ItemsSource="{Binding Path = Appointments}" IsReadOnly="True" 
                     SelectionMode="Single" AutoGenerateColumns="False" Margin="20,20,20,20" Style="{DynamicResource SecretaryDataGridStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header=" Vreme" Binding="{Binding beginningDate, StringFormat=\{0:HH:mm:ss\}}" Width ="*"></DataGridTextColumn>
