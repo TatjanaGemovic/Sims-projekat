@@ -17,7 +17,6 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             TherapyViewModel therapyViewModel = new TherapyViewModel();
 
             therapyViewModel.TherapyInformation = receipt.Record;
-            therapyViewModel.DailyDose = receipt.DailyMed;
             therapyViewModel.MedicineName = receipt.medicine.MedicineName;
             therapyViewModel.Index = id;
             therapyViewModel.BeginningDate = receipt.beginningDate.Date.ToString("dd.MM.yyyy.");
@@ -25,6 +24,23 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             therapyViewModel.FinishedAppointmentID = receipt.appointmentID;
             therapyViewModel.ReceiptID = receipt.receiptID;
             therapyViewModel.NoteID = receipt.patientNoteID.ToString();
+
+            if(receipt.DailyMed == 1)
+            {
+                therapyViewModel.DailyDose = "Jednom dnevno";
+            }
+            else if (receipt.DailyMed == 2)
+            {
+                therapyViewModel.DailyDose = "Dva puta dnevno";
+            }
+            else if (receipt.DailyMed == 3)
+            {
+                therapyViewModel.DailyDose = "Tri puta dnevno";
+            }
+            else if (receipt.DailyMed == 2)
+            {
+                therapyViewModel.DailyDose = "Četiri puta dnevno";
+            }
 
             FinishedAppointment appointment = App.finishedAppointmentController.GetAppointmentByID(receipt.appointmentID);
             therapyViewModel.Doctor = appointment.doctor.FirstName + " " + appointment.doctor.LastName;

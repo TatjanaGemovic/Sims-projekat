@@ -136,6 +136,22 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="PatientDataGridHCICell" TargetType="DataGridCell">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="FontSize" Value="20"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ADCE74"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Background" Value="#ADCE74"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="#FFF76A"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="PatientDataGridRadioButton" TargetType="RadioButton">
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="True">
@@ -214,6 +230,37 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
                             <TextBlock Text="Trenutno nemate nijedan izveštaj!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PatientHCIReportGrid" TargetType="DataGrid">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="GridLinesVisibility" Value="None"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="500"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="CanUserResizeColumns" Value="False"/>
+        <Setter Property="RowHeaderWidth" Value="0" />
+        <Style.Triggers>
+            <Trigger Property="HasItems"
+                         Value="False">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DataGrid">
+                            <TextBlock Text="Nemate terapiju za ovaj dan!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -316,9 +363,34 @@
         <Setter Property="Width" Value="200"/>
     </Style>
 
+    <Style x:Key="PatientDataGridHCIColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Background" Value="#61B15A"/>
+        <Setter Property="Width" Value="200"/>
+    </Style>
+
     <Style x:Key="PatientDataGridAppointmentRow" TargetType="DataGridRow">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="#FFCE89" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ADCE74"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#ADCE74"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="PatientDataGridHCIAppointmentRow" TargetType="DataGridRow">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="#FFCE89" />
+        <Setter Property="FontSize" Value="20" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">

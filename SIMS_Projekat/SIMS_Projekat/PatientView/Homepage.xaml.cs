@@ -79,6 +79,11 @@ namespace SIMS_Projekat.PatientView
         {
             mainFrame.Content = new EvaluationPage(mainFrame, patient, App.evaluationController.GetEmptyEvaluationsForPatient(patient).Last<Evaluation>());
         }
+
+        private void ReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            HCIReportPage HCIReportPage = new HCIReportPage(mainFrame, patient);
+        }
     }
 }
  

@@ -38,7 +38,7 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" 
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" Width="220" Grid.RowSpan="2" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Width="220" Grid.RowSpan="2" Click="ReportButton_Click" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="EvaluationButton_Click" />

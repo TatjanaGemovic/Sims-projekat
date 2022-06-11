@@ -33,14 +33,20 @@
                 </StackPanel>
             </Button>
 
-            <Label x:Name="name_surname" FontSize="26" FontFamily="Segoe UI" FontWeight="SemiBold" Foreground="#FFF76A" 
-                   Width="350" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
-                   HorizontalContentAlignment="Right" VerticalAlignment="Center" />
+            
+            <Button x:Name="profile"  Style="{StaticResource ResourceKey=PatientButtons}" Width="Auto" DockPanel.Dock="Right" HorizontalAlignment="Right" Margin="0,0,20,0" 
+                   HorizontalContentAlignment="Right" VerticalAlignment="Center" Click="Profile_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons_patient/user.png" Width="30" Height="30"></Image>
+                    <Label x:Name="name_surname" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
+                </StackPanel>
+            </Button>
+
 
             <Button x:Name="demo"  Style="{StaticResource ResourceKey=PatientButtons}" DockPanel.Dock="Left" 
                     Width="201" HorizontalAlignment="Left" Click="Demo_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <Image Source="/Resources/icons_patient/video.png" Width="30" Height="30"></Image>
+                    <Image Source="/Resources/icons_patient/demo.png" Width="30" Height="30"></Image>
                     <Label Content="Demo prikaz" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
                 </StackPanel>
             </Button>

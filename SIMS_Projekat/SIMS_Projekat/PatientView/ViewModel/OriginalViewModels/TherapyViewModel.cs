@@ -13,7 +13,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
         private string therapyInformation { get; set; }
         private string medicineName { get; set; }
         private string doctor { get; set; }
-        private int dailyDose { get; set; }
+        private string dailyDose { get; set; }
         private int index { get; set; }
         private int finishedAppointmentID { get; set; }
         private int receiptID { get; set; }
@@ -99,7 +99,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
                 }
             }
         }
-        public int DailyDose
+        public string DailyDose
         {
             get { return dailyDose; }
             set

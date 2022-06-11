@@ -159,5 +159,11 @@ namespace SIMS_Projekat.PatientView
                 ));
             });
         }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content =  new ProfilePage(MainFrame, patient);
+
+        }
     }
 }

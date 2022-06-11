@@ -1,0 +1,184 @@
+﻿<Page x:Class="SIMS_Projekat.PatientView.HCIReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      mc:Ignorable="d" 
+      d:DesignHeight="1022" d:DesignWidth="793"
+      Title="HCIReportPage">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Grid x:Name="print" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Izveštaj o terapijama" Grid.Row="0" Grid.ColumnSpan="4" Foreground="Black" FontSize="28"
+               Style="{StaticResource ResourceKey=PatientBigLabels}" Margin="0,0,0,74" Grid.RowSpan="2"/>
+        <Label Content="na sedmičnom nivou" Grid.Row="1" Grid.ColumnSpan="4" Foreground="Black" FontSize="28"
+               Style="{StaticResource ResourceKey=PatientBigLabels}" Grid.RowSpan="2"/>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1">
+            <Label Content="Pacijent: " Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Broj terapija: " Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Period: " Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="2">
+            <Label x:Name ="patientLabel"  Content="" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name ="numberLabel" Content="" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name ="periodLabel" Content="" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="dayOne" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="dayOneGrid" ItemsSource="{Binding firstDay }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100"/>
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="dayTwo" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="dayTwoGrid" ItemsSource="{Binding secondDay }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="dayThree" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="dayThreeGrid" ItemsSource="{Binding thirdDay }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="dayFour" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="dayFourGrid" ItemsSource="{Binding fourthDay }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="dayFive" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="dayFiveGrid" ItemsSource="{Binding RfifthDayports }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="15" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="daySix" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="daySixGrid" ItemsSource="{Binding sixthDay }"  FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="17" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label x:Name="daySeven" Foreground="Black" FontSize="20"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <DataGrid x:Name="daySevenGrid" ItemsSource="{Binding seventhDay }" FontSize="20"
+                   Style="{StaticResource ResourceKey=PatientHCIReportGrid}"  Grid.ColumnSpan="5" Grid.RowSpan="2"
+                   ColumnHeaderStyle="{StaticResource ResourceKey=PatientDataGridHCIColumnHeaderStyle}"
+                   RowStyle="{StaticResource ResourceKey=PatientDataGridHCIAppointmentRow}"
+                   CellStyle="{StaticResource ResourceKey=PatientDataGridHCICell}" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Lek" Binding ="{Binding MedicineName}" Width="100" />
+                    <DataGridTextColumn Header="Opis terapije" Binding ="{Binding TherapyInformation}" Width="220" />
+                    <DataGridTextColumn Header="Dnevna doza" Binding ="{Binding DailyDose}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+
+    </Grid>
+</Page>

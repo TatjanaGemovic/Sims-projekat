@@ -72,6 +72,7 @@
     <None Remove="Resources\icons_doctor\writing.png" />
     <None Remove="Resources\icons_patient\appointment.png" />
     <None Remove="Resources\icons_patient\copy-writing.png" />
+    <None Remove="Resources\icons_patient\demo.png" />
     <None Remove="Resources\icons_patient\home.png" />
     <None Remove="Resources\icons_patient\log-out.png" />
     <None Remove="Resources\icons_patient\pills.png" />
@@ -79,6 +80,7 @@
     <None Remove="Resources\icons_patient\reminder.png" />
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
+    <None Remove="Resources\icons_patient\user.png" />
     <None Remove="Resources\icons_patient\video.png" />
     <None Remove="Resources\icon_manager\ManagerAdd.png" />
     <None Remove="Resources\icon_manager\ManagerBack.png" />
@@ -125,6 +127,8 @@
     <Resource Include="Resources\icons_doctor\user (1).png" />
     <Resource Include="Resources\icons_doctor\users.png" />
     <Resource Include="Resources\icons_doctor\writing.png" />
+    <Resource Include="Resources\icons_patient\demo.png" />
+    <Resource Include="Resources\icons_patient\user.png" />
     <Resource Include="Resources\icon_manager\ManagerBack.png" />
   </ItemGroup>
 
