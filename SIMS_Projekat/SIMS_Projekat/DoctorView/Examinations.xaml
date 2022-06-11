@@ -46,6 +46,11 @@
                 </DataGrid.Columns>
             </DataGrid>
         </DockPanel>
-        <Button x:Name="Details" Content="Detaljnije" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,610,13,0" Click="Button_Click_1"/>
+        <Button x:Name="Details" IsEnabled="False" Style="{StaticResource BiggerClassicButton}" HorizontalAlignment="Right" Margin="0,610,13,0" Click="Button_Click_1">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Resources/icons_doctor/more.png" Width="25" Margin="0,0,10,0"/>
+                <TextBlock FontSize="15">Detaljnije</TextBlock>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

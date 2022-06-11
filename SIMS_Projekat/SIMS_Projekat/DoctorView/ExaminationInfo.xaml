@@ -11,31 +11,31 @@
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
             <Button Content="&lt; Nazad" Style="{StaticResource BackButton}" Margin="10,0,0,0" Click="Button_Click"/>
-            <Label Content="Pregled" Width="142" Height="52" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+            <Label Content="Pregled" Width="170" Height="52" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
                 <Button x:Name="Anamnesis" HorizontalAlignment="Center" Margin="0,445,0,0" VerticalAlignment="Top" Width="110" Height="60" Style="{StaticResource BiggerClassicButton}" Click="Anamnesis_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/medical-history.png" Width="25" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/list.png" Width="25" Margin="0,0,10,0"/>
                         <TextBlock FontSize="15">Izvestaj</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Receipt" HorizontalAlignment="Left" Margin="13,445,0,0" VerticalAlignment="Top" Width="110" Height="60" Style="{StaticResource BiggerClassicButton}" Click="Receipt_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/write.png" Width="24" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/medical-prescription.png" Width="24" Margin="0,0,10,0"/>
                         <TextBlock FontSize="15">Recept</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Uput" HorizontalAlignment="Right" Margin="0,445,13,0" VerticalAlignment="Top" Style="{StaticResource ClassicButton}" Click="Izmenite_Termin_Click" Width="110" Height="60">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/underline-button.png" Width="22" Margin="0,0,5,0"/>
+                        <Image Source="/Resources/icons_doctor/edit.png" Width="22" Margin="0,0,5,0"/>
                         <TextBlock FontSize="15">Uput</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Zavrsi_Pregled" HorizontalAlignment="Center" Margin="0,527,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="365" Click="Zavrsi_Pregled_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons/tick-inside-circle.png" Width="30" Margin="0,0,15,0"/>
+                        <Image Source="/Resources/icons_doctor/check.png" Width="30" Margin="0,0,15,0"/>
                         <TextBlock FontSize="17">Zavrsi pregled</TextBlock>
                     </StackPanel>
                 </Button>

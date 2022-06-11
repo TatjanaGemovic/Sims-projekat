@@ -83,7 +83,7 @@ namespace SIMS_Projekat.DoctorView
             XFont font22 = new XFont("Arial", 14, XFontStyle.Italic);
             XFont font3 = new XFont("Arial", 20, XFontStyle.Bold);
 
-            XImage img = XImage.FromFile(@".\..\..\..\Resources\icons_doctor\cardiogram2.png");
+            XImage img = XImage.FromFile(@".\..\..\..\Resources\icons_doctor\cardiogram (3).png");
             gfx.DrawImage(img, 10, 10, 30 ,30);
 
             gfx.DrawString("Health korporacija", font22, XBrushes.Gray, new XPoint(50, 30));

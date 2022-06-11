@@ -11,19 +11,19 @@
     <Grid>
         <DockPanel x:Name="ActionBarLabel" Grid.Row="0" Margin="0,0,0,650">
             <Button Content="&lt; Nazad" Command="{Binding backCommand}" Style="{StaticResource BackButton}" Margin="10,0,0,0"/>
-            <Label Content="Lek info" Width="160" Height="48" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
+            <Label Content="Lek" Width="120" Height="48" Style="{StaticResource ActionBarLabel}" Margin="-35,0,0,0"/>
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
                 <Button x:Name="Reject" Command="{Binding denyCommand}" HorizontalAlignment="Center" Margin="0,532,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/trash.png" Width="20" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/delete.png" Width="25" Margin="0,0,10,0"/>
                         <TextBlock FontSize="20">Odbij</TextBlock>
                     </StackPanel>
                 </Button>
                 <Button x:Name="Approve" Command="{Binding approveCommand}" FontSize="20" HorizontalAlignment="Center" Margin="0,450,0,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Width="320">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons/tick-inside-circle.png"  Width="20" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/check.png"  Width="25" Margin="0,0,10,0"/>
                         <TextBlock FontSize="20">Odobri</TextBlock>
                     </StackPanel>
                 </Button>

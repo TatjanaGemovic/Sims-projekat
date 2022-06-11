@@ -29,21 +29,46 @@
     <None Remove="Resources\icons\timesheet.png" />
     <None Remove="Resources\icons\view.png" />
     <None Remove="Resources\icons\work_calendar.png" />
+    <None Remove="Resources\icons_doctor\bin.png" />
+    <None Remove="Resources\icons_doctor\calendar.png" />
     <None Remove="Resources\icons_doctor\cardiogram.png" />
+    <None Remove="Resources\icons_doctor\check.png" />
+    <None Remove="Resources\icons_doctor\checkmark.png" />
     <None Remove="Resources\icons_doctor\clipboard-paste-button.png" />
     <None Remove="Resources\icons_doctor\create-new-pencil-button.png" />
+    <None Remove="Resources\icons_doctor\delete.png" />
+    <None Remove="Resources\icons_doctor\donor-card.png" />
+    <None Remove="Resources\icons_doctor\drawing.png" />
+    <None Remove="Resources\icons_doctor\edit %281%29.png" />
+    <None Remove="Resources\icons_doctor\edit.png" />
     <None Remove="Resources\icons_doctor\exit-to-app-button.png" />
+    <None Remove="Resources\icons_doctor\floppy-disk.png" />
+    <None Remove="Resources\icons_doctor\health %281%29.png" />
+    <None Remove="Resources\icons_doctor\list.png" />
     <None Remove="Resources\icons_doctor\medical-history.png" />
+    <None Remove="Resources\icons_doctor\medical-prescription.png" />
+    <None Remove="Resources\icons_doctor\medicine %281%29.png" />
+    <None Remove="Resources\icons_doctor\medicine.png" />
     <None Remove="Resources\icons_doctor\medicines %281%29.png" />
     <None Remove="Resources\icons_doctor\medicines.png" />
     <None Remove="Resources\icons_doctor\menu-button.png" />
+    <None Remove="Resources\icons_doctor\menu.png" />
+    <None Remove="Resources\icons_doctor\message.png" />
+    <None Remove="Resources\icons_doctor\more.png" />
+    <None Remove="Resources\icons_doctor\notification.png" />
     <None Remove="Resources\icons_doctor\patient.png" />
+    <None Remove="Resources\icons_doctor\phonendoscope.png" />
     <None Remove="Resources\icons_doctor\plus.png" />
+    <None Remove="Resources\icons_doctor\previous.png" />
     <None Remove="Resources\icons_doctor\save.png" />
+    <None Remove="Resources\icons_doctor\statistics.png" />
     <None Remove="Resources\icons_doctor\tick-inside-circle.png" />
     <None Remove="Resources\icons_doctor\trash.png" />
     <None Remove="Resources\icons_doctor\underline-button.png" />
+    <None Remove="Resources\icons_doctor\user %281%29.png" />
+    <None Remove="Resources\icons_doctor\users.png" />
     <None Remove="Resources\icons_doctor\write.png" />
+    <None Remove="Resources\icons_doctor\writing.png" />
     <None Remove="Resources\icons_patient\appointment.png" />
     <None Remove="Resources\icons_patient\copy-writing.png" />
     <None Remove="Resources\icons_patient\home.png" />
@@ -73,6 +98,31 @@
 
   <ItemGroup>
     <Resource Include="Resources\icons\approved.png" />
+    <Resource Include="Resources\icons_doctor\bin.png" />
+    <Resource Include="Resources\icons_doctor\calendar.png" />
+    <Resource Include="Resources\icons_doctor\check.png" />
+    <Resource Include="Resources\icons_doctor\checkmark.png" />
+    <Resource Include="Resources\icons_doctor\delete.png" />
+    <Resource Include="Resources\icons_doctor\donor-card.png" />
+    <Resource Include="Resources\icons_doctor\drawing.png" />
+    <Resource Include="Resources\icons_doctor\edit (1).png" />
+    <Resource Include="Resources\icons_doctor\edit.png" />
+    <Resource Include="Resources\icons_doctor\floppy-disk.png" />
+    <Resource Include="Resources\icons_doctor\health (1).png" />
+    <Resource Include="Resources\icons_doctor\list.png" />
+    <Resource Include="Resources\icons_doctor\medical-prescription.png" />
+    <Resource Include="Resources\icons_doctor\medicine (1).png" />
+    <Resource Include="Resources\icons_doctor\medicine.png" />
+    <Resource Include="Resources\icons_doctor\menu.png" />
+    <Resource Include="Resources\icons_doctor\message.png" />
+    <Resource Include="Resources\icons_doctor\more.png" />
+    <Resource Include="Resources\icons_doctor\notification.png" />
+    <Resource Include="Resources\icons_doctor\phonendoscope.png" />
+    <Resource Include="Resources\icons_doctor\previous.png" />
+    <Resource Include="Resources\icons_doctor\statistics.png" />
+    <Resource Include="Resources\icons_doctor\user (1).png" />
+    <Resource Include="Resources\icons_doctor\users.png" />
+    <Resource Include="Resources\icons_doctor\writing.png" />
     <Resource Include="Resources\icon_manager\ManagerBack.png" />
   </ItemGroup>
 
@@ -81,10 +131,6 @@
     <PackageReference Include="Syncfusion.SfChart.WPF" Version="20.1.0.58" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\icons_doctor\clipboard-paste-button.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,13 +151,6 @@
     <Resource Include="Resources\icons\syringe.png" />
     <Resource Include="Resources\icons\timesheet.png" />
     <Resource Include="Resources\icons\work_calendar.png" />
-    <Resource Include="Resources\icons_doctor\cardiogram.png" />
-    <Resource Include="Resources\icons_doctor\medicines.png" />
-    <Resource Include="Resources\icons_doctor\patient.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\icons_doctor\medicines (1).png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -120,16 +159,7 @@
     <Resource Include="Resources\icons\cancel.png" />
     <Resource Include="Resources\icons\close.png" />
     <Resource Include="Resources\icons\save.png" />
-    <Resource Include="Resources\icons_doctor\create-new-pencil-button.png" />
-    <Resource Include="Resources\icons_doctor\exit-to-app-button.png" />
-    <Resource Include="Resources\icons_doctor\medical-history.png" />
     <Resource Include="Resources\icons\tick-inside-circle.png" />
-    <Resource Include="Resources\icons_doctor\menu-button.png" />
-    <Resource Include="Resources\icons_doctor\plus.png" />
-    <Resource Include="Resources\icons_doctor\save.png" />
-    <Resource Include="Resources\icons_doctor\trash.png" />
-    <Resource Include="Resources\icons_doctor\underline-button.png" />
-    <Resource Include="Resources\icons_doctor\write.png" />
     <Resource Include="Resources\icons_patient\appointment.png" />
     <Resource Include="Resources\icons_patient\copy-writing.png" />
     <Resource Include="Resources\icons_patient\home.png" />

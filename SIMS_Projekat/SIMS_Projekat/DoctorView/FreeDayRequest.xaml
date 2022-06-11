@@ -14,7 +14,12 @@
         </DockPanel>
         <DockPanel Margin="0,100,0,0">
             <Grid>
-                <Button x:Name="Send" Command="{Binding sendCommand}" Content="Posalji" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}"/>
+                <Button x:Name="Send" Command="{Binding sendCommand}" HorizontalAlignment="Right" Margin="0,530,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Resources/icons_doctor/message.png" Width="22" Margin="0,0,10,0"/>
+                        <TextBlock FontSize="17">Posalji</TextBlock>
+                    </StackPanel>
+                </Button>
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="455" Margin="0,30,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Label Content="Razlog" HorizontalAlignment="Left" Margin="50,197,0,0" VerticalAlignment="Top" Height="36" Width="114" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3"/>
                 <Label Content="Od" HorizontalAlignment="Left" Margin="50,80,0,0" VerticalAlignment="Top" Width="118" FontSize="18" FontWeight="Bold" Foreground="#FF676FA3" Height="35"/>

@@ -18,7 +18,7 @@
                 <Rectangle Fill="#CDDEFF" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Stroke="#676FA3" StrokeThickness="4" Height="286" Margin="0,75,0,0" RadiusX="10.5" RadiusY="10.5"/>
                 <Button x:Name="Izmeni" IsEnabled="False" HorizontalAlignment="Right" Margin="0,520,16,0" VerticalAlignment="Top" Style="{StaticResource BiggerClassicButton}" Click="Promeni_Click">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="/Resources/icons_doctor/create-new-pencil-button.png" Width="20" Margin="0,0,10,0"/>
+                        <Image Source="/Resources/icons_doctor/edit (1).png" Width="20" Margin="0,0,10,0"/>
                         <TextBlock FontSize="17">Izmeni</TextBlock>
                     </StackPanel>
                 </Button>
