@@ -6,7 +6,7 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1370"
+      d:DesignHeight="723" d:DesignWidth="1379"
       Title="ChangeReminderPage">
 
     <Page.Resources>

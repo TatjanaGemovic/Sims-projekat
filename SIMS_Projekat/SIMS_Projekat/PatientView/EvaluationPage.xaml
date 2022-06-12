@@ -7,7 +7,7 @@
       xmlns:viewModel="clr-namespace:SIMS_Projekat.PatientView.ViewModel"
       xmlns:data="clr-namespace:SIMS_Projekat.Model"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1370"
+      d:DesignHeight="723" d:DesignWidth="1379"
       Title="EvaluationPage">
     <Page.Resources>
         <ResourceDictionary>

@@ -30,12 +30,13 @@
         </Style.Resources>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientButtonsPage" TargetType="Button">
-        <Setter Property="Background" Value="#61B15A"/>
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Background" Value="#386641"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="26" />
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Width" Value="201" />
+        <Setter Property="Width" Value="225" />
         <Setter Property="Height" Value="61" />
         <Setter Property="Template">
             <Setter.Value>
@@ -51,28 +52,30 @@
                 <Setter Property="Background" Value="#ADCE74"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="#ADCE74"/>
+                <Setter Property="Background" Value="#6A994E"/>
             </Trigger>
         </Style.Triggers>
         <Style.Resources>
             <Style TargetType="Border">
                 <Setter Property="CornerRadius" Value="20"/>
-                <Setter Property="BorderBrush" Value="#FFCE89"/>
+                <Setter Property="BorderBrush" Value="#BC4749"/>
                 <Setter Property="BorderThickness" Value="3"/>
             </Style>
         </Style.Resources>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientBigLabels" TargetType="Label">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="48"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientRegularLabels" TargetType="Label">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -80,8 +83,9 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientNotificationGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
@@ -98,7 +102,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Trenutno nemate obaveštenja!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Trenutno nemate obaveštenja!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -106,6 +110,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientDataGridRow" TargetType="DataGridRow">
         <Setter Property="Background" Value="Transparent" />
         <Style.Triggers>
@@ -119,7 +124,8 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
+    <!--koristi se-->
     <Style x:Key="PatientDataGridCell" TargetType="DataGridCell">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontSize" Value="24"/>
@@ -131,7 +137,7 @@
                 <Setter Property="BorderBrush" Value="Transparent"/>
                 <Setter Property="Background" Value="#ADCE74"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Foreground" Value="#FFF76A"/>
+                <Setter Property="Foreground" Value="#F2E8CF"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -152,41 +158,138 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="PatientDataGridRadioButton" TargetType="RadioButton">
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="True">
-                <Setter Property="Background" Value="#FFCE89"/>
-                <Setter Property="Foreground" Value="#FFF76A"/>
-                <Setter Property="FontSize" Value="24"/>
-                <Setter Property="FontWeight" Value="Normal" />
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="#FFCE89"/>
-                <Setter Property="Foreground" Value="#FFF76A"/>
-                <Setter Property="FontSize" Value="24"/>
-                <Setter Property="FontWeight" Value="Normal" />
-            </Trigger>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#FFCE89"/>
-                <Setter Property="Foreground" Value="#FFF76A"/>
-                <Setter Property="FontSize" Value="24"/>
-                <Setter Property="FontWeight" Value="Normal" />
-            </Trigger>
-        </Style.Triggers>
+    <!--koristi se-->
+    <Style x:Key="RadioButton"
+       TargetType="{x:Type RadioButton}">
+        <Setter Property="SnapsToDevicePixels"
+          Value="true" />
+        <Setter Property="OverridesDefaultStyle"
+          Value="true" />
+        <Setter Property="FocusVisualStyle"
+          Value="{DynamicResource RadioButtonFocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Grid Width="13"
+                  Height="13">
+                                <Ellipse x:Name="Border"
+                       StrokeThickness="2">
+                                    <Ellipse.Stroke>
+                                        <LinearGradientBrush EndPoint="0.5,1"
+                                       StartPoint="0.5,0">
+                                            <GradientStop Color="#A7C957"
+                                  Offset="0" />
+                                            <GradientStop Color="#386641"
+                                  Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Ellipse.Stroke>
+                                    <Ellipse.Fill>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                       EndPoint="0,1">
+                                            <LinearGradientBrush.GradientStops>
+                                                <GradientStopCollection>
+                                                    <GradientStop Color="#F2E8CF" />
+                                                    <GradientStop Color="#E76F51"
+                                      Offset="1.0" />
+                                                </GradientStopCollection>
+                                            </LinearGradientBrush.GradientStops>
+                                        </LinearGradientBrush>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Ellipse x:Name="CheckMark"
+                       Margin="4"
+                       Visibility="Collapsed">
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush Color="#F2E8CF" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Shape.Fill).
+                    (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="#BC4749" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Shape.Fill).
+                    (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="#BC4749" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Shape.Fill).
+                    (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="#6A994E" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Shape.Stroke).
+                    (GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="#6A994E" />
+                                        </ColorAnimationUsingKeyFrames>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Shape.Stroke).
+                    (GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                         Value="#6A994E" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                 Storyboard.TargetName="CheckMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter Margin="4,0,0,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            RecognizesAccessKey="True" />
+                    </BulletDecorator>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientAppointmentGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Height" Value="500"/>
+        <Setter Property="Height" Value="480"/>
         <Setter Property="Width" Value="1000"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="CanUserResizeRows" Value="False"/>
@@ -198,7 +301,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Trenutno nemate ništa zakazano!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Trenutno nemate ništa zakazano!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -352,29 +455,33 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
+    <!--koristi se-->
     <Style x:Key="PatientDataGridColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="FontSize" Value="25"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Background" Value="#61B15A"/>
+        <Setter Property="Background" Value="#386641"/>
         <Setter Property="Width" Value="200"/>
+        <Setter Property="Height" Value="50"/>
     </Style>
-
+    
+    <!--koristi se-->
     <Style x:Key="PatientDataGridHCIColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Background" Value="#61B15A"/>
+        <Setter Property="Background" Value="#386641"/>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientDataGridAppointmentRow" TargetType="DataGridRow">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="#FFCE89" />
+        <Setter Property="BorderBrush" Value="#BC4749" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -386,9 +493,10 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientDataGridHCIAppointmentRow" TargetType="DataGridRow">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderBrush" Value="#FFCE89" />
+        <Setter Property="BorderBrush" Value="#BC4749" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
@@ -417,33 +525,37 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
             <GradientStopCollection>
-                <GradientStop Color="#ADCE74" Offset="0.0"/>
-                <GradientStop Color="#61B15A" Offset="1.0"/>
+                <GradientStop Color="#6A994E" Offset="0.0"/>
+                <GradientStop Color="#386641" Offset="1.0"/>
             </GradientStopCollection>
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <!--koristi se-->
     <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
             <GradientStopCollection>
-                <GradientStop Color="#61B15A" Offset="0.0"/>
-                <GradientStop Color="#ADCE74" Offset="1.0"/>
+                <GradientStop Color="#386641" Offset="0.0"/>
+                <GradientStop Color="#6A994E" Offset="1.0"/>
             </GradientStopCollection>
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <!--koristi se-->
     <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
             <GradientStopCollection>
-                <GradientStop Color="#FFF76A" Offset="0.0"/>
-                <GradientStop Color="#FFCE89" Offset="1.0"/>
+                <GradientStop Color="#FFCE89" Offset="0.0"/>
+                <GradientStop Color="#BC4749" Offset="1.0"/>
             </GradientStopCollection>
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
 
+    <!--koristi se-->
     <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -455,14 +567,14 @@
                   Grid.ColumnSpan="2"
                   CornerRadius="2"
                   Background="{StaticResource NormalBrush}"
-                  BorderBrush="#FFCE89"
+                  BorderBrush="#BC4749"
                   BorderThickness="1" />
             <Border 
                   Grid.Column="0"
                   CornerRadius="2,0,0,2" 
                   Margin="1" 
                   Background="#ADCE74" 
-                  BorderBrush="#FFCE89"
+                  BorderBrush="#BC4749"
                   BorderThickness="0,0,1,0" />
             <Path 
                       x:Name="Arrow"
@@ -485,10 +597,12 @@
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <!--koristi se-->
     <ControlTemplate x:Key="ComboBoxTextBox" TargetType="TextBox">
         <Border x:Name="PART_ContentHost" Focusable="False" Background="#ADCE74" />
     </ControlTemplate>
 
+    <!--koristi se-->
     <Style x:Key="PatientComboBox" TargetType="ComboBox">
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="OverridesDefaultStyle" Value="true"/>
@@ -527,7 +641,7 @@
                                 Focusable="True" 
                                 Background="#ADCE74"
                                 FontSize="24"
-                                Foreground="#FFF76A"
+                                Foreground="#F2E8CF"
                                 Visibility="Hidden"
                                 IsReadOnly="{TemplateBinding IsReadOnly}"/>
                         <Popup 
@@ -546,7 +660,7 @@
                                         x:Name="DropDownBorder"
                                         Background="#ADCE74"
                                         BorderThickness="1"
-                                        BorderBrush="#FFCE89"/>
+                                        BorderBrush="#BC4749"/>
                                 <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>
@@ -578,5 +692,69 @@
         </Setter>
         <Style.Triggers>
         </Style.Triggers>
+    </Style>
+
+    <LinearGradientBrush x:Key="GridBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#386641" Offset="0.0"/>
+                <GradientStop Color="#6A994E" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <Style x:Key="Button_Selection" TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource GridBrush}"/>
+    </Style>
+
+    <LinearGradientBrush x:Key="StackBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#386641" Offset="0.0"/>
+                <GradientStop Color="#6A994E" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <Style x:Key="StackHome" TargetType="StackPanel">
+        <Setter Property="Background" Value="{StaticResource StackBrush}"/>
+    </Style>
+    
+    <LinearGradientBrush x:Key="DockHomeBrush" StartPoint="1,1" EndPoint="0,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#386641" Offset="0.0"/>
+                <GradientStop Color="#6A994E" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <Style x:Key="DockHome" TargetType="DockPanel">
+        <Setter Property="Background" Value="{StaticResource DockHomeBrush}"/>
+    </Style>
+
+    <Style x:Key="PatientHomeButtons" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
+        <Setter Property="FontSize" Value="26" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Width" Value="221" />
+        <Setter Property="Height" Value="61" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ADCE74"/>
+            </Trigger>
+        </Style.Triggers>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="20"/>
+            </Style>
+        </Style.Resources>
     </Style>
 </ResourceDictionary>

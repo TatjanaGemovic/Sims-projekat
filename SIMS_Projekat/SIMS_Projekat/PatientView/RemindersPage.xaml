@@ -6,8 +6,8 @@
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1370"
-      Title="RemindersPage">
+      d:DesignHeight="723" d:DesignWidth="1379"
+      Title="RemindersPage" Background="#6A994E">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -48,11 +48,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži podsetnik" Width="240"
+        <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži podsetnik" 
                 IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
                 Command="{Binding DetailsCommand}" Margin="0,0,280,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj podsetnik" Width="240" 
+        <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj podsetnik" 
                 Command="{Binding NewReminderCommand}" Margin="0,0,20,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>

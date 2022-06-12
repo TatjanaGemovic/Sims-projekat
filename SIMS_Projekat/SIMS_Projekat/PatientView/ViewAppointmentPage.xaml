@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1370"
-      Title="ViewAppointmentPage">
+      d:DesignHeight="723" d:DesignWidth="1379"
+      Title="ViewAppointmentPage" Background="#6A994E">
     
     <Page.Resources>
         <ResourceDictionary>
@@ -71,21 +71,21 @@
         <Label Grid.Row="6" Grid.Column="2" x:Name="isOperationField"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <Button Grid.Row="9" Grid.Column="8" Grid.ColumnSpan="2" Content="Izmeni" Click="ChangeClick" x:Name="changeButton"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"
+        <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="7" HorizontalAlignment="Right" Margin="0,0,20,10">
+            <Button Content="Otkaži" Click="DeleteClick"
+                x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="0,0,35,0"
+                ToolTip="Iskoristili ste maksimalni broj otkazivanja termina!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, 
+                Converter={StaticResource OppositeConverter}}"/>
+            <Button Content="Nazad" Click="CancelClick" Margin="0,0,35,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+            <Button Content="Izmeni" Click="ChangeClick" x:Name="changeButton"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" 
                 ToolTip="{Binding Path=Content, ElementName=isOperationField, UpdateSourceTrigger=PropertyChanged, 
                 Converter={StaticResource ToolTipTextConverter}}" ToolTipService.ShowOnDisabled="True" 
                 ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, 
                 Converter={StaticResource OppositeConverter}}"/>
-
-        <Button Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Content="Otkaži" Click="DeleteClick"
-                x:Name="deleteButton" Style="{StaticResource ResourceKey=PatientButtonsPage}"
-                ToolTip="Iskoristili ste maksimalni broj otkazivanja termina!" ToolTipService.ShowOnDisabled="True" 
-                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, 
-                Converter={StaticResource OppositeConverter}}"/>
-
-        <Button Grid.Row="9" Grid.Column="6" Grid.ColumnSpan="2" Content="Nazad" Click="CancelClick"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+        </StackPanel>
 
     </Grid>
 </Page>

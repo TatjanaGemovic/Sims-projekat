@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView" xmlns:local1="clr-namespace:SIMS_Projekat.Service"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1370"
-      Title="Homepage">
+      d:DesignHeight="723" d:DesignWidth="1379"
+      Title="Homepage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -38,17 +38,17 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <Button x:Name="reportButton" Grid.Row="6" Grid.Column="1" Content="Generišite izveštaj" 
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" Width="220" Grid.RowSpan="2" Click="ReportButton_Click" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="ReportButton_Click" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="EvaluationButton_Click" />
 
-        <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
+        <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#BC4749" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>
 
         <Label x:Name="notification" Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Content="  Obaveštenja  " 
-               VerticalAlignment="Top" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
-               Margin="0,37,0,0" Foreground="#FFF76A"/>
+               VerticalAlignment="Top" HorizontalAlignment="Center" Background="#6A994E" FontSize="25" 
+               Margin="0,37,0,0" Foreground="#F2E8CF"/>
 
         <DataGrid  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="4" Margin="10,20,10,61" 
                    ItemsSource="{Binding Path=ReminderCollection, UpdateSourceTrigger=PropertyChanged}" 
@@ -79,7 +79,7 @@
                             <RadioButton x:Name="notificationRead" Content="Pročitano" Checked="NotificationRead_Checked" 
                                         GroupName="gridRadio"
                                         IsEnabled="{Binding Path=IsSelected, RelativeSource={RelativeSource FindAncestor, 
-                                        AncestorType={x:Type DataGridRow}}}" Style="{StaticResource ResourceKey=PatientDataGridRadioButton}" >
+                                        AncestorType={x:Type DataGridRow}}}" Style="{StaticResource ResourceKey=RadioButton}" >
                             </RadioButton>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

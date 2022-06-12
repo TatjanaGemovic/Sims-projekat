@@ -44,9 +44,9 @@ namespace SIMS_Projekat.PatientView
             password.Content = patient.Password;
 
             if (patient.BloodType == BloodType.O_Positive)
-                krvna.Content = "O pozitivna";
+                krvna.Content = "0 pozitivna";
             else if (patient.BloodType == BloodType.O_Negative)
-                krvna.Content = "O negativna";
+                krvna.Content = "0 negativna";
             else if (patient.BloodType == BloodType.A_Positive)
                 krvna.Content = "A pozitivna";
             else if (patient.BloodType == BloodType.A_Negative)

@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:DesignHeight="343" d:DesignWidth="476"
-      Title="RandomAppontmentFirstPage">
+      d:DesignHeight="340" d:DesignWidth="500"
+      Title="RandomAppontmentFirstPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -46,17 +46,24 @@
         <Label x:Name="timeContentLabel" Grid.Row="3" Grid.Column="2"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"  />
 
-        <Button x:Name="scheduleAppointment" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,0,15,0"
-                Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right"
-                Click="ScheduleAppointment_Click"/>
-        
-        <Button x:Name="showAppointmentButton" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
-                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="15,0,0,0" HorizontalAlignment="Left"
+        <StackPanel Orientation="Horizontal"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0,0,5,0">
+            <Button x:Name="showAppointmentButton"
+                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="0,0,35,0" 
                  Click="ShowAppointmentButton_Click">
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
-                <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
-            </StackPanel>
-        </Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
+                    <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
+                </StackPanel>
+            </Button>
+            <Button x:Name="scheduleAppointment" 
+                Content="Zakaži" Style="{StaticResource ResourceKey=PatientButtonsPage}"
+                Click="ScheduleAppointment_Click"/>
+
+        </StackPanel>
+
+
+        
+        
+        
     </Grid>
 </Page>
