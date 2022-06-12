@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ViewNotePage">
+      Title="ViewNotePage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -46,8 +46,8 @@
             <Label Content="{Binding Note.Time}" Height="80" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-            <TextBox Width="900" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                     FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+            <TextBox Width="900" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                     FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="300" Margin="0,10,0,0"
                      Text="{Binding Note.Content}" IsReadOnly="True">
                 <TextBox.Resources>
@@ -58,16 +58,22 @@
             </TextBox>
         </StackPanel>
 
-        <Button Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Content="Izmeni" x:Name="changeButton" 
-                HorizontalAlignment="Right" Margin="0,0,20,0" Command="{Binding ChangeCommand}"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
-
-        <Button Grid.Row="3" Grid.Column="2" Content="Izbriši" HorizontalAlignment="Right" Margin="0,0,300,0"
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2" 
+                    Grid.ColumnSpan="2" Margin="0,0,20,25">
+            <Button Grid.Row="3" Grid.Column="2" Content="Izbriši" HorizontalAlignment="Right" Margin="0,0,35,0" 
                 Command="{Binding DeleteCommand}" Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
-
-        <Button x:Name="goBackButton" Content="Nazad" Grid.Row="3" Grid.Column="2"
-                Command="{Binding BackCommand}" HorizontalAlignment="Right" Margin="0,0,70,0"
+            <Button x:Name="goBackButton" Content="Nazad" Grid.Row="3" Grid.Column="2"
+                Command="{Binding BackCommand}" Margin="0,0,35,0" 
+                Style="{StaticResource ResourceKey=PatientButtonsPage}"/> 
+            <Button Content="Izmeni" x:Name="changeButton" 
+                HorizontalAlignment="Right" Command="{Binding ChangeCommand}"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+        </StackPanel>
+        
+        
+        
+        
 
+        
     </Grid>
 </Page>

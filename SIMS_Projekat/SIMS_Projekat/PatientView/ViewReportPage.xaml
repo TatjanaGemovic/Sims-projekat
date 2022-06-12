@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ViewReportPage">
+      Title="ViewReportPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <converters:ReportNoteIDToButtonContentConverter x:Key="ReportNoteIDToButtonContentConverter" />
@@ -59,8 +59,8 @@
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
             <Label Content="{Binding Report.DoctorName}" Height="50" VerticalContentAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
-            <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                     FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+            <TextBox Width="700" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                     FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120" Margin="0,10,0,0"
                      Text="{Binding Path=Report.Anamnesis}" IsReadOnly="True">
                 <TextBox.Resources>
@@ -69,8 +69,8 @@
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                     FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+            <TextBox Width="700" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                     FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Height="120" Margin="0,10,0,0"
                      AcceptsTab="False" Text="{Binding Report.Treatment}" IsReadOnly="True" >
                 <TextBox.Resources>
@@ -78,7 +78,7 @@
                         <Setter Property="CornerRadius" Value="10"/>
                         <Style.Triggers>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" Value="#FFCE89" />
+                                <Setter Property="BorderBrush" Value="#BC4749" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -88,19 +88,19 @@
 
         <Button Content="Nazad" Grid.Row="3" Grid.Column="3"
                 Command="{Binding BackCommand}"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" Margin="0,31,20,26"/>
 
-        <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Stroke="#FFCE89" StrokeThickness="3" 
+        <Rectangle Grid.Row="1" Grid.RowSpan="2" Grid.Column="3" Stroke="#BC4749" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,35.5,10,260"
                    Visibility="{Binding Path=Report.NoteID, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReportNoteIDToVisibilityConverter}}"/>
-        
+
         <Button x:Name="createNoteButton" Grid.Row="1" Grid.Column="3"
                 Content="{Binding Path=Report.NoteID, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReportNoteIDToButtonContentConverter}}" 
                 Command="{Binding NoteCommand}" Margin="0,10,0,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
-        
-        <TextBox  Grid.Row="2" Grid.Column="3" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                  FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+
+        <TextBox  Grid.Row="2" Grid.Column="3" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                  FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                   VerticalScrollBarVisibility="Auto" AcceptsReturn="True" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                   Text="{Binding NoteContent}" IsReadOnly="True" Margin="10,10,20,270" 
                   Visibility="{Binding Path=Report.NoteID, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ReportNoteIDToVisibilityConverter}}">
@@ -109,7 +109,7 @@
                     <Setter Property="CornerRadius" Value="10"/>
                     <Style.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="BorderBrush" Value="#FFCE89" />
+                            <Setter Property="BorderBrush" Value="#BC4749" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>

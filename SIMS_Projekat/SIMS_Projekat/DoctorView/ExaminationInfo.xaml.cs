@@ -57,6 +57,7 @@ namespace SIMS_Projekat.DoctorView
                 isFilled = false,
                 patient = appointment.patient,
                 doctor = appointment.doctor,
+                evaluationCreated = DateTime.Today
             };
             App.evaluationController.AddEvaluation(evaluation);
             Frame.Content = new Examinations(Frame, doctor);

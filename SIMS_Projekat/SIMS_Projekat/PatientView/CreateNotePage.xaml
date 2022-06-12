@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="CreateNotePage">
+      Title="CreateNotePage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -59,13 +59,18 @@
             </TextBox.Resources>
         </TextBox>
 
-        <Button x:Name="cancelButton" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Content="Odustani" 
-                Command="{Binding GoBackCommand}" Margin="0,0,300,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
         
-        <Button x:Name="createButton" Grid.Row="5" Grid.Column="3" Content="Kreiraj belešku" 
-                Command="{Binding CreateCommand}" Margin="0,0,53,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="5" Grid.Column="2" 
+                    Grid.ColumnSpan="2" Margin="0,0,20,25">
+            <Button x:Name="cancelButton" Content="Odustani" 
+                Command="{Binding GoBackCommand}" Margin="0,0,35,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
+
+            <Button x:Name="createButton" Content="Kreiraj belešku" 
+                Command="{Binding CreateCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
+
+        </StackPanel>
+
     </Grid>
 </Page>

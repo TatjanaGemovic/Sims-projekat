@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="TherapyPage">
+      Title="TherapyPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
@@ -42,7 +42,7 @@
         </DataGrid>
         <Button x:Name="detailsButton" Grid.Row="3" Content="Detaljnije"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=ReceiptsTable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}" Margin="0,0,30,0"
+                Command="{Binding DetailsCommand}" Margin="0,0,20,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Page>

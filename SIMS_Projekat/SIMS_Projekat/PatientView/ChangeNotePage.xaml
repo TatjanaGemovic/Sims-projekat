@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ChangeNotePage">
+      Title="ChangeNotePage" Background="#6A994E">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -38,8 +38,8 @@
         <Label Content="Sadržaj:" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="True" Width="500" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                 FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+        <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="True" Width="500" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                 FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0" HorizontalAlignment="Left"
                  AcceptsTab="False" Text="{Binding Path=Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="41" MaxLines="2" MaxHeight="80">
             <TextBox.Resources>
@@ -49,8 +49,8 @@
             </TextBox.Resources>
         </TextBox>
 
-        <TextBox Grid.Row="4" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                 FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+        <TextBox Grid.Row="4" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                 FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
                  Height="300" AcceptsTab="False" Text="{Binding Path=Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
             <TextBox.Resources>
@@ -60,13 +60,16 @@
             </TextBox.Resources>
         </TextBox>
 
-        <Button x:Name="cancelButton" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Content="Odustani" 
-                Command="{Binding BackCommand}" Margin="0,0,300,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="5" Grid.Column="2" 
+                    Grid.ColumnSpan="2" Margin="0,0,20,25">
+            <Button x:Name="cancelButton" Content="Odustani" 
+                Command="{Binding BackCommand}" Margin="0,0,35,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
 
-        <Button x:Name="createButton" Grid.Row="5" Grid.Column="3" Content="Izmeni belešku" 
-                Command="{Binding ChangeCommand}" Margin="0,0,53,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <Button x:Name="createButton" Content="Izmeni belešku" 
+                Command="{Binding ChangeCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
 
+        </StackPanel>
     </Grid>
 </Page>

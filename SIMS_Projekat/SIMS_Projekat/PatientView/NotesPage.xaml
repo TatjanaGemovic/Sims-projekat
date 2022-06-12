@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="NotesPage">
+      Title="NotesPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
@@ -28,7 +28,7 @@
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
 
         <DataGrid  Grid.Row="2" Margin="150,0,150,0" MinRowHeight="50"
-                   ItemsSource="{Binding Notes}" Width="1000" Height="500"
+                   ItemsSource="{Binding Notes}" Width="1000" Height="480"
                    x:Name="GridView" Style="{StaticResource ResourceKey=PatientNotesGrid}"
                    RowStyle="{StaticResource ResourceKey=PatientDataGridRow}"
                    CellStyle="{StaticResource ResourceKey=PatientDataGridCell}"
@@ -49,7 +49,7 @@
         </DataGrid>
         <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži belešku"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}" Margin="0,0,250,0"
+                Command="{Binding DetailsCommand}" Margin="0,0,280,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj belešku" 
                 Command="{Binding NewNoteCommand}" Margin="0,0,20,0"

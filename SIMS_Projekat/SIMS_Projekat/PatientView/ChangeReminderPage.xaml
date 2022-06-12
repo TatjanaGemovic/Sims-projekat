@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ChangeReminderPage">
+      Title="ChangeReminderPage" Background="#6A994E">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -51,13 +51,13 @@
         <DatePicker Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0"
                    VerticalAlignment="Center" FontSize="24" FirstDayOfWeek="Monday" Width="200"
                     DisplayDateStart="{x:Static sys:DateTime.Now}" SelectedDate="{Binding Date, Mode=TwoWay}"
-                    Foreground="#FFF76A" BorderBrush="#FFCE89" Background="#FFADCE74">
+                    Foreground="#F2E8CF" BorderBrush="#BC4749" Background="#FFADCE74">
             <DatePicker.Resources>
                 <Style TargetType="DatePickerTextBox">
                     <Setter Property="IsReadOnly" Value="True"/>
                     <Setter Property="Background" Value="#FFADCE74"/>
                     <Setter Property="Text" Value="Izaberite dan"/>
-                    <Setter Property="BorderBrush" Value="#FFCE89"/>
+                    <Setter Property="BorderBrush" Value="#BC4749"/>
                     <Setter Property="FontWeight" Value="SemiBold"/>
                 </Style>
                 <Style TargetType="Popup">
@@ -67,21 +67,21 @@
         </DatePicker>
 
         <ComboBox Grid.Column="2" Grid.Row="4"
-                  AllowDrop="True" x:Name="comboTime" BorderBrush="White" FontSize="24" Margin="10,0,0,0"
+                  AllowDrop="True" x:Name="comboTime" BorderBrush="#BC4749" FontSize="24" Margin="10,0,0,0"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="200" HorizontalAlignment="Left"
                   ItemsSource="{Binding PossibleTimes}" 
                   VerticalAlignment="Center" SelectedItem="{Binding Time, Mode=TwoWay}"
-                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
+                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#F2E8CF"/>
 
         <ComboBox Grid.Column="2" Grid.Row="6" SelectedItem="{Binding CanRepeat, Mode=TwoWay}"
-                  AllowDrop="True" BorderBrush="White" FontSize="24" Margin="10,0,0,0"
+                  AllowDrop="True" BorderBrush="#BC4749" FontSize="24" Margin="10,0,0,0"
                   HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Width="200" HorizontalAlignment="Left"
                   ItemsSource="{Binding IsRepeatable , NotifyOnSourceUpdated=True}"
                   VerticalAlignment="Center"
-                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
+                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#F2E8CF"/>
 
-        <TextBox Grid.Row="8" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                 FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+        <TextBox Grid.Row="8" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                 FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
                  Height="40" AcceptsTab="False" Text="{Binding Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
             <TextBox.Resources>
@@ -91,13 +91,18 @@
             </TextBox.Resources>
         </TextBox>
 
-        <Button x:Name="cancelButton" Grid.Row="10" Grid.Column="2" Grid.ColumnSpan="2" Content="Odustani" Width="240"
-                Command="{Binding BackCommand}" Margin="0,0,320,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="10" Grid.Column="2" 
+                    Grid.ColumnSpan="2" Margin="0,0,20,25">
+            <Button x:Name="cancelButton" Content="Odustani" 
+                Command="{Binding BackCommand}" Margin="0,0,35,0"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
 
-        <Button x:Name="createButton" Grid.Row="10" Grid.Column="3" Content="Izmeni podsetnik" Width="240"
-                Command="{Binding ChangeCommand}" Margin="0,0,53,18"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <Button x:Name="createButton" Content="Izmeni belešku" 
+                Command="{Binding ChangeCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
 
+        </StackPanel>
+        
     </Grid>
 </Page>

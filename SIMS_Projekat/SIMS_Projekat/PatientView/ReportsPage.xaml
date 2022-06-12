@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ReportsPage">
+      Title="ReportsPage" Background="#6A994E">
 
     <Page.Resources>
         <ResourceDictionary>

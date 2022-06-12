@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="ChooseDoctorPage">
+      Title="ChooseDoctorPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -42,7 +42,7 @@
                Content="{Binding SelectedItem.doctorName, ElementName=doctorComboBox }" />
 
         <TextBlock Grid.Row="2" Grid.Column="2" x:Name="existing_doctor" FontSize="24" 
-                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A" >
+                   IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F2E8CF" >
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -59,10 +59,10 @@
                   DisplayMemberPath="doctorName" SelectionChanged="DoctorComboBox_SelectionChanged"
                   AllowDrop="True" FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   HorizontalAlignment="Stretch" VerticalAlignment="Center" 
-                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#FFF76A"/>
+                  Style="{StaticResource ResourceKey=PatientComboBox}" Foreground="#F2E8CF"/>
 
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Izaberite doktora" IsHitTestVisible="False" FontSize="24" 
-                   VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFF76A" Background="Transparent" FontWeight="SemiBold" >
+                   VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#F2E8CF" Background="Transparent" FontWeight="SemiBold" >
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -74,7 +74,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <TextBlock Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Foreground ="#FFF76A"
+        <TextBlock Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4" Foreground ="#F2E8CF"
               FontSize="24" TextWrapping="Wrap" Text="Odabirom doktora, prilikom svakog zakazivanja termina, on će biti postavljen kao zadužen za pregled. I dalje postoji opcija da zakažete pregled kod drugog doktora, ako to želite. Takođe, ako imate izabranog doktora, svi predlozi termina biće vezani za njega. Možete da promenite izabranog lekara u bilo kom momentu, na nekog drugog od ponuđenih. " Margin="20,0,20,0"/>
     </Grid>
 </Page>

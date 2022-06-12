@@ -8,7 +8,7 @@
       xmlns:data="clr-namespace:SIMS_Projekat.Model"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
-      Title="EvaluationPage">
+      Title="EvaluationPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
             <local:DoctorNameLabelConverter x:Key="DoctorNameLabelConverter" />
@@ -28,7 +28,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -43,12 +43,12 @@
 
         <Label Content="Odgovorite na pitanja tako što ćete dati ocenu od 1 do 5, gde 1 predstavlja najmanju ocenu, a 5 najvišu."
                Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Style="{StaticResource PatientRegularLabels}" Margin="0,10,0,10"/>
-        <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
+        <Rectangle Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#BC4749" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,18,0,0"/>
 
         <Label x:Name="reviewHospital" Grid.Row="2" Grid.Column="1" Content="  Ocenite objekat  " 
-               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
-               Foreground="#FFF76A"/>
+               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6A994E" FontSize="25" 
+               Foreground="#F2E8CF"/>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10,0,10">
             <Label x:Name="firstQuestion" Content="Da li je osoblje u prijemnoj prostoriji bilo prijatno?" 
@@ -116,18 +116,18 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Margin="0,10,0,0" Grid.Row="3" Grid.Column="0">
-            <Label Grid.Row="3" Content="*" FontSize="30" Foreground="Red" HorizontalContentAlignment="Right" />
-            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" />
-            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="30" Foreground="#BC4749" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="#BC4749" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="#BC4749" HorizontalContentAlignment="Right" />
         </StackPanel>
-        
-        <Rectangle Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#FFCE89" StrokeThickness="3" 
+
+        <Rectangle Grid.Row="4" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#BC4749" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,38,0,0"/>
 
         <Label x:Name="reviewDoctor" Grid.Row="4" Grid.Column="1" 
                Content="{Binding Path=DoctorFullName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DoctorNameLabelConverter}}" 
-               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#61B15A" FontSize="25" 
-               Foreground="#FFF76A" Margin="0,15,0,0"/>
+               VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6A994E" FontSize="25" 
+               Foreground="#F2E8CF" Margin="0,15,0,0"/>
         
         <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" Margin="0,10,0,10">
             <Label x:Name="fourthQuestion" Content="Da li je ste imali osećaj da razumete šta vam doktor govori?" 
@@ -141,9 +141,9 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Margin="0,15,0,0" Grid.Row="5" Grid.Column="0">
-            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" />
-            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" />
-            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="Red" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="#BC4749" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="#BC4749" HorizontalContentAlignment="Right" />
+            <Label Grid.Row="3" Content="*" FontSize="25" Foreground="#BC4749" HorizontalContentAlignment="Right" />
         </StackPanel>
 
         <StackPanel Grid.Row="5" Grid.Column="3" Orientation="Vertical"  >
@@ -203,8 +203,8 @@
         <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" >
             <Label Content="Komentar (opciono):" Grid.Row="6" Grid.Column="1" 
                Style="{StaticResource ResourceKey=PatientRegularLabels}" VerticalAlignment="Top"/>
-            <TextBox IsEnabled="True" Width="891" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                     FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+            <TextBox IsEnabled="True" Width="891" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                     FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                      VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
                      Height="100" AcceptsTab="False" Text="{Binding Path=Comment, Mode=OneWayToSource}" >
                 <TextBox.Resources>
@@ -214,17 +214,15 @@
                 </TextBox.Resources>
             </TextBox>
         </StackPanel>
-        
-        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="3" HorizontalAlignment="Center" Margin="0,5,0,0">
-            <Button x:Name="goBackButton" Content="Nazad" Command="{Binding BackCommand}"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}"/>
 
-            <Button x:Name="evaluationButton" Content="Posalji" Margin="30,0,0,0" Command="{Binding SendCommand}"
+        <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" Margin="0,0,20,20">
+            <Button x:Name="goBackButton" Content="Nazad" Command="{Binding BackCommand}"
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="0,0,35,0"/>
+
+            <Button x:Name="evaluationButton" Content="Posalji" Command="{Binding SendCommand}"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" />
         </StackPanel>
 
-
-        
-        
     </Grid>
 </Page>

@@ -142,6 +142,7 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientDataGridHCICell" TargetType="DataGridCell">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="FontSize" Value="16"/>
@@ -153,7 +154,7 @@
                 <Setter Property="BorderBrush" Value="Transparent"/>
                 <Setter Property="Background" Value="#ADCE74"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Foreground" Value="#FFF76A"/>
+                <Setter Property="Foreground" Value="#F2E8CF"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -309,18 +310,19 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientReportsGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Height" Value="500"/>
+        <Setter Property="Height" Value="480"/>
         <Setter Property="Width" Value="1000"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="CanUserResizeRows" Value="False"/>
@@ -332,7 +334,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Trenutno nemate nijedan izveštaj!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Trenutno nemate nijedan izveštaj!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -340,12 +342,13 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientHCIReportGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="Background" Value="#6A994E"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
@@ -363,7 +366,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Nemate terapije za ovaj dan!" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                            <TextBlock Text="Nemate terapije za ovaj dan!" Foreground="#F2E8CF" Background="#6A994E" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -371,12 +374,13 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientNotesGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="HeadersVisibility" Value="None"/>
@@ -390,7 +394,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Trenutno nemate nijednu belešku!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Trenutno nemate nijednu belešku!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -398,18 +402,19 @@
         </Style.Triggers>
     </Style>
 
+    <!--koristi se-->
     <Style x:Key="PatientTherapyGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="GridLinesVisibility" Value="None"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Height" Value="500"/>
+        <Setter Property="Height" Value="480"/>
         <Setter Property="Width" Value="1000"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="CanUserResizeRows" Value="False"/>
@@ -421,20 +426,21 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Nemate nijednu aktivnu terapiju!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Nemate nijednu aktivnu terapiju!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
+    <!--koristi se-->
     <Style x:Key="PatientRemindersGrid" TargetType="DataGrid">
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="#FFCE89"/>
+        <Setter Property="BorderBrush" Value="#BC4749"/>
         <Setter Property="BorderThickness" Value="3"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="HeadersVisibility" Value="None"/>
@@ -448,7 +454,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Trenutno nemate nijedan podsetnik!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
+                            <TextBlock Text="Trenutno nemate nijedan podsetnik!" Foreground="#F2E8CF" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -510,8 +516,8 @@
     </Style>
 
     <Style x:Key="PatientRadioButtons" TargetType="RadioButton">
-        <Setter Property="Background" Value="#FFCE89"/>
-        <Setter Property="Foreground" Value="#FFF76A"/>
+        <Setter Property="Background" Value="#BC4749"/>
+        <Setter Property="Foreground" Value="#F2E8CF"/>
         <Setter Property="FontSize" Value="25" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Style.Triggers>
