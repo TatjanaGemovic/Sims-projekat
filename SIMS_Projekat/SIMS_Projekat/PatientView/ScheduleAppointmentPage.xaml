@@ -4,13 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
-
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
       Title="ScheduleAppointmentPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -94,7 +95,8 @@
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="CancelClick"/>
             <Button  x:Name="scheduleClickButton" Content="Zakaži" HorizontalAlignment="Right"
                  Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="ScheduleClick" IsEnabled="False" 
-                  />
+                  ToolTip="Niste popunili sva polja!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
         
         </StackPanel>
         

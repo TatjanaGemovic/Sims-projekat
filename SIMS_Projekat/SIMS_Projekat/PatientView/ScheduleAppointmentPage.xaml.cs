@@ -366,7 +366,7 @@ namespace SIMS_Projekat.PatientView
                new Action(
                  delegate ()
                  {
-                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     scheduleClickButton.Background = new SolidColorBrush(Color.FromRgb(56, 102, 65));
                  }
                 ));
             });

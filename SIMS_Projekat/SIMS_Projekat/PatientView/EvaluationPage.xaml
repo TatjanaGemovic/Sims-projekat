@@ -5,12 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       xmlns:viewModel="clr-namespace:SIMS_Projekat.PatientView.ViewModel"
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:data="clr-namespace:SIMS_Projekat.Model"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
       Title="EvaluationPage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <local:DoctorNameLabelConverter x:Key="DoctorNameLabelConverter" />
             <local:RadioButtonConverter x:Key="RadioButtonConverter" />
             <ResourceDictionary.MergedDictionaries>
@@ -221,7 +223,8 @@
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Margin="0,0,35,0"/>
 
             <Button x:Name="evaluationButton" Content="Posalji" Command="{Binding SendCommand}"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" ToolTip="Niste popunili sva obavezna polja!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}" />
         </StackPanel>
 
     </Grid>

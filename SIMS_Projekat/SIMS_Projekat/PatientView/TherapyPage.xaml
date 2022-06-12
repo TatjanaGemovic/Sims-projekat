@@ -11,6 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -42,7 +43,8 @@
         </DataGrid>
         <Button x:Name="detailsButton" Grid.Row="3" Content="Detaljnije"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=ReceiptsTable, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}" Margin="0,0,20,0"
+                Command="{Binding DetailsCommand}" Margin="0,0,20,0" ToolTip="Niste izabrali nijednu terapiju za prikaz!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     </Grid>
 </Page>

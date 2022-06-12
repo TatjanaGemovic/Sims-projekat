@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
@@ -11,6 +12,7 @@
 
     <Page.Resources>
         <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -87,7 +89,8 @@
         <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="5" Grid.ColumnSpan="4" HorizontalAlignment="Right" Margin="0,40,20,0">
             <Button Content="Odustani" Margin="0,0,35,0"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" FontSize="24" Click="cancelClick"/>
-            <Button  Content="Izmeni" 
+            <Button  Content="Izmeni" ToolTip="Niste popunili sva polja!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"
                  Style="{StaticResource ResourceKey=PatientButtonsPage}" Click="changeClick"/>
         </StackPanel>
 

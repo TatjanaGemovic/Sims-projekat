@@ -3,12 +3,14 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView" xmlns:local1="clr-namespace:SIMS_Projekat.Service"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
       Title="Homepage" Background="#6A994E">
     <Page.Resources>
         <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -41,7 +43,9 @@
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="ReportButton_Click" />
 
         <Button x:Name="evaluationButton" Grid.Row="6" Grid.Column="3" Content="Ocenite nas!"
-                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="EvaluationButton_Click" />
+                Style="{StaticResource ResourceKey=PatientButtonsPage}" Grid.RowSpan="2" Click="EvaluationButton_Click" 
+                ToolTip="Ocena može da se ostavi nakon pregleda!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
 
         <Rectangle Grid.Row="2" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Stroke="#BC4749" StrokeThickness="3" 
                    RadiusX="10.5" RadiusY="10.5" Margin="0,0,0,61"/>

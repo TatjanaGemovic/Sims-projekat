@@ -71,7 +71,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="make_appointment" Style="{StaticResource ResourceKey=PatientHomeButtons}"
-                    Click="Make_appointment_Click" Grid.Row="1" Grid.ColumnSpan="2" >
+                    Click="Make_appointment_Click" Grid.Row="1" Grid.ColumnSpan="2" MouseEnter="make_appointment_MouseEnter" MouseLeave="make_appointment_MouseLeave">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/appointment.png" Width="30" Height="30" HorizontalAlignment="Left"></Image>
                     <Label Content="Termini" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />

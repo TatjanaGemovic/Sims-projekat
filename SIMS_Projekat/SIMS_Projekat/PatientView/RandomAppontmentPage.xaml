@@ -52,7 +52,7 @@
                  Click="ShowAppointmentButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/reload.png" Width="30" Height="30"></Image>
-                    <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" />
+                    <Label Content="Osveži" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontSize="26" FontWeight="SemiBold"/>
                 </StackPanel>
             </Button>
             <Button x:Name="scheduleAppointment" 

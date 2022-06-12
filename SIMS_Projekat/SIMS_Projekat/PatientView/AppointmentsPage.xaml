@@ -35,7 +35,9 @@
         <Button x:Name="show_appointment" Content="Prikaži Termin" Style="{StaticResource ResourceKey=PatientButtonsPage}"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=AppointmentsTable, UpdateSourceTrigger=PropertyChanged, 
                 Converter={StaticResource SelectedItemToButtonConverter}}"
-                HorizontalAlignment="Right" Click="Show_appointment_Click"  Grid.Row="3" Margin="0,0,280,0" />
+                HorizontalAlignment="Right" Click="Show_appointment_Click"  Grid.Row="3" Margin="0,0,280,0"
+                ToolTip="Niste izabrali nijedan termin za prikaz!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"/>
 
         <DataGrid  Grid.Row="2" x:Name="AppointmentsTable" ItemsSource="{Binding appointmentInformations}" 
                    Style="{StaticResource ResourceKey=PatientAppointmentGrid}" 

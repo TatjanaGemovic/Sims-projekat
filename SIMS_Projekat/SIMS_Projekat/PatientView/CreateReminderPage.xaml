@@ -5,12 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
+      xmlns:converters="clr-namespace:SIMS_Projekat.PatientView.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="723" d:DesignWidth="1379"
       Title="CreateReminderPage" Background="#6A994E">
 
     <Page.Resources>
         <ResourceDictionary>
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -96,7 +98,8 @@
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
 
         <Button x:Name="createButton" Grid.Row="10" Grid.Column="3" Content="Kreiraj podsetnik"
-                Command="{Binding CreateCommand}" Margin="0,0,20,25"
+                Command="{Binding CreateCommand}" Margin="0,0,20,25" ToolTip="Niste popunili sva polja!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
 
     </Grid>

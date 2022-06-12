@@ -88,7 +88,7 @@ namespace SIMS_Projekat.PatientView
                new Action(
                  delegate ()
                  {
-                     showAppointmentButton.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     showAppointmentButton.Background = new SolidColorBrush(Color.FromRgb(56, 102, 65));
                      appointment = App.appointmentController.CreateRandomAppointment(patient);
                      doctorContentLabel.Visibility = Visibility.Hidden;
                      dateContentLabel.Visibility = Visibility.Hidden;

@@ -26,6 +26,7 @@ namespace SIMS_Projekat.PatientView
         public Patient patient;
         private string nameSurname;
         static Timer timer;
+        public static Brush brush;
         Page Homepage;
         public PatientHome(Patient p)
         {
@@ -137,6 +138,7 @@ namespace SIMS_Projekat.PatientView
                new Action(
                  delegate ()
                  {
+                     brush = make_appointment.Background;
                      make_appointment.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
                  }
                 ));
@@ -149,11 +151,11 @@ namespace SIMS_Projekat.PatientView
                new Action(
                  delegate ()
                  {
-                     make_appointment.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     make_appointment.Background = brush;
                      Appointments appointmentsPage = new Appointments(MainFrame, patient);
                      MainFrame.Content = appointmentsPage;
                      appointmentsPage.DemoExecution();
-                     appointmentsPage.make_appointment.Background = new SolidColorBrush(Color.FromRgb(97, 177, 90));
+                     appointmentsPage.make_appointment.Background = new SolidColorBrush(Color.FromRgb(56, 102, 65));
 
                  }
                 ));
@@ -164,6 +166,17 @@ namespace SIMS_Projekat.PatientView
         {
             MainFrame.Content =  new ProfilePage(MainFrame, patient);
 
+        }
+
+      
+        private void make_appointment_MouseEnter(object sender, MouseEventArgs e)
+        {
+            make_appointment.Background = new SolidColorBrush(Color.FromRgb(173, 206, 116));
+        }
+
+        private void make_appointment_MouseLeave(object sender, MouseEventArgs e)
+        {
+            make_appointment.Background = brush;
         }
     }
 }

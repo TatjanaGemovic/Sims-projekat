@@ -11,6 +11,7 @@
     <Page.Resources>
         <ResourceDictionary>
             <converters:SelectedItemToButtonConverter x:Key="SelectedItemToButtonConverter" />
+            <converters:OppositeConverter x:Key="OppositeConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="PatientStyle/PatientStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -49,7 +50,8 @@
         </DataGrid>
         <Button x:Name="detailsButton" Grid.Row="3" Content="Prikaži belešku"
                 IsEnabled="{Binding Path=SelectedItem, ElementName=GridView, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource SelectedItemToButtonConverter}}" 
-                Command="{Binding DetailsCommand}" Margin="0,0,280,0"
+                Command="{Binding DetailsCommand}" Margin="0,0,280,0" ToolTip="Niste izabrali nijednu belešku za prikaz!" ToolTipService.ShowOnDisabled="True" 
+                ToolTipService.IsEnabled="{Binding Path=IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource OppositeConverter}}"
                 Style="{StaticResource ResourceKey=PatientButtonsPage}" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <Button x:Name="newNoteButton" Grid.Row="3" Content="Kreiraj belešku" 
                 Command="{Binding NewNoteCommand}" Margin="0,0,20,0"
