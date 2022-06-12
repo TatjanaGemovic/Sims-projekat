@@ -28,6 +28,7 @@
         <StackPanel x:Name= "stackPanel" Grid.Row="0" Grid.Column="0" Style="{StaticResource StackHome}">
             <Button x:Name="demo"  Style="{StaticResource ResourceKey=PatientHomeButtons}" DockPanel.Dock="Left" 
                     HorizontalAlignment="Left" Click="Demo_Click" >
+                
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/demo.png" Width="30" Height="30"></Image>
                     <Label Content="Demo prikaz" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
@@ -54,8 +55,9 @@
 
         <Grid x:Name= "Button_Selection" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource Button_Selection}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="155*"/>
-                <ColumnDefinition Width="66*"/>
+                <ColumnDefinition Width="111*"/>
+                <ColumnDefinition Width="91*"/>
+                <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
@@ -71,7 +73,7 @@
             </Grid.RowDefinitions>
 
             <Button x:Name="make_appointment" Style="{StaticResource ResourceKey=PatientHomeButtons}"
-                    Click="Make_appointment_Click" Grid.Row="1" Grid.ColumnSpan="2" MouseEnter="make_appointment_MouseEnter" MouseLeave="make_appointment_MouseLeave">
+                    Click="Make_appointment_Click" Grid.Row="1" Grid.ColumnSpan="3" MouseEnter="make_appointment_MouseEnter" MouseLeave="make_appointment_MouseLeave" Margin="0,2,0,2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/appointment.png" Width="30" Height="30" HorizontalAlignment="Left"></Image>
                     <Label Content="Termini" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
@@ -79,7 +81,7 @@
             </Button>
 
             <Button x:Name="choose_doctor" Grid.Row="2" Style="{StaticResource ResourceKey=PatientHomeButtons}" 
-                    Click="Choose_doctor_Click" Grid.ColumnSpan="2" >
+                    Click="Choose_doctor_Click" Grid.ColumnSpan="3" Margin="0,3,0,2" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/stethoscope.png" Width="30" Height="30"></Image>
                     <Label Content="Izaberite lekara" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" 
@@ -87,29 +89,29 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="reports" Grid.Row="3" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="2"  Click="Reports_Click">
+            <Button x:Name="reports" Grid.Row="3" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="3"  Click="Reports_Click" Margin="0,3,0,2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/report.png" Width="30" Height="30"></Image>
                     <Label Content="Izveštaji" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
                 </StackPanel>
             </Button>
 
-            <Button x:Name="therapy" Grid.Row="4" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="2"  Click="Therapy_Click" >
+            <Button x:Name="therapy" Grid.Row="4" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="3"  Click="Therapy_Click" Margin="0,2,0,3" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/pills.png" Width="30" Height="30"></Image>
                     <Label Content="Terapija" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
                 </StackPanel>
             </Button>
 
-            <Button x:Name="notes" Grid.Row="5" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="2" 
-                    Click="Notes_Click">
+            <Button x:Name="notes" Grid.Row="5" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="3" 
+                    Click="Notes_Click" Margin="0,2,0,2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/copy-writing.png" Width="30" Height="30"></Image>
                     <Label Content="Beleške" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
                 </StackPanel>
             </Button>
 
-            <Button x:Name="reminders" Grid.Row="6" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="2"  Click="Reminders_Click">
+            <Button x:Name="reminders" Grid.Row="6" Style="{StaticResource ResourceKey=PatientHomeButtons}" Grid.ColumnSpan="3"  Click="Reminders_Click" Margin="0,3,0,2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/reminder.png" Width="30" Height="30"></Image>
                     <Label Content="Podsetnici" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
@@ -117,7 +119,7 @@
             </Button>
 
             <Button x:Name="homepage" Grid.Row="8" Style="{StaticResource ResourceKey=PatientHomeButtons}" 
-                    Click="Homepage_Click" Grid.ColumnSpan="2">
+                    Click="Homepage_Click" Grid.ColumnSpan="3" Margin="0,2,0,3">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icons_patient/home.png" Width="30" Height="30"></Image>
                     <Label Content="Početna strana" Style="{StaticResource ResourceKey=PatientRegularLabels}" FontWeight="SemiBold" FontSize="26" />
