@@ -59,7 +59,7 @@ namespace SIMS_Projekat.PatientView
 
 
 
-                MessageBox.Show("Izvjestaj uspjesno generisan!");
+                MessageBox.Show("Izveštaj je uspešno generisan!");
             }
             finally
             {
@@ -139,73 +139,73 @@ namespace SIMS_Projekat.PatientView
             DateTime today = DateTime.Now;
             if(today.DayOfWeek == DayOfWeek.Monday)
             {
-                dayOne.Content = "Ponedeljak";
-                dayTwo.Content = "Utorak";
-                dayThree.Content = "Sreda";
-                dayFour.Content = "Četvrtak";
-                dayFive.Content = "Petak";
-                daySix.Content = "Subota";
-                daySeven.Content = "Nedelja";
+                dayOne.Content = "Ponedeljak - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Utorak - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Sreda - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Četvrtak - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Petak - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Subota - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Nedelja - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if(today.DayOfWeek == DayOfWeek.Tuesday)
             {
-                dayOne.Content = "Utorak";
-                dayTwo.Content = "Sreda";
-                dayThree.Content = "Četvrtak";
-                dayFour.Content = "Petak";
-                dayFive.Content = "Subota";
-                daySix.Content = "Nedelja";
-                daySeven.Content = "Ponedeljak";
+                dayOne.Content = "Utorak - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Sreda - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Četvrtak - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Petak - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Subota - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Nedelja - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Ponedeljak - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if (today.DayOfWeek == DayOfWeek.Wednesday)
             {
-                dayOne.Content = "Sreda";
-                dayTwo.Content = "Četvrtak";
-                dayThree.Content = "Petak";
-                dayFour.Content = "Subota";
-                dayFive.Content = "Nedelja";
-                daySix.Content = "Ponedeljak";
-                daySeven.Content = "Utorak";
+                dayOne.Content = "Sreda - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Četvrtak - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Petak - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Subota - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Nedelja - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Ponedeljak - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Utorak - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if (today.DayOfWeek == DayOfWeek.Thursday)
             {
-                dayOne.Content = "Četvrtak";
-                dayTwo.Content = "Petak";
-                dayThree.Content = "Subota";
-                dayFour.Content = "Nedelja";
-                dayFive.Content = "Ponedeljak";
-                daySix.Content = "Utorak";
-                daySeven.Content = "Sreda";
+                dayOne.Content = "Četvrtak - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Petak - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Subota - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Nedelja - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Ponedeljak - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Utorak - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Sreda - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if (today.DayOfWeek == DayOfWeek.Friday)
             {
-                dayOne.Content = "Petak";
-                dayTwo.Content = "Subota";
-                dayThree.Content = "Nedelja";
-                dayFour.Content = "Ponedeljak";
-                dayFive.Content = "Utorak";
-                daySix.Content = "Sreda";
-                daySeven.Content = "Četvrtak";
+                dayOne.Content = "Petak - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Subota - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Nedelja - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Ponedeljak - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Utorak - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Sreda - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Četvrtak - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if (today.DayOfWeek == DayOfWeek.Saturday)
             {
-                dayOne.Content = "Subota";
-                dayTwo.Content = "Nedelja";
-                dayThree.Content = "Ponedeljak";
-                dayFour.Content = "Utorak";
-                dayFive.Content = "Sreda";
-                daySix.Content = "Četvrtak";
-                daySeven.Content = "Petak";
+                dayOne.Content = "Subota - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Nedelja - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Ponedeljak - " + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Utorak - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Sreda - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Četvrtak - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Petak - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
             else if (today.DayOfWeek == DayOfWeek.Sunday)
             {
-                dayOne.Content = "Nedelja";
-                dayTwo.Content = "Ponedeljak";
-                dayThree.Content = "Utorak";
-                dayFour.Content = "Sreda";
-                dayFive.Content = "Četvrtak";
-                daySix.Content = "Petak";
-                daySeven.Content = "Subota";
+                dayOne.Content = "Nedelja - " + today.Date.ToString("dd.MM.yyyy.");
+                dayTwo.Content = "Ponedeljak - " + today.AddDays(1).Date.ToString("dd.MM.yyyy.");
+                dayThree.Content = "Utorak" + today.AddDays(2).Date.ToString("dd.MM.yyyy.");
+                dayFour.Content = "Sreda - " + today.AddDays(3).Date.ToString("dd.MM.yyyy.");
+                dayFive.Content = "Četvrtak - " + today.AddDays(4).Date.ToString("dd.MM.yyyy.");
+                daySix.Content = "Petak - " + today.AddDays(5).Date.ToString("dd.MM.yyyy.");
+                daySeven.Content = "Subota - " + today.AddDays(6).Date.ToString("dd.MM.yyyy.");
             }
         }
     }

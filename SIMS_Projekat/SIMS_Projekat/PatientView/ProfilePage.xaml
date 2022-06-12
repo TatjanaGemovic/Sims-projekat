@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.PatientView"
       mc:Ignorable="d" 
-      d:Height="800" Width="1600"
+      d:Height="723" Width="1379"
       Title="ProfilePage">
 
     <Page.Resources>
@@ -18,16 +18,88 @@
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Profil" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" 
+        <Label Content="Profil pacijenta" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
                Style="{StaticResource ResourceKey=PatientBigLabels}"/>
+        <Label Content="Lični podaci: " Height="80" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        <Label Content="Zdravsteni podaci: " Height="80" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Center"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right">
+            <Label Content="Ime i prezime: " Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Datum rođenja: " Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="JMBG: " Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Broj telefona: " Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="E-pošta: "  Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" >
+            <Label Content="Zdravsteno osiguranje: " Height="70"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Krvna grupa: "  Height="70"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Visina: " Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label Content="Težina: "  Height="70"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="1">
+            <Label x:Name="ime" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="rodjendan" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="jmbg" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="telefon" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="posta" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="3" Grid.Column="3">
+            <Label x:Name="osiguranje" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="krvna" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="visina" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+            <Label x:Name="tezina" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+
+        <Label Content="Korisnički podaci: " Height="70" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" Margin="0,0,0,150"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center">
+            <Label Content="Korisničko ime: " Height="70" 
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+            <Label x:Name="username" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center">
+            <Label Content="Lozinka: " Height="70" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Center"
+               Style="{StaticResource ResourceKey=PatientRegularLabels}" />
+            <Label x:Name="password" Height="70" Margin="10,0,0,0"
+                        Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
+        </StackPanel>
 
         
     </Grid>

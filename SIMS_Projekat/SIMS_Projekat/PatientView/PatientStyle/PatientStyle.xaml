@@ -138,7 +138,7 @@
 
     <Style x:Key="PatientDataGridHCICell" TargetType="DataGridCell">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="16"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="#ADCE74"/>
@@ -239,7 +239,7 @@
 
     <Style x:Key="PatientHCIReportGrid" TargetType="DataGrid">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#FFCE89"/>
@@ -260,7 +260,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="DataGrid">
-                            <TextBlock Text="Nemate terapiju za ovaj dan!" Foreground="#FFF76A" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                            <TextBlock Text="Nemate terapije za ovaj dan!" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -328,7 +328,7 @@
     
     <Style x:Key="PatientRemindersGrid" TargetType="DataGrid">
         <Setter Property="Foreground" Value="#FFF76A"/>
-        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="#FFCE89"/>
@@ -364,13 +364,12 @@
     </Style>
 
     <Style x:Key="PatientDataGridHCIColumnHeaderStyle" TargetType="{x:Type DataGridColumnHeader}">
-        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontSize" Value="18"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="#FFF76A"/>
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Background" Value="#61B15A"/>
-        <Setter Property="Width" Value="200"/>
     </Style>
 
     <Style x:Key="PatientDataGridAppointmentRow" TargetType="DataGridRow">
@@ -390,7 +389,7 @@
     <Style x:Key="PatientDataGridHCIAppointmentRow" TargetType="DataGridRow">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderBrush" Value="#FFCE89" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">

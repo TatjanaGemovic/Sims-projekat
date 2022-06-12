@@ -19,3 +19,4 @@
 6/15/2022 2:15:00 PM|6/15/2022 2:30:00 PM|51|102|1524159823|False|False|Bolesna veoma|Lekovi i tecnost|0
 6/9/2022 1:45:00 PM|6/9/2022 2:00:00 PM|42|100|1524159823|False|True|Uci|Glup|0
 5/3/2022 8:45:00 AM|5/5/2022 9:00:00 AM|30|101|1524159823|False|True|Dug odmor|Iscrpljen|21
+6/15/2022 10:45:00 AM|6/15/2022 11:00:00 AM|52|100|1524159823|False|False|Prepisan lek|Bolestan strasno|0
