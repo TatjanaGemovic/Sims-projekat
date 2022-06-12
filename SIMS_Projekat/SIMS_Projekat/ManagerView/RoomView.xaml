@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="RoomView">
@@ -28,13 +29,13 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label  Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Prostorije" Margin="0,10,0,0" ></Label>
+            <Label x:Name="Prostorije" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Prostorije}" Margin="0,10,0,0" ></Label>
             <ListView x:Name="datagGridRooms"   ItemsSource="{Binding Path=RoomsR}" SelectedIndex="{Binding Path=SelectedIndex}"  Style="{DynamicResource ManagerListViewStyle}" SelectedItem="{Binding Path=SelectedItem }" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" Width="450"   >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="columnType"  DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="tip"  Width="200" />
-                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=Floor}"  Header="sprat"  Width="120" />
-                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding="{Binding Path=RoomNumber}"  Header="broj"  Width="120" />
+                        <GridViewColumn x:Name="tip"  DisplayMemberBinding ="{Binding Path=pRoomType}"  Header="{ns:Loc tipM}"  Width="200" />
+                        <GridViewColumn x:Name="sprat" DisplayMemberBinding ="{Binding Path=Floor}"  Header="{ns:Loc spratM}"  Width="120" />
+                        <GridViewColumn x:Name="broj" DisplayMemberBinding="{Binding Path=RoomNumber}"  Header="{ns:Loc brojM}"  Width="120" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -42,31 +43,31 @@
             <Button x:Name="InventarProstorijeBtn"   Grid.Column="3"  Style="{DynamicResource ManagerButtonCRUD}" Grid.Row="2"  Height="30"   Width="130" Command="{Binding InventarProstorije}" Margin="0,0,2,0" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerInventar.png" Height="20" Width="20"/>
-                    <Label   Content="Inventar prostorije" TabIndex="1" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc InventarProstorije}" TabIndex="1" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name="DodajProstorijuBtn"   Grid.Column="1" Style="{DynamicResource ManagerButtonCRUD}" Grid.Row="3" Height="30"   Width="130" Command="{Binding AddRoom}" Margin="0,0,2,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
-                    <Label   Content="Dodaj prostoriju" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc DodajProstoriju}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button  x:Name="IzmenaProstorijeBtn"   Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="4"  Height="30"   Width="130" Command="{Binding EditRoom}" Margin="0,0,2,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20"/>
-                    <Label   Content="Izmeni prostoriju" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc IzmeniProstoriju}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name ="ObrisiProstorijuBtn"  Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="5"  Height="30"   Width="130" Command="{Binding DeleteRoom}" Margin="0,0,2,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20"/>
-                    <Label   Content="Obrisi prostoriju" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc ObrisiProstoriju}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name="ZakaziRenoviranjeBtn"  Grid.Column="1" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="6"  Height="30"   Width="130"  Command="{Binding RenovationRoom}" Margin="0,0,2,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerRenoviranje.png" Height="20" Width="20"/>
-                    <Label   Content="Zakazi renoviranje" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc ZakaziRenoviranje}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
 

@@ -89,7 +89,7 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
-        public RelayCommand Zavrsi
+        public RelayCommand ZavrsiC
         {
             get
             {

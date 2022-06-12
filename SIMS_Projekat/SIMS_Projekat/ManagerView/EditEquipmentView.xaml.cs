@@ -28,10 +28,10 @@ namespace SIMS_Projekat.ManagerView
         private string _kolicina;
         private string _naziv;
 
-        public string Kolicina
+        public string KolicinaP
         {
             get { return _kolicina; }
-            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+            set { _kolicina = value; OnPropertyChanged(nameof(KolicinaP)); }
         }
 
         public string Naziv
@@ -68,7 +68,7 @@ namespace SIMS_Projekat.ManagerView
         private void fillForm()
         {
             Naziv = selectedEquipment.EquipmentName;
-            Kolicina= selectedEquipment.Quantity.ToString();
+            KolicinaP= selectedEquipment.Quantity.ToString();
             equipmentType.SelectedIndex = (int)selectedEquipment.pEquipmentType;
         }
 

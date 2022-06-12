@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="EditRoomView">
@@ -26,7 +27,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Prostorija za izmenu" Style="{DynamicResource ManagerGroupBoxText}" Grid.Column="0" Grid.RowSpan="6" >
+            <GroupBox x:Name="ProstorijaZaIzmenu" Header="{ns:Loc ProstorijaZaIzmenu}" Style="{DynamicResource ManagerGroupBoxText}" Grid.Column="0" Grid.RowSpan="6" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -40,9 +41,9 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Broj prostorije:"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="1" Grid.Column="0" />
-                    <Label Content="Broj sprata:"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="2" Grid.Column="0"/>
-                    <Label Content="Tips prostorije:"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0" />
+                    <Label x:Name="BrojProstorije" Content="{ns:Loc BrojProstorije}"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="1" Grid.Column="0" />
+                    <Label x:Name="BrojSprata" Content="{ns:Loc BrojSprata}"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="2" Grid.Column="0"/>
+                    <Label x:Name="TipProstorije" Content="{ns:Loc TipProstorije}"  Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0" />
 
                     <TextBox x:Name="roomNumber" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Style="{DynamicResource ManagerIntValidation}"  TextWrapping="Wrap"   VerticalAlignment="Center" Width="180" TextChanged="roomNumber_TextChanged" >
                         <TextBox.Text>
@@ -63,10 +64,10 @@
                         </TextBox.Text>
                     </TextBox>
                     <ComboBox x:Name="roomType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180">
-                        <ComboBoxItem Content="recoveryRoom"/>
-                        <ComboBoxItem Content="operatingRoom"/>
-                        <ComboBoxItem Content="examRoom"/>
-                        <ComboBoxItem Content="meetingRoom"/>
+                        <ComboBoxItem Content="{ns:Loc recoveryRoom}"/>
+                        <ComboBoxItem Content="{ns:Loc operatingRoom}"/>
+                        <ComboBoxItem Content="{ns:Loc examRoom}"/>
+                        <ComboBoxItem Content="{ns:Loc meetingRoom}"/>
                     </ComboBox>
                 </Grid>
             </GroupBox>
@@ -74,13 +75,13 @@
             <Button x:Name="EditRoom" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="10,15,10,15" Click="EditRoom_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                    <Label   Content="Potvrdi izmenu" Style="{DynamicResource LabelInButton}"/>
+                    <Label x:Name="PotvrdiIzmenu"  Content="{ns:Loc PotvrdiIzmenu}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="QuitAdding" Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitEditing_Click" >
+            <Button  Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitEditing_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                    <Label   Content="Ponisti izmenu" Style="{DynamicResource LabelInButton}"/>
+                    <Label x:Name="PonistiIzmenu"  Content="{ns:Loc PonistiIzmenu}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
 

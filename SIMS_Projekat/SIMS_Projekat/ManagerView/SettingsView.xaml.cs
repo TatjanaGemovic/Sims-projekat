@@ -1,4 +1,5 @@
-﻿using SIMS_Projekat.Properties;
+﻿using MenuNavigation;
+using SIMS_Projekat.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,31 @@ namespace SIMS_Projekat.ManagerView
     /// </summary>
     public partial class SettingsView : Page
     {
+
+        private string currentLanguage;
+        public string CurrentLanguage
+        {
+            get { return currentLanguage; }
+            set
+            {
+                currentLanguage = value;
+            }
+        }
         public SettingsView()
         {
             InitializeComponent();
-            if (Settings.Default.CurrentTheme == "Dark")
-                temaCombo.SelectedIndex = 0;
-            else
+            if (Settings.Default.CurrentTheme == "Light")
                 temaCombo.SelectedIndex = 1;
+            else
+                temaCombo.SelectedIndex = 0;
+
+
+            if (Settings.Default.CurrentLanguage== "en-US")
+            {
+                jezikCombo.SelectedIndex = 1;
+            }
+            else
+                jezikCombo.SelectedIndex = 0;
         }
 
         private void ChangeTheme(Uri uri)
@@ -53,5 +72,29 @@ namespace SIMS_Projekat.ManagerView
                 Settings.Default.Save();
             }
         }
+
+        private void jezikCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (jezikCombo.SelectedIndex == 0)
+            {
+                Execute_SwitchLanguageCommand("sr-LATN");
+                Settings.Default.CurrentLanguage = "sr-LATN";
+                Settings.Default.Save();
+            }
+            else 
+            {
+                Execute_SwitchLanguageCommand("en-US");
+                Settings.Default.CurrentLanguage = "en-US";
+                Settings.Default.Save();
+            }
+        }
+
+        private void Execute_SwitchLanguageCommand(string st)
+        {
+            var app = (App)Application.Current;
+            CurrentLanguage = st;
+            app.ChangeLanguage(CurrentLanguage);
+        }
     }
 }
+

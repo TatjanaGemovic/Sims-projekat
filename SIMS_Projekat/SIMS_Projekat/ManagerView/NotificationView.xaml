@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="NotificationView">
@@ -25,12 +26,12 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label  Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Notifikacije" Margin="0,10,0,0" ></Label>
+            <Label x:Name="Notifikacije" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Notifikacije}" Margin="0,10,0,0" ></Label>
             <ListView x:Name="datagGridRooms" IsTabStop="True" Focusable="False" ItemsSource="{Binding Path=Notifications}" Style="{DynamicResource ManagerListViewStyle}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,50,0" Width="492"   >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="sadrzaj" DisplayMemberBinding ="{Binding Path=Content}" Header="sadrzaj"  Width="340" />
-                        <GridViewColumn x:Name="datum" DisplayMemberBinding ="{Binding Path=SentDate}"  Header="datum"  Width="142" />
+                        <GridViewColumn x:Name="sadrzaj" DisplayMemberBinding ="{Binding Path=Content}" Header="{ns:Loc sadrzaj }"  Width="340" />
+                        <GridViewColumn x:Name="datum" DisplayMemberBinding ="{Binding Path=SentDate}"  Header="{ns:Loc datumM }"  Width="142" />
 
                     </GridView>
                 </ListView.View>

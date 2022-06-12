@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
             d:DataContext="{d:DesignInstance local:ProbaPregled }"
       d:DesignHeight="450" d:DesignWidth="544"
@@ -29,16 +30,16 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
+            <Label x:Name="RasporedPoProstorijama" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="{ns:Loc RaporedPoPro}" ></Label>
 
 
             <ListView x:Name="gridView" ItemsSource="{Binding Podaci}" Focusable="False"  Style="{DynamicResource ManagerListViewStyle}" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0" Margin="10,0,0,0" Width="450"  >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="columnNumber" DisplayMemberBinding ="{Binding Path=broj}" Header="naziv"  Width="110" />
-                        <GridViewColumn x:Name="columnFlor" DisplayMemberBinding ="{Binding Path=sprat}" Header="sprat"  Width="110" />
-                        <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding Path=tip}"  Header="tip"  Width="110" />
-                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="kolicina"  Width="110" />
+                        <GridViewColumn x:Name="naziv" DisplayMemberBinding ="{Binding Path=broj}" Header="{ns:Loc nazivM}"  Width="110" />
+                        <GridViewColumn x:Name="sprat" DisplayMemberBinding ="{Binding Path=sprat}" Header="{ns:Loc spratM}"  Width="110" />
+                        <GridViewColumn x:Name="tip" DisplayMemberBinding ="{Binding Path=tip}"  Header="{ns:Loc tipM}"  Width="110" />
+                        <GridViewColumn x:Name="kolicinaM" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="{ns:Loc kolicinaM}"  Width="110" />
 
                     </GridView>
                 </ListView.View>
@@ -47,7 +48,7 @@
             <Button Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" RenderTransformOrigin="0.552,0.656" Height="37" Width="103" Click="Button_Click" Margin="37,0,10,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                    <Label  x:Name="Nazad" Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="66"/>
                 </StackPanel>
             </Button>
 

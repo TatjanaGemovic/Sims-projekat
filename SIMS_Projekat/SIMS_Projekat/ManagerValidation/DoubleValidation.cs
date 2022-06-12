@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -19,9 +20,18 @@ namespace SIMS_Projekat.ManagerValidation
             }
 
             if (string.IsNullOrEmpty(value.ToString()))
-                return new ValidationResult(false, "Molimo Vas popunite ovo polje");
+            {
+                if (Settings.Default.CurrentLanguage == "sr-LATN")
+                    return new ValidationResult(false, "Molimo Vas popunite ovo polje");
+                else
+                    return new ValidationResult(false, "Please fill this field");
+            }
 
-            return new ValidationResult(false, "Molimo Vas unesite broj");
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+                return new ValidationResult(false, "Molimo Vas unesite broj");
+            else
+                return new ValidationResult(false, "This field requires number");
+            
         }
     }
 }

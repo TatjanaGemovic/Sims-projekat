@@ -56,7 +56,7 @@ namespace SIMS_Projekat.ManagerView
             }
         }
 
-        public RelayCommand Potvrdi
+        public RelayCommand PotvrdiP
         {
             get
             {

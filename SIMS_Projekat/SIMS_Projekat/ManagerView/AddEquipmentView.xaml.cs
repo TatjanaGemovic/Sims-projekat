@@ -44,10 +44,10 @@ namespace SIMS_Projekat.ManagerView
             get { return _selectedIndex; }
             set { _selectedIndex = value; OnPropertyChanged(nameof(SelectedIndex)); }
         }
-        public string Kolicina
+        public string KolicinaP
         {
             get { return _kolicina; }
-            set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
+            set { _kolicina = value; OnPropertyChanged(nameof(KolicinaP)); }
         }
         
         public string Naziv
@@ -67,7 +67,7 @@ namespace SIMS_Projekat.ManagerView
             Equipment newEquipment = new Equipment();
             newEquipment.EquipmentID = Guid.NewGuid().ToString();
             newEquipment.EquipmentName = equipmentName.Text;
-            newEquipment.Quantity = int.Parse(Kolicina);
+            newEquipment.Quantity = int.Parse(KolicinaP);
             newEquipment.pEquipmentType = (EquipmentType)equipmentType.SelectedIndex;
             return newEquipment;
         }

@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="RejectMedicine">
@@ -27,12 +28,12 @@
                 <RowDefinition Height="45"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Odbijeni lekovi" Margin="0,10,0,0" ></Label>
+            <Label x:Name="OdbijeniLekovi" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc OdbijeniLekovi}" Margin="0,10,0,0" ></Label>
             <ListView x:Name="datagGridMedicine" ItemsSource="{Binding Path=Medicine, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerListViewStyle}" Width="450"  SelectedItem="{Binding Path=SelectedItem}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0"  >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="medicineName" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="medicine"  Width="100" />
-                        <GridViewColumn x:Name="comment" DisplayMemberBinding ="{Binding Path=DoctorComment}" Header="doctor comment"  Width="340" />
+                        <GridViewColumn x:Name="lekM" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="{ns:Loc lekM}"  Width="100" />
+                        <GridViewColumn x:Name="komentarDoktoraM" DisplayMemberBinding ="{Binding Path=DoctorComment}" Header="{ns:Loc drCom}"  Width="340" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -41,19 +42,19 @@
             <Button  x:Name="IzmenaLekaBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding EditMedicine}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerEdit.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Izmeni lek" Style="{DynamicResource LabelInButton}"/>
+                    <Label  Content="{ns:Loc IzmeniLek}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name ="ObrisiLekBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding DeleteMedicine}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDelete.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Obrisi lek" Style="{DynamicResource LabelInButton}"/>
+                    <Label  Content="{ns:Loc ObrisiLek}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name ="BackBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="7" Width="78" Command="{Binding Back}" Margin="57,0,0,0" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                    <Label  Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="66"/>
                 </StackPanel>
             </Button>
 

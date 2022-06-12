@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="EditEquipmentView">
@@ -26,7 +27,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
 
-            <GroupBox Header="Oprema za izmenu" Style="{DynamicResource ManagerGroupBoxText}"  Grid.Column="0" Grid.RowSpan="6" >
+            <GroupBox x:Name="OpremaZaIzmenu" Header="{ns:Loc OpremaZaIzmenu}" Style="{DynamicResource ManagerGroupBoxText}"  Grid.Column="0" Grid.RowSpan="6" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -40,9 +41,9 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Naziv opreme:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="1" Grid.Column="0" />
-                    <Label Content="Kolicina:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="2" Grid.Column="0"/>
-                    <Label Content="Tip opreme:" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0" />
+                    <Label x:Name="NazivOpreme" Content="{ns:Loc NazivOpreme}" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="1" Grid.Column="0" />
+                    <Label x:Name="Kolicina" Content="{ns:Loc Kolicina}" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="2" Grid.Column="0"/>
+                    <Label x:Name="TipOpreme" Content="{ns:Loc TipOpreme}" Style="{DynamicResource ManagerLabelCRUD}"  Grid.Row="3" Grid.Column="0" />
 
                     <TextBox x:Name="equipmentName" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"   TextWrapping="Wrap" Style="{DynamicResource ManagerIntValidation}" VerticalAlignment="Center" Width="180" TextChanged="equipmentName_TextChanged">
                         <TextBox.Text>
@@ -55,7 +56,7 @@
                     </TextBox>
                     <TextBox x:Name="equipmentQuantity" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"  TextWrapping="Wrap" Style="{DynamicResource ManagerIntValidation}" VerticalAlignment="Center" Width="180" TextChanged="equipmentQuantity_TextChanged" >
                         <TextBox.Text>
-                            <Binding Path="Kolicina" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="KolicinaP" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <managervalidation:IntValidation/>
                                 </Binding.ValidationRules>
@@ -63,8 +64,8 @@
                         </TextBox.Text>
                     </TextBox>
                     <ComboBox x:Name="equipmentType" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="180">
-                        <ComboBoxItem Content="static"/>
-                        <ComboBoxItem Content="dynamic"/>
+                        <ComboBoxItem Content="{ns:Loc staticka}"/>
+                        <ComboBoxItem Content="{ns:Loc dinamicka}"/>
                     </ComboBox>
                 </Grid>
             </GroupBox>
@@ -72,13 +73,13 @@
             <Button x:Name="EditEquipment" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" Grid.Column="1" Grid.Row="2" Margin="10,15,10,15" Click="EditEquipment_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                    <Label   Content="Potvrdi izmenu" Style="{DynamicResource LabelInButton}"/>
+                    <Label x:Name="PotvrdiIzmenu"  Content="{ns:Loc PotvrdiIzmenu}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="QuitAdding"  Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitEditing_Click" >
+            <Button   Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Column="1" Grid.Row="3" Margin="10,15,10,15" Click="QuitEditing_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                    <Label   Content="Ponisti izmenu" Style="{DynamicResource LabelInButton}"/>
+                    <Label  x:Name="PonistiIzmenu"  Content="{ns:Loc PonistiIzmenu}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
 

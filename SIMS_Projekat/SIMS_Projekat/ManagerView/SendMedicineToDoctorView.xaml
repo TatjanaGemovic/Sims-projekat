@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="SendMedicineToDoctorView">
@@ -27,27 +28,27 @@
                 <RowDefinition Height="45"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelInButton}" Content="Izaberite lekara kom zelite da posaljete zahtev:" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,10" Width="335" ></Label>
+            <Label x:Name="IzaberiteLekaraKomZeliteDaPosaljeteZahtev" Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelInButton}" Content="{ns:Loc izberiDoktora}" FontSize="14" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,15" Width="335" ></Label>
             <ListView x:Name="datagGridDoctors" SelectedItem="{Binding Path=SelectedItem}" Style="{DynamicResource ManagerListViewStyle}" ItemsSource="{Binding Path=Doctors, NotifyOnSourceUpdated=True, Mode=TwoWay}" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,10,0" Width="450" >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=FirstName}"  Header="name"  Width="180" />
-                        <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=LastName}"  Header="surename"  Width="130" />
-                        <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding Path=Speciality}"  Header="speciality"  Width="130" />
+                        <GridViewColumn x:Name="imeM" DisplayMemberBinding ="{Binding Path=FirstName}"  Header="{ns:Loc imeM}"  Width="180" />
+                        <GridViewColumn x:Name="prezimeM" DisplayMemberBinding ="{Binding Path=LastName}"  Header="{ns:Loc prezimeM}"  Width="130" />
+                        <GridViewColumn x:Name="specijalizacija" DisplayMemberBinding ="{Binding Path=Speciality}"  Header="{ns:Loc specijalizacijaM}"  Width="130" />
                     </GridView>
                 </ListView.View>
             </ListView>
 
-            <Button x:Name="PosaljiBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Command="{Binding Done}" >
+            <Button x:Name="Zavrsi" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="3" VerticalAlignment="Center" Width="130" Margin="0,0,5,0" Command="{Binding Done}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                    <Label   Content="Zavrsi"  Style="{DynamicResource LabelInButton}" Width="61" />
+                    <Label   Content="{ns:Loc Zavrsi}"  Style="{DynamicResource LabelInButton}" Width="61" />
                 </StackPanel>
             </Button>
-            <Button  x:Name="OdustaniBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding Quit}" >
+            <Button  x:Name="Odustani" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="4" VerticalAlignment="Center" Width="130" Margin="0,0,2,0" Command="{Binding Quit}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                    <Label   Content="Odustani" Style="{DynamicResource LabelInButton}" Width="63" />
+                    <Label   Content="{ns:Loc Odustani}" Style="{DynamicResource LabelInButton}" Width="63" />
                 </StackPanel>
             </Button>
 

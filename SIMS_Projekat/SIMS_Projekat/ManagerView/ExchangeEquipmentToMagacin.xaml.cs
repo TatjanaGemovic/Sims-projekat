@@ -50,14 +50,14 @@ namespace SIMS_Projekat.ManagerView
             set { _kolicina = value; OnPropertyChanged(nameof(Kolicina)); }
         }
 
-        public string DostupnaKolicina
+        public string DostupnaKolicinaP
         {
             get { return _dostupnaKolicina; }
-            set { _dostupnaKolicina = value; OnPropertyChanged(nameof(DostupnaKolicina)); }
+            set { _dostupnaKolicina = value; OnPropertyChanged(nameof(DostupnaKolicinaP)); }
         }
 
 
-        public RelayCommand Potvrdi
+        public RelayCommand PotvrdiP
         {
             get
             {
@@ -99,7 +99,7 @@ namespace SIMS_Projekat.ManagerView
         private void fillForm(int br)
         {
             nazivOpreme.Text = selectedEquipment.EquipmentName;
-            DostupnaKolicina = br.ToString();
+            DostupnaKolicinaP = br.ToString();
         }
 
         private void createRequest()

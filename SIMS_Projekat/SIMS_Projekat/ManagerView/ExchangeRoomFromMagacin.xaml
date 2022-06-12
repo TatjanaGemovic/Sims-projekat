@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="ExchangeRoomFromMagacin">
@@ -38,8 +39,8 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource LabelInButton}" Content="Naziv opreme:"></Label>
-                    <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}" Content="Dostupna kolicina:"></Label>
+                    <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource LabelInButton}" Content="{ns:Loc NazivOpreme}"></Label>
+                    <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}" Content="{ns:Loc DostupnaKolicina}"></Label>
                     <TextBox  x:Name="nazivOpreme" Focusable="False" Grid.Column="1" Grid.Row="0"  TextWrapping="Wrap" Text="" Margin="20,7,20,7" />
                     <TextBox  x:Name="dostupnaKolicina" Focusable="False" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="" Margin="20,7,20,7" />
                 </Grid>
@@ -63,17 +64,17 @@
 
 
 
-                <Label Grid.Column="0" Grid.ColumnSpan="2" Content="Odaberite prostoriju u koju zelite da premestite opremu:" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Width="340" Margin="30,0,0,0" />
+                <Label Grid.Column="0" Grid.ColumnSpan="2" Content="{ns:Loc IzaberiProstorijuUKoju}" Style="{DynamicResource LabelInButton}" HorizontalAlignment="Left" Width="340" Margin="30,0,0,0" />
                 <ListView x:Name="datagGridRooms"  ItemsSource="{Binding Rooms}" Style="{DynamicResource ManagerListViewStyle}" Margin="0,15,30,5"   Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="4" Width="300">
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                            <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding pRoomType}"  Header="type"  Width="90" />
-                            <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Floor}" Header="floor"  Width="90" />
-                            <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding RoomNumber}"  Header="number"  Width="90" />
+                            <GridViewColumn x:Name="columnType" DisplayMemberBinding ="{Binding pRoomType}"  Header="{ns:Loc tipM}"  Width="90" />
+                            <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Floor}" Header="{ns:Loc spratM}"  Width="90" />
+                            <GridViewColumn x:Name="columnRoomNumber" DisplayMemberBinding ="{Binding RoomNumber}"  Header="{ns:Loc brojM}"  Width="90" />
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Label Content="Kolicina za prebacivanje:" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="135"/>
+                <Label Content="{ns:Loc KolicinaZaPrebacivanje}" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="135"/>
                 <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="5"  TextWrapping="Wrap" Style="{DynamicResource ManagerIntValidation}" VerticalAlignment="Top" Margin="0,0,70,10" TextChanged="kolicina_TextChanged" >
                     <TextBox.Text>
                         <Binding Path="Kolicina" UpdateSourceTrigger="PropertyChanged">
@@ -84,21 +85,21 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <Label Content="Vreme prebacivanja:" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Width="150" Margin="35,0,0,0"/>
+                <Label Content="{ns:Loc VremePrebacivanja}" Style="{DynamicResource LabelInButton}" FontSize="10" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Width="150" Margin="35,0,0,0"/>
                 <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="6" VerticalAlignment="Center" Margin="0,0,70,0" SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
                     
                 </DatePicker>
             </Grid>
-            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding Potvrdi}">
+            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding PotvrdiP}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                    <Label   Content="Potvrdi" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc Potvrdi}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Button x:Name="Otkazi" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="5" Margin="30,7,30,7" Click="Otkazi_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                    <Label   Content="Otkazi" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc Otkazi}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
         </Grid>

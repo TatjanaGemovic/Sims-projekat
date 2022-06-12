@@ -99,6 +99,7 @@ namespace SIMS_Projekat.ManagerView
 
         private void AddReplacmentMedicine_Btn_Click(object sender, RoutedEventArgs e)
         {
+            getMedicineFromForm();
             ManagerHome.mainFrame.Content = new AddReplacmentMedicineView(newMedicine,1);
         }
 

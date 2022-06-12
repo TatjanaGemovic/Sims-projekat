@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="AddReplacmentMedicineView">
@@ -22,12 +23,12 @@
                     <RowDefinition Height="44*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Content="Zamenski lekovi:" Style="{DynamicResource LabelInButton}" Grid.Row="0" VerticalAlignment="Bottom" Margin="20,0,0,20" FontSize="14" HorizontalAlignment="Left" Width="113"/>
+                <Label x:Name="ZamenskiLekovi" Content="{ns:Loc ZamenskiLekovi}" Style="{DynamicResource LabelInButton}" Grid.Row="0" VerticalAlignment="Bottom" Margin="20,0,0,20" FontSize="14" HorizontalAlignment="Left" Width="177"/>
                 <ListView x:Name="datagGridReplacmentMedicine" Style="{DynamicResource ManagerListViewStyle}" Focusable="False" Width="228.8"  ItemsSource="{Binding ReplacmentMedicine}"  Grid.Row="1" Margin="20,0,20,0"   >
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                            <GridViewColumn x:Name="columnName1" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="name"  Width="100.8" />
-                            <GridViewColumn x:Name="columnFloor1" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="type"  Width="118" />
+                            <GridViewColumn x:Name="columnName1" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="{ns:Loc nazivM}"  Width="100.8" />
+                            <GridViewColumn x:Name="columnFloor1" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="{ns:Loc tipM}"  Width="118" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -44,12 +45,12 @@
                     <RowDefinition Height="45*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <Label Content="Izaberite lek koji zelite da dodate:" Style="{DynamicResource LabelInButton}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,36,0,0" Width="263"></Label>
+                <Label x:Name="IzaberiteLekKojiZeliteDaDodate" Content="{ns:Loc IzaberiteLekKojiZeliteDaDodat}" Style="{DynamicResource LabelInButton}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,36,0,0" Width="263"></Label>
                 <ListView x:Name="datagGridMedicine" ItemsSource="{Binding AllMedicine}" SelectedItem="{Binding SelectedItem}" Style="{DynamicResource ManagerListViewStyle}" Width="243.2" Grid.Row="1" Grid.Column="0" Margin="20,0,20,0" SelectionMode="Single" >
                     <ListView.View>
                         <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                            <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="name"  Width="116.6" />
-                            <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="type"  Width="116.6" />
+                            <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=MedicineName}" Header="{ns:Loc nazivM}"  Width="116.6" />
+                            <GridViewColumn x:Name="columnFloor" DisplayMemberBinding ="{Binding Path=pMedicineType}"  Header="{ns:Loc tipM}"  Width="116.6" />
                         </GridView>
                     </ListView.View>
                 </ListView>
@@ -59,13 +60,13 @@
                 <Button x:Name="DodajZamenskeBtn"  Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="3" Command="{Binding AddReplacmentMedicine}" Width="193">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icon_manager/ManagerAdd.png" Height="20" Width="20"/>
-                        <Label   Content="Dodaj zamenski lek" Style="{DynamicResource LabelInButton}" Width="128" />
+                        <Label   Content="{ns:Loc DodajZamenskiLek}" Style="{DynamicResource LabelInButton}" Width="128" />
                     </StackPanel>
                 </Button>
-                <Button x:Name="Zavrsi" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="4" Command="{Binding Done}" Width="193">
+                <Button x:Name="ZavrsiDodavanje" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Row="4" Command="{Binding Done}" Width="193">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                        <Label   Content="Zavrsi dodavanje" Style="{DynamicResource LabelInButton}" Width="129" />
+                        <Label   Content="{ns:Loc ZavrsiDodavanje}" Style="{DynamicResource LabelInButton}" Width="129" />
                     </StackPanel>
                 </Button>
 

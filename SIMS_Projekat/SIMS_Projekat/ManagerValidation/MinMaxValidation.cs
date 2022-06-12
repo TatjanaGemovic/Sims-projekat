@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -26,11 +27,19 @@ namespace SIMS_Projekat.ManagerValidation
                 int d = result;
                 if (d < Min)
                 {
-                    return new ValidationResult(false, "Minimalna vrednost za premestanje je 1");
+                    if (Settings.Default.CurrentLanguage == "sr-LATN")
+                        return new ValidationResult(false, "Minimalna vrednost za premestanje je 1");
+                    else
+                        return new ValidationResult(false, "Minimal quantity is 1");
+                    
                 }
                 else if (d > Max)
                 {
-                    return new ValidationResult(false, "Uneli ste vecu vrednost od dostupne kolicine za premestanje");
+                    if (Settings.Default.CurrentLanguage == "sr-LATN")
+                        return new ValidationResult(false, "Uneli ste vecu vrednost od dostupne kolicine za premestanje");
+                    else
+                        return new ValidationResult(false, "You have exceeded the limits");
+                   
                 }
 
                

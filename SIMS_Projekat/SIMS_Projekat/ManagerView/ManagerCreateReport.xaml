@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
       xmlns:syncfusion="clr-namespace:Syncfusion.Pdf;assembly=Syncfusion.Pdf.Base" 
       xmlns:syn="clr-namespace:Syncfusion.Compression;assembly=Syncfusion.Compression.Base"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="ManagerCreateReport">
@@ -13,7 +14,7 @@
         <Grid>
 
 
-            <GroupBox Header="Izvestaj anketa" Style="{DynamicResource ManagerGroupBoxText}" Margin="70,20,70,20" >
+            <GroupBox Header="{ns:Loc IzvestajAnketa}" Style="{DynamicResource ManagerGroupBoxText}" Margin="70,20,70,20" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="159*"></ColumnDefinition>
@@ -27,22 +28,22 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content=" Izvestaj anketa u periodu " Style="{DynamicResource ManagerLabelCRUD}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="34" Margin="119,0,0,0" Width="222" />
-                    <Label Content="od:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Height="34" Width="35" HorizontalAlignment="Left"  Margin="115,0,0,0"/>
-                    <Label Content="do:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="2" Height="34" Width="35" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="115,0,0,0"/>
+                    <Label Content="{ns:Loc IzvestajAnketaUP}" Style="{DynamicResource ManagerLabelCRUD}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="34" Margin="119,0,0,0" Width="222" />
+                    <Label Content="{ns:Loc od}" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Height="34" Width="35" HorizontalAlignment="Left"  Margin="115,0,0,0"/>
+                    <Label Content="{ns:Loc do}" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="2" Height="34" Width="35" HorizontalAlignment="Left" Grid.ColumnSpan="2" Margin="115,0,0,0"/>
 
                     <DatePicker x:Name="odTxt" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="171" Height="40" />
                     <DatePicker x:Name="doTxt" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left"  VerticalAlignment="Center" Width="171" Height="39" />
                     <Button x:Name="Zavrsi" Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,0,80,10" VerticalAlignment="Bottom" Click="Zavrsi_Click" Height="46">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                            <Label   Content="Zavrsi"  Style="{DynamicResource LabelInButton}" Width="74" />
+                            <Label   Content="{ns:Loc Zavrsi}"  Style="{DynamicResource LabelInButton}" Width="74" />
                         </StackPanel>
                     </Button>
                     <Button x:Name="Otkazi" Style="{DynamicResource ManagerButtonCRUDOk}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="80,74,80,0" VerticalAlignment="Top"  Height="46" Click="Otkazi_Click" Grid.RowSpan="2">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                            <Label   Content=" Otkazi" Style="{DynamicResource LabelInButton}" />
+                            <Label   Content="{ns:Loc Otkazi}" Style="{DynamicResource LabelInButton}" Width="76" />
                         </StackPanel>
                     </Button>
 

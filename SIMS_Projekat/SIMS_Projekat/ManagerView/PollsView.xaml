@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="PollsView">
@@ -28,13 +29,13 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Ankete" ></Label>
+            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Ankete}" ></Label>
             <ListView x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerListViewStyle}" Width="450" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}" Header="ocena za doktora"  Width="120" />
-                        <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="ocena za bolnicu"  Width="120" />
-                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="vreme kreiranja ankete"  Width="200" />
+                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}" Header="{ns:Loc doctorRatingPoll}"  Width="120" />
+                        <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="{ns:Loc hospitalRatingPoll}" Width="120" />
+                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="{ns:Loc dateOfPoll}"  Width="200" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -42,13 +43,13 @@
             <Button x:Name="PrikaziAnketuBtn" Grid.Column="1"  Style="{DynamicResource ManagerButtonCRUD}"  Height="30" Grid.Row="3" Width="130"  Command="{Binding PollView}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerPoll.png" Height="20" Width="20"/>
-                    <Label   Content="Pogledaj anketu" Style="{DynamicResource LabelInButton}" />
+                    <Label   Content="{ns:Loc PogledajAnketu}" Style="{DynamicResource LabelInButton}" />
                 </StackPanel>
             </Button>
             <Button  x:Name="NapraviIzvestajBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"   Height="30" Grid.Row="4"  Width="130" Command="{Binding CreateReport}" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerReport.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label   Content="Napravi izvestaj" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc NapraviIzvestaj}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
 

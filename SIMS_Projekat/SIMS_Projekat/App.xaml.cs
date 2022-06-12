@@ -1,6 +1,8 @@
-﻿using SIMS_Projekat.Controller;
+﻿using MenuNavigation;
+using SIMS_Projekat.Controller;
 using SIMS_Projekat.DoctorView;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Properties;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.Service;
 using System;
@@ -290,6 +292,22 @@ namespace SIMS_Projekat
                 SIMS_Projekat.Properties.Settings.Default.Save();
             }
 
+
+            if (SIMS_Projekat.Properties.Settings.Default.CurrentLanguage == "en-US")
+            {
+                ChangeLanguage("en-US");
+                SIMS_Projekat.Properties.Settings.Default.CurrentLanguage = "en-US";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+
+            }
+            else
+            {
+                ChangeLanguage("sr-LATN");
+                SIMS_Projekat.Properties.Settings.Default.CurrentTheme = "sr-LATN";
+                SIMS_Projekat.Properties.Settings.Default.Save();
+            }
+
+
         }
 
         private void ChangeTheme(Uri uri)
@@ -297,6 +315,18 @@ namespace SIMS_Projekat
             App.ThemeDictionary.MergedDictionaries.Clear();
             App.ThemeDictionary.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
 
+        }
+
+        public void ChangeLanguage(string currLang)
+        {
+            if (currLang.Equals("en-US"))
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            }
+            else
+            {
+                TranslationSource.Instance.CurrentCulture = new System.Globalization.CultureInfo("sr-LATN");
+            }
         }
     }
 }

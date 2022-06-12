@@ -4,15 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
       Title="SettingsView">
 
     <Border Style="{DynamicResource ManagerBorderMain}">
         <Grid>
-            
 
-            <GroupBox Header="Podesavanja" Style="{DynamicResource ManagerGroupBoxText}" Margin="70,20,70,20" >
+
+            <GroupBox x:Name="Podesavanja" Header="{ns:Loc Podesavanja}" Style="{DynamicResource ManagerGroupBoxText}" Margin="70,20,70,20" >
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
@@ -26,17 +27,17 @@
                         <RowDefinition Height="*" ></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Content="Tema:" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Grid.Column="0" />
-                    <Label Content="Jezik" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="3" Grid.Column="0" />
+                    <Label x:Name="Tema" Content="{ns:Loc Tema}" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="1" Grid.Column="0" />
+                    <Label x:Name="Jezik" Content="{ns:Loc Jezik}" Style="{DynamicResource ManagerLabelCRUD}" Grid.Row="3" Grid.Column="0" />
 
                     <ComboBox x:Name="temaCombo" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="160" SelectionChanged="temaCombo_SelectionChanged" >
-                        <ComboBoxItem Content="Tamna"/>
-                        <ComboBoxItem Content="Svetla"/>
+                        <ComboBoxItem Content="{ns:Loc Tamna}"/>
+                        <ComboBoxItem Content="{ns:Loc Svetla}"/>
                     </ComboBox>
                     
-                    <ComboBox x:Name="jezikCombo" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="160" >
-                        <ComboBoxItem Content="Srpski"/>
-                        <ComboBoxItem Content="Engleski"/>
+                    <ComboBox x:Name="jezikCombo" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="160" SelectionChanged="jezikCombo_SelectionChanged" >
+                        <ComboBoxItem Content="{ns:Loc Srpski}"/>
+                        <ComboBoxItem Content="{ns:Loc Engleski}"/>
                     </ComboBox>
                 </Grid>
             </GroupBox>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SIMS_Projekat.Properties;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -16,7 +17,10 @@ namespace SIMS_Projekat.ManagerValidation
 
             if (string.IsNullOrEmpty(sVal))
             {
-                return new ValidationResult(false, "Molimo Vas popunite polje");
+                if (Settings.Default.CurrentLanguage == "sr-LATN")
+                    return new ValidationResult(false, "Molimo Vas popunite ovo polje");
+                else
+                    return new ValidationResult(false, "Please fill this field");
             }
 
             return new ValidationResult(true, null);

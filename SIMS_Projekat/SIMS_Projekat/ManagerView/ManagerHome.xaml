@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SIMS_Projekat"
+        xmlns:ns="clr-namespace:MenuNavigation"
         mc:Ignorable="d"
      Title="ManagerHome" Height="470" Width="800">
 
@@ -21,13 +22,13 @@
         <DockPanel x:Name="sideMenuDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="0" Grid.Column="0" >
             <ListView BorderBrush="Transparent"  Background="Transparent" >
 
-                <ListViewItem x:Name="notifikacijeView" Content="Notifikacije" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
-                <ListViewItem x:Name="prostorijeView" Content="Prostorije" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
-                <ListViewItem x:Name="lekoviView" Content="Lekovi" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
-                <ListViewItem x:Name="opremaView" Content="Oprema" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
-                <ListViewItem x:Name="anketeView" Content="Ankete" Style="{DynamicResource ManagerMenuText}" Selected="anketeView_Selected"></ListViewItem>
-                <ListViewItem x:Name="podesavanjaView"  Content="Podesavanja" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="settingsUp" ></ListViewItem>
-                <ListViewItem x:Name="pomocView" Content="Pomoc" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
+                <ListViewItem x:Name="Notifikacije" Content="{ns:Loc Notifikacije}" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
+                <ListViewItem x:Name="Prostorije" Content="{ns:Loc Prostorije}" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
+                <ListViewItem x:Name="Lekovi" Content="{ns:Loc Lekovi}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
+                <ListViewItem x:Name="Oprema" Content="{ns:Loc Oprema}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
+                <ListViewItem x:Name="Ankete" Content="{ns:Loc Ankete}" Style="{DynamicResource ManagerMenuText}" Selected="anketeView_Selected"></ListViewItem>
+                <ListViewItem x:Name="Podesavanja"  Content="{ns:Loc Podesavanja}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="settingsUp" ></ListViewItem>
+                <ListViewItem x:Name="Pomoc" Content="{ns:Loc Pomoc}" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
 
             </ListView>
 
@@ -37,7 +38,7 @@
             <Button Style="{DynamicResource ManagerLogOutButton}"  Width="112"  Height="41" Click="Button_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerLogOut.png" Height="20" Width="20"/>
-                    <Label   Content="  Odjavi se" Style="{DynamicResource LabelInButton}"/>
+                    <Label  x:Name="OdjaviSe" Content="{ns:Loc OdjaviSe}" Style="{DynamicResource LabelInButton}" Width="92"/>
                 </StackPanel>
             </Button>
 

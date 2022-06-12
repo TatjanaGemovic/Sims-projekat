@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" 
+      xmlns:ns="clr-namespace:MenuNavigation"
       d:DataContext="{d:DesignData local:ProbaInventar}"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="554"
@@ -29,25 +30,25 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="Inventar" ></Label>
+            <Label x:Name="Inventar" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Inventar}" ></Label>
 
 
             <ListView x:Name="gridView" ItemsSource="{Binding Podaci}" Style="{DynamicResource ManagerListViewStyle}"  Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="columnName" DisplayMemberBinding ="{Binding Path=naziv}" Header="naziv"  Width="200" />
-                        <GridViewColumn x:Name="columnTip" DisplayMemberBinding ="{Binding Path=tip}" Header="tip"  Width="95" />
-                        <GridViewColumn x:Name="columnKolicina" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="kolicina"  Width="95" />
+                        <GridViewColumn x:Name="naziv" DisplayMemberBinding ="{Binding Path=naziv}" Header="{ns:Loc nazivM}"  Width="200" />
+                        <GridViewColumn x:Name="tip" DisplayMemberBinding ="{Binding Path=tip}" Header="{ns:Loc tipM}"  Width="95" />
+                        <GridViewColumn x:Name="kolicinaM" DisplayMemberBinding ="{Binding Path=kolicina}"  Header="{ns:Loc kolicinaM}"  Width="95" />
 
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button Content="U magacin" Style="{DynamicResource ManagerButtonCRUD}"  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" RenderTransformOrigin="0.552,0.656" Margin="0,0,5,0" Height="30" Width="130" Command="{Binding Magacin}"/>
-            <Button Content="U prostoriju" Style="{DynamicResource ManagerButtonCRUD}"  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="130" Margin="0,0,5,0"  Command="{Binding Prostorija}"/>
+            <Button x:Name="UMagacin" Content="{ns:Loc UMagacin}" Style="{DynamicResource ManagerButtonCRUD}"  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"  VerticalAlignment="Center" RenderTransformOrigin="0.552,0.656" Margin="0,0,5,0" Height="30" Width="130" Command="{Binding Magacin}"/>
+            <Button x:Name="UProstoriju" Content="{ns:Loc UProstoriju}" Style="{DynamicResource ManagerButtonCRUD}"  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Height="30" Width="130" Margin="0,0,5,0"  Command="{Binding Prostorija}"/>
             <Button  Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left"  Grid.Column="1" Grid.Row="7" Height="30" Width="74" Margin="56,0,0,0" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                    <Label x:Name="Nazad" Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="66"/>
                 </StackPanel>
             </Button>
 

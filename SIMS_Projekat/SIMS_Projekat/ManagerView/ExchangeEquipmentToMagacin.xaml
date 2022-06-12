@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SIMS_Projekat.ManagerView" xmlns:managervalidation="clr-namespace:SIMS_Projekat.ManagerValidation"
+      xmlns:ns="clr-namespace:MenuNavigation"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="544"
       Title="ExchangeEquipmentToMagacin">
@@ -43,7 +44,7 @@
 
 
 
-                <Label Content="Kolicina za prebacivanje:" Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}" Width="150"/>
+                <Label x:Name="KolicinaZaPrebacivanje" Content="{ns:Loc KolicinaZaPrebacivanje}" Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}" Width="150"/>
                 <TextBox  x:Name="kolicina" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" VerticalAlignment="Center" Style="{DynamicResource ManagerIntValidation}" Margin="20,10,20,10" TextChanged="kolicina_TextChanged">
                     <TextBox.Text>
                         <Binding Path="Kolicina" UpdateSourceTrigger="PropertyChanged">
@@ -54,23 +55,23 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <Label Style="{DynamicResource LabelInButton}" Content="Vreme prebacivanja:" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="150"></Label>
+                <Label x:Name="VremePrebacivanja" Style="{DynamicResource LabelInButton}" Content="{ns:Loc VremePrebacivanja}" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Width="150"></Label>
                 <DatePicker x:Name="datum"  Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="20,0,20,0" Height="30" SelectedDate="{Binding SelectedDate, UpdateSourceTrigger=PropertyChanged}">
                    
                     
                 </DatePicker>
             </Grid>
 
-            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding Potvrdi}">
+            <Button x:Name="PotvrdiPrebacivanje" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="4" Margin="30,7,30,7" Command="{Binding PotvrdiP}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
-                    <Label   Content="Potvrdi" Style="{DynamicResource LabelInButton}"/>
+                    <Label   Content="{ns:Loc Potvrdi}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
-            <Button x:Name="Otkazi" Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="5" Margin="30,7,30,7" Command="{Binding OtkaziComannd}">
+            <Button Style="{DynamicResource ManagerButtonCRUD}"  Grid.Column="1" Grid.Row="5" Margin="30,7,30,7" Command="{Binding OtkaziComannd}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerQuit.png" Height="20" Width="20"/>
-                    <Label   Content="Otkazi" Style="{DynamicResource LabelInButton}"/>
+                    <Label  x:Name="Otkazi"  Content="{ns:Loc Otkazi}" Style="{DynamicResource LabelInButton}"/>
                 </StackPanel>
             </Button>
             <Border BorderThickness="1" BorderBrush="White" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="30,10,100,10" >
@@ -84,10 +85,10 @@
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Column="0" Grid.Row="0" Style="{DynamicResource LabelInButton}" Content="Naziv opreme:"></Label>
-                    <Label Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}"  Content="Dostupna kolicina:"></Label>
+                    <Label x:Name="NazivOpreme" Grid.Column="0" Grid.Row="0" Style="{DynamicResource LabelInButton}" Content="{ns:Loc NazivOpreme}"></Label>
+                    <Label x:Name="DostupnaKolicina" Grid.Column="0" Grid.Row="1" Style="{DynamicResource LabelInButton}"  Content="{ns:Loc DostupnaKolicina}"></Label>
                     <TextBox  x:Name="nazivOpreme" Focusable="False" Grid.Column="1" Grid.Row="0"  TextWrapping="Wrap" Text="" Margin="20,6,20,6" />
-                    <TextBox  x:Name="dostupnaKolicina" Focusable="False" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{Binding Path=DostupnaKolicina, UpdateSourceTrigger=PropertyChanged}" Margin="20,6,20,6" />
+                    <TextBox  x:Name="dostupnaKolicina" Focusable="False" Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" Text="{Binding Path=DostupnaKolicinaP, UpdateSourceTrigger=PropertyChanged}" Margin="20,6,20,6" />
                 </Grid>
 
             </Border>
