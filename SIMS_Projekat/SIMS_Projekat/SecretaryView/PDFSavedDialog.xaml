@@ -1,0 +1,29 @@
+﻿<Window x:Class="SIMS_Projekat.SecretaryView.PDFSavedDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_Projekat.SecretaryView"
+        mc:Ignorable="d"
+        Title="PDF" Height="150" Width="350" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" 
+        BorderThickness="1" BorderBrush="#203A43">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="0,0,0,0" FontSize="22" FontWeight="Medium" Foreground="#203A43" VerticalAlignment="Center" HorizontalAlignment="Center">PDF uspešno sačuvan</TextBlock>
+
+        <StackPanel VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+            <Label Content="Nazad" FontSize="18" Margin="0,0,5,0" Foreground="#203A43" MouseLeftButtonUp="CloseLabel_MouseLeftButtonUp" Cursor="Hand"/>
+            <Label Content="Otvori" FontSize="18" FontWeight="SemiBold" Margin="5,0,0,0" Foreground="#203A43" MouseLeftButtonUp="SaveLabel_MouseLeftButtonUp" Cursor="Hand" />
+        </StackPanel>
+
+
+
+    </Grid>
+</Window>

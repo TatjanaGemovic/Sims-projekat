@@ -256,6 +256,13 @@ namespace SIMS_Projekat.Service
                 appointment.beginningDate < endDateTime && appointment.doctor.ID == doctor.ID).ToList();
         }
 
+        public List<Appointment> GetAppointmentsForTimeSpan(Room room, DateTime startDateTime, DateTime endDateTime)
+        {
+            List<Appointment> appointments = appointmentRepository.GetAllAppointments();
+            return appointments.Where(appointment => appointment.beginningDate > startDateTime &&
+                appointment.beginningDate < endDateTime && appointment.room == room).ToList();
+        }
+
         public List<Appointment> GetAllAppointmentForToday()
         {
             List<Appointment> appointments = appointmentRepository.GetAllAppointments();

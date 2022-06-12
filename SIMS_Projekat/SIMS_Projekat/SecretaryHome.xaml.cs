@@ -35,6 +35,7 @@ namespace SIMS_Projekat
         private EquipmentUserControl equipmentUserControl;
         private MeetingsUserControl meetingsUserControl;
         private FreeDayApprovalUserControl freeDayApprovalUserControl;
+        private ReportsUserControl reportsUserControl;
 
         private readonly AccountController accountController;
         private readonly AccountRepository accountRepository;
@@ -148,6 +149,12 @@ namespace SIMS_Projekat
             INotificationSender notificationSender = new NotificationSender(notificationController);
             freeDayApprovalUserControl = new FreeDayApprovalUserControl(notificationSender, ContentControl);
             ContentControl.Content = freeDayApprovalUserControl;
+        }
+
+        private void Reports_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            reportsUserControl = new ReportsUserControl();
+            ContentControl.Content = reportsUserControl;
         }
     }
 }

@@ -206,6 +206,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="SecretaryView\PDFSavedDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SecretaryView\AddAllergen.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -228,6 +232,9 @@
     <Page Update="SecretaryView\AddUrgentPatientUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SecretaryView\ReportsUserControl.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="SecretaryView\FreeDayApprovalUserControl.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
