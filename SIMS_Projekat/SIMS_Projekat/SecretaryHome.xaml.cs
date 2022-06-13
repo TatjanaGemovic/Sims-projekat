@@ -3,6 +3,7 @@ using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
 using SIMS_Projekat.SecretaryView;
+using SIMS_Projekat.SecretaryView.Help;
 using SIMS_Projekat.SecretaryView.Notifications;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,8 @@ namespace SIMS_Projekat
         private readonly NotificationController notificationController;
 
         private readonly FreeDayRequestRepository freeDayRequestRepository;
+
+        private string helpString = "index";
 
         public SecretaryHome(AccountRepository repository, AccountController controller, 
             AllergenController newAllergenController, RoomController newRoomController)
@@ -111,17 +114,22 @@ namespace SIMS_Projekat
         private void Accounts_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             ContentControl.Content = accountsView;
+            helpString = "PatientsHelp";
         }
         private void Appointments_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             appointmentsUserControl = new AppointmentsUserControl(roomController, accountController,
                 appointmentController, ContentControl);
             ContentControl.Content = appointmentsUserControl;
+            helpString = "appointments";
+
         }
 
         private void Allergens_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             ContentControl.Content = allergensUserControl;
+            helpString = "allergens";
+
         }
 
         private void UrgentPatient_RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -129,12 +137,14 @@ namespace SIMS_Projekat
             addUrgentPatientUserControl = new AddUrgentPatientUserControl(accountController, roomController,
                 appointmentController, ContentControl, accountsView, Accounts_RadioButton);
             ContentControl.Content = addUrgentPatientUserControl;
+            helpString = "urgent_patient";
         }
 
         private void EquipmentRadioButton_Checked(object sender, RoutedEventArgs e)
         {
             equipmentUserControl = new EquipmentUserControl(equipmentController, equipmentOrderController, ContentControl);
             ContentControl.Content = equipmentUserControl;
+            helpString = "equipment";
         }
 
         private void MeetingsRadioButton_Checked(object sender, RoutedEventArgs e)
@@ -142,6 +152,7 @@ namespace SIMS_Projekat
             INotificationSender notificationSender = new NotificationSender(notificationController);
             meetingsUserControl = new MeetingsUserControl(notificationSender, meetingController, ContentControl);
             ContentControl.Content = meetingsUserControl;
+            helpString = "meetings";
         }
 
         private void FreeDayRequests_RadioButtonChecked(object sender, RoutedEventArgs e)
@@ -149,12 +160,23 @@ namespace SIMS_Projekat
             INotificationSender notificationSender = new NotificationSender(notificationController);
             freeDayApprovalUserControl = new FreeDayApprovalUserControl(notificationSender, ContentControl);
             ContentControl.Content = freeDayApprovalUserControl;
+            helpString = "free_days";
         }
 
         private void Reports_RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             reportsUserControl = new ReportsUserControl();
             ContentControl.Content = reportsUserControl;
+            helpString = "reports";
+        }
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(helpString, this);
+            }
         }
     }
 }

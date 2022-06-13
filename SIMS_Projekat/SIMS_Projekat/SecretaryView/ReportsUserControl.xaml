@@ -47,7 +47,7 @@
             <Button HorizontalAlignment="Right" Margin="0,0,0,0" Height="50" Width="110" Style="{StaticResource ResourceKey=SecretaryViewButton}" x:Name="SaveButton" Click="SaveButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source ="/Resources/icons/save.png" Width="20" Margin="0,0,5,0"/>
-                    <TextBlock FontSize="15">Sačuvaj</TextBlock>
+                    <TextBlock FontSize="15">Štampaj</TextBlock>
                 </StackPanel>
             </Button>
 

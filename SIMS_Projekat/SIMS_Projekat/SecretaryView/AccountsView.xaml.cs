@@ -2,6 +2,7 @@
 using SIMS_Projekat.Model;
 using SIMS_Projekat.PatientView;
 using SIMS_Projekat.Repository;
+using SIMS_Projekat.SecretaryView.Help;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -150,6 +151,17 @@ namespace SIMS_Projekat.SecretaryView
         private void dataGridPatients_MouseDown(object sender, MouseButtonEventArgs e)
         {
             dataGrid.SelectedItem = null;
+        }
+
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, this);
+            }
         }
 
     }
