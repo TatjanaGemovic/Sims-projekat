@@ -39,7 +39,11 @@
 
 
 
-        <DatePicker Grid.Column="1" Grid.Row="1" x:Name="AppointmentDatePicker" VerticalAlignment="Center" Margin="10,0,20,0" FontSize="16" />
+        <DatePicker Grid.Column="1" Grid.Row="1" x:Name="AppointmentDatePicker" VerticalAlignment="Center" Margin="10,0,20,0" FontSize="16" >
+            <DatePicker.ToolTip>
+                <TextBlock>Izaberite datum i bice prikaza lista dostupnih soba za taj datum</TextBlock>
+            </DatePicker.ToolTip>
+        </DatePicker>
         <ComboBox Grid.Column="1" Grid.Row="2" Margin="10,0,20,0"  Height="25" x:Name="RoomComboBox" FontSize="16" ItemsSource="{Binding Rooms}" SelectionChanged="RoomComboBox_SelectionChanged" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -51,10 +55,17 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <ComboBox Grid.Column="1" Grid.Row="3" Margin="10,0,20,0"  Height="25" x:Name="AvailableTimesComboBox" FontSize="16" ItemsSource="{Binding AvailableTimes}" SelectionChanged="AvailableTimesComboBox_SelectionChanged"></ComboBox>
+        <ComboBox Grid.Column="1" Grid.Row="3" Margin="10,0,20,0"  Height="25" x:Name="AvailableTimesComboBox" FontSize="16" ItemsSource="{Binding AvailableTimes}" SelectionChanged="AvailableTimesComboBox_SelectionChanged">
+            <ComboBox.ToolTip>
+                <TextBlock>Izaberite vreme iz liste i prikazace se slobodni lekari kao i pacijenti</TextBlock>
+            </ComboBox.ToolTip>
+        </ComboBox>
 
 
         <ListBox Grid.Column="1" Grid.Row="4" Grid.RowSpan="4" x:Name="AvailablePatientsListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailablePatients}">
+            <ListBox.ToolTip>
+                <TextBlock>Ukoliko zeljeni pacijent nije u listi verovatno ima drugi zakazani termin, izaberite drugo vreme</TextBlock>
+            </ListBox.ToolTip>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -68,6 +79,9 @@
 
 
         <ListBox Grid.Column="4" Grid.Row="1" Grid.RowSpan="4" x:Name="AvailableDoctorsListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailableDoctors}">
+            <ListBox.ToolTip>
+                <TextBlock>Ukoliko zeljeni lekar nije u listi verovatno ima drugi zakazani termin, izaberite drugo vreme</TextBlock>
+            </ListBox.ToolTip>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
