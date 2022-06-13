@@ -54,8 +54,7 @@
         <ComboBox Grid.Column="1" Grid.Row="3" Margin="10,0,20,0"  Height="25" x:Name="AvailableTimesComboBox" FontSize="16" ItemsSource="{Binding AvailableTimes}" SelectionChanged="AvailableTimesComboBox_SelectionChanged"></ComboBox>
 
 
-        <TextBox Grid.Column="1" Grid.Row="4" x:Name="PatientsSearchField" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></TextBox>
-        <ListBox Grid.Column="1" Grid.Row="5" Grid.RowSpan="4" x:Name="AvailablePatientsListBox" VerticalAlignment="Top" Margin="10,-15,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailablePatients}">
+        <ListBox Grid.Column="1" Grid.Row="4" Grid.RowSpan="4" x:Name="AvailablePatientsListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailablePatients}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -68,8 +67,7 @@
         </ListBox>
 
 
-        <TextBox Grid.Column="4" Grid.Row="1" x:Name="DoctorSearchField" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></TextBox>
-        <ListBox Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" x:Name="AvailableDoctorsListBox" VerticalAlignment="Top" Margin="10,-15,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailableDoctors}">
+        <ListBox Grid.Column="4" Grid.Row="1" Grid.RowSpan="4" x:Name="AvailableDoctorsListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailableDoctors}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

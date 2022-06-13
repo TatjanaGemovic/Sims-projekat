@@ -58,8 +58,7 @@
         <TextBox Grid.Column="1" Grid.Row="5" Grid.RowSpan="4" x:Name="AvailablePatientsListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" Text="{Binding Description}" TextWrapping="Wrap"></TextBox>
 
 
-        <TextBox Grid.Column="4" Grid.Row="1" x:Name="DoctorSearchField" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></TextBox>
-        <ListBox Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" x:Name="AvailableStaffListBox" VerticalAlignment="Top" Margin="10,-15,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailableStaff}">
+        <ListBox Grid.Column="4" Grid.Row="1" Grid.RowSpan="4" x:Name="AvailableStaffListBox" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding AvailableStaff}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}" Content="{Binding Account.FirstName}" />

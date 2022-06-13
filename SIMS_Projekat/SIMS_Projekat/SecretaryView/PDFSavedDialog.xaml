@@ -19,8 +19,7 @@
         <TextBlock Grid.Row="0" Margin="0,0,0,0" FontSize="22" FontWeight="Medium" Foreground="#203A43" VerticalAlignment="Center" HorizontalAlignment="Center">PDF uspešno sačuvan</TextBlock>
 
         <StackPanel VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
-            <Label Content="Nazad" FontSize="18" Margin="0,0,5,0" Foreground="#203A43" MouseLeftButtonUp="CloseLabel_MouseLeftButtonUp" Cursor="Hand"/>
-            <Label Content="Otvori" FontSize="18" FontWeight="SemiBold" Margin="5,0,0,0" Foreground="#203A43" MouseLeftButtonUp="SaveLabel_MouseLeftButtonUp" Cursor="Hand" />
+            <Label Content="Nazad" FontSize="18" Margin="0,0,0,0" Foreground="#203A43" MouseLeftButtonUp="CloseLabel_MouseLeftButtonUp" Cursor="Hand"/>
         </StackPanel>
 
 

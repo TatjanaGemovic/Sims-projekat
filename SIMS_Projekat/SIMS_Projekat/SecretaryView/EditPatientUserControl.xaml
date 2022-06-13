@@ -69,8 +69,7 @@
         <TextBox Grid.Column="3" Grid.Row="3" x:Name="Username" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></TextBox>
         <PasswordBox Grid.Column="3" Grid.Row="4" x:Name="Password" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></PasswordBox>
 
-        <TextBox Grid.Column="3" Grid.Row="5" x:Name="AllergenSearchField" Margin="10,0,20,0" VerticalAlignment="Center" FontSize="16"></TextBox>
-        <ListBox x:Name="AllergensListBox" Grid.Row="6" Grid.Column="3"  Grid.RowSpan="4" VerticalAlignment="Top" Margin="10,-15,20,0" FontSize="16" Height="185" ItemsSource="{Binding Allergens}">
+        <ListBox x:Name="AllergensListBox" Grid.Row="5" Grid.Column="3"  Grid.RowSpan="4" VerticalAlignment="Top" Margin="10,20,20,0" FontSize="16" Height="185" ItemsSource="{Binding Allergens}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox VerticalAlignment="Center" IsChecked="{Binding IsSelected}" Content="{Binding Allergen.Name}" />

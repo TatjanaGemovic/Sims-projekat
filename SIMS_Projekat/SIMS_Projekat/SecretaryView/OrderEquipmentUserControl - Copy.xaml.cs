@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace SIMS_Projekat.SecretaryView
 {
-    /// <summary>
-    /// Interaction logic for AddUrgentPatientUserControl .xaml
-    /// </summary>
+    
     public partial class OrderEquipmentUserControl : UserControl
     {
         public EquipmentOrderController EquipmentOrderController { get; set; }
@@ -55,8 +53,9 @@ namespace SIMS_Projekat.SecretaryView
                 ArrivalDate = (DateTime)DatePicker.SelectedDate,
                 Quantity = int.Parse(EquipmentQuantity.Text)
             };
+
             EquipmentOrderController.AddEquipmentOrder(newEquipmentOrder);
-            contentControl.Content = equipmentUserControl;
+            contentControl.Content = new EquipmentOrderListUserControl(EquipmentOrderController, contentControl, equipmentUserControl);
         }
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {

@@ -49,6 +49,14 @@ namespace SIMS_Projekat.SecretaryView
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
 
+            if(FirstName.Text.Length == 0 || LastName.Text.Length == 0 || Date.Text.Length == 0
+                || Jmbg.Text.Length == 0 || Email.Text.Length == 0 || PhoneNumber.Text.Length == 0
+                || Height.Text.Length == 0 || Weight.Text.Length == 0)
+            {
+                MessageBox.Show("Morate popuniti sva polja");
+                return;
+            }
+
             List<Allergen> selectedAllergens = new List<Allergen>();
             foreach (AllergenSelection allergenSelection in Allergens)
             {

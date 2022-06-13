@@ -95,6 +95,7 @@
     <None Remove="Resources\icon_manager\ManagerReplacmentMedicine.png" />
     <None Remove="Resources\icon_manager\ManagerReport.png" />
     <None Remove="Resources\icon_manager\ManagerTransfer.png" />
+    <None Remove="SecretaryView\Help\username.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -186,6 +187,7 @@
     <Resource Include="Resources\icon_manager\ManagerReplacmentMedicine.png" />
     <Resource Include="Resources\icon_manager\ManagerReport.png" />
     <Resource Include="Resources\icon_manager\ManagerTransfer.png" />
+    <Resource Include="SecretaryView\Help\username.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -206,6 +208,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="SecretaryView\DeleteDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SecretaryView\PDFSavedDialog.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>

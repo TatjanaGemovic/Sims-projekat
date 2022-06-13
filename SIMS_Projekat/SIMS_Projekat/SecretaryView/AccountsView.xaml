@@ -17,6 +17,8 @@
         <converters:UrgentPatientIndicatorConverter x:Key="UrgentPatientIndicatorConverter" />
         <converters:DoctorSpecialityConverter x:Key="DoctorSpecialityConverter" />
         <converters:IsButtonEnabledConverter x:Key="IsButtonEnabledConverter" />
+        <converters:IsButtonDisabledConverter x:Key="IsButtonDisabledConverter" />
+
 
         <Style TargetType="DataGridRow">
             <Style.Triggers>
@@ -60,7 +62,23 @@
                             <DataGridTextColumn Header=" Ime" Binding="{Binding FirstName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width ="*"></DataGridTextColumn>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width ="*"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Hitan slucaj" Binding="{Binding IsUrgent, Converter={StaticResource UrgentPatientIndicatorConverter}}" Width ="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Hitan slucaj" Binding="{Binding IsUrgent, Converter={StaticResource UrgentPatientIndicatorConverter}}" Width ="*">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="ToolTip">
+                                            <Setter.Value>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Width="200" TextWrapping="Wrap">Ukoliko prilikom dodavanja hitnog slucaja pacijent nema
+                                                    nalog, kreira mu su privremeni nalog bez mogucnosti prijavljivanja u aplikaciju.
+                                                    Da bi mu bilo omoguceno prijavljivanje, moraju mu se dodati korisnicko ime i
+                                                    lozinka. Nakon toga, vise nece biti oznacen kao hitan slucaj</TextBlock>
+                                                    <Image Source ="/SecretaryView/Help/username.png" Margin="5,0,0,0"/>
+                                                </StackPanel>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -71,9 +89,13 @@
                                 <TextBlock FontSize="15">Dodaj</TextBlock>
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SecretaryViewButton}"  
+                        <Button Style="{StaticResource SecretaryViewButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}" 
-                                Margin="40,0,0,0" Height="50" Width="110" Click="EditPatient_Click">
+                                Margin="40,0,0,0" Height="50" Width="110" Click="EditPatient_Click" ToolTipService.ShowOnDisabled="True" 
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
+                            <Button.ToolTip>
+                                <TextBlock>Morate izbrati pacijenta da bi dugme bilo omoguceno</TextBlock>
+                            </Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Izmeni</TextBlock>
@@ -81,7 +103,11 @@
                         </Button>
                         <Button Style="{StaticResource SecretaryViewButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
-                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowPatient_Click">
+                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowPatient_Click"
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
+                            <Button.ToolTip>
+                                <TextBlock>Morate izbrati pacijenta da bi dugme bilo omoguceno</TextBlock>
+                            </Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/view.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Prikaži</TextBlock>
@@ -89,7 +115,11 @@
                         </Button>
                         <Button Style="{StaticResource SecretaryViewDeleteButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
-                                Margin="40,0,0,0" Height="50" Width="110" Click="DeletePatient_Click">
+                                Margin="40,0,0,0" Height="50" Width="110" Click="DeletePatient_Click"
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
+                        <Button.ToolTip>
+                            <TextBlock>Morate izbrati pacijenta da bi dugme bilo omoguceno</TextBlock>
+                        </Button.ToolTip>
                         <StackPanel Orientation="Horizontal">
                             <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
                             <TextBlock FontSize="15">Obriši</TextBlock>
@@ -130,7 +160,8 @@
                     </DataGrid>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="20, 40, 20, 60" >
-                        <Button Style="{StaticResource SecretaryViewButton}" Margin="0,0,0,0" Height="50" Width="110" Click="AddDoctor_Click">
+                        <Button Style="{StaticResource SecretaryViewButton}" Margin="0,0,0,0" Height="50" Width="110" Click="AddDoctor_Click"
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/add_account.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Dodaj</TextBlock>
@@ -139,6 +170,9 @@
                         <Button Style="{StaticResource SecretaryViewButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
                                 Margin="40,0,0,0" Height="50" Width="110" Click="EditDoctor_Click">
+                            <Button.ToolTip>
+                                <TextBlock>Morate izbrati lekara da bi dugme bilo omoguceno</TextBlock>
+                            </Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/edit.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Izmeni</TextBlock>
@@ -146,7 +180,11 @@
                         </Button>
                         <Button Style="{StaticResource SecretaryViewButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
-                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowDoctor_Click">
+                                Margin="40,0,0,0" Height="50" Width="110" Click="ShowDoctor_Click"
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
+                            <Button.ToolTip>
+                                <TextBlock>Morate izbrati lekara da bi dugme bilo omoguceno</TextBlock>
+                            </Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/view.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Prikaži</TextBlock>
@@ -154,7 +192,11 @@
                         </Button>
                         <Button Style="{StaticResource SecretaryViewDeleteButton}" 
                                 IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonEnabledConverter}}"
-                                Margin="40,0,0,0" Height="50" Width="110" Click="DeleteDoctor_Click">
+                                Margin="40,0,0,0" Height="50" Width="110" Click="DeleteDoctor_Click"
+                                ToolTipService.IsEnabled="{Binding SelectedItem, ElementName=dataGridPatients, Converter={StaticResource ResourceKey=IsButtonDisabledConverter}}">
+                            <Button.ToolTip>
+                                <TextBlock>Morate izbrati lekara da bi dugme bilo omoguceno</TextBlock>
+                            </Button.ToolTip>
                             <StackPanel Orientation="Horizontal">
                                 <Image Source ="/Resources/icons/delete.png" Width="20" Margin="0,0,5,0"/>
                                 <TextBlock FontSize="15">Obriši</TextBlock>

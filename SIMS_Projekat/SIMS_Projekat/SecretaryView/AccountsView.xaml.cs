@@ -71,12 +71,14 @@ namespace SIMS_Projekat.SecretaryView
 
         public static void DeletePatient(Patient patient)
         {
-            Patients.Remove(patient);
+            DeleteDialog deleteDialog = new DeleteDialog(Patients, patient);
+            deleteDialog.Show();
         }
 
         public static void DeleteDoctor(Doctor doctor)
         {
-            Doctors.Remove(doctor);
+            DeleteDialog deleteDialog = new DeleteDialog(Doctors, doctor);
+            deleteDialog.Show();
         }
 
         public static void Refresh()
