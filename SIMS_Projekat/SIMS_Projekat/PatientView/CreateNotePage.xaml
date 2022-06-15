@@ -39,8 +39,8 @@
         <Label Content="Sadržaj:" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"
                Style="{StaticResource ResourceKey=PatientRegularLabels}"/>
 
-        <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="True" Width="500" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                 FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+        <TextBox Grid.Row="2" Grid.Column="2" IsEnabled="True" Width="500" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                 FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0" HorizontalAlignment="Left"
                  AcceptsTab="False" Text="{Binding Path=Title, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" Height="41" MaxLines="2" MaxHeight="80">
             <TextBox.Resources>
@@ -50,8 +50,8 @@
             </TextBox.Resources>
         </TextBox>
 
-        <TextBox Grid.Row="4" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#FFCE89" BorderThickness="3" Background="#ADCE74" 
-                 FontSize="22" Foreground="#FFF76A" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
+        <TextBox Grid.Row="4" Grid.Column="2" IsEnabled="True" Width="700" BorderBrush="#BC4749" BorderThickness="3" Background="#ADCE74" 
+                 FontSize="22" Foreground="#F2E8CF" TextWrapping="Wrap" HorizontalScrollBarVisibility="Disabled" 
                  VerticalScrollBarVisibility="Auto" AcceptsReturn="True" Margin="10,0,0,0"
                  Height="300" AcceptsTab="False" Text="{Binding Path=Content, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" >
             <TextBox.Resources>

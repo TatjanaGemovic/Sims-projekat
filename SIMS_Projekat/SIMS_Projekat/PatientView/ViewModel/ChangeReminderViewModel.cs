@@ -85,7 +85,7 @@ namespace SIMS_Projekat.PatientView.ViewModel
             DateTime date = DateTime.Parse(Date);
             Reminder.Date = date.Date.ToString("dd.MM.yyyy.");
 
-            Reminder newReminder = Inject.RemindersConverter.ConvertViewModelToModel(Reminder, App.reminderController.GetReminderByID(Convert.ToInt32(Reminder.ReminderID)).patient);
+            Reminder newReminder = Inject.RemindersConverter.ConvertViewModelToModel(Reminder, App.reminderController.GetReminderByID(Convert.ToInt32(Reminder.ReminderID)).patient, false);
             App.reminderController.SetReminder(newReminder);
 
             //if (!fromReport)

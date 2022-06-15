@@ -40,9 +40,9 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             return vmReminders;
         }
 
-        public Reminder ConvertViewModelToModel(ReminderViewModel reminderFromView, Patient patient)
+        public Reminder ConvertViewModelToModel(ReminderViewModel reminderFromView, Patient patient, bool creation)
         {
-            DateTime start = ConvertFromStringToDate(reminderFromView);
+            DateTime start = ConvertFromStringToDate(reminderFromView, creation);
             Reminder reminder = new Reminder()
             {
                 content = reminderFromView.Content,
@@ -55,10 +55,19 @@ namespace SIMS_Projekat.PatientView.VMPatientConverters
             return reminder;
         }
 
-        public DateTime ConvertFromStringToDate(ReminderViewModel reminderFromView)
+        public DateTime ConvertFromStringToDate(ReminderViewModel reminderFromView, bool creation)
         {
-            string[] dateParts = reminderFromView.Date.Split(".");
-            string Date = dateParts[1] + "/" + dateParts[0] + "/" + dateParts[2];
+            string Date;
+            if (!creation)
+            {
+                string[] dateParts = reminderFromView.Date.Split(".");
+                Date = dateParts[1] + "/" + dateParts[0] + "/" + dateParts[2];
+            }
+            else
+            {
+                Date = reminderFromView.Date;
+            }
+            
             DateTime start = DateTime.Parse(Date);
             DateTime startDate = start.Date;
 
