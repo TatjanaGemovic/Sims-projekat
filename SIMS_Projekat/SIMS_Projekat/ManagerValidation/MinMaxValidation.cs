@@ -28,7 +28,7 @@ namespace SIMS_Projekat.ManagerValidation
                 if (d < Min)
                 {
                     if (Settings.Default.CurrentLanguage == "sr-LATN")
-                        return new ValidationResult(false, "Minimalna vrednost za premestanje je 1");
+                        return new ValidationResult(false, "Minimalna vrednost za premeštanje je 1");
                     else
                         return new ValidationResult(false, "Minimal quantity is 1");
                     
@@ -36,7 +36,7 @@ namespace SIMS_Projekat.ManagerValidation
                 else if (d > Max)
                 {
                     if (Settings.Default.CurrentLanguage == "sr-LATN")
-                        return new ValidationResult(false, "Uneli ste vecu vrednost od dostupne kolicine za premestanje");
+                        return new ValidationResult(false, "Uneli ste veću vrednost od dostupne količine za premeštanje");
                     else
                         return new ValidationResult(false, "You have exceeded the limits");
                    

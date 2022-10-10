@@ -45,10 +45,10 @@
                 </ListView.View>
             </ListView>
 
-            <Button Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" RenderTransformOrigin="0.552,0.656" Height="37" Width="103" Click="Button_Click" Margin="37,0,10,0">
+            <Button Style="{DynamicResource ManagerButtonCRUD}" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="7" RenderTransformOrigin="0.552,0.656" Height="37" Width="93" Click="Button_Click" Margin="37,0,0,0">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  x:Name="Nazad" Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="66"/>
+                    <Label  x:Name="Nazad" Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="52"/>
                 </StackPanel>
             </Button>
 

@@ -1,4 +1,5 @@
 ﻿using SIMS_Projekat.Model;
+using SIMS_Projekat.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -52,10 +53,34 @@ namespace SIMS_Projekat.ManagerView
 
         private void ObrisiOpremeBtn_Click(object sender, RoutedEventArgs e)
         {
-            Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
-            App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
-            EquipmentList.Remove(selectedEquipment);
-            EquipmentList = new ObservableCollection<Equipment>(App.equipmentController.GetEquipment());
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+            {
+                if (MessageBox.Show("Da li ste sigurni da želite da obrišete opremu?",
+                    "Brisanje opreme",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
+                    App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
+                    EquipmentList.Remove(selectedEquipment);
+                    EquipmentList = new ObservableCollection<Equipment>(App.equipmentController.GetEquipment());
+                }
+
+            }
+            else 
+            {
+                if (MessageBox.Show("Are you sure you want to delete equipment?",
+                        "Delete equipment",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Equipment selectedEquipment = (Equipment)datagGridEquipment.SelectedItem;
+                    App.equipmentController.DeleteEquipment(selectedEquipment.EquipmentID);
+                    EquipmentList.Remove(selectedEquipment);
+                    EquipmentList = new ObservableCollection<Equipment>(App.equipmentController.GetEquipment());
+                }
+
+            }
 
         }
 

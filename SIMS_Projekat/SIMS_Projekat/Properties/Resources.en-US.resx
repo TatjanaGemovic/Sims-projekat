@@ -141,14 +141,29 @@
   <data name="BrojSprata" xml:space="preserve">
     <value>Room floor:</value>
   </data>
+  <data name="BrzinaPrijema" xml:space="preserve">
+    <value>Did you wait to long?</value>
+  </data>
   <data name="Classic" xml:space="preserve">
     <value>Classic</value>
+  </data>
+  <data name="DaLiBolPreporuciti" xml:space="preserve">
+    <value>Do you want to recomand hospital?</value>
+  </data>
+  <data name="DaLiDrPreporuciti" xml:space="preserve">
+    <value>Do you want to recomand doctor?</value>
+  </data>
+  <data name="DaLiSlusa" xml:space="preserve">
+    <value>Does doctor listen you carefuly?</value>
   </data>
   <data name="dateOfPoll" xml:space="preserve">
     <value>date of poll</value>
   </data>
   <data name="datumM" xml:space="preserve">
     <value>date</value>
+  </data>
+  <data name="datumRodjenja" xml:space="preserve">
+    <value>Birth date: 03.05.1959.</value>
   </data>
   <data name="dinamicka" xml:space="preserve">
     <value>dynamic</value>
@@ -158,6 +173,9 @@
   </data>
   <data name="doctorRatingPoll" xml:space="preserve">
     <value>doctor rank</value>
+  </data>
+  <data name="Dodaj" xml:space="preserve">
+    <value>Add</value>
   </data>
   <data name="DodajLek" xml:space="preserve">
     <value>Add medicine</value>
@@ -207,6 +225,9 @@
   <data name="IzaberiteLekKojiZeliteDaDodat" xml:space="preserve">
     <value>Choose medicine for adding:</value>
   </data>
+  <data name="IzabraniDoktorPacijenta" xml:space="preserve">
+    <value>Choosen doctor:</value>
+  </data>
   <data name="izberiDoktora" xml:space="preserve">
     <value>Choose doctor for review:</value>
   </data>
@@ -239,6 +260,9 @@
   </data>
   <data name="KolicinaZaPrebacivanje" xml:space="preserve">
     <value>Quantity for exchange:</value>
+  </data>
+  <data name="KomentarPacijenta" xml:space="preserve">
+    <value>Patient comment:</value>
   </data>
   <data name="lekM" xml:space="preserve">
     <value>medicine</value>
@@ -291,6 +315,12 @@
   <data name="ObrisiSastojak" xml:space="preserve">
     <value>Delete component</value>
   </data>
+  <data name="OcenaOpreme" xml:space="preserve">
+    <value>Equipment rank:</value>
+  </data>
+  <data name="OcenaZaDoktora" xml:space="preserve">
+    <value>Doctor rank:</value>
+  </data>
   <data name="od" xml:space="preserve">
     <value>from:</value>
   </data>
@@ -303,7 +333,7 @@
   <data name="Odustani" xml:space="preserve">
     <value>Quit</value>
   </data>
-  <data name="opreatinRoom" xml:space="preserve">
+  <data name="operatingRoom" xml:space="preserve">
     <value>opreating</value>
   </data>
   <data name="Oprema" xml:space="preserve">
@@ -329,6 +359,48 @@
   </data>
   <data name="Pomoc" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="PomocText" xml:space="preserve">
+    <value>Program have main pages: 
+
+1. Notificatons - Notifications for user
+2. Rooms - View of all rooms in hospital
+3. Medicine - View of all medicine in hospital
+4. Equipment - View of all equipment in hospital
+5. Polls - View of polls that patient have made
+6. Settings - Setting that include changing theme and language
+7. Profile - User looged in information
+8. Help - help for user
+
+Commands:
+
+Command Add - add entity in program
+Command Edit - editing entity information 
+Commadn Delete - delete entity from program
+Command Back - return on previous page
+Command Done - comfirm action
+Command Quit - give up of current action
+Command Inventory - View of all inventory of selected room
+Command In rooms- View of all rooms where is selected equipment
+Command Order exchange - Order equipment exchange to room or magacin
+Command Order renovation - Order renovation for selected room
+Command To magacin - Move equipment to magacin
+Command To room - Move selected equipment to another room
+Command Rejected Medicine - View of medicine that hasn't  pass doctor review
+Command Add medicine component - adding component to medicine
+Command Add replace medicine - adding medicine that can replace specific medicine in emergency case
+Command Send to doctor - when you adding or editing medicine you have to send to doctor for review
+Command Read poll - View of selected poll
+Command Create poll report - creating report in some date interval and save in pdf extension
+
+Note: Command will be enable only if all field are properly filled
+
+Navigation:
+
+TAB - for changing selection between component
+SPACE - for selection in list 
+ENTER - for action execution 
+RIGHT and LEFT arrow - for changing combo filed </value>
   </data>
   <data name="Ponisti" xml:space="preserve">
     <value>Quit</value>
@@ -362,6 +434,9 @@
   </data>
   <data name="prezimeM" xml:space="preserve">
     <value>surename</value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value>Profile</value>
   </data>
   <data name="ProstorijaZaDodavanje" xml:space="preserve">
     <value>Add room</value>
@@ -402,6 +477,12 @@
   <data name="spratM" xml:space="preserve">
     <value>floor</value>
   </data>
+  <data name="SrecnjaOcenaBolnice" xml:space="preserve">
+    <value>Average hospital rank:</value>
+  </data>
+  <data name="SrednjaOcenaDoktora" xml:space="preserve">
+    <value>Average doctor rank:</value>
+  </data>
   <data name="Srpski" xml:space="preserve">
     <value>Serbian</value>
   </data>
@@ -419,6 +500,9 @@
   </data>
   <data name="Tamna" xml:space="preserve">
     <value>Dark</value>
+  </data>
+  <data name="telefon" xml:space="preserve">
+    <value>Phone: 0650702039</value>
   </data>
   <data name="Tema" xml:space="preserve">
     <value>Theme:</value>
@@ -447,6 +531,9 @@
   <data name="UProstoriju" xml:space="preserve">
     <value>To room</value>
   </data>
+  <data name="username" xml:space="preserve">
+    <value>Username: tatamata</value>
+  </data>
   <data name="useTypeM" xml:space="preserve">
     <value>use type</value>
   </data>
@@ -458,6 +545,9 @@
   </data>
   <data name="ZamenskiLekovi" xml:space="preserve">
     <value>Replacement medicine:</value>
+  </data>
+  <data name="zanimanje" xml:space="preserve">
+    <value>Job: Manager</value>
   </data>
   <data name="Zavrsi" xml:space="preserve">
     <value>Done</value>

@@ -141,8 +141,20 @@
   <data name="BrojSprata" xml:space="preserve">
     <value>Broj sprata:</value>
   </data>
+  <data name="BrzinaPrijema" xml:space="preserve">
+    <value>Brzina prijema na pregled?</value>
+  </data>
   <data name="Classic" xml:space="preserve">
-    <value>Obicno</value>
+    <value>Obično</value>
+  </data>
+  <data name="DaLiBolPreporuciti" xml:space="preserve">
+    <value>Da li biste preporučili bolnicu?</value>
+  </data>
+  <data name="DaLiDrPreporuciti" xml:space="preserve">
+    <value>Da li biste preporučili doktora?</value>
+  </data>
+  <data name="DaLiSlusa" xml:space="preserve">
+    <value>Da li Vas je doktor pažiljivo slušao?</value>
   </data>
   <data name="dateOfPoll" xml:space="preserve">
     <value>datum kreiranja ankete</value>
@@ -150,14 +162,20 @@
   <data name="datumM" xml:space="preserve">
     <value>datum</value>
   </data>
+  <data name="datumRodjenja" xml:space="preserve">
+    <value>Datum rođenja: 03.05.1959.</value>
+  </data>
   <data name="dinamicka" xml:space="preserve">
-    <value>dinamicka</value>
+    <value>dinamička</value>
   </data>
   <data name="do" xml:space="preserve">
     <value>do:</value>
   </data>
   <data name="doctorRatingPoll" xml:space="preserve">
     <value>ocena za doktor</value>
+  </data>
+  <data name="Dodaj" xml:space="preserve">
+    <value>Dodaj</value>
   </data>
   <data name="DodajLek" xml:space="preserve">
     <value> Dodaj lek</value>
@@ -178,7 +196,7 @@
     <value>Dodaj zamenski lek</value>
   </data>
   <data name="DostupnaKolicina" xml:space="preserve">
-    <value>Dostupna kolicina:</value>
+    <value>Dostupna količina:</value>
   </data>
   <data name="drCom" xml:space="preserve">
     <value>komentar doktora</value>
@@ -202,13 +220,16 @@
     <value>Inventar prostorije</value>
   </data>
   <data name="IzaberiProstorijuUKoju" xml:space="preserve">
-    <value>Izaberite prostoriju u koju zelite da premestite opremu: </value>
+    <value>Izaberite prostoriju u koju želite da premestite opremu: </value>
   </data>
   <data name="IzaberiteLekKojiZeliteDaDodat" xml:space="preserve">
-    <value>Izaberite lek koji zelite da dodate:</value>
+    <value>Izaberite lek koji želite da dodate:</value>
+  </data>
+  <data name="IzabraniDoktorPacijenta" xml:space="preserve">
+    <value>Izabrani doktor pacijenta:</value>
   </data>
   <data name="izberiDoktora" xml:space="preserve">
-    <value>Izaberi doktora kom zelite da posaljete zahtev:</value>
+    <value>Izaberi doktora kom želite da pošaljete zahtev:</value>
   </data>
   <data name="IzmeniLek" xml:space="preserve">
     <value> Izmeni lek</value>
@@ -220,25 +241,28 @@
     <value>Izmeni prostoriju</value>
   </data>
   <data name="IzvestajAnketa" xml:space="preserve">
-    <value>Izvestaj anketa</value>
+    <value>Izveštaj anketa</value>
   </data>
   <data name="IzvestajAnketaUP" xml:space="preserve">
-    <value> Izvestaj anketa u periodu </value>
+    <value> Izveštaj anketa u periodu </value>
   </data>
   <data name="JacinaLeka" xml:space="preserve">
-    <value>Jacina leka [mg]:</value>
+    <value>Jačina leka [mg]:</value>
   </data>
   <data name="Jezik" xml:space="preserve">
     <value>Jezik:</value>
   </data>
   <data name="Kolicina" xml:space="preserve">
-    <value>Kolicina:</value>
+    <value>Količina:</value>
   </data>
   <data name="kolicinaM" xml:space="preserve">
-    <value>kolicina</value>
+    <value>količina</value>
   </data>
   <data name="KolicinaZaPrebacivanje" xml:space="preserve">
-    <value>Kolicina za prebacivanje:</value>
+    <value>Količina za prebacivanje:</value>
+  </data>
+  <data name="KomentarPacijenta" xml:space="preserve">
+    <value>Komentar pacijenta:</value>
   </data>
   <data name="lekM" xml:space="preserve">
     <value>lek</value>
@@ -259,10 +283,10 @@
     <value>Spajanje</value>
   </data>
   <data name="NacinUpotrebe" xml:space="preserve">
-    <value>Nacin upotrebe:</value>
+    <value>Način upotrebe:</value>
   </data>
   <data name="NapraviIzvestaj" xml:space="preserve">
-    <value>Napravi izvestaj</value>
+    <value>Napravi izveštaj</value>
   </data>
   <data name="Nazad" xml:space="preserve">
     <value>Nazad</value>
@@ -280,16 +304,22 @@
     <value>Notifikacije</value>
   </data>
   <data name="ObrisiLek" xml:space="preserve">
-    <value> Obrisi lek</value>
+    <value> Obriši lek</value>
   </data>
   <data name="ObrisiOpremu" xml:space="preserve">
-    <value>Obrisi opremu</value>
+    <value>Obriši opremu</value>
   </data>
   <data name="ObrisiProstoriju" xml:space="preserve">
-    <value>Obrisi prostoriju</value>
+    <value>Obriši prostoriju</value>
   </data>
   <data name="ObrisiSastojak" xml:space="preserve">
-    <value>Obrisi sastojak</value>
+    <value>Obriši sastojak</value>
+  </data>
+  <data name="OcenaOpreme" xml:space="preserve">
+    <value>Ocena opreme bolnice:</value>
+  </data>
+  <data name="OcenaZaDoktora" xml:space="preserve">
+    <value>Ocena za doktora</value>
   </data>
   <data name="od" xml:space="preserve">
     <value>od:</value>
@@ -301,7 +331,7 @@
     <value>Odjavi se</value>
   </data>
   <data name="Odustani" xml:space="preserve">
-    <value>Quit</value>
+    <value>Odustani</value>
   </data>
   <data name="operatingRoom" xml:space="preserve">
     <value>za operaciju</value>
@@ -316,31 +346,75 @@
     <value>Oprema za izmenu</value>
   </data>
   <data name="Otkazi" xml:space="preserve">
-    <value>Otkazi</value>
+    <value>Otkaži</value>
   </data>
   <data name="per os" xml:space="preserve">
     <value>per os</value>
   </data>
   <data name="Podesavanja" xml:space="preserve">
-    <value>Podesavanja</value>
+    <value>Podešavanja</value>
   </data>
   <data name="PogledajAnketu" xml:space="preserve">
     <value>Pogedaj anketu</value>
   </data>
   <data name="Pomoc" xml:space="preserve">
-    <value>Pomoc</value>
+    <value>Pomoć</value>
+  </data>
+  <data name="PomocText" xml:space="preserve">
+    <value>Program se sastoji iz 8 glavnih stranica: 
+
+1. Notifikacije - Notifikacije za ulogovanog korisnika
+2. Prostorije - Pregled prostorija u bolnici
+3. Lekovi - Pregled lekov u bolnici
+4. Oprema - Pregled opreme u bolnici
+5. Ankete - Pregled anketa koje su popunili pacijenti
+6. Podešavanja - Podešavanja koja ukljucuju promenu teme i jezika aplikacije
+7. Profil - Informacije o ulogovanom korisniku
+8. Pomoć - pomoć za korisnika
+
+Komande:
+
+Komanda Dodaj- dodavanje novog entiteta u program
+Komanda Izmeni - izmena informacija označenog entiteta
+Komanda Obriši - brisanje označenog entiteta
+Komanda Nazad - vraćanje na prethodnu stranicu
+Komanda Potvrdi - potvrđivanje date akcije
+Komanda Odustani - odustajanje od date akcije
+Komanda Inventar - pregled opreme u označenoj prostoriji
+Komanda Pregled opreme- pregled opreme po prostorijama
+Komanda Zakaži renoviranje - zakazivanje renoviranja označene prostorije
+Komanda Premeštanje opreme - zakazivanje premeštanja opreme u drugu prostoriju ili magacin
+Komanda U magacin - premeštanje opreme u magacin
+Komanda U prostoriju - premeštanje opreme u drugu prostoriju
+Komanda Odbijeni lekovi - pregled lekova koje je doktor odbio zbog pogrešno unetih informacija
+Komanda Dodaj sastojke- dodavanje sastojaka datog leka
+Komanda Dodaj zamenske lekove- dodavanje lekova koji mogu da se koriste umesto označenog leka
+Komanda Pošalji doktoru - da bi se bilo koji lek dodao ili izmenio potrebno je poslati doktoru na reviziju
+Komanda Pogledaj anketu- detaljniji pregled označene ankete
+Komanda Napravi izveštaj - pravljenje izveštaja za određeni period
+Komanda Odjavi se- odjavljivanje iz programa
+
+Napomena: Komande će biti onemogućene ukoliko sva polja nisu pravilno uneta
+
+Navigacija:
+
+TAB - za prebacivanje sa komponente na komponentu
+SPACE - za označavanje entiteta u tabeli
+ENTER - za potvrđivanje akcije
+DESNA i LEVA strelica - za biranje opcija padajućeg menija
+</value>
   </data>
   <data name="Ponisti" xml:space="preserve">
-    <value>Ponisti</value>
+    <value>Poništi</value>
   </data>
   <data name="PonistiDodavanje" xml:space="preserve">
-    <value>Ponisti dodavanje</value>
+    <value>Poništi dodavanje</value>
   </data>
   <data name="PonistiIzmenu" xml:space="preserve">
-    <value>Ponisti izmenu</value>
+    <value>Poništi izmenu</value>
   </data>
   <data name="PosaljiDoktoru" xml:space="preserve">
-    <value>Posalji doktoru</value>
+    <value>Pošalji doktoru</value>
   </data>
   <data name="Potvrdi" xml:space="preserve">
     <value>Potvrdi</value>
@@ -362,6 +436,9 @@
   </data>
   <data name="prezimeM" xml:space="preserve">
     <value>prezime</value>
+  </data>
+  <data name="Profil" xml:space="preserve">
+    <value>Profil</value>
   </data>
   <data name="ProstorijaZaDodavanje" xml:space="preserve">
     <value>Prostorija za dodavanje</value>
@@ -388,7 +465,7 @@
     <value>Renoviranje prostorije u periodu</value>
   </data>
   <data name="sadrzaj" xml:space="preserve">
-    <value>sadrzaj</value>
+    <value>sadržaj</value>
   </data>
   <data name="Sastojci" xml:space="preserve">
     <value>Sastojci</value>
@@ -402,11 +479,17 @@
   <data name="spratM" xml:space="preserve">
     <value>sprat</value>
   </data>
+  <data name="SrecnjaOcenaBolnice" xml:space="preserve">
+    <value>Srednja ocena bolnice:</value>
+  </data>
+  <data name="SrednjaOcenaDoktora" xml:space="preserve">
+    <value>Srednja ocena doktora:</value>
+  </data>
   <data name="Srpski" xml:space="preserve">
     <value>Srpski</value>
   </data>
   <data name="staticka" xml:space="preserve">
-    <value>staticka</value>
+    <value>statička</value>
   </data>
   <data name="sublingvalno" xml:space="preserve">
     <value>sublingavlno</value>
@@ -419,6 +502,9 @@
   </data>
   <data name="Tamna" xml:space="preserve">
     <value>Tamna</value>
+  </data>
+  <data name="telefon" xml:space="preserve">
+    <value>Telefon: 0650702039</value>
   </data>
   <data name="Tema" xml:space="preserve">
     <value>Tema:</value>
@@ -447,22 +533,28 @@
   <data name="UProstoriju" xml:space="preserve">
     <value>U prostoriju</value>
   </data>
+  <data name="username" xml:space="preserve">
+    <value>Korisničko ime: tatamata</value>
+  </data>
   <data name="useTypeM" xml:space="preserve">
-    <value>nacin upotrebe</value>
+    <value>način upotrebe</value>
   </data>
   <data name="VremePrebacivanja" xml:space="preserve">
     <value>Vreme prebacivanja:</value>
   </data>
   <data name="ZakaziRenoviranje" xml:space="preserve">
-    <value>Zakazi renoviranje</value>
+    <value>Zakaži renoviranje</value>
   </data>
   <data name="ZamenskiLekovi" xml:space="preserve">
     <value>Zamenski lekovi:</value>
   </data>
+  <data name="zanimanje" xml:space="preserve">
+    <value>Zanimanje: Upravnik</value>
+  </data>
   <data name="Zavrsi" xml:space="preserve">
-    <value>Zavrsi</value>
+    <value>Završi</value>
   </data>
   <data name="ZavrsiDodavanje" xml:space="preserve">
-    <value>Zavrsi dodavanje</value>
+    <value>Završi dodavanje</value>
   </data>
 </root>

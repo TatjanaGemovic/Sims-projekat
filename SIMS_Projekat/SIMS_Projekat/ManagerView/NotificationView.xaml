@@ -26,12 +26,12 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label x:Name="Notifikacije" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Notifikacije}" Margin="0,10,0,0" ></Label>
-            <ListView x:Name="datagGridRooms" IsTabStop="True" Focusable="False" ItemsSource="{Binding Path=Notifications}" Style="{DynamicResource ManagerListViewStyle}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="10,0,50,0" Width="492"   >
+            <Label x:Name="Notifikacije" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Notifikacije}" Margin="10,10,0,0" ></Label>
+            <ListView x:Name="datagGridRooms" IsTabStop="True" Focusable="False" ItemsSource="{Binding Path=Notifications}" Style="{DynamicResource ManagerListViewStyle}"  Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" Margin="0,0,60,0" Width="530"   >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="sadrzaj" DisplayMemberBinding ="{Binding Path=Content}" Header="{ns:Loc sadrzaj }"  Width="340" />
-                        <GridViewColumn x:Name="datum" DisplayMemberBinding ="{Binding Path=SentDate}"  Header="{ns:Loc datumM }"  Width="142" />
+                        <GridViewColumn x:Name="sadrzaj" DisplayMemberBinding ="{Binding Path=Content}" Header="{ns:Loc sadrzaj }"  Width="380" />
+                        <GridViewColumn x:Name="datum" DisplayMemberBinding ="{Binding Path=SentDate, StringFormat=\{0:MM/dd/yyyy\}}" Header="{ns:Loc datumM }"  Width="140" />
 
                     </GridView>
                 </ListView.View>

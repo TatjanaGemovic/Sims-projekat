@@ -1,0 +1,46 @@
+﻿<Page x:Class="SIMS_Projekat.ManagerView.ProfileView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SIMS_Projekat.ManagerView"
+      xmlns:ns="clr-namespace:MenuNavigation"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="554"
+      Title="ProfileView">
+
+    <Border Style="{DynamicResource ManagerBorderMain}">
+        <Grid>
+
+
+            <GroupBox x:Name="Podesavanja" Header="Ana Gavanski" Style="{DynamicResource ManagerGroupBoxText}" Margin="70,20,70,20" >
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition ></RowDefinition>
+                        <RowDefinition Height="*" ></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="{ns:Loc username}" Grid.Row="0" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Label Content="{ns:Loc zanimanje}" Grid.Row="1" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Label Content="{ns:Loc datumRodjenja}" Grid.Row="2" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Label Content="Email: gavan35@gmai.com" Grid.Row="3" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Label Content="JMBG: 0305959805049" Grid.Row="4" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Label Content="{ns:Loc telefon}" Grid.Row="5" Grid.Column="0" Style="{DynamicResource LabelInButton}" FontSize="14" Width="180"></Label>
+                    <Image Width="200" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" Source="/ManagerView/Gavanski.jpg"></Image>
+
+                </Grid>
+            </GroupBox>
+
+            
+
+        </Grid>
+    </Border>
+</Page>

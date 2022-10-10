@@ -30,7 +30,7 @@
                 <RowDefinition Height="5"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <Label x:Name="Inventar" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Inventar}" ></Label>
+            <Label x:Name="Inventar" Style="{DynamicResource ManagerMainLabelPages}" Grid.Row="0" Grid.Column="0" Content="{ns:Loc Inventar}" Margin="30,10,0,0"></Label>
 
 
             <ListView x:Name="gridView" ItemsSource="{Binding Podaci}" Style="{DynamicResource ManagerListViewStyle}"  Width="401" Grid.Row="1" Grid.RowSpan="7" Grid.Column="0"  >

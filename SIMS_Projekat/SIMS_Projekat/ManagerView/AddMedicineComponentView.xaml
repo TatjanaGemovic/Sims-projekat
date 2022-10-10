@@ -55,7 +55,7 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
-                            <Button x:Name="DodajBtn"  Content="{ns:Loc PotvrdiDodavanje}" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" HorizontalAlignment="Left"   VerticalAlignment="Center" Height="30" Width="70" Click="Button_Click" Margin="10,0,10,0"/>
+                            <Button x:Name="DodajBtn"  Content="{ns:Loc Dodaj}" Style="{DynamicResource ManagerButtonCRUDOk}" IsEnabled="False" HorizontalAlignment="Left"   VerticalAlignment="Center" Height="30" Width="70" Click="Button_Click" Margin="10,0,10,0"/>
                         </StackPanel>
                         
                     </Grid>

@@ -1,5 +1,6 @@
 ﻿using SIMS_Projekat.DTO;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -73,9 +74,33 @@ namespace SIMS_Projekat.ManagerView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            refreshTable();
-            var dtoForDelete = App.medicineComponentsRepository.GetDTOByMedicineAndComponent(_medicine.MedicineID, getSelectedItem());
-            App.medicineComponentsRepository.DeleteDTO(dtoForDelete);
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+            {
+                if (MessageBox.Show("Da li ste sigurni da želite da obrišete sastojak?",
+                    "Brisanje sastojka",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    refreshTable();
+                    var dtoForDelete = App.medicineComponentsRepository.GetDTOByMedicineAndComponent(_medicine.MedicineID, getSelectedItem());
+                    App.medicineComponentsRepository.DeleteDTO(dtoForDelete);
+                }
+
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete component?",
+                        "Delete component",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    refreshTable();
+                    var dtoForDelete = App.medicineComponentsRepository.GetDTOByMedicineAndComponent(_medicine.MedicineID, getSelectedItem());
+                    App.medicineComponentsRepository.DeleteDTO(dtoForDelete);
+                }
+
+            }
+            
         }
 
         private void refreshTable()

@@ -2,6 +2,7 @@
 using SIMS_Projekat.Controller;
 using SIMS_Projekat.ManagerView;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -89,8 +90,32 @@ namespace SIMS_Projekat.ManagerViewModel
 
         private void ObrisiLekBtn_Click()
         {
-            App.medicineController.DeleteMedicine(SelectedItem);
-            Medicine = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
+
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+            {
+                if (MessageBox.Show("Da li ste sigurni da želite da obrišete lek?",
+                    "Brisanje leka",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    App.medicineController.DeleteMedicine(SelectedItem);
+                    Medicine = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
+                }
+
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete medicine?",
+                        "Delete medicine",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    App.medicineController.DeleteMedicine(SelectedItem);
+                    Medicine = new ObservableCollection<Medicine>(App.medicineController.GetVerifyMedicine());
+                }
+
+            }
+            
         }
 
 

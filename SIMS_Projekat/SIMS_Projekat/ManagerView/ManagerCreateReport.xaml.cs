@@ -8,6 +8,7 @@ using Syncfusion.Pdf.Graphics;
 using SIMS_Projekat.Model;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SIMS_Projekat.Properties;
 
 namespace SIMS_Projekat.ManagerView
 {
@@ -35,8 +36,16 @@ namespace SIMS_Projekat.ManagerView
         {
             polls = App.evaluationController.GetPollsForInterval((DateTime)odTxt.SelectedDate, (DateTime)doTxt.SelectedDate);
             suma = polls.Count;
-            GenerateDocument();
-            AutoClosingMessageBox.Show("Uspešno ste kreirali izveštaj.", "Caption", 1500);
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+                GenerateDocument();
+            else
+                GenerateDocumentEn();
+
+
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+                AutoClosingMessageBox.Show("Uspešno ste kreirali izveštaj.", "Kreiranje izveštaja anketa", 1500);
+            else
+                AutoClosingMessageBox.Show("You have successfully created report.", "Create polls report", 1500);
             ManagerHome.mainFrame.Content = new PollsView();
 
         }
@@ -144,6 +153,87 @@ namespace SIMS_Projekat.ManagerView
                 Random rand = new Random();
                 int number = rand.Next(0, 100000000);
                 var naziv_random = @".\..\..\..\ManagerPDF\Upravnik" + number.ToString()+".pdf";
+                //Save the document
+                doc.Save(naziv_random);
+                doc.Close(true);
+                //System.Diagnostics.Process.Start("Output.pdf");
+            }
+
+
+
+        }
+
+        private void GenerateDocumentEn()
+        {
+            using (PdfDocument document = new PdfDocument())
+            {
+                PdfDocument doc = new PdfDocument();
+                doc.DocumentInformation.Title = "Polls report";
+                //Add a page to the document
+                PdfPage page = doc.Pages.Add();
+
+
+                //Create PDF graphics for a page
+                PdfGraphics graphics = page.Graphics;
+
+                //Set the standard font
+                PdfFont font = new PdfStandardFont(PdfFontFamily.Helvetica, 20);
+
+                //Load the image from the disk.
+                PdfImage image = PdfImage.FromFile(@".\..\..\..\ManagerPDF\logo250.png");
+                //Draw the image
+                graphics.DrawImage(image, new RectangleF(320, 0, 100, 100));
+
+
+
+                //Draw the text
+                string naslov = "Polls report in interval " + "from: " + odTxt.SelectedDate.ToString().Split(" ")[0]
+                    + " to: " + doTxt.SelectedDate.ToString().Split(" ")[0];
+                graphics.DrawString(naslov, font, PdfBrushes.Black, new RectangleF(30, 20, 300, 300));
+
+
+                graphics.DrawString("Zdravo Hospital", new PdfStandardFont(PdfFontFamily.TimesRoman, 11), PdfBrushes.Black, new RectangleF(430, 20, 200, 200));
+                graphics.DrawString("Zlatne Grede 4", new PdfStandardFont(PdfFontFamily.TimesRoman, 11), PdfBrushes.Black, new RectangleF(430, 35, 200, 200));
+                graphics.DrawString("Novi Sad", new PdfStandardFont(PdfFontFamily.TimesRoman, 11), PdfBrushes.Black, new RectangleF(430, 50, 200, 200));
+                graphics.DrawString("Tel:+021/462019", new PdfStandardFont(PdfFontFamily.TimesRoman, 11), PdfBrushes.Black, new RectangleF(430, 65, 200, 200));
+
+
+                graphics.DrawString("Date", new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(20, 120, 300, 300));
+                graphics.DrawString("Doctor rank", new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(100, 120, 300, 300));
+                graphics.DrawString("Hospital rank", new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(200, 120, 300, 300));
+                graphics.DrawString("Comment", new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(300, 120, 300, 300));
+                graphics.DrawString("______________________________________________________________________________", new PdfStandardFont(PdfFontFamily.TimesRoman, 12), PdfBrushes.Black, new RectangleF(20, 126, 500, 500));
+
+                var y = 0;
+
+                foreach (Evaluation e in polls)
+                {
+                    graphics.DrawString(e.evaluationCreated.ToString().Split(" ")[0], new PdfStandardFont(PdfFontFamily.TimesRoman, 12), PdfBrushes.Black, new RectangleF(20, 150 + y, 300, 300));
+                    graphics.DrawString(e.averageDoctorRating.ToString(), new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(100, 150 + y, 300, 300));
+                    graphics.DrawString(e.averageHospitalRating.ToString(), new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(200, 150 + y, 300, 300));
+                    graphics.DrawString(e.comment, new PdfStandardFont(PdfFontFamily.TimesRoman, 14), PdfBrushes.Black, new RectangleF(300, 150 + y, 300, 300));
+                    y += 20;
+
+                    totalDoctor += e.averageDoctorRating;
+                    totalHospital += e.averageHospitalRating;
+
+                }
+
+                graphics.DrawString("______________________________________________________________________________", new PdfStandardFont(PdfFontFamily.TimesRoman, 12), PdfBrushes.Black, new RectangleF(20, 150 + y, 500, 500));
+
+
+                var ukupnoAnketa = "Total number of polls:     " + suma.ToString();
+                var ukupnoDoktor = "Average rank of doctors: " + (Math.Round((totalDoctor / suma), 2, MidpointRounding.ToEven)).ToString();
+                var ukupnoBolnica = "Average rank of hospital: " + (Math.Round((totalHospital / suma), 2, MidpointRounding.ToEven)).ToString();
+
+                graphics.DrawString(ukupnoAnketa, new PdfStandardFont(PdfFontFamily.TimesRoman, 16), PdfBrushes.Black, new RectangleF(300, 175 + y, 300, 300));
+                graphics.DrawString(ukupnoDoktor, new PdfStandardFont(PdfFontFamily.TimesRoman, 16), PdfBrushes.Black, new RectangleF(300, 195 + y, 300, 300));
+                graphics.DrawString(ukupnoBolnica, new PdfStandardFont(PdfFontFamily.TimesRoman, 16), PdfBrushes.Black, new RectangleF(300, 215 + y, 300, 300));
+
+
+                Random rand = new Random();
+                int number = rand.Next(0, 100000000);
+                var naziv_random = @".\..\..\..\ManagerPDF\Upravnik" + number.ToString() + ".pdf";
                 //Save the document
                 doc.Save(naziv_random);
                 doc.Close(true);

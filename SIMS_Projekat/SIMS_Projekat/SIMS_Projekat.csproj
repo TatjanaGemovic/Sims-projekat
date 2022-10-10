@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ManagerView\Gavanski.jpg" />
     <None Remove="Resources\icons\accounts.png" />
     <None Remove="Resources\icons\add_account.png" />
     <None Remove="Resources\icons\allergen.png" />
@@ -54,6 +55,7 @@
     <None Remove="Resources\icons_patient\report.png" />
     <None Remove="Resources\icons_patient\stethoscope.png" />
     <None Remove="Resources\icons_patient\video.png" />
+    <None Remove="Resources\icon_manager\Gavanski.jpg" />
     <None Remove="Resources\icon_manager\ManagerAdd.png" />
     <None Remove="Resources\icon_manager\ManagerBack.png" />
     <None Remove="Resources\icon_manager\ManagerComponents.png" />
@@ -72,7 +74,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="ManagerView\Gavanski.jpg" />
     <Resource Include="Resources\icons\approved.png" />
+    <Content Include="Resources\icon_manager\Gavanski.jpg" />
     <Resource Include="Resources\icon_manager\ManagerBack.png" />
   </ItemGroup>
 

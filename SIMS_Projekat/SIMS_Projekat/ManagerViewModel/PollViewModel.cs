@@ -67,7 +67,7 @@ namespace SIMS_Projekat.ManagerViewModel
 
         }
 
-        public string OcenaBolnica
+        public string SrednjaBolnica
         {
             get { return _selectedPolll.averageHospitalRating.ToString() + "/5"; }
 

@@ -33,9 +33,9 @@
             <ListView x:Name="datagGridPolls" ItemsSource="{Binding Path=Polls, NotifyOnSourceUpdated=True, Mode=TwoWay}" Style="{DynamicResource ManagerListViewStyle}" Width="450" Grid.RowSpan="7" Grid.Column="0" Grid.Row="1" SelectedItem="{Binding Path=SelectedItem}" >
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{DynamicResource ManagerColumnHeaderListViewStyle}">
-                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}" Header="{ns:Loc doctorRatingPoll}"  Width="120" />
-                        <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="{ns:Loc hospitalRatingPoll}" Width="120" />
-                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated}"  Header="{ns:Loc dateOfPoll}"  Width="200" />
+                        <GridViewColumn x:Name="doctorRatingPoll" DisplayMemberBinding ="{Binding Path=averageDoctorRating}" Header="{ns:Loc doctorRatingPoll}"  Width="145" />
+                        <GridViewColumn x:Name="hospitalRatingPoll" DisplayMemberBinding ="{Binding Path=averageHospitalRating}"  Header="{ns:Loc hospitalRatingPoll}" Width="145" />
+                        <GridViewColumn x:Name="dateOfPoll" DisplayMemberBinding ="{Binding Path=evaluationCreated, StringFormat=\{0:MM/dd/yyyy\}}"  Header="{ns:Loc dateOfPoll}"  Width="150" />
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -2,6 +2,7 @@
 using SIMS_Projekat.Controller;
 using SIMS_Projekat.ManagerView;
 using SIMS_Projekat.Model;
+using SIMS_Projekat.Properties;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -116,9 +117,31 @@ namespace SIMS_Projekat.ManagerModelView
 
         private void ObrisiProstorijuBtn_Click()
         {
-           
-            App.roomController.DeleteRoomByID(SelectedItem.RoomID);
-            RoomsR = new ObservableCollection<Room>(App.roomController.GetAvailableRooms());
+            if (Settings.Default.CurrentLanguage == "sr-LATN")
+            {
+                if (MessageBox.Show("Da li ste sigurni da želite da obrišete prostoriju?",
+                    "Brisanje prostorije",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    App.roomController.DeleteRoomByID(SelectedItem.RoomID);
+                    RoomsR = new ObservableCollection<Room>(App.roomController.GetAvailableRooms());
+                }
+
+            }
+            else
+            {
+                if (MessageBox.Show("Are you sure you want to delete room?",
+                        "Delete room",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    App.roomController.DeleteRoomByID(SelectedItem.RoomID);
+                    RoomsR = new ObservableCollection<Room>(App.roomController.GetAvailableRooms());
+                }
+
+            }
+            
         }
 
         private void IzmenaProstorijeBtn_Click()

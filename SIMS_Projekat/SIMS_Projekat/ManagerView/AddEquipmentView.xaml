@@ -77,7 +77,7 @@
                 </Grid>
             </GroupBox>
 
-            <Button x:Name="AddEquipment" Grid.Column="1" Grid.Row="2" IsEnabled="False" Style="{DynamicResource ManagerButtonCRUDOk}" Margin="10,15,10,15"  >
+            <Button x:Name="AddEquipment" Grid.Column="1" Grid.Row="2" IsEnabled="False" Style="{DynamicResource ManagerButtonCRUDOk}" Margin="10,15,10,15" Click="AddEquipment_Click"  >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerDone.png" Height="20" Width="20"/>
                     <Label   Content="{ns:Loc PotvrdiDodavanje}" Style="{DynamicResource LabelInButton}"/>

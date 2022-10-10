@@ -32,10 +32,19 @@ namespace SIMS_Projekat.Service
 
         public Model.Equipment AddEquipment(Model.Equipment newEquipment)
         {
-            if(GetEquipmentByID(newEquipment.EquipmentID) == null )
-                return this._equipmentRepository.AddEquipment(newEquipment);
+            if (GetEquipmentByID(newEquipment.EquipmentID) == null)
+                foreach (Equipment oEquipment in GetEquipment())
+                {
+                    if (oEquipment.EquipmentName == oEquipment.EquipmentName)
+                    {
+                        return null;
+                    }
+                }
+            else
+                return null;
 
-            return null;
+            return this._equipmentRepository.AddEquipment(newEquipment);
+
         }
 
         public Model.Equipment DeleteEquipment(string equipmentID)

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:SIMS_Projekat"
         xmlns:ns="clr-namespace:MenuNavigation"
         mc:Ignorable="d"
-     Title="ManagerHome" Height="470" Width="800">
+     Title="ManagerHome" Height="470" Width="800" WindowStartupLocation="CenterScreen">
 
 
     <Grid x:Name="main">
@@ -22,20 +22,21 @@
         <DockPanel x:Name="sideMenuDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="0" Grid.Column="0" >
             <ListView BorderBrush="Transparent"  Background="Transparent" >
 
-                <ListViewItem x:Name="Notifikacije" Content="{ns:Loc Notifikacije}" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown"  ></ListViewItem>
-                <ListViewItem x:Name="Prostorije" Content="{ns:Loc Prostorije}" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" ></ListViewItem>
-                <ListViewItem x:Name="Lekovi" Content="{ns:Loc Lekovi}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp"></ListViewItem>
-                <ListViewItem x:Name="Oprema" Content="{ns:Loc Oprema}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" />
-                <ListViewItem x:Name="Ankete" Content="{ns:Loc Ankete}" Style="{DynamicResource ManagerMenuText}" Selected="anketeView_Selected"></ListViewItem>
-                <ListViewItem x:Name="Podesavanja"  Content="{ns:Loc Podesavanja}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="settingsUp" ></ListViewItem>
-                <ListViewItem x:Name="Pomoc" Content="{ns:Loc Pomoc}" Style="{DynamicResource ManagerMenuText}"></ListViewItem>
+                <ListViewItem x:Name="Notifikacije" Content="{ns:Loc Notifikacije}" Style="{DynamicResource ManagerMenuText}" PreviewMouseLeftButtonDown="notifikacije_MouseDown" KeyUp="NotifikacijeEnter"  ></ListViewItem>
+                <ListViewItem x:Name="Prostorije" Content="{ns:Loc Prostorije}" Style="{DynamicResource ManagerMenuText}" KeyUp="prostorije_KeyUp" MouseLeftButtonDown="prostorije_MouseDown" PreviewMouseLeftButtonUp="tt" />
+                <ListViewItem x:Name="Lekovi" Content="{ns:Loc Lekovi}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="lekovi_MouseUp" KeyUp="LekoviEnkter"/>
+                <ListViewItem x:Name="Oprema" Content="{ns:Loc Oprema}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="oprema_MouseDown" MouseLeftButtonUp="oprema_MouseUp" KeyUp="OpremaEnter" />
+                <ListViewItem x:Name="Ankete" Content="{ns:Loc Ankete}" Style="{DynamicResource ManagerMenuText}"  KeyUp="AnketeEnter" MouseLeftButtonUp="AnketeMouseUp"></ListViewItem>
+                <ListViewItem x:Name="Podesavanja"  Content="{ns:Loc Podesavanja}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonUp="settingsUp" KeyUp="PodesavanjaEnter" ></ListViewItem>
+                <ListViewItem x:Name="Profil" Content="{ns:Loc Profil}" Style="{DynamicResource ManagerMenuText}" MouseLeftButtonDown="ProfilMouseUP" KeyUp="ProfilEnter" MouseLeftButtonUp="ProfilMouseUP1"></ListViewItem>
+                <ListViewItem x:Name="Pomoc" Content="{ns:Loc Pomoc}" Style="{DynamicResource ManagerMenuText}" KeyUp="HelpEnter" MouseLeftButtonDown="HelpMouseUp" MouseLeftButtonUp="HelpUp"></ListViewItem>
 
             </ListView>
 
         </DockPanel>
 
         <DockPanel x:Name="sideLogOutDock" Style="{DynamicResource ManagerMenuDock}" Grid.Row="1" Grid.Column="0" >
-            <Button Style="{DynamicResource ManagerLogOutButton}"  Width="112"  Height="41" Click="Button_Click" >
+            <Button Style="{DynamicResource ManagerLogOutButton}"  Width="112"  Height="41" Click="Button_Click" KeyUp="LogOFfUp" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerLogOut.png" Height="20" Width="20"/>
                     <Label  x:Name="OdjaviSe" Content="{ns:Loc OdjaviSe}" Style="{DynamicResource LabelInButton}" Width="92"/>

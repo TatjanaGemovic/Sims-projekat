@@ -49,47 +49,47 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,30" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Izabrani doktor pacijenta:" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="205" FontSize="13"/>
+                        <Label Content="{ns:Loc IzabraniDoktorPacijenta}" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="205" FontSize="13"/>
                         <Label Content="{Binding IzabaraniLekar}" Style="{DynamicResource ManagerLabelCRUD}" Width="138" Height="30"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="0,0,0,30" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Ocena za doktora:" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
+                        <Label Content="{ns:Loc OcenaZaDoktora}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
                         <Label Content="{Binding OcenaDoktor}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,0,0,30" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Da li Vas je doktor pazljivo slusao?" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13"/>
+                        <Label Content="{ns:Loc DaLiSlusa}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13"/>
                         <Label Content="{Binding DoktorSlusanje}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Margin="0,0,0,30" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Da li biste preporucili doktora?" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
+                        <Label Content="{ns:Loc DaLiDrPreporuciti}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
                         <Label Content="{Binding DoktorPreporuka}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="6" Margin="0,0,0,29" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Ocena opreme bolnice:" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
+                        <Label Content="{ns:Loc OcenaOpreme}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left"/>
                         <Label Content="{Binding OcenaOprema}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="7">
-                        <Label Content="Brzina prijema na pregled?" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                        <Label Content="{ns:Loc BrzinaPrijema}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="205" FontSize="13" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
                         <Label Content="{Binding BrzinaPregleda}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="7" Margin="0,29,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Da li biste preporucili bolnicu?" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="205" FontSize="13" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                        <Label Content="{ns:Loc DaLiBolPreporuciti}" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="205" FontSize="13" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
                         <Label Content="{Binding BolnicaPreporuka}" Style="{DynamicResource ManagerLabelCRUD}" Width="115" Height="30" HorizontalContentAlignment="Center"></Label>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="8" Margin="0,29,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Komentar pacijenta:" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="239" FontSize="13"/>
+                        <Label Content="{ns:Loc KomentarPacijenta}" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="239" FontSize="13"/>
                         <Label Content="{Binding PacijentKomentar}" Style="{DynamicResource ManagerLabelCRUD}" Width="231" Height="30" FontSize="12" ></Label>
                     </StackPanel>
 
 
                     <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="0" Margin="0,30,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Srednja ocena doktora:" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="142" FontSize="13" HorizontalAlignment="Center" Margin="290,0,0,0"/>
+                        <Label Content="{ns:Loc SrednjaOcenaDoktora}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="142" FontSize="13" HorizontalAlignment="Center" Margin="290,0,0,0"/>
                         <Label Content="{Binding SrednjaDoktor}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="68"></Label>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="10" Grid.Column="0" Margin="0,30,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-                        <Label Content="Srednja ocena bolnice:" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="142" FontSize="13" HorizontalAlignment="Center"  Margin="290,0,0,0"/>
-                        <Label Content="{Binding SrednjaDoktor}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="68" ></Label>
+                        <Label Content="{ns:Loc SrecnjaOcenaBolnice}" Style="{DynamicResource ManagerLabelCRUD}" Height="30" Width="142" FontSize="13" HorizontalAlignment="Center"  Margin="290,0,0,0"/>
+                        <Label Content="{Binding SrednjaBolnica}" Style="{DynamicResource ManagerLabelCRUD}"  Height="30" Width="68" ></Label>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -98,7 +98,7 @@
             <Button x:Name ="BackBtn" Style="{DynamicResource ManagerButtonCRUD}" Grid.Column="1"  HorizontalAlignment="Left" Height="30" Grid.Row="5" Width="78" Command="{Binding Back}"  >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/icon_manager/ManagerBack.png" Height="20" Width="20" HorizontalAlignment="Left"/>
-                    <Label  Content="Nazad" Style="{DynamicResource LabelInButton}" Width="66"/>
+                    <Label  Content="{ns:Loc Nazad}" Style="{DynamicResource LabelInButton}" Width="66"/>
                 </StackPanel>
             </Button>
 

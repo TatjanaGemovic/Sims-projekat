@@ -142,11 +142,47 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obicno.
+        ///   Looks up a localized string similar to Brzina prijema na pregled?.
+        /// </summary>
+        internal static string BrzinaPrijema {
+            get {
+                return ResourceManager.GetString("BrzinaPrijema", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obično.
         /// </summary>
         internal static string Classic {
             get {
                 return ResourceManager.GetString("Classic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da li biste preporučili bolnicu?.
+        /// </summary>
+        internal static string DaLiBolPreporuciti {
+            get {
+                return ResourceManager.GetString("DaLiBolPreporuciti", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da li biste preporučili doktora?.
+        /// </summary>
+        internal static string DaLiDrPreporuciti {
+            get {
+                return ResourceManager.GetString("DaLiDrPreporuciti", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Da li Vas je doktor pažiljivo slušao?.
+        /// </summary>
+        internal static string DaLiSlusa {
+            get {
+                return ResourceManager.GetString("DaLiSlusa", resourceCulture);
             }
         }
         
@@ -169,7 +205,16 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to dinamicka.
+        ///   Looks up a localized string similar to Datum rođenja: 03.05.1959..
+        /// </summary>
+        internal static string datumRodjenja {
+            get {
+                return ResourceManager.GetString("datumRodjenja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dinamička.
         /// </summary>
         internal static string dinamicka {
             get {
@@ -183,6 +228,15 @@ namespace SIMS_Projekat.Properties {
         internal static string doctorRatingPoll {
             get {
                 return ResourceManager.GetString("doctorRatingPoll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj.
+        /// </summary>
+        internal static string Dodaj {
+            get {
+                return ResourceManager.GetString("Dodaj", resourceCulture);
             }
         }
         
@@ -241,7 +295,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dostupna kolicina:.
+        ///   Looks up a localized string similar to Dostupna količina:.
         /// </summary>
         internal static string DostupnaKolicina {
             get {
@@ -313,7 +367,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Izaberite prostoriju u koju zelite da premestite opremu: .
+        ///   Looks up a localized string similar to Izaberite prostoriju u koju želite da premestite opremu: .
         /// </summary>
         internal static string IzaberiProstorijuUKoju {
             get {
@@ -322,7 +376,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Izaberite lek koji zelite da dodate:.
+        ///   Looks up a localized string similar to Izaberite lek koji želite da dodate:.
         /// </summary>
         internal static string IzaberiteLekKojiZeliteDaDodat {
             get {
@@ -331,7 +385,16 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Izaberi doktora kom zelite da posaljete zahtev:.
+        ///   Looks up a localized string similar to Izabrani doktor pacijenta:.
+        /// </summary>
+        internal static string IzabraniDoktorPacijenta {
+            get {
+                return ResourceManager.GetString("IzabraniDoktorPacijenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Izaberi doktora kom želite da pošaljete zahtev:.
         /// </summary>
         internal static string izberiDoktora {
             get {
@@ -367,7 +430,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Izvestaj anketa.
+        ///   Looks up a localized string similar to Izveštaj anketa.
         /// </summary>
         internal static string IzvestajAnketa {
             get {
@@ -376,7 +439,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Izvestaj anketa u periodu .
+        ///   Looks up a localized string similar to  Izveštaj anketa u periodu .
         /// </summary>
         internal static string IzvestajAnketaUP {
             get {
@@ -385,7 +448,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jacina leka [mg]:.
+        ///   Looks up a localized string similar to Jačina leka [mg]:.
         /// </summary>
         internal static string JacinaLeka {
             get {
@@ -403,7 +466,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kolicina:.
+        ///   Looks up a localized string similar to Količina:.
         /// </summary>
         internal static string Kolicina {
             get {
@@ -412,7 +475,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to kolicina.
+        ///   Looks up a localized string similar to količina.
         /// </summary>
         internal static string kolicinaM {
             get {
@@ -421,11 +484,20 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kolicina za prebacivanje:.
+        ///   Looks up a localized string similar to Količina za prebacivanje:.
         /// </summary>
         internal static string KolicinaZaPrebacivanje {
             get {
                 return ResourceManager.GetString("KolicinaZaPrebacivanje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Komentar pacijenta:.
+        /// </summary>
+        internal static string KomentarPacijenta {
+            get {
+                return ResourceManager.GetString("KomentarPacijenta", resourceCulture);
             }
         }
         
@@ -484,7 +556,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nacin upotrebe:.
+        ///   Looks up a localized string similar to Način upotrebe:.
         /// </summary>
         internal static string NacinUpotrebe {
             get {
@@ -493,7 +565,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Napravi izvestaj.
+        ///   Looks up a localized string similar to Napravi izveštaj.
         /// </summary>
         internal static string NapraviIzvestaj {
             get {
@@ -547,7 +619,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Obrisi lek.
+        ///   Looks up a localized string similar to  Obriši lek.
         /// </summary>
         internal static string ObrisiLek {
             get {
@@ -556,7 +628,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obrisi opremu.
+        ///   Looks up a localized string similar to Obriši opremu.
         /// </summary>
         internal static string ObrisiOpremu {
             get {
@@ -565,7 +637,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obrisi prostoriju.
+        ///   Looks up a localized string similar to Obriši prostoriju.
         /// </summary>
         internal static string ObrisiProstoriju {
             get {
@@ -574,11 +646,29 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obrisi sastojak.
+        ///   Looks up a localized string similar to Obriši sastojak.
         /// </summary>
         internal static string ObrisiSastojak {
             get {
                 return ResourceManager.GetString("ObrisiSastojak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocena opreme bolnice:.
+        /// </summary>
+        internal static string OcenaOpreme {
+            get {
+                return ResourceManager.GetString("OcenaOpreme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ocena za doktora.
+        /// </summary>
+        internal static string OcenaZaDoktora {
+            get {
+                return ResourceManager.GetString("OcenaZaDoktora", resourceCulture);
             }
         }
         
@@ -610,7 +700,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quit.
+        ///   Looks up a localized string similar to Odustani.
         /// </summary>
         internal static string Odustani {
             get {
@@ -655,7 +745,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Otkazi.
+        ///   Looks up a localized string similar to Otkaži.
         /// </summary>
         internal static string Otkazi {
             get {
@@ -673,7 +763,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Podesavanja.
+        ///   Looks up a localized string similar to Podešavanja.
         /// </summary>
         internal static string Podesavanja {
             get {
@@ -691,7 +781,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pomoc.
+        ///   Looks up a localized string similar to Pomoć.
         /// </summary>
         internal static string Pomoc {
             get {
@@ -700,7 +790,30 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ponisti.
+        ///   Looks up a localized string similar to Program se sastoji iz 8 glavnih stranica: 
+        ///
+        ///1. Notifikacije - Notifikacije za ulogovanog korisnika
+        ///2. Prostorije - Pregled prostorija u bolnici
+        ///3. Lekovi - Pregled lekov u bolnici
+        ///4. Oprema - Pregled opreme u bolnici
+        ///5. Ankete - Pregled anketa koje su popunili pacijenti
+        ///6. Podešavanja - Podešavanja koja ukljucuju promenu teme i jezika aplikacije
+        ///7. Profil - Informacije o ulogovanom korisniku
+        ///8. Pomoć - pomoć za korisnika
+        ///
+        ///Komande:
+        ///
+        ///Komanda Dodaj- dodavanje novog entiteta u program
+        ///Komanda Izme [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PomocText {
+            get {
+                return ResourceManager.GetString("PomocText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Poništi.
         /// </summary>
         internal static string Ponisti {
             get {
@@ -709,7 +822,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ponisti dodavanje.
+        ///   Looks up a localized string similar to Poništi dodavanje.
         /// </summary>
         internal static string PonistiDodavanje {
             get {
@@ -718,7 +831,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ponisti izmenu.
+        ///   Looks up a localized string similar to Poništi izmenu.
         /// </summary>
         internal static string PonistiIzmenu {
             get {
@@ -727,7 +840,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Posalji doktoru.
+        ///   Looks up a localized string similar to Pošalji doktoru.
         /// </summary>
         internal static string PosaljiDoktoru {
             get {
@@ -795,6 +908,15 @@ namespace SIMS_Projekat.Properties {
         internal static string prezimeM {
             get {
                 return ResourceManager.GetString("prezimeM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profil.
+        /// </summary>
+        internal static string Profil {
+            get {
+                return ResourceManager.GetString("Profil", resourceCulture);
             }
         }
         
@@ -871,7 +993,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to sadrzaj.
+        ///   Looks up a localized string similar to sadržaj.
         /// </summary>
         internal static string sadrzaj {
             get {
@@ -916,6 +1038,24 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Srednja ocena bolnice:.
+        /// </summary>
+        internal static string SrecnjaOcenaBolnice {
+            get {
+                return ResourceManager.GetString("SrecnjaOcenaBolnice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Srednja ocena doktora:.
+        /// </summary>
+        internal static string SrednjaOcenaDoktora {
+            get {
+                return ResourceManager.GetString("SrednjaOcenaDoktora", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Srpski.
         /// </summary>
         internal static string Srpski {
@@ -925,7 +1065,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to staticka.
+        ///   Looks up a localized string similar to statička.
         /// </summary>
         internal static string staticka {
             get {
@@ -966,6 +1106,15 @@ namespace SIMS_Projekat.Properties {
         internal static string Tamna {
             get {
                 return ResourceManager.GetString("Tamna", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telefon: 0650702039.
+        /// </summary>
+        internal static string telefon {
+            get {
+                return ResourceManager.GetString("telefon", resourceCulture);
             }
         }
         
@@ -1051,7 +1200,16 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to nacin upotrebe.
+        ///   Looks up a localized string similar to Korisničko ime: tatamata.
+        /// </summary>
+        internal static string username {
+            get {
+                return ResourceManager.GetString("username", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to način upotrebe.
         /// </summary>
         internal static string useTypeM {
             get {
@@ -1069,7 +1227,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zakazi renoviranje.
+        ///   Looks up a localized string similar to Zakaži renoviranje.
         /// </summary>
         internal static string ZakaziRenoviranje {
             get {
@@ -1087,7 +1245,16 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zavrsi.
+        ///   Looks up a localized string similar to Zanimanje: Upravnik.
+        /// </summary>
+        internal static string zanimanje {
+            get {
+                return ResourceManager.GetString("zanimanje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Završi.
         /// </summary>
         internal static string Zavrsi {
             get {
@@ -1096,7 +1263,7 @@ namespace SIMS_Projekat.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zavrsi dodavanje.
+        ///   Looks up a localized string similar to Završi dodavanje.
         /// </summary>
         internal static string ZavrsiDodavanje {
             get {
